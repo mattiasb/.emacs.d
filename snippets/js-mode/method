@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Method
+# key: m
+# --
+${1:method}: function($2) {
+    $0
+},
+

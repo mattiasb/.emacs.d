@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: todo
+# key: to
+# --
+`(wrap-in-comment "TODO: ")`
