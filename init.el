@@ -1,14 +1,22 @@
 ;; Load path
 (add-to-list 'load-path "~/.local/share/emacs/lisp/")
+(add-to-list 'load-path "~/.local/lib/node_modules/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+
 
 ;;;; Modes ;;;;
 
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook (lambda ()
+                           (tern-mode)
+                           (local-set-key (kbd ".")  'company-tern-complete-on-dot)
+                           ))
 
 ;; PROG 
 (add-hook 'prog-mode-hook
           (lambda ()
+            (company-mode)
             (setq-default indent-tabs-mode nil)
             ))
 ;; IDO
@@ -18,7 +26,7 @@
 
 (global-set-key (kbd "C-§")      'er/expand-region)
 (global-set-key (kbd "C-x w")    'whitespace-mode)
-(global-set-key (kbd "C-c C-c")  'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-c c")    'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "<f9>")     'magit-status)
 (global-set-key (kbd "<f11>")    'list-packages)
 (global-set-key (kbd "<f12>")    'customize)
@@ -37,6 +45,21 @@
 (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
 
 ;;;; Functions and Macros ;;;;
+
+(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+  "Use popup.el for yasnippet."
+  (popup-menu*
+   (mapcar
+    (lambda (choice)
+      (popup-make-item
+       (or (and display-fn (funcall display-fn choice))
+           choice)
+       :value choice))
+    choices)
+   :prompt prompt
+   ;; start isearch mode immediately
+   :isearch t
+   ))
 
 (defun align-region (begin end)
   "Align region to some common separators"
@@ -109,13 +132,14 @@ optional packages."
 (rename-modeline "js2-mode" js2-mode "JS2")
 (rename-modeline "emacs-lisp-mode" emacs-lisp-mode "elisp")
 (defalias 'yes-or-no-p 'y-or-n-p)
-
+(defalias 'list-buffers 'ibuffer)
 
 ;;;; Post-init code ;;;;
 
 ;; (add-hook 'after-init-hook 'package-sync)
 (add-hook 'after-init-hook
           (lambda ()
+            (require 'popup)
             (yas-global-mode)
             (ido-vertical-mode)
             ))
@@ -128,16 +152,20 @@ optional packages."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(company-auto-complete t)
+ '(company-auto-complete-chars (quote (32 46)))
+ '(company-backends (quote (company-tern company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-tern)))
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
+ '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indent)))
  '(ido-completion-buffer nil)
- '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right) t)
+ '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
  '(ido-vertical-mode t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -164,7 +192,7 @@ optional packages."
  '(tool-bar-mode nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
- '(yas-prompt-functions (quote (yas-ido-prompt)))
+ '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
  '(yas-wrap-around-region t))
 
