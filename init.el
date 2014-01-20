@@ -11,16 +11,8 @@
           (lambda ()
             (setq-default indent-tabs-mode nil)
             ))
-
-;; ;; yasnippet
-;; (defun yas-my-hook ()
-;;   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
-;;   (yas-reload-all)
-;;   (remove-hook 'yas-minor-mode-hook
-;;                'yas-my-hook))
-
-;; (add-hook 'yas-minor-mode-hook 'yas-my-hook)
-
+;; IDO
+(ido-mode)
 
 ;;;; Keybindings ;;;;
 
@@ -124,8 +116,8 @@ optional packages."
 ;; (add-hook 'after-init-hook 'package-sync)
 (add-hook 'after-init-hook
           (lambda ()
-            ;; (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
             (yas-global-mode)
+            (ido-vertical-mode)
             ))
 
 ;;;; Custom mode ;;;;
@@ -144,7 +136,8 @@ optional packages."
  '(electric-pair-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indent)))
- '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
+ '(ido-completion-buffer nil)
+ '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right) t)
  '(ido-vertical-mode t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -171,6 +164,7 @@ optional packages."
  '(tool-bar-mode nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
+ '(yas-prompt-functions (quote (yas-ido-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
  '(yas-wrap-around-region t))
 
