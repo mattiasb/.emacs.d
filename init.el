@@ -40,9 +40,16 @@
 (global-set-key (kbd "C-c s v")  'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")  'yas-reload-all)
 
+(global-set-key (kbd "C-c a")     'align-region)
+
 (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
 
 ;;;; Functions and Macros ;;;;
+
+(defun align-region (begin end)
+  "Align region to some common separators"
+  (interactive "r")
+  (align-regexp begin end "\\(\\s-*\\)[=|:]" 1 1))
 
 (defun wrap-in-comment (str)
   (format "%s%s%s" comment-start str comment-end))
