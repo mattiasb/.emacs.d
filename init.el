@@ -188,7 +188,7 @@ optional packages."
  '(package-manifest (quote ("package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(tab-width 4)
+ '(tab-width 8)
  '(tool-bar-mode nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
