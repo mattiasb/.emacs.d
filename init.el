@@ -37,7 +37,7 @@
 
 (global-set-key (kbd "C-c s s")  'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")  'yas-new-snippet)
-(global-set-key (kbd "C-c s v")  'yas-visit-snippet-file)
+(global-set-key (kbd "C-c s e")  'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")  'yas-reload-all)
 
 (global-set-key (kbd "C-c a")     'align-region)
