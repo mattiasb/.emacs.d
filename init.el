@@ -192,8 +192,10 @@ optional packages."
  '(tool-bar-mode nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
+ '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
+ '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
 (custom-set-faces

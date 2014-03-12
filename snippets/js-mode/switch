@@ -3,5 +3,10 @@
 # key: sw
 # --
 switch($1) {
-    $0
-};
+case $2:
+$3
+break;
+case $4:
+$5
+break;
+}
