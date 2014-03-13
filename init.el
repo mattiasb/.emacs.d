@@ -41,8 +41,7 @@
 (global-set-key (kbd "C-c s r")  'yas-reload-all)
 
 (global-set-key (kbd "C-c a")     'align-region)
-
-(setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
+(global-set-key (kbd "<insert>")  'dabbrev-expand)
 
 ;;;; Functions and Macros ;;;;
 
@@ -185,7 +184,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text")))
+ '(package-manifest (quote ("package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
