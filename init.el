@@ -29,6 +29,7 @@
             (projectile-global-mode)
             (ido-mode)
             (ido-vertical-mode)
+            (flx-ido-mode)
             ))
 
 ;;;; Keybindings ;;;;
@@ -166,7 +167,7 @@ optional packages."
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
- '(flx-ido-mode t)
+
  '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indent)))
