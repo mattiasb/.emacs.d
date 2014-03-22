@@ -1,7 +1,7 @@
 ;; Load path
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(add-to-list 'load-path "~/.local/lib/node_modules/tern/emacs/")
-(autoload 'tern-mode "tern.el" nil t)
+;; (add-to-list 'load-path "~/.local/lib/node_modules/tern/emacs/")
+;; (autoload 'tern-mode "tern.el" nil t)
 (autoload 'package++ "package++.el" nil t)
 
 ;;;; Modes ;;;;
