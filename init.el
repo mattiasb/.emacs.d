@@ -1,7 +1,5 @@
 ;; Load path
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-;; (add-to-list 'load-path "~/.local/lib/node_modules/tern/emacs/")
-;; (autoload 'tern-mode "tern.el" nil t)
 (autoload 'package++ "package++.el" nil t)
 
 ;;;; Modes ;;;;
@@ -16,12 +14,22 @@
 ;; PROG 
 (add-hook 'prog-mode-hook
           (lambda ()
-            (when (fboundp 'company-mode)
-              (company-mode))
+	    (when (fboundp 'company-mode)
+	      (company-mode))
             (setq-default indent-tabs-mode nil)
             ))
-;; IDO
-(ido-mode)
+
+;;;; Post-init code ;;;;
+
+(add-hook 'after-init-hook
+          (lambda ()
+	    (require 'package++)
+	    (package-sync)
+            (require 'popup)
+            (projectile-global-mode)
+            (ido-mode)
+            (ido-vertical-mode)
+            ))
 
 ;;;; Keybindings ;;;;
 
@@ -43,6 +51,7 @@
 
 (global-set-key (kbd "C-c a")    'align-region)
 (global-set-key (kbd "<insert>") 'dabbrev-expand)
+
 
 (global-set-key (kbd "M-x") 'smex)
 
@@ -140,19 +149,6 @@ optional packages."
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
 
-;;;; Post-init code ;;;;
-
-(add-hook 'after-init-hook
-          (lambda ()
-	    (require 'package++)
-	    (package-sync)
-            (require 'popup)
-            (when (fboundp 'yas-global-mode)
-              (yas-global-mode))
-            (when (fboundp 'ido-vertical-mode)
-              (ido-vertical-mode))
-            ))
-
 ;;;; Custom mode ;;;;
 
 (custom-set-variables
@@ -163,19 +159,20 @@ optional packages."
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 46)))
- '(company-backends (quote (company-tern company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-tern)))
+ '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev)))
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
+ '(flx-ido-mode t)
  '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indent)))
  '(ido-completion-buffer nil)
+ '(ido-vertical t)
  '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
- '(ido-vertical-mode t)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
@@ -194,7 +191,8 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("smex" "package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
@@ -202,6 +200,7 @@ optional packages."
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
+ '(yas-global-mode t)
  '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
  '(yas-triggers-in-field t)
