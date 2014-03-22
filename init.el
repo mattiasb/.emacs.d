@@ -1,8 +1,8 @@
 ;; Load path
-(add-to-list 'load-path "~/.local/share/emacs/lisp/")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.local/lib/node_modules/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
-
+(autoload 'package++ "package++.el" nil t)
 
 ;;;; Modes ;;;;
 
@@ -16,7 +16,8 @@
 ;; PROG 
 (add-hook 'prog-mode-hook
           (lambda ()
-            (company-mode)
+            (when (fboundp 'company-mode)
+              (company-mode))
             (setq-default indent-tabs-mode nil)
             ))
 ;; IDO
@@ -40,10 +41,14 @@
 (global-set-key (kbd "C-c s e")  'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")  'yas-reload-all)
 
-(global-set-key (kbd "C-c a")     'align-region)
-(global-set-key (kbd "<insert>")  'dabbrev-expand)
+(global-set-key (kbd "C-c a")    'align-region)
+(global-set-key (kbd "<insert>") 'dabbrev-expand)
 
 ;;;; Functions and Macros ;;;;
+
+(defun mode-init (mode)
+  "Load a mode if the feature is there."
+  )
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet."
@@ -135,12 +140,15 @@ optional packages."
 
 ;;;; Post-init code ;;;;
 
-;; (add-hook 'after-init-hook 'package-sync)
 (add-hook 'after-init-hook
           (lambda ()
+	    (require 'package++)
+	    (package-sync)
             (require 'popup)
-            (yas-global-mode)
-            (ido-vertical-mode)
+            (when (fboundp 'yas-global-mode)
+              (yas-global-mode))
+            (when (fboundp 'ido-vertical-mode)
+              (ido-vertical-mode))
             ))
 
 ;;;; Custom mode ;;;;
@@ -184,7 +192,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup")))
+ '(package-manifest (quote ("package+" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
