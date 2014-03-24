@@ -2,20 +2,66 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (autoload 'package++ "package++.el" nil t)
 
+;;;; Keybindings ;;;;
+
+(global-set-key (kbd "C-§")      'er/expand-region)
+(global-set-key (kbd "C-x w")    'whitespace-mode)
+(global-set-key (kbd "C-c c")    'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "<f9>")     'magit-status)
+(global-set-key (kbd "<f11>")    'list-packages)
+(global-set-key (kbd "<f12>")    'customize)
+(global-set-key (kbd "C-x C-n")  'make-frame)
+(global-set-key (kbd "M-<up>")   'move-text-up)
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "C-c a")    'align-region)
+(global-set-key (kbd "<insert>") 'dabbrev-expand)
+(global-set-key (kbd "<tab>")    'tab-indent-or-complete)
+(global-set-key (kbd "M-x")      'smex)
+(global-set-key (kbd "C-y")      'yank-and-indent)
+
+(global-set-key (kbd "C-c s s")    'yas-insert-snippet)
+(global-set-key (kbd "C-c s n")    'yas-new-snippet)
+(global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
+(global-set-key (kbd "C-c s r")    'yas-reload-all)
+(global-set-key (kbd "C-<return>") 'yas-expand)
+
+
 ;;;; Modes ;;;;
+
+
+;; Company
+
+(add-hook 'company-mode-hook 
+	  (lambda ()
+	    (define-key company-active-map (kbd "\C-n") 'company-select-next)
+	    (define-key company-active-map (kbd "\C-p") 'company-select-previous)
+	    (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
+	    (define-key company-active-map (kbd "\C-v") 'company-show-location)
+	    (define-key company-active-map (kbd "<tab>") 'company-complete)
+	    (define-key company-active-map (kbd "\C-g") '(lambda ()
+							   (interactive)
+							   (company-abort)))
+	    ))
+
 
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-hook 'js2-mode-hook (lambda ()
-                           (tern-mode)
-                           (local-set-key (kbd ".")  'company-tern-complete-on-dot)
-                           ))
+(add-hook 'js2-mode-hook
+	  (lambda ()
+	    (set (make-local-variable 'company-backends)
+		 '((company-dabbrev-code)))
+	    ))
+
+(add-hook 'c-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '((company-clang)))
+            ))
 
 ;; PROG 
 (add-hook 'prog-mode-hook
           (lambda ()
-	    (when (fboundp 'company-mode)
-	      (company-mode))
+	    (when (fboundp 'company-mode) (company-mode))
             (setq-default indent-tabs-mode nil)
             ))
 
@@ -26,41 +72,53 @@
 	    (require 'package++)
 	    (package-sync)
             (require 'popup)
+            (yas-global-mode)
             (projectile-global-mode)
             (ido-mode)
             (ido-vertical-mode)
+            (ido-ubiquitous-mode)
             (flx-ido-mode)
             ))
 
-;;;; Keybindings ;;;;
-
-(global-set-key (kbd "C-§")      'er/expand-region)
-(global-set-key (kbd "C-x w")    'whitespace-mode)
-(global-set-key (kbd "C-c c")    'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "<f9>")     'magit-status)
-(global-set-key (kbd "<f11>")    'list-packages)
-(global-set-key (kbd "<f12>")    'customize)
-(global-set-key (kbd "C-x C-n")  'make-frame)
-(global-set-key (kbd "<C-tab>")  'other-window)
-(global-set-key (kbd "M-<up>")   'move-text-up)
-(global-set-key (kbd "M-<down>") 'move-text-down)
-
-(global-set-key (kbd "C-c s s")  'yas-insert-snippet)
-(global-set-key (kbd "C-c s n")  'yas-new-snippet)
-(global-set-key (kbd "C-c s e")  'yas-visit-snippet-file)
-(global-set-key (kbd "C-c s r")  'yas-reload-all)
-
-(global-set-key (kbd "C-c a")    'align-region)
-(global-set-key (kbd "<insert>") 'dabbrev-expand)
-
-
-(global-set-key (kbd "M-x") 'smex)
-
 ;;;; Functions and Macros ;;;;
 
-(defun mode-init (mode)
-  "Load a mode if the feature is there."
-  )
+(defun yasnippet-unbind-trigger-key ()
+  "Unbind `yas/trigger-key'."
+  (let ((key yas/trigger-key))
+    (setq yas/trigger-key nil)
+    (yas/trigger-key-reload key)))
+
+(defun check-expansion ()
+  (save-excursion
+    (if (looking-at "\\_>") t
+      (backward-char 1)
+      (if (looking-at "\\.") t
+        (backward-char 1)
+        (if (looking-at "->") t nil)))))
+
+(defun do-yas-expand ()
+  (let ((yas-fallback-behavior 'return-nil))
+    (yas-expand)))
+
+(defun tab-indent-or-complete ()
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (let ((old-indent (current-indentation)))
+      (indent-for-tab-command)
+      (if (= old-indent (current-indentation))
+          (if (or (not yas-minor-mode)
+                  (null (do-yas-expand)))
+              (if (check-expansion)
+                  (company-complete-common)
+                )))
+      )))
+
+(defun yank-and-indent ()
+  "Yank and then indent the newly formed region according to mode."
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet."
@@ -147,6 +205,7 @@ optional packages."
 
 (rename-modeline "js2-mode" js2-mode "JS2")
 (rename-modeline "emacs-lisp-mode" emacs-lisp-mode "elisp")
+(rename-modeline "projectile-mode" projectile-mode "P")
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
 
@@ -160,14 +219,13 @@ optional packages."
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 46)))
- '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev)))
+ '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
-
  '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indent)))
@@ -192,7 +250,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -201,10 +259,10 @@ optional packages."
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
- '(yas-global-mode t)
  '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
  '(yas-triggers-in-field t)
+ '(yas-trigger-key nil)
  '(yas-wrap-around-region t))
 
 (custom-set-faces
