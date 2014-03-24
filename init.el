@@ -52,13 +52,13 @@
 (add-hook 'js2-mode-hook
 	  (lambda ()
 	    (set (make-local-variable 'company-backends)
-		 '((company-dabbrev-code)))
+		 '((company-dabbrev-code company-files)))
 	    ))
 
 (add-hook 'c-mode-hook
           (lambda ()
             (set (make-local-variable 'company-backends)
-                 '((company-clang)))
+                 '((company-clang company-files)))
             ))
 
 ;; PROG 
