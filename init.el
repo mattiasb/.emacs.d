@@ -33,14 +33,17 @@
 
 (add-hook 'company-mode-hook 
 	  (lambda ()
-	    (define-key company-active-map (kbd "\C-n") 'company-select-next)
-	    (define-key company-active-map (kbd "\C-p") 'company-select-previous)
-	    (define-key company-active-map (kbd "\C-d") 'company-show-doc-buffer)
-	    (define-key company-active-map (kbd "\C-v") 'company-show-location)
-	    (define-key company-active-map (kbd "<tab>") 'company-complete)
-	    (define-key company-active-map (kbd "\C-g") '(lambda ()
-							   (interactive)
-							   (company-abort)))
+	    (define-key company-active-map (kbd "\C-n")    'company-select-next)
+	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
+            (define-key company-active-map (kbd "<next>")  'company-select-next-five)
+            (define-key company-active-map (kbd "<prior>") 'company-select-previous-five)
+	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
+	    (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
+	    (define-key company-active-map (kbd "\C-v")    'company-show-location)
+	    (define-key company-active-map (kbd "<tab>")   'company-complete)
+	    (define-key company-active-map (kbd "\C-g")    '(lambda ()
+                                                              (interactive)
+                                                              (company-abort)))
 	    ))
 
 
@@ -82,11 +85,17 @@
 
 ;;;; Functions and Macros ;;;;
 
-(defun yasnippet-unbind-trigger-key ()
-  "Unbind `yas/trigger-key'."
-  (let ((key yas/trigger-key))
-    (setq yas/trigger-key nil)
-    (yas/trigger-key-reload key)))
+(defun company-select-next-five ()
+  "A bit more eager company-select"
+  (interactive)
+  (dotimes (number 5 nil) (company-select-next))
+  )
+
+(defun company-select-previous-five ()
+  "A bit more eager company-select"
+  (interactive)
+  (dotimes (number 5 nil) (company-select-previous))
+  )
 
 (defun check-expansion ()
   (save-excursion
