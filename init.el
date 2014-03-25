@@ -72,6 +72,7 @@
 
 (add-hook 'after-init-hook
           (lambda ()
+            (require 'uniquify)
 	    (require 'package++)
 	    (package-sync)
             (require 'popup)
@@ -245,7 +246,7 @@ optional packages."
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
- '(js2-basic-offset 4)
+ '(js2-basic-offset 4 t)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
@@ -265,13 +266,14 @@ optional packages."
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
  '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
- '(yas-triggers-in-field t)
  '(yas-trigger-key nil)
+ '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
 (custom-set-faces
