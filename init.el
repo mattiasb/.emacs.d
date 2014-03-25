@@ -17,22 +17,19 @@
 (global-set-key (kbd "<insert>") 'dabbrev-expand)
 (global-set-key (kbd "<tab>")    'tab-indent-or-complete)
 (global-set-key (kbd "M-x")      'smex)
-(global-set-key (kbd "C-y")      'yank-and-indent)
 
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")    'yas-reload-all)
-(global-set-key (kbd "C-<return>") 'yas-expand)
-
 
 ;;;; Modes ;;;;
-
 
 ;; Company
 
 (add-hook 'company-mode-hook 
 	  (lambda ()
+            (diminish 'company-mode "Co")
 	    (define-key company-active-map (kbd "\C-n")    'company-select-next)
 	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
             (define-key company-active-map (kbd "<next>")  'company-select-next-five)
@@ -45,18 +42,22 @@
                                                               (interactive)
                                                               (company-abort)))
 	    ))
-
+;; ELisp
+(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "EL")))
 
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
 	  (lambda ()
+            (setq mode-name "JS2")
 	    (set (make-local-variable 'company-backends)
 		 '((company-dabbrev-code company-files)))
 	    ))
 
+;; C
 (add-hook 'c-mode-hook
           (lambda ()
+            (setq mode-name "C")
             (set (make-local-variable 'company-backends)
                  '((company-clang company-files)))
             ))
@@ -68,21 +69,26 @@
             (setq-default indent-tabs-mode nil)
             ))
 
+(add-hook 'yas-minor-mode-hook (lambda () (diminish 'yas-minor-mode " Y")))
+
+
 ;;;; Post-init code ;;;;
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'uniquify)
-	    (require 'package++)
-	    (package-sync)
-            (require 'popup)
-            (yas-global-mode)
-            (projectile-global-mode)
-            (ido-mode)
-            (ido-vertical-mode)
-            (ido-ubiquitous-mode)
-            (flx-ido-mode)
-            ))
+(defun my-after-init-hook ()
+  ;; Set here since customize fubar's otherwise
+  (setq yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
+  (require 'uniquify)
+  (require 'package++)
+  (package-sync)
+  (require 'popup)
+  (yas-global-mode)
+  (projectile-global-mode)
+  (ido-mode)
+  (ido-vertical-mode)
+  (ido-ubiquitous-mode)
+  (flx-ido-mode)
+  )
+(add-hook 'after-init-hook 'my-after-init-hook)
 
 ;;;; Functions and Macros ;;;;
 
@@ -123,12 +129,6 @@
                   (company-complete-common)
                 )))
       )))
-
-(defun yank-and-indent ()
-  "Yank and then indent the newly formed region according to mode."
-  (interactive)
-  (yank)
-  (call-interactively 'indent-region))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet."
@@ -189,10 +189,8 @@ optional packages."
                                       (package-installed-p x)))
                      (mapcar 'car package-archive-contents))))
 
-(defmacro rename-modeline (package-name mode new-name)
-  `(eval-after-load ,package-name
-     '(defadvice ,mode (after rename-modeline activate)
-        (setq mode-name ,new-name))))
+(defun rename-modeline (hook name)
+  (add-hook 'hook (lambda () (setq mode-name name))))
 
 ;; Advices
 
@@ -210,12 +208,21 @@ optional packages."
 (defadvice magit-mode-quit-window (after magit-restore-screen activate)
   (jump-to-register :magit-fullscreen))
 
+;; Yank and indent-stuff
+(dolist (command '(yank yank-pop))
+  (eval `(defadvice ,command (after indent-region activate)
+           (and (not current-prefix-arg)
+                (member major-mode '(emacs-lisp-mode lisp-mode       clojure-mode
+                                     scheme-mode     haskell-mode    ruby-mode
+                                     rspec-mode      python-mode     cmake-mode
+                                     c-mode          c++-mode        objc-mode
+                                     latex-mode      plain-tex-mode  js2-mode
+                                     js-mode         json-mode))
+                (let ((mark-even-if-inactive transient-mark-mode))
+                  (indent-region (region-beginning) (region-end) nil))))))
 
 ;;;; Other settings ;;;;
 
-(rename-modeline "js2-mode" js2-mode "JS2")
-(rename-modeline "emacs-lisp-mode" emacs-lisp-mode "elisp")
-(rename-modeline "projectile-mode" projectile-mode "P")
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
 
@@ -260,7 +267,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -271,7 +278,6 @@ optional packages."
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
- '(yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
  '(yas-trigger-key nil)
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
