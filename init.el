@@ -62,6 +62,15 @@
                  '((company-clang company-files)))
             ))
 
+;; CMake
+
+(add-hook 'cmake-mode-hook
+  (lambda ()
+    (when (fboundp 'company-mode) (company-mode))
+    (set (make-local-variable 'company-backends)
+      '((company-cmake company-files company-dabbrev company-dabbrev-code)))
+    ))
+
 ;; PROG 
 (add-hook 'prog-mode-hook
           (lambda ()
@@ -235,6 +244,8 @@ optional packages."
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(company-auto-complete t)
+  '(company-dabbrev-downcase nil)
+  '(company-dabbrev-ignore-case t)
  '(company-auto-complete-chars (quote (32 46)))
  '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(custom-enabled-themes (quote (wombat)))
