@@ -17,6 +17,7 @@
 (global-set-key (kbd "<insert>") 'dabbrev-expand)
 (global-set-key (kbd "<tab>")    'tab-indent-or-complete)
 (global-set-key (kbd "M-x")      'smex)
+(global-set-key (kbd "C-x f")    'find-file-other-window)
 
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
@@ -204,9 +205,11 @@ optional packages."
 ;; Advices
 
 (defadvice split-window-right (after rebalance-windows activate)
-  (balance-windows))
+  (balance-windows)
+  (other-window 1))
 (defadvice split-window-below (after rebalance-windows activate)
-  (balance-windows))
+  (balance-windows)
+  (other-window 1))
 (defadvice delete-window (after rebalance-windows activate)
   (balance-windows))
 
@@ -278,7 +281,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
