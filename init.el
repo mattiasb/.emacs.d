@@ -30,7 +30,7 @@
 
 (add-hook 'company-mode-hook 
 	  (lambda ()
-            (diminish 'company-mode "Co")
+            (when (fboundp 'diminish) (diminish 'company-mode "Co"))
 	    (define-key company-active-map (kbd "\C-n")    'company-select-next)
 	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
             (define-key company-active-map (kbd "<next>")  'company-select-next-five)
@@ -79,7 +79,7 @@
             (setq-default indent-tabs-mode nil)
             ))
 
-(add-hook 'yas-minor-mode-hook (lambda () (diminish 'yas-minor-mode " Y")))
+(add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
 
 
 ;;;; Post-init code ;;;;
@@ -247,10 +247,10 @@ optional packages."
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(company-auto-complete t)
-  '(company-dabbrev-downcase nil)
-  '(company-dabbrev-ignore-case t)
  '(company-auto-complete-chars (quote (32 46)))
  '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case t)
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
