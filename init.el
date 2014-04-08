@@ -19,6 +19,8 @@
 (global-set-key (kbd "M-x")      'smex)
 (global-set-key (kbd "C-x f")    'find-file-other-window)
 
+(global-set-key (kbd "C-<tab>")  'other-window)
+
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
@@ -97,6 +99,7 @@
   (ido-vertical-mode)
   (ido-ubiquitous-mode)
   (flx-ido-mode)
+  (fancy-narrow-mode)
   )
 (add-hook 'after-init-hook 'my-after-init-hook)
 
@@ -281,7 +284,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
