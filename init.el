@@ -205,6 +205,14 @@ optional packages."
 (defun rename-modeline (hook name)
   (add-hook 'hook (lambda () (setq mode-name name))))
 
+;; Set proxy from environment
+(defun set-proxy ()
+  (interactive)
+  (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))
+      (setq url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
+                                 ("https" . (getenv "HTTPS_PROXY"))
+                                 ))))
+
 ;; Advices
 
 (defadvice split-window-right (after rebalance-windows activate)
@@ -235,6 +243,7 @@ optional packages."
                                      js-mode         json-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
+
 
 ;;;; Other settings ;;;;
 
@@ -270,7 +279,7 @@ optional packages."
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
- '(js2-basic-offset 4 t)
+ '(js2-basic-offset 4)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
