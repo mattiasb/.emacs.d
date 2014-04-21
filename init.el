@@ -51,11 +51,13 @@
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
-	  (lambda ()
+          (lambda ()
             (setq mode-name "JS2")
-	    (set (make-local-variable 'company-backends)
-		 '((company-dabbrev-code company-files)))
-	    ))
+            (require 'js2-refactor)
+            (define-key js2-mode-map (kbd "C-c r") 'js2r-rename-var)
+            (set (make-local-variable 'company-backends)
+                 '((company-dabbrev-code company-files)))
+            ))
 
 ;; C
 (add-hook 'c-mode-hook
@@ -293,7 +295,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
