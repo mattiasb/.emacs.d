@@ -19,12 +19,12 @@
 (global-set-key (kbd "M-x")      'smex)
 (global-set-key (kbd "C-x f")    'find-file-other-window)
 
-(global-set-key (kbd "C-<tab>")  'other-window)
-
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")    'yas-reload-all)
+
+(windmove-default-keybindings)
 
 ;;;; Modes ;;;;
 
