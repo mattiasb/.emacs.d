@@ -64,8 +64,16 @@
           (lambda ()
             (setq mode-name "C")
             (set (make-local-variable 'company-backends)
-                 '((company-clang company-files)))
+                 '((company-clang company-semantic company-files)))
             ))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq mode-name "C++")
+            (set (make-local-variable 'company-backends)
+                 '((company-clang company-semantic company-files)))
+            ))
+
 
 ;; CMake
 
@@ -91,6 +99,7 @@
 (defun my-after-init-hook ()
   ;; Set here since customize fubar's otherwise
   (setq yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
+
   (require 'uniquify)
   (require 'package++)
   (package-sync)
