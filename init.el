@@ -14,7 +14,6 @@
 (global-set-key (kbd "M-<up>")   'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 (global-set-key (kbd "C-c a")    'align-region)
-(global-set-key (kbd "<insert>") 'dabbrev-expand)
 (global-set-key (kbd "<tab>")    'tab-indent-or-complete)
 (global-set-key (kbd "M-x")      'smex)
 (global-set-key (kbd "C-x f")    'find-file-other-window)
@@ -23,6 +22,8 @@
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")    'yas-reload-all)
+
+(define-key global-map (kbd "C-<Multi_key>") 'ace-jump-mode)
 
 (windmove-default-keybindings)
 
@@ -304,7 +305,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
