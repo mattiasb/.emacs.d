@@ -49,6 +49,12 @@
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "EL")))
 
+;; Haskell
+(add-hook 'haskell-mode-hook (lambda ()
+                               (message "lol")
+                               (setq mode-name "HS")
+                               (setq-local electric-indent-mode nil)))
+
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
@@ -283,7 +289,7 @@ optional packages."
  '(electric-pair-mode t)
  '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
- '(haskell-mode-hook (quote (turn-on-haskell-indent)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(ido-completion-buffer nil)
  '(ido-vertical t)
  '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
