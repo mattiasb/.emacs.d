@@ -23,7 +23,7 @@
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")    'yas-reload-all)
 
-(define-key global-map (kbd "C-<Multi_key>") 'ace-jump-mode)
+(define-key global-map (kbd "<menu>") 'ace-jump-mode)
 
 (windmove-default-keybindings)
 
@@ -41,11 +41,20 @@
 	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
 	    (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
 	    (define-key company-active-map (kbd "\C-v")    'company-show-location)
-	    (define-key company-active-map (kbd "<tab>")   'company-complete)
 	    (define-key company-active-map (kbd "\C-g")    '(lambda ()
                                                               (interactive)
                                                               (company-abort)))
 	    ))
+
+;; GGTags
+(add-hook 'ggtags-mode-hook
+          (lambda ()
+            (define-key ggtags-mode-map (kbd "C-<return>")  'ggtags-find-tag-dwim)
+            (define-key ggtags-mode-map (kbd "M-<left>")    'ggtags-prev-mark)
+            (define-key ggtags-mode-map (kbd "M-<right>")   'ggtags-next-mark)
+            ))
+
+
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "EL")))
 
@@ -66,20 +75,25 @@
                  '((company-dabbrev-code company-files)))
             ))
 
-;; C
-(add-hook 'c-mode-hook
+;; C common
+
+(add-hook 'c-mode-common-hook
           (lambda ()
-            (setq mode-name "C")
+            (ggtags-mode 1)
             (set (make-local-variable 'company-backends)
-                 '((company-clang company-semantic company-files)))
+                 '((company-clang
+                    company-keywords
+                    company-files
+                    )))
             ))
 
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (setq mode-name "C++")
-            (set (make-local-variable 'company-backends)
-                 '((company-clang company-semantic company-files)))
-            ))
+;; C
+(add-hook 'c-mode-hook (lambda () (setq mode-name "C") ))
+
+;; C++
+(add-to-list 'auto-mode-alist '("\\cpp\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\cc\\'"  . c++-mode))
+(add-hook 'c++-mode-hook (lambda () (setq mode-name "C++")))
 
 
 ;; CMake
@@ -88,7 +102,7 @@
   (lambda ()
     (when (fboundp 'company-mode) (company-mode))
     (set (make-local-variable 'company-backends)
-      '((company-cmake company-files company-dabbrev company-dabbrev-code)))
+      '((company-cmake company-files company-dabbrev-code)))
     ))
 
 ;; PROG 
@@ -311,7 +325,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("ggtags" "ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
