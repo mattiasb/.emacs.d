@@ -19,13 +19,18 @@
 
 (global-set-key (kbd "C-c r")    'replace-string)
 (global-set-key (kbd "C-c q")  'query-replace)
+(global-set-key (kbd "C-x f")    'find-file-other-window)
+(global-set-key (kbd "<menu>")     'ace-jump-mode)
 
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
 (global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
 (global-set-key (kbd "C-c s r")    'yas-reload-all)
 
-(define-key global-map (kbd "<menu>") 'ace-jump-mode)
+(global-set-key (kbd "<C-S-up>")     'buf-move-up)
+(global-set-key (kbd "<C-S-down>")   'buf-move-down)
+(global-set-key (kbd "<C-S-left>")   'buf-move-left)
+(global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 (windmove-default-keybindings)
 
@@ -307,7 +312,7 @@ optional packages."
  '(electric-pair-mode t)
  '(global-company-mode t)
  '(haskell-font-lock-symbols (quote unicode))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
  '(ido-completion-buffer nil)
  '(ido-vertical t)
  '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
@@ -329,7 +334,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("ggtags" "ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("buffer-move" "ggtags" "ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
