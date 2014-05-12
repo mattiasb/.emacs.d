@@ -4,41 +4,45 @@
 
 ;;;; Keybindings ;;;;
 
-(global-set-key (kbd "C-§")      'er/expand-region)
-(global-set-key (kbd "C-x w")    'whitespace-mode)
-(global-set-key (kbd "C-c c")    'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "<f9>")     'magit-status)
-(global-set-key (kbd "<f11>")    'list-packages)
-(global-set-key (kbd "<f12>")    'customize)
-(global-set-key (kbd "C-x C-n")  'make-frame)
-(global-set-key (kbd "M-<up>")   'move-text-up)
-(global-set-key (kbd "M-<down>") 'move-text-down)
-(global-set-key (kbd "C-c a")    'align-regexp)
-(global-set-key (kbd "<tab>")    'tab-indent-or-complete)
-(global-set-key (kbd "M-x")      'smex)
+(global-set-key (kbd "C-§")         'er/expand-region)
+(global-set-key (kbd "C-x w")       'whitespace-mode)
+(global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "<f9>")        'magit-status)
+(global-set-key (kbd "<f11>")       'list-packages)
+(global-set-key (kbd "<f12>")       'customize)
+(global-set-key (kbd "C-x C-n")     'make-frame)
+(global-set-key (kbd "M-<up>")      'move-text-up)
+(global-set-key (kbd "M-<down>")    'move-text-down)
+(global-set-key (kbd "C-c a")       'align-regexp)
+(global-set-key (kbd "<tab>")       'tab-indent-or-complete)
+(global-set-key (kbd "M-x")         'smex)
 
-(global-set-key (kbd "C-c r")    'replace-string)
-(global-set-key (kbd "C-c q")  'query-replace)
-(global-set-key (kbd "C-x f")    'find-file-other-window)
-(global-set-key (kbd "<menu>")     'ace-jump-mode)
+(global-set-key (kbd "C-c r")       'replace-string)
+(global-set-key (kbd "C-c C-r")     'replace-regexp)
+(global-set-key (kbd "C-c q")       'query-replace)
+(global-set-key (kbd "C-c C-q")     'query-replace-regexp)
 
-(global-set-key (kbd "C-c s s")    'yas-insert-snippet)
-(global-set-key (kbd "C-c s n")    'yas-new-snippet)
-(global-set-key (kbd "C-c s e")    'yas-visit-snippet-file)
-(global-set-key (kbd "C-c s r")    'yas-reload-all)
+(global-set-key (kbd "C-c s s")     'yas-insert-snippet)
+(global-set-key (kbd "C-c s n")     'yas-new-snippet)
+(global-set-key (kbd "C-c s e")     'yas-visit-snippet-file)
+(global-set-key (kbd "C-c s r")     'yas-reload-all)
 
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+(global-set-key (kbd "<C-S-up>")    'buf-move-up)
+(global-set-key (kbd "<C-S-down>")  'buf-move-down)
+(global-set-key (kbd "<C-S-left>")  'buf-move-left)
+(global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
 (windmove-default-keybindings)
 
 ;;;; Modes ;;;;
 
+;; Snippet
+
+(add-hook 'snippet-mode-hook (lambda () (setq mode-name "S")))
+
 ;; Markdown
 
-(add-hook 'markdown-mode-hook (lambda () (setq mode-name "MD")))
+(add-hook 'markdown-mode-hook (lambda () (setq mode-name "Md")))
 
 ;; Abbrev
 
@@ -71,11 +75,11 @@
 
 
 ;; ELisp
-(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "EL")))
+(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "El")))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (setq mode-name "HS")
+                               (setq mode-name "Hs")
                                (setq-local electric-indent-mode nil)))
 
 ;; JS2
@@ -84,9 +88,12 @@
           (lambda ()
             (setq mode-name "JS2")
             (require 'js2-refactor)
-            (define-key js2-mode-map (kbd "C-c r") 'js2r-rename-var)
+            (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
             (set (make-local-variable 'company-backends)
-                 '((company-dabbrev-code company-files)))
+                 '((company-dabbrev-code
+                    company-files
+                    company-keywords
+                    )))
             ))
 
 ;; C common
@@ -320,7 +327,7 @@ optional packages."
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
- '(js2-basic-offset 4 t)
+ '(js2-basic-offset 4)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
@@ -334,8 +341,10 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("buffer-move" "ggtags" "ace-jump-mode" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(projectile-global-mode t)
  '(projectile-keymap-prefix (kbd "C-p"))
+ '(projectile-mode-line-lighter "P")
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
