@@ -13,10 +13,12 @@
 (global-set-key (kbd "C-x C-n")  'make-frame)
 (global-set-key (kbd "M-<up>")   'move-text-up)
 (global-set-key (kbd "M-<down>") 'move-text-down)
-(global-set-key (kbd "C-c a")    'align-region)
+(global-set-key (kbd "C-c a")    'align-regexp)
 (global-set-key (kbd "<tab>")    'tab-indent-or-complete)
 (global-set-key (kbd "M-x")      'smex)
-(global-set-key (kbd "C-x f")    'find-file-other-window)
+
+(global-set-key (kbd "C-c r")    'replace-string)
+(global-set-key (kbd "C-c q")  'query-replace)
 
 (global-set-key (kbd "C-c s s")    'yas-insert-snippet)
 (global-set-key (kbd "C-c s n")    'yas-new-snippet)
@@ -28,6 +30,14 @@
 (windmove-default-keybindings)
 
 ;;;; Modes ;;;;
+
+;; Markdown
+
+(add-hook 'markdown-mode-hook (lambda () (setq mode-name "MD")))
+
+;; Abbrev
+
+(add-hook 'abbrev-mode-hook (lambda() (when (fboundp 'diminish) (diminish 'abbrev-mode "A"))))
 
 ;; Company
 
@@ -60,7 +70,6 @@
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (message "lol")
                                (setq mode-name "HS")
                                (setq-local electric-indent-mode nil)))
 
@@ -190,11 +199,6 @@
    :isearch t
    ))
 
-(defun align-region (begin end)
-  "Align region to some common separators"
-  (interactive "r")
-  (align-regexp begin end "\\(\\s-*\\)[=|:]" 1 1))
-
 (defun wrap-in-comment (str)
   (format "%s%s%s" comment-start str comment-end))
 
@@ -311,7 +315,7 @@ optional packages."
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
- '(js2-basic-offset 4)
+ '(js2-basic-offset 4 t)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
