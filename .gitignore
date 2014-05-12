@@ -5,4 +5,12 @@ auto-save-list
 elpa
 srecode-map.el
 *.orig
+projectile-bookmarks.eld.mc-lists.el
+ac-comphist.dat
+eshell/
+projectile.cache
+tramp
+semanticdb/
+ede-projects.el
+.mc-lists.el
 projectile-bookmarks.eld
