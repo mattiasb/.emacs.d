@@ -101,20 +101,23 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (ggtags-mode 1)
-            (set (make-local-variable 'company-backends)
-                 '((company-clang
-                    company-keywords
-                    company-files
-                    )))
+            (cppcm-reload-all)
+            (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
             ))
 
 ;; C
-(add-hook 'c-mode-hook (lambda () (setq mode-name "C") ))
+(add-hook 'c-mode-hook
+          (lambda ()
+            (setq mode-name "C")
+            ))
 
 ;; C++
 (add-to-list 'auto-mode-alist '("\\cpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\cc\\'"  . c++-mode))
-(add-hook 'c++-mode-hook (lambda () (setq mode-name "C++")))
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq mode-name "C++")
+            ))
 
 
 ;; CMake
@@ -122,6 +125,7 @@
 (add-hook 'cmake-mode-hook
   (lambda ()
     (when (fboundp 'company-mode) (company-mode))
+    (setq mode-name "Cm")
     (set (make-local-variable 'company-backends)
       '((company-cmake company-files company-dabbrev-code)))
     ))
@@ -176,7 +180,11 @@
       (backward-char 1)
       (if (looking-at "\\.") t
         (backward-char 1)
-        (if (looking-at "->") t nil)))))
+        (if (looking-at "->") t
+          (if (looking-at "::") t
+            nil
+            ))
+        ))))
 
 (defun do-yas-expand ()
   (let ((yas-fallback-behavior 'return-nil))
@@ -185,15 +193,15 @@
 (defun tab-indent-or-complete ()
   (interactive)
   (if (minibufferp)
-      (minibuffer-complete)
+    (minibuffer-complete)
     (let ((old-indent (current-indentation)))
       (indent-for-tab-command)
       (if (= old-indent (current-indentation))
-          (if (or (not yas-minor-mode)
-                  (null (do-yas-expand)))
-              (if (check-expansion)
-                  (company-complete-common)
-                )))
+        (if (or (not yas-minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+            (company-complete-common)
+            )))
       )))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
@@ -341,7 +349,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-global-mode t)
  '(projectile-keymap-prefix (kbd "C-p"))
  '(projectile-mode-line-lighter "P")
