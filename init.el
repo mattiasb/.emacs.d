@@ -5,8 +5,9 @@
 ;;;; Keybindings ;;;;
 
 (global-set-key (kbd "C-§")         'er/expand-region)
-(global-set-key (kbd "C-x w")       'whitespace-mode)
+(global-set-key (kbd "C-c w")       'whitespace-mode)
 (global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
+
 (global-set-key (kbd "<f9>")        'magit-status)
 (global-set-key (kbd "<f11>")       'list-packages)
 (global-set-key (kbd "<f12>")       'customize)
@@ -103,6 +104,7 @@
             (ggtags-mode 1)
             (cppcm-reload-all)
             (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
+            (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
             ))
 
 ;; C
