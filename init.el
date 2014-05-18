@@ -42,6 +42,12 @@
             (define-key ido-completion-map [tab] 'ido-complete)
             ))
 
+;; GitGutter
+
+(add-hook 'git-gutter-mode-on-hook
+          (lambda ()
+            (when (fboundp 'diminish) (diminish 'git-gutter-mode "GG"))))
+
 ;; Snippet
 
 (add-hook 'snippet-mode-hook (lambda () (setq mode-name "S")))
@@ -136,6 +142,7 @@
           (lambda ()
             (when (fboundp 'company-mode) (company-mode))
             (setq-default indent-tabs-mode nil)
+            (when (fboundp 'git-gutter-mode) (git-gutter-mode))
             ))
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
@@ -320,6 +327,7 @@ optional packages."
  '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
+ '(cppcm-build-dirname "build")
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
@@ -350,7 +358,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-global-mode t)
  '(projectile-keymap-prefix (kbd "C-p"))
  '(projectile-mode-line-lighter "P")
