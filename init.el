@@ -7,7 +7,6 @@
 (global-set-key (kbd "C-§")         'er/expand-region)
 (global-set-key (kbd "C-c w")       'whitespace-mode)
 (global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
-
 (global-set-key (kbd "<f9>")        'magit-status)
 (global-set-key (kbd "<f11>")       'list-packages)
 (global-set-key (kbd "<f12>")       'customize)
@@ -37,6 +36,12 @@
 
 ;;;; Modes ;;;;
 
+;; Ido
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map [tab] 'ido-complete)
+            ))
+
 ;; Snippet
 
 (add-hook 'snippet-mode-hook (lambda () (setq mode-name "S")))
@@ -51,20 +56,20 @@
 
 ;; Company
 
-(add-hook 'company-mode-hook 
-	  (lambda ()
+(add-hook 'company-mode-hook
+          (lambda ()
             (when (fboundp 'diminish) (diminish 'company-mode "Co"))
-	    (define-key company-active-map (kbd "\C-n")    'company-select-next)
-	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
+            (define-key company-active-map (kbd "\C-n")    'company-select-next)
+            (define-key company-active-map (kbd "\C-p")    'company-select-previous)
             (define-key company-active-map (kbd "<next>")  'company-select-next-five)
             (define-key company-active-map (kbd "<prior>") 'company-select-previous-five)
-	    (define-key company-active-map (kbd "\C-p")    'company-select-previous)
-	    (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
-	    (define-key company-active-map (kbd "\C-v")    'company-show-location)
-	    (define-key company-active-map (kbd "\C-g")    '(lambda ()
+            (define-key company-active-map (kbd "\C-p")    'company-select-previouss)
+            (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
+            (define-key company-active-map (kbd "\C-v")    'company-show-location)
+            (define-key company-active-map (kbd "\C-g")    '(lambda ()
                                                               (interactive)
                                                               (company-abort)))
-	    ))
+            ))
 
 ;; GGTags
 (add-hook 'ggtags-mode-hook
@@ -108,18 +113,12 @@
             ))
 
 ;; C
-(add-hook 'c-mode-hook
-          (lambda ()
-            (setq mode-name "C")
-            ))
+(add-hook 'c-mode-hook (lambda () (setq mode-name "C") ))
 
 ;; C++
 (add-to-list 'auto-mode-alist '("\\cpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\cc\\'"  . c++-mode))
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (setq mode-name "C++")
-            ))
+(add-hook 'c++-mode-hook (lambda () (setq mode-name "C++")))
 
 
 ;; CMake
@@ -132,10 +131,10 @@
       '((company-cmake company-files company-dabbrev-code)))
     ))
 
-;; PROG 
+;; PROG
 (add-hook 'prog-mode-hook
           (lambda ()
-	    (when (fboundp 'company-mode) (company-mode))
+            (when (fboundp 'company-mode) (company-mode))
             (setq-default indent-tabs-mode nil)
             ))
 
@@ -251,7 +250,7 @@
                    name (file-name-nondirectory new-name)))))))
 
 (defun package-list-installed-packages ()
-  "Like `package-list-packages', but shows only installed 
+  "Like `package-list-packages', but shows only installed
 optional packages."
   (interactive)
   (package-initialize)
