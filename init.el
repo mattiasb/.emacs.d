@@ -140,9 +140,8 @@
 ;; PROG
 (add-hook 'prog-mode-hook
           (lambda ()
-            (when (fboundp 'company-mode) (company-mode))
+            (when (fboundp 'company-mode)    (company-mode))
             (setq-default indent-tabs-mode nil)
-            (when (fboundp 'git-gutter-mode) (git-gutter-mode))
             ))
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
@@ -159,6 +158,8 @@
   (package-sync)
   (require 'popup)
   (yas-global-mode)
+  (global-git-gutter-mode)
+  (setq projectile-mode-line-lighter "P")
   (projectile-global-mode)
   (ido-mode)
   (ido-vertical-mode)
@@ -335,6 +336,7 @@ optional packages."
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
  '(global-company-mode t)
+ '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
  '(ido-completion-buffer nil)
@@ -359,9 +361,7 @@ optional packages."
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-manifest (quote ("git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
- '(projectile-global-mode t)
  '(projectile-keymap-prefix (kbd "C-p"))
- '(projectile-mode-line-lighter "P")
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
