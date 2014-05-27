@@ -346,7 +346,7 @@ optional packages."
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
- '(js2-basic-offset 4)
+ '(js2-basic-offset 4 t)
  '(js2-bounce-indent-p nil)
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
@@ -380,4 +380,6 @@ optional packages."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
+ '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
+ '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold)))))
