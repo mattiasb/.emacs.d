@@ -118,7 +118,10 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode) (cppcm-reload-all))
+            (when (derived-mode-p 'c-mode 'c++-mode)
+              (cppcm-reload-all)
+              (ggtags-mode)
+              )
             (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
             (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
             ))
@@ -147,6 +150,7 @@
           (lambda ()
             (when (fboundp 'company-mode)  (company-mode))
             (when (fboundp 'flycheck-mode) (flycheck-mode))
+            (when (fboundp 'highlight-symbol-mode) (highlight-symbol-mode))
             (setq-default indent-tabs-mode nil)
             ))
 
@@ -347,6 +351,7 @@ optional packages."
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols (quote unicode))
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
+ '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-vertical t)
  '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
@@ -368,7 +373,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
@@ -396,4 +401,5 @@ optional packages."
  '(flycheck-fringe-warning ((t (:foreground "goldenrod"))))
  '(git-gutter:added ((t (:foreground "olive drab"))))
  '(git-gutter:deleted ((t (:foreground "tomato3"))))
- '(git-gutter:modified ((t (:foreground "goldenrod")))))
+ '(git-gutter:modified ((t (:foreground "goldenrod"))))
+ '(highlight-symbol-face ((t (:background "gray21")))))
