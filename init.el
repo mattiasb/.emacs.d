@@ -118,11 +118,7 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode)
-              (ggtags-mode 1)
-              (cppcm-reload-all)
-              (flycheck-mode 1)
-              )
+            (when (derived-mode-p 'c-mode 'c++-mode) (cppcm-reload-all))
             (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
             (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
             ))
@@ -149,7 +145,8 @@
 ;; PROG
 (add-hook 'prog-mode-hook
           (lambda ()
-            (when (fboundp 'company-mode)    (company-mode))
+            (when (fboundp 'company-mode)  (company-mode))
+            (when (fboundp 'flycheck-mode) (flycheck-mode))
             (setq-default indent-tabs-mode nil)
             ))
 
