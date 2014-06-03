@@ -78,6 +78,11 @@
                                                               (company-abort)))
             ))
 
+;; Flycheck
+(add-hook 'flycheck-mode-hook
+          (lambda ()
+            (when (fboundp 'diminish) (diminish 'flycheck-mode "Fc"))))
+
 ;; GGTags
 (add-hook 'ggtags-mode-hook
           (lambda ()
@@ -386,9 +391,12 @@ optional packages."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-error ((t (:underline (:color "firebrick1" :style wave)))))
- '(flycheck-error-list-warning ((t (:foreground "chocolate3"))))
- '(flycheck-fringe-warning ((t (:foreground "chocolate3"))))
- '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
- '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
- '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold)))))
+ '(flycheck-error ((t (:underline (:color "tomato3" :style wave)))))
+ '(flycheck-error-list-info ((t (:foreground "olive drab"))))
+ '(flycheck-error-list-warning ((t (:foreground "goldenrod"))))
+ '(flycheck-fringe-error ((t (:foreground "tomato3"))))
+ '(flycheck-fringe-info ((t (:foreground "olive drab"))))
+ '(flycheck-fringe-warning ((t (:foreground "goldenrod"))))
+ '(git-gutter:added ((t (:foreground "olive drab"))))
+ '(git-gutter:deleted ((t (:foreground "tomato3"))))
+ '(git-gutter:modified ((t (:foreground "goldenrod")))))
