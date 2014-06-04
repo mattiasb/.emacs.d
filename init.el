@@ -14,9 +14,10 @@
 (global-set-key (kbd "M-<up>")      'move-text-up)
 (global-set-key (kbd "M-<down>")    'move-text-down)
 (global-set-key (kbd "C-c a")       'align-regexp)
-(global-set-key (kbd "<tab>")       'tab-indent-or-complete)
+(global-set-key (kbd "<tab>")       'indent-for-tab-command)
 (global-set-key (kbd "M-x")         'smex)
 (global-set-key (kbd "C-c e")       'ansi-term)
+(global-set-key (kbd "C-c h")       'highlight-symbol-at-point)
 
 (global-set-key (kbd "C-c r")       'replace-string)
 (global-set-key (kbd "C-c C-r")     'replace-regexp)
@@ -86,6 +87,7 @@
 ;; GGTags
 (add-hook 'ggtags-mode-hook
           (lambda ()
+            (setq ggtags-mode-line-project-name nil)
             (define-key ggtags-mode-map (kbd "C-<return>")  'ggtags-find-tag-dwim)
             (define-key ggtags-mode-map (kbd "M-<left>")    'ggtags-prev-mark)
             (define-key ggtags-mode-map (kbd "M-<right>")   'ggtags-next-mark)
@@ -122,7 +124,6 @@
               (cppcm-reload-all)
               (ggtags-mode)
               )
-            (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
             (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
             ))
 
@@ -150,7 +151,6 @@
           (lambda ()
             (when (fboundp 'company-mode)  (company-mode))
             (when (fboundp 'flycheck-mode) (flycheck-mode))
-            (when (fboundp 'highlight-symbol-mode) (highlight-symbol-mode))
             (setq-default indent-tabs-mode nil)
             ))
 
@@ -193,35 +193,35 @@
   (dotimes (number 5 nil) (company-select-previous))
   )
 
-(defun check-expansion ()
-  (save-excursion
-    (if (looking-at "\\_>") t
-      (backward-char 1)
-      (if (looking-at "\\.") t
-        (backward-char 1)
-        (if (looking-at "->") t
-          (if (looking-at "::") t
-            nil
-            ))
-        ))))
+;; (defun check-expansion ()
+;;   (save-excursion
+;;     (if (looking-at "\\_>") t
+;;       (backward-char 1)
+;;       (if (looking-at "\\.") t
+;;         (backward-char 1)
+;;         (if (looking-at "->") t
+;;           (if (looking-at "::") t
+;;             nil
+;;             ))
+;;         ))))
 
-(defun do-yas-expand ()
-  (let ((yas-fallback-behavior 'return-nil))
-    (yas-expand)))
+;; (defun do-yas-expand ()
+;;   (let ((yas-fallback-behavior 'return-nil))
+;;     (yas-expand)))
 
-(defun tab-indent-or-complete ()
-  (interactive)
-  (if (minibufferp)
-    (minibuffer-complete)
-    (let ((old-indent (current-indentation)))
-      (indent-for-tab-command)
-      (if (= old-indent (current-indentation))
-        (if (or (not yas-minor-mode)
-              (null (do-yas-expand)))
-          (if (check-expansion)
-            (company-complete-common)
-            )))
-      )))
+;; (defun tab-indent-or-complete ()
+;;   (interactive)
+;;   (if (minibufferp)
+;;     (minibuffer-complete)
+;;     (let ((old-indent (current-indentation)))
+;;       (indent-for-tab-command)
+;;       (if (= old-indent (current-indentation))
+;;         (if (or (not yas-minor-mode)
+;;               (null (do-yas-expand)))
+;;           (if (check-expansion)
+;;             (company-complete-common)
+;;             )))
+;;       )))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet."
@@ -338,6 +338,8 @@ optional packages."
  '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
+ '(company-idle-delay t)
+ '(company-tooltip-align-annotations t)
  '(cppcm-build-dirname "build")
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
@@ -399,7 +401,7 @@ optional packages."
  '(flycheck-fringe-error ((t (:foreground "tomato3"))))
  '(flycheck-fringe-info ((t (:foreground "olive drab"))))
  '(flycheck-fringe-warning ((t (:foreground "goldenrod"))))
- '(git-gutter:added ((t (:foreground "olive drab"))))
- '(git-gutter:deleted ((t (:foreground "tomato3"))))
- '(git-gutter:modified ((t (:foreground "goldenrod"))))
+ '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
+ '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
+ '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
  '(highlight-symbol-face ((t (:background "gray21")))))
