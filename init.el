@@ -5,20 +5,22 @@
 ;;;; Keybindings ;;;;
 
 (global-set-key (kbd "C-§")         'er/expand-region)
-(global-set-key (kbd "C-c w")       'whitespace-mode)
-(global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
-(global-set-key (kbd "<f9>")        'magit-status)
-(global-set-key (kbd "<f11>")       'list-packages)
-(global-set-key (kbd "<f12>")       'customize)
-(global-set-key (kbd "C-x C-n")     'make-frame)
+(global-set-key (kbd "<f9>")        'customize)
+(global-set-key (kbd "<f11>")       'fullscreen-mode-fullscreen-toggle)
+(global-set-key (kbd "<f12>")       'list-packages)
 (global-set-key (kbd "M-<up>")      'move-text-up)
 (global-set-key (kbd "M-<down>")    'move-text-down)
-(global-set-key (kbd "C-c a")       'align-regexp)
 (global-set-key (kbd "<tab>")       'indent-for-tab-command)
 (global-set-key (kbd "M-x")         'smex)
+(global-set-key (kbd "C-'")         'ace-jump-word-mode)
+
+(global-set-key (kbd "C-c o")       'browse-url-at-point)
+(global-set-key (kbd "C-c n")       'make-frame)
+(global-set-key (kbd "C-c w")       'whitespace-mode)
+(global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-c a")       'align-regexp)
 (global-set-key (kbd "C-c e")       'ansi-term)
 (global-set-key (kbd "C-c h")       'highlight-symbol-at-point)
-
 (global-set-key (kbd "C-c r")       'replace-string)
 (global-set-key (kbd "C-c C-r")     'replace-regexp)
 (global-set-key (kbd "C-c q")       'query-replace)
@@ -92,6 +94,14 @@
             (define-key ggtags-mode-map (kbd "M-<left>")    'ggtags-prev-mark)
             (define-key ggtags-mode-map (kbd "M-<right>")   'ggtags-next-mark)
             ))
+
+;; Go
+(add-hook 'go-mode-hook (lambda ()
+                          (go-eldoc-setup)
+                          (setq mode-name "go")
+                          (set (make-local-variable 'tab-width) 4)
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          ))
 
 
 ;; ELisp
@@ -352,6 +362,7 @@ optional packages."
  '(electric-pair-mode t)
  '(flycheck-completion-system (quote ido))
  '(flycheck-highlighting-mode (quote symbols))
+ '(git-commit-summary-max-length 40)
  '(global-company-mode t)
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols (quote unicode))
@@ -378,7 +389,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
