@@ -101,6 +101,7 @@
                           (setq mode-name "go")
                           (set (make-local-variable 'tab-width) 4)
                           (set (make-local-variable 'company-backends) '(company-go))
+
                           ))
 
 
@@ -152,7 +153,6 @@
 
 (add-hook 'cmake-mode-hook
   (lambda ()
-    (when (fboundp 'company-mode) (company-mode))
     (setq mode-name "Cm")
     (set (make-local-variable 'company-backends)
       '((company-cmake company-files company-dabbrev-code)))
@@ -164,6 +164,8 @@
             (when (fboundp 'company-mode)  (company-mode))
             (when (fboundp 'flycheck-mode) (flycheck-mode))
             (setq-default indent-tabs-mode nil)
+            (define-key prog-mode-map (kbd "C-<tab>") 'company-complete)
+            (define-key prog-mode-map (kbd "<tab>") 'tab-indent-or-complete)
             ))
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
