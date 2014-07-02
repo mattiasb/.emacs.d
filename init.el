@@ -96,17 +96,29 @@
             ))
 
 ;; Go
-(add-hook 'go-mode-hook (lambda ()
-                          (go-eldoc-setup)
-                          (setq mode-name "go")
-                          (set (make-local-variable 'tab-width) 4)
-                          (set (make-local-variable 'company-backends) '(company-go))
+(add-hook 'go-mode-hook
+          (lambda ()
+            (go-eldoc-setup)
+            (setq mode-name "go")
 
-                          ))
+            (set (make-local-variable 'tab-width) 4)
+            (set (make-local-variable 'company-backends) '(company-go))
+
+            (define-key go-mode-map (kbd "C-c i a") 'go-import-add)
+            (define-key go-mode-map (kbd "C-c i r") 'go-remove-unused-imports)
+            (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
+            (define-key go-mode-map (kbd "C-c d")   'godoc-at-point)
+            (define-key go-mode-map (kbd "C-<return>") 'godef-jump)
+            ))
 
 
 ;; ELisp
-(add-hook 'emacs-lisp-mode-hook (lambda () (setq mode-name "El")))
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq mode-name "El")
+            (define-key emacs-lisp-mode-map (kbd "C-<tab>") 'company-complete)
+            (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)
+            ))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
@@ -128,7 +140,6 @@
             ))
 
 ;; C common
-
 (add-hook 'c-mode-common-hook
           (lambda ()
             (when (derived-mode-p 'c-mode 'c++-mode)
@@ -165,7 +176,7 @@
             (when (fboundp 'flycheck-mode) (flycheck-mode))
             (setq-default indent-tabs-mode nil)
             (define-key prog-mode-map (kbd "C-<tab>") 'company-complete)
-            (define-key prog-mode-map (kbd "<tab>") 'tab-indent-or-complete)
+            (define-key prog-mode-map (kbd "<tab>")   'tab-indent-or-complete)
             ))
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
@@ -207,18 +218,6 @@
   (dotimes (number 5 nil) (company-select-previous))
   )
 
-;; (defun check-expansion ()
-;;   (save-excursion
-;;     (if (looking-at "\\_>") t
-;;       (backward-char 1)
-;;       (if (looking-at "\\.") t
-;;         (backward-char 1)
-;;         (if (looking-at "->") t
-;;           (if (looking-at "::") t
-;;             nil
-;;             ))
-;;         ))))
-
 (defun do-yas-expand ()
   (let ((yas-fallback-behavior 'return-nil))
     (yas-expand)))
@@ -232,9 +231,7 @@
       (if (= old-indent (current-indentation))
         (if (or (not yas-minor-mode)
               (null (do-yas-expand)))
-          ;; (if (check-expansion)
             (company-complete-common)
-            ;; )
           ))
       )))
 
