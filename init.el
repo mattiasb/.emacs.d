@@ -4,6 +4,8 @@
 
 ;;;; Keybindings ;;;;
 
+(global-unset-key (kbd "C-z"))
+
 (global-set-key (kbd "C-§")         'er/expand-region)
 (global-set-key (kbd "<f9>")        'customize)
 (global-set-key (kbd "<f11>")       'fullscreen-mode-fullscreen-toggle)
@@ -168,6 +170,20 @@
     (set (make-local-variable 'company-backends)
       '((company-cmake company-files company-dabbrev-code)))
     ))
+
+;; Shell
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map   (kbd "<tab>")
+              (lookup-key term-raw-map (kbd "C-M-i")))
+            (define-key term-raw-map   (kbd "M-x") 'smex)
+            ))
+
+(add-hook 'shell-dynamic-complete-functions
+          'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions
+          'bash-completion-dynamic-complete)
+
 
 ;; PROG
 (add-hook 'prog-mode-hook
@@ -388,7 +404,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
