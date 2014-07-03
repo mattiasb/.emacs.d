@@ -184,7 +184,9 @@
 (add-hook 'shell-command-complete-functions
           'bash-completion-dynamic-complete)
 
-
+;; Package
+(add-hook 'package-menu-mode-hook 'hl-line-mode)
+ 
 ;; PROG
 (add-hook 'prog-mode-hook
           (lambda ()
@@ -433,4 +435,5 @@ optional packages."
  '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
  '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
  '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
- '(highlight-symbol-face ((t (:background "gray21")))))
+ '(highlight-symbol-face ((t (:background "gray21"))))
+ '(hl-line ((t (:background "gray21")))))
