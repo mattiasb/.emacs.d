@@ -12,7 +12,8 @@
 (global-set-key (kbd "<f12>")       'list-packages)
 (global-set-key (kbd "M-<up>")      'move-text-up)
 (global-set-key (kbd "M-<down>")    'move-text-down)
-(global-set-key (kbd "<tab>")       'indent-for-tab-command)
+(global-set-key (kbd "<tab>")       'tab-indent-or-complete)
+
 (global-set-key (kbd "M-x")         'smex)
 (global-set-key (kbd "C-'")         'ace-jump-word-mode)
 
@@ -144,13 +145,12 @@
 ;; C common
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode)
-              (cppcm-reload-all)
-              (ggtags-mode)
-              )
-            (define-key c-mode-base-map (kbd "C-c o") 'ff-find-other-file)
-            (define-key c-mode-base-map (kbd "C-<tab>") 'company-complete)
-            (define-key c-mode-base-map (kbd "<tab>") 'tab-indent-or-complete)
+            (setq rtags-completions-enabled t)
+            (define-key c-mode-base-map (kbd "C-<return>") 'rtags-find-symbol-at-point)
+            (define-key c-mode-base-map (kbd "M-<left>")   'rtags-location-stack-back)
+            (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
+            (define-key c-mode-base-map (kbd "C-c f r")    'rtags-rename-symbol)
+            (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)
             ))
 
 ;; C
@@ -194,8 +194,6 @@
             (when (fboundp 'company-mode)  (company-mode))
             (when (fboundp 'flycheck-mode) (flycheck-mode))
             (setq-default indent-tabs-mode nil)
-            (define-key prog-mode-map (kbd "C-<tab>") 'company-complete)
-            (define-key prog-mode-map (kbd "<tab>")   'tab-indent-or-complete)
             ))
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
@@ -375,7 +373,7 @@ optional packages."
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 46)))
- '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
+ '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
@@ -417,8 +415,9 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
+ '(rtags-completions-enabled t)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
