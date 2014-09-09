@@ -151,6 +151,9 @@
             (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
             (define-key c-mode-base-map (kbd "C-c f r")    'rtags-rename-symbol)
             (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)
+            (require 'rtags)
+            (rtags-restart-process)
+            (rtags-diagnostics)
             ))
 
 ;; C
