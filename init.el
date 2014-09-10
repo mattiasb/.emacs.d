@@ -145,15 +145,14 @@
 ;; C common
 (add-hook 'c-mode-common-hook
           (lambda ()
+            (require 'rtags)
+            (rtags-start-process)
             (setq rtags-completions-enabled t)
             (define-key c-mode-base-map (kbd "C-<return>") 'rtags-find-symbol-at-point)
             (define-key c-mode-base-map (kbd "M-<left>")   'rtags-location-stack-back)
             (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
             (define-key c-mode-base-map (kbd "C-c f r")    'rtags-rename-symbol)
             (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)
-            (require 'rtags)
-            (rtags-restart-process)
-            (rtags-diagnostics)
             ))
 
 ;; C
@@ -260,6 +259,11 @@
 (add-hook 'after-init-hook 'my-after-init-hook)
 
 ;;;; Functions and Macros ;;;;
+
+(defun rtags-start-process ()
+  "Start rdm if it isn't running."
+  (interactive)
+  (unless rtags-process (rtags-restart-process)))
 
 (defun company-select-next-five ()
   "A bit more eager company-select"
@@ -447,6 +451,7 @@ optional packages."
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-manifest (quote ("fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
+ '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(safe-local-variable-values (quote ((eval progn (puthash (projectile-project-root) "jhbuild make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "make check" projectile-test-cmd-map)))))
  '(scroll-bar-mode nil)
