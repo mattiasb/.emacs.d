@@ -201,6 +201,30 @@
 
 (add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
 
+;;;; Project specific settings ;;;;
+
+;; JHBuild
+
+
+(dir-locals-set-class-variables
+ 'gnome-code
+ '((nil . ((eval . (progn
+                     ;; require projectile; the following code will fail
+                     ;; without it.
+                     ;; (require 'projectile)
+                     ;; provide a fake "recent" compilation cmd
+                     ;; which will be returned by the function
+                     ;; `projectile-compilation-command`
+                     (puthash (projectile-project-root)
+                              "jhbuild make"
+                              projectile-compilation-cmd-map)
+                     (puthash (projectile-project-root)
+                              "make check"
+                              projectile-test-cmd-map)
+                     ))))))
+
+(dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
+
 
 ;;;; Post-init code ;;;;
 
@@ -421,6 +445,7 @@ optional packages."
  '(package-manifest (quote ("rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rtags-completions-enabled t)
+ '(safe-local-variable-values (quote ((eval progn (puthash (projectile-project-root) "jhbuild make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "make check" projectile-test-cmd-map)))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
