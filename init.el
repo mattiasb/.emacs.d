@@ -171,7 +171,7 @@
   (lambda ()
     (setq mode-name "Cm")
     (set (make-local-variable 'company-backends)
-      '((company-cmake company-files company-dabbrev-code)))
+         '((company-cmake company-files company-dabbrev-code)))
     ))
 
 ;; Shell
@@ -205,17 +205,9 @@
 ;;;; Project specific settings ;;;;
 
 ;; JHBuild
-
-
 (dir-locals-set-class-variables
  'gnome-code
  '((nil . ((eval . (progn
-                     ;; require projectile; the following code will fail
-                     ;; without it.
-                     ;; (require 'projectile)
-                     ;; provide a fake "recent" compilation cmd
-                     ;; which will be returned by the function
-                     ;; `projectile-compilation-command`
                      (puthash (projectile-project-root)
                               "jhbuild make"
                               projectile-compilation-cmd-map)
@@ -223,9 +215,7 @@
                               "make check"
                               projectile-test-cmd-map)
                      ))))))
-
 (dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
-
 
 ;;;; Post-init code ;;;;
 
@@ -244,8 +234,7 @@
     (setq projectile-mode-line (quote (:eval (format " P[%s]" (projectile-project-name)))))
     (projectile-global-mode)
     (when (and (string= (window-system) "w32"))
-      (setq projectile-indexing-method 'native)
-      )
+      (setq projectile-indexing-method 'native))
     )
   (ido-mode)
   (ido-vertical-mode)
@@ -268,14 +257,12 @@
 (defun company-select-next-five ()
   "A bit more eager company-select"
   (interactive)
-  (dotimes (number 5 nil) (company-select-next))
-  )
+  (dotimes (number 5 nil) (company-select-next)))
 
 (defun company-select-previous-five ()
   "A bit more eager company-select"
   (interactive)
-  (dotimes (number 5 nil) (company-select-previous))
-  )
+  (dotimes (number 5 nil) (company-select-previous)))
 
 (defun do-yas-expand ()
   (let ((yas-fallback-behavior 'return-nil))
