@@ -345,9 +345,9 @@ optional packages."
 (defun set-proxy ()
   (interactive)
   (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))
-      (setq url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
-                                 ("https" . (getenv "HTTPS_PROXY"))
-                                 ))))
+      (setq-default url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
+                                         ("https" . (getenv "HTTPS_PROXY"))
+                                         ))))
 
 ;; Advices
 
