@@ -92,7 +92,7 @@
 ;; GGTags
 (add-hook 'ggtags-mode-hook
           (lambda ()
-            (setq ggtags-mode-line-project-name nil)
+            (setq-local ggtags-mode-line-project-name nil)
             (define-key ggtags-mode-map (kbd "C-<return>")  'ggtags-find-tag-dwim)
             (define-key ggtags-mode-map (kbd "M-<left>")    'ggtags-prev-mark)
             (define-key ggtags-mode-map (kbd "M-<right>")   'ggtags-next-mark)
@@ -104,8 +104,8 @@
             (go-eldoc-setup)
             (setq mode-name "go")
 
-            (set (make-local-variable 'tab-width) 4)
-            (set (make-local-variable 'company-backends) '(company-go))
+            (setq-local tab-width 4)
+            (setq-local company-backends '(company-go))
 
             (define-key go-mode-map (kbd "C-c i a") 'go-import-add)
             (define-key go-mode-map (kbd "C-c i r") 'go-remove-unused-imports)
@@ -135,11 +135,9 @@
             (setq mode-name "JS2")
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
-            (set (make-local-variable 'company-backends)
-                 '((company-dabbrev-code
-                    company-files
-                    company-keywords
-                    )))
+            (setq-local company-backends '((company-dabbrev-code
+                                            company-files
+                                            company-keywords)))
             ))
 
 ;; C common
@@ -147,7 +145,7 @@
           (lambda ()
             (require 'rtags)
             (rtags-start-process)
-            (setq rtags-completions-enabled t)
+            (setq-local rtags-completions-enabled t)
             (define-key c-mode-base-map (kbd "C-<return>") 'rtags-find-symbol-at-point)
             (define-key c-mode-base-map (kbd "M-<left>")   'rtags-location-stack-back)
             (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
@@ -170,8 +168,9 @@
 (add-hook 'cmake-mode-hook
   (lambda ()
     (setq mode-name "Cm")
-    (set (make-local-variable 'company-backends)
-         '((company-cmake company-files company-dabbrev-code)))
+    (setq-local company-backends '((company-cmake
+                                    company-files
+                                    company-dabbrev-code)))
     ))
 
 ;; Shell
@@ -190,17 +189,22 @@
 ;; Package
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
  
-;; PROG
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (when (fboundp 'company-mode)  (company-mode))
-            (when (fboundp 'flycheck-mode) (flycheck-mode))
-            (when (fboundp 'fci-mode) (fci-mode))
-            (setq-default fill-column 80)
-            (setq-default indent-tabs-mode nil)
-            ))
+;; Prog
+(defun my-prog-mode ()
+  (progn
+    (when (fboundp 'company-mode)  (company-mode))
+    (when (fboundp 'flycheck-mode) (flycheck-mode))
+    (when (fboundp 'fci-mode)      (fci-mode))
+    (setq-local fill-column      80)
+    (setq-local indent-tabs-mode nil))
+  )
+(add-hook 'prog-mode-hook  'my-prog-mode)
+(add-hook 'cmake-mode-hook 'my-prog-mode)
 
-(add-hook 'yas-minor-mode-hook (lambda () (when (fboundp 'diminish) (diminish 'yas-minor-mode " Y"))))
+;; YAS
+(add-hook 'yas-minor-mode-hook (lambda ()
+                                 (when (fboundp 'diminish)
+                                   (diminish 'yas-minor-mode " Y"))))
 
 ;;;; Project specific settings ;;;;
 
@@ -221,8 +225,7 @@
 
 (defun my-after-init-hook ()
   ;; Set here since customize fubar's otherwise
-  (setq yas-snippet-dirs (quote ("~/.emacs.d/snippets")))
-
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (require 'uniquify)
   (require 'package++)
   (package-sync)
@@ -234,7 +237,7 @@
     (setq projectile-mode-line (quote (:eval (format " P[%s]" (projectile-project-name)))))
     (projectile-global-mode)
     (when (and (string= (window-system) "w32"))
-      (setq projectile-indexing-method 'native))
+      (setq-default projectile-indexing-method 'native))
     )
   (ido-mode)
   (ido-vertical-mode)
