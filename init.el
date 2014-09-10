@@ -242,7 +242,7 @@
   (when (fboundp 'git-gutter-mode)
     (global-git-gutter-mode))
   (when (fboundp 'projectile-mode)
-    (setq projectile-mode-line-lighter "P")
+    (setq projectile-mode-line (quote (:eval (format " P[%s]" (projectile-project-name)))))
     (projectile-global-mode)
     (when (and (string= (window-system) "w32"))
       (setq projectile-indexing-method 'native)
