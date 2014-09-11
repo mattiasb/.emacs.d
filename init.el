@@ -98,6 +98,17 @@
             (define-key ggtags-mode-map (kbd "M-<right>")   'ggtags-next-mark)
             ))
 
+;; Prog
+(defun my-prog-mode ()
+  (progn
+    (when (fboundp 'company-mode)  (company-mode))
+    (when (fboundp 'flycheck-mode) (flycheck-mode))
+    (when (fboundp 'fci-mode)      (fci-mode))
+    (setq-local fill-column      80)
+    (setq-local indent-tabs-mode nil))
+  )
+(add-hook 'prog-mode-hook  'my-prog-mode)
+
 ;; Go
 (add-hook 'go-mode-hook
           (lambda ()
@@ -164,7 +175,7 @@
 
 
 ;; CMake
-
+(add-hook 'cmake-mode-hook 'my-prog-mode)
 (add-hook 'cmake-mode-hook
   (lambda ()
     (setq mode-name "Cm")
@@ -188,18 +199,6 @@
 
 ;; Package
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
- 
-;; Prog
-(defun my-prog-mode ()
-  (progn
-    (when (fboundp 'company-mode)  (company-mode))
-    (when (fboundp 'flycheck-mode) (flycheck-mode))
-    (when (fboundp 'fci-mode)      (fci-mode))
-    (setq-local fill-column      80)
-    (setq-local indent-tabs-mode nil))
-  )
-(add-hook 'prog-mode-hook  'my-prog-mode)
-(add-hook 'cmake-mode-hook 'my-prog-mode)
 
 ;; YAS
 (add-hook 'yas-minor-mode-hook (lambda ()
@@ -409,7 +408,7 @@ optional packages."
  '(electric-indent-mode t)
  '(electric-layout-mode nil)
  '(electric-pair-mode t)
- '(fci-rule-color "gray22")
+ '(fci-rule-color "gray21")
  '(flycheck-completion-system (quote ido))
  '(flycheck-highlighting-mode (quote symbols))
  '(git-commit-summary-max-length 40)
@@ -439,7 +438,7 @@ optional packages."
  '(menu-bar-mode nil)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("vala-mode" "fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "ggtags" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
@@ -456,6 +455,7 @@ optional packages."
  '(yas-trigger-key nil)
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
