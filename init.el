@@ -57,11 +57,11 @@
 
 ;; Snippet
 
-(add-hook 'snippet-mode-hook (lambda () (setq mode-name "S")))
+(add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
 
 ;; Markdown
 
-(add-hook 'markdown-mode-hook (lambda () (setq mode-name "Md")))
+(add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
 
 ;; Abbrev
 
@@ -114,7 +114,7 @@
 (add-hook 'go-mode-hook
           (lambda ()
             (go-eldoc-setup)
-            (setq mode-name "go")
+            (setq-local mode-name "go")
 
             (setq-local tab-width 4)
             (setq-local company-backends '(company-go))
@@ -130,21 +130,21 @@
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (setq mode-name "El")
+            (setq-local mode-name "El")
             (define-key emacs-lisp-mode-map (kbd "C-<tab>") 'company-complete)
             (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)
             ))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (setq mode-name "Hs")
+                               (setq-local mode-name "Hs")
                                (setq-local electric-indent-mode nil)))
 
 ;; JS2
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
-            (setq mode-name "JS2")
+            (setq-local mode-name "JS2")
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
             (setq-local company-backends '((company-dabbrev-code
@@ -166,20 +166,20 @@
             ))
 
 ;; C
-(add-hook 'c-mode-hook (lambda () (setq mode-name "C") ))
+(add-hook 'c-mode-hook (lambda () (setq-local mode-name "C") ))
 
 ;; C++
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
-(add-hook 'c++-mode-hook (lambda () (setq mode-name "C++")))
+(add-hook 'c++-mode-hook (lambda () (setq-local mode-name "C++")))
 
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my-prog-mode)
 (add-hook 'cmake-mode-hook
   (lambda ()
-    (setq mode-name "Cm")
+    (setq-local mode-name "Cm")
     (setq-local company-backends '((company-cmake
                                     company-files
                                     company-dabbrev-code)))
@@ -339,7 +339,7 @@ optional packages."
                      (mapcar 'car package-archive-contents))))
 
 (defun rename-modeline (hook name)
-  (add-hook 'hook (lambda () (setq mode-name name))))
+  (add-hook 'hook (lambda () (setq-local mode-name name))))
 
 ;; Set proxy from environment
 (defun set-proxy ()
