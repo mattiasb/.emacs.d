@@ -170,12 +170,12 @@
 ;; CMake
 (add-hook 'cmake-mode-hook 'my-prog-mode)
 (add-hook 'cmake-mode-hook
-  (lambda ()
-    (setq-local mode-name "Cm")
-    (setq-local company-backends '((company-cmake
-                                    company-files
-                                    company-dabbrev-code)))
-    ))
+          (lambda ()
+            (setq-local mode-name "Cm")
+            (setq-local company-backends '((company-cmake
+                                            company-files
+                                            company-dabbrev-code)))
+            ))
 
 ;; Shell
 (add-hook 'term-mode-hook
@@ -194,9 +194,10 @@
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 
 ;; YAS
-(add-hook 'yas-minor-mode-hook (lambda ()
-                                 (when (fboundp 'diminish)
-                                   (diminish 'yas-minor-mode " Y"))))
+(add-hook 'yas-minor-mode-hook
+          (lambda ()
+            (when (fboundp 'diminish)
+              (diminish 'yas-minor-mode " Y"))))
 
 ;;;; Project specific settings ;;;;
 
@@ -266,11 +267,11 @@
   (eval `(defadvice ,command (after indent-region activate)
            (and (not current-prefix-arg)
                 (member major-mode '(emacs-lisp-mode lisp-mode       clojure-mode
-                                     scheme-mode     haskell-mode    ruby-mode
-                                     rspec-mode      python-mode     cmake-mode
-                                     c-mode          c++-mode        objc-mode
-                                     latex-mode      plain-tex-mode  js2-mode
-                                     js-mode         json-mode))
+                                                     scheme-mode     haskell-mode    ruby-mode
+                                                     rspec-mode      python-mode     cmake-mode
+                                                     c-mode          c++-mode        objc-mode
+                                                     latex-mode      plain-tex-mode  js2-mode
+                                                     js-mode         json-mode))
                 (let ((mark-even-if-inactive transient-mark-mode))
                   (indent-region (region-beginning) (region-end) nil))))))
 
