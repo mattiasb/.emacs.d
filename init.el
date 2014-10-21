@@ -258,32 +258,29 @@
 ;;;; Post-init code ;;;;
 
 (defun my-after-init-hook ()
-  ;; Set here since customize fubar's otherwise
-  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
-  (require 'uniquify)
-  (require 'package++)
+  "My after init hook."
   (package-sync)
-  (require 'popup)
+
+  (require 'uniquify)
+
+  ;; customizations that for various reasons can't be in the customize block.
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq projectile-mode-line
+        '(:eval (format " P[%s]" (projectile-project-name))))
+  (when (and (string= (window-system) "w32"))
+    (setq-default projectile-indexing-method 'native))
+
+  ;; Activate a bunch of global modes
   (yas-global-mode)
-  (when (fboundp 'git-gutter-mode)
-    (global-git-gutter-mode))
-  (when (fboundp 'projectile-mode)
-    (setq projectile-mode-line (quote (:eval (format " P[%s]" (projectile-project-name)))))
-    (projectile-global-mode)
-    (when (and (string= (window-system) "w32"))
-      (setq-default projectile-indexing-method 'native))
-    )
+  (global-git-gutter-mode)
+  (projectile-global-mode)
   (ido-mode)
   (ido-vertical-mode)
-  (when (fboundp 'ido-ubiquitous-mode)
-    (ido-ubiquitous-mode))
-  (when (fboundp 'flx-ido-mode)
-    (flx-ido-mode))
-  (when (fboundp 'fancy-narrow-mode)
-    (fancy-narrow-mode))
-  )
-(add-hook 'after-init-hook 'my-after-init-hook)
+  (ido-ubiquitous-mode)
+  (flx-ido-mode)
+  (fancy-narrow-mode))
 
+(add-hook 'after-init-hook 'my-after-init-hook)
 
 ;; Advices
 
