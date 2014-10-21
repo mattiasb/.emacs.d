@@ -91,100 +91,8 @@
 
 ;;;; Modes ;;;;
 
-;; Ido
-(add-hook 'ido-setup-hook
-          (lambda ()
-            (define-key ido-completion-map [tab] 'ido-complete)
-            ))
-
-;; GitGutter
-(add-hook 'git-gutter-mode-on-hook
-          (lambda ()
-            (when (fboundp 'diminish) (diminish 'git-gutter-mode "GG"))))
-
-;; Snippet
-(add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
-
-;; Markdown
-(add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
-
 ;; Abbrev
 (add-hook 'abbrev-mode-hook (lambda() (when (fboundp 'diminish) (diminish 'abbrev-mode "A"))))
-
-;; Company
-(add-hook 'company-mode-hook
-          (lambda ()
-            (when (fboundp 'diminish) (diminish 'company-mode "Co"))
-            (define-key company-active-map (kbd "\C-n")    'company-select-next)
-            (define-key company-active-map (kbd "\C-p")    'company-select-previous)
-            (define-key company-active-map (kbd "<next>")  'company-select-next-five)
-            (define-key company-active-map (kbd "<prior>") 'company-select-previous-five)
-            (define-key company-active-map (kbd "\C-p")    'company-select-previouss)
-            (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
-            (define-key company-active-map (kbd "\C-v")    'company-show-location)
-            (define-key company-active-map (kbd "\C-g")    '(lambda ()
-                                                              (interactive)
-                                                              (company-abort)))
-            ))
-
-;; Flycheck
-(add-hook 'flycheck-mode-hook
-          (lambda ()
-            (when (fboundp 'diminish) (diminish 'flycheck-mode "Fc"))))
-
-;; Prog
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (when (fboundp 'company-mode)            (company-mode))
-            (when (fboundp 'flycheck-mode)           (flycheck-mode))
-            (when (fboundp 'fci-mode)                (fci-mode))
-            (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
-            (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
-            (setq-local fill-column      80)
-            (setq-local indent-tabs-mode nil))
-          )
-
-;; Go
-(add-hook 'go-mode-hook
-          (lambda ()
-            (go-eldoc-setup)
-            (setq-local mode-name "go")
-
-            (setq-local tab-width 4)
-            (setq-local company-backends '(company-go))
-
-            (define-key go-mode-map (kbd "C-c i a") 'go-import-add)
-            (define-key go-mode-map (kbd "C-c i r") 'go-remove-unused-imports)
-            (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
-            (define-key go-mode-map (kbd "C-c d")   'godoc-at-point)
-            (define-key go-mode-map (kbd "C-<return>") 'godef-jump)
-            ))
-
-
-;; ELisp
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (setq-local mode-name "El")
-            (define-key emacs-lisp-mode-map (kbd "C-<tab>") 'company-complete)
-            (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)
-            ))
-
-;; Haskell
-(add-hook 'haskell-mode-hook (lambda ()
-                               (setq-local mode-name "Hs")
-                               (setq-local electric-indent-mode nil)))
-
-;; JS2
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (setq-local mode-name "JS2")
-            (require 'js2-refactor)
-            (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
-            (setq-local company-backends '((company-dabbrev-code
-                                            company-files
-                                            company-keywords)))
-            ))
 
 ;; C common
 (add-hook 'c-mode-common-hook
@@ -196,8 +104,7 @@
             (define-key c-mode-base-map (kbd "M-<left>")   'rtags-location-stack-back)
             (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
             (define-key c-mode-base-map (kbd "C-c f r")    'rtags-rename-symbol)
-            (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)
-            ))
+            (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)))
 
 ;; C
 (add-hook 'c-mode-hook (lambda () (setq-local mode-name "C") ))
@@ -213,26 +120,110 @@
 (add-hook 'cmake-mode-hook
           (lambda ()
             (setq-local mode-name "Cm")
-            (setq-local company-backends '((company-cmake
-                                            company-files
-                                            company-dabbrev-code)))
+            (setq-local company-backends
+                        '((company-cmake
+                           company-files
+                           company-dabbrev-code)))))
+
+;; Company
+(add-hook 'company-mode-hook
+          (lambda ()
+            (when (fboundp 'diminish) (diminish 'company-mode "Co"))
+            (define-key company-active-map (kbd "\C-n")    'company-select-next)
+            (define-key company-active-map (kbd "\C-p")    'company-select-previous)
+            (define-key company-active-map (kbd "<next>")  'company-select-next-five)
+            (define-key company-active-map (kbd "<prior>") 'company-select-previous-five)
+            (define-key company-active-map (kbd "\C-p")    'company-select-previouss)
+            (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
+            (define-key company-active-map (kbd "\C-v")    'company-show-location)
+            (define-key company-active-map (kbd "\C-g")    '(lambda ()
+                                                              (interactive)
+                                                              (company-abort)))))
+
+;; ELisp
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq-local mode-name "El")
+            (define-key emacs-lisp-mode-map (kbd "C-<tab>") 'company-complete)
+            (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)))
+
+;; Flycheck
+(add-hook 'flycheck-mode-hook
+          (lambda ()
+            (when (fboundp 'diminish) (diminish 'flycheck-mode "Fc"))))
+
+;; GitGutter
+(add-hook 'git-gutter-mode-on-hook
+          (lambda ()
+            (when (fboundp 'diminish) (diminish 'git-gutter-mode "GG"))))
+
+;; Go
+(add-hook 'go-mode-hook
+          (lambda ()
+            (go-eldoc-setup)
+            (setq-local mode-name "go")
+
+            (setq-local tab-width 4)
+            (setq-local company-backends '(company-go))
+
+            (define-key go-mode-map (kbd "C-c i a") 'go-import-add)
+            (define-key go-mode-map (kbd "C-c i r") 'go-remove-unused-imports)
+            (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
+            (define-key go-mode-map (kbd "C-c d")   'godoc-at-point)
+            (define-key go-mode-map (kbd "C-<return>") 'godef-jump)))
+
+;; Haskell
+(add-hook 'haskell-mode-hook (lambda ()
+                               (setq-local mode-name "Hs")
+                               (setq-local electric-indent-mode nil)))
+
+;; Ido
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map [tab] 'ido-complete)
             ))
+
+;; JS2
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (setq-local mode-name "JS2")
+            (require 'js2-refactor)
+            (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
+            (setq-local company-backends '((company-dabbrev-code
+                                            company-files
+                                            company-keywords)))))
+
+;; Markdown
+(add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
+
+;; Package
+(add-hook 'package-menu-mode-hook 'hl-line-mode)
+
+;; Prog
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (when (fboundp 'company-mode)            (company-mode))
+            (when (fboundp 'flycheck-mode)           (flycheck-mode))
+            (when (fboundp 'fci-mode)                (fci-mode))
+            (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
+            (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
+            (setq-local fill-column      80)
+            (setq-local indent-tabs-mode nil)))
 
 ;; Shell
 (add-hook 'term-mode-hook
           (lambda ()
             (define-key term-raw-map   (kbd "<tab>")
               (lookup-key term-raw-map (kbd "C-M-i")))
-            (define-key term-raw-map   (kbd "M-x") 'smex)
-            ))
-
+            (define-key term-raw-map   (kbd "M-x") 'smex)))
 (add-hook 'shell-dynamic-complete-functions
           'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions
           'bash-completion-dynamic-complete)
 
-;; Package
-(add-hook 'package-menu-mode-hook 'hl-line-mode)
+;; Snippet
+(add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
 
 ;; YAS
 (add-hook 'yas-minor-mode-hook
