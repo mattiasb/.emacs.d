@@ -376,6 +376,7 @@
  '(tab-width 8)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
