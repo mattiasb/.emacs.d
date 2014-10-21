@@ -156,9 +156,6 @@ prefix argument."
                                       (package-installed-p x)))
                      (mapcar 'car package-archive-contents))))
 
-(defun rename-modeline (hook name)
-  (add-hook 'hook (lambda () (setq-local mode-name name))))
-
 ;; Set proxy from environment
 (defun set-proxy ()
   "Automatically set HTTP proxy in Emacs based on system environment."
