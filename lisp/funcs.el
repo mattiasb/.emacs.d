@@ -111,6 +111,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
 ;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
+  (require 'popup)
   (popup-menu*
    (mapcar
     (lambda (choice)
