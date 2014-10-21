@@ -39,6 +39,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (defun insert-date (prefix)
   "Insert the current date in ISO extended format.
 With PREFIX = 4, use ISO basic format.
@@ -51,6 +52,7 @@ With PREFIX = 16, write out the day and month name."
         (system-time-locale "en_US"))
     (insert (format-time-string format))))
 
+;;;###autoload
 (defmacro bol-with-prefix (function)
   "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
@@ -67,26 +69,31 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
          (call-interactively ',function))
        ',name)))
 
+;;;###autoload
 (defun rtags-start-process ()
   "Start rdm if it isn't running."
   (interactive)
   (unless rtags-process (rtags-restart-process)))
 
+;;;###autoload
 (defun company-select-next-five ()
   "A bit more eager `company-select-next'."
   (interactive)
   (dotimes (number 5 nil) (company-select-next)))
 
+;;;###autoload
 (defun company-select-previous-five ()
   "A bit more eager `company-select-previous'."
   (interactive)
   (dotimes (number 5 nil) (company-select-previous)))
 
+;;;###autoload
 (defun yas-expand-nil ()
   "Perform a `yas-expand' but return nil if failure."
   (let ((yas-fallback-behavior 'return-nil))
     (yas-expand)))
 
+;;;###autoload
 (defun tab-indent-or-complete ()
   "Tab indent or complete (using `company-mode') depending on context."
   (interactive)
@@ -101,6 +108,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
             ))
       )))
 
+;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (popup-menu*
@@ -116,10 +124,12 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
    :isearch t
    ))
 
+;;;###autoload
 (defun wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
 
+;;;###autoload
 (defun comment-or-uncomment-region-or-line ()
   "Comments or uncomments current region or line."
   (interactive)
@@ -129,6 +139,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
       (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
 
+;;;###autoload
 (defun rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
@@ -146,6 +157,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
+;;;###autoload
 (defun package-list-installed-packages ()
   "Like `package-list-packages', but show only installed optional packages."
   (interactive)
@@ -155,7 +167,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
                                       (package-installed-p x)))
                      (mapcar 'car package-archive-contents))))
 
-;; Set proxy from environment
+;;;###autoload
 (defun set-proxy ()
   "Automatically set HTTP proxy in Emacs based on system environment."
   (interactive)
