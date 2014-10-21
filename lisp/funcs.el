@@ -54,8 +54,7 @@ With PREFIX = 16, write out the day and month name."
 (defmacro bol-with-prefix (function)
   "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
-called with a prefix argument. The FUNCTION still receives the
-prefix argument."
+called with a prefix argument.  The FUNCTION still receives the prefix argument."
   (let ((name (intern (format "endless/%s-BOL" function))))
     `(progn
        (defun ,name (p)
