@@ -39,6 +39,14 @@
 
 ;;; Code:
 
+(defun global-set-keys (keybindings)
+  "Set a bunch of global KEYBINDINGS at the same time."
+  (interactive)
+  (dolist (binding keybindings)
+    (let* ((key  (car binding))
+           (func (cdr binding)))
+      (global-set-key (kbd key) func))))
+
 ;;;###autoload
 (defun insert-date (prefix)
   "Insert the current date in ISO extended format.
