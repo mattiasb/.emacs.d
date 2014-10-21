@@ -65,6 +65,7 @@
 (global-set-key (kbd "C-c c")       'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-c a")       'align-regexp)
 (global-set-key (kbd "C-c e")       'ansi-term)
+(global-set-key (kbd "C-c d")       'insert-date)
 (global-set-key (kbd "C-c h")       'highlight-symbol-at-point)
 (global-set-key (kbd "C-c r")       'replace-string)
 (global-set-key (kbd "C-c C-r")     'replace-regexp)

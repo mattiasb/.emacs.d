@@ -39,6 +39,18 @@
 
 ;;; Code:
 
+(defun insert-date (prefix)
+  "Insert the current date in ISO extended format.
+With PREFIX = 4, use ISO basic format.
+With PREFIX = 16, write out the day and month name."
+  (interactive "P")
+  (let ((format (cond
+                 ((not prefix) "%Y-%m-%d")
+                 ((equal prefix '(4)) "%Y%m%d")
+                 ((equal prefix '(16)) "%A, %d. %B %Y")))
+        (system-time-locale "en_US"))
+    (insert (format-time-string format))))
+
 (defmacro bol-with-prefix (function)
   "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
