@@ -94,7 +94,7 @@
 ;;;; Modes ;;;;
 
 ;; Abbrev
-(add-hook 'abbrev-mode-hook (lambda() (when (fboundp 'diminish) (diminish 'abbrev-mode "A"))))
+(add-hook 'abbrev-mode-hook (lambda() (diminish 'abbrev-mode "A")))
 
 ;; C common
 (add-hook 'c-mode-common-hook
@@ -130,7 +130,7 @@
 ;; Company
 (add-hook 'company-mode-hook
           (lambda ()
-            (when (fboundp 'diminish) (diminish 'company-mode "Co"))
+            (diminish 'company-mode "Co")
             (define-key company-active-map (kbd "\C-n")    'company-select-next)
             (define-key company-active-map (kbd "\C-p")    'company-select-previous)
             (define-key company-active-map (kbd "<next>")  'company-select-next-five)
@@ -150,14 +150,10 @@
             (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)))
 
 ;; Flycheck
-(add-hook 'flycheck-mode-hook
-          (lambda ()
-            (when (fboundp 'diminish) (diminish 'flycheck-mode "Fc"))))
+(add-hook 'flycheck-mode-hook (lambda () (diminish 'flycheck-mode "Fc")))
 
 ;; GitGutter
-(add-hook 'git-gutter-mode-on-hook
-          (lambda ()
-            (when (fboundp 'diminish) (diminish 'git-gutter-mode "GG"))))
+(add-hook 'git-gutter-mode-on-hook (lambda () (diminish 'git-gutter-mode "GG")))
 
 ;; Go
 (add-hook 'go-mode-hook
@@ -214,13 +210,16 @@
 ;; Prog
 (defun my-prog-mode ()
   "My `prog-mode' hook."
-  (when (fboundp 'company-mode)            (company-mode))
-  (when (fboundp 'flycheck-mode)           (flycheck-mode))
-  (when (fboundp 'fci-mode)                (fci-mode))
-  (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
-  (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
+
   (setq-local fill-column      80)
-  (setq-local indent-tabs-mode nil))
+  (setq-local indent-tabs-mode nil)
+
+  (company-mode)
+  (flycheck-mode)
+  (fci-mode)
+  (highlight-numbers-mode)
+  (aggressive-indent-mode))
+
 (add-hook 'prog-mode-hook 'my-prog-mode)
 
 ;; Shell
@@ -238,10 +237,7 @@
 (add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
 
 ;; YAS
-(add-hook 'yas-minor-mode-hook
-          (lambda ()
-            (when (fboundp 'diminish)
-              (diminish 'yas-minor-mode " Y"))))
+(add-hook 'yas-minor-mode-hook (lambda () (diminish 'yas-minor-mode " Y")))
 
 ;;;; Project specific settings ;;;;
 
