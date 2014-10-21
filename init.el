@@ -333,6 +333,7 @@
  '(electric-indent-mode t)
  '(electric-layout-mode t)
  '(electric-pair-mode t)
+ '(electric-pair-pairs (quote ((34 . 34) (123 . 125))))
  '(fci-rule-color "gray21")
  '(flycheck-completion-system (quote ido))
  '(flycheck-highlighting-mode (quote symbols))
