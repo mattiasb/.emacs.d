@@ -305,20 +305,6 @@
   "Restore previous window configuration after quitting magit-fullscreen."
   (jump-to-register :magit-fullscreen))
 
-;; Yank and indent-stuff
-(dolist (command '(yank yank-pop))
-  (eval `(defadvice ,command (after indent-region activate)
-           (and (not current-prefix-arg)
-                (member major-mode '(emacs-lisp-mode lisp-mode       clojure-mode
-                                                     scheme-mode     haskell-mode    ruby-mode
-                                                     rspec-mode      python-mode     cmake-mode
-                                                     c-mode          c++-mode        objc-mode
-                                                     latex-mode      plain-tex-mode  js2-mode
-                                                     js-mode         json-mode))
-                (let ((mark-even-if-inactive transient-mark-mode))
-                  (indent-region (region-beginning) (region-end) nil))))))
-
-
 ;;;; Other settings ;;;;
 
 (defalias 'yes-or-no-p 'y-or-n-p)
