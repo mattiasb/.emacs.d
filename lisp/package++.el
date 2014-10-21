@@ -115,25 +115,20 @@ this list and also uninstall any external package not on this list."
   :type 'list
   :group 'package-manifest)
 
-;;;###autoload
 (defadvice package-install (after package-manifest-install-advice activate)
-  (package--add-to-manifest (symbol-name (ad-get-arg 0)))
-)
-;;;###autoload
+  (package--add-to-manifest (symbol-name (ad-get-arg 0))))
+
 (defadvice package-delete (after package-manifest-uninstall-advice activate)
-  (package--remove-from-manifest (ad-get-arg 0))
-)
-;;;###autoload
+  (package--remove-from-manifest (ad-get-arg 0)))
+
 (defun package--add-to-manifest (pkg-name)
   (unless (member pkg-name package-manifest)
     (customize-save-variable 'package-manifest (cons pkg-name package-manifest)))
-  (message (concat "Added " pkg-name " to package manifest"))
-)
-;;;###autoload
+  (message (concat "Added " pkg-name " to package manifest")))
+
 (defun package--remove-from-manifest (pkg-name)
   (customize-save-variable 'package-manifest (delq pkg-name package-manifest))
-  (message (concat "Removed " pkg-name " from package manifest"))
-)
+  (message (concat "Removed " pkg-name " from package manifest")))
 
 ;;;###autoload
 (defun package-sync ()
@@ -160,5 +155,4 @@ control."
     (package-refresh-contents)))
 
 (provide 'package++)
-
-;;; package+.el ends here
+;;; package++.el ends here
