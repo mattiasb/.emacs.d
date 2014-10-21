@@ -1,14 +1,12 @@
 ;;; init.el --- My init file
-
 ;; Copyright (C) 2013, 2014 Mattias Bengtsson
 
-;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-;; Version: 20141020
-;; Keywords: init
-;; Package-Requires: ()
-;; URL: TBA
-;; Doc URL: TBA
-;; Compatibility: GNU Emacs: 24.x
+;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; Version          : 20141020
+;; Keywords         : init
+;; Package-Requires : ()
+;; URL              : https://github.com/moonlite/.emacs.d
+;; Compatibility    : GNU Emacs: 24.x
 
 ;;; The MIT License:
 
@@ -344,8 +342,8 @@
  '(custom-enabled-themes (quote (wombat)))
  '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
- '(electric-indent-mode nil)
- '(electric-layout-mode nil)
+ '(electric-indent-mode t)
+ '(electric-layout-mode t)
  '(electric-pair-mode t)
  '(fci-rule-color "gray21")
  '(flycheck-completion-system (quote ido))
@@ -354,7 +352,7 @@
  '(global-company-mode t)
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols (quote unicode))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-vertical t)
