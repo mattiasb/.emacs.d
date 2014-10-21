@@ -1,12 +1,53 @@
+;;; funcs.el --- Some functions and macros I use.
+
+;; Copyright (C) 2013, 2014 Mattias Bengtsson
+
+;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; Version: 20141020
+;; Keywords: extensions, tools
+;; Package-Requires: ()
+;; URL: TBA
+;; Doc URL: TBA
+;; Compatibility: GNU Emacs: 24.x
+
+;;; The MIT License:
+
+;; http://en.wikipedia.org/wiki/MIT_License
+;;
+;; Permission is hereby granted, free of charge, to any person obtaining
+;; a copy of this software and associated documentation files (the
+;; "Software"), to deal in the Software without restriction, including
+;; without limitation the rights to use, copy, modify, merge, publish,
+;; distribute, sublicense, and/or sell copies of the Software, and to
+;; permit persons to whom the Software is furnished to do so, subject to
+;; the following conditions:
+
+;; The above copyright notice and this permission notice shall be
+;; included in all copies or substantial portions of the Software.
+
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+;; EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+;; MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+;; IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+;; CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+;;; Commentary:
+
+;;; Note:
+
+;;; Code:
+
 (defmacro bol-with-prefix (function)
-  "Define a new function which calls FUNCTION.
+  "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument. The FUNCTION still receives the
 prefix argument."
   (let ((name (intern (format "endless/%s-BOL" function))))
     `(progn
        (defun ,name (p)
-         ,(format 
+         ,(format
            "Call `%s', but move to BOL when called with a prefix argument."
            function)
          (interactive "P")
@@ -23,20 +64,22 @@ prefix argument."
   (unless rtags-process (rtags-restart-process)))
 
 (defun company-select-next-five ()
-  "A bit more eager company-select"
+  "A bit more eager `company-select-next'."
   (interactive)
   (dotimes (number 5 nil) (company-select-next)))
 
 (defun company-select-previous-five ()
-  "A bit more eager company-select"
+  "A bit more eager `company-select-previous'."
   (interactive)
   (dotimes (number 5 nil) (company-select-previous)))
 
-(defun do-yas-expand ()
+(defun yas-expand-nil ()
+  "Perform a `yas-expand' but return nil if failure."
   (let ((yas-fallback-behavior 'return-nil))
     (yas-expand)))
 
 (defun tab-indent-or-complete ()
+  "Tab indent or complete (using `company-mode') depending on context."
   (interactive)
   (if (minibufferp)
       (minibuffer-complete)
@@ -44,13 +87,13 @@ prefix argument."
       (indent-for-tab-command)
       (if (= old-indent (current-indentation))
           (if (or (not yas-minor-mode)
-                  (null (do-yas-expand)))
+                  (null (yas-expand-nil)))
               (company-complete-common)
             ))
       )))
 
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  "Use popup.el for yasnippet."
+  "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (popup-menu*
    (mapcar
     (lambda (choice)
@@ -64,8 +107,9 @@ prefix argument."
    :isearch t
    ))
 
-(defun wrap-in-comment (str)
-  (format "%s%s%s" comment-start str comment-end))
+(defun wrap-in-comment (string)
+  "Wrap STRING inside comment."
+  (format "%s%s%s" comment-start string comment-end))
 
 (defun comment-or-uncomment-region-or-line ()
   "Comments or uncomments current region or line."
@@ -94,8 +138,7 @@ prefix argument."
                    name (file-name-nondirectory new-name)))))))
 
 (defun package-list-installed-packages ()
-  "Like `package-list-packages', but shows only installed
-optional packages."
+  "Like `package-list-packages', but show only installed optional packages."
   (interactive)
   (package-initialize)
   (package-show-package-list
@@ -108,8 +151,12 @@ optional packages."
 
 ;; Set proxy from environment
 (defun set-proxy ()
+  "Automatically set HTTP proxy in Emacs based on system environment."
   (interactive)
   (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))
       (setq-default url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
                                          ("https" . (getenv "HTTPS_PROXY"))
                                          ))))
+
+(provide 'funcs)
+;;; funcs.el ends here

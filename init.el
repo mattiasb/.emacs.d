@@ -1,6 +1,48 @@
+;;; init.el --- My init file
+
+;; Copyright (C) 2013, 2014 Mattias Bengtsson
+
+;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; Version: 20141020
+;; Keywords: init
+;; Package-Requires: ()
+;; URL: TBA
+;; Doc URL: TBA
+;; Compatibility: GNU Emacs: 24.x
+
+;;; The MIT License:
+
+;; http://en.wikipedia.org/wiki/MIT_License
+;;
+;; Permission is hereby granted, free of charge, to any person obtaining
+;; a copy of this software and associated documentation files (the
+;; "Software"), to deal in the Software without restriction, including
+;; without limitation the rights to use, copy, modify, merge, publish,
+;; distribute, sublicense, and/or sell copies of the Software, and to
+;; permit persons to whom the Software is furnished to do so, subject to
+;; the following conditions:
+
+;; The above copyright notice and this permission notice shall be
+;; included in all copies or substantial portions of the Software.
+
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+;; EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+;; MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+;; IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+;; CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+;; TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+;; SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+;;; Commentary:
+
+;;; Note:
+
+;;; Code:
+
 ;; Load path
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (autoload 'package++ "package++.el" nil t)
+(load "funcs.el")
 
 ;;;; Keybindings ;;;;
 
@@ -50,25 +92,20 @@
             ))
 
 ;; GitGutter
-
 (add-hook 'git-gutter-mode-on-hook
           (lambda ()
             (when (fboundp 'diminish) (diminish 'git-gutter-mode "GG"))))
 
 ;; Snippet
-
 (add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
 
 ;; Markdown
-
 (add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
 
 ;; Abbrev
-
 (add-hook 'abbrev-mode-hook (lambda() (when (fboundp 'diminish) (diminish 'abbrev-mode "A"))))
 
 ;; Company
-
 (add-hook 'company-mode-hook
           (lambda ()
             (when (fboundp 'diminish) (diminish 'company-mode "Co"))
@@ -90,17 +127,16 @@
             (when (fboundp 'diminish) (diminish 'flycheck-mode "Fc"))))
 
 ;; Prog
-(defun my-prog-mode ()
-  (progn
-    (when (fboundp 'company-mode)            (company-mode))
-    (when (fboundp 'flycheck-mode)           (flycheck-mode))
-    (when (fboundp 'fci-mode)                (fci-mode))
-    (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
-    (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
-    (setq-local fill-column      80)
-    (setq-local indent-tabs-mode nil))
-  )
-(add-hook 'prog-mode-hook  'my-prog-mode)
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (when (fboundp 'company-mode)            (company-mode))
+            (when (fboundp 'flycheck-mode)           (flycheck-mode))
+            (when (fboundp 'fci-mode)                (fci-mode))
+            (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
+            (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
+            (setq-local fill-column      80)
+            (setq-local indent-tabs-mode nil))
+          )
 
 ;; Go
 (add-hook 'go-mode-hook
@@ -165,7 +201,6 @@
 (add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
 (add-hook 'c++-mode-hook (lambda () (setq-local mode-name "C++")))
-
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my-prog-mode)
@@ -247,19 +282,24 @@
 ;; Advices
 
 (defadvice split-window-right (after rebalance-windows activate)
+  "Balance windows after splitting."
   (balance-windows)
   (other-window 1))
 (defadvice split-window-below (after rebalance-windows activate)
+  "Balance windows after splitting."
   (balance-windows)
   (other-window 1))
 (defadvice delete-window (after rebalance-windows activate)
+  "Balance windows after deletion."
   (balance-windows))
 
 (defadvice magit-status (around magit-fullscreen activate)
+  "Save window configuration when running magit-fullscreen."
   (window-configuration-to-register :magit-fullscreen)
   ad-do-it
   (delete-other-windows))
 (defadvice magit-mode-quit-window (after magit-restore-screen activate)
+  "Restore previous window configuration after quitting magit-fullscreen."
   (jump-to-register :magit-fullscreen))
 
 ;; Yank and indent-stuff
@@ -369,3 +409,6 @@
  '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
  '(highlight-symbol-face ((t (:background "gray21"))))
  '(hl-line ((t (:background "gray21")))))
+
+(provide 'init)
+;;; init.el ends here
