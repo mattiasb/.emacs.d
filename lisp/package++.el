@@ -141,6 +141,10 @@ having to have all the packages themselves under version
 control."
   (interactive)
 
+  (package-initialize)
+  (unless package-archive-contents
+    (package-refresh-contents))
+
   (let ((tc-manifest (package-transitive-closure (mapcar 'intern package-manifest))))
     (condition-case err
         (mapc 'package-maybe-install tc-manifest)
