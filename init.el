@@ -44,8 +44,8 @@
 
 ;; Load path
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(autoload 'package++ "package++.el" nil t)
-(load "funcs.el")
+(require 'funcs)
+(require 'package++)
 
 ;;;; Keybindings ;;;;
 
