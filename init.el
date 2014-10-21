@@ -85,6 +85,8 @@
 (global-set-key (kbd "<C-S-left>")  'buf-move-left)
 (global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
+(global-set-key (kbd "C-x 1")       'zygospore-toggle-delete-other-windows)
+
 (global-set-key [remap kill-line]   (bol-with-prefix kill-line))
 
 (windmove-default-keybindings)
@@ -364,7 +366,7 @@
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
- '(package-manifest (quote ("aggressive-indent" "highlight-numbers" "vala-mode" "fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
+ '(package-manifest (quote ("zygospore" "aggressive-indent" "highlight-numbers" "vala-mode" "fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rng-schema-locating-files (quote ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
  '(rtags-autostart-diagnostics t)
