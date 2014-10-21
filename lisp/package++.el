@@ -140,19 +140,12 @@ control and replicated across all your environments, without
 having to have all the packages themselves under version
 control."
   (interactive)
-  (package-initialize)
-
-  (unless package-archive-contents      ; why? package-install has this.
-    (package-refresh-contents))
 
   (let ((tc-manifest (package-transitive-closure (mapcar 'intern package-manifest))))
     (condition-case err
         (mapc 'package-maybe-install tc-manifest)
       (error (message "Couldn't install package: %s" err)))
-    (package-cleanup tc-manifest))
-
-  (unless package-archive-contents      ; why? package-install has this.
-    (package-refresh-contents)))
+    (package-cleanup tc-manifest)))
 
 (provide 'package++)
 ;;; package++.el ends here
