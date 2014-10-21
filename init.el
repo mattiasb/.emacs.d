@@ -312,7 +312,6 @@
 (defalias 'list-buffers 'ibuffer)
 
 ;;;; Custom mode ;;;;
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -342,7 +341,7 @@
  '(global-company-mode t)
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols (quote unicode))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-vertical t)
