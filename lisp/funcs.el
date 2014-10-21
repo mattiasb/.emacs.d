@@ -68,8 +68,6 @@ prefix argument."
          (call-interactively ',function))
        ',name)))
 
-(global-set-key [remap kill-line] (bol-with-prefix kill-line))
-
 (defun rtags-start-process ()
   "Start rdm if it isn't running."
   (interactive)
