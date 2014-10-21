@@ -197,19 +197,29 @@
 ;; Markdown
 (add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
 
+;; nXML
+(add-to-list 'auto-mode-alist '("\\.ui$" . nxml-mode))
+(add-hook 'nxml-mode-hook (lambda ()
+                            (setq-local mode-name "X")
+                            (setq-local company-backends '(company-nxml))
+                            (aggressive-indent-mode -1)
+                            ))
+(add-hook 'nxml-mode-hook 'my-prog-mode)
+
 ;; Package
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 
 ;; Prog
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (when (fboundp 'company-mode)            (company-mode))
-            (when (fboundp 'flycheck-mode)           (flycheck-mode))
-            (when (fboundp 'fci-mode)                (fci-mode))
-            (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
-            (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
-            (setq-local fill-column      80)
-            (setq-local indent-tabs-mode nil)))
+(defun my-prog-mode ()
+  "My `prog-mode' hook."
+  (when (fboundp 'company-mode)            (company-mode))
+  (when (fboundp 'flycheck-mode)           (flycheck-mode))
+  (when (fboundp 'fci-mode)                (fci-mode))
+  (when (fboundp 'highlight-numbers-mode)  (highlight-numbers-mode))
+  (when (fboundp 'aggressive-indent-mode)  (aggressive-indent-mode))
+  (setq-local fill-column      80)
+  (setq-local indent-tabs-mode nil))
+(add-hook 'prog-mode-hook 'my-prog-mode)
 
 ;; Shell
 (add-hook 'term-mode-hook
@@ -353,10 +363,12 @@
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
  '(menu-bar-mode nil)
+ '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-manifest (quote ("aggressive-indent" "highlight-numbers" "vala-mode" "fill-column-indicator" "rtags" "sass-mode" "dummy-h-mode" "bash-completion" "git-commit-training-wheels-mode" "fullscreen-mode" "ace-jump-mode" "gitignore-mode" "company-go" "go-eldoc" "go-mode" "highlight-symbol" "flycheck" "git-gutter" "cpputils-cmake" "cmake-mode" "buffer-move" "js2-refactor" "lua-mode" "fancy-narrow" "ack-and-a-half" "diminish" "gitconfig-mode" "ido-ubiquitous" "epl" "projectile" "flx-ido" "smex" "expand-region" "haskell-mode" "js2-mode" "json-mode" "magit" "markdown-mode" "editorconfig" "yasnippet" "move-text" "company" "popup" "ido-vertical-mode")))
  '(projectile-keymap-prefix (kbd "C-p"))
+ '(rng-schema-locating-files (quote ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(safe-local-variable-values (quote ((eval progn (puthash (projectile-project-root) "jhbuild make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "make check" projectile-test-cmd-map)))))
