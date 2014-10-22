@@ -113,10 +113,13 @@
 
 ;;;; Modes ;;;;
 
+;; Auto Modes
 (my/auto-modes '(("\\.inl\\'" . c++-mode)
                  ("\\.ui$"    . nxml-mode)
                  ("\\.js$"    . js2-mode)
                  ))
+
+;;;; Specific modes
 
 ;; Abbrev
 (add-hook 'abbrev-mode-hook (lambda() (diminish 'abbrev-mode "A")))
