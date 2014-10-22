@@ -247,15 +247,12 @@
 (add-hook 'prog-mode-hook 'my-prog-mode)
 
 ;; Shell
-(add-hook 'term-mode-hook
-          (lambda ()
-            (define-key term-raw-map   (kbd "<tab>")
-              (lookup-key term-raw-map (kbd "C-M-i")))
-            (define-key term-raw-map   (kbd "M-x") 'smex)))
-(add-hook 'shell-dynamic-complete-functions
-          'bash-completion-dynamic-complete)
-(add-hook 'shell-command-complete-functions
-          'bash-completion-dynamic-complete)
+(add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
+(add-hook 'term-mode-hook (lambda ()
+                            (define-key term-raw-map   (kbd "<tab>")
+                              (lookup-key term-raw-map (kbd "C-M-i")))
+                            (define-key term-raw-map   (kbd "M-x") 'smex)))
 
 ;; Snippet
 (add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
