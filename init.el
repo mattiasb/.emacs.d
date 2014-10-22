@@ -57,6 +57,10 @@
    ( "M-x"         .  smex)
    ( "C-c e"       .  ansi-term)
 
+   ;; Magit
+   ( "C-c m s"     .  magit-status)
+   ( "C-c m c"     .  magit-commit)
+
    ;; Marks / Highlights
    ( "C-§"         .  er/expand-region)
    ( "C-c h"       .  highlight-symbol-at-point)
