@@ -50,7 +50,7 @@
 ;;;; Keybindings ;;;;
 
 (global-set-keys
- '(( "C-§"         . 'er/expand-region)
+ '(( "C-§"         .  er/expand-region)
    ( "<f9>"        .  customize)
    ( "<f11>"       .  fullscreen-mode-fullscreen-toggle)
    ( "<f12>"       .  list-packages)
