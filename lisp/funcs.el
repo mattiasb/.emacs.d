@@ -39,12 +39,12 @@
 
 ;;; Code:
 
-(defun auto-modes (modes)
+(defun my/auto-modes (modes)
   "Add many MODES to `auto-mode-alist'."
   (setq auto-mode-alist (append modes auto-mode-alist))
   )
 
-(defun global-set-keys (keybindings)
+(defun my/global-set-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
   (interactive)
   (dolist (binding keybindings)
@@ -53,7 +53,7 @@
       (global-set-key (kbd key) func))))
 
 ;;;###autoload
-(defun define-keys (mode-map keybindings)
+(defun my/define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
   (interactive)
   (dolist (binding keybindings)
@@ -61,7 +61,7 @@
            (func (cdr binding)))
       (define-key mode-map (kbd key) func))))
 
-(defun insert-date (prefix)
+(defun my/insert-date (prefix)
   "Insert the current date in ISO extended format.
 With PREFIX = 4, use ISO basic format.
 With PREFIX = 16, write out the day and month name."
@@ -74,11 +74,11 @@ With PREFIX = 16, write out the day and month name."
     (insert (format-time-string format))))
 
 ;;;###autoload
-(defmacro bol-with-prefix (function)
+(defmacro my/bol-with-prefix (function)
   "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the prefix argument."
-  (let ((name (intern (format "endless/%s-BOL" function))))
+  (let ((name (intern (format "my/%s-BOL" function))))
     `(progn
        (defun ,name (p)
          ,(format
@@ -91,31 +91,31 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
        ',name)))
 
 ;;;###autoload
-(defun rtags-start-process ()
+(defun my/rtags-start ()
   "Start rdm if it isn't running."
   (interactive)
   (unless rtags-process (rtags-restart-process)))
 
 ;;;###autoload
-(defun company-select-next-five ()
+(defun my/company-select-next-five ()
   "A bit more eager `company-select-next'."
   (interactive)
   (dotimes (number 5 nil) (company-select-next)))
 
 ;;;###autoload
-(defun company-select-previous-five ()
+(defun my/company-select-previous-five ()
   "A bit more eager `company-select-previous'."
   (interactive)
   (dotimes (number 5 nil) (company-select-previous)))
 
 ;;;###autoload
-(defun yas-expand-nil ()
+(defun my/yas-expand-nil ()
   "Perform a `yas-expand' but return nil if failure."
   (let ((yas-fallback-behavior 'return-nil))
     (yas-expand)))
 
 ;;;###autoload
-(defun tab-indent-or-complete ()
+(defun my/tab-indent-or-complete ()
   "Tab indent or complete (using `company-mode') depending on context."
   (interactive)
   (if (minibufferp)
@@ -124,7 +124,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
       (indent-for-tab-command)
       (if (= old-indent (current-indentation))
           (if (or (not yas-minor-mode)
-                  (null (yas-expand-nil)))
+                  (null (my/yas-expand-nil)))
               (company-complete-common)
             ))
       )))
@@ -147,12 +147,12 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
    ))
 
 ;;;###autoload
-(defun wrap-in-comment (string)
+(defun my/wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
 
 ;;;###autoload
-(defun comment-or-uncomment-region-or-line ()
+(defun my/toggle-comment ()
   "Comments or uncomments current region or line."
   (interactive)
   (let (beg end)
@@ -162,7 +162,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
-(defun rename-current-buffer-and-file ()
+(defun my/rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
   (let ((name (buffer-name))
@@ -180,7 +180,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
                    name (file-name-nondirectory new-name)))))))
 
 ;;;###autoload
-(defun package-list-installed-packages ()
+(defun my/list-installed-packages ()
   "Like `package-list-packages', but show only installed optional packages."
   (interactive)
   (package-initialize)
@@ -190,7 +190,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
                      (mapcar 'car package-archive-contents))))
 
 ;;;###autoload
-(defun set-proxy ()
+(defun my/set-proxy ()
   "Automatically set HTTP proxy in Emacs based on system environment."
   (interactive)
   (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))

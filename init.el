@@ -49,7 +49,7 @@
 
 ;;;; Keybindings ;;;;
 
-(global-set-keys
+(my/global-set-keys
  '(
    ;; Windows
    ( "<f9>"        .  customize)
@@ -88,12 +88,12 @@
    ;; TEXT MANIPULATION
 
    ;; General
-   ( "<tab>"       .  tab-indent-or-complete)
+   ( "<tab>"       .  my/tab-indent-or-complete)
    ( "M-<up>"      .  move-text-up)
    ( "M-<down>"    .  move-text-down)
    ( "C-c a"       .  align-regexp)
-   ( "C-c c"       .  comment-or-uncomment-region-or-line)
-   ( "C-c d"       .  insert-date) ;; TODO: Replace with snippet
+   ( "C-c c"       .  my/toggle-comment)
+   ( "C-c d"       .  my/insert-date) ;; TODO: Replace with snippet
    ;; Replace
    ( "C-c r"       .  replace-string)
    ( "C-c C-r"     .  replace-regexp)
@@ -107,16 +107,16 @@
    ))
 
 (global-unset-key (kbd "C-z"))
-(global-set-key [remap kill-line]   (bol-with-prefix kill-line))
+(global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
 
 (windmove-default-keybindings)
 
 ;;;; Modes ;;;;
 
-(auto-modes '(("\\.inl\\'" . c++-mode)
-              ("\\.ui$"    . nxml-mode)
-              ("\\.js$"    . js2-mode)
-              ))
+(my/auto-modes '(("\\.inl\\'" . c++-mode)
+                 ("\\.ui$"    . nxml-mode)
+                 ("\\.js$"    . js2-mode)
+                 ))
 
 ;; Abbrev
 (add-hook 'abbrev-mode-hook (lambda() (diminish 'abbrev-mode "A")))
@@ -125,9 +125,9 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (require 'rtags)
-            (rtags-start-process)
+            (my/rtags-start)
             (setq-local rtags-completions-enabled t)
-            (define-keys c-mode-base-map
+            (my/define-keys c-mode-base-map
               '(("C-<return>" . rtags-find-symbol-at-point)
                 ("M-<left>"   . rtags-location-stack-back)
                 ("M-<right>"  . rtags-location-stack-forward)
@@ -142,7 +142,7 @@
 (add-hook 'c++-mode-hook (lambda () (setq-local mode-name "C++")))
 
 ;; CMake
-(add-hook 'cmake-mode-hook 'my-prog-mode)
+(add-hook 'cmake-mode-hook 'my/prog-mode)
 (add-hook 'cmake-mode-hook
           (lambda ()
             (setq-local mode-name "Cm")
@@ -155,11 +155,11 @@
 (add-hook 'company-mode-hook
           (lambda ()
             (diminish 'company-mode "Co")
-            (define-keys company-active-map
+            (my/define-keys company-active-map
               '(("\C-n"    . company-select-next)
                 ("\C-p"    . company-select-previous)
-                ("<next>"  . company-select-next-five)
-                ("<prior>" . company-select-previous-five)
+                ("<next>"  . my/company-select-next-five)
+                ("<prior>" . my/company-select-previous-five)
                 ("\C-p"    . company-select-previouss)
                 ("\C-d"    . company-show-doc-buffer)
                 ("\C-v"    . company-show-location)
@@ -170,9 +170,9 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq-local mode-name "El")
-            (define-keys emacs-lisp-mode-map
+            (my/define-keys emacs-lisp-mode-map
               '(("C-<tab>" . company-complete)
-                ("<tab>"   . tab-indent-or-complete)))))
+                ("<tab>"   . my/tab-indent-or-complete)))))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook (lambda () (diminish 'flycheck-mode "Fc")))
@@ -189,11 +189,11 @@
             (setq-local tab-width 4)
             (setq-local company-backends '(company-go))
 
-            (define-keys go-mode-map '(("C-c i a"    . go-import-add)
-                                       ("C-c i r"    . go-remove-unused-imports)
-                                       ("C-c i g"    . go-goto-imports)
-                                       ("C-c d"      . godoc-at-point)
-                                       ("C-<return>" . godef-jump)))))
+            (my/define-keys go-mode-map '(("C-c i a"    . go-import-add)
+                                          ("C-c i r"    . go-remove-unused-imports)
+                                          ("C-c i g"    . go-goto-imports)
+                                          ("C-c d"      . godoc-at-point)
+                                          ("C-<return>" . godef-jump)))))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
@@ -225,13 +225,13 @@
                             (setq-local company-backends '(company-nxml))
                             (aggressive-indent-mode -1)
                             ))
-(add-hook 'nxml-mode-hook 'my-prog-mode)
+(add-hook 'nxml-mode-hook 'my/prog-mode)
 
 ;; Package
 (add-hook 'package-menu-mode-hook 'hl-line-mode)
 
 ;; Prog
-(defun my-prog-mode ()
+(defun my/prog-mode ()
   "My `prog-mode' hook."
 
   (setq-local fill-column      80)
@@ -243,7 +243,7 @@
   (highlight-numbers-mode)
   (aggressive-indent-mode))
 
-(add-hook 'prog-mode-hook 'my-prog-mode)
+(add-hook 'prog-mode-hook 'my/prog-mode)
 
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
@@ -276,7 +276,7 @@
 
 ;;;; Post-init code ;;;;
 
-(defun my-after-init-hook ()
+(defun my/after-init ()
   "My after init hook."
   (package-sync)
 
@@ -299,7 +299,7 @@
   (flx-ido-mode)
   (fancy-narrow-mode))
 
-(add-hook 'after-init-hook 'my-after-init-hook)
+(add-hook 'after-init-hook 'my/after-init)
 
 ;; Advices
 
