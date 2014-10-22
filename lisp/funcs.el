@@ -48,6 +48,14 @@
       (global-set-key (kbd key) func))))
 
 ;;;###autoload
+(defun define-keys (mode-map keybindings)
+  "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
+  (interactive)
+  (dolist (binding keybindings)
+    (let* ((key  (car binding))
+           (func (cdr binding)))
+      (define-key mode-map (kbd key) func))))
+
 (defun insert-date (prefix)
   "Insert the current date in ISO extended format.
 With PREFIX = 4, use ISO basic format.

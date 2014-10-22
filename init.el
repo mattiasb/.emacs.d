@@ -122,11 +122,13 @@
             (require 'rtags)
             (rtags-start-process)
             (setq-local rtags-completions-enabled t)
-            (define-key c-mode-base-map (kbd "C-<return>") 'rtags-find-symbol-at-point)
-            (define-key c-mode-base-map (kbd "M-<left>")   'rtags-location-stack-back)
-            (define-key c-mode-base-map (kbd "M-<right>")  'rtags-location-stack-forward)
-            (define-key c-mode-base-map (kbd "C-c f r")    'rtags-rename-symbol)
-            (define-key c-mode-base-map (kbd "C-c o")      'ff-find-other-file)))
+            (define-keys c-mode-base-map
+              '(("C-<return>" . rtags-find-symbol-at-point)
+                ("M-<left>"   . rtags-location-stack-back)
+                ("M-<right>"  . rtags-location-stack-forward)
+                ("C-c f r"    . rtags-rename-symbol)
+                ("C-c o"      . ff-find-other-file)))
+            ))
 
 ;; C
 (add-hook 'c-mode-hook (lambda () (setq-local mode-name "C") ))
@@ -151,23 +153,25 @@
 (add-hook 'company-mode-hook
           (lambda ()
             (diminish 'company-mode "Co")
-            (define-key company-active-map (kbd "\C-n")    'company-select-next)
-            (define-key company-active-map (kbd "\C-p")    'company-select-previous)
-            (define-key company-active-map (kbd "<next>")  'company-select-next-five)
-            (define-key company-active-map (kbd "<prior>") 'company-select-previous-five)
-            (define-key company-active-map (kbd "\C-p")    'company-select-previouss)
-            (define-key company-active-map (kbd "\C-d")    'company-show-doc-buffer)
-            (define-key company-active-map (kbd "\C-v")    'company-show-location)
-            (define-key company-active-map (kbd "\C-g")    '(lambda ()
-                                                              (interactive)
-                                                              (company-abort)))))
+            (define-keys company-active-map
+              '(("\C-n"    . company-select-next)
+                ("\C-p"    . company-select-previous)
+                ("<next>"  . company-select-next-five)
+                ("<prior>" . company-select-previous-five)
+                ("\C-p"    . company-select-previouss)
+                ("\C-d"    . company-show-doc-buffer)
+                ("\C-v"    . company-show-location)
+                ("\C-g"    . (lambda ()
+                               (interactive)
+                               (company-abort)))))))
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq-local mode-name "El")
-            (define-key emacs-lisp-mode-map (kbd "C-<tab>") 'company-complete)
-            (define-key emacs-lisp-mode-map (kbd "<tab>") 'tab-indent-or-complete)))
+            (define-keys emacs-lisp-mode-map
+              '(("C-<tab>" . company-complete)
+                ("<tab>"   . tab-indent-or-complete)))))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook (lambda () (diminish 'flycheck-mode "Fc")))
@@ -184,11 +188,11 @@
             (setq-local tab-width 4)
             (setq-local company-backends '(company-go))
 
-            (define-key go-mode-map (kbd "C-c i a") 'go-import-add)
-            (define-key go-mode-map (kbd "C-c i r") 'go-remove-unused-imports)
-            (define-key go-mode-map (kbd "C-c i g") 'go-goto-imports)
-            (define-key go-mode-map (kbd "C-c d")   'godoc-at-point)
-            (define-key go-mode-map (kbd "C-<return>") 'godef-jump)))
+            (define-keys go-mode-map '(("C-c i a"    . go-import-add)
+                                       ("C-c i r"    . go-remove-unused-imports)
+                                       ("C-c i g"    . go-goto-imports)
+                                       ("C-c d"      . godoc-at-point)
+                                       ("C-<return>" . godef-jump))))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
