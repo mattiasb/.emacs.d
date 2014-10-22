@@ -50,36 +50,56 @@
 ;;;; Keybindings ;;;;
 
 (global-set-keys
- '(( "C-§"         .  er/expand-region)
+ '(
+   ;; Windows
    ( "<f9>"        .  customize)
-   ( "<f11>"       .  fullscreen-mode-fullscreen-toggle)
    ( "<f12>"       .  list-packages)
-   ( "M-<up>"      .  move-text-up)
-   ( "M-<down>"    .  move-text-down)
-   ( "<tab>"       .  tab-indent-or-complete)
    ( "M-x"         .  smex)
+   ( "C-c e"       .  ansi-term)
+
+   ;; Marks / Highlights
+   ( "C-§"         .  er/expand-region)
+   ( "C-c h"       .  highlight-symbol-at-point)
+
+   ;; Toggle modes
+   ( "C-c t w"     .  whitespace-mode)
+   ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
+   ( "C-c t a"     .  aggressive-indent-mode)
+
+
+   ;; NAVIGATION
+
+   ;; General
    ( "C-'"         .  ace-jump-word-mode)
    ( "C-c o"       .  browse-url-at-point)
    ( "C-c n"       .  make-frame)
-   ( "C-c w"       .  whitespace-mode)
-   ( "C-c c"       .  comment-or-uncomment-region-or-line)
-   ( "C-c a"       .  align-regexp)
-   ( "C-c e"       .  ansi-term)
-   ( "C-c d"       .  insert-date)
-   ( "C-c h"       .  highlight-symbol-at-point)
-   ( "C-c r"       .  replace-string)
-   ( "C-c C-r"     .  replace-regexp)
-   ( "C-c q"       .  query-replace)
-   ( "C-c C-q"     .  query-replace-regexp)
-   ( "C-c s s"     .  yas-insert-snippet)
-   ( "C-c s n"     .  yas-new-snippet)
-   ( "C-c s e"     .  yas-visit-snippet-file)
-   ( "C-c s r"     .  yas-reload-all)
+   ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
+   ;; Move buffers
    ( "<C-S-up>"    .  buf-move-up)
    ( "<C-S-down>"  .  buf-move-down)
    ( "<C-S-left>"  .  buf-move-left)
    ( "<C-S-right>" .  buf-move-right)
-   ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
+
+
+   ;; TEXT MANIPULATION
+
+   ;; General
+   ( "<tab>"       .  tab-indent-or-complete)
+   ( "M-<up>"      .  move-text-up)
+   ( "M-<down>"    .  move-text-down)
+   ( "C-c a"       .  align-regexp)
+   ( "C-c c"       .  comment-or-uncomment-region-or-line)
+   ( "C-c d"       .  insert-date) ;; TODO: Replace with snippet
+   ;; Replace
+   ( "C-c r"       .  replace-string)
+   ( "C-c C-r"     .  replace-regexp)
+   ( "C-c q"       .  query-replace)
+   ( "C-c C-q"     .  query-replace-regexp)
+   ;; YAS
+   ( "C-c s s"     .  yas-insert-snippet)
+   ( "C-c s n"     .  yas-new-snippet)
+   ( "C-c s e"     .  yas-visit-snippet-file)
+   ( "C-c s r"     .  yas-reload-all)
    ))
 
 (global-unset-key (kbd "C-z"))
