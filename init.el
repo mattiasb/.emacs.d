@@ -192,7 +192,7 @@
                                        ("C-c i r"    . go-remove-unused-imports)
                                        ("C-c i g"    . go-goto-imports)
                                        ("C-c d"      . godoc-at-point)
-                                       ("C-<return>" . godef-jump))))
+                                       ("C-<return>" . godef-jump)))))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
