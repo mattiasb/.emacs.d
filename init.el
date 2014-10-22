@@ -113,6 +113,11 @@
 
 ;;;; Modes ;;;;
 
+(auto-modes '(("\\.inl\\'" . c++-mode)
+              ("\\.ui$"    . nxml-mode)
+              ("\\.js$"    . js2-mode)
+              ))
+
 ;; Abbrev
 (add-hook 'abbrev-mode-hook (lambda() (diminish 'abbrev-mode "A")))
 
@@ -134,9 +139,6 @@
 (add-hook 'c-mode-hook (lambda () (setq-local mode-name "C") ))
 
 ;; C++
-(add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
 (add-hook 'c++-mode-hook (lambda () (setq-local mode-name "C++")))
 
 ;; CMake
@@ -206,7 +208,6 @@
             ))
 
 ;; JS2
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
           (lambda ()
             (setq-local mode-name "JS2")
@@ -220,7 +221,6 @@
 (add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
 
 ;; nXML
-(add-to-list 'auto-mode-alist '("\\.ui$" . nxml-mode))
 (add-hook 'nxml-mode-hook (lambda ()
                             (setq-local mode-name "X")
                             (setq-local company-backends '(company-nxml))

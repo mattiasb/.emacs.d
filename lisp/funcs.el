@@ -39,6 +39,11 @@
 
 ;;; Code:
 
+(defun auto-modes (modes)
+  "Add many MODES to `auto-mode-alist'."
+  (setq auto-mode-alist (append modes auto-mode-alist))
+  )
+
 (defun global-set-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
   (interactive)
