@@ -46,7 +46,6 @@
 
 (defun my/global-set-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
-  (interactive)
   (dolist (binding keybindings)
     (let* ((key  (car binding))
            (func (cdr binding)))
@@ -55,7 +54,6 @@
 ;;;###autoload
 (defun my/define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
-  (interactive)
   (dolist (binding keybindings)
     (let* ((key  (car binding))
            (func (cdr binding)))
