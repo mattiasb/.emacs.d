@@ -163,9 +163,8 @@
                 ("\C-p"    . company-select-previouss)
                 ("\C-d"    . company-show-doc-buffer)
                 ("\C-v"    . company-show-location)
-                ("\C-g"    . (lambda ()
-                               (interactive)
-                               (company-abort)))))))
+                ("\C-g"    . company-abort)
+                ))))
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
