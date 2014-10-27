@@ -48,17 +48,19 @@
 (require 'funcs)
 
 ;;;; Keybindings ;;;;
-
 (my/global-set-keys
  '(
-   ;; Windows
-   ( "<f9>"        .  customize)
-   ( "<f12>"       .  list-packages)
+   ;; Global overrides
+   ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
    ( "M-x"         .  smex)
-   ( "C-c e"       .  ansi-term)
+
+   ;; Windows
+   ( "C-c w c"     .  customize)
+   ( "C-c w p"     .  list-packages)
+   ( "C-c w t"     .  ansi-term)
+   ( "C-c w m"     .  magit-status)
 
    ;; Magit
-   ( "C-c m s"     .  magit-status)
    ( "C-c m c"     .  magit-commit)
 
    ;; Marks / Highlights
@@ -77,7 +79,7 @@
    ( "C-'"         .  ace-jump-word-mode)
    ( "C-c o"       .  browse-url-at-point)
    ( "C-c n"       .  make-frame)
-   ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
+
    ;; Move buffers
    ( "<C-S-up>"    .  buf-move-up)
    ( "<C-S-down>"  .  buf-move-down)
@@ -94,11 +96,13 @@
    ( "C-c a"       .  align-regexp)
    ( "C-c c"       .  my/toggle-comment)
    ( "C-c d"       .  my/insert-date) ;; TODO: Replace with snippet
+
    ;; Replace
    ( "C-c r"       .  replace-string)
    ( "C-c C-r"     .  replace-regexp)
    ( "C-c q"       .  query-replace)
    ( "C-c C-q"     .  query-replace-regexp)
+
    ;; YAS
    ( "C-c s s"     .  yas-insert-snippet)
    ( "C-c s n"     .  yas-new-snippet)
