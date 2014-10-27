@@ -386,7 +386,7 @@
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.org/packages/"))))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rng-schema-locating-files (quote ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
  '(rtags-autostart-diagnostics t)
