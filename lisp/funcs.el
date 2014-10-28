@@ -39,6 +39,11 @@
 
 ;;; Code:
 
+(defun my/byte-compile ()
+  "Byte compile my configs."
+  (interactive)
+  (byte-recompile-directory "~/.emacs.d" 0))
+
 (defun my/auto-modes (modes)
   "Add many MODES to `auto-mode-alist'."
   (setq auto-mode-alist (append modes auto-mode-alist))
