@@ -287,7 +287,6 @@
 
 (defun my/after-init ()
   "My after init hook."
-  (require 'uniquify)
   (require 'cask)
   (cask-initialize)
   (require 'pallet)
