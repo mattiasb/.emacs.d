@@ -344,6 +344,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(aggressive-indent-excluded-modes (quote (text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode)))
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 46)))
