@@ -344,11 +344,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(aggressive-indent-excluded-modes (quote (text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode)))
+ '(aggressive-indent-excluded-modes
+   (quote
+    (text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode)))
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars (quote (32 46)))
- '(company-backends (quote (company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake (company-gtags company-etags company-dabbrev-code company-keywords) company-oddmuse company-files company-dabbrev company-yasnippet)))
+ '(company-backends
+   (quote
+    (company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake
+                   (company-gtags company-etags company-dabbrev-code company-keywords)
+                   company-oddmuse company-files company-dabbrev company-yasnippet)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
@@ -356,9 +362,12 @@
  '(compilation-scroll-output t)
  '(cppcm-build-dirname "build")
  '(custom-enabled-themes (quote (wombat)))
- '(custom-safe-themes (quote ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(delete-selection-mode t)
  '(electric-indent-mode t)
+ '(electric-layout-mode t)
  '(electric-pair-mode t)
  '(fci-rule-color "gray21")
  '(flycheck-completion-system (quote ido))
@@ -381,7 +390,9 @@
  '(js2-cleanup-whitespace t)
  '(js2-concat-multiline-strings t)
  '(js2-enter-indents-newline t)
- '(js2-global-externs (quote ("imports" "require" "module" "exports" "console" "process" "setTimeout" "clearTimeout" "log")))
+ '(js2-global-externs
+   (quote
+    ("imports" "require" "module" "exports" "console" "process" "setTimeout" "clearTimeout" "log")))
  '(js2-include-browser-externs t)
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode t)
@@ -390,12 +401,25 @@
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
- '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.org/packages/"))))
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/"))))
  '(projectile-keymap-prefix (kbd "C-p"))
- '(rng-schema-locating-files (quote ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
+ '(rng-schema-locating-files
+   (quote
+    ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
- '(safe-local-variable-values (quote ((eval progn (puthash (projectile-project-root) "jhbuild make" projectile-compilation-cmd-map) (puthash (projectile-project-root) "make check" projectile-test-cmd-map)))))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (puthash
+            (projectile-project-root)
+            "jhbuild make" projectile-compilation-cmd-map)
+           (puthash
+            (projectile-project-root)
+            "make check" projectile-test-cmd-map)))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
