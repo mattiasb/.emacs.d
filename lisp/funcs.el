@@ -57,6 +57,64 @@
       (global-set-key (kbd key) func))))
 
 ;;;###autoload
+(defun my/mapcar-head (fn-head fn-rest list)
+  "Like MAPCAR, but apply FN-HEAD to CAR and FN-REST to CDR of LIST."
+  (if list (cons (funcall fn-head (car list))
+                 (mapcar fn-rest (cdr list)))))
+
+;;;###autoload
+(defun my/split-name (s)
+  "Split S by name."
+  (split-string
+   (let ((case-fold-search nil))
+     (downcase
+      (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
+   "[^A-Za-z0-9]+"))
+
+;;;###autoload
+(defun my/lower-camel-case (s)
+  "Camel case S."
+  (interactive)
+  (let ((names (my/split-name s)))
+    (concat (downcase (car names))
+            (mapconcat 'capitalize (cdr names) ""))
+    ))
+
+;;;###autoload
+(defun my/camel-case (s)
+  "Camel case S."
+  (mapconcat 'capitalize (my/split-name s) ""))
+
+;;;###autoload
+(defun my/snake-case (s)
+  "Snake case S."
+  (mapconcat 'downcase (my/split-name s) "_"))
+
+;;;###autoload
+(defun my/dash-case (s)
+  "Dash case S."
+  (mapconcat 'downcase (my/split-name s) "-"))
+
+;;;###autoload
+(defun my/toggle-programming-case (s)
+  "Toggle programming style casing of S."
+  (cond ((string-match-p "\\(?:[a-z]+_\\)+[a-z]+" s) (my/dash-case        s))
+        ((string-match-p "\\(?:[a-z]+-\\)+[a-z]+" s) (my/camel-case       s))
+        ((string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s) (my/lower-camel-case s))
+        (t                                           (my/snake-case       s)) ))
+
+;;;###autoload
+(defun my/toggle-programming-case-word-at-point ()
+  "Toggle programming style casing of word a point."
+  (interactive)
+  (let* ((case-fold-search nil)
+         (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
+         (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
+         (txt (buffer-substring beg end))
+         (cml (my/toggle-programming-case txt)) )
+    (if cml (progn (delete-region beg end) (insert cml))) ))
+
+;;;###autoload
 (defun my/define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
   (dolist (binding keybindings)

@@ -96,6 +96,7 @@
    ( "M-<down>"    .  move-text-down)
    ( "C-c a"       .  align-regexp)
    ( "C-c c"       .  my/toggle-comment)
+   ( "C-c C-c"     .  my/toggle-programming-case-word-at-point)
    ( "C-c d"       .  my/insert-date) ;; TODO: Replace with snippet
 
    ;; Replace
