@@ -97,6 +97,7 @@
    ( "C-c a"       .  align-regexp)
    ( "C-c c"       .  my/toggle-comment)
    ( "C-c C-c"     .  my/toggle-programming-case-word-at-point)
+   ( "C-c i"       .  insert-char)
    ( "C-c d"       .  my/insert-date) ;; TODO: Replace with snippet
 
    ;; Replace
@@ -382,6 +383,7 @@
  '(ido-completion-buffer nil)
  '(ido-vertical t)
  '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
+ '(ido-ubiquitous-max-items 50000)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
