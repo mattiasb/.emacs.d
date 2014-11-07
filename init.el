@@ -126,10 +126,27 @@
                  ("\\.js$"    . js2-mode)
                  ))
 
-;;;; Specific modes
+(my/shorten-major-modes '((markdown-mode   . "Md")
+                          (js2-mode        . "JS2")
+                          (nxml-mode       . "X")
+                          (c-mode          . "C")
+                          (c++-mode        . "C++")
+                          (cmake-mode      . "Cm")
+                          (emacs-lisp-mode . "El")
+                          (go-mode         . "Go")
+                          (haskell-mode    . "Hs")
+                          (snippet-mode    . "S")
+                          ))
 
-;; Abbrev
-(add-hook 'abbrev-mode-hook (lambda() (diminish 'abbrev-mode "A")))
+(my/shorten-minor-modes '((company-mode           . "Co")
+                          (abbrev-mode            . "A")
+                          (flycheck-mode          . "Fc")
+                          (git-gutter-mode        . "")
+                          (yas-minor-mode         . "")
+                          (aggressive-indent-mode . " ⇒")
+                          ))
+
+;;;; Specific modes
 
 ;; C common
 (add-hook 'c-mode-common-hook
@@ -145,17 +162,10 @@
                               ("C-c o"      . ff-find-other-file)))
             ))
 
-;; C
-(add-hook 'c-mode-hook (lambda () (setq-local mode-name "C") ))
-
-;; C++
-(add-hook 'c++-mode-hook (lambda () (setq-local mode-name "C++")))
-
 ;; CMake
 (add-hook 'cmake-mode-hook 'my/prog-mode)
 (add-hook 'cmake-mode-hook
           (lambda ()
-            (setq-local mode-name "Cm")
             (setq-local company-backends
                         '((company-cmake
                            company-files
@@ -164,7 +174,6 @@
 ;; Company
 (add-hook 'company-mode-hook
           (lambda ()
-            (diminish 'company-mode "Co")
             (my/define-keys company-active-map
                             '(("\C-n"    . company-select-next)
                               ("\C-p"    . company-select-previous)
@@ -197,22 +206,14 @@
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (setq-local mode-name "El")
             (my/define-keys emacs-lisp-mode-map
                             '(("C-<tab>" . company-complete)
                               ("<tab>"   . my/tab-indent-or-complete)))))
-
-;; Flycheck
-(add-hook 'flycheck-mode-hook (lambda () (diminish 'flycheck-mode "Fc")))
-
-;; GitGutter
-(add-hook 'git-gutter-mode-on-hook (lambda () (diminish 'git-gutter-mode "GG")))
 
 ;; Go
 (add-hook 'go-mode-hook
           (lambda ()
             (go-eldoc-setup)
-            (setq-local mode-name "go")
 
             (setq-local tab-width 4)
             (setq-local company-backends '(company-go))
@@ -226,7 +227,6 @@
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (setq-local mode-name "Hs")
                                (setq-local electric-indent-mode nil)))
 
 ;; Ido
@@ -238,19 +238,14 @@
 ;; JS2
 (add-hook 'js2-mode-hook
           (lambda ()
-            (setq-local mode-name "JS2")
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
             (setq-local company-backends '((company-dabbrev-code
                                             company-files
                                             company-keywords)))))
 
-;; Markdown
-(add-hook 'markdown-mode-hook (lambda () (setq-local mode-name "Md")))
-
 ;; nXML
 (add-hook 'nxml-mode-hook (lambda ()
-                            (setq-local mode-name "X")
                             (setq-local company-backends '(company-nxml))
                             (aggressive-indent-mode -1)
                             ))
@@ -281,12 +276,6 @@
                             (define-key term-raw-map   (kbd "<tab>")
                               (lookup-key term-raw-map (kbd "C-M-i")))
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
-
-;; Snippet
-(add-hook 'snippet-mode-hook (lambda () (setq-local mode-name "S")))
-
-;; YAS
-(add-hook 'yas-minor-mode-hook (lambda () (diminish 'yas-minor-mode " Y")))
 
 ;;;; Project specific settings ;;;;
 

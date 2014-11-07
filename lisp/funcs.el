@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;;; funcs.el --- Some functions and macros I use.
 
 ;; Copyright (C) 2013, 2014 Mattias Bengtsson
@@ -38,6 +39,34 @@
 ;;; Note:
 
 ;;; Code:
+
+;;;###autoload
+(defun my/shorten-minor-modes (modes)
+  "Shorten the displayed name for MODES in the modeline."
+  (dolist (mode-and-line modes)
+    (let ((line (cdr mode-and-line))
+          (mode (car mode-and-line)))
+      (my/shorten-minor-mode mode line))))
+
+;;;###autoload
+(defun my/shorten-minor-mode (mode line)
+  "Replace the displayed name for MODE by LINE."
+  (let ((hook (intern (concat (symbol-name mode) "-hook"))))
+    (add-hook hook (lambda () (diminish mode line)))))
+
+;;;###autoload
+(defun my/shorten-major-modes (modes)
+  "Shorten the displayed name for MODES in the modeline."
+  (dolist (mode-and-line modes)
+    (let ((line (cdr mode-and-line))
+          (mode (car mode-and-line)))
+      (my/shorten-major-mode mode line))))
+
+;;;###autoload
+(defun my/shorten-major-mode (mode line)
+  "Replace the displayed name for MODE by LINE."
+  (let ((hook (intern (concat (symbol-name mode) "-hook"))))
+    (add-hook hook (lambda () (setq-local mode-name line)))))
 
 ;;;###autoload
 (defun my/byte-compile ()
