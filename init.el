@@ -226,6 +226,9 @@
                               ("C-c d"      . godoc-at-point)
                               ("C-<return>" . godef-jump)))))
 
+;; Magit
+(add-hook 'git-commit-mode-hook (lambda () (company-mode 1)))
+
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
                                (setq-local electric-indent-mode nil)))
