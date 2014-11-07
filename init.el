@@ -144,6 +144,7 @@
                           (git-gutter-mode        . "")
                           (yas-minor-mode         . "")
                           (aggressive-indent-mode . " ⇒")
+                          (magit-auto-revert-mode . "")
                           ))
 
 ;;;; Specific modes
