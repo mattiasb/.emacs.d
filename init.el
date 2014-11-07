@@ -65,7 +65,7 @@
    ( "C-c m c"     .  magit-commit)
 
    ;; Marks / Highlights
-   ( "C-ง"         .  er/expand-region)
+   ( "C-ยง"         .  er/expand-region)
    ( "C-c h"       .  highlight-symbol-at-point)
 
    ;; Toggle modes
