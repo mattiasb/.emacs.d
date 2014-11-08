@@ -1,5 +1,4 @@
-;;; -*- lexical-binding: t -*-
-;;; funcs.el --- Some functions and macros I use.
+;;; funcs.el --- Some functions and macros I use.    -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013, 2014 Mattias Bengtsson
 
