@@ -48,6 +48,9 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/cask/")
 (require 'funcs)
 
+;; Maximize on start
+(my/maximize)
+
 ;;;; Keybindings ;;;;
 (my/global-set-keys
  '(
