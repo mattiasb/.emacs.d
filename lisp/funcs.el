@@ -41,7 +41,7 @@
 
 ;;;###autoload
 (defun my/maximize ()
-  "Maximize emacs"
+  "Maximize Emacs."
   (interactive)
   (when (display-graphic-p)
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
