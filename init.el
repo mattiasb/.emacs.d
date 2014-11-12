@@ -233,7 +233,11 @@
                               ("C-<return>" . godef-jump)))))
 
 ;; Magit
-(add-hook 'git-commit-mode-hook (lambda () (company-mode 1)))
+(add-hook 'git-commit-mode-hook
+          (lambda ()
+            (company-mode 1)
+            (fci-mode 1)
+            ))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
