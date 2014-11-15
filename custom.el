@@ -71,6 +71,7 @@
  '(fci-rule-color "gray21")
  '(flycheck-completion-system (quote ido))
  '(flycheck-highlighting-mode (quote symbols))
+ '(gc-cons-threshold 20000000)
  '(git-commit-summary-max-length 40)
  '(global-company-mode t)
  '(global-git-gutter-mode t)
