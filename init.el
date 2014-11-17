@@ -243,7 +243,10 @@
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (setq-local electric-indent-mode nil)))
+                               (aggressive-indent-mode -1)
+                               (setq-local electric-indent-mode nil)
+                               (turn-on-haskell-indentation)
+                               ))
 
 ;; Ido
 (add-hook 'ido-setup-hook
