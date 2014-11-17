@@ -99,7 +99,6 @@
    ;; TEXT MANIPULATION
 
    ;; General
-   ( "<tab>"       .  my/tab-indent-or-complete)
    ( "M-<up>"      .  move-text-up)
    ( "M-<down>"    .  move-text-down)
    ( "C-c a"       .  align-regexp)
@@ -281,7 +280,9 @@
   (flycheck-mode)
   (fci-mode)
   (highlight-numbers-mode)
-  (aggressive-indent-mode))
+  (aggressive-indent-mode)
+  (my/define-keys prog-mode-map '(("<tab>"    . my/tab-indent-or-complete)))
+  )
 
 (add-hook 'prog-mode-hook 'my/prog-mode)
 
