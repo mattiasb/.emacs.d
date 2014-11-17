@@ -291,7 +291,10 @@
   (fci-mode)
   (highlight-numbers-mode)
   (aggressive-indent-mode)
-  (my/define-keys prog-mode-map '(("<tab>"    . my/tab-indent-or-complete)))
+  (my/define-keys prog-mode-map '(("<tab>"    . my/tab-indent-or-complete)
+                                  ("C-<tab>"  . company-complete)
+                                  ("<menu>"   . company-complete)
+                                  ))
   )
 
 (add-hook 'prog-mode-hook 'my/prog-mode)
