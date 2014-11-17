@@ -17,3 +17,4 @@ semanticdb/
 session.*
 srecode-map.el
 tramp
+/flycheck_init.el
