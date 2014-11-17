@@ -131,6 +131,7 @@
 (my/auto-modes '(("\\.inl\\'" . c++-mode)
                  ("\\.ui$"    . nxml-mode)
                  ("\\.js$"    . js2-mode)
+                 ("\\.vala$"  . vala-mode)
                  ))
 
 (my/shorten-major-modes '((markdown-mode   . "Md")
