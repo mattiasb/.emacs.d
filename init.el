@@ -326,6 +326,7 @@
   (require 'cask)
   (cask-initialize)
   (require 'pallet)
+  (pallet-mode t)
 
   ;; customizations that for various reasons can't be in the customize block.
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
