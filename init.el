@@ -251,6 +251,15 @@
             (define-key ido-completion-map [tab] 'ido-complete)
             ))
 
+;; Info
+(add-hook 'Info-mode-hook
+          (lambda ()
+            (my/define-keys Info-mode-map
+                            '(("M-<left>"  . Info-history-back)
+                              ("M-<right>" . Info-history-forward)
+                              ("M-<up>"    . Info-up)
+                              ))))
+
 ;; JS2
 (add-hook 'js2-mode-hook
           (lambda ()
