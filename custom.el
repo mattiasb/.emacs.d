@@ -97,6 +97,7 @@
  '(js2-mirror-mode t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
+ '(markdown-command "pandoc -f markdown -t html -s")
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
