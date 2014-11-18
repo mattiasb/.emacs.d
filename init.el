@@ -163,6 +163,10 @@
             (require 'rtags)
             (my/rtags-start)
             (setq-local rtags-completions-enabled t)
+            ;; Work around bug where c-mode-base-map doesn't inherit from
+            ;; prog-mode-map
+            (unless (keymap-parent c-mode-base-map)
+              (set-keymap-parent c-mode-base-map prog-mode-map))
             (my/define-keys c-mode-base-map
                             '(("C-<return>" . rtags-find-symbol-at-point)
                               ("M-<left>"   . rtags-location-stack-back)
