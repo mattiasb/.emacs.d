@@ -44,16 +44,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aggressive-indent-excluded-modes
-   (quote
-    (text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode)))
+   '(text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode))
  '(column-number-mode t)
  '(company-auto-complete t)
- '(company-auto-complete-chars (quote (32 46)))
+ '(company-auto-complete-chars '(32 46))
  '(company-backends
-   (quote
-    (company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake
+   '(company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake
                    (company-gtags company-etags company-dabbrev-code company-keywords)
-                   company-oddmuse company-files company-dabbrev company-yasnippet)))
+                   company-oddmuse company-files company-dabbrev company-yasnippet))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
@@ -61,28 +59,27 @@
  '(compilation-scroll-output t)
  '(cppcm-build-dirname "build")
  '(custom-buffer-done-kill t)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes '(wombat))
  '(custom-safe-themes
-   (quote
-    ("1934bf7e1713bf706a9cb36cc6a002741773aa42910ca429df194d007ee05c67" "a5beb9b1d6dc23dd8a3c204c159c9a5f1e0115ff14b5b8579d6f3ede4f3b3aee" "26247bcb0b272ec9a5667a6b854125450c88a44248123a03d9f242fd5c6ec36f" "1af9aa2eaaaf6cfa7d3b3d0c6d653a9e05b28f11681fbf4efb75812f4a2a310a" "3103287c8d39800d6b41f8664b223f8ecdd8c6cc0b073441e174b61afdb4ce02" "4530ef4d9cf54740fffb6ce25b393122158057d213a2b812f04930fcadf89d62" "d96416845141e99d05d45b5f99ecf46458bf97654be7d2e20184c5edcda1580a" "e4bc8563d7651b2fed20402fe37b7ab7cb72869f92a3e705907aaecc706117b5" "3d003561784526d83d1dd187aecf4799c72af27046bc3aa2f6d95c64e5ee4746" "c01f093ab78aad6ae2c27abc47519709c6b3aaa2c1e35c712d4dd81ff1df7e31" "569dc84822fc0ac6025f50df56eeee0843bffdeceff2c1f1d3b87d4f7d9fa661" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+   '("1934bf7e1713bf706a9cb36cc6a002741773aa42910ca429df194d007ee05c67" "a5beb9b1d6dc23dd8a3c204c159c9a5f1e0115ff14b5b8579d6f3ede4f3b3aee" "26247bcb0b272ec9a5667a6b854125450c88a44248123a03d9f242fd5c6ec36f" "1af9aa2eaaaf6cfa7d3b3d0c6d653a9e05b28f11681fbf4efb75812f4a2a310a" "3103287c8d39800d6b41f8664b223f8ecdd8c6cc0b073441e174b61afdb4ce02" "4530ef4d9cf54740fffb6ce25b393122158057d213a2b812f04930fcadf89d62" "d96416845141e99d05d45b5f99ecf46458bf97654be7d2e20184c5edcda1580a" "e4bc8563d7651b2fed20402fe37b7ab7cb72869f92a3e705907aaecc706117b5" "3d003561784526d83d1dd187aecf4799c72af27046bc3aa2f6d95c64e5ee4746" "c01f093ab78aad6ae2c27abc47519709c6b3aaa2c1e35c712d4dd81ff1df7e31" "569dc84822fc0ac6025f50df56eeee0843bffdeceff2c1f1d3b87d4f7d9fa661" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))
  '(delete-selection-mode t)
  '(electric-indent-mode t)
  '(electric-layout-mode t)
  '(electric-pair-mode t)
  '(fci-rule-color "gray21")
- '(flycheck-completion-system (quote ido))
- '(flycheck-highlighting-mode (quote symbols))
+ '(flycheck-completion-system 'ido)
+ '(flycheck-highlighting-mode 'symbols)
  '(gc-cons-threshold 20000000)
  '(git-commit-summary-max-length 40)
  '(global-company-mode t)
  '(global-git-gutter-mode t)
- '(haskell-font-lock-symbols (quote unicode))
- '(haskell-mode-hook (quote (turn-on-haskell-indentation)) t)
+ '(haskell-font-lock-symbols 'unicode)
+ '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-ubiquitous-max-items 50000)
  '(ido-vertical t)
- '(ido-vertical-define-keys (quote C-n-C-p-up-down-left-right))
+ '(ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
@@ -93,8 +90,7 @@
  '(js2-concat-multiline-strings t)
  '(js2-enter-indents-newline t)
  '(js2-global-externs
-   (quote
-    ("imports" "require" "module" "exports" "console" "process" "setTimeout" "clearTimeout" "log")))
+   '("imports" "require" "module" "exports" "console" "process" "setTimeout" "clearTimeout" "log"))
  '(js2-include-browser-externs t)
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode t)
@@ -104,36 +100,33 @@
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
  '(package-archives
-   (quote
-    (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/"))))
+   '(("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.org/packages/")))
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rng-schema-locating-files
-   (quote
-    ("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml")))
+   '("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(safe-local-variable-values
-   (quote
-    ((eval progn
+   '((eval progn
            (puthash
             (projectile-project-root)
             "jhbuild make" projectile-compilation-cmd-map)
            (puthash
             (projectile-project-root)
-            "make check" projectile-test-cmd-map)))))
+            "make check" projectile-test-cmd-map))))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
- '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
- '(wdired-allow-to-change-permissions (quote advanced))
+ '(wdired-allow-to-change-permissions 'advanced)
  '(wdired-allow-to-redirect-links nil)
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
- '(yas-prompt-functions (quote (yas-popup-isearch-prompt)))
+ '(yas-prompt-functions '(yas-popup-isearch-prompt))
  '(yas-trigger-key nil)
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))

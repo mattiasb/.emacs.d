@@ -376,6 +376,11 @@
   "Restore previous window configuration after quitting magit-fullscreen."
   (jump-to-register :magit-fullscreen))
 
+(advice-add 'custom-save-all :around
+            (lambda (orig)
+              (let ((print-quoted t))
+                (funcall orig))))
+
 ;;;; Other settings ;;;;
 
 (defalias 'yes-or-no-p 'y-or-n-p)
