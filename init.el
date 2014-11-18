@@ -371,10 +371,10 @@
   "Balance windows after deletion."
   (balance-windows))
 
-(advice-add 'custom-save-all :around
-            (lambda (orig)
-              (let ((print-quoted t))
-                (funcall orig))))
+(defadvice custom-save-all (around custom-save-all-around)
+  "Use abbreviated quotes for customize."
+  (let ((print-quoted t))
+    ad-do-it))
 
 ;;;; Other settings ;;;;
 
