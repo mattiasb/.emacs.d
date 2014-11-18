@@ -371,15 +371,6 @@
   "Balance windows after deletion."
   (balance-windows))
 
-(defadvice magit-status (around magit-fullscreen activate)
-  "Save window configuration when running magit-fullscreen."
-  (window-configuration-to-register :magit-fullscreen)
-  ad-do-it
-  (delete-other-windows))
-(defadvice magit-mode-quit-window (after magit-restore-screen activate)
-  "Restore previous window configuration after quitting magit-fullscreen."
-  (jump-to-register :magit-fullscreen))
-
 (advice-add 'custom-save-all :around
             (lambda (orig)
               (let ((print-quoted t))
