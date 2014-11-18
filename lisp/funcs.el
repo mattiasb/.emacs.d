@@ -156,6 +156,18 @@
     (if cml (progn (delete-region beg end) (insert cml))) ))
 
 ;;;###autoload
+(defun my/preceding-char-match-p (pattern)
+  "Match preceding char with PATTERN."
+  (let ((str (string (preceding-char))))
+    (string-match-p pattern str)))
+
+;;;###autoload
+(defun my/following-char-match-p (pattern)
+  "Match following char with PATTERN."
+  (let ((str (string (following-char))))
+    (string-match-p pattern str)))
+
+;;;###autoload
 (defun my/define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
   (dolist (binding keybindings)
@@ -211,10 +223,11 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (dotimes (number 5 nil) (company-select-previous)))
 
 ;;;###autoload
-(defun my/yas-expand-nil ()
-  "Perform a `yas-expand' but return nil if failure."
-  (let ((yas-fallback-behavior 'return-nil))
-    (yas-expand)))
+(defun my/yas-expand ()
+  "Perform a `yas-expand' but return nil on failure."
+  (if (not (yas-minor-mode)) nil
+    (let ((yas-fallback-behavior 'return-nil))
+      (yas-expand))))
 
 ;;;###autoload
 (defun my/tab-indent-or-complete ()
@@ -224,12 +237,10 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
       (minibuffer-complete)
     (let ((old-indent (current-indentation)))
       (indent-for-tab-command)
-      (if (= old-indent (current-indentation))
-          (if (or (not yas-minor-mode)
-                  (null (my/yas-expand-nil)))
-              (company-complete-common)
-            ))
-      )))
+      (if (and (= old-indent (current-indentation))
+               (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
+               (null (my/yas-expand)))
+          (company-complete-common)))))
 
 ;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
