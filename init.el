@@ -240,7 +240,7 @@
           (lambda ()
             (company-mode 1)
             (fci-mode 1)
-            ))
+            (setq fill-column 72)))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
