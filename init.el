@@ -69,9 +69,6 @@
    ( "C-c w m"     .  magit-status)
    ( "C-c w h"     .  info-display-manual)
 
-   ;; Magit
-   ( "C-c m c"     .  magit-commit)
-
    ;; Marks / Highlights
    ( "C-§"         .  er/expand-region)
    ( "C-c h"       .  highlight-symbol-at-point)
