@@ -303,6 +303,9 @@
 
 (add-hook 'prog-mode-hook 'my/prog-mode)
 
+;; Python
+(add-hook 'python-mode-hook (lambda () (aggressive-indent-mode -1)))
+
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
