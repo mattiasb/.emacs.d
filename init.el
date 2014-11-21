@@ -67,11 +67,13 @@
    ( "C-c w p"     .  list-packages)
    ( "C-c w t"     .  ansi-term)
    ( "C-c w m"     .  magit-status)
-   ( "C-c w h"     .  info-display-manual)
+
+   ;; Documentation
+   ( "C-c h i"     .  info-display-manual)
+   ( "C-c h m"     .  woman)
 
    ;; Marks / Highlights
    ( "C-§"         .  er/expand-region)
-   ( "C-c h"       .  highlight-symbol-at-point)
 
    ;; Toggle modes
    ( "C-c t w"     .  whitespace-mode)
