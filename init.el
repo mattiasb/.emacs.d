@@ -275,6 +275,12 @@
                                             company-files
                                             company-keywords)))))
 
+;; Markdown
+(add-hook 'nxml-mode-hook (lambda ()
+                            (setq-local fill-column 80)
+                            (fci-mode)
+                            ))
+
 ;; nXML
 (add-hook 'nxml-mode-hook (lambda ()
                             (setq-local company-backends '(company-nxml))
