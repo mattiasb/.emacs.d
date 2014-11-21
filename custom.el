@@ -121,6 +121,7 @@
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
+ '(tooltip-mode nil)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
