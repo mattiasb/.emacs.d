@@ -127,6 +127,8 @@
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(wdired-allow-to-change-permissions 'advanced)
  '(wdired-allow-to-redirect-links nil)
+ '(woman-fill-column 80)
+ '(woman-fill-frame t)
  '(woman-use-own-frame t)
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
