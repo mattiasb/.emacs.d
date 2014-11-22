@@ -18,3 +18,4 @@ session.*
 srecode-map.el
 tramp
 /flycheck_init.el
+/flycheck_custom.el
