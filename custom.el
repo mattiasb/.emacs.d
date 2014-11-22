@@ -129,7 +129,6 @@
  '(wdired-allow-to-redirect-links nil)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
- '(woman-use-own-frame t)
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions '(yas-popup-isearch-prompt))
