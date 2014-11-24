@@ -97,7 +97,7 @@
  '(js2-mirror-mode t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
- '(markdown-command "pandoc -s -f markdown -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
+ '(markdown-command "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
