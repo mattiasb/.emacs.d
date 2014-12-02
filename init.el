@@ -127,11 +127,13 @@
 ;;;; Modes ;;;;
 
 ;; Auto Modes
-(my/auto-modes '(("\\.inl\\'" . c++-mode)
-                 ("\\.ui$"    . nxml-mode)
-                 ("\\.js$"    . js2-mode)
-                 ("\\.vala$"  . vala-mode)
-                 ))
+(my/auto-modes  '(("\\.inl\\'"    . c++-mode)
+                  ("\\.ui$"       . nxml-mode)
+                  ("\\.js$"       . js2-mode)
+                  ("\\.jshintrc$" . js2-mode)
+                  ("\\.jscsrc$"   . json-mode)
+                  ("\\.vala$"     . vala-mode)
+                  ))
 
 (my/shorten-major-modes '((markdown-mode   . "Md")
                           (js2-mode        . "JS2")
