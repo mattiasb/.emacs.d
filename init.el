@@ -222,6 +222,12 @@
                             '(("C-<tab>" . company-complete)
                               ("<tab>"   . my/tab-indent-or-complete)))))
 
+;; Flycheck
+(add-hook 'flycheck-mode-hook
+          (lambda()
+            (require 'flycheck-jscs)
+            (add-to-list 'flycheck-checkers 'javascript-jscs)))
+
 ;; Go
 (add-hook 'go-mode-hook
           (lambda ()
