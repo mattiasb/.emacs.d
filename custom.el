@@ -104,6 +104,7 @@
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
+ '(powerline-default-separator 'bar)
  '(projectile-keymap-prefix (kbd "C-p"))
  '(rng-schema-locating-files
    '("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))

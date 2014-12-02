@@ -361,6 +361,8 @@
     (setq-default projectile-indexing-method 'native))
 
   ;; Activate a bunch of global modes
+  (powerline-major-mode)
+  (powerline-default-theme)
   (yas-global-mode)
   (global-git-gutter-mode)
   (projectile-global-mode)
