@@ -54,6 +54,7 @@
 (depends-on "parent-mode")
 (depends-on "pkg-info")
 (depends-on "popup")
+(depends-on "powerline")
 (depends-on "projectile")
 (depends-on "rtags")
 (depends-on "s")
