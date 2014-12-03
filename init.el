@@ -37,25 +37,42 @@
 
 ;;; Code:
 
+
+
+;;;; Settings ;;;;
+
 ;; Unset these early to remove at least some of the inital flicker.
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 ;; Load path
+(defvar load-prefer-newer)
 (setq load-prefer-newer t)
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/lisp/cask/")
 (require 'funcs)
 
-;; Maximize on start
-(my/maximize)
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'list-buffers 'ibuffer)
+
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+
+
+;;;; Early init code
+
+;;Maximize on start
+(my/maximize)
+
+
 
 ;;;; Keybindings ;;;;
+
 (my/global-set-keys
  '(
    ;; Global overrides
@@ -124,9 +141,11 @@
 
 (windmove-default-keybindings)
 
+
+
 ;;;; Modes ;;;;
 
-;; Auto Modes
+;; General stuff
 (my/auto-modes  '(("\\.inl\\'"    . c++-mode)
                   ("\\.ui$"       . nxml-mode)
                   ("\\.js$"       . js2-mode)
@@ -332,6 +351,8 @@
                               (lookup-key term-raw-map (kbd "C-M-i")))
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
 
+
+
 ;;;; Project specific settings ;;;;
 
 ;; JHBuild
@@ -346,6 +367,8 @@
                               projectile-test-cmd-map)
                      ))))))
 (dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
+
+
 
 ;;;; Post-init code ;;;;
 
@@ -376,7 +399,9 @@
 
 (add-hook 'after-init-hook 'my/after-init)
 
-;; Advices
+
+
+;;;; Advices ;;;;
 
 (defadvice split-window-right (after rebalance-windows activate)
   "Balance windows after splitting."
@@ -397,8 +422,7 @@
 
 ;;;; Other settings ;;;;
 
-(defalias 'yes-or-no-p 'y-or-n-p)
-(defalias 'list-buffers 'ibuffer)
+
 
 (provide 'init)
 ;;; init.el ends here
