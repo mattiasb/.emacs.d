@@ -139,16 +139,6 @@
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
-(require 'color)
-
-(let ((bg (face-attribute 'default :background)))
-  (custom-set-faces
-   `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
-   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 5)))))
-   `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 15)))))
-   `(company-tooltip-selection ((t (:inherit font-lock-function-name-face :background ,(color-lighten-name bg 7)))))
-   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
