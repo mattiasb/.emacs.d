@@ -171,6 +171,7 @@
                           (flycheck-mode            . " F")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
+                          (magit-gh-pulls-mode      . " GitHub")
                           (yas-minor-mode           . "")
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
@@ -276,7 +277,9 @@
 
 (add-hook 'magit-mode-hook
           (lambda ()
+            (require 'magit-gh-pulls)
             (require 'magit-gitflow)
+            (turn-on-magit-gh-pulls)
             (turn-on-magit-gitflow)
             ))
 
