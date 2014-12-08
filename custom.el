@@ -55,6 +55,7 @@
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
+ '(company-show-numbers t)
  '(company-tooltip-align-annotations t)
  '(compilation-scroll-output t)
  '(cppcm-build-dirname "build")
