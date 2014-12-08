@@ -313,10 +313,14 @@
                                             company-keywords)))))
 
 ;; Markdown
-(add-hook 'markdown-mode-hook (lambda ()
-                                (setq-local fill-column 80)
-                                (fci-mode)
-                                ))
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (setq-local fill-column 80)
+            (fci-mode)
+            (my/define-keys markdown-mode-map
+                            '(("C-<return>" . markdown-jump)
+                              ))
+            ))
 
 ;; nXML
 (add-hook 'nxml-mode-hook (lambda ()
