@@ -170,6 +170,7 @@
                           (abbrev-mode              . " A")
                           (flycheck-mode            . " F")
                           (git-gutter-mode          . "")
+                          (magit-gitflow-mode       . " Flow")
                           (yas-minor-mode           . "")
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
@@ -272,6 +273,12 @@
             (company-mode 1)
             (fci-mode 1)
             (setq fill-column 72)))
+
+(add-hook 'magit-mode-hook
+          (lambda ()
+            (require 'magit-gitflow)
+            (turn-on-magit-gitflow)
+            ))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()

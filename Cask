@@ -44,6 +44,7 @@
 (depends-on "json-snatcher")
 (depends-on "lua-mode")
 (depends-on "magit")
+(depends-on "magit-gitflow")
 (depends-on "markdown-mode")
 (depends-on "move-text")
 (depends-on "multiple-cursors")
