@@ -15,6 +15,7 @@
 (depends-on "diminish")
 (depends-on "dummy-h-mode")
 (depends-on "editorconfig")
+(depends-on "emr")
 (depends-on "epl")
 (depends-on "expand-region")
 (depends-on "f")
