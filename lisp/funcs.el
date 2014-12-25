@@ -211,16 +211,16 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (unless rtags-process (rtags-restart-process)))
 
 ;;;###autoload
-(defun my/company-select-next-five ()
+(defun my/company-select-next-nine ()
   "A bit more eager `company-select-next'."
   (interactive)
-  (dotimes (number 5 nil) (company-select-next)))
+  (dotimes (number 9 nil) (company-select-next)))
 
 ;;;###autoload
-(defun my/company-select-previous-five ()
+(defun my/company-select-previous-nine ()
   "A bit more eager `company-select-previous'."
   (interactive)
-  (dotimes (number 5 nil) (company-select-previous)))
+  (dotimes (number 9 nil) (company-select-previous)))
 
 ;;;###autoload
 (defun my/yas-expand ()
