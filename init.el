@@ -411,7 +411,10 @@
   (ido-vertical-mode)
   (ido-ubiquitous-mode)
   (flx-ido-mode)
-  (fancy-narrow-mode))
+  (fancy-narrow-mode)
+
+  ;; Some more keys
+  (my/define-keys projectile-command-map '(("s p" . projectile-pt))))
 
 (add-hook 'after-init-hook 'my/after-init)
 
