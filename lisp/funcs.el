@@ -187,6 +187,17 @@ With PREFIX = 16, write out the day and month name."
         (system-time-locale "en_US"))
     (insert (format-time-string format))))
 
+(defun my/insert-year ()
+  "Insert the current year."
+  (interactive)
+  (let ((format "%Y")
+        (system-time-locale "en_US"))
+    (insert (format-time-string format))))
+
+(defun my/autoinsert-yas-expand()
+  "Replace text in yasnippet template."
+  (yas/expand-snippet (buffer-string) (point-min) (point-max)))
+
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)
   "Define a new function which call FUNCTION.

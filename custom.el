@@ -45,6 +45,9 @@
  ;; If there is more than one, they won't work right.
  '(aggressive-indent-excluded-modes
    '(text-mode tabulated-list-mode special-mode minibuffer-inactive-mode bibtex-mode yaml-mode jabber-chat-mode lisp-interaction-mode))
+ '(auto-insert 'other)
+ '(auto-insert-directory "~/.emacs.d/templates/")
+ '(auto-insert-alist '((("\\.el\\'" . "Emacs Lisp") . ["default.el" my/autoinsert-yas-expand])))
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 46))

@@ -134,6 +134,7 @@
    ( "C-c s n"     .  yas-new-snippet)
    ( "C-c s e"     .  yas-visit-snippet-file)
    ( "C-c s r"     .  yas-reload-all)
+   ( "C-c s t"     .  auto-insert)
    ))
 
 (global-unset-key (kbd "C-z"))
@@ -421,6 +422,7 @@
   (ido-ubiquitous-mode)
   (flx-ido-mode)
   (fancy-narrow-mode)
+  (auto-insert-mode)
 
   ;; Some more keys
   (my/define-keys projectile-command-map '(("s p" . projectile-pt))))
