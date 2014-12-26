@@ -244,6 +244,23 @@ depending on context."
           (company-complete-common)))))
 
 ;;;###autoload
+(defun my/snippet-or-complete ()
+  "Insert snippet or complete (using `company-mode') depending on context."
+  (interactive)
+  (if (minibufferp)
+      (minibuffer-complete)
+    (when (null (my/yas-expand))
+      (company-complete-common))))
+
+;;;###autoload
+(defun my/restclient ()
+  "Create a restclient buffer."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*REST*"))
+  (restclient-mode)
+  (insert "# -*- restclient -*-\n\n"))
+
+;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (require 'popup)

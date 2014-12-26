@@ -359,6 +359,15 @@
 ;; Python
 (add-hook 'python-mode-hook (lambda () (aggressive-indent-mode -1)))
 
+;; REST Client
+(add-hook 'restclient-mode-hook
+          (lambda ()
+            (company-mode)
+            (setq-local company-backends '((company-restclient)))
+            (my/define-keys restclient-mode-map
+                            '(("<tab>" . my/snippet-or-complete)))
+            ))
+
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
