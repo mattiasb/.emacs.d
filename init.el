@@ -247,7 +247,7 @@
           (lambda ()
             (my/define-keys emacs-lisp-mode-map
                             '(("C-<tab>" . company-complete)
-                              ("<tab>"   . my/tab-indent-or-complete)))))
+                              ("<tab>"   . my/indent-snippet-or-complete)))))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
@@ -347,7 +347,7 @@
   (highlight-numbers-mode)
   (aggressive-indent-mode)
   (emr-initialize)
-  (my/define-keys prog-mode-map '(("<tab>"      . my/tab-indent-or-complete)
+  (my/define-keys prog-mode-map '(("<tab>"      . my/indent-snippet-or-complete)
                                   ("C-<tab>"    . company-complete)
                                   ("<menu>"     . company-complete)
                                   ("M-<return>" . emr-show-refactor-menu)

@@ -230,8 +230,9 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
       (yas-expand))))
 
 ;;;###autoload
-(defun my/tab-indent-or-complete ()
-  "Tab indent or complete (using `company-mode') depending on context."
+(defun my/indent-snippet-or-complete ()
+  "Tab indent, insert snippet or complete (using `company-mode')
+depending on context."
   (interactive)
   (if (minibufferp)
       (minibuffer-complete)
