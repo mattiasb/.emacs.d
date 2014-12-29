@@ -38,7 +38,7 @@
 ;;; Code:
 
 
-
+
 ;;;; Settings ;;;;
 
 ;; Unset these early to remove at least some of the inital flicker.
@@ -63,14 +63,14 @@
 (put 'upcase-region 'disabled nil)
 
 
-
+
 ;;;; Early init code
 
 ;;Maximize on start
 (my/maximize)
 
 
-
+
 ;;;; Keybindings ;;;;
 
 (my/global-set-keys
@@ -104,6 +104,8 @@
    ( "C-'"         .  ace-jump-word-mode)
    ( "C-c o"       .  browse-url-at-point)
    ( "C-c n"       .  make-frame)
+   ( "C-<next>"    .  forward-page)
+   ( "C-<prior>"   .  backward-page)
 
    ;; Move buffers
    ( "<C-S-up>"    .  buf-move-up)
@@ -143,7 +145,7 @@
 (windmove-default-keybindings)
 
 
-
+
 ;;;; Modes ;;;;
 
 ;; General stuff
@@ -246,6 +248,7 @@
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
+            (form-feed-mode)
             (my/define-keys emacs-lisp-mode-map
                             '(("C-<tab>" . company-complete)
                               ("<tab>"   . my/indent-snippet-or-complete)))))
@@ -378,7 +381,7 @@
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
 
 
-
+
 ;;;; Project specific settings ;;;;
 
 ;; JHBuild
@@ -395,7 +398,7 @@
 (dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
 
 
-
+
 ;;;; Post-init code ;;;;
 
 (defun my/after-init ()
@@ -430,7 +433,7 @@
 (add-hook 'after-init-hook 'my/after-init)
 
 
-
+
 ;;;; Advices ;;;;
 
 (defadvice split-window-right (after rebalance-windows activate)
@@ -451,6 +454,7 @@
     ad-do-it))
 
 ;;;; Other settings ;;;;
+
 
 
 
