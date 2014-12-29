@@ -173,6 +173,7 @@
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
                           (flycheck-mode            . " F")
+                          (form-feed-mode           . "")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
                           (yas-minor-mode           . "")
