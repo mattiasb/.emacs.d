@@ -260,6 +260,7 @@
             (add-to-list 'flycheck-checkers 'javascript-jscs)))
 
 ;; Go
+(defvar go-mode-map)
 (add-hook 'go-mode-hook
           (lambda ()
             (go-eldoc-setup)
@@ -284,7 +285,8 @@
 (add-hook 'magit-mode-hook
           (lambda ()
             (require 'magit-gitflow)
-            (turn-on-magit-gitflow)
+            (when (fboundp 'turn-on-magit-gitflow)
+              (turn-on-magit-gitflow))
             ))
 
 ;; Haskell
@@ -310,6 +312,7 @@
                               ))))
 
 ;; JS2
+(defvar js2-mode-map)
 (add-hook 'js2-mode-hook
           (lambda ()
             (require 'js2-refactor)
@@ -319,6 +322,7 @@
                                             company-keywords)))))
 
 ;; Markdown
+(defvar markdown-mode-map)
 (add-hook 'markdown-mode-hook
           (lambda ()
             (setq-local fill-column 80)
@@ -364,6 +368,7 @@
 (add-hook 'python-mode-hook (lambda () (aggressive-indent-mode -1)))
 
 ;; REST Client
+(defvar restclient-mode-map)
 (add-hook 'restclient-mode-hook
           (lambda ()
             (company-mode)
@@ -375,6 +380,7 @@
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
+(defvar term-raw-map)
 (add-hook 'term-mode-hook (lambda ()
                             (define-key term-raw-map   (kbd "<tab>")
                               (lookup-key term-raw-map (kbd "C-M-i")))
@@ -427,6 +433,8 @@
   (fancy-narrow-mode)
   (auto-insert-mode)
 
+  (auto-compile-on-save-mode)
+  (auto-compile-on-load-mode)
   ;; Some more keys
   (my/define-keys projectile-command-map '(("s p" . projectile-pt))))
 
