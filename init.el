@@ -453,10 +453,6 @@
   (let ((print-quoted t))
     ad-do-it))
 
-;;;; Other settings ;;;;
-
-
-
 
 (provide 'init)
 ;;; init.el ends here
