@@ -432,9 +432,9 @@
   (flx-ido-mode)
   (fancy-narrow-mode)
   (auto-insert-mode)
-
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
+
   ;; Some more keys
   (my/define-keys projectile-command-map '(("s p" . projectile-pt))))
 
