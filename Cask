@@ -38,6 +38,7 @@
 (depends-on "haml-mode")
 (depends-on "haskell-mode")
 (depends-on "highlight-numbers")
+(depends-on "ibuffer-projectile")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")
 (depends-on "js2-mode")

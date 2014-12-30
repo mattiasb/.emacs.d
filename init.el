@@ -303,6 +303,13 @@
             (define-key ido-completion-map [tab] 'ido-complete)
             ))
 
+;; IBuffer
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-projectile-set-filter-groups)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
+
 ;; Info
 (add-hook 'Info-mode-hook
           (lambda ()
