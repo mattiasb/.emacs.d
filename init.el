@@ -84,6 +84,7 @@
    ( "C-c w p"     .  list-packages)
    ( "C-c w t"     .  ansi-term)
    ( "C-c w m"     .  magit-status)
+   ( "C-c w r"     .  my/restclient)
 
    ;; Documentation
    ( "C-c h i"     .  info-display-manual)
