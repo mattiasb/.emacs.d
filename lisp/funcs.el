@@ -196,7 +196,7 @@ With PREFIX = 16, write out the day and month name."
 
 (defun my/autoinsert-yas-expand()
   "Replace text in yasnippet template."
-  (yas/expand-snippet (buffer-string) (point-min) (point-max)))
+  (yas-expand-snippet (buffer-string) (point-min) (point-max)))
 
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)
@@ -225,13 +225,13 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
 (defun my/company-select-next-nine ()
   "A bit more eager `company-select-next'."
   (interactive)
-  (dotimes (number 9 nil) (company-select-next)))
+  (dotimes (_i 9 nil) (company-select-next)))
 
 ;;;###autoload
 (defun my/company-select-previous-nine ()
   "A bit more eager `company-select-previous'."
   (interactive)
-  (dotimes (number 9 nil) (company-select-previous)))
+  (dotimes (_i 9 nil) (company-select-previous)))
 
 ;;;###autoload
 (defun my/yas-expand ()

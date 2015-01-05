@@ -312,6 +312,7 @@
               (ibuffer-do-sort-by-alphabetic))))
 
 ;; IELM
+(defvar ielm-map)
 (add-hook 'ielm-mode-hook
           (lambda()
             (company-mode)
