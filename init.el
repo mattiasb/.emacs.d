@@ -311,6 +311,14 @@
             (unless (eq ibuffer-sorting-mode 'alphabetic)
               (ibuffer-do-sort-by-alphabetic))))
 
+;; IELM
+(add-hook 'ielm-mode-hook
+          (lambda()
+            (company-mode)
+            (my/define-keys ielm-map
+                            '(("<tab>" . my/indent-snippet-or-complete)))
+            ))
+
 ;; Info
 (add-hook 'Info-mode-hook
           (lambda ()
