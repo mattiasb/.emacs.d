@@ -258,6 +258,8 @@
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
           (lambda()
+            (flycheck-cask-setup)
+            (flycheck-package-setup)
             (require 'flycheck-jscs)
             (add-to-list 'flycheck-checkers 'javascript-jscs)))
 

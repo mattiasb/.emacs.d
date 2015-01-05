@@ -25,6 +25,8 @@
 (depends-on "flx")
 (depends-on "flx-ido")
 (depends-on "flycheck")
+(depends-on "flycheck-cask")
+(depends-on "flycheck-package")
 (depends-on "form-feed")
 (depends-on "fullscreen-mode")
 (depends-on "git-commit-mode")
