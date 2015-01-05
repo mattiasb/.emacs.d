@@ -104,6 +104,8 @@
  '(js2-mirror-mode t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
+ '(lua-indent-level 2)
+ '(lua-prefix-key "C-c")
  '(magit-auto-revert-mode-lighter "")
  '(markdown-command
    "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
