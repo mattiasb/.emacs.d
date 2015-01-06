@@ -56,6 +56,7 @@
 (depends-on "multiple-cursors")
 (depends-on "names")
 (depends-on "package-build")
+(depends-on "packed")
 (depends-on "pallet")
 (depends-on "parent-mode")
 (depends-on "pkg-info")
