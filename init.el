@@ -187,6 +187,8 @@
 ;;;; Specific modes
 
 ;; C common
+(defvar c-mode-base-map)
+(defvar rtags-completions-enabled)
 (add-hook 'c-mode-common-hook
           (lambda ()
             (require 'rtags)
