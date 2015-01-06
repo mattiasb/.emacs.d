@@ -284,7 +284,6 @@
 ;; Magit
 (add-hook 'git-commit-mode-hook
           (lambda ()
-            (company-mode 1)
             (fci-mode 1)
             (setq fill-column 72)))
 
