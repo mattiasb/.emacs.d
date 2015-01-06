@@ -64,7 +64,6 @@
  '(company-show-numbers t)
  '(company-tooltip-align-annotations t)
  '(compilation-scroll-output t)
- '(cppcm-build-dirname "build")
  '(custom-buffer-done-kill t)
  '(custom-enabled-themes '(wombat))
  '(custom-safe-themes
