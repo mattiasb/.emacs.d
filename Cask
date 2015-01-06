@@ -11,7 +11,6 @@
 (depends-on "company")
 (depends-on "company-go")
 (depends-on "company-restclient")
-(depends-on "cpputils-cmake")
 (depends-on "dash")
 (depends-on "diminish")
 (depends-on "dummy-h-mode")
