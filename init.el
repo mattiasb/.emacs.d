@@ -342,6 +342,13 @@
                                             company-files
                                             company-keywords)))))
 
+;; Lua
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq-local company-backends '((company-dabbrev-code
+                                            company-files
+                                            company-keywords)))))
+
 ;; Markdown
 (defvar markdown-mode-map)
 (add-hook 'markdown-mode-hook
