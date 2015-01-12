@@ -55,6 +55,7 @@
 (depends-on "markdown-mode")
 (depends-on "move-text")
 (depends-on "multiple-cursors")
+(depends-on "mwim")
 (depends-on "names")
 (depends-on "package-build")
 (depends-on "packed")

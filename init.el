@@ -125,6 +125,8 @@
    ( "C-c C-c"     .  my/toggle-programming-case-word-at-point)
    ( "C-c i"       .  insert-char)
    ( "C-c d"       .  my/insert-date) ;; TODO: Replace with snippet
+   ( "C-a"         .  mwim-beginning-of-code-or-line)
+   ( "C-e"         .  mwim-end-of-code-or-line)
 
    ;; Replace
    ( "C-c r"       .  replace-string)
