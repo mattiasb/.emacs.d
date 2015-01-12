@@ -4,6 +4,7 @@
 (depends-on "ace-jump-mode")
 (depends-on "ack-and-a-half")
 (depends-on "aggressive-indent")
+(depends-on "auto-compile")
 (depends-on "bash-completion")
 (depends-on "buffer-move")
 (depends-on "cask")
