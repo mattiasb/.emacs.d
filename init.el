@@ -133,7 +133,7 @@
    ( "C-c C-q"     .  query-replace-regexp)
 
    ;; YAS
-   ( "C-c s s"     .  company-yasnippet)
+   ( "C-c s s"     .  yas-insert-snippet)
    ( "C-c s n"     .  yas-new-snippet)
    ( "C-c s e"     .  yas-visit-snippet-file)
    ( "C-c s r"     .  yas-reload-all)
