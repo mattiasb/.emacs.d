@@ -359,6 +359,8 @@
             (fci-mode)
             (my/define-keys markdown-mode-map
                             '(("C-<return>" . markdown-jump)
+                              ("M-<up>"     . nil)
+                              ("M-<down>"   . nil)
                               ))
             ))
 
