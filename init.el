@@ -66,7 +66,7 @@
 
 ;;;; Early init code
 
-;;Maximize on start
+;; Maximize on start
 (my/maximize)
 
 
