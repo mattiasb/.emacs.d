@@ -251,6 +251,15 @@
 (add-hook 'company-completion-finished-hook  'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
+;; Dired
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (my/define-keys dired-mode-map
+                            '(("W" . wdired-change-to-wdired-mode)
+                              ("F" . find-name-dired)
+                              ))
+            ))
+
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
