@@ -52,8 +52,7 @@
       ["default.el" my/autoinsert-yas-expand])
      (("\\.lua\\'" . "Lua")
       .
-      ["default.lua" my/autoinsert-yas-expand])
-     ))
+      ["default.lua" my/autoinsert-yas-expand])))
  '(auto-insert-directory "~/.emacs.d/templates/")
  '(column-number-mode t)
  '(company-auto-complete t)
