@@ -252,6 +252,7 @@
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
 ;; Dired
+(defvar dired-mode-map)
 (add-hook 'dired-mode-hook
           (lambda ()
             (my/define-keys dired-mode-map
