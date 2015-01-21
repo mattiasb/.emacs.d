@@ -1,5 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: Const
-# key: const
+# name: Case
+# key: case
 # --
-const $1 = $0;
+case $1:
+$0
+break;

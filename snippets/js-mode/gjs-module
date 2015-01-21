@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: mod
+# name: Module
 # key: mod
 # expand-env: ((yas-indent-line 'fixed) (yas-triggers-in-field 't))
 # --

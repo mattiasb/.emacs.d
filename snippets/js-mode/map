@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: map
+# name: Map
 # key: map
 # --
 ${1:collection}.map($0);
