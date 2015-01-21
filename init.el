@@ -449,25 +449,30 @@
 
 ;;;; Post-init code ;;;;
 
-(defun my/after-init ()
-  "My after init hook."
-  (require 'cask)
-  (cask-initialize)
-  (pallet-mode t)
-
-  ;; customizations that for various reasons can't be in the customize block.
-  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+(defun my/activate-projectile ()
+  "Activate projectile."
+  (projectile-global-mode)
   (setq projectile-mode-line
         '(:eval (format " [%s]" (projectile-project-name))))
   (when (and (string= (window-system) "w32"))
     (setq-default projectile-indexing-method 'native))
 
-  ;; Activate a bunch of global modes
+  (my/define-keys projectile-command-map
+                  '(("s p" . projectile-pt)))
+  )
+
+(defun my/activate-yas ()
+  "Activate projectile."
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-global-mode))
+
+(defun my/activate-modes ()
+  "Activate a bunch of global modes."
+  (cask-initialize)
+  (pallet-mode)
   (powerline-major-mode)
   (powerline-default-theme)
-  (yas-global-mode)
   (global-git-gutter-mode)
-  (projectile-global-mode)
   (ido-mode)
   (ido-vertical-mode)
   (ido-ubiquitous-mode)
@@ -477,10 +482,13 @@
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
 
-  ;; Some more keys
-  (my/define-keys projectile-command-map '(("s p" . projectile-pt))))
+  (my/activate-projectile)
+  (my/activate-yas))
 
-(add-hook 'after-init-hook 'my/after-init)
+(add-hook 'after-init-hook (lambda ()
+                             (require 'cask)
+                             (my/activate-modes)
+                             ))
 
 
 
