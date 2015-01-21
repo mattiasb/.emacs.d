@@ -161,8 +161,8 @@
                   ("\/Cask$"      . emacs-lisp-mode)
                   ))
 
-(my/shorten-major-modes '((markdown-mode   . "Markdown")
-                          (js2-mode        . "JS2")
+(my/shorten-major-modes '((markdown-mode   . "M↓")
+                          (js2-mode        . "JS")
                           (nxml-mode       . "XML")
                           (c-mode          . "C")
                           (c++-mode        . "C++")
@@ -170,7 +170,7 @@
                           (emacs-lisp-mode . "Elisp")
                           (go-mode         . "Go")
                           (haskell-mode    . "λ")
-                          (snippet-mode    . "Yasnippet")
+                          (snippet-mode    . "Yas")
                           ))
 
 (my/shorten-minor-modes '((company-mode             . " C")
