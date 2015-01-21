@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: Function
-# key: func
+# key: function
 # binding: C-c C-f
 # --
 function $1($2)
