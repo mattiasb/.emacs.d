@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: loop-file
+# key: file
+# --
+while read p; do
+    $0
+done <${2:file}
