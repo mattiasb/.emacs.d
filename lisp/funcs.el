@@ -289,6 +289,21 @@ depending on context."
    ))
 
 ;;;###autoload
+(defun uniquify-region-lines (beg end)
+  "Remove duplicate adjacent lines in region BEG to END."
+  (interactive "*r")
+  (save-excursion
+    (goto-char beg)
+    (while (re-search-forward "^\\(.*\n\\)\\1+" end t)
+      (replace-match "\\1"))))
+
+;;;###autoload
+(defun uniquify-buffer-lines ()
+  "Remove duplicate adjacent lines in the current buffer."
+  (interactive)
+  (uniquify-region-lines (point-min) (point-max)))
+
+;;;###autoload
 (defun my/wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
