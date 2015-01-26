@@ -143,6 +143,7 @@
 
 (global-unset-key (kbd "C-z"))
 (global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
+(global-set-key [remap occur]       'my/occur-dwim)
 
 (windmove-default-keybindings)
 
