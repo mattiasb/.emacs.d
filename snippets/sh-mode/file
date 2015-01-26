@@ -2,6 +2,6 @@
 # name: loop-file
 # key: file
 # --
-while read p; do
+while read ${1:line}; do
     $0
 done <${2:file}
