@@ -235,23 +235,9 @@
             (my/define-keys company-mode-map
                             '(("C-<tab>"    . company-complete)))))
 
-;; Workaround for fci-mode with Company
-;; https://github.com/company-mode/company-mode/issues/180#issuecomment-55047120
-(defvar-local company-fci-mode-on-p nil)
-
-(defun company-turn-off-fci (&rest ignore)
-  "Turn off fci-mode. (IGNORE any parameters)."
-  (when (boundp 'fci-mode)
-    (setq company-fci-mode-on-p fci-mode)
-    (when fci-mode (fci-mode -1))))
-
-(defun company-maybe-turn-on-fci (&rest ignore)
-  "Turn on fci-mode. (IGNORE any parameters)."
-  (when company-fci-mode-on-p (fci-mode 1)))
-
-(add-hook 'company-completion-started-hook   'company-turn-off-fci)
-(add-hook 'company-completion-finished-hook  'company-maybe-turn-on-fci)
-(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-started-hook   'my/fci-turn-off)
+(add-hook 'company-completion-finished-hook  'my/fci-turn-on)
+(add-hook 'company-completion-cancelled-hook 'my/fci-turn-on)
 
 ;; Dired
 (defvar dired-mode-map)
@@ -510,6 +496,15 @@
   "Use abbreviated quotes for customize."
   (let ((print-quoted t))
     ad-do-it))
+
+(defadvice popup-create (before suppress-fci-mode activate)
+  "Suspend fci-mode while popups are visible."
+  (my/fci-turn-off))
+(defadvice popup-delete (after restore-fci-mode activate)
+  "Restore fci-mode when all popups have closed."
+  (when (null popup-instances)
+    (my/fci-turn-on)))
+
 
 
 (provide 'init)
