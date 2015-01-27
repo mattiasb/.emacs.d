@@ -4,7 +4,7 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 20141202
 ;; Keywords         : init
-;; Package-Requires : (flycheck)
+;; Package-Requires : ((flycheck "0.20"))
 ;; URL              : https://github.com/moonlite/.emacs.d
 ;; Compatibility    : GNU Emacs: 24.x
 
