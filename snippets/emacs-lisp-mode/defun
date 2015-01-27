@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: defun
+# key: defun
+# binding: C-c C-d
+# --
+defun ${1:function} ($2)
+"$3."
+$0

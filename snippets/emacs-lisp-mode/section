@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: section
+# key: ;;;;
+# binding: C-c C-s
+# --
+
+
+;;;; $1 ;;;;
+
+$0
