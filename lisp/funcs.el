@@ -264,13 +264,13 @@ depending on context."
       (company-complete-common))))
 
 ;;;###autoload
-(defun my/fci-turn-off (&rest _ignore)
-  "Turn off `fci-mode' _IGNORE."
+(defun my/fci-turn-off (&rest _)
+  "Turn off `fci-mode'."
   (when (boundp 'fci-mode)
     (turn-off-fci-mode)))
 
 ;;;###autoload
-(defun my/fci-turn-on (&rest _ignore)
+(defun my/fci-turn-on (&rest _)
   "Turn on `fci-mode'."
   (when (boundp 'fci-mode)
     (turn-on-fci-mode)))
