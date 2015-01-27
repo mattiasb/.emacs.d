@@ -250,12 +250,7 @@
             ))
 
 ;; ELisp
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (form-feed-mode)
-            (my/define-keys emacs-lisp-mode-map
-                            '(("C-<tab>" . company-complete)
-                              ("<tab>"   . my/indent-snippet-or-complete)))))
+(add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
