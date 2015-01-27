@@ -149,9 +149,8 @@
 
 
 
-;;;; Modes ;;;;
+;;;; Modes – General;;;;
 
-;; General stuff
 (my/auto-modes  '(("\\.inl\\'"    . c++-mode)
                   ("\\.ui$"       . nxml-mode)
                   ("\\.js$"       . js2-mode)
@@ -186,7 +185,9 @@
                           (magit-auto-revert-mode   . "")
                           ))
 
-;;;; Specific modes
+
+
+;;;; Modes – Specific ;;;;
 
 ;; C common
 (defvar c-mode-base-map)
