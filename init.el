@@ -231,8 +231,9 @@
                               ("<prior>" . my/company-select-previous-nine)
                               ("\C-d"    . company-show-doc-buffer)
                               ("\C-v"    . company-show-location)
-                              ("\C-g"    . company-abort)
-                              ))))
+                              ("\C-g"    . company-abort)))
+            (my/define-keys company-mode-map
+                            '(("C-<tab>"    . company-complete)))))
 
 ;; Workaround for fci-mode with Company
 ;; https://github.com/company-mode/company-mode/issues/180#issuecomment-55047120
@@ -398,12 +399,10 @@
   (highlight-numbers-mode)
   (aggressive-indent-mode)
   (emr-initialize)
-  (my/define-keys prog-mode-map '(("<tab>"      . my/indent-snippet-or-complete)
-                                  ("C-<tab>"    . company-complete)
-                                  ("<menu>"     . company-complete)
-                                  ("M-<return>" . emr-show-refactor-menu)
-                                  ))
-  )
+
+  (my/define-keys prog-mode-map
+                  '(("<tab>"      . my/indent-snippet-or-complete)
+                    ("M-<return>" . emr-show-refactor-menu))))
 
 (add-hook 'prog-mode-hook 'my/prog-mode)
 
