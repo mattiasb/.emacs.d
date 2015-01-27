@@ -265,7 +265,7 @@ depending on context."
 
 ;;;###autoload
 (defun my/restclient ()
-  "Create a restclient buffer."
+  "Create a `restclient-mode' buffer."
   (interactive)
   (switch-to-buffer (get-buffer-create "*REST*"))
   (restclient-mode)
