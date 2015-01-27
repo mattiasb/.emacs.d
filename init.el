@@ -414,6 +414,14 @@
                               (lookup-key term-raw-map (kbd "C-M-i")))
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
 
+(add-hook 'vala-mode-hook
+          (lambda ()
+            (require 'flycheck-vala)
+            (add-to-list 'flycheck-checkers 'vala-valac)
+            (setq-local company-backends '((company-dabbrev-code
+                                            company-files
+                                            company-keywords)))))
+(add-hook 'vala-mode-hook 'my/prog-mode)
 
 
 ;;;; Project specific settings ;;;;
