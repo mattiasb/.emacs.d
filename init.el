@@ -407,6 +407,7 @@
                               (lookup-key term-raw-map (kbd "C-M-i")))
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
 
+;; Vala
 (add-hook 'vala-mode-hook 'my/prog-mode)
 (add-hook 'vala-mode-hook
           (lambda ()
