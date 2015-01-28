@@ -72,5 +72,6 @@
 (depends-on "shut-up")
 (depends-on "smex")
 (depends-on "vala-mode")
+(depends-on "visual-regexp-steroids")
 (depends-on "yasnippet")
 (depends-on "zygospore")

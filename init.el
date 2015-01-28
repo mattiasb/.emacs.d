@@ -128,10 +128,8 @@
    ( "C-e"         .  mwim-end-of-code-or-line)
 
    ;; Replace
-   ( "C-c r"       .  replace-string)
-   ( "C-c C-r"     .  replace-regexp)
-   ( "C-c q"       .  query-replace)
-   ( "C-c C-q"     .  query-replace-regexp)
+   ( "C-c r"       .  vr/replace)
+   ( "C-c q"       .  vr/query-replace)
 
    ;; YAS
    ( "C-c s s"     .  yas-insert-snippet)
@@ -448,6 +446,13 @@
                   '(("s p" . projectile-pt)))
   )
 
+(defun my/activate-visual-regexp ()
+  "Activate visual-regexp."
+  (require 'visual-regexp-steroids)
+  (my/define-keys esc-map
+                  '(("C-r" . vr/isearch-backward)
+                    ("C-s" . vr/isearch-forward))))
+
 (defun my/activate-yas ()
   "Activate projectile."
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
@@ -470,6 +475,7 @@
   (auto-compile-on-load-mode)
 
   (my/activate-projectile)
+  (my/activate-visual-regexp)
   (my/activate-yas))
 
 (add-hook 'after-init-hook (lambda ()

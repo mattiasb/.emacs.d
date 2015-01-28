@@ -140,6 +140,9 @@
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
+ '(vr/auto-show-help nil)
+ '(vr/match-separator-string " → ")
+ '(vr/match-separator-use-custom-face t)
  '(wdired-allow-to-change-permissions 'advanced)
  '(wdired-allow-to-redirect-links nil)
  '(woman-fill-column 80)
@@ -180,7 +183,9 @@
  '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
  '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
- '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18")))))
+ '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))
+ '(vr/match-0 ((t (:background "gray21" :foreground "AntiqueWhite4"))))
+ '(vr/match-1 ((t (:background "gray21" :foreground "AntiqueWhite4")))))
 
 (provide 'custom)
 ;;; custom.el ends here
