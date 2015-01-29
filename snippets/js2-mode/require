@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: require
+# key: req
+# --
+var ${1:$(replace-regexp-in-string "\\.*\\\." "" yas-text)} = require("$1");
