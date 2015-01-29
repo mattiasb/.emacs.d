@@ -132,8 +132,8 @@
    ( "C-c q"       .  vr/query-replace)
 
    ;; YAS
-   ( "C-c s s"     .  yas-insert-snippet)
-   ( "C-c s n"     .  yas-new-snippet)
+   ( "C-<tab>"     .  yas-insert-snippet)
+   ( "C-c s c"     .  yas-new-snippet)
    ( "C-c s e"     .  yas-visit-snippet-file)
    ( "C-c s r"     .  yas-reload-all)
    ( "C-c s t"     .  auto-insert)
@@ -229,9 +229,7 @@
                               ("<prior>" . my/company-select-previous-nine)
                               ("\C-d"    . company-show-doc-buffer)
                               ("\C-v"    . company-show-location)
-                              ("\C-g"    . company-abort)))
-            (my/define-keys company-mode-map
-                            '(("C-<tab>"    . company-complete)))))
+                              ("\C-g"    . company-abort)))))
 
 (add-hook 'company-completion-started-hook   'my/fci-turn-off)
 (add-hook 'company-completion-finished-hook  'my/fci-turn-on)
