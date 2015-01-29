@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: Section
 # key: section
-# binding: C-c C-s
+# binding: C-c s ;
 # --
 
 ---${1:$(make-string (string-width yas-text) ?\-)}---

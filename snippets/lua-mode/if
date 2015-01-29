@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: If
 # key: if
-# binding: direct-keybinding
 # --
 if $1 then
 $0

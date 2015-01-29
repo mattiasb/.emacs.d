@@ -1,7 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: For
 # key: for
-# binding: direct-keybinding
 # --
 for $1 in $2 do
 $0
