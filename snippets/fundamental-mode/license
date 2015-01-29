@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: License
 # key: license
+# binding: C-c C-l
 # --
 `(yas-choose-value (directory-files "~/.emacs.d/snippets/licenses/" nil "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$"))`
