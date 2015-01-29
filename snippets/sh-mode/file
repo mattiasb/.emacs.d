@@ -1,5 +1,5 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: loop-file
+# name: Loop File
 # key: file
 # --
 while read ${1:line}; do

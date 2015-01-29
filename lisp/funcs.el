@@ -175,24 +175,17 @@
            (func (cdr binding)))
       (define-key mode-map (kbd key) func))))
 
-(defun my/insert-date (prefix)
-  "Insert the current date in ISO extended format.
-With PREFIX = 4, use ISO basic format.
-With PREFIX = 16, write out the day and month name."
-  (interactive "P")
-  (let ((format (cond
-                 ((not prefix) "%Y-%m-%d")
-                 ((equal prefix '(4)) "%Y%m%d")
-                 ((equal prefix '(16)) "%A, %d. %B %Y")))
-        (system-time-locale "en_US"))
-    (insert (format-time-string format))))
+(defvar my/time-formats '("%Y%m%d" "%Y-%m-%d" "%A, %d. %B %Y"))
+
+(defun my/get-date (format)
+  "Get the current date in FORMAT."
+  (let ((system-time-locale "en_US"))
+    (format-time-string format)))
 
 (defun my/insert-year ()
   "Insert the current year."
   (interactive)
-  (let ((format "%Y")
-        (system-time-locale "en_US"))
-    (insert (format-time-string format))))
+  (insert (my/get-date "%Y")))
 
 (defun my/autoinsert-yas-expand()
   "Replace text in yasnippet template."
