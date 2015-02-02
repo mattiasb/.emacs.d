@@ -9,11 +9,6 @@
         "body": " * ",
         "post": " */"
     },
-    "c++-mode": {
-        "pre":  "/*",
-        "body": " * ",
-        "post": " */"
-    },
     "emacs-lisp-mode": {
         "body": ";; "
     },
