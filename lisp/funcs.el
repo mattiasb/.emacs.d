@@ -182,14 +182,32 @@
   (let ((system-time-locale "en_US"))
     (format-time-string format)))
 
-(defun my/insert-year ()
-  "Insert the current year."
-  (interactive)
-  (insert (my/get-date "%Y")))
+(defun my/get-year ()
+  "Get the curret year."
+  (my/get-date "%Y"))
 
 (defun my/autoinsert-yas-expand()
   "Replace text in yasnippet template."
   (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+
+(defun my/yas-choose-license ()
+  "Choose a license to expand."
+  (yas-choose-value
+   (directory-files "~/.emacs.d/licenses/"
+                    nil
+                    "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$")))
+
+(defun my/get-user-mail-address ()
+  "Get variable `user-mail-address' with fallback."
+  (if (boundp 'user-mail-address)
+      user-mail-address
+    "user@example.com"))
+
+(defun my/get-user-full-name ()
+  "Get variable `user-full-name' with fallback."
+  (if (boundp 'user-full-name)
+      user-full-name
+    "Full Name"))
 
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)

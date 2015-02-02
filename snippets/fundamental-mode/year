@@ -3,4 +3,4 @@
 # key: year
 # binding: C-c s y
 # --
-`(my/insert-year)`
+`(my/get-year)`

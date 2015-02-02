@@ -1,8 +1,6 @@
-# -*- mode: snippet -*-
-# name: MIT
-# key: mit
-# --
 The MIT License (MIT)
+
+Copyright ⓒ ${1:`(my/get-year)`} ${2:`(my/get-user-full-name)`}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,3 +19,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+Author: ${4:`(my/get-user-full-name)`} <${5:`(my/get-user-mail-address)`}>

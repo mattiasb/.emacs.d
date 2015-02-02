@@ -1,16 +1,13 @@
 ;;; `(buffer-name)` --- $1 -*- lexical-binding: t; -*-
 
-;; Copyright (C) ${2:`(my/insert-year)`} ${3:`(if (boundp 'user-full-name) user-full-name "Author")`}
+${2:$$(my/yas-choose-license)}
 
-;; Author: ${4:$3} <${5:`(if (boundp 'user-mail-address) user-mail-address "user@example.com")`}>
-;; Version: ${6:`(my/insert-date '(4))`}
-;; Keywords: ${7:none}
-;; Package-Requires: ($8)
-;; URL: ${9:TBA}
-;; Doc URL: ${10:TBA}
-;; Compatibility: ${11:GNU Emacs: 24.x}
-
-;; ${12:$$(yas-choose-value (directory-files "~/.emacs.d/snippets/licenses/" nil "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$"))}
+;; Version: ${3:`(my/get-date (nth 0 my/time-formats))`}
+;; Keywords: ${4:none}
+;; Package-Requires: ($5)
+;; URL: ${6:TBA}
+;; Doc URL: ${7:TBA}
+;; Compatibility: ${8:GNU Emacs: 24.x}
 
 ;;; Commentary:
 

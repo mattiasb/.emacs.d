@@ -3,4 +3,4 @@
 # key: license
 # binding: C-c s l
 # --
-`(yas-choose-value (directory-files "~/.emacs.d/snippets/licenses/" nil "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$"))`
+`(my/yas-choose-license)`
