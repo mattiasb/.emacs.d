@@ -60,7 +60,7 @@
  '(company-backends
    '(company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-ropemacs company-cmake
                    (company-gtags company-etags company-dabbrev-code company-keywords)
-                   company-oddmuse company-files company-dabbrev company-yasnippet))
+                   company-oddmuse company-files company-dabbrevs))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
