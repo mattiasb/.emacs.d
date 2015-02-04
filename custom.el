@@ -151,6 +151,7 @@
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions '(yas-popup-isearch-prompt))
  '(yas-trigger-key nil)
+ '(yas-trigger-symbol " ⇒")
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
