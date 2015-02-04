@@ -320,6 +320,12 @@ depending on context."
   (insert "# -*- restclient -*-\n\n"))
 
 ;;;###autoload
+(defun my/magit-mode-quit ()
+  "Quit and kill magit-status window and frame."
+  (interactive)
+  (magit-mode-quit-window 4))
+
+;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (require 'popup)

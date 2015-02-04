@@ -341,6 +341,12 @@
                                             company-files
                                             company-keywords)))))
 
+;; Magit
+(add-hook 'magit-status-mode-hook
+          (lambda ()
+            (my/define-keys magit-status-mode-map
+                            '(("q" . my/magit-mode-quit)))))
+
 ;; Markdown
 (defvar markdown-mode-map)
 (add-hook 'markdown-mode-hook
