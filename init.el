@@ -97,6 +97,8 @@
    ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
 
+   ;; Other
+   ( "C-c d"       .  diff-buffer-with-file)
 
    ;; NAVIGATION
 
