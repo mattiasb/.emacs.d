@@ -1,6 +1,29 @@
 (source gnu)
 (source melpa)
 
+
+;;;; Internal Packages ;;;;
+
+(depends-on "align-string"
+            :git "file:///home/mattiasb/.emacs.d/"
+            :files ("align-string"
+                    "packages/align-string/align-string.el"))
+(depends-on "align-by-current-symbol"
+            :git "file:///home/mattiasb/.emacs.d/"
+            :files ("align-by-current-symbol"
+                    "packages/align-by-current-symbol/align-by-current-symbol.el"))
+(depends-on "flycheck-jscs"
+            :git "file:///home/mattiasb/.emacs.d/"
+            :files ("flycheck-jscs"
+                    "packages/flycheck-jscs/flycheck-jscs.el"))
+(depends-on "flycheck-vala"
+            :git "file:///home/mattiasb/.emacs.d/"
+            :files ("flycheck-vala"
+                    "packages/flycheck-vala/flycheck-vala.el"))
+
+
+;;;; (M)ELPA ;;;;
+
 (depends-on "ace-jump-mode")
 (depends-on "aggressive-indent")
 (depends-on "auto-compile")

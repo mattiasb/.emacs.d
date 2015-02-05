@@ -23,3 +23,4 @@ snippets/*/Apache-2.0
 snippets/*/GPLv2+
 snippets/*/GPLv3+
 snippets/*/MIT
+*-pkg.el

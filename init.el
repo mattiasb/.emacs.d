@@ -121,7 +121,8 @@
    ;; General
    ( "M-<up>"      .  move-text-up)
    ( "M-<down>"    .  move-text-down)
-   ( "C-c a"       .  align-regexp)
+   ( "C-c a"       .  align-string)
+   ( "C-c ."       .  align-by-current-symbol)
    ( "C-c c"       .  my/toggle-comment)
    ( "C-c C-c"     .  my/toggle-programming-case-word-at-point)
    ( "C-c i"       .  insert-char)
