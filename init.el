@@ -209,8 +209,9 @@
                               ("M-<left>"   . rtags-location-stack-back)
                               ("M-<right>"  . rtags-location-stack-forward)
                               ("C-c f r"    . rtags-rename-symbol)
-                              ("C-c o"      . ff-find-other-file)))
-            ))
+                              ("C-c o"      . ff-find-other-file)
+                              ("."          . my/dot-and-complete)
+                              ))))
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my/prog-mode)
@@ -249,6 +250,12 @@
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (my/define-keys emacs-lisp-mode-map
+                            '(("/" . my/slash-and-complete)
+                              ("-" . my/dash-and-complete))
+                            )))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
@@ -272,7 +279,8 @@
                               ("C-c i r"    . go-remove-unused-imports)
                               ("C-c i g"    . go-goto-imports)
                               ("C-c d"      . godoc-at-point)
-                              ("C-<return>" . godef-jump)))))
+                              ("C-<return>" . godef-jump)
+                              ("."          . my/dot-and-complete)))))
 
 ;; Magit
 (add-hook 'git-commit-mode-hook

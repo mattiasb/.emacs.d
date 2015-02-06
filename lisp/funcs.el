@@ -209,6 +209,29 @@
       user-full-name
     "Full Name"))
 
+(defun my/dot-and-complete ()
+  "Quicker auto-complete on objects and structs."
+  (interactive)
+  (my/char-and-complete "."))
+
+(defun my/slash-and-complete ()
+  "Quicker auto-complete in lisp-code."
+  (interactive)
+  (my/char-and-complete "/"))
+
+(defun my/dash-and-complete ()
+  "Quicker auto-complete in lisp-code."
+  (interactive)
+  (my/char-and-complete "-"))
+
+
+(defun my/char-and-complete (char)
+  "Insert CHAR and complete."
+  (interactive)
+  (progn
+    (insert char)
+    (company-complete-common)))
+
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)
   "Define a new function which call FUNCTION.
