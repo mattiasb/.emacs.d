@@ -12,6 +12,8 @@
     "emacs-lisp-mode": {
         "body": ";; "
     },
+    "fundamental-mode": {
+    },
     "go-mode": {
         "pre":  "/*",
         "body": " * ",
