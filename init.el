@@ -271,8 +271,11 @@
           (lambda()
             (flycheck-cask-setup)
             (flycheck-package-setup)
-            (require 'flycheck-jscs)
-            (add-to-list 'flycheck-checkers 'javascript-jscs)))
+
+            ;; Re-add this when it works correctly
+            ;; (require 'flycheck-jscs)
+            ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
+            ))
 
 ;; Go
 (defvar go-mode-map)
