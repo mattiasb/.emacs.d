@@ -7,6 +7,7 @@
 (depends-on "align-string" :git "https://github.com/moonlite/.emacs.d.git" :files ("align-string" "packages/align-string/align-string.el"))
 (depends-on "auto-compile")
 (depends-on "bash-completion")
+(depends-on "browse-kill-ring")
 (depends-on "buffer-move")
 (depends-on "cask")
 (depends-on "cmake-mode")

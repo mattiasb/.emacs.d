@@ -147,7 +147,6 @@
 
 (windmove-default-keybindings)
 
-
 
 ;;;; Modes – General;;;;
 
@@ -188,6 +187,16 @@
 
 
 ;;;; Modes – Specific ;;;;
+
+;; Browse Kill Ring
+(add-hook 'browse-kill-ring-mode-hook
+          (lambda ()
+            (my/define-keys browse-kill-ring-mode-map
+                            '(( "<down>"    . browse-kill-ring-forward)
+                              ( "<tab>"     . browse-kill-ring-forward)
+                              ( "<up>"      . browse-kill-ring-previous)
+                              ( "<backtab>" . browse-kill-ring-previous)
+                              ( "C-g"       . browse-kill-ring-quit)))))
 
 ;; C common
 (defvar c-mode-base-map)
@@ -488,6 +497,7 @@
   (auto-insert-mode)
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
+  (browse-kill-ring-default-keybindings)
 
   (my/activate-projectile)
   (my/activate-visual-regexp)
