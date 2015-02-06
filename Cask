@@ -5,19 +5,19 @@
 ;;;; Internal Packages ;;;;
 
 (depends-on "align-string"
-            :git "file:///home/mattiasb/.emacs.d/"
+            :git "https://github.com/moonlite/.emacs.d.git"
             :files ("align-string"
                     "packages/align-string/align-string.el"))
 (depends-on "align-by-current-symbol"
-            :git "file:///home/mattiasb/.emacs.d/"
+            :git "https://github.com/moonlite/.emacs.d.git"
             :files ("align-by-current-symbol"
                     "packages/align-by-current-symbol/align-by-current-symbol.el"))
 (depends-on "flycheck-jscs"
-            :git "file:///home/mattiasb/.emacs.d/"
+            :git "https://github.com/moonlite/.emacs.d.git"
             :files ("flycheck-jscs"
                     "packages/flycheck-jscs/flycheck-jscs.el"))
 (depends-on "flycheck-vala"
-            :git "file:///home/mattiasb/.emacs.d/"
+            :git "https://github.com/moonlite/.emacs.d.git"
             :files ("flycheck-vala"
                     "packages/flycheck-vala/flycheck-vala.el"))
 
