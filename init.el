@@ -456,7 +456,8 @@
     (setq-default projectile-indexing-method 'native))
 
   (my/define-keys projectile-command-map
-                  '(("s p" . projectile-pt))))
+                  '(("s p" . projectile-pt)
+                    ("C-b" . projectile-ibuffer))))
 
 (defun my/activate-visual-regexp ()
   "Activate visual-regexp."
