@@ -482,7 +482,7 @@
                     ("C-s" . vr/isearch-forward))))
 
 (defun my/activate-yas ()
-  "Activate projectile."
+  "Activate YASnippet."
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
