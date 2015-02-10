@@ -214,7 +214,9 @@
                               ("M-<left>"   . rtags-location-stack-back)
                               ("M-<right>"  . rtags-location-stack-forward)
                               ("C-c f r"    . rtags-rename-symbol)
-                              ("."          . my/dot-and-complete)))))
+                              ("."          . my/dot-and-complete)))
+            (my/define-keys projectile-command-map
+                            '(( "j"         . rtags-find-symbol)))))
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my/prog-mode)
