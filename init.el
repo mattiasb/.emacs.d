@@ -316,8 +316,10 @@
 ;; Ido
 (add-hook 'ido-setup-hook
           (lambda ()
-            (define-key ido-completion-map [tab] 'ido-complete)
-            ))
+            (my/define-keys ido-common-completion-map
+                            '(( "<tab"    . ido-complete)
+                              ( "<next>"  . my/ido-select-next-nine)
+                              ( "<prior>" . my/ido-select-prev-nine)))))
 
 ;; IBuffer
 (add-hook 'ibuffer-hook

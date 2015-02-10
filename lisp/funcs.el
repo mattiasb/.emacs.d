@@ -256,6 +256,18 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (unless rtags-process (rtags-restart-process)))
 
 ;;;###autoload
+(defun my/ido-select-next-nine ()
+  "A bit more eager `ido-next-match'."
+  (interactive)
+  (dotimes (_i 9 nil) (ido-next-match)))
+
+;;;###autoload
+(defun my/ido-select-prev-nine ()
+  "A bit more eager `ido-prev-match'."
+  (interactive)
+  (dotimes (_i 9 nil) (ido-prev-match)))
+
+;;;###autoload
 (defun my/company-select-next-nine ()
   "A bit more eager `company-select-next'."
   (interactive)
