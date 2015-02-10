@@ -138,8 +138,7 @@
    ( "C-c s c"     .  yas-new-snippet)
    ( "C-c s e"     .  yas-visit-snippet-file)
    ( "C-c s r"     .  yas-reload-all)
-   ( "C-c s t"     .  auto-insert)
-   ))
+   ( "C-c s t"     .  auto-insert)))
 
 (global-unset-key (kbd "C-z"))
 (global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
@@ -156,8 +155,7 @@
                   ("\\.jshintrc$" . js2-mode)
                   ("\\.jscsrc$"   . json-mode)
                   ("\\.vala$"     . vala-mode)
-                  ("\/Cask$"      . emacs-lisp-mode)
-                  ))
+                  ("\/Cask$"      . emacs-lisp-mode)))
 
 (my/shorten-major-modes '((markdown-mode   . "M↓")
                           (js2-mode        . "JS")
@@ -168,8 +166,7 @@
                           (emacs-lisp-mode . "Elisp")
                           (go-mode         . "Go")
                           (haskell-mode    . "λ")
-                          (snippet-mode    . "Yas")
-                          ))
+                          (snippet-mode    . "Yas")))
 
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
@@ -181,8 +178,7 @@
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
                           (aggressive-indent-mode   . " ⇒")
-                          (magit-auto-revert-mode   . "")
-                          ))
+                          (magit-auto-revert-mode   . "")))
 
 
 
@@ -218,8 +214,7 @@
                               ("M-<left>"   . rtags-location-stack-back)
                               ("M-<right>"  . rtags-location-stack-forward)
                               ("C-c f r"    . rtags-rename-symbol)
-                              ("."          . my/dot-and-complete)
-                              ))))
+                              ("."          . my/dot-and-complete)))))
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my/prog-mode)
@@ -252,9 +247,7 @@
           (lambda ()
             (my/define-keys dired-mode-map
                             '(("W" . wdired-change-to-wdired-mode)
-                              ("F" . find-name-dired)
-                              ))
-            ))
+                              ("F" . find-name-dired)))))
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
@@ -262,19 +255,19 @@
           (lambda ()
             (my/define-keys emacs-lisp-mode-map
                             '(("/" . my/slash-and-complete)
-                              ("-" . my/dash-and-complete))
-                            )))
+                              ("-" . my/dash-and-complete)))))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
           (lambda()
-            (flycheck-cask-setup)
-            (flycheck-package-setup)
-
             ;; Re-add this when it works correctly
             ;; (require 'flycheck-jscs)
             ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
-            ))
+
+            (flycheck-cask-setup)
+            (flycheck-package-setup)))
+
+
 
 ;; Go
 (defvar go-mode-map)
@@ -303,15 +296,13 @@
           (lambda ()
             (require 'magit-gitflow)
             (when (fboundp 'turn-on-magit-gitflow)
-              (turn-on-magit-gitflow))
-            ))
+              (turn-on-magit-gitflow))))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
                                (aggressive-indent-mode -1)
                                (setq-local electric-indent-mode nil)
-                               (turn-on-haskell-indentation)
-                               ))
+                               (turn-on-haskell-indentation)))
 
 ;; Ido
 (add-hook 'ido-setup-hook
@@ -334,8 +325,7 @@
           (lambda()
             (company-mode)
             (my/define-keys ielm-map
-                            '(("<tab>" . my/indent-snippet-or-complete)))
-            ))
+                            '(("<tab>" . my/indent-snippet-or-complete)))))
 
 ;; Info
 (add-hook 'Info-mode-hook
@@ -343,8 +333,7 @@
             (my/define-keys Info-mode-map
                             '(("M-<left>"  . Info-history-back)
                               ("M-<right>" . Info-history-forward)
-                              ("M-<up>"    . Info-up)
-                              ))))
+                              ("M-<up>"    . Info-up)))))
 
 ;; JS2
 (defvar js2-mode-map)
@@ -378,15 +367,12 @@
             (my/define-keys markdown-mode-map
                             '(("C-<return>" . markdown-jump)
                               ("M-<up>"     . nil)
-                              ("M-<down>"   . nil)
-                              ))
-            ))
+                              ("M-<down>"   . nil)))))
 
 ;; nXML
 (add-hook 'nxml-mode-hook (lambda ()
                             (setq-local company-backends '(company-nxml))
-                            (aggressive-indent-mode -1)
-                            ))
+                            (aggressive-indent-mode -1)))
 (add-hook 'nxml-mode-hook 'my/prog-mode)
 
 ;; Package
@@ -422,8 +408,7 @@
             (company-mode)
             (setq-local company-backends '((company-restclient)))
             (my/define-keys restclient-mode-map
-                            '(("<tab>" . my/snippet-or-complete)))
-            ))
+                            '(("<tab>" . my/snippet-or-complete)))))
 
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
@@ -439,8 +424,7 @@
 (add-hook 'vala-mode-hook
           (lambda ()
             (require 'flycheck-vala)
-            (add-to-list 'flycheck-checkers 'vala-valac)
-            ))
+            (add-to-list 'flycheck-checkers 'vala-valac)))
 
 
 ;;;; Project specific settings ;;;;
@@ -454,8 +438,7 @@
                               projectile-compilation-cmd-map)
                      (puthash (projectile-project-root)
                               "make check"
-                              projectile-test-cmd-map)
-                     ))))))
+                              projectile-test-cmd-map)))))))
 (dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
 
 
@@ -471,8 +454,7 @@
     (setq-default projectile-indexing-method 'native))
 
   (my/define-keys projectile-command-map
-                  '(("s p" . projectile-pt)))
-  )
+                  '(("s p" . projectile-pt))))
 
 (defun my/activate-visual-regexp ()
   "Activate visual-regexp."
@@ -509,8 +491,7 @@
 
 (add-hook 'after-init-hook (lambda ()
                              (require 'cask)
-                             (my/activate-modes)
-                             ))
+                             (my/activate-modes)))
 
 
 
