@@ -218,7 +218,6 @@
                               ("M-<left>"   . rtags-location-stack-back)
                               ("M-<right>"  . rtags-location-stack-forward)
                               ("C-c f r"    . rtags-rename-symbol)
-                              ("C-c o"      . ff-find-other-file)
                               ("."          . my/dot-and-complete)
                               ))))
 
