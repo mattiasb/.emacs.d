@@ -116,6 +116,7 @@
  '(lua-indent-level 2)
  '(lua-prefix-key "C-c")
  '(magit-auto-revert-mode-lighter "")
+ '(magit-completing-read-function 'magit-ido-completing-read)
  '(markdown-command
    "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
  '(menu-bar-mode nil)
