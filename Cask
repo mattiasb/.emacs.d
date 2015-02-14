@@ -13,6 +13,7 @@
 (depends-on "cmake-mode")
 (depends-on "company")
 (depends-on "company-go")
+(depends-on "company-quickhelp")
 (depends-on "company-restclient")
 (depends-on "dash")
 (depends-on "diminish")

@@ -230,6 +230,7 @@
 ;; Company
 (add-hook 'company-mode-hook
           (lambda ()
+            (company-quickhelp-mode)
             (my/define-keys company-active-map
                             '(("\C-n"    . company-select-next)
                               ("\C-p"    . company-select-previous)
