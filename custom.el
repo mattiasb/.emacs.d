@@ -152,6 +152,7 @@
  '(vr/match-separator-use-custom-face t)
  '(wdired-allow-to-change-permissions 'advanced)
  '(wdired-allow-to-redirect-links nil)
+ '(wgrep-auto-save-buffer t)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
  '(yas-also-auto-indent-first-line t)

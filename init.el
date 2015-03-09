@@ -401,6 +401,12 @@
 
 (add-hook 'prog-mode-hook 'my/prog-mode)
 
+;; PT
+(add-hook 'pt-search-mode-hook
+          (lambda ()
+            (my/define-keys pt-search-mode-map
+                            '(("W" . wgrep-change-to-wgrep-mode)))))
+
 ;; Python
 (add-hook 'python-mode-hook (lambda () (aggressive-indent-mode -1)))
 
