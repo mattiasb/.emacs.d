@@ -9,6 +9,7 @@
 (depends-on "bash-completion")
 (depends-on "browse-kill-ring")
 (depends-on "buffer-move")
+(depends-on "bury-successful-compilation")
 (depends-on "cask")
 (depends-on "cmake-mode")
 (depends-on "company")
