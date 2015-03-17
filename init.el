@@ -494,7 +494,6 @@
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
   (browse-kill-ring-default-keybindings)
-  (bury-successful-compilation)
 
   (my/activate-projectile)
   (my/activate-visual-regexp)
