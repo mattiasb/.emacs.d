@@ -128,6 +128,8 @@
    ( "C-c i"       .  insert-char)
    ( "C-a"         .  mwim-beginning-of-code-or-line)
    ( "C-e"         .  mwim-end-of-code-or-line)
+   ( "C-c +"       .  my/increment-number-decimal)
+   ( "C-c -"       .  my/decrement-number-decimal)
 
    ;; Replace
    ( "C-c r"       .  vr/replace)
