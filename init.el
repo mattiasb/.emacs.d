@@ -360,6 +360,7 @@
 ;; Magit
 (add-hook 'magit-status-mode-hook
           (lambda ()
+            (magit-filenotify-mode)
             (my/define-keys magit-status-mode-map
                             '(("q" . my/magit-mode-quit)))))
 
