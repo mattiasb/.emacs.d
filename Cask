@@ -79,6 +79,7 @@
 (depends-on "shut-up")
 (depends-on "smex")
 (depends-on "vala-mode")
+(depends-on "vala-snippets")
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
 (depends-on "wgrep-pt")
