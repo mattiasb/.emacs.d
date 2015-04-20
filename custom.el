@@ -117,6 +117,9 @@
  '(lua-prefix-key "C-c")
  '(magit-auto-revert-mode-lighter "")
  '(magit-completing-read-function 'magit-ido-completing-read)
+ '(magit-set-upstream-on-push t)
+ '(magit-stage-all-confirm nil)
+ '(magit-unstage-all-confirm nil)
  '(markdown-command
    "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
  '(menu-bar-mode nil)
@@ -162,6 +165,10 @@
  '(yas-trigger-symbol " ⇒")
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
+
+;; Real ugly, but apparently can't be set through customize
+(defvar magit-last-seen-setup-instructions)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
