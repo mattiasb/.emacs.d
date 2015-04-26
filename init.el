@@ -157,6 +157,8 @@
                   ("\\.jshintrc$" . js2-mode)
                   ("\\.jscsrc$"   . json-mode)
                   ("\\.vala$"     . vala-mode)
+                  ("\\.mapcss$"   . css-mode)
+                  ("\\.mcss$"     . css-mode)
                   ("\/Cask$"      . emacs-lisp-mode)))
 
 (my/shorten-major-modes '((markdown-mode   . "M↓")
