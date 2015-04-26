@@ -43,6 +43,7 @@
 (depends-on "gitignore-mode")
 (depends-on "go-eldoc")
 (depends-on "go-mode")
+(depends-on "god-mode")
 (depends-on "haml-mode")
 (depends-on "haskell-mode")
 (depends-on "highlight-numbers")
