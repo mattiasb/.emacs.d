@@ -138,6 +138,7 @@
    '("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
+ '(rust-indent-method-chain t)
  '(safe-local-variable-values
    '((eval progn
            (puthash
