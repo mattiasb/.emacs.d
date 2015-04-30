@@ -54,12 +54,16 @@
       .
       ["default.lua" my/autoinsert-yas-expand])))
  '(auto-insert-directory "~/.emacs.d/templates/")
+ '(browse-kill-ring-current-entry-face 'bold)
  '(browse-kill-ring-display-duplicates nil)
  '(browse-kill-ring-highlight-current-entry t)
  '(browse-kill-ring-highlight-inserted-item nil)
  '(browse-kill-ring-no-duplicates t)
  '(browse-kill-ring-quit-action 'kill-and-delete-window)
- '(browse-kill-ring-separator "—————————————————————————————")
+ '(browse-kill-ring-resize-window t)
+ '(browse-kill-ring-separator
+   "——————————————————————————————————————————————————————————")
+ '(browse-kill-ring-show-preview nil)
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 46))
