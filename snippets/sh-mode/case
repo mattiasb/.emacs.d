@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: case
+# key: case
+# binding: direct-keybinding
+# expand-env: ((yas-indent-line 'auto))
+# --
+case "$1" in
+${2:*})
+$0
+return
+;;
+esac
