@@ -254,7 +254,8 @@
           (lambda ()
             (my/define-keys dired-mode-map
                             '(("W" . wdired-change-to-wdired-mode)
-                              ("F" . find-name-dired)))))
+                              ("F" . find-name-dired)
+                              ("c" . find-file)))))
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
