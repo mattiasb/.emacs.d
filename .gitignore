@@ -24,3 +24,4 @@ snippets/*/GPLv2+
 snippets/*/GPLv3+
 snippets/*/MIT
 *-pkg.el
+/smex-items
