@@ -501,6 +501,7 @@
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
   (browse-kill-ring-default-keybindings)
+  (easy-repeat-mode)
 
   (my/activate-projectile)
   (my/activate-visual-regexp)
