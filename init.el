@@ -96,6 +96,7 @@
    ( "C-c t w"     .  whitespace-mode)
    ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
+   ( "C-c t b"     .  magit-blame-mode)
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
