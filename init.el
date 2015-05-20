@@ -179,6 +179,7 @@
                           (form-feed-mode           . "")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
+                          (magit-filenotify-mode    . " Notify")
                           (yas-minor-mode           . "")
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
