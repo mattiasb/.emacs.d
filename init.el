@@ -393,8 +393,9 @@
 (defun my/prog-mode ()
   "My `prog-mode' hook."
 
-  (setq-local fill-column      80)
-  (setq-local indent-tabs-mode nil)
+  (setq-local fill-column 80)
+  (unless (derived-mode-p 'makefile-mode)
+    (setq-local indent-tabs-mode nil))
 
   (company-mode)
   (flycheck-mode)
