@@ -3,5 +3,6 @@
 # key: forin
 # --
 for (let ${2:key} in ${1:object}) {
+    let ${3:value} = $1[$2];
     $0
 }
