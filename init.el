@@ -310,7 +310,6 @@
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
-                               (aggressive-indent-mode -1)
                                (setq-local electric-indent-mode nil)
                                (turn-on-haskell-indentation)))
 
@@ -383,7 +382,7 @@
 ;; nXML
 (add-hook 'nxml-mode-hook (lambda ()
                             (setq-local company-backends '(company-nxml))
-                            (aggressive-indent-mode -1)))
+                            ))
 (add-hook 'nxml-mode-hook 'my/prog-mode)
 
 ;; Package
@@ -401,7 +400,6 @@
   (flycheck-mode)
   (fci-mode)
   (highlight-numbers-mode)
-  (aggressive-indent-mode)
   (emr-initialize)
 
   (my/define-keys prog-mode-map
@@ -504,7 +502,7 @@
   (auto-compile-on-load-mode)
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
-
+  (global-aggressive-indent-mode)
   (my/activate-projectile)
   (my/activate-visual-regexp)
   (my/activate-yas))
