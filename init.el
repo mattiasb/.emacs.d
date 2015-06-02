@@ -203,27 +203,34 @@
 
 ;; C common
 (defvar c-mode-base-map)
-(defvar rtags-completions-enabled)
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (require 'rtags)
-            (my/rtags-start)
-            (setq-local rtags-completions-enabled t)
-            (rtags-enable-standard-keybindings c-mode-base-map)
-            (setq-local company-backends '((company-rtags)))
-
-            ;; Work around bug where c-mode-base-map doesn't inherit from
-            ;; prog-mode-map
             (unless (keymap-parent c-mode-base-map)
               (set-keymap-parent c-mode-base-map prog-mode-map))
-            (my/define-keys c-mode-base-map
-                            '(("C-<return>" . rtags-find-symbol-at-point)
-                              ("M-<left>"   . rtags-location-stack-back)
-                              ("M-<right>"  . rtags-location-stack-forward)
-                              ("C-c f r"    . rtags-rename-symbol)
-                              ("."          . my/dot-and-complete)))
-            (my/define-keys projectile-command-map
-                            '(( "j"         . rtags-find-symbol)))))
+            ))
+;; C / C++
+(defvar rtags-completions-enabled)
+(defun my/c-mode-hook ()
+  "A mode hook for C and C++."
+  (require 'rtags)
+  (my/rtags-start)
+  (setq-local rtags-completions-enabled t)
+  (rtags-enable-standard-keybindings c-mode-base-map)
+  (setq-local company-backends '((company-rtags)))
+
+  ;; Work around bug where c-mode-base-map doesn't inherit from
+  ;; prog-mode-map
+  (my/define-keys c-mode-base-map
+                  '(("C-<return>" . rtags-find-symbol-at-point)
+                    ("M-<left>"   . rtags-location-stack-back)
+                    ("M-<right>"  . rtags-location-stack-forward)
+                    ("C-c f r"    . rtags-rename-symbol)
+                    ("."          . my/dot-and-complete)))
+  (my/define-keys projectile-command-map
+                  '(( "j"         . rtags-find-symbol))))
+
+(add-hook 'c-mode-hook   'my/c-mode-hook)
+(add-hook 'c++-mode-hook 'my/c-mode-hook)
 
 ;; CMake
 (add-hook 'cmake-mode-hook 'my/prog-mode)
