@@ -160,6 +160,7 @@
                   ("\\.vala$"     . vala-mode)
                   ("\\.mapcss$"   . css-mode)
                   ("\\.mcss$"     . css-mode)
+                  ("\\.m$"        . octave-mode)
                   ("\/Cask$"      . emacs-lisp-mode)))
 
 (my/shorten-major-modes '((markdown-mode   . "M↓")
