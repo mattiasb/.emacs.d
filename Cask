@@ -78,6 +78,7 @@
 (depends-on "restclient")
 (depends-on "rtags")
 (depends-on "rust-mode")
+(depends-on "racer" :git "https://github.com/phildawes/racer.git" :files ("racer" "editors/emacs/racer.el"))
 (depends-on "s")
 (depends-on "sass-mode")
 (depends-on "shut-up")

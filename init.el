@@ -434,6 +434,9 @@
             (my/define-keys restclient-mode-map
                             '(("<tab>" . my/snippet-or-complete)))))
 
+;; Rust
+(add-hook 'rust-mode-hook (lambda () (require 'racer)))
+
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
 (add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
