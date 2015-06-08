@@ -212,25 +212,36 @@
 (defun my/dot-and-complete ()
   "Quicker auto-complete on objects and structs."
   (interactive)
-  (my/char-and-complete "."))
+  (my/char-and-complete ?.))
+
+(defun my/double-colon-and-complete ()
+  "Quicker auto-complete on namespaces and modules."
+  (interactive)
+  (my/char-and-complete ?: ?:))
+
+(defun my/arrow-and-complete ()
+  "Quicker auto-complete on namespaces and modules."
+  (interactive)
+  (my/char-and-complete ?> ?-))
 
 (defun my/slash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
-  (my/char-and-complete "/"))
+  (my/char-and-complete ?/))
 
 (defun my/dash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
-  (my/char-and-complete "-"))
+  (my/char-and-complete ?-))
 
-
-(defun my/char-and-complete (char)
-  "Insert CHAR and complete."
+(defun my/char-and-complete (char &optional prev)
+  "Insert CHAR and complete if `preceding-char' is equal to PREV."
   (interactive)
-  (progn
-    (insert char)
-    (company-complete-common)))
+  (let ((do-complete (if prev (char-equal prev (preceding-char)) t)))
+    (progn
+      (insert char)
+      (when do-complete
+        (company-complete-common)))))
 
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)

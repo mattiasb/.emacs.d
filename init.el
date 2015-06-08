@@ -225,7 +225,9 @@
                     ("M-<left>"   . rtags-location-stack-back)
                     ("M-<right>"  . rtags-location-stack-forward)
                     ("C-c f r"    . rtags-rename-symbol)
-                    ("."          . my/dot-and-complete)))
+                    ("."          . my/dot-and-complete)
+                    (":"          . my/double-colon-and-complete)
+                    (">"          . my/arrow-and-complete)))
   (my/define-keys projectile-command-map
                   '(( "j"         . rtags-find-symbol))))
 
@@ -435,7 +437,14 @@
                             '(("<tab>" . my/snippet-or-complete)))))
 
 ;; Rust
-(add-hook 'rust-mode-hook (lambda () (require 'racer)))
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (require 'racer)
+            (my/define-keys rust-mode-map
+                            '(("." . my/dot-and-complete)
+                              (":" . my/double-colon-and-complete)
+                              ))
+            ))
 
 ;; Shell
 (add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
