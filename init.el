@@ -310,7 +310,7 @@
 (add-hook 'git-commit-mode-hook
           (lambda ()
             (fci-mode 1)
-            (setq fill-column 72)))
+            (setq-local fill-column 72)))
 
 (add-hook 'magit-mode-hook
           (lambda ()
