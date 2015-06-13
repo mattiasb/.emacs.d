@@ -166,6 +166,7 @@
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions '(yas-popup-isearch-prompt))
+ '(yas-snippet-dirs '("~/.emacs.d/snippets"))
  '(yas-trigger-key nil)
  '(yas-trigger-symbol " ⇒")
  '(yas-triggers-in-field t)
