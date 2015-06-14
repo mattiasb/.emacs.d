@@ -176,11 +176,8 @@
 (defvar magit-last-seen-setup-instructions)
 (setq magit-last-seen-setup-instructions "1.4.0")
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+(custom-theme-set-faces
+ 'wombat
  '(company-scrollbar-bg ((t (:background "#303030"))))
  '(company-scrollbar-fg ((t (:background "#4a4a4a"))))
  '(company-template-field ((t (:background "#4a4a4a"))))
@@ -189,24 +186,8 @@
  '(company-tooltip-common ((t (:inherit (font-lock-constant-face company-tooltip)))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :foreground "red"))))
  '(company-tooltip-selection ((t (:inherit font-lock-function-name-face :background "#353535"))))
- '(flycheck-error ((t (:underline (:color "tomato3" :style wave)))))
- '(flycheck-error-list-info ((t (:foreground "olive drab"))))
- '(flycheck-error-list-warning ((t (:foreground "goldenrod"))))
- '(flycheck-fringe-error ((t (:foreground "tomato3"))))
- '(flycheck-fringe-info ((t (:foreground "olive drab"))))
- '(flycheck-fringe-warning ((t (:foreground "goldenrod"))))
- '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
- '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
- '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
  '(highlight-symbol-face ((t (:background "gray21"))))
  '(hl-line ((t (:background "gray21"))))
- '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
- '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
- '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.5))))
- '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.3))))
- '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
- '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
- '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
  '(popup-face ((t (:inherit default :background "#3d3d3d"))))
  '(popup-isearch-match ((t (:inherit (font-lock-constant-face popup-face)))))
  '(popup-menu-mouse-face ((t nil)))
@@ -217,7 +198,31 @@
  '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
  '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))
  '(vr/match-0 ((t (:background "gray21" :foreground "AntiqueWhite4"))))
- '(vr/match-1 ((t (:background "gray21" :foreground "AntiqueWhite4")))))
+ '(vr/match-1 ((t (:background "gray21" :foreground "AntiqueWhite4"))))
+ )
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:underline (:color "tomato3" :style wave)))))
+ '(flycheck-error-list-info ((t (:foreground "olive drab"))))
+ '(flycheck-error-list-warning ((t (:foreground "goldenrod"))))
+ '(flycheck-fringe-error ((t (:foreground "tomato3"))))
+ '(flycheck-fringe-info ((t (:foreground "olive drab"))))
+ '(flycheck-fringe-warning ((t (:foreground "goldenrod"))))
+ '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
+ '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
+ '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
+ '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
+ '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
+ '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.5))))
+ '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.3))))
+ '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
+ '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
+ '(markdown-header-face-6 ((t (:inherit markdown-header-face)))))
 
 (provide 'custom)
 ;;; custom.el ends here
