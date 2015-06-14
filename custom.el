@@ -96,6 +96,7 @@
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
+ '(ido-cr+-max-items 50000)
  '(ido-ubiquitous-max-items 50000)
  '(ido-vertical t)
  '(ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
