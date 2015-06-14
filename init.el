@@ -502,6 +502,8 @@
 
 (defun my/activate-yas ()
   "Activate YASnippet."
+  ;; This needs to be set here, or customize will bork.
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
 (defun my/activate-modes ()
@@ -522,10 +524,9 @@
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
   (global-aggressive-indent-mode)
-  (yas-global-mode)
-
   (my/activate-projectile)
-  (my/activate-visual-regexp))
+  (my/activate-visual-regexp)
+  (my/activate-yas))
 
 (add-hook 'after-init-hook (lambda ()
                              (require 'cask)
