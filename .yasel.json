@@ -12,7 +12,7 @@
     "emacs-lisp-mode": {
         "body": ";; "
     },
-    "fundamental-mode": {
+    "text-mode": {
     },
     "go-mode": {
         "pre":  "/*",
