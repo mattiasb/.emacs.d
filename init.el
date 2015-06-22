@@ -177,6 +177,7 @@
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
                           (flycheck-mode            . " F")
+                          (ws-butler-mode           . " W")
                           (form-feed-mode           . "")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
@@ -406,6 +407,7 @@
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
 
+  (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
   (fci-mode)

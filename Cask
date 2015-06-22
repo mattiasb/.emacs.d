@@ -88,5 +88,6 @@
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
 (depends-on "wgrep-pt")
+(depends-on "ws-butler")
 (depends-on "yasnippet")
 (depends-on "zygospore")
