@@ -214,6 +214,7 @@
 (defun my/c-mode-hook ()
   "A mode hook for C and C++."
   (require 'rtags)
+  (require 'company-rtags)
   (my/rtags-start)
   (setq-local rtags-completions-enabled t)
   (rtags-enable-standard-keybindings c-mode-base-map)

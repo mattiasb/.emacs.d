@@ -66,7 +66,7 @@
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 46))
  '(company-backends
-   '(company-elisp company-nxml company-css company-eclim company-semantic company-rtags company-clang company-xcode company-cmake
+   '(company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake
                    (company-gtags company-etags company-dabbrev-code company-keywords)
                    company-oddmuse company-files company-dabbrev))
  '(company-dabbrev-downcase nil)
