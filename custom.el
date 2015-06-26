@@ -101,6 +101,7 @@
  '(ido-vertical t)
  '(ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
  '(inhibit-startup-screen t)
+ '(initial-major-mode 'text-mode)
  '(initial-scratch-message nil)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
