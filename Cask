@@ -81,6 +81,7 @@
 (depends-on "rust-mode")
 (depends-on "s")
 (depends-on "sass-mode")
+(depends-on "sh-extra-font-lock" :git "https://github.com/moonlite/.emacs.d.git" :files ("sh-extra-font-lock" "packages/sh-extra-font-lock/sh-extra-font-lock.el"))
 (depends-on "shut-up")
 (depends-on "smex")
 (depends-on "vala-mode")
