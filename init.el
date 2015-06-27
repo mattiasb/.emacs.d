@@ -273,6 +273,7 @@
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
+(add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (my/define-keys emacs-lisp-mode-map

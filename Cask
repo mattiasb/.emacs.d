@@ -57,6 +57,7 @@
 (depends-on "json-reformat")
 (depends-on "json-snatcher")
 (depends-on "let-alist")
+(depends-on "lisp-extra-font-lock")
 (depends-on "lua-mode")
 (depends-on "magit")
 (depends-on "magit-filenotify")
