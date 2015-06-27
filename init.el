@@ -458,6 +458,9 @@
                               (lookup-key term-raw-map (kbd "C-M-i")))
                             (define-key term-raw-map   (kbd "M-x") 'smex)))
 
+;; Shell script
+(add-hook 'sh-mode-hook 'sh-extra-font-lock-activate)
+
 ;; Vala
 (add-hook 'vala-mode-hook 'my/prog-mode)
 (add-hook 'vala-mode-hook
