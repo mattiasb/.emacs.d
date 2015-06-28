@@ -135,7 +135,6 @@
  '(powerline-default-separator 'bar)
  '(projectile-keymap-prefix (kbd "C-p"))
  '(racer-cmd "~/.local/bin/racer")
- '(racer-rust-src-path "/home/mattiasb/Code/github/rust-lang/rust/src")
  '(rng-schema-locating-files
    '("/home/mattiasb/.emacs.d/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
