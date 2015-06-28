@@ -17,7 +17,7 @@ $(YASEL_BIN): /usr/bin/npm
 $(CASK): $(CASK_BIN)
 	cask install
 
-snippets/fundamental-mode/%:
+snippets/fundamental-mode/%: $(YASEL_BIN)
 	yasel licenses/ snippets/
 
 install: $(CASK) $(SNIPPETS)
