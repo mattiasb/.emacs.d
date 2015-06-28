@@ -443,7 +443,7 @@
 ;; Rust
 (add-hook 'rust-mode-hook
           (lambda ()
-            (require 'racer)
+            (racer-activate)
             (my/define-keys rust-mode-map
                             '(("." . my/dot-and-complete)
                               (":" . my/double-colon-and-complete)
