@@ -445,8 +445,9 @@
           (lambda ()
             (racer-activate)
             (my/define-keys rust-mode-map
-                            '(("." . my/dot-and-complete)
-                              (":" . my/double-colon-and-complete)
+                            '(("C-<return>" . racer-find-definition)
+                              ("."          . my/dot-and-complete)
+                              (":"          . my/double-colon-and-complete)
                               ))
             ))
 
