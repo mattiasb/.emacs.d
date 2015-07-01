@@ -389,9 +389,12 @@
                               ("M-<down>"   . nil)))))
 
 ;; nXML
-(add-hook 'nxml-mode-hook (lambda ()
-                            (setq-local company-backends '(company-nxml))
-                            ))
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq-local company-backends '(company-nxml))
+            (my/define-keys nxml-mode-map
+                            '(("<tab>" . my/indent-snippet-or-complete)))))
+
 (add-hook 'nxml-mode-hook 'my/prog-mode)
 
 ;; Package
