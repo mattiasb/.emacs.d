@@ -309,8 +309,6 @@
                               ("C-<return>" . godef-jump)
                               ("."          . my/dot-and-complete)))))
 
-;; Magit
-
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
                                (setq-local electric-indent-mode nil)
@@ -366,10 +364,7 @@
 
 ;; Magit
 (add-hook 'magit-status-mode-hook
-          (lambda ()
-            (magit-filenotify-mode)
-            (my/define-keys magit-status-mode-map
-                            '(("q" . my/magit-mode-quit)))))
+          'magit-filenotify-mode)
 
 (add-hook 'git-commit-mode-hook
           (lambda ()
