@@ -76,7 +76,7 @@
 (depends-on "powerline")
 (depends-on "projectile")
 (depends-on "pt")
-(depends-on "racer" :git "https://github.com/phildawes/racer.git" :files ("racer" "editors/emacs/racer.el"))
+(depends-on "racer")
 (depends-on "restclient")
 (depends-on "rtags")
 (depends-on "rust-mode")
