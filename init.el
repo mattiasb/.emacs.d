@@ -389,6 +389,7 @@
                               ("M-<down>"   . nil)))))
 
 ;; nXML
+(defvar nxml-mode-map)
 (add-hook 'nxml-mode-hook
           (lambda ()
             (setq-local company-backends '(company-nxml))
@@ -422,6 +423,7 @@
 (add-hook 'prog-mode-hook 'my/prog-mode)
 
 ;; PT
+(defvar pt-search-mode-map)
 (add-hook 'pt-search-mode-hook
           (lambda ()
             (my/define-keys pt-search-mode-map
@@ -440,6 +442,7 @@
                             '(("<tab>" . my/snippet-or-complete)))))
 
 ;; Rust
+(defvar rust-mode-map)
 (add-hook 'rust-mode-hook
           (lambda ()
             (racer-activate)
