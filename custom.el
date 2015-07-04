@@ -133,7 +133,6 @@
      ("melpa" . "http://melpa.org/packages/")))
  '(powerline-default-separator 'bar)
  '(projectile-keymap-prefix (kbd "C-p"))
- '(racer-cmd "~/.local/bin/racer")
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
