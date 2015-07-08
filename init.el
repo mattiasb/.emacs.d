@@ -577,6 +577,10 @@
                (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Kill Emacs without asking about running processes."
+  (flet ((process-list ())) ad-do-it))
+
 
 (provide 'init)
 ;;; init.el ends here
