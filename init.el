@@ -496,8 +496,6 @@
   (projectile-global-mode)
   (setq projectile-mode-line
         '(:eval (format " [%s]" (projectile-project-name))))
-  (when (and (string= (window-system) "w32"))
-    (setq-default projectile-indexing-method 'native))
 
   (my/define-keys projectile-command-map
                   '(("s p" . projectile-pt)
