@@ -478,15 +478,9 @@
 ;; JHBuild
 (dir-locals-set-class-variables
  'gnome-code
- '((nil . ((eval . (progn
-                     (puthash (projectile-project-root)
-                              "jhbuild make"
-                              projectile-compilation-cmd-map)
-                     (puthash (projectile-project-root)
-                              "make check"
-                              projectile-test-cmd-map)))))))
-(dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
+ '((nil . ((projectile-project-type . jhbuild)))))
 
+(dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
 
 
 ;;;; Post-init code ;;;;
@@ -496,6 +490,12 @@
   (projectile-global-mode)
   (setq projectile-mode-line
         '(:eval (format " [%s]" (projectile-project-name))))
+
+  (projectile-register-project-type 'jhbuild
+                                    (lambda () nil)
+                                    "jhbuild make"
+                                    "make check"
+                                    "jhbuild run ${PWD##*/}")
 
   (my/define-keys projectile-command-map
                   '(("s p" . projectile-pt)

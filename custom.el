@@ -138,14 +138,7 @@
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(rust-indent-method-chain t)
- '(safe-local-variable-values
-   '((eval progn
-           (puthash
-            (projectile-project-root)
-            "jhbuild make" projectile-compilation-cmd-map)
-           (puthash
-            (projectile-project-root)
-            "make check" projectile-test-cmd-map))))
+ '(safe-local-variable-values '((projectile-project-type . jhbuild)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
