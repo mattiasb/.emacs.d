@@ -118,23 +118,23 @@
   (interactive)
   (let ((names (my/split-name s)))
     (concat (downcase (car names))
-            (mapconcat 'capitalize (cdr names) ""))
+            (mapconcat #'capitalize (cdr names) ""))
     ))
 
 ;;;###autoload
 (defun my/camel-case (s)
   "Camel case S."
-  (mapconcat 'capitalize (my/split-name s) ""))
+  (mapconcat #'capitalize (my/split-name s) ""))
 
 ;;;###autoload
 (defun my/snake-case (s)
   "Snake case S."
-  (mapconcat 'downcase (my/split-name s) "_"))
+  (mapconcat #'downcase (my/split-name s) "_"))
 
 ;;;###autoload
 (defun my/dash-case (s)
   "Dash case S."
-  (mapconcat 'downcase (my/split-name s) "-"))
+  (mapconcat #'downcase (my/split-name s) "-"))
 
 ;;;###autoload
 (defun my/toggle-programming-case (s)
@@ -444,7 +444,7 @@ depending on context."
              (region-end))
           (thing-at-point 'symbol))
         regexp-history)
-  (call-interactively 'occur))
+  (call-interactively #'occur))
 
 ;;;###autoload
 (defun my/wrap-in-comment (string)
@@ -487,7 +487,7 @@ depending on context."
   (package-show-package-list
    (cl-remove-if-not (lambda (x) (and (not (package-built-in-p x))
                                       (package-installed-p x)))
-                     (mapcar 'car package-archive-contents))))
+                     (mapcar #'car package-archive-contents))))
 
 ;;;###autoload
 (defun my/set-proxy ()

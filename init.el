@@ -350,7 +350,7 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (require 'js2-refactor)
-            (define-key js2-mode-map (kbd "C-c f r") 'js2r-rename-var)
+            (define-key js2-mode-map (kbd "C-c f r") #'js2r-rename-var)
             (setq-local company-backends '((company-dabbrev-code
                                             company-files
                                             company-keywords)))))
@@ -364,7 +364,7 @@
 
 ;; Magit
 (add-hook 'magit-status-mode-hook
-          'magit-filenotify-mode)
+          #'magit-filenotify-mode)
 
 (add-hook 'git-commit-mode-hook
           (lambda ()
@@ -396,10 +396,10 @@
             (my/define-keys nxml-mode-map
                             '(("<tab>" . my/indent-snippet-or-complete)))))
 
-(add-hook 'nxml-mode-hook 'my/prog-mode)
+(add-hook 'nxml-mode-hook #'my/prog-mode)
 
 ;; Package
-(add-hook 'package-menu-mode-hook 'hl-line-mode)
+(add-hook 'package-menu-mode-hook #'hl-line-mode)
 
 ;; Prog
 (defun my/prog-mode ()
@@ -420,7 +420,7 @@
                   '(("<tab>"      . my/indent-snippet-or-complete)
                     ("M-<return>" . emr-show-refactor-menu))))
 
-(add-hook 'prog-mode-hook 'my/prog-mode)
+(add-hook 'prog-mode-hook #'my/prog-mode)
 
 ;; PT
 (defvar pt-search-mode-map)
@@ -454,19 +454,19 @@
             ))
 
 ;; Shell
-(add-hook 'shell-dynamic-complete-functions 'bash-completion-dynamic-complete)
-(add-hook 'shell-command-complete-functions 'bash-completion-dynamic-complete)
+(add-hook 'shell-dynamic-complete-functions #'bash-completion-dynamic-complete)
+(add-hook 'shell-command-complete-functions #'bash-completion-dynamic-complete)
 (defvar term-raw-map)
 (add-hook 'term-mode-hook (lambda ()
                             (define-key term-raw-map   (kbd "<tab>")
                               (lookup-key term-raw-map (kbd "C-M-i")))
-                            (define-key term-raw-map   (kbd "M-x") 'smex)))
+                            (define-key term-raw-map   (kbd "M-x") #'smex)))
 
 ;; Shell script
-(add-hook 'sh-mode-hook 'sh-extra-font-lock-activate)
+(add-hook 'sh-mode-hook #'sh-extra-font-lock-activate)
 
 ;; Vala
-(add-hook 'vala-mode-hook 'my/prog-mode)
+(add-hook 'vala-mode-hook #'my/prog-mode)
 (add-hook 'vala-mode-hook
           (lambda ()
             (require 'flycheck-vala)
