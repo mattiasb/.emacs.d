@@ -374,8 +374,7 @@
 (add-hook 'magit-mode-hook
           (lambda ()
             (require 'magit-gitflow)
-            (when (fboundp 'turn-on-magit-gitflow)
-              (turn-on-magit-gitflow))))
+            (turn-on-magit-gitflow)))
 
 ;; Markdown
 (defvar markdown-mode-map)
