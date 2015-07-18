@@ -209,31 +209,37 @@
       user-full-name
     "Full Name"))
 
+;;;###autoload
 (defun my/dot-and-complete ()
   "Quicker auto-complete on objects and structs."
   (interactive)
   (my/char-and-complete ?.))
 
+;;;###autoload
 (defun my/double-colon-and-complete ()
   "Quicker auto-complete on namespaces and modules."
   (interactive)
   (my/char-and-complete ?: ?:))
 
+;;;###autoload
 (defun my/arrow-and-complete ()
   "Quicker auto-complete on namespaces and modules."
   (interactive)
   (my/char-and-complete ?> ?-))
 
+;;;###autoload
 (defun my/slash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
   (my/char-and-complete ?/))
 
+;;;###autoload
 (defun my/dash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
   (my/char-and-complete ?-))
 
+;;;###autoload
 (defun my/char-and-complete (char &optional prev)
   "Insert CHAR and complete if `preceding-char' is equal to PREV."
   (interactive)
@@ -297,6 +303,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
     (let ((yas-fallback-behavior 'return-nil))
       (yas-expand))))
 
+;;;###autoload
 (defun my/yas-insert-or-expand ()
   "Insert snippet from menu or expand the snippet at point."
   (interactive)
@@ -338,6 +345,7 @@ depending on context."
     (when (null (my/yas-expand))
       (company-complete-common))))
 
+;;;###autoload
 (defun my/complete ()
   "Complete (using `company-mode')."
   (interactive)
