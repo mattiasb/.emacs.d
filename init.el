@@ -186,6 +186,7 @@
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
                           (aggressive-indent-mode   . " ⇒")
+                          (which-key-mode           . "")
                           (magit-auto-revert-mode   . "")))
 
 
