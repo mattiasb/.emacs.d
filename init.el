@@ -525,6 +525,7 @@
   (ido-ubiquitous-mode)
   (flx-ido-mode)
   (fancy-narrow-mode)
+  (which-key-mode)
   (auto-insert-mode)
   (auto-compile-on-save-mode)
   (auto-compile-on-load-mode)
