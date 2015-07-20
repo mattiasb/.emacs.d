@@ -348,6 +348,7 @@
 
 ;; JS2
 (defvar js2-mode-map)
+(autoload 'js2r-rename-var "js2-refactor" "" t nil)
 (add-hook 'js2-mode-hook
           (lambda ()
             (require 'js2-refactor)
@@ -372,6 +373,7 @@
             (fci-mode 1)
             (setq-local fill-column 72)))
 
+(autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
 (add-hook 'magit-mode-hook
           (lambda ()
             (require 'magit-gitflow)
