@@ -156,6 +156,7 @@
  '(which-key-idle-delay 0.7)
  '(which-key-mode t)
  '(which-key-show-prefix nil)
+ '(which-key-sort t)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
  '(yas-also-auto-indent-first-line t)
