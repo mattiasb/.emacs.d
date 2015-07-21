@@ -32,6 +32,9 @@
         "body": "  * ",
         "post": "--]]"
     },
+    "rust-mode": {
+        "body": "// "
+    },
     "sh-mode": {
         "body": "# "
     }
