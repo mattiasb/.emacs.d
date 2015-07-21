@@ -2,7 +2,7 @@ CASK_BIN=$(HOME)/.local/bin/cask
 YASEL_BIN=$(HOME)/.local/bin/yasel
 CASK=.cask/
 LICENSES:=$(wildcard licenses/*)
-SNIPPETS:=$(patsubst licenses/%,snippets/fundamental-mode/%,$(LICENSES))
+SNIPPETS:=$(patsubst licenses/%,snippets/text-mode/%,$(LICENSES))
 
 .PHONY: all update install
 
