@@ -291,7 +291,9 @@
             (flycheck-cask-setup)
             (flycheck-package-setup)))
 
-
+;; Find-file
+(add-to-list 'find-file-not-found-functions
+             #'my/create-non-existent-directory)
 
 ;; Go
 (defvar go-mode-map)
