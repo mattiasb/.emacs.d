@@ -109,6 +109,8 @@
    ( "C-c n"       .  make-frame)
    ( "C-<next>"    .  forward-page)
    ( "C-<prior>"   .  backward-page)
+   ( "M-<left>"    .  pop-tag-mark)
+   ( "M-<right>"   .  nil)
 
    ;; Move buffers
    ( "<C-S-up>"    .  buf-move-up)
