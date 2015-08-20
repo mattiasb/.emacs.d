@@ -94,6 +94,7 @@
 (depends-on "visual-regexp-steroids")
 (depends-on "wgrep-pt")
 (depends-on "which-key")
+(depends-on "with-editor")
 (depends-on "ws-butler")
 (depends-on "yasnippet")
 (depends-on "zygospore")
