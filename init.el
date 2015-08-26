@@ -187,6 +187,7 @@
                           (yas-minor-mode           . "")
                           (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
+                          (racer-mode               . "")
                           (aggressive-indent-mode   . " ⇒")
                           (which-key-mode           . "")
                           (magit-auto-revert-mode   . "")))
@@ -450,7 +451,7 @@
 (defvar rust-mode-map)
 (add-hook 'rust-mode-hook
           (lambda ()
-            (racer-activate)
+            (racer-mode)
             (my/define-keys rust-mode-map
                             '(("C-<return>" . racer-find-definition)
                               ("."          . my/dot-and-complete)
