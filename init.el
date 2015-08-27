@@ -258,7 +258,6 @@
                               ("\C-p"    . company-select-previous)
                               ("<next>"  . my/company-select-next-nine)
                               ("<prior>" . my/company-select-previous-nine)
-                              ("\C-d"    . company-show-doc-buffer)
                               ("\C-v"    . company-show-location)
                               ("\C-g"    . company-abort)))))
 
