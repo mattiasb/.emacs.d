@@ -428,6 +428,23 @@
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
+;; Projectile
+(add-hook 'projectile-mode-hook
+          (lambda ()
+            (setq projectile-mode-line
+                  '(:eval (format " [%s]" (projectile-project-name))))
+
+            (projectile-register-project-type 'jhbuild
+                                              (lambda () nil)
+                                              "jhbuild make"
+                                              "make check"
+                                              "jhbuild run ${PWD##*/}")
+
+            (my/define-keys projectile-command-map
+                            '(("s p" . projectile-pt)
+                              ("C-b" . projectile-ibuffer)))
+            ))
+
 ;; PT
 (defvar pt-search-mode-map)
 (add-hook 'pt-search-mode-hook
@@ -491,22 +508,6 @@
 
 ;;;; Post-init code ;;;;
 
-(defun my/activate-projectile ()
-  "Activate projectile."
-  (projectile-global-mode)
-  (setq projectile-mode-line
-        '(:eval (format " [%s]" (projectile-project-name))))
-
-  (projectile-register-project-type 'jhbuild
-                                    (lambda () nil)
-                                    "jhbuild make"
-                                    "make check"
-                                    "jhbuild run ${PWD##*/}")
-
-  (my/define-keys projectile-command-map
-                  '(("s p" . projectile-pt)
-                    ("C-b" . projectile-ibuffer))))
-
 (defun my/activate-visual-regexp ()
   "Activate visual-regexp."
   (require 'visual-regexp-steroids)
@@ -539,7 +540,7 @@
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
   (global-aggressive-indent-mode)
-  (my/activate-projectile)
+  (projectile-global-mode)
   (my/activate-visual-regexp)
   (my/activate-yas))
 
