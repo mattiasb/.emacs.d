@@ -109,6 +109,7 @@
    ( "C-c n"       .  make-frame)
    ( "C-<next>"    .  forward-page)
    ( "C-<prior>"   .  backward-page)
+   ( "C-<return>"  .  find-tag)
    ( "M-<left>"    .  pop-tag-mark)
    ( "M-<right>"   .  nil)
 
@@ -146,6 +147,7 @@
    ( "C-c s t"     .  auto-insert)))
 
 (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "M-."))
 (global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
 (global-set-key [remap occur]       'my/occur-dwim)
 
