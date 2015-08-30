@@ -88,6 +88,8 @@
  '(electric-indent-mode t)
  '(electric-layout-mode t)
  '(electric-pair-mode t)
+ '(elpy-modules
+   '(elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-yasnippet elpy-module-sane-defaults))
  '(fci-rule-color "gray21")
  '(flycheck-completion-system 'ido)
  '(flycheck-highlighting-mode 'symbols)

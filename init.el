@@ -452,7 +452,12 @@
                             '(("W" . wgrep-change-to-wgrep-mode)))))
 
 ;; Python
-(add-hook 'python-mode-hook (lambda () (aggressive-indent-mode -1)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (my/define-keys python-mode-map
+                            '(("C-<return>" . elpy-goto-definition)
+                              ("."          . my/dot-and-complete))
+                            )))
 
 ;; REST Client
 (defvar restclient-mode-map)
@@ -538,6 +543,7 @@
   (auto-compile-on-load-mode)
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
+  (elpy-enable)
   (global-aggressive-indent-mode)
   (projectile-global-mode)
   (my/activate-visual-regexp)

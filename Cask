@@ -21,6 +21,7 @@
 (depends-on "dummy-h-mode")
 (depends-on "easy-repeat")
 (depends-on "editorconfig")
+(depends-on "elpy")
 (depends-on "emr")
 (depends-on "epl")
 (depends-on "expand-region")
