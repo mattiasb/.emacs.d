@@ -127,6 +127,7 @@
  '(lua-prefix-key "C-c")
  '(magit-auto-revert-mode-lighter "")
  '(magit-completing-read-function 'magit-ido-completing-read)
+ '(magit-push-always-verify nil)
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
  '(magit-unstage-all-confirm nil)
