@@ -412,6 +412,31 @@ depending on context."
   (magit-mode-quit-window 4))
 
 ;;;###autoload
+(defun my/aim-new-block (mode control-stmts &optional char-tokens)
+  "Does this line suggest a new block in MODE.
+CONTROL-STMTS is a list of new block introducing control statements.
+The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
+  (let* ((control-stmt-regex (concat "\\b\\("
+                                     (mapconcat #'identity control-stmts "\\|")
+                                     "\\)\\b"))
+         (char-tokens (or char-tokens "[;{}]"))
+         (complete-regex (concat "\\("
+                                 "[" char-tokens "]"
+                                 "\\|"
+                                 control-stmt-regex
+                                 "\\)")))
+    (and (derived-mode-p mode)
+         (null (string-match complete-regex (thing-at-point 'line))))))
+
+;; (and (derived-mode-p 'c++-mode)
+;;      (null (string-match "\\([;{}]\\|\\b\\(if\\|else\\|for\\|do\\|while\\)\\b\\)"
+;;                          (thing-at-point 'line))))
+
+;; (and (derived-mode-p 'rust-mode)
+;;      (null (string-match "\\([;{}]\\)" (thing-at-point 'line))))
+
+
+;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (require 'popup)
