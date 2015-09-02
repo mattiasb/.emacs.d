@@ -428,14 +428,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (and (derived-mode-p mode)
          (null (string-match complete-regex (thing-at-point 'line))))))
 
-;; (and (derived-mode-p 'c++-mode)
-;;      (null (string-match "\\([;{}]\\|\\b\\(if\\|else\\|for\\|do\\|while\\)\\b\\)"
-;;                          (thing-at-point 'line))))
-
-;; (and (derived-mode-p 'rust-mode)
-;;      (null (string-match "\\([;{}]\\)" (thing-at-point 'line))))
-
-
 ;;;###autoload
 (defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
