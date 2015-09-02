@@ -66,12 +66,13 @@
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 46))
  '(company-backends
-   '(company-elisp company-nxml company-css company-eclim company-semantic company-clang company-xcode company-cmake
-                   (company-gtags company-etags company-dabbrev-code company-keywords)
-                   company-oddmuse company-files company-dabbrev))
+   '(company-elisp company-nxml company-css company-cmake
+                   (company-dabbrev-code company-keywords)
+                   company-files company-dabbrev))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-idle-delay 0.5)
+ '(company-minimum-prefix-length 2)
  '(company-quickhelp-delay 1.2)
  '(company-quickhelp-mode t)
  '(company-selection-wrap-around t)
