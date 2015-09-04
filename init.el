@@ -180,7 +180,6 @@
 
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
-                          (flycheck-mode            . " F")
                           (ws-butler-mode           . " W")
                           (form-feed-mode           . "")
                           (git-gutter-mode          . "")
@@ -291,7 +290,7 @@
             ;; Re-add this when it works correctly
             ;; (require 'flycheck-jscs)
             ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
-
+            (load-library "flycheck-status-emoji")
             (flycheck-cask-setup)
             (flycheck-package-setup)))
 
