@@ -89,6 +89,7 @@
 (depends-on "sass-mode")
 (depends-on "sh-extra-font-lock" :git "https://github.com/mattiasb/.emacs.d.git" :files ("sh-extra-font-lock" "packages/sh-extra-font-lock/sh-extra-font-lock.el"))
 (depends-on "shut-up")
+(depends-on "smart-region")
 (depends-on "smex")
 (depends-on "vala-mode")
 (depends-on "vala-snippets")

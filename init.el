@@ -544,6 +544,7 @@
   (auto-compile-on-load-mode)
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
+  (smart-region-on)
   (elpy-enable)
   (global-aggressive-indent-mode)
   (projectile-global-mode)
