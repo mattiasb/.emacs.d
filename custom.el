@@ -66,7 +66,7 @@
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 46))
  '(company-backends
-   '(company-elisp company-nxml company-css company-cmake
+   '(company-elisp company-nxml company-css company-cmake company-capf
                    (company-dabbrev-code company-keywords)
                    company-files company-dabbrev))
  '(company-dabbrev-downcase nil)
