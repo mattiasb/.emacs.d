@@ -24,6 +24,7 @@ install: $(CASK) $(SNIPPETS)
 
 update: /usr/bin/git $(CASK)
 	( 	git pull --rebase 					&& \
+		cask install						&& \
 		cask update 						&& \
 		yasel licenses/ snippets/ 				   \
 	)
