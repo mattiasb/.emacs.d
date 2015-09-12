@@ -299,7 +299,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
 ;;;###autoload
 (defun my/yas-expand ()
   "Perform a `yas-expand' but return nil on failure."
-  (if (not (yas-minor-mode)) nil
+  (when (yas-minor-mode)
     (let ((yas-fallback-behavior 'return-nil))
       (yas-expand))))
 

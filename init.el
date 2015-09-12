@@ -141,7 +141,7 @@
    ( "C-c q"       .  vr/query-replace)
 
    ;; YAS
-   ( "C-<tab>"     .  yas-insert-snippet)
+   ( "C-<tab>"     .  my/yas-insert-or-expand)
    ( "C-c s c"     .  yas-new-snippet)
    ( "C-c s e"     .  yas-visit-snippet-file)
    ( "C-c s r"     .  yas-reload-all)
