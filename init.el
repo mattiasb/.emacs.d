@@ -166,6 +166,7 @@
                   ("\\.mapcss$"   . css-mode)
                   ("\\.mcss$"     . css-mode)
                   ("\\.m$"        . octave-mode)
+                  ("\\.dec$"      . mtg-deck-mode)
                   ("\/Cask$"      . emacs-lisp-mode)))
 
 (my/shorten-major-modes '((markdown-mode   . "M↓")
@@ -406,6 +407,15 @@
                             '(("C-<return>" . markdown-jump)
                               ("M-<up>"     . nil)
                               ("M-<down>"   . nil)))))
+;; MTG deck mode
+(defvar mtg-deck-mode-map)
+(add-hook 'mtg-deck-mode-hook
+          (lambda ()
+            (company-mode)
+            (setq-local company-backends '(company-capf))
+            (my/define-keys mtg-deck-mode-map
+                            '(("<tab>" . my/snippet-or-complete)))
+            ))
 
 ;; nXML
 (defvar nxml-mode-map)
