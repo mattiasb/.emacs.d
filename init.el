@@ -97,7 +97,7 @@
    ( "C-c t w"     .  whitespace-mode)
    ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
-   ( "C-c t b"     .  magit-blame-mode)
+   ( "C-c t b"     .  magit-blame)
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
@@ -388,6 +388,12 @@
           (lambda ()
             (require 'magit-gitflow)
             (turn-on-magit-gitflow)))
+
+(defvar magit-blame-mode-map)
+(add-hook 'magit-blame-mode-hook
+          (lambda ()
+            (my/define-keys magit-blame-mode-map
+                            '(( "C-c t b"     .  magit-blame-quit)))))
 
 ;; Markdown
 (defvar markdown-mode-map)
