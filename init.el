@@ -84,6 +84,7 @@
    ( "C-c w p"     .  list-packages)
    ( "C-c w t"     .  ansi-term)
    ( "C-c w r"     .  my/restclient)
+   ( "C-c w e"     .  ielm)
 
    ;; Documentation
    ( "C-c h i"     .  info-display-manual)
