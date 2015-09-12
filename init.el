@@ -318,6 +318,11 @@
 (add-hook 'haskell-mode-hook (lambda ()
                                (setq-local electric-indent-mode nil)
                                (turn-on-haskell-indentation)))
+;; Help
+(add-hook 'help-mode-hook (lambda ()
+                            (my/define-keys help-mode-map
+                                            '(("M-<left>"  . help-go-back)
+                                              ("M-<right>" . help-go-forward)))))
 
 ;; Ido
 (add-hook 'ido-setup-hook
