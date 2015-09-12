@@ -380,6 +380,7 @@
 
 (add-hook 'git-commit-mode-hook
           (lambda ()
+            (flyspell-mode)
             (fci-mode 1)
             (setq-local fill-column 72)))
 
