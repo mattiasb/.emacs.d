@@ -55,6 +55,7 @@
 (depends-on "ido-completing-read+")
 (depends-on "ido-ubiquitous")
 (depends-on "ido-vertical-mode")
+(depends-on "js2-highlight-vars")
 (depends-on "js2-mode")
 (depends-on "js2-refactor")
 (depends-on "json-mode")

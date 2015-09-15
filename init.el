@@ -364,6 +364,7 @@
           (lambda ()
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-c f r") #'js2r-rename-var)
+            (js2-highlight-vars-mode)
             (setq-local company-backends '((company-dabbrev-code
                                             company-files
                                             company-keywords)))))
