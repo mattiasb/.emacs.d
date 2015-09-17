@@ -572,6 +572,7 @@
   (elpy-enable)
   (global-aggressive-indent-mode)
   (projectile-global-mode)
+  (control-mode-default-setup)
   (my/activate-visual-regexp)
   (my/activate-yas))
 
