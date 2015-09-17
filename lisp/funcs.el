@@ -488,6 +488,12 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
+(defun my/focus-buffer-dwim (buffer)
+  "Switch to BUFFER in other window unless it's currently in view."
+  (unless (string-equal buffer (buffer-name (current-buffer)))
+    (switch-to-buffer-other-window buffer)))
+
+;;;###autoload
 (defun my/rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)

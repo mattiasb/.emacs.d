@@ -595,6 +595,26 @@
   "Balance windows after deletion."
   (balance-windows))
 
+(defadvice describe-bindings (after focus-new-buffer activate)
+  "Switch to new window."
+  (my/focus-buffer-dwim "*Help*"))
+
+(defadvice describe-function (after focus-new-buffer activate)
+  "Switch to new window."
+  (my/focus-buffer-dwim "*Help*"))
+
+(defadvice describe-mode (after focus-new-buffer activate)
+  "Switch to new window."
+  (my/focus-buffer-dwim "*Help*"))
+
+(defadvice describe-variable (after focus-new-buffer activate)
+  "Switch to new window."
+  (my/focus-buffer-dwim "*Help*"))
+
+(defadvice package-menu-describe-package (after focus-new-buffer activate)
+  "Switch to new window."
+  (my/focus-buffer-dwim "*Help*"))
+
 (defadvice custom-save-all (around custom-save-all-around)
   "Use abbreviated quotes for customize."
   (let ((print-quoted t))
