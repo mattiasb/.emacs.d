@@ -140,7 +140,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
  '(powerline-default-separator 'bar)
- '(projectile-keymap-prefix (kbd "C-p"))
+ '(projectile-keymap-prefix (kbd "C-c p"))
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
