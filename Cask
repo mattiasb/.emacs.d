@@ -38,7 +38,6 @@
 (depends-on "flycheck-rust")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-vala" :git "https://github.com/mattiasb/.emacs.d.git" :files ("flycheck-vala" "packages/flycheck-vala/flycheck-vala.el"))
-(depends-on "form-feed")
 (depends-on "fullscreen-mode")
 (depends-on "git-commit")
 (depends-on "git-gutter")

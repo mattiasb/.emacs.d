@@ -38,8 +38,7 @@
 ;;; Code:
 
 
-
-;;;; Settings ;;;;
+;;; Settings
 
 ;; Unset these early to remove at least some of the inital flicker.
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -63,15 +62,13 @@
 (put 'upcase-region 'disabled nil)
 
 
-
-;;;; Early init code
+;;; Early init code
 
 ;; Maximize on start
 (my/maximize)
 
 
-
-;;;; Keybindings ;;;;
+;;; Keybindings
 
 (my/global-set-keys
  '(
@@ -154,8 +151,8 @@
 
 (windmove-default-keybindings)
 
-
-;;;; Modes – General;;;;
+
+;;; Modes – General
 
 (my/auto-modes  '(("\\.inl\\'"    . c++-mode)
                   ("\\.ui$"       . nxml-mode)
@@ -183,7 +180,6 @@
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
                           (ws-butler-mode           . " W")
-                          (form-feed-mode           . "")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
                           (magit-filenotify-mode    . " Notify")
@@ -196,8 +192,7 @@
                           (magit-auto-revert-mode   . "")))
 
 
-
-;;;; Modes – Specific ;;;;
+;;; Modes – Specific
 
 ;; Browse Kill Ring
 (add-hook 'browse-kill-ring-mode-hook
@@ -278,10 +273,12 @@
                               ("c" . find-file)))))
 
 ;; ELisp
-(add-hook 'emacs-lisp-mode-hook #'form-feed-mode)
 (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
+            (setq page-delimiter
+                  (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
+                      (* (* blank) (opt ";" (* not-newline)) "\n")))
             (my/define-keys emacs-lisp-mode-map
                             '(("/" . my/slash-and-complete)
                               ("-" . my/dash-and-complete)))))
@@ -524,8 +521,8 @@
             (require 'flycheck-vala)
             (add-to-list 'flycheck-checkers 'vala-valac)))
 
-
-;;;; Project specific settings ;;;;
+
+;;; Project specific settings
 
 ;; JHBuild
 (dir-locals-set-class-variables
@@ -534,8 +531,8 @@
 
 (dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
 
-
-;;;; Post-init code ;;;;
+
+;;; Post-init code
 
 (defun my/activate-visual-regexp ()
   "Activate visual-regexp."
@@ -581,8 +578,7 @@
                              (my/activate-modes)))
 
 
-
-;;;; Advices ;;;;
+;;; Advices
 
 (defadvice split-window-right (after rebalance-windows activate)
   "Balance windows after splitting."
@@ -639,6 +635,9 @@
   "Kill Emacs without asking about running processes."
   (flet ((process-list ())) ad-do-it))
 
-
+(advice-add #'backward-page :after #'recenter)
+(advice-add #'forward-page  :after #'recenter)
+
+
 (provide 'init)
 ;;; init.el ends here
