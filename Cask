@@ -29,6 +29,7 @@
 (depends-on "f")
 (depends-on "fancy-narrow")
 (depends-on "fill-column-indicator")
+(depends-on "find-file-in-project")
 (depends-on "flx")
 (depends-on "flx-ido")
 (depends-on "flycheck")
