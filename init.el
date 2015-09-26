@@ -95,6 +95,7 @@
    ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
    ( "C-c t b"     .  magit-blame)
+   ( "<escape>"    .  control-mode)
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
@@ -246,6 +247,16 @@
                         '((company-cmake
                            company-files
                            company-dabbrev-code)))))
+
+;; Control
+(add-hook 'control-mode-hook
+          (lambda ()
+            (setq cursor-type (if control-mode
+                                  'box
+                                'bar))
+            (my/define-keys control-mode-keymap
+                            '(("i"        . control-mode)
+                              ("<escape>" . ESC-prefix)))))
 
 ;; Company
 (add-hook 'company-mode-hook
@@ -547,6 +558,13 @@
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+(defun my/activate-control-mode ()
+  "Activate Control Mode."
+  (control-mode-default-setup)
+  (global-control-mode)
+  (add-hook #'projectile-mode-hook
+            #'control-mode-reload-bindings))
+
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
   (cask-initialize)
@@ -569,7 +587,7 @@
   (elpy-enable)
   (global-aggressive-indent-mode)
   (projectile-global-mode)
-  (control-mode-default-setup)
+  (my/activate-control-mode)
   (my/activate-visual-regexp)
   (my/activate-yas))
 
