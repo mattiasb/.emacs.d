@@ -383,6 +383,14 @@ depending on context."
                                  answer)))))))
 
 ;;;###autoload
+(defun my/reopen-file-as-root ()
+  "Re-open file the current buffer is visiting as root."
+  (interactive)
+  (when buffer-file-name
+    (unless (file-writable-p buffer-file-name)
+      (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
+
+;;;###autoload
 (defun my/decrement-number-decimal (&optional arg)
   "Decrement the number forward from point by 'ARG'."
   (interactive "p*")
@@ -492,6 +500,10 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Switch to BUFFER in other window unless it's currently in view."
   (unless (string-equal buffer (buffer-name (current-buffer)))
     (switch-to-buffer-other-window buffer)))
+
+(defun my/advice-describe-func (function)
+  "Advice FUNCTION to switch to the *Help* buffer after popping it up."
+  (advice-add function :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
 
 ;;;###autoload
 (defun my/rename-current-buffer-and-file ()

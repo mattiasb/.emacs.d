@@ -580,63 +580,36 @@
 
 ;;; Advices
 
-(defadvice split-window-right (after rebalance-windows activate)
-  "Balance windows after splitting."
-  (balance-windows)
-  (other-window 1))
-(defadvice split-window-below (after rebalance-windows activate)
-  "Balance windows after splitting."
-  (balance-windows)
-  (other-window 1))
-(defadvice delete-window (after rebalance-windows activate)
-  "Balance windows after deletion."
-  (balance-windows))
 
-(defadvice describe-bindings (after focus-new-buffer activate)
-  "Switch to new window."
-  (my/focus-buffer-dwim "*Help*"))
+(advice-add #'popup-create       :before #'my/fci-turn-off)
+(advice-add #'popup-delete       :after  #'my/fci-turn-on)
 
-(defadvice describe-function (after focus-new-buffer activate)
-  "Switch to new window."
-  (my/focus-buffer-dwim "*Help*"))
+(advice-add #'ido-find-file      :after  #'my/reopen-file-as-root)
 
-(defadvice describe-mode (after focus-new-buffer activate)
-  "Switch to new window."
-  (my/focus-buffer-dwim "*Help*"))
+(advice-add #'backward-page      :after  #'recenter)
+(advice-add #'forward-page       :after  #'recenter)
 
-(defadvice describe-variable (after focus-new-buffer activate)
-  "Switch to new window."
-  (my/focus-buffer-dwim "*Help*"))
+(advice-add #'delete-window      :after (lambda (_) (balance-windows)))
+(advice-add #'split-window-right :after  #'balance-windows)
+(advice-add #'split-window-below :after  #'balance-windows)
+(advice-add #'split-window-right :after (lambda () (other-window 1)))
+(advice-add #'split-window-below :after (lambda () (other-window 1)))
 
-(defadvice package-menu-describe-package (after focus-new-buffer activate)
-  "Switch to new window."
-  (my/focus-buffer-dwim "*Help*"))
+(advice-add #'custom-save-all
+            :around (lambda (func &rest args)
+                      (let ((print-quoted t))
+                        (apply func args))))
 
-(defadvice custom-save-all (around custom-save-all-around)
-  "Use abbreviated quotes for customize."
-  (let ((print-quoted t))
-    ad-do-it))
+(advice-add #'save-buffers-kill-emacs
+            :around (lambda (func &rest args)
+                      (cl-flet ((process-list ()))
+                        (apply func args))))
 
-(defadvice popup-create (before suppress-fci-mode activate)
-  "Suspend fci-mode while popups are visible."
-  (my/fci-turn-off))
-(defadvice popup-delete (after restore-fci-mode activate)
-  "Restore fci-mode when all popups have closed."
-  (when (null popup-instances)
-    (my/fci-turn-on)))
-
-(defadvice ido-find-file (after find-file-sudo activate)
-  "Find file as root if necessary."
-  (unless (and buffer-file-name
-               (file-writable-p buffer-file-name))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
-(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Kill Emacs without asking about running processes."
-  (flet ((process-list ())) ad-do-it))
-
-(advice-add #'backward-page :after #'recenter)
-(advice-add #'forward-page  :after #'recenter)
+(mapc #'my/advice-describe-func '(package-menu-describe-package
+                                  describe-variable
+                                  describe-mode
+                                  describe-function
+                                  describe-bindings))
 
 
 (provide 'init)
