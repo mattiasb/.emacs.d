@@ -255,8 +255,10 @@
                                   'box
                                 'bar))
             (my/define-keys control-mode-keymap
-                            '(("i"        . control-mode)
-                              ("<escape>" . ESC-prefix)))))
+                            '(("<return>"    . control-mode)
+                              ("i"           . control-mode)
+                              ("<escape>"    . ESC-prefix)
+                              ("<backspace>" . backward-delete-char-untabify)))))
 
 ;; Company
 (add-hook 'company-mode-hook
