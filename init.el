@@ -95,7 +95,7 @@
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
-   ( "C-c r"       .  restart-emacs)
+   ( "C-c R"       .  restart-emacs)
 
    ;; NAVIGATION
 
