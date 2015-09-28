@@ -302,7 +302,7 @@
             ;; Re-add this when it works correctly
             ;; (require 'flycheck-jscs)
             ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
-            (load-library "flycheck-status-emoji")
+            (flycheck-status-emoji-mode)
             (flycheck-cask-setup)
             (flycheck-package-setup)))
 
