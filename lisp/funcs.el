@@ -496,6 +496,18 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
+(defun my/control-mode-off ()
+  "Turn off `control-mode'."
+  (interactive)
+  (control-mode 0))
+
+;;;###autoload
+(defun my/control-mode-on ()
+  "Turn on `control-mode'."
+  (interactive)
+  (control-mode 1))
+
+;;;###autoload
 (defun my/focus-buffer-dwim (buffer)
   "Switch to BUFFER in other window unless it's currently in view."
   (unless (string-equal buffer (buffer-name (current-buffer)))

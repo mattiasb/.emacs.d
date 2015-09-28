@@ -95,7 +95,7 @@
    ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
    ( "C-c t b"     .  magit-blame)
-   ( "<escape>"    .  control-mode)
+   ( "<escape>"    .  my/control-mode-on)
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
@@ -255,10 +255,9 @@
                                   'box
                                 'bar))
             (my/define-keys control-mode-keymap
-                            '(("<return>"    . control-mode)
-                              ("i"           . control-mode)
+                            '(("i"           . my/control-mode-off)
                               ("<escape>"    . ESC-prefix)
-                              ("<backspace>" . backward-delete-char-untabify)))))
+                              ))))
 
 ;; Company
 (add-hook 'company-mode-hook
