@@ -123,7 +123,7 @@
    ( "C-c a"       .  align-string)
    ( "C-c ."       .  align-by-current-symbol)
    ( "C-c c"       .  my/toggle-comment)
-   ( "C-c C-c"     .  my/toggle-programming-case-word-at-point)
+   ( "C-c <up>"    .  my/toggle-programming-case-word-at-point)
    ( "C-c i"       .  insert-char)
    ( "C-a"         .  mwim-beginning-of-code-or-line)
    ( "C-e"         .  mwim-end-of-code-or-line)
