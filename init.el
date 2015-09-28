@@ -87,12 +87,8 @@
    ( "C-c h i"     .  info-display-manual)
    ( "C-c h m"     .  woman)
 
-   ;; Marks / Highlights
-   ( "C-§"         .  er/expand-region)
-
    ;; Toggle modes
    ( "C-c t w"     .  whitespace-mode)
-   ( "C-c t f"     .  fullscreen-mode-fullscreen-toggle)
    ( "C-c t a"     .  aggressive-indent-mode)
    ( "C-c t b"     .  magit-blame)
    ( "<escape>"    .  my/control-mode-on)
@@ -109,7 +105,6 @@
    ( "C-c n"       .  make-frame)
    ( "C-<next>"    .  forward-page)
    ( "C-<prior>"   .  backward-page)
-   ( "C-<return>"  .  find-tag)
    ( "M-<left>"    .  pop-tag-mark)
    ( "M-<right>"   .  nil)
 
@@ -457,8 +452,9 @@
   (emr-initialize)
 
   (my/define-keys prog-mode-map
-                  '(("<tab>"      . my/indent-snippet-or-complete)
-                    ("M-<return>" . emr-show-refactor-menu))))
+                  '(("<tab>"       . my/indent-snippet-or-complete)
+                    ("M-<return>"  . emr-show-refactor-menu)
+                    ("C-<return>"  . find-tag))))
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
