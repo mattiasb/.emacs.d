@@ -99,6 +99,7 @@
 
    ;; Other
    ( "C-c d"       .  diff-buffer-with-file)
+   ( "C-c r"       .  restart-emacs)
 
    ;; NAVIGATION
 

@@ -84,6 +84,7 @@
 (depends-on "projectile")
 (depends-on "pt")
 (depends-on "racer")
+(depends-on "restart-emacs")
 (depends-on "restclient")
 (depends-on "rtags")
 (depends-on "rust-mode")
