@@ -69,40 +69,45 @@
 
 
 ;;; Keybindings
+(global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "M-."))
+(global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
+(global-set-key [remap occur]       'my/occur-dwim)
 
 (my/global-set-keys
  '(
    ;; Global overrides
    ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
+   ( "C-x C-x"     .  smex)
    ( "M-x"         .  smex)
 
    ;; Windows
-   ( "C-c w c"     .  customize)
-   ( "C-c w p"     .  list-packages)
-   ( "C-c w t"     .  ansi-term)
-   ( "C-c w r"     .  my/restclient)
-   ( "C-c w e"     .  ielm)
+   ( "C-z w c"     .  customize)
+   ( "C-z w p"     .  list-packages)
+   ( "C-z w t"     .  ansi-term)
+   ( "C-z w r"     .  my/restclient)
+   ( "C-z w e"     .  ielm)
 
    ;; Documentation
-   ( "C-c h i"     .  info-display-manual)
-   ( "C-c h m"     .  woman)
+   ( "C-z h i"     .  info-display-manual)
+   ( "C-z h m"     .  woman)
 
    ;; Toggle modes
-   ( "C-c t w"     .  whitespace-mode)
-   ( "C-c t a"     .  aggressive-indent-mode)
-   ( "C-c t b"     .  magit-blame)
+   ( "C-z t w"     .  whitespace-mode)
+   ( "C-z t a"     .  aggressive-indent-mode)
+   ( "C-z t b"     .  magit-blame)
    ( "<escape>"    .  my/control-mode-on)
 
    ;; Other
-   ( "C-c d"       .  diff-buffer-with-file)
-   ( "C-c R"       .  restart-emacs)
+   ( "C-z d"       .  diff-buffer-with-file)
+   ( "C-z R"       .  restart-emacs)
 
    ;; NAVIGATION
 
    ;; General
    ( "C-'"         .  ace-jump-word-mode)
-   ( "C-c o"       .  browse-url-at-point)
-   ( "C-c n"       .  make-frame)
+   ( "C-z o"       .  browse-url-at-point)
+   ( "C-z n"       .  make-frame)
    ( "C-<next>"    .  forward-page)
    ( "C-<prior>"   .  backward-page)
    ( "M-<left>"    .  pop-tag-mark)
@@ -120,31 +125,26 @@
    ;; General
    ( "M-<up>"      .  move-text-up)
    ( "M-<down>"    .  move-text-down)
-   ( "C-c a"       .  align-string)
-   ( "C-c ."       .  align-by-current-symbol)
-   ( "C-c c"       .  my/toggle-comment)
-   ( "C-c <up>"    .  my/toggle-programming-case-word-at-point)
-   ( "C-c i"       .  insert-char)
+   ( "C-z a"       .  align-string)
+   ( "C-z ."       .  align-by-current-symbol)
+   ( "C-z c"       .  my/toggle-comment)
+   ( "C-z <up>"    .  my/toggle-programming-case-word-at-point)
+   ( "C-z i"       .  insert-char)
+   ( "C-z +"       .  my/increment-number-decimal)
+   ( "C-z -"       .  my/decrement-number-decimal)
    ( "C-a"         .  mwim-beginning-of-code-or-line)
    ( "C-e"         .  mwim-end-of-code-or-line)
-   ( "C-c +"       .  my/increment-number-decimal)
-   ( "C-c -"       .  my/decrement-number-decimal)
 
    ;; Replace
-   ( "C-c r"       .  vr/replace)
-   ( "C-c q"       .  vr/query-replace)
+   ( "C-z r"       .  vr/replace)
+   ( "C-z q"       .  vr/query-replace)
 
    ;; YAS
    ( "C-<tab>"     .  my/yas-insert-or-expand)
-   ( "C-c s c"     .  yas-new-snippet)
-   ( "C-c s e"     .  yas-visit-snippet-file)
-   ( "C-c s r"     .  yas-reload-all)
-   ( "C-c s t"     .  auto-insert)))
-
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "M-."))
-(global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
-(global-set-key [remap occur]       'my/occur-dwim)
+   ( "C-z s c"     .  yas-new-snippet)
+   ( "C-z s e"     .  yas-visit-snippet-file)
+   ( "C-z s r"     .  yas-reload-all)
+   ( "C-z s t"     .  auto-insert)))
 
 (windmove-default-keybindings)
 
@@ -225,7 +225,7 @@
                   '(("C-<return>" . rtags-find-symbol-at-point)
                     ("M-<left>"   . rtags-location-stack-back)
                     ("M-<right>"  . rtags-location-stack-forward)
-                    ("C-c f r"    . rtags-rename-symbol)
+                    ("C-z f r"    . rtags-rename-symbol)
                     ("."          . my/dot-and-complete)
                     (":"          . my/double-colon-and-complete)
                     (">"          . my/arrow-and-complete)))
@@ -245,6 +245,8 @@
                            company-dabbrev-code)))))
 
 ;; Control
+(add-hook 'control-mode-keymap-generation-functions
+          'control-mode-ctrlx-hacks)
 (add-hook 'control-mode-hook
           (lambda ()
             (setq cursor-type (if control-mode
@@ -314,10 +316,10 @@
             (setq-local company-backends '(company-go))
 
             (my/define-keys go-mode-map
-                            '(("C-c i a"    . go-import-add)
-                              ("C-c i r"    . go-remove-unused-imports)
-                              ("C-c i g"    . go-goto-imports)
-                              ("C-c d"      . godoc-at-point)
+                            '(("C-z i a"    . go-import-add)
+                              ("C-z i r"    . go-remove-unused-imports)
+                              ("C-z i g"    . go-goto-imports)
+                              ("C-z d"      . godoc-at-point)
                               ("C-<return>" . godef-jump)
                               ("."          . my/dot-and-complete)))))
 
@@ -368,7 +370,7 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (require 'js2-refactor)
-            (define-key js2-mode-map (kbd "C-c f r") #'js2r-rename-var)
+            (define-key js2-mode-map (kbd "C-z f r") #'js2r-rename-var)
             (js2-highlight-vars-mode)
             (setq-local company-backends '((company-dabbrev-code
                                             company-files
@@ -401,7 +403,7 @@
 (add-hook 'magit-blame-mode-hook
           (lambda ()
             (my/define-keys magit-blame-mode-map
-                            '(( "C-c t b"     .  magit-blame-quit)))))
+                            '(( "C-z t b"     .  magit-blame-quit)))))
 
 ;; Markdown
 (defvar markdown-mode-map)
@@ -472,7 +474,7 @@
 
             (my/define-keys projectile-command-map
                             '(("s p" . projectile-pt)
-                              ("C-b" . projectile-ibuffer)))
+                              ("B"   . projectile-ibuffer)))
             ))
 
 ;; PT
@@ -558,7 +560,6 @@
 
 (defun my/activate-control-mode ()
   "Activate Control Mode."
-  (control-mode-default-setup)
   (global-control-mode)
   (add-hook #'projectile-mode-hook
             #'control-mode-reload-bindings))

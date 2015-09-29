@@ -126,7 +126,7 @@
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
  '(lua-indent-level 2)
- '(lua-prefix-key "C-c")
+ '(lua-prefix-key "C-z")
  '(magit-auto-revert-mode-lighter "")
  '(magit-completing-read-function 'magit-ido-completing-read)
  '(magit-push-always-verify nil)
@@ -142,7 +142,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
  '(powerline-default-separator 'bar)
- '(projectile-keymap-prefix (kbd "C-c p"))
+ '(projectile-keymap-prefix (kbd "C-z p"))
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
