@@ -558,6 +558,12 @@
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+(defun my/activate-god-mode-isearch ()
+  "Activate `god-mode-isearch'."
+  (require 'god-mode-isearch)
+  (define-key isearch-mode-map     (kbd "<escape>") 'god-mode-isearch-activate)
+  (define-key god-mode-isearch-map (kbd "i") 'god-mode-isearch-disable))
+
 (defun my/activate-control-mode ()
   "Activate Control Mode."
   (global-control-mode)
@@ -587,6 +593,7 @@
   (global-aggressive-indent-mode)
   (projectile-global-mode)
   (my/activate-control-mode)
+  (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)
   (my/activate-yas))
 
