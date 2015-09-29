@@ -97,6 +97,7 @@
    ( "C-z t a"     .  aggressive-indent-mode)
    ( "C-z t b"     .  magit-blame)
    ( "<escape>"    .  my/control-mode-on)
+   ( "<insert>"    .  global-control-mode)
 
    ;; Other
    ( "C-z d"       .  diff-buffer-with-file)
@@ -563,7 +564,10 @@
   "Activate `god-mode-isearch'."
   (require 'god-mode-isearch)
   (define-key isearch-mode-map     (kbd "<escape>") 'god-mode-isearch-activate)
-  (define-key god-mode-isearch-map (kbd "i") 'god-mode-isearch-disable))
+  (define-key isearch-mode-map     (kbd "<insert>") 'god-mode-isearch-activate)
+  (define-key god-mode-isearch-map (kbd "g")        'isearch-cancel)
+  (define-key god-mode-isearch-map (kbd "i")        'god-mode-isearch-disable)
+  (define-key god-mode-isearch-map (kbd "<insert>") 'god-mode-isearch-disable))
 
 (defun my/activate-control-mode ()
   "Activate Control Mode."
