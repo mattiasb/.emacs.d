@@ -59,6 +59,7 @@
 (depends-on "js2-highlight-vars")
 (depends-on "js2-mode")
 (depends-on "js2-refactor")
+(depends-on "jscs")
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "json-snatcher")
