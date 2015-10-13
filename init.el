@@ -256,6 +256,8 @@
             (my/define-keys control-mode-keymap
                             '(("i"           . my/control-mode-off)
                               ("<escape>"    . ESC-prefix)
+                              ("x s"         . save-buffer)
+                              ("x S"         . save-some-buffers)
                               ))))
 
 ;; Company
