@@ -157,6 +157,7 @@
                   ("\\.js$"       . js2-mode)
                   ("\\.jshintrc$" . js2-mode)
                   ("\\.jscsrc$"   . json-mode)
+                  ("\\.geojson$"  . json-mode)
                   ("\\.vala$"     . vala-mode)
                   ("\\.mapcss$"   . css-mode)
                   ("\\.mcss$"     . css-mode)
