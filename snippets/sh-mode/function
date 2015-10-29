@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: function
 # key: function
-# binding: C-c s f
+# binding: C-z s f
 # --
 function ${1:name} {
 $0

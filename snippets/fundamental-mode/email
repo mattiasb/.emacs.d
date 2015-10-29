@@ -1,5 +1,5 @@
 # name: Email
 # key: email
-# binding: C-c s m
+# binding: C-z s m
 # --
 `user-mail-address`

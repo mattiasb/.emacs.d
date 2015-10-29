@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: for-keys
 # key: for-keys
-# binding: C-c s k
+# binding: C-z s k
 # --
 for (var ${1:key} in ${2:obj}) {
     var ${3:value} = $2[$1];

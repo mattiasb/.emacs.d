@@ -1,7 +1,7 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: Section
 # key: ;;;;
-# binding: C-c s ;
+# binding: C-z s ;
 # --
 
 
