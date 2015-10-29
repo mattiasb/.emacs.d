@@ -95,6 +95,7 @@
 (depends-on "shut-up")
 (depends-on "smart-region")
 (depends-on "smex")
+(depends-on "swiper")
 (depends-on "vala-mode")
 (depends-on "vala-snippets")
 (depends-on "visual-regexp")
