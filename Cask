@@ -85,6 +85,7 @@
 (depends-on "powerline")
 (depends-on "projectile")
 (depends-on "pt")
+(depends-on "pyvenv")
 (depends-on "racer")
 (depends-on "restart-emacs")
 (depends-on "restclient")
