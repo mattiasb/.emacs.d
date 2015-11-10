@@ -12,6 +12,7 @@
 (depends-on "buffer-move")
 (depends-on "cask")
 (depends-on "cmake-mode")
+(depends-on "color-theme-modern")
 (depends-on "company")
 (depends-on "company-go")
 (depends-on "company-quickhelp")
