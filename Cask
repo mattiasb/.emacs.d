@@ -64,6 +64,7 @@
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "json-snatcher")
+(depends-on "know-your-http-well")
 (depends-on "let-alist")
 (depends-on "lisp-extra-font-lock")
 (depends-on "lua-mode")
