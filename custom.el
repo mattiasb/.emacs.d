@@ -109,6 +109,8 @@
  '(ido-ubiquitous-max-items 50000)
  '(ido-vertical t)
  '(ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
+ '(imenu-after-jump-hook '(recenter))
+ '(imenu-auto-rescan t)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
  '(initial-scratch-message nil)
