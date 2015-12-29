@@ -566,11 +566,13 @@
 (defun my/activate-god-mode-isearch ()
   "Activate `god-mode-isearch'."
   (require 'god-mode-isearch)
-  (define-key isearch-mode-map     (kbd "<escape>") 'god-mode-isearch-activate)
-  (define-key isearch-mode-map     (kbd "<insert>") 'god-mode-isearch-activate)
-  (define-key god-mode-isearch-map (kbd "g")        'isearch-cancel)
-  (define-key god-mode-isearch-map (kbd "i")        'god-mode-isearch-disable)
-  (define-key god-mode-isearch-map (kbd "<insert>") 'god-mode-isearch-disable))
+  (my/define-keys isearch-mode-map
+                  '(("<escape>" . god-mode-isearch-activate)
+                    ("<insert>" . god-mode-isearch-activate)))
+  (my/define-keys god-mode-isearch-map
+                  '(("g"        . isearch-cancel)
+                    ("i"        . god-mode-isearch-disable)
+                    ("<insert>" . god-mode-isearch-disable))))
 
 (defun my/activate-control-mode ()
   "Activate Control Mode."
