@@ -304,6 +304,7 @@
             ;; Re-add this when it works correctly
             ;; (require 'flycheck-jscs)
             ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
+            (flycheck-pos-tip-mode)
             (flycheck-status-emoji-mode)
             (flycheck-cask-setup)
             (flycheck-package-setup)))
@@ -637,6 +638,11 @@
 (advice-add #'save-buffers-kill-emacs
             :around (lambda (func &rest args)
                       (cl-flet ((process-list ()))
+                        (apply func args))))
+
+(advice-add #'flycheck-pos-tip-error-messages
+            :around (lambda (func &rest args)
+                      (let ((x-gtk-use-system-tooltips nil))
                         (apply func args))))
 
 (mapc #'my/advice-describe-func '(package-menu-describe-package

@@ -38,6 +38,7 @@
 (depends-on "flycheck-cask")
 (depends-on "flycheck-jscs" :git "https://github.com/mattiasb/.emacs.d.git" :files ("flycheck-jscs" "packages/flycheck-jscs/flycheck-jscs.el"))
 (depends-on "flycheck-package")
+(depends-on "flycheck-pos-tip")
 (depends-on "flycheck-rust")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-vala" :git "https://github.com/mattiasb/.emacs.d.git" :files ("flycheck-vala" "packages/flycheck-vala/flycheck-vala.el"))
