@@ -587,7 +587,7 @@
   (pallet-mode)
   (powerline-major-mode)
   (powerline-default-theme)
-  (global-git-gutter-mode)
+  (global-diff-hl-mode)
   (ido-mode)
   (ido-vertical-mode)
   (ido-ubiquitous-mode)
