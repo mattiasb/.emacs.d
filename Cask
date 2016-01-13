@@ -19,7 +19,6 @@
 (depends-on "company-restclient")
 (depends-on "control-mode")
 (depends-on "dash")
-(depends-on "diff-hl")
 (depends-on "diminish")
 (depends-on "dummy-h-mode")
 (depends-on "easy-repeat")
