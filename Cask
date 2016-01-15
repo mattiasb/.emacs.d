@@ -54,6 +54,7 @@
 (depends-on "helm")
 (depends-on "helm-core")
 (depends-on "highlight-numbers")
+(depends-on "html5-schema")
 (depends-on "ibuffer-projectile")
 (depends-on "ido-completing-read+")
 (depends-on "ido-ubiquitous")
