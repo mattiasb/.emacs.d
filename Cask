@@ -24,6 +24,7 @@
 (depends-on "easy-repeat")
 (depends-on "editorconfig")
 (depends-on "editorconfig-core")
+(depends-on "editorconfig-fnmatch")
 (depends-on "elpy")
 (depends-on "emr")
 (depends-on "epl")
