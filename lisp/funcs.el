@@ -249,6 +249,15 @@
       (when do-complete
         (company-complete-common)))))
 
+(defun my/isearch-symbol-with-prefix (p)
+  "Like isearch, unless prefix argument is provided.
+With a prefix argument P, isearch for the symbol at point."
+  (interactive "P")
+  (let ((current-prefix-arg nil))
+    (call-interactively
+     (if p #'isearch-forward-symbol-at-point
+       #'isearch-forward))))
+
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)
   "Define a new function which call FUNCTION.

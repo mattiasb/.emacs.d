@@ -73,6 +73,7 @@
 (global-unset-key (kbd "M-."))
 (global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
 (global-set-key [remap occur]       'my/occur-dwim)
+(global-set-key [remap isearch-forward] #'my/isearch-symbol-with-prefix)
 
 (my/global-set-keys
  '(
@@ -617,6 +618,7 @@
 ;;; Advices
 
 
+(advice-add #'isearch-forward-symbol-at-point :after #'god-mode-isearch-activate)
 (advice-add #'popup-create       :before #'my/fci-turn-off)
 (advice-add #'popup-delete       :after  #'my/fci-turn-on)
 
