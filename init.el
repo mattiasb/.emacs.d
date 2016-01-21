@@ -71,8 +71,8 @@
 ;;; Keybindings
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "M-."))
-(global-set-key [remap kill-line]   (my/bol-with-prefix kill-line))
-(global-set-key [remap occur]       'my/occur-dwim)
+(global-set-key [remap kill-line]       (my/bol-with-prefix kill-line))
+(global-set-key [remap occur]           #'my/occur-dwim)
 (global-set-key [remap isearch-forward] #'my/isearch-symbol-with-prefix)
 
 (my/global-set-keys
@@ -617,21 +617,20 @@
 
 ;;; Advices
 
-
 (advice-add #'isearch-forward-symbol-at-point :after #'god-mode-isearch-activate)
-(advice-add #'popup-create       :before #'my/fci-turn-off)
-(advice-add #'popup-delete       :after  #'my/fci-turn-on)
+(advice-add #'popup-create                    :before #'my/fci-turn-off)
+(advice-add #'popup-delete                    :after  #'my/fci-turn-on)
 
-(advice-add #'ido-find-file      :after  #'my/reopen-file-as-root)
+(advice-add #'ido-find-file                   :after  #'my/reopen-file-as-root)
 
-(advice-add #'backward-page      :after  #'recenter)
-(advice-add #'forward-page       :after  #'recenter)
+(advice-add #'backward-page                   :after  #'recenter)
+(advice-add #'forward-page                    :after  #'recenter)
 
-(advice-add #'delete-window      :after (lambda (_) (balance-windows)))
-(advice-add #'split-window-right :after  #'balance-windows)
-(advice-add #'split-window-below :after  #'balance-windows)
-(advice-add #'split-window-right :after (lambda () (other-window 1)))
-(advice-add #'split-window-below :after (lambda () (other-window 1)))
+(advice-add #'delete-window                   :after (lambda (_) (balance-windows)))
+(advice-add #'split-window-right              :after  #'balance-windows)
+(advice-add #'split-window-below              :after  #'balance-windows)
+(advice-add #'split-window-right              :after (lambda () (other-window 1)))
+(advice-add #'split-window-below              :after (lambda () (other-window 1)))
 
 (advice-add #'custom-save-all
             :around (lambda (func &rest args)
