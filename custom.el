@@ -128,6 +128,7 @@
  '(js2-mirror-mode t)
  '(js2-mode-indent-ignore-first-tab t)
  '(js2-skip-preprocessor-directives t)
+ '(large-file-warning-threshold 100000000)
  '(lua-indent-level 2)
  '(lua-prefix-key "C-z")
  '(magit-auto-revert-mode-lighter "")
