@@ -137,23 +137,57 @@
   (mapconcat #'downcase (my/split-name s) "-"))
 
 ;;;###autoload
-(defun my/toggle-programming-case (s)
-  "Toggle programming style casing of S."
-  (cond ((string-match-p "\\(?:[a-z]+_\\)+[a-z]+" s) (my/dash-case        s))
-        ((string-match-p "\\(?:[a-z]+-\\)+[a-z]+" s) (my/camel-case       s))
-        ((string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s) (my/lower-camel-case s))
-        (t                                           (my/snake-case       s)) ))
+(defun my/is-dash-case (s)
+  "Return T if S is in dash-case."
+  (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s))
 
 ;;;###autoload
-(defun my/toggle-programming-case-word-at-point ()
-  "Toggle programming style casing of word a point."
+(defun my/is-camel-case (s)
+  "Return T if S is in camel-case."
+  (string-match-p "^\\(?:[A-Z][a-z]+\\)+$"  s))
+
+;;;###autoload
+(defun my/is-lower-camel-case (s)
+  "Return T if S is in lower-camel-case."
+  (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s))
+
+;;;###autoload
+(defun my/is-snake-case (s)
+  "Return T if S is in snake-case."
+  (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s))
+
+;;;###autoload
+(defun my/toggle-programming-case (s &optional reverse)
+  "Toggle programming style casing of S.
+Toggle in REVERSE order if optional argument is non-nil."
+  (if reverse (cond ((my/is-dash-case        s) (my/snake-case       s))
+                    ((my/is-snake-case       s) (my/lower-camel-case s))
+                    ((my/is-lower-camel-case s) (my/camel-case       s))
+                    ((my/is-camel-case       s) (my/dash-case        s)))
+    (cond ((my/is-snake-case       s) (my/dash-case        s))
+          ((my/is-dash-case        s) (my/camel-case       s))
+          ((my/is-camel-case       s) (my/lower-camel-case s))
+          ((my/is-lower-camel-case s) (my/snake-case       s)))
+    ))
+
+;;;###autoload
+(defun my/toggle-programming-case-word-at-point (&optional reverse)
+  "Toggle programming style casing of word a point.
+Do it in REVERSE order if argument is non-nil"
   (interactive)
   (let* ((case-fold-search nil)
          (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
          (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
          (txt (buffer-substring beg end))
-         (cml (my/toggle-programming-case txt)) )
-    (if cml (progn (delete-region beg end) (insert cml))) ))
+         (cml (my/toggle-programming-case txt reverse)))
+    (if cml (progn (delete-region beg end) (insert cml)))))
+
+;;;###autoload
+(defun my/toggle-programming-case-word-at-point-reverse ()
+  "Toggle programming style casing of word a point.
+Forward style."
+  (interactive)
+  (my/toggle-programming-case-word-at-point t))
 
 ;;;###autoload
 (defun my/preceding-char-match-p (pattern)

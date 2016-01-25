@@ -131,6 +131,7 @@
    ( "C-z ."       .  align-by-current-symbol)
    ( "C-z c"       .  my/toggle-comment)
    ( "C-z <up>"    .  my/toggle-programming-case-word-at-point)
+   ( "C-z <down>"  .  my/toggle-programming-case-word-at-point-reverse)
    ( "C-z i"       .  insert-char)
    ( "C-z +"       .  my/increment-number-decimal)
    ( "C-z -"       .  my/decrement-number-decimal)
