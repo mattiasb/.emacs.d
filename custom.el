@@ -94,6 +94,8 @@
  '(electric-pair-mode t)
  '(elpy-modules
    '(elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-yasnippet elpy-module-sane-defaults))
+ '(expand-region-contract-fast-key "S-SPC")
+ '(expand-region-preferred-python-mode 'elpy-mode)
  '(fci-rule-color "gray21")
  '(flycheck-completion-system 'ido)
  '(flycheck-highlighting-mode 'symbols)
