@@ -86,7 +86,7 @@
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(easy-repeat-command-list
-   '(my/toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
+   '(flycheck-next-error flycheck-previous-error my/toggle-programming-case-word-at-point-reverse my/toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(electric-indent-mode t)
