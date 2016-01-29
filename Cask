@@ -107,6 +107,7 @@
 (depends-on "vala-snippets")
 (depends-on "visual-regexp")
 (depends-on "visual-regexp-steroids")
+(depends-on "websocket")
 (depends-on "wgrep-pt")
 (depends-on "which-key")
 (depends-on "with-editor")
