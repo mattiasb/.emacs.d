@@ -296,9 +296,7 @@
             (setq page-delimiter
                   (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
                       (* (* blank) (opt ";" (* not-newline)) "\n")))
-            (my/define-keys emacs-lisp-mode-map
-                            '(("/" . my/slash-and-complete)
-                              ("-" . my/dash-and-complete)))))
+            ))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
