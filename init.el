@@ -529,7 +529,13 @@
                             (define-key term-raw-map   (kbd "M-x") #'smex)))
 
 ;; Shell script
-(add-hook 'sh-mode-hook #'sh-extra-font-lock-activate)
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq-local company-backends '((company-shell
+                                            company-dabbrev-code
+                                            company-files
+                                            company-keywords)))
+            (sh-extra-font-lock-activate)))
 
 ;; Vala
 (add-hook 'vala-mode-hook #'my/prog-mode)

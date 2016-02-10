@@ -17,6 +17,7 @@
 (depends-on "company-go")
 (depends-on "company-quickhelp")
 (depends-on "company-restclient")
+(depends-on "company-shell")
 (depends-on "control-mode")
 (depends-on "dash")
 (depends-on "diminish")
