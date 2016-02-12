@@ -16,6 +16,7 @@ $(YASEL_BIN): /usr/bin/npm
 
 $(CASK): $(CASK_BIN)
 	cask install
+	cask update
 
 snippets/text-mode/%: $(YASEL_BIN)
 	yasel licenses/ snippets/
@@ -23,7 +24,8 @@ snippets/text-mode/%: $(YASEL_BIN)
 install: $(CASK) $(SNIPPETS)
 
 update: /usr/bin/git $(CASK)
-	( 	git pull --rebase 					&& \
+	( 	git fetch 						&& \
+		git rebase --autostash FETCH_HEAD 			&& \
 		cask install						&& \
 		cask update 						&& \
 		yasel licenses/ snippets/ 				   \
