@@ -115,7 +115,6 @@
 ;;;###autoload
 (defun my/lower-camel-case (s)
   "Camel case S."
-  (interactive)
   (let ((names (my/split-name s)))
     (concat (downcase (car names))
             (mapconcat #'capitalize (cdr names) ""))
@@ -139,55 +138,67 @@
 ;;;###autoload
 (defun my/is-dash-case (s)
   "Return T if S is in dash-case."
-  (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s))
+  (let ((case-fold-search nil))
+    (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s)))
 
 ;;;###autoload
 (defun my/is-camel-case (s)
   "Return T if S is in camel-case."
-  (string-match-p "^\\(?:[A-Z][a-z]+\\)+$"  s))
+  (let ((case-fold-search nil))
+    (string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s)))
 
 ;;;###autoload
 (defun my/is-lower-camel-case (s)
   "Return T if S is in lower-camel-case."
-  (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s))
+  (let ((case-fold-search nil))
+    (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s)))
 
 ;;;###autoload
-(defun my/is-snake-case (s)
-  "Return T if S is in snake-case."
-  (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s))
+  (defun my/is-snake-case (s)
+    "Return T if S is in snake-case."
+    (let ((case-fold-search nil))
+      (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
 
 ;;;###autoload
-(defun my/toggle-programming-case (s &optional reverse)
-  "Toggle programming style casing of S.
-Toggle in REVERSE order if optional argument is non-nil."
-  (if reverse (cond ((my/is-dash-case        s) (my/snake-case       s))
-                    ((my/is-snake-case       s) (my/lower-camel-case s))
-                    ((my/is-lower-camel-case s) (my/camel-case       s))
-                    ((my/is-camel-case       s) (my/dash-case        s)))
-    (cond ((my/is-snake-case       s) (my/dash-case        s))
-          ((my/is-dash-case        s) (my/camel-case       s))
-          ((my/is-camel-case       s) (my/lower-camel-case s))
-          ((my/is-lower-camel-case s) (my/snake-case       s)))
-    ))
+(defun my/toggle-programming-case (s) ;; UP
+  "Toggle programming style casing of S."
+  (cond ((my/is-snake-case       s) (my/dash-case        s))
+        ((my/is-dash-case        s) (my/camel-case       s))
+        ((my/is-camel-case       s) (my/lower-camel-case s))
+        ((my/is-lower-camel-case s) (my/snake-case       s))))
 
 ;;;###autoload
-(defun my/toggle-programming-case-word-at-point (&optional reverse)
-  "Toggle programming style casing of word a point.
-Do it in REVERSE order if argument is non-nil"
+(defun my/toggle-programming-case-reverse (s)
+  "Toggle programming style casing of S in reverse."
+  (cond ((my/is-dash-case        s) (my/snake-case       s))
+        ((my/is-snake-case       s) (my/lower-camel-case s))
+        ((my/is-lower-camel-case s) (my/camel-case       s))
+        ((my/is-camel-case       s) (my/dash-case        s))))
+
+(defun my/toggle-programming-case-word-at-point ()
+  "Toggle programming style casing of word a point."
   (interactive)
-  (let* ((case-fold-search nil)
-         (beg (and (skip-chars-backward "[:alnum:]:_-") (point)))
-         (end (and (skip-chars-forward  "[:alnum:]:_-") (point)))
-         (txt (buffer-substring beg end))
-         (cml (my/toggle-programming-case txt reverse)))
-    (if cml (progn (delete-region beg end) (insert cml)))))
+  (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case))
 
-;;;###autoload
 (defun my/toggle-programming-case-word-at-point-reverse ()
   "Toggle programming style casing of word a point.
-Forward style."
+In reverse."
   (interactive)
-  (my/toggle-programming-case-word-at-point t))
+  (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case-reverse))
+
+;;;###autoload
+(defun my/operate-on-thing-or-region (thing fn)
+  "Replace THING or region with the value of the function FN."
+  (let (pos1 pos2 meat excerpt)
+    (if (and transient-mark-mode mark-active)
+        (setq pos1 (region-beginning)
+              pos2 (region-end))
+      (setq pos1 (car (bounds-of-thing-at-point thing))
+            pos2 (cdr (bounds-of-thing-at-point thing))))
+    (setq excerpt (buffer-substring-no-properties pos1 pos2))
+    (setq meat (funcall fn excerpt))
+    (delete-region pos1 pos2)
+    (insert  meat)))
 
 ;;;###autoload
 (defun my/preceding-char-match-p (pattern)
