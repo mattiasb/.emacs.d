@@ -200,6 +200,11 @@ In reverse."
     (delete-region pos1 pos2)
     (insert  meat)))
 
+(defun my/calc-thing-at-point ()
+  "Replace math expression at point or in region with it's value."
+  (interactive)
+  (my/operate-on-thing-or-region 'symbol #'calc-eval))
+
 ;;;###autoload
 (defun my/preceding-char-match-p (pattern)
   "Match preceding char with PATTERN."
