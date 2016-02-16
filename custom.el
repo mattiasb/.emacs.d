@@ -163,6 +163,7 @@
      (mtg-deck-format . legacy)
      (mtg-deck-format . modern)
      (projectile-project-type . jhbuild)))
+ '(save-abbrevs 'silently)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
