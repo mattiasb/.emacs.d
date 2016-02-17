@@ -458,6 +458,8 @@
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
+  (setq flyspell-prog-text-faces
+        '(font-lock-comment-face font-lock-doc-face))
   (flyspell-prog-mode)
   (fci-mode)
   (highlight-numbers-mode)
