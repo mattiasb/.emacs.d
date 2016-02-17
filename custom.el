@@ -52,6 +52,7 @@
       .
       ["default.lua" my/autoinsert-yas-expand])))
  '(auto-insert-directory "~/.emacs.d/templates/")
+ '(blink-cursor-blinks -1)
  '(browse-kill-ring-current-entry-face 'bold)
  '(browse-kill-ring-display-duplicates nil)
  '(browse-kill-ring-highlight-current-entry t)
@@ -233,6 +234,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "tomato3"))))
  '(flycheck-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flycheck-error-list-info ((t (:foreground "olive drab"))))
  '(flycheck-error-list-warning ((t (:foreground "goldenrod"))))

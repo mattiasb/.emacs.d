@@ -257,7 +257,7 @@
           (lambda ()
             (setq cursor-type (if control-mode
                                   'box
-                                'bar))
+                                '(bar . 5)))
             (my/define-keys control-mode-keymap
                             '(("i"           . my/control-mode-off)
                               ("<escape>"    . ESC-prefix)
