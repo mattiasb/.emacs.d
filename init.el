@@ -285,6 +285,7 @@
 (defvar dired-mode-map)
 (add-hook 'dired-mode-hook
           (lambda ()
+            (dired-hide-details-mode)
             (my/control-mode-off)
             (my/define-keys dired-mode-map
                             '(("W" . wdired-change-to-wdired-mode)
