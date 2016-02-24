@@ -634,7 +634,7 @@
                              (my/activate-modes)))
 
 
-;;; Advices
+;;; Advice
 
 (advice-add #'isearch-forward-symbol-at-point :after #'god-mode-isearch-activate)
 (advice-add #'popup-create                    :before #'my/fci-turn-off)
