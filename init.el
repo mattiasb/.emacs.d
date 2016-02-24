@@ -530,9 +530,17 @@
 (add-hook 'shell-command-complete-functions #'bash-completion-dynamic-complete)
 (defvar term-raw-map)
 (add-hook 'term-mode-hook (lambda ()
+                            (my/control-mode-off)
                             (define-key term-raw-map   (kbd "<tab>")
                               (lookup-key term-raw-map (kbd "C-M-i")))
-                            (define-key term-raw-map   (kbd "M-x") #'smex)))
+                            (my/define-keys term-raw-map
+                                            '(("M-x" . smex)
+                                              ("C-y" . my/term-paste)
+                                              ))))
+
+(add-hook 'term-exec-hook (lambda ()
+                            (set-buffer-process-coding-system 'utf-8-unix
+                                                              'utf-8-unix)))
 
 ;; Shell script
 (add-hook 'sh-mode-hook
@@ -642,6 +650,16 @@
 (advice-add #'split-window-below              :after  #'balance-windows)
 (advice-add #'split-window-right              :after (lambda () (other-window 1)))
 (advice-add #'split-window-below              :after (lambda () (other-window 1)))
+
+;; Kill terminal buffer when the terminal process exits
+(advice-add #'term-sentinel
+            :after (lambda (proc _)
+                     (when (memq (process-status proc) '(signal exit))
+                       (kill-buffer (process-buffer proc)))))
+
+(advice-add #'ansi-term
+            :before (lambda (_)
+                      (interactive (list "/bin/bash"))))
 
 (advice-add #'custom-save-all
             :around (lambda (func &rest args)

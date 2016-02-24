@@ -621,7 +621,13 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
       (setq-default url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
                                          ("https" . (getenv "HTTPS_PROXY"))
                                          ))))
-
+;;;###autoload
+(defun my/term-paste (&optional string)
+  "Paste STRING into a term-buffer."
+  (interactive)
+  (process-send-string
+   (get-buffer-process (current-buffer))
+   (if string string (current-kill 0))))
 
 ;; Taken from here:
 ;; http://endlessparentheses.com/ispell-and-abbrev-the-perfect-auto-correct.html
