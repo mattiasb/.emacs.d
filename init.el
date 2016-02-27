@@ -527,16 +527,14 @@
             ))
 
 ;; Shell
-(add-hook 'shell-dynamic-complete-functions #'bash-completion-dynamic-complete)
-(add-hook 'shell-command-complete-functions #'bash-completion-dynamic-complete)
 (defvar term-raw-map)
 (add-hook 'term-mode-hook (lambda ()
+                            (setq yas-dont-activate t)
                             (my/control-mode-off)
-                            (define-key term-raw-map   (kbd "<tab>")
-                              (lookup-key term-raw-map (kbd "C-M-i")))
                             (my/define-keys term-raw-map
-                                            '(("M-x" . smex)
-                                              ("C-y" . my/term-paste)
+                                            '(("M-x"         . smex)
+                                              ("C-y"         . my/term-paste)
+                                              ("<escape>"    . ESC-prefix)
                                               ))))
 
 (add-hook 'term-exec-hook (lambda ()
