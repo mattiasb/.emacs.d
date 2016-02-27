@@ -192,7 +192,8 @@
                           (racer-mode               . "")
                           (aggressive-indent-mode   . " ⇒")
                           (which-key-mode           . "")
-                          (magit-auto-revert-mode   . "")))
+                          (magit-auto-revert-mode   . "")
+                          (abbrev-mode              . "")))
 
 
 ;;; Modes – Specific
