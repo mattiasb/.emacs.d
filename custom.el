@@ -76,7 +76,7 @@
  '(company-minimum-prefix-length 2)
  '(company-quickhelp-delay 1.2)
  '(company-quickhelp-mode t)
- '(company-selection-wrap-around t)
+ '(company-selection-wrap-around nil)
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-minimum-width 40)
