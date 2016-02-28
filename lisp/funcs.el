@@ -65,7 +65,7 @@
 
 ;;;###autoload
 (defun my/shorten-major-modes (modes)
-  "Shorten the displayed name for MODES in the modeline."
+  "Shorten the displayed name for MODES in the mode line."
   (dolist (mode-and-line modes)
     (let ((line (cdr mode-and-line))
           (mode (car mode-and-line)))
@@ -86,8 +86,7 @@
 ;;;###autoload
 (defun my/auto-modes (modes)
   "Add many MODES to `auto-mode-alist'."
-  (setq auto-mode-alist (append modes auto-mode-alist))
-  )
+  (setq auto-mode-alist (append modes auto-mode-alist)))
 
 ;;;###autoload
 (defun my/global-set-keys (keybindings)
@@ -100,8 +99,15 @@
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)
   "Like MAPCAR, but apply FN-HEAD to CAR and FN-REST to CDR of LIST."
-  (if list (cons (funcall fn-head (car list))
-                 (mapcar fn-rest (cdr list)))))
+  (cons (funcall fn-head (car list))
+        (mapcar fn-rest (cdr list))))
+
+(defun my/mapconcat-head (fn-head fn-rest list sep)
+  "Like `mapconcat', but apply FN-HEAD to CAR and FN-REST to CDR of LIST.
+Just like `mapconcat' the last argument (SEP) is used as separator."
+  (mapconcat #'identity
+             (my/mapcar-head fn-head fn-rest list)
+             sep))
 
 ;;;###autoload
 (defun my/split-name (s)
@@ -115,10 +121,10 @@
 ;;;###autoload
 (defun my/lower-camel-case (s)
   "Camel case S."
-  (let ((names (my/split-name s)))
-    (concat (downcase (car names))
-            (mapconcat #'capitalize (cdr names) ""))
-    ))
+  (my/mapconcat-head 'downcase
+                     'capitalize
+                     (my/split-name s)
+                     ""))
 
 ;;;###autoload
 (defun my/camel-case (s)
