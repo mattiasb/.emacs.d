@@ -331,17 +331,24 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (interactive)
   (unless rtags-process (rtags-restart-process)))
 
-;;;###autoload
-(defun my/ido-select-next-nine ()
-  "A bit more eager `ido-next-match'."
-  (interactive)
-  (dotimes (_i 9 nil) (ido-next-match)))
+(defun my/ido-visible-prospects ()
+  "The number of visible prospects."
+  (let* ((prospects-len (length ido-matches))
+         (available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
+         (dot-dot (< available-lines (max ido-max-prospects prospects-len))))
+    (1- available-lines)))
 
 ;;;###autoload
-(defun my/ido-select-prev-nine ()
+(defun my/ido-scroll-down ()
+  "A bit more eager `ido-next-match'."
+  (interactive)
+  (dotimes (_ (my/ido-visible-prospects) nil) (ido-next-match)))
+
+;;;###autoload
+(defun my/ido-scroll-up ()
   "A bit more eager `ido-prev-match'."
   (interactive)
-  (dotimes (_i 9 nil) (ido-prev-match)))
+  (dotimes (_ (my/ido-visible-prospects) nil) (ido-prev-match)))
 
 (defun my/company-scroll-down ()
   "A bit more eager `company-select-next'."

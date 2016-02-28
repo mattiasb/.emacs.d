@@ -348,8 +348,8 @@
           (lambda ()
             (my/define-keys ido-common-completion-map
                             '(( "<tab"    . ido-complete)
-                              ( "<next>"  . my/ido-select-next-nine)
-                              ( "<prior>" . my/ido-select-prev-nine)))))
+                              ( "<next>"  . my/ido-scroll-down)
+                              ( "<prior>" . my/ido-scroll-up)))))
 
 ;; IBuffer
 (add-hook 'ibuffer-hook
