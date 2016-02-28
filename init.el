@@ -612,6 +612,7 @@
   (global-aggressive-indent-mode)
   (projectile-global-mode)
   (recentf-mode)
+  (abbrev-mode)
   (my/activate-control-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)

@@ -686,7 +686,5 @@ abort completely with `C-g'."
                    bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
 
-(setq-default abbrev-mode t)
-
 (provide 'funcs)
 ;;; funcs.el ends here
