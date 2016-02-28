@@ -212,8 +212,8 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (unless (keymap-parent c-mode-base-map)
-              (set-keymap-parent c-mode-base-map prog-mode-map))
-            ))
+              (set-keymap-parent c-mode-base-map prog-mode-map))))
+
 ;; C / C++
 (defvar rtags-completions-enabled)
 (defun my/c-mode-hook ()
@@ -228,13 +228,13 @@
   ;; Work around bug where c-mode-base-map doesn't inherit from
   ;; prog-mode-map
   (my/define-keys c-mode-base-map
-                  '(("C-<return>" . rtags-find-symbol-at-point)
-                    ("M-<left>"   . rtags-location-stack-back)
-                    ("M-<right>"  . rtags-location-stack-forward)
-                    ("C-z f r"    . rtags-rename-symbol)
-                    ("."          . my/dot-and-complete)
-                    (":"          . my/double-colon-and-complete)
-                    (">"          . my/arrow-and-complete)))
+                  '(( "C-<return>" . rtags-find-symbol-at-point)
+                    ( "M-<left>"   . rtags-location-stack-back)
+                    ( "M-<right>"  . rtags-location-stack-forward)
+                    ( "C-z f r"    . rtags-rename-symbol)
+                    ( "."          . my/dot-and-complete)
+                    ( ":"          . my/double-colon-and-complete)
+                    ( ">"          . my/arrow-and-complete)))
   (my/define-keys projectile-command-map
                   '(( "j"         . rtags-find-symbol))))
 
@@ -263,20 +263,19 @@
                               ( "<escape>"    . ESC-prefix)
                               ( "x x"         . smex)
                               ( "x s"         . save-buffer)
-                              ( "x S"         . save-some-buffers)
-                              ))))
+                              ( "x S"         . save-some-buffers)))))
 
 ;; Company
 (add-hook 'company-mode-hook
           (lambda ()
             (company-quickhelp-mode)
             (my/define-keys company-active-map
-                            '(("\C-n"    . company-select-next)
-                              ("\C-p"    . company-select-previous)
-                              ("<next>"  . my/company-scroll-down)
-                              ("<prior>" . my/company-scroll-up)
-                              ("\C-v"    . company-show-location)
-                              ("\C-g"    . company-abort)))))
+                            '(( "\C-n"    . company-select-next)
+                              ( "\C-p"    . company-select-previous)
+                              ( "<next>"  . my/company-scroll-down)
+                              ( "<prior>" . my/company-scroll-up)
+                              ( "\C-v"    . company-show-location)
+                              ( "\C-g"    . company-abort)))))
 
 (add-hook 'company-completion-started-hook   'my/fci-turn-off)
 (add-hook 'company-completion-finished-hook  'my/fci-turn-on)
@@ -289,9 +288,9 @@
             (dired-hide-details-mode)
             (my/control-mode-off)
             (my/define-keys dired-mode-map
-                            '(("W" . wdired-change-to-wdired-mode)
-                              ("F" . find-name-dired)
-                              ("c" . find-file)))))
+                            '(( "W" . wdired-change-to-wdired-mode)
+                              ( "F" . find-name-dired)
+                              ( "c" . find-file)))))
 
 ;; ELisp
 (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
@@ -299,15 +298,11 @@
           (lambda ()
             (setq page-delimiter
                   (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
-                      (* (* blank) (opt ";" (* not-newline)) "\n")))
-            ))
+                      (* (* blank) (opt ";" (* not-newline)) "\n")))))
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
           (lambda()
-            ;; Re-add this when it works correctly
-            ;; (require 'flycheck-jscs)
-            ;; (add-to-list 'flycheck-checkers 'javascript-jscs)
             (flycheck-pos-tip-mode)
             (flycheck-status-emoji-mode)
             (flycheck-cask-setup)
@@ -326,12 +321,12 @@
             (setq-local company-backends '(company-go))
 
             (my/define-keys go-mode-map
-                            '(("C-z i a"    . go-import-add)
-                              ("C-z i r"    . go-remove-unused-imports)
-                              ("C-z i g"    . go-goto-imports)
-                              ("C-z d"      . godoc-at-point)
-                              ("C-<return>" . godef-jump)
-                              ("."          . my/dot-and-complete)))))
+                            '(( "C-z i a"    . go-import-add)
+                              ( "C-z i r"    . go-remove-unused-imports)
+                              ( "C-z i g"    . go-goto-imports)
+                              ( "C-z d"      . godoc-at-point)
+                              ( "C-<return>" . godef-jump)
+                              ( "."          . my/dot-and-complete)))))
 
 ;; Haskell
 (add-hook 'haskell-mode-hook (lambda ()
@@ -340,8 +335,8 @@
 ;; Help
 (add-hook 'help-mode-hook (lambda ()
                             (my/define-keys help-mode-map
-                                            '(("M-<left>"  . help-go-back)
-                                              ("M-<right>" . help-go-forward)))))
+                                            '(( "M-<left>"  . help-go-back)
+                                              ( "M-<right>" . help-go-forward)))))
 
 ;; Ido
 (add-hook 'ido-setup-hook
@@ -364,15 +359,15 @@
           (lambda()
             (company-mode)
             (my/define-keys ielm-map
-                            '(("<tab>" . my/indent-snippet-or-complete)))))
+                            '(( "<tab>" . my/indent-snippet-or-complete)))))
 
 ;; Info
 (add-hook 'Info-mode-hook
           (lambda ()
             (my/define-keys Info-mode-map
-                            '(("M-<left>"  . Info-history-back)
-                              ("M-<right>" . Info-history-forward)
-                              ("M-<up>"    . Info-up)))))
+                            '(( "M-<left>"  . Info-history-back)
+                              ( "M-<right>" . Info-history-forward)
+                              ( "M-<up>"    . Info-up)))))
 
 ;; JS2
 (defvar js2-mode-map)
@@ -422,9 +417,9 @@
             (setq-local fill-column 80)
             (fci-mode)
             (my/define-keys markdown-mode-map
-                            '(("C-<return>" . markdown-jump)
-                              ("M-<up>"     . nil)
-                              ("M-<down>"   . nil)))))
+                            '(( "C-<return>" . markdown-jump)
+                              ( "M-<up>"     . nil)
+                              ( "M-<down>"   . nil)))))
 ;; MTG deck mode
 (defvar mtg-deck-mode-map)
 (add-hook 'mtg-deck-mode-hook
@@ -432,8 +427,7 @@
             (company-mode)
             (setq-local company-backends '(company-capf))
             (my/define-keys mtg-deck-mode-map
-                            '(("<tab>" . my/snippet-or-complete)))
-            ))
+                            '(( "<tab>" . my/snippet-or-complete)))))
 
 ;; nXML
 (defvar nxml-mode-map)
@@ -441,7 +435,7 @@
           (lambda ()
             (setq-local company-backends '(company-nxml))
             (my/define-keys nxml-mode-map
-                            '(("<tab>" . my/indent-snippet-or-complete)))))
+                            '(( "<tab>" . my/indent-snippet-or-complete)))))
 
 (add-hook 'nxml-mode-hook #'my/prog-mode)
 
@@ -467,9 +461,9 @@
   (emr-initialize)
 
   (my/define-keys prog-mode-map
-                  '(("<tab>"       . my/indent-snippet-or-complete)
-                    ("C-z f f"     . emr-show-refactor-menu)
-                    ("C-<return>"  . find-tag))))
+                  '(( "<tab>"       . my/indent-snippet-or-complete)
+                    ( "C-z f f"     . emr-show-refactor-menu)
+                    ( "C-<return>"  . find-tag))))
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
@@ -486,24 +480,22 @@
                                               "jhbuild run ${PWD##*/}")
 
             (my/define-keys projectile-command-map
-                            '(("s p" . projectile-pt)
-                              ("B"   . projectile-ibuffer)))
-            ))
+                            '(( "s p" . projectile-pt)
+                              ( "B"   . projectile-ibuffer)))))
 
 ;; PT
 (defvar pt-search-mode-map)
 (add-hook 'pt-search-mode-hook
           (lambda ()
             (my/define-keys pt-search-mode-map
-                            '(("W" . wgrep-change-to-wgrep-mode)))))
+                            '(( "W" . wgrep-change-to-wgrep-mode)))))
 
 ;; Python
 (add-hook 'python-mode-hook
           (lambda ()
             (my/define-keys python-mode-map
-                            '(("C-<return>" . elpy-goto-definition)
-                              ("."          . my/dot-and-complete))
-                            )))
+                            '(( "C-<return>" . elpy-goto-definition)
+                              ( "."          . my/dot-and-complete)))))
 
 ;; REST Client
 (defvar restclient-mode-map)
@@ -512,7 +504,7 @@
             (company-mode)
             (setq-local company-backends '((company-restclient)))
             (my/define-keys restclient-mode-map
-                            '(("<tab>" . my/snippet-or-complete)))))
+                            '(( "<tab>" . my/snippet-or-complete)))))
 
 ;; Rust
 (defvar rust-mode-map)
@@ -520,11 +512,9 @@
           (lambda ()
             (racer-mode)
             (my/define-keys rust-mode-map
-                            '(("C-<return>" . racer-find-definition)
-                              ("."          . my/dot-and-complete)
-                              (":"          . my/double-colon-and-complete)
-                              ))
-            ))
+                            '(( "C-<return>" . racer-find-definition)
+                              ( "."          . my/dot-and-complete)
+                              ( ":"          . my/double-colon-and-complete)))))
 
 ;; Shell
 (defvar term-raw-map)
@@ -532,10 +522,9 @@
                             (setq yas-dont-activate t)
                             (my/control-mode-off)
                             (my/define-keys term-raw-map
-                                            '(("M-x"         . smex)
-                                              ("C-y"         . my/term-paste)
-                                              ("<escape>"    . ESC-prefix)
-                                              ))))
+                                            '(( "M-x"       . smex)
+                                              ( "C-y"       . my/term-paste)
+                                              ( "<escape>"  . ESC-prefix)))))
 
 (add-hook 'term-exec-hook (lambda ()
                             (set-buffer-process-coding-system 'utf-8-unix
@@ -574,8 +563,8 @@
   "Activate visual-regexp."
   (require 'visual-regexp-steroids)
   (my/define-keys esc-map
-                  '(("C-r" . vr/isearch-backward)
-                    ("C-s" . vr/isearch-forward))))
+                  '(( "C-r" . vr/isearch-backward)
+                    ( "C-s" . vr/isearch-forward))))
 
 (defun my/activate-yas ()
   "Activate YASnippet."
@@ -587,12 +576,12 @@
   "Activate `god-mode-isearch'."
   (require 'god-mode-isearch)
   (my/define-keys isearch-mode-map
-                  '(("<escape>" . god-mode-isearch-activate)
-                    ("<insert>" . god-mode-isearch-activate)))
+                  '(( "<escape>" . god-mode-isearch-activate)
+                    ( "<insert>" . god-mode-isearch-activate)))
   (my/define-keys god-mode-isearch-map
-                  '(("g"        . isearch-cancel)
-                    ("i"        . god-mode-isearch-disable)
-                    ("<insert>" . god-mode-isearch-disable))))
+                  '(( "g"        . isearch-cancel)
+                    ( "i"        . god-mode-isearch-disable)
+                    ( "<insert>" . god-mode-isearch-disable))))
 
 (defun my/activate-control-mode ()
   "Activate Control Mode."

@@ -252,7 +252,9 @@ In reverse."
 
 (defun my/autoinsert-yas-expand()
   "Replace text in yasnippet template."
-  (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+  (yas-expand-snippet (buffer-string)
+                      (point-min)
+                      (point-max)))
 
 (defun my/yas-choose-license ()
   "Choose a license to expand."
@@ -462,18 +464,18 @@ depending on context."
                                  answer)))))))
 
 ;;;###autoload
+(defun my/decrement-number-decimal (&optional arg)
+  "Decrement the number forward from point by 'ARG'."
+  (interactive "p*")
+  (my/increment-number-decimal (if arg (- arg) -1)))
+
+;;;###autoload
 (defun my/reopen-file-as-root ()
   "Re-open file the current buffer is visiting as root."
   (interactive)
   (when buffer-file-name
     (unless (file-writable-p buffer-file-name)
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
-
-;;;###autoload
-(defun my/decrement-number-decimal (&optional arg)
-  "Decrement the number forward from point by 'ARG'."
-  (interactive "p*")
-  (my/increment-number-decimal (if arg (- arg) -1)))
 
 ;;;###autoload
 (defun my/create-non-existent-directory ()
@@ -529,8 +531,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     choices)
    :prompt prompt
    ;; start isearch mode immediately
-   :isearch t
-   ))
+   :isearch t))
 
 ;;;###autoload
 (defun uniquify-region-lines (beg end)
@@ -601,9 +602,10 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (unless (string-equal buffer (buffer-name (current-buffer)))
     (switch-to-buffer-other-window buffer)))
 
-(defun my/advice-describe-func (function)
-  "Advice FUNCTION to switch to the *Help* buffer after popping it up."
-  (advice-add function :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
+(defun my/advice-describe-func (describe-function)
+  "Advice DESCRIBE-FUNCTION to switch to the *Help* buffer after popping it up."
+  (advice-add describe-function
+              :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
 
 ;;;###autoload
 (defun my/rename-current-buffer-and-file ()
