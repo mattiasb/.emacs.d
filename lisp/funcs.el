@@ -92,9 +92,17 @@
 (defun my/global-set-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
   (dolist (binding keybindings)
-    (let* ((key  (car binding))
-           (func (cdr binding)))
-      (global-set-key (kbd key) func))))
+    (let* ((key    (kbd (car binding)))
+           (func   (cdr binding)))
+      (if func (global-set-key key func)
+        (global-unset-key key)))))
+
+(defun my/global-remap-keys (mappings)
+  "Remap a bunch of global keybindings defined in MAPPINGS."
+  (dolist (mapping mappings)
+    (let* ((old-func (car mapping))
+           (new-func (cdr mapping)))
+      (global-set-key [remap old-func] new-func))))
 
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)

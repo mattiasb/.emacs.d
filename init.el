@@ -69,20 +69,19 @@
 
 
 ;;; Keybindings
-(global-unset-key (kbd "C-z"))
-(global-unset-key (kbd "M-."))
-(global-set-key [remap kill-line]       (my/bol-with-prefix kill-line))
-(global-set-key [remap occur]           #'my/occur-dwim)
-(global-set-key [remap isearch-forward] #'my/isearch-symbol-with-prefix)
+(my/global-remap-keys
+ '((occur                    . my/occur-dwim)
+   (isearch-forward          . my/isearch-symbol-with-prefix)
+   (execute-extended-command . smex)
+   (delete-other-windows     . zygospore-toggle-delete-other-windows)))
 
 (my/global-set-keys
  '(
    ;; Global overrides
-   ( "C-x 1"       .  zygospore-toggle-delete-other-windows)
-   ( "C-x C-x"     .  smex)
-   ( "M-x"         .  smex)
+   ( "M-."         .  nil)
 
    ;; Windows
+   ( "C-z"         .  nil)
    ( "C-z w c"     .  customize)
    ( "C-z w p"     .  list-packages)
    ( "C-z w t"     .  ansi-term)
@@ -260,10 +259,11 @@
                                   'box
                                 '(bar . 5)))
             (my/define-keys control-mode-keymap
-                            '(("i"           . my/control-mode-off)
-                              ("<escape>"    . ESC-prefix)
-                              ("x s"         . save-buffer)
-                              ("x S"         . save-some-buffers)
+                            '(( "i"           . my/control-mode-off)
+                              ( "<escape>"    . ESC-prefix)
+                              ( "x x"         . smex)
+                              ( "x s"         . save-buffer)
+                              ( "x S"         . save-some-buffers)
                               ))))
 
 ;; Company
