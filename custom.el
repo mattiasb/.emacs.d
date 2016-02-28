@@ -153,7 +153,7 @@
      ("melpa" . "http://melpa.org/packages/")))
  '(powerline-default-separator 'bar)
  '(projectile-keymap-prefix (kbd "C-z p"))
- '(ring-bell-function 'ignore)
+ '(ring-bell-function 'ignore t)
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
