@@ -273,8 +273,8 @@
             (my/define-keys company-active-map
                             '(("\C-n"    . company-select-next)
                               ("\C-p"    . company-select-previous)
-                              ("<next>"  . my/company-select-next-nine)
-                              ("<prior>" . my/company-select-previous-nine)
+                              ("<next>"  . my/company-scroll-down)
+                              ("<prior>" . my/company-scroll-up)
                               ("\C-v"    . company-show-location)
                               ("\C-g"    . company-abort)))))
 

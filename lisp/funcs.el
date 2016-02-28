@@ -343,17 +343,16 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (interactive)
   (dotimes (_i 9 nil) (ido-prev-match)))
 
-;;;###autoload
-(defun my/company-select-next-nine ()
+(defun my/company-scroll-down ()
   "A bit more eager `company-select-next'."
   (interactive)
-  (dotimes (_i 9 nil) (company-select-next)))
+  (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-next)))
 
 ;;;###autoload
-(defun my/company-select-previous-nine ()
+(defun my/company-scroll-up ()
   "A bit more eager `company-select-previous'."
   (interactive)
-  (dotimes (_i 9 nil) (company-select-previous)))
+  (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
 
 ;;;###autoload
 (defun my/yas-expand ()
