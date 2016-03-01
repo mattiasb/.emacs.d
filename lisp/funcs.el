@@ -682,6 +682,7 @@ abort completely with `C-g'."
           (define-abbrev
             (if p local-abbrev-table global-abbrev-table)
             bef aft)
+
           (message "\"%s\" now expands to \"%s\" %sally"
                    bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
@@ -709,6 +710,15 @@ passed on unchanged."
   "Push the current region or buffer to paste.fedoraproject.org."
   (interactive)
   (my/shell-command-dwim (format "fpaste -n %s" (user-login-name))))
+
+;;;###autoload
+(defun my/fpaste-insert (url)
+  "Fetch an fpaste from URL."
+  (interactive "sFPaste URL: ")
+  (let* ((url (format "%s/raw" url))
+         (cmd (format "curl \"%s\" 2>/dev/null" url))
+         (err-buf "*Shell Command Error*"))
+    (shell-command cmd t err-buf)))
 
 (provide 'funcs)
 ;;; funcs.el ends here
