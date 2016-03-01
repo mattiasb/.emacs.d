@@ -686,5 +686,29 @@ abort completely with `C-g'."
                    bef aft (if p "loc" "glob")))
       (user-error "No typo at or before point"))))
 
+;;;###autoload
+(defun my/shell-command-dwim (command &optional
+                                      output-buffer
+                                      replace
+                                      error-buffer
+                                      display-error-buffer)
+  "Like `shell-command-on-region' but infer START and END from context.
+COMMAND, OUTPUT-BUFFER, REPLACE, ERROR-BUFFER and DISPLAY-ERROR-BUFFER are just
+passed on unchanged."
+  (interactive "sShell command: ")
+  (shell-command-on-region (if (region-active-p) (region-beginning) (point-min))
+                           (if (region-active-p) (region-end)       (point-max))
+                           command
+                           output-buffer
+                           replace
+                           error-buffer
+                           display-error-buffer))
+
+;;;###autoload
+(defun my/fpaste-dwim ()
+  "Push the current region or buffer to paste.fedoraproject.org."
+  (interactive)
+  (my/shell-command-dwim (format "fpaste -n %s" (user-login-name))))
+
 (provide 'funcs)
 ;;; funcs.el ends here
