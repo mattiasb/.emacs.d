@@ -115,4 +115,5 @@
 (depends-on "ws-butler")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
+(depends-on "zenity-color-picker")
 (depends-on "zygospore")
