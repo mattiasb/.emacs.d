@@ -167,6 +167,8 @@
      (projectile-project-type . jhbuild)))
  '(save-abbrevs 'silently)
  '(scroll-bar-mode nil)
+ '(scroll-margin 5)
+ '(scroll-step 1)
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
