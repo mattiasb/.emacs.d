@@ -589,6 +589,11 @@
   (add-hook #'projectile-mode-hook
             #'control-mode-reload-bindings))
 
+(defun my/activate-keyfreq-mode ()
+  "Activate KeyFreq Mode."
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
+
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
   (cask-initialize)
@@ -613,6 +618,7 @@
   (projectile-global-mode)
   (recentf-mode)
   (abbrev-mode)
+  (my/activate-keyfreq-mode)
   (my/activate-control-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)

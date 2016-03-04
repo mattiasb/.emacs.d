@@ -68,6 +68,7 @@
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "json-snatcher")
+(depends-on "keyfreq")
 (depends-on "know-your-http-well")
 (depends-on "let-alist")
 (depends-on "lisp-extra-font-lock")
