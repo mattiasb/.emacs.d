@@ -464,7 +464,7 @@
                   '(( "<tab>"       . my/indent-snippet-or-complete)
                     ( "C-z f f"     . emr-show-refactor-menu)
                     ( "C-<return>"  . find-tag)
-                    ( "C-zz m"      . imenu))))
+                    ( "C-z m"       . imenu))))
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
