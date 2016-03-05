@@ -115,6 +115,7 @@
  '(ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
  '(imenu-after-jump-hook '(recenter))
  '(imenu-auto-rescan t)
+ '(imenu-auto-rescan-maxout 750000)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
  '(initial-scratch-message nil)
@@ -127,6 +128,8 @@
  '(js2-enter-indents-newline t)
  '(js2-global-externs
    '("imports" "require" "module" "exports" "console" "process" "setTimeout" "clearTimeout" "log"))
+ '(js2-imenu-other-functions-ns "?")
+ '(js2-imenu-show-other-functions t)
  '(js2-include-browser-externs t)
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode t)

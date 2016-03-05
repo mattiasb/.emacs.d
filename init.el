@@ -375,6 +375,7 @@
 (autoload 'js2r-rename-var "js2-refactor" "" t nil)
 (add-hook 'js2-mode-hook
           (lambda ()
+            (js2-imenu-extras-mode)
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-z f r") #'js2r-rename-var)
             (setq-local company-backends '((company-dabbrev-code
