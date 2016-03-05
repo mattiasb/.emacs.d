@@ -720,5 +720,35 @@ passed on unchanged."
          (err-buf "*Shell Command Error*"))
     (shell-command cmd t err-buf)))
 
+(defun my/set-imenu-create-index-function (&optional function separator)
+  "Set up a flat `imenu'.
+Generate index with FUNCTION (default: `imenu-create-index-function').
+Separate with SEPARATOR if set (default: '/')"
+  (let ((func (or function imenu-create-index-function))
+        (sepa (or separator "/")))
+    (setq-local imenu-create-index-function
+                (lambda ()
+                  (my/flatten-imenu-index (funcall func) sepa)))))
+
+(defun my/flatten-imenu-index (index separator)
+  "Flatten `imenu' INDEX w/ SEPARATOR."
+  (let ((cdr-is-index (listp (cdr index))))
+    (cond ((not (stringp (car index)))
+           (cl-mapcan (lambda (idx) (my/flatten-imenu-index idx separator))
+                      index))
+          (cdr-is-index (my/imenu-prefix-flattened index separator))
+          (t (list index)))))
+
+(defun my/imenu-prefix-flattened (index separator)
+  "Flatten `imenu' INDEX w/ SEPARATOR."
+  (let ((flattened (my/flatten-imenu-index (cdr index) separator)))
+    (cl-loop for sub-item in flattened
+             collect
+             `(,(concat (car index)
+                        separator
+                        (car sub-item))
+               .
+               ,(cdr sub-item)))))
+
 (provide 'funcs)
 ;;; funcs.el ends here

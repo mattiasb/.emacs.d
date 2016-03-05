@@ -297,6 +297,7 @@
 (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
+            (my/set-imenu-create-index-function nil "/")
             (setq page-delimiter
                   (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
                       (* (* blank) (opt ";" (* not-newline)) "\n")))))
@@ -376,6 +377,8 @@
 (add-hook 'js2-mode-hook
           (lambda ()
             (js2-imenu-extras-mode)
+            (my/set-imenu-create-index-function #'js2-mode-create-imenu-index
+                                                ".")
             (require 'js2-refactor)
             (define-key js2-mode-map (kbd "C-z f r") #'js2r-rename-var)
             (setq-local company-backends '((company-dabbrev-code
