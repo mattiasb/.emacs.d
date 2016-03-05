@@ -107,6 +107,7 @@
 
    ;; General
    ( "C-'"         .  ace-jump-word-mode)
+   ( "C-z g"       .  imenu)
    ( "C-z o"       .  browse-url-at-point)
    ( "C-z n"       .  make-frame)
    ( "C-<next>"    .  forward-page)
@@ -463,8 +464,7 @@
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
                     ( "C-z f f"     . emr-show-refactor-menu)
-                    ( "C-<return>"  . find-tag)
-                    ( "C-z m"       . imenu))))
+                    ( "C-<return>"  . find-tag))))
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
