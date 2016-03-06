@@ -341,12 +341,6 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
          (call-interactively ',function))
        ',name)))
 
-;;;###autoload
-(defun my/rtags-start ()
-  "Start rdm if it isn't running."
-  (interactive)
-  (unless rtags-process (rtags-restart-process)))
-
 (defun my/ido-visible-prospects ()
   "The number of visible prospects."
   (let* ((prospects-len (length ido-matches))

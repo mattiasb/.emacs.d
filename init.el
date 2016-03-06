@@ -221,7 +221,7 @@
   "A mode hook for C and C++."
   (require 'rtags)
   (require 'company-rtags)
-  (my/rtags-start)
+  (rtags-start-process-unless-running)
   (setq-local rtags-completions-enabled t)
   (rtags-enable-standard-keybindings c-mode-base-map)
   (setq-local company-backends '((company-rtags)))
