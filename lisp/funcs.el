@@ -100,9 +100,9 @@
 (defun my/global-remap-keys (mappings)
   "Remap a bunch of global keybindings defined in MAPPINGS."
   (dolist (mapping mappings)
-    (let* ((old-func (car mapping))
-           (new-func (cdr mapping)))
-      (global-set-key [remap old-func] new-func))))
+    (substitute-key-definition (car mapping)
+                               (cdr mapping)
+                               (current-global-map))))
 
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)
