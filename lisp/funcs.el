@@ -720,6 +720,7 @@ passed on unchanged."
          (err-buf "*Shell Command Error*"))
     (shell-command cmd t err-buf)))
 
+;;;###autoload
 (defun my/set-imenu-create-index-function (&optional function separator)
   "Set up a flat `imenu'.
 Generate index with FUNCTION (default: `imenu-create-index-function').
@@ -730,6 +731,7 @@ Separate with SEPARATOR if set (default: '/')"
                 (lambda ()
                   (my/flatten-imenu-index (funcall func) sepa)))))
 
+;;;###autoload
 (defun my/flatten-imenu-index (index separator)
   "Flatten `imenu' INDEX w/ SEPARATOR."
   (let ((cdr-is-index (listp (cdr index))))
@@ -739,6 +741,7 @@ Separate with SEPARATOR if set (default: '/')"
           (cdr-is-index (my/imenu-prefix-flattened index separator))
           (t (list index)))))
 
+;;;###autoload
 (defun my/imenu-prefix-flattened (index separator)
   "Flatten `imenu' INDEX w/ SEPARATOR."
   (let ((flattened (my/flatten-imenu-index (cdr index) separator)))
