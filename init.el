@@ -48,9 +48,7 @@
 ;; Load path
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(add-to-list 'load-path "~/.emacs.d/lisp/cask/")
-(require 'funcs)
+(require 'funcs "~/.emacs.d/lisp/funcs.el")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -199,6 +197,7 @@
 ;;; Modes – Specific
 
 ;; Browse Kill Ring
+(defvar browse-kill-ring-mode-map)
 (add-hook 'browse-kill-ring-mode-hook
           (lambda ()
             (my/define-keys browse-kill-ring-mode-map
@@ -217,6 +216,8 @@
 
 ;; C / C++
 (defvar rtags-completions-enabled)
+(defvar company-backends)
+(defvar projectile-command-map)
 (defun my/c-mode-hook ()
   "A mode hook for C and C++."
   (require 'rtags)
@@ -252,6 +253,8 @@
                            company-dabbrev-code)))))
 
 ;; Control
+(defvar control-mode)
+(defvar control-mode-keymap)
 (add-hook 'control-mode-keymap-generation-functions
           'control-mode-ctrlx-hacks)
 (add-hook 'control-mode-hook
@@ -267,6 +270,7 @@
                               ( "x S"         . save-some-buffers)))))
 
 ;; Company
+(defvar company-active-map)
 (add-hook 'company-mode-hook
           (lambda ()
             (company-quickhelp-mode)
@@ -335,12 +339,14 @@
                                (setq-local electric-indent-mode nil)
                                (turn-on-haskell-indentation)))
 ;; Help
+(defvar help-mode-map)
 (add-hook 'help-mode-hook (lambda ()
                             (my/define-keys help-mode-map
                                             '(( "M-<left>"  . help-go-back)
                                               ( "M-<right>" . help-go-forward)))))
 
 ;; Ido
+(defvar ido-common-completion-map)
 (add-hook 'ido-setup-hook
           (lambda ()
             (my/define-keys ido-common-completion-map
@@ -349,6 +355,7 @@
                               ( "<prior>" . my/ido-scroll-up)))))
 
 ;; IBuffer
+(defvar ibuffer-sorting-mode)
 (add-hook 'ibuffer-hook
           (lambda ()
             (ibuffer-projectile-set-filter-groups)
@@ -448,6 +455,7 @@
 (add-hook 'package-menu-mode-hook #'hl-line-mode)
 
 ;; Prog
+(defvar flyspell-prog-text-faces)
 (defun my/prog-mode ()
   "My `prog-mode' hook."
 
@@ -496,6 +504,7 @@
                             '(( "W" . wgrep-change-to-wgrep-mode)))))
 
 ;; Python
+(defvar python-mode-map)
 (add-hook 'python-mode-hook
           (lambda ()
             (my/define-keys python-mode-map
@@ -523,6 +532,7 @@
 
 ;; Shell
 (defvar term-raw-map)
+(defvar yas-dont-activate)
 (add-hook 'term-mode-hook (lambda ()
                             (setq yas-dont-activate t)
                             (my/control-mode-off)
@@ -545,6 +555,7 @@
             (sh-extra-font-lock-activate)))
 
 ;; Vala
+(defvar flycheck-checkers)
 (add-hook 'vala-mode-hook #'my/prog-mode)
 (add-hook 'vala-mode-hook
           (lambda ()
@@ -577,6 +588,7 @@
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+(defvar god-mode-isearch-map)
 (defun my/activate-god-mode-isearch ()
   "Activate `god-mode-isearch'."
   (require 'god-mode-isearch)
@@ -630,7 +642,7 @@
   (my/activate-yas))
 
 (add-hook 'after-init-hook (lambda ()
-                             (require 'cask)
+                             (require 'cask  "~/.emacs.d/lisp/cask/cask.el")
                              (my/activate-modes)))
 
 

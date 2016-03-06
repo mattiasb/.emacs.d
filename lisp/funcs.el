@@ -341,6 +341,8 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
          (call-interactively ',function))
        ',name)))
 
+(defvar ido-matches)
+(defvar ido-max-prospects)
 (defun my/ido-visible-prospects ()
   "The number of visible prospects."
   (let* ((prospects-len (length ido-matches))
@@ -360,6 +362,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (interactive)
   (dotimes (_ (my/ido-visible-prospects) nil) (ido-prev-match)))
 
+(defvar company-tooltip-limit)
 (defun my/company-scroll-down ()
   "A bit more eager `company-select-next'."
   (interactive)
@@ -372,6 +375,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
 
 ;;;###autoload
+(defvar yas-fallback-behavior)
 (defun my/yas-expand ()
   "Perform a `yas-expand' but return nil on failure."
   (when (yas-minor-mode)
