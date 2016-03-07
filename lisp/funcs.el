@@ -111,9 +111,16 @@
 (defun my/remap-keys (mode-map mappings)
   "Remap a bunch of MODE-MAP keybindings defined in MAPPINGS."
   (dolist (mapping mappings)
-    (substitute-key-definition (car mapping)
-                               (cdr mapping)
-                               mode-map)))
+    (let* ((key        (car mapping))
+           (value      (cdr mapping))
+           (func-remap (and (functionp key) (functionp value)))
+           (key-remap  (and (stringp key) (stringp value))))
+      (cond (key-remap (define-key mode-map
+                         (kbd key)
+                         (key-binding (kbd value))))
+            (func-remap (substitute-key-definition (car mapping)
+                                                   (cdr mapping)
+                                                   mode-map))))))
 
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)
