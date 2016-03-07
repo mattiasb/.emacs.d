@@ -477,7 +477,9 @@
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
                     ( "C-z f f"     . emr-show-refactor-menu)
-                    ( "C-<return>"  . find-tag))))
+                    ( "C-<return>"  . find-tag)))
+  (my/remap-keys  prog-mode-map
+                  '(( "RET"         . "M-j"))))
 
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
