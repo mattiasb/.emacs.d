@@ -77,6 +77,7 @@
  '(
    ;; Global overrides
    ( "M-."         .  nil)
+   ( "C-M-."       .  nil)
 
    ;; Windows
    ( "C-z"         .  nil)
