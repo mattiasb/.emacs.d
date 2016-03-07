@@ -355,9 +355,11 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
 (defvar ido-max-prospects)
 (defun my/ido-visible-prospects ()
   "The number of visible prospects."
-  (let* ((prospects-len (length ido-matches))
-         (available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
-         (dot-dot (< available-lines (max ido-max-prospects prospects-len))))
+  ;; TODO: fix smex's `…' (The out-commented stuff is for that)
+  (let* ((available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
+         ;; (prospects-len (length ido-matches))
+         ;; (dot-dot (< available-lines (max ido-max-prospects prospects-len)))
+         )
     (1- available-lines)))
 
 ;;;###autoload
