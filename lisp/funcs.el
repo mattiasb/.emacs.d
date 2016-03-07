@@ -89,20 +89,31 @@
   (setq auto-mode-alist (append modes auto-mode-alist)))
 
 ;;;###autoload
-(defun my/global-set-keys (keybindings)
+(defun my/global-define-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
-  (dolist (binding keybindings)
-    (let* ((key    (kbd (car binding)))
-           (func   (cdr binding)))
-      (if func (global-set-key key func)
-        (global-unset-key key)))))
+  (my/define-keys (current-global-map)
+                  keybindings))
 
+;;;###autoload
 (defun my/global-remap-keys (mappings)
   "Remap a bunch of global keybindings defined in MAPPINGS."
+  (my/remap-keys (current-global-map) mappings))
+
+;;;###autoload
+(defun my/define-keys (mode-map keybindings)
+  "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
+  (dolist (binding keybindings)
+    (let* ((key  (kbd (car binding)))
+           (func (cdr binding)))
+      (define-key mode-map key func))))
+
+;;;###autoload
+(defun my/remap-keys (mode-map mappings)
+  "Remap a bunch of MODE-MAP keybindings defined in MAPPINGS."
   (dolist (mapping mappings)
     (substitute-key-definition (car mapping)
                                (cdr mapping)
-                               (current-global-map))))
+                               mode-map)))
 
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)
@@ -230,14 +241,6 @@ In reverse."
   "Match following char with PATTERN."
   (let ((str (string (following-char))))
     (string-match-p pattern str)))
-
-;;;###autoload
-(defun my/define-keys (mode-map keybindings)
-  "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
-  (dolist (binding keybindings)
-    (let* ((key  (car binding))
-           (func (cdr binding)))
-      (define-key mode-map (kbd key) func))))
 
 (defvar my/time-formats '("%Y%m%d" "%Y-%m-%d" "%A, %d. %B %Y"))
 

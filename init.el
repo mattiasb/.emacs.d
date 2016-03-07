@@ -73,7 +73,7 @@
    (execute-extended-command . smex)
    (delete-other-windows     . zygospore-toggle-delete-other-windows)))
 
-(my/global-set-keys
+(my/global-define-keys
  '(
    ;; Global overrides
    ( "M-."         .  nil)
