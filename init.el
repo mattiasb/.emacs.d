@@ -96,7 +96,7 @@
    ( "C-z t a"     .  aggressive-indent-mode)
    ( "C-z t b"     .  magit-blame)
    ( "<escape>"    .  my/control-mode-on)
-   ( "<insert>"    .  my/control-mode-toggle)
+   ( "<insert>"    .  global-control-mode)
 
    ;; Other
    ( "C-z d"       .  diff-buffer-with-file)

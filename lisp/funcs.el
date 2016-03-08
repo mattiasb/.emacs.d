@@ -589,22 +589,13 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 (defun my/control-mode-off ()
   "Turn off `control-mode'."
   (interactive)
-  (control-mode 0))
+  (global-control-mode 0))
 
 ;;;###autoload
 (defun my/control-mode-on ()
   "Turn on `control-mode'."
   (interactive)
-  (control-mode 1))
-
-;;;###autoload
-(defvar control-mode)
-(defun my/control-mode-toggle ()
-  "Toggle `control-mode'."
-  (interactive)
-  (if control-mode
-      (control-mode 0)
-    (control-mode 1)))
+  (global-control-mode 1))
 
 ;;;###autoload
 (defun my/focus-buffer-dwim (buffer)
