@@ -428,6 +428,16 @@
 
 (add-hook 'js2-mode-hook #'my/js2-mode-hook)
 
+(defvar tern-mode-keymap)
+(defun my/tern-mode-hook ()
+  "My `tern' mode hook."
+  (my/define-keys tern-mode-keymap
+                  '(( "M-<left>"   . tern-pop-find-definition)
+                    ( "C-<return>" . tern-find-definition)
+                    ( "C-z f r"    . tern-rename-variable))))
+
+(add-hook 'tern-mode-hook #'my/tern-mode-hook)
+
 ;; Lua
 (defun my/lua-mode-hook ()
   "My `lua' mode hook."
