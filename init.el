@@ -182,6 +182,7 @@
 (my/shorten-minor-modes '((company-mode             . " C")
                           (abbrev-mode              . " A")
                           (ws-butler-mode           . " W")
+                          (control-mode             . "")
                           (git-gutter-mode          . "")
                           (magit-gitflow-mode       . " Flow")
                           (magit-filenotify-mode    . " Notify")
