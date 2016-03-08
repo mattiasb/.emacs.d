@@ -770,7 +770,10 @@
                                   describe-mode
                                   describe-function
                                   describe-bindings))
-
+(advice-add #'keyfreq-show
+            :after (lambda (&rest _)
+                     (my/focus-buffer-dwim "*KeyFreq*")
+                     (tabulated-list-mode)))
 
 (provide 'init)
 ;;; init.el ends here
