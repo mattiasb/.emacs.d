@@ -636,7 +636,7 @@
  'gnome-code
  '((nil . ((projectile-project-type . jhbuild)))))
 
-(dir-locals-set-directory-class "~/Code/gnome/" 'gnome-code)
+(dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
 
 
 ;;; Post-init code
