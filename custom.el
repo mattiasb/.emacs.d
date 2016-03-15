@@ -63,6 +63,7 @@
  '(browse-kill-ring-separator
    "——————————————————————————————————————————————————————————")
  '(browse-kill-ring-show-preview nil)
+ '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
  '(company-auto-complete t)
  '(company-auto-complete-chars '(32 40 41 46))
@@ -149,8 +150,10 @@
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
  '(magit-unstage-all-confirm nil)
+ '(markdown-asymmetric-header t)
  '(markdown-command
    "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
+ '(markdown-open-command "/usr/bin/firefox")
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
