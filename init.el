@@ -452,6 +452,7 @@
   "My `git-commit' mode hook."
   (my/control-mode-off)
   (flyspell-mode)
+  (auto-fill-mode)
   (fci-mode 1)
   (setq-local fill-column 72))
 
@@ -478,6 +479,7 @@
   "My `markdown' mode hook."
   (setq-local fill-column 80)
   (fci-mode)
+  (auto-fill-mode)
   (my/define-keys markdown-mode-map
                   '(( "C-<return>" . markdown-jump)
                     ( "M-<up>"     . nil)
