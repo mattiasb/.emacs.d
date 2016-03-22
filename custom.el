@@ -150,10 +150,12 @@
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
  '(magit-unstage-all-confirm nil)
- '(markdown-asymmetric-header t)
+ '(markdown-asymmetric-header nil)
  '(markdown-command
    "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
  '(markdown-open-command "/usr/bin/firefox")
+ '(markdown-reference-location 'end)
+ '(markdown-unordered-list-item-prefix "- ")
  '(menu-bar-mode nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
