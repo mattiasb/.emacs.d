@@ -586,16 +586,23 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
+(defun my/control-mode-set-cursor ()
+  "Update cursor based for `control-mode'."
+  (setq cursor-type (if control-mode
+                        'box
+                      '(bar . 5))))
+
+;;;###autoload
 (defun my/control-mode-off ()
   "Turn off `control-mode'."
   (interactive)
-  (global-control-mode 0))
+  (my-global-control-mode 0))
 
 ;;;###autoload
 (defun my/control-mode-on ()
   "Turn on `control-mode'."
   (interactive)
-  (global-control-mode 1))
+  (my-global-control-mode 1))
 
 ;;;###autoload
 (defun my/focus-buffer-dwim (buffer)

@@ -96,7 +96,7 @@
    ( "C-z t a"     .  aggressive-indent-mode)
    ( "C-z t b"     .  magit-blame)
    ( "<escape>"    .  my/control-mode-on)
-   ( "<insert>"    .  global-control-mode)
+   ( "<insert>"    .  my-global-control-mode)
 
    ;; Other
    ( "C-z d"       .  diff-buffer-with-file)
@@ -265,9 +265,7 @@
 (defvar control-mode-keymap)
 (defun my/control-mode-hook ()
   "My `control' mode hook."
-  (setq cursor-type (if control-mode
-                        'box
-                      '(bar . 5)))
+  (my/control-mode-set-cursor)
   (my/define-keys control-mode-keymap
                   '(( "i"           . my/control-mode-off)
                     ( "<escape>"    . ESC-prefix)
@@ -302,7 +300,6 @@
 (defun my/dired-mode-hook ()
   "My `dired' mode hook."
   (dired-hide-details-mode)
-  (my/control-mode-off)
   (my/define-keys dired-mode-map
                   '(( "W" . wdired-change-to-wdired-mode)
                     ( "F" . find-name-dired)
@@ -607,7 +604,6 @@
 (defun my/term-mode-hook ()
   "My `term' mode hook."
   (setq yas-dont-activate t)
-  (my/control-mode-off)
   (my/define-keys term-raw-map
                   '(( "M-x"       . smex)
                     ( "C-y"       . my/term-paste)
@@ -681,9 +677,17 @@
 
 (defun my/activate-control-mode ()
   "Activate Control Mode."
-  (global-control-mode)
-  (add-hook #'projectile-mode-hook
-            #'control-mode-reload-bindings))
+  (require 'control-mode)
+
+  (define-globalized-minor-mode my-global-control-mode control-mode
+    (lambda ()
+      (unless (derived-mode-p 'special-mode 'dired-mode 'term-mode)
+        (control-mode))))
+
+  (add-hook 'after-change-major-mode-hook
+            #'my/control-mode-set-cursor)
+  (my-global-control-mode)
+  (my/activate-god-mode-isearch))
 
 (defun my/activate-keyfreq-mode ()
   "Activate KeyFreq Mode."
@@ -694,6 +698,7 @@
   "Activate a bunch of global modes."
   (cask-initialize)
   (pallet-mode)
+  (my/activate-control-mode)
   (powerline-major-mode)
   (powerline-default-theme)
   (global-git-gutter-mode)
@@ -715,7 +720,6 @@
   (recentf-mode)
   (abbrev-mode)
   (my/activate-keyfreq-mode)
-  (my/activate-control-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)
   (my/activate-yas))
