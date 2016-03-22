@@ -568,7 +568,7 @@
 (defvar python-mode-map)
 (defun my/python-mode-hook ()
   "My `python' mode hook."
-  (setq-local fill-column 72)           ; PEP0008 says lines should be 79 chars
+  (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
   (my/define-keys python-mode-map
                   '(( "C-<return>" . elpy-goto-definition)
                     ( "."          . my/dot-and-complete))))
