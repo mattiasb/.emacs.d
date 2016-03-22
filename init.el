@@ -675,14 +675,14 @@
                     ( "i"        . god-mode-isearch-disable)
                     ( "<insert>" . god-mode-isearch-disable))))
 
+(defvar my-global-control-mode)
 (defun my/activate-control-mode ()
   "Activate Control Mode."
   (require 'control-mode)
 
-  (define-globalized-minor-mode my-global-control-mode control-mode
-    (lambda ()
-      (unless (derived-mode-p 'special-mode 'dired-mode 'term-mode)
-        (control-mode))))
+  (define-globalized-minor-mode my-global-control-mode ;TODO: get this upstream
+    control-mode
+    my/maybe-toggle-control-mode)
 
   (add-hook 'after-change-major-mode-hook
             #'my/control-mode-set-cursor)
