@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Mode Hook
+# key: mode-hook
+# binding: C-z s h
+# --
+
+;; ${1:$(mapconcat 'capitalize (split-string (or (yas-text) "") "-") " ")}
+(defun my/$1-mode-hook ()
+  "My `${1:}' mode hook."
+  ${2:(my/define-keys $1-mode-map
+                  '(($0)))})
+
+(add-hook '$1-mode-hook #'my/$1-mode-hook)
