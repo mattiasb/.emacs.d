@@ -66,93 +66,6 @@
 (my/maximize)
 
 
-;;; Keybindings
-(my/global-remap-keys
- '((occur                    . my/occur-dwim)
-   (isearch-forward          . my/isearch-symbol-with-prefix)
-   (execute-extended-command . smex)
-   (delete-other-windows     . zygospore-toggle-delete-other-windows)))
-
-(my/global-define-keys
- '(
-   ;; Global overrides
-   ( "M-."         .  nil)
-   ( "C-M-."       .  nil)
-
-   ;; Windows
-   ( "C-z"         .  nil)
-   ( "C-z w c"     .  customize)
-   ( "C-z w p"     .  list-packages)
-   ( "C-z w t"     .  ansi-term)
-   ( "C-z w r"     .  my/restclient)
-   ( "C-z w e"     .  ielm)
-
-   ;; Documentation
-   ( "C-z h i"     .  info-display-manual)
-   ( "C-z h m"     .  woman)
-
-   ;; Toggle modes
-   ( "C-z t w"     .  whitespace-mode)
-   ( "C-z t a"     .  aggressive-indent-mode)
-   ( "C-z t b"     .  magit-blame)
-   ( "<escape>"    .  my/control-mode-on)
-   ( "<insert>"    .  my-global-control-mode)
-
-   ;; Other
-   ( "C-z d"       .  diff-buffer-with-file)
-   ( "C-z R"       .  restart-emacs)
-
-   ;; NAVIGATION
-
-   ;; General
-   ( "C-'"         .  ace-jump-word-mode)
-   ( "C-z g"       .  imenu)
-   ( "C-z o"       .  browse-url-at-point)
-   ( "C-z n"       .  make-frame)
-   ( "C-<next>"    .  forward-page)
-   ( "C-<prior>"   .  backward-page)
-   ( "M-<left>"    .  pop-tag-mark)
-   ( "M-<right>"   .  nil)
-
-   ;; Move buffers
-   ( "<C-S-up>"    .  buf-move-up)
-   ( "<C-S-down>"  .  buf-move-down)
-   ( "<C-S-left>"  .  buf-move-left)
-   ( "<C-S-right>" .  buf-move-right)
-
-
-   ;; TEXT MANIPULATION
-
-   ;; General
-   ( "M-<up>"      .  move-text-up)
-   ( "M-<down>"    .  move-text-down)
-   ( "C-z a"       .  align-string)
-   ( "C-z ."       .  align-by-current-symbol)
-   ( "C-z c"       .  my/toggle-comment)
-   ( "C-z <up>"    .  my/toggle-programming-case-word-at-point)
-   ( "C-z <down>"  .  my/toggle-programming-case-word-at-point-reverse)
-   ( "C-z u"       .  insert-char)
-   ( "C-z ="       .  my/calc-thing-at-point)
-   ( "C-z +"       .  my/increment-number-decimal)
-   ( "C-z -"       .  my/decrement-number-decimal)
-   ( "C-z i"       .  my/ispell-word-then-abbrev)
-   ( "C-a"         .  mwim-beginning-of-code-or-line)
-   ( "C-e"         .  mwim-end-of-code-or-line)
-
-   ;; Replace
-   ( "C-z r"       .  vr/replace)
-   ( "C-z q"       .  vr/query-replace)
-
-   ;; YAS
-   ( "C-<tab>"     .  my/yas-insert-or-expand)
-   ( "C-z s c"     .  yas-new-snippet)
-   ( "C-z s e"     .  yas-visit-snippet-file)
-   ( "C-z s r"     .  yas-reload-all)
-   ( "C-z s t"     .  auto-insert)))
-
-(windmove-default-keybindings)
-
-
 ;;; Modes – General
 
 (my/auto-modes  '(("\\.inl\\'"    . c++-mode)
@@ -650,6 +563,93 @@
 
 ;;; Post-init code
 
+(defun my/activate-global-keybindings ()
+  "Activate global keybindings."
+  (my/global-remap-keys
+   '((occur                    . my/occur-dwim)
+     (isearch-forward          . my/isearch-symbol-with-prefix)
+     (execute-extended-command . smex)
+     (delete-other-windows     . zygospore-toggle-delete-other-windows)))
+
+  (my/global-define-keys
+   '(
+     ;; Global overrides
+     ( "M-."         .  nil)
+     ( "C-M-."       .  nil)
+
+     ;; Windows
+     ( "C-z"         .  nil)
+     ( "C-z w c"     .  customize)
+     ( "C-z w p"     .  list-packages)
+     ( "C-z w t"     .  ansi-term)
+     ( "C-z w r"     .  my/restclient)
+     ( "C-z w e"     .  ielm)
+
+     ;; Documentation
+     ( "C-z h i"     .  info-display-manual)
+     ( "C-z h m"     .  woman)
+
+     ;; Toggle modes
+     ( "C-z t w"     .  whitespace-mode)
+     ( "C-z t a"     .  aggressive-indent-mode)
+     ( "C-z t b"     .  magit-blame)
+     ( "<escape>"    .  my/control-mode-on)
+     ( "<insert>"    .  my-global-control-mode)
+
+     ;; Other
+     ( "C-z d"       .  diff-buffer-with-file)
+     ( "C-z R"       .  restart-emacs)
+
+     ;; NAVIGATION
+
+     ;; General
+     ( "C-'"         .  ace-jump-word-mode)
+     ( "C-z g"       .  imenu)
+     ( "C-z o"       .  browse-url-at-point)
+     ( "C-z n"       .  make-frame)
+     ( "C-<next>"    .  forward-page)
+     ( "C-<prior>"   .  backward-page)
+     ( "M-<left>"    .  pop-tag-mark)
+     ( "M-<right>"   .  nil)
+
+     ;; Move buffers
+     ( "<C-S-up>"    .  buf-move-up)
+     ( "<C-S-down>"  .  buf-move-down)
+     ( "<C-S-left>"  .  buf-move-left)
+     ( "<C-S-right>" .  buf-move-right)
+
+
+     ;; TEXT MANIPULATION
+
+     ;; General
+     ( "M-<up>"      .  move-text-up)
+     ( "M-<down>"    .  move-text-down)
+     ( "C-z a"       .  align-string)
+     ( "C-z ."       .  align-by-current-symbol)
+     ( "C-z c"       .  my/toggle-comment)
+     ( "C-z <up>"    .  my/toggle-programming-case-word-at-point)
+     ( "C-z <down>"  .  my/toggle-programming-case-word-at-point-reverse)
+     ( "C-z u"       .  insert-char)
+     ( "C-z ="       .  my/calc-thing-at-point)
+     ( "C-z +"       .  my/increment-number-decimal)
+     ( "C-z -"       .  my/decrement-number-decimal)
+     ( "C-z i"       .  my/ispell-word-then-abbrev)
+     ( "C-a"         .  mwim-beginning-of-code-or-line)
+     ( "C-e"         .  mwim-end-of-code-or-line)
+
+     ;; Replace
+     ( "C-z r"       .  vr/replace)
+     ( "C-z q"       .  vr/query-replace)
+
+     ;; YAS
+     ( "C-<tab>"     .  my/yas-insert-or-expand)
+     ( "C-z s c"     .  yas-new-snippet)
+     ( "C-z s e"     .  yas-visit-snippet-file)
+     ( "C-z s r"     .  yas-reload-all)
+     ( "C-z s t"     .  auto-insert)))
+
+  (windmove-default-keybindings))
+
 (defun my/activate-visual-regexp ()
   "Activate visual-regexp."
   (require 'visual-regexp-steroids)
@@ -726,7 +726,8 @@
 
 (add-hook 'after-init-hook (lambda ()
                              (require 'cask  "~/.emacs.d/lisp/cask/cask.el")
-                             (my/activate-modes)))
+                             (my/activate-modes)
+                             (my/activate-global-keybindings)))
 
 
 ;;; Advice
