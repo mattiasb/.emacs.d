@@ -216,7 +216,10 @@
   (my/define-keys dired-mode-map
                   '(( "W" . wdired-change-to-wdired-mode)
                     ( "F" . find-name-dired)
-                    ( "c" . find-file))))
+                    ( "c" . find-file)))
+  (my/remap-keys dired-mode-map
+                 '(("s" . "C-s")
+                   ("r" . "C-r"))))
 
 (add-hook 'dired-mode-hook #'my/dired-mode-hook)
 
@@ -419,8 +422,15 @@
 (add-hook 'nxml-mode-hook #'my/nxml-mode-hook)
 (add-hook 'nxml-mode-hook #'my/prog-mode)
 
-;; Package
-(add-hook 'package-menu-mode-hook #'hl-line-mode)
+;; Package Menu
+(defun my/package-menu-mode-hook ()
+  "My `package-menu' mode hook."
+  (my/remap-keys package-menu-mode-map
+                 '(("s" . "C-s")
+                   ("R" . "r")
+                   ("r" . "C-r"))))
+
+(add-hook 'package-menu-mode-hook #'my/package-menu-mode-hook)
 
 ;; Prog
 (defvar flyspell-prog-text-faces)
@@ -550,6 +560,18 @@
 
 (add-hook 'vala-mode-hook #'my/prog-mode)
 (add-hook 'vala-mode-hook #'my/vala-mode-hook)
+
+;; Woman
+(defvar woman-mode-map)
+(defun my/woman-mode-hook ()
+  "My `woman' mode hook."
+  (my/remap-keys woman-mode-map
+                 '(("a" . "s")
+                   ("s" . "C-s")
+                   ("r" . "R")
+                   ("r" . "C-r"))))
+
+(add-hook 'woman-mode-hook #'my/woman-mode-hook)
 
 ;;; Project specific settings
 
