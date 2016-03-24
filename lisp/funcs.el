@@ -639,7 +639,8 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (unless (derived-mode-p 'special-mode
                           'dired-mode
                           'term-mode
-                          'magit-popup-mode)
+                          'magit-popup-mode
+                          'woman-mode)
     (control-mode)))
 
 ;;;###autoload
