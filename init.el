@@ -567,7 +567,8 @@
   "Activate global keybindings."
   (my/global-remap-keys
    '((occur                    . my/occur-dwim)
-     (isearch-forward          . my/isearch-symbol-with-prefix)
+     (isearch-forward          . my/isearch-forward-symbol-with-prefix)
+     (isearch-backward         . my/isearch-backward-symbol-with-prefix)
      (execute-extended-command . smex)
      (delete-other-windows     . zygospore-toggle-delete-other-windows)))
 
@@ -732,21 +733,22 @@
 
 ;;; Advice
 
-(advice-add #'isearch-forward-symbol-at-point :after #'god-mode-isearch-activate)
-(advice-add #'popup-create                    :before #'my/fci-turn-off)
-(advice-add #'popup-delete                    :after  #'my/fci-turn-on)
+(advice-add #'isearch-forward-symbol-at-point  :after  #'god-mode-isearch-activate)
+(advice-add #'isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
+(advice-add #'popup-create                     :before #'my/fci-turn-off)
+(advice-add #'popup-delete                     :after  #'my/fci-turn-on)
 
-(advice-add #'ido-find-file                   :after  #'my/reopen-file-as-root)
+(advice-add #'ido-find-file                    :after  #'my/reopen-file-as-root)
 
-(advice-add #'backward-page                   :after  #'recenter)
-(advice-add #'forward-page                    :after  #'recenter)
+(advice-add #'backward-page                    :after  #'recenter)
+(advice-add #'forward-page                     :after  #'recenter)
 
-(advice-add #'diff-buffer-with-file           :after (lambda (_) (other-window 1)))
-(advice-add #'delete-window                   :after (lambda (_) (balance-windows)))
-(advice-add #'split-window-right              :after  #'balance-windows)
-(advice-add #'split-window-below              :after  #'balance-windows)
-(advice-add #'split-window-right              :after (lambda () (other-window 1)))
-(advice-add #'split-window-below              :after (lambda () (other-window 1)))
+(advice-add #'diff-buffer-with-file            :after  (lambda (_) (other-window 1)))
+(advice-add #'delete-window                    :after  (lambda (_) (balance-windows)))
+(advice-add #'split-window-right               :after  #'balance-windows)
+(advice-add #'split-window-below               :after  #'balance-windows)
+(advice-add #'split-window-right               :after  (lambda () (other-window 1)))
+(advice-add #'split-window-below               :after  (lambda () (other-window 1)))
 
 ;; Kill terminal buffer when the terminal process exits
 (advice-add #'term-sentinel

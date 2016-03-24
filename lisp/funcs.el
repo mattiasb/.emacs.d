@@ -325,14 +325,55 @@ In reverse."
       (when do-complete
         (company-complete-common)))))
 
-(defun my/isearch-symbol-with-prefix (p)
-  "Like isearch, unless prefix argument is provided.
+;;;###autoload
+(defun my/isearch-forward-symbol-with-prefix (p)
+  "Like function `isearch-forward', unless prefix argument is provided.
 With a prefix argument P, isearch for the symbol at point."
   (interactive "P")
   (let ((current-prefix-arg nil))
     (call-interactively
      (if p #'isearch-forward-symbol-at-point
        #'isearch-forward))))
+
+;;;###autoload
+(defun my/isearch-backward-symbol (&optional _not-symbol no-recursive-edit)
+  "Do incremental search forward for a symbol.
+The prefix argument is currently unused.
+Like ordinary incremental search except that your input is treated
+as a symbol surrounded by symbol boundary constructs \\_< and \\_>.
+See the command `isearch-forward' for more information."
+  (interactive "P\np")
+  (isearch-mode nil nil nil (not no-recursive-edit) 'isearch-symbol-regexp))
+
+;;;###autoload
+(defun my/isearch-backward-symbol-at-point ()
+  "Do incremental search backward for a symbol found near point.
+Like ordinary incremental search except that the symbol found at point
+is added to the search string initially as a regexp surrounded
+by symbol boundary constructs \\_< and \\_>.
+See the command `isearch-backward-symbol' for more information."
+  (interactive)
+  (my/isearch-backward-symbol nil 1)
+  (let ((bounds (find-tag-default-bounds)))
+    (cond
+     (bounds
+      (when (< (car bounds) (point))
+        (goto-char (car bounds)))
+      (isearch-yank-string
+       (buffer-substring-no-properties (car bounds) (cdr bounds))))
+     (t
+      (setq isearch-error "No symbol at point")
+      (isearch-update)))))
+
+;;;###autoload
+(defun my/isearch-backward-symbol-with-prefix (p)
+  "Like function `isearch-backward', unless prefix argument is provided.
+With a prefix argument P, isearch for the symbol at point."
+  (interactive "P")
+  (let ((current-prefix-arg nil))
+    (call-interactively
+     (if p #'my/isearch-backward-symbol-at-point
+       #'isearch-backward))))
 
 ;;;###autoload
 (defmacro my/bol-with-prefix (function)
