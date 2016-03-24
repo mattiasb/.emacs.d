@@ -765,8 +765,8 @@
 (advice-add #'backward-page                    :after  #'recenter)
 (advice-add #'forward-page                     :after  #'recenter)
 
-(advice-add #'diff-buffer-with-file            :after  (lambda (_) (other-window 1)))
-(advice-add #'delete-window                    :after  (lambda (_) (balance-windows)))
+(advice-add #'diff-buffer-with-file            :after  (lambda (&rest _) (other-window 1)))
+(advice-add #'delete-window                    :after  (lambda (&rest _) (balance-windows)))
 (advice-add #'split-window-right               :after  #'balance-windows)
 (advice-add #'split-window-below               :after  #'balance-windows)
 (advice-add #'split-window-right               :after  (lambda () (other-window 1)))
