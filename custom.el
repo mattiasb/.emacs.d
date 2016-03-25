@@ -163,6 +163,7 @@
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
  '(powerline-default-separator 'bar)
+ '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix (kbd "C-z p"))
  '(ring-bell-function 'ignore t)
  '(rng-schema-locating-files
