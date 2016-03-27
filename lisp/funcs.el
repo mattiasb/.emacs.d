@@ -640,7 +640,8 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
                           'dired-mode
                           'term-mode
                           'magit-popup-mode
-                          'woman-mode)
+                          'woman-mode
+                          'customize-mode)
     (control-mode)))
 
 ;;;###autoload
