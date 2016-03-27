@@ -208,6 +208,13 @@
 (add-hook 'company-completion-finished-hook  #'my/fci-turn-on)
 (add-hook 'company-completion-cancelled-hook #'my/fci-turn-on)
 
+;; Cython
+(defun my/cython-mode-hook ()
+  "My `cython' mode hook."
+  (require 'flycheck-cython))
+
+(add-hook 'cython-mode-hook #'my/cython-mode-hook)
+
 ;; Dired
 (defvar dired-mode-map)
 (defun my/dired-mode-hook ()
