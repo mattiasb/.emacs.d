@@ -813,5 +813,22 @@ Separate with SEPARATOR if set (default: '/')"
                .
                ,(cdr sub-item)))))
 
+;;;###autoload
+(defun my/open-with (arg)
+  ;; Taken from Prelude
+  "Open visited file in default external program.
+With a prefix ARG always prompt for command to use."
+  (interactive "P")
+  (when buffer-file-name
+    (let ((is-osx    (eq system-type 'darwin))
+          (is-linux (member system-type '(gnu gnu/linux gnu/kfreebsd))))
+      (shell-command (concat
+                      (cond
+                       ((and (not arg) is-osx)   "open")
+                       ((and (not arg) is-linux) "xdg-open")
+                       (t (read-shell-command "Open current file with: ")))
+                      " "
+                      (shell-quote-argument buffer-file-name))))))
+
 (provide 'funcs)
 ;;; funcs.el ends here

@@ -403,6 +403,7 @@
   (setq-local indent-tabs-mode nil)
   (my/define-keys markdown-mode-map
                   '(( "C-<return>" . markdown-jump)
+                    ( "C-c C-c p"  . my/open-with)
                     ( "M-<up>"     . nil)
                     ( "M-<down>"   . nil))))
 
@@ -636,7 +637,8 @@
      ;; General
      ( "C-'"         .  ace-jump-word-mode)
      ( "C-z g"       .  imenu)
-     ( "C-z o"       .  browse-url-at-point)
+     ( "C-z b"       .  browse-url-at-point)
+     ( "C-z o"       .  my/open-with)
      ( "C-z n"       .  make-frame)
      ( "C-<next>"    .  forward-page)
      ( "C-<prior>"   .  backward-page)
