@@ -400,6 +400,7 @@
   (setq-local fill-column 80)
   (fci-mode)
   (auto-fill-mode)
+  (setq-local indent-tabs-mode nil)
   (my/define-keys markdown-mode-map
                   '(( "C-<return>" . markdown-jump)
                     ( "M-<up>"     . nil)
