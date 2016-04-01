@@ -436,12 +436,6 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
       (yas-expand))))
 
 ;;;###autoload
-(defun my/yas-insert-or-expand ()
-  "Insert snippet from menu or expand the snippet at point."
-  (interactive)
-  (unless (my/yas-expand) (yas-insert-snippet)))
-
-;;;###autoload
 (defun my/indent-snippet-or-complete ()
   "Tab indent, insert snippet or complete (using `company-mode')
 depending on context."
@@ -476,14 +470,6 @@ depending on context."
       (minibuffer-complete)
     (when (null (my/yas-expand))
       (company-complete-common))))
-
-;;;###autoload
-(defun my/complete ()
-  "Complete (using `company-mode')."
-  (interactive)
-  (if (minibufferp)
-      (minibuffer-complete)
-    (company-complete-common)))
 
 ;;;###autoload
 (defun my/fci-turn-off (&rest _)

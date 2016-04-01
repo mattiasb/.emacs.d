@@ -675,7 +675,7 @@
      ( "C-z q"       .  vr/query-replace)
 
      ;; YAS
-     ( "C-<tab>"     .  my/yas-insert-or-expand)
+     ( "C-z s i"     .  yas-insert-snippet)
      ( "C-z s c"     .  yas-new-snippet)
      ( "C-z s e"     .  yas-visit-snippet-file)
      ( "C-z s r"     .  yas-reload-all)
