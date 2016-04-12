@@ -493,10 +493,10 @@
     "Go back to project selection."
     (projectile-switch-project))
 
-  ;; TODO: fix this!
   (def-projectile-commander-method ?t
     "Open a terminal in the project root."
-    (ansi-term (format "*ansi-term [%s]*" (projectile-project-name)))))
+    (ansi-term (getenv "SHELL")
+               (format "*ansi-term [%s]*" (projectile-project-name)))))
 
 (add-hook 'projectile-mode-hook #'my/projectile-mode-hook)
 
@@ -802,7 +802,7 @@
                        (kill-buffer (process-buffer proc)))))
 
 (advice-add #'ansi-term
-            :before (lambda (_)
+            :before (lambda (&rest _)
                       (interactive (list "/bin/bash"))))
 
 (advice-add #'custom-save-all
