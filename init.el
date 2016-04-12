@@ -483,7 +483,20 @@
 
   (my/define-keys projectile-command-map
                   '(( "s p" . projectile-pt)
-                    ( "B"   . projectile-ibuffer))))
+                    ( "B"   . projectile-ibuffer)))
+
+  (def-projectile-commander-method ?d
+    "Open project root in dired."
+    (projectile-dired))
+
+  (def-projectile-commander-method ?q
+    "Go back to project selection."
+    (projectile-switch-project))
+
+  ;; TODO: fix this!
+  (def-projectile-commander-method ?t
+    "Open a terminal in the project root."
+    (ansi-term (format "*ansi-term [%s]*" (projectile-project-name)))))
 
 (add-hook 'projectile-mode-hook #'my/projectile-mode-hook)
 

@@ -166,6 +166,7 @@
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix (kbd "C-z p"))
+ '(projectile-switch-project-action 'projectile-commander)
  '(ring-bell-function 'ignore t)
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
