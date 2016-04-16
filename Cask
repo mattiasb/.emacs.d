@@ -84,6 +84,7 @@
 (depends-on "multiple-cursors")
 (depends-on "mwim")
 (depends-on "names")
+(depends-on "niceify-info")
 (depends-on "package-build")
 (depends-on "packed")
 (depends-on "pallet")

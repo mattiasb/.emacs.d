@@ -331,6 +331,7 @@
                     ( "M-<up>"    . Info-up))))
 
 (add-hook 'Info-mode-hook #'my/Info-mode-hook)
+(add-hook 'Info-selection-hook #'niceify-info)
 
 ;; JS2
 (defvar js2-mode-map)
