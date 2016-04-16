@@ -484,7 +484,9 @@
 
   (my/define-keys projectile-command-map
                   '(( "s p" . projectile-pt)
-                    ( "B"   . projectile-ibuffer)))
+                    ( "B"   . projectile-ibuffer)
+                    ( "d"   . projectile-dired)
+                    ( "D"   . projectile-find-dir)))
 
   (def-projectile-commander-method ?d
     "Open project root in dired."
