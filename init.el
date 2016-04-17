@@ -645,7 +645,7 @@
      ( "<insert>"    .  my-global-control-mode)
 
      ;; Other
-     ( "C-z d"       .  diff-buffer-with-file)
+     ( "C-z D"       .  diff-buffer-with-file)
      ( "C-z R"       .  restart-emacs)
 
      ;; NAVIGATION
@@ -683,6 +683,7 @@
      ( "C-z +"       .  my/increment-number-decimal)
      ( "C-z -"       .  my/decrement-number-decimal)
      ( "C-z i"       .  my/ispell-word-then-abbrev)
+     ( "C-z d"       .  my/duplicate-line)
      ( "C-a"         .  mwim-beginning-of-code-or-line)
      ( "C-e"         .  mwim-end-of-code-or-line)
 

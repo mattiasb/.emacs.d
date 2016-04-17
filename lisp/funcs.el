@@ -816,5 +816,16 @@ With a prefix ARG always prompt for command to use."
                       " "
                       (shell-quote-argument buffer-file-name))))))
 
+;;;###autoload
+(defun my/duplicate-line ()
+  "Duplicate current line."
+  (interactive)
+  (save-excursion
+    (let ((line-text (thing-at-point 'line)))
+      (if (eobp)
+          (insert ?\n)
+        (forward-line))
+      (insert line-text))))
+
 (provide 'funcs)
 ;;; funcs.el ends here
