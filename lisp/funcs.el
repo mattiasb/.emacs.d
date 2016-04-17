@@ -186,10 +186,10 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
     (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s)))
 
 ;;;###autoload
-  (defun my/is-snake-case (s)
-    "Return T if S is in snake-case."
-    (let ((case-fold-search nil))
-      (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
+(defun my/is-snake-case (s)
+  "Return T if S is in snake-case."
+  (let ((case-fold-search nil))
+    (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
 
 ;;;###autoload
 (defun my/toggle-programming-case (s) ;; UP
