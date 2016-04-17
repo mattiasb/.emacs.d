@@ -571,7 +571,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
    :isearch t))
 
 ;;;###autoload
-(defun uniquify-region-lines (beg end)
+(defun my/uniquify-region-lines (beg end)
   "Remove duplicate adjacent lines in region BEG to END."
   (interactive "*r")
   (save-excursion
@@ -580,7 +580,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
       (replace-match "\\1"))))
 
 ;;;###autoload
-(defun uniquify-buffer-lines ()
+(defun my/uniquify-buffer-lines ()
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
