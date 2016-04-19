@@ -1,5 +1,6 @@
 ;;; custom.el --- My custom settings
-;; Copyright (C) 2013, 2014 Mattias Bengtsson
+
+;; Copyright ⓒ 2013-2016 Mattias Bengtsson
 
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 20141108
