@@ -2,13 +2,13 @@
 
 ;; Copyright ⓒ 2013-2016 Mattias Bengtsson
 
-;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-;; Version: 20141020
-;; Keywords: extensions, tools
-;; Package-Requires: ()
-;; URL: TBA
-;; Doc URL: TBA
-;; Compatibility: GNU Emacs: 24.x
+;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; Version          : 20141020
+;; Keywords         : extensions, tools
+;; Package-Requires : ()
+;; URL              : TBA
+;; Doc URL          : TBA
+;; Compatibility    : GNU Emacs: 24.x
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
