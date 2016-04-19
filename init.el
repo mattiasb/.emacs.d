@@ -642,7 +642,7 @@
      ( "C-z t a"     .  aggressive-indent-mode)
      ( "C-z t b"     .  magit-blame)
      ( "<escape>"    .  my/control-mode-on)
-     ( "<insert>"    .  my-global-control-mode)
+     ( "<insert>"    .  global-control-mode)
 
      ;; Other
      ( "C-z D"       .  diff-buffer-with-file)
@@ -725,18 +725,12 @@
                     ( "i"        . god-mode-isearch-disable)
                     ( "<insert>" . god-mode-isearch-disable))))
 
-(defvar my-global-control-mode)
 (defun my/activate-control-mode ()
   "Activate Control Mode."
   (require 'control-mode)
-
-  (define-globalized-minor-mode my-global-control-mode ;TODO: get this upstream
-    control-mode
-    my/maybe-toggle-control-mode)
-
   (add-hook 'after-change-major-mode-hook
             #'my/control-mode-set-cursor)
-  (my-global-control-mode)
+  (global-control-mode)
   (my/activate-god-mode-isearch))
 
 (defun my/activate-keyfreq-mode ()

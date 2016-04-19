@@ -620,27 +620,17 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
                         'box
                       '(bar . 5))))
 
-(defun my/maybe-toggle-control-mode ()
-  "Toggle `control-mode' unless the current `major-mode' is in MODES."
-  (unless (derived-mode-p 'special-mode
-                          'dired-mode
-                          'term-mode
-                          'magit-popup-mode
-                          'woman-mode
-                          'customize-mode)
-    (control-mode)))
-
 ;;;###autoload
 (defun my/control-mode-off ()
   "Turn off `control-mode'."
   (interactive)
-  (my-global-control-mode 0))
+  (global-control-mode 0))
 
 ;;;###autoload
 (defun my/control-mode-on ()
   "Turn on `control-mode'."
   (interactive)
-  (my-global-control-mode 1))
+  (global-control-mode 1))
 
 ;;;###autoload
 (defun my/focus-buffer-dwim (buffer)

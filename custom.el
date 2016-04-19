@@ -82,6 +82,13 @@
  '(company-tooltip-align-annotations t)
  '(company-tooltip-minimum-width 40)
  '(compilation-scroll-output t)
+ '(global-control-mode-exceptions
+   '(special-mode
+     dired-mode
+     term-mode
+     magit-popup-mode
+     woman-mode
+     customize-mode))
  '(custom-buffer-done-kill t)
  '(custom-enabled-themes '(wombat))
  '(custom-safe-themes t)
