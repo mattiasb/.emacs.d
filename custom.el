@@ -73,13 +73,6 @@
  '(company-tooltip-align-annotations t)
  '(company-tooltip-minimum-width 40)
  '(compilation-scroll-output t)
- '(global-control-mode-exceptions
-   '(special-mode
-     dired-mode
-     term-mode
-     magit-popup-mode
-     woman-mode
-     customize-mode))
  '(custom-buffer-done-kill t)
  '(custom-enabled-themes '(wombat))
  '(custom-safe-themes t)
@@ -104,6 +97,8 @@
  '(gc-cons-threshold 20000000)
  '(git-commit-summary-max-length 40)
  '(global-company-mode nil)
+ '(global-control-mode-exceptions
+   '(special-mode dired-mode term-mode magit-popup-mode woman-mode customize-mode))
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols 'unicode)
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
