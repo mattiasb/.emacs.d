@@ -5,6 +5,7 @@
 (depends-on "aggressive-indent")
 (depends-on "align-by-current-symbol" :git "https://github.com/mattiasb/.emacs.d.git" :files ("align-by-current-symbol" "packages/align-by-current-symbol/align-by-current-symbol.el"))
 (depends-on "align-string" :git "https://github.com/mattiasb/.emacs.d.git" :files ("align-string" "packages/align-string/align-string.el"))
+(depends-on "ascii-art-to-unicode")
 (depends-on "async")
 (depends-on "auto-compile")
 (depends-on "bash-completion")
