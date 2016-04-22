@@ -189,8 +189,11 @@
 
   ;; Make it possible to undo unwanted completion.
   (define-key company-active-map (kbd "<SPC>")
-    '(lambda()(interactive)
-       (insert " ") (undo-boundary) (company-complete-selection)))
+    '(lambda()
+       (interactive)
+       (insert " ")
+       (undo-boundary)
+       (company-complete-selection)))
 
   (my/define-keys company-active-map
                   '(( "\C-n"    . company-select-next)
