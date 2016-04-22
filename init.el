@@ -186,6 +186,12 @@
 (defun my/company-mode-hook ()
   "My `company' mode hook."
   (company-quickhelp-mode)
+
+  ;; Make it possible to undo unwanted completion.
+  (define-key company-active-map (kbd "<SPC>")
+    '(lambda()(interactive)
+       (insert " ") (undo-boundary) (company-complete-selection)))
+
   (my/define-keys company-active-map
                   '(( "\C-n"    . company-select-next)
                     ( "\C-p"    . company-select-previous)
