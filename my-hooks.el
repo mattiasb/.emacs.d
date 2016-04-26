@@ -156,6 +156,15 @@
 
 (add-hook 'dired-mode-hook #'my/dired-mode-hook)
 
+;; Dumb Jump
+(defun my/dumb-jump-mode-hook ()
+  "My `dumb-jump' mode hook."
+  (my/define-keys dumb-jump-mode-map
+                  '(( "C-<return>" . dumb-jump-go)
+                    ( "M-<left>"   . dumb-jump-back))))
+
+(add-hook 'dumb-jump-mode-hook #'my/dumb-jump-mode-hook)
+
 ;; ELisp
 (defun my/emacs-lisp-mode-hook ()
   "My `emacs-lisp' mode hook."
@@ -264,11 +273,14 @@
 (autoload 'js2r-rename-var "js2-refactor" "" t nil)
 (defun my/js2-mode-hook ()
   "My `js2' mode hook."
-  (js2-imenu-extras-mode)
-  (my/set-imenu-create-index-function #'js2-mode-create-imenu-index
-                                      ".")
   (require 'js2-refactor)
-  (define-key js2-mode-map (kbd "C-z f r") #'js2r-rename-var)
+  (js2-imenu-extras-mode)
+  (dumb-jump-mode)
+  (my/set-imenu-create-index-function #'js2-mode-create-imenu-index ".")
+
+  (my/define-keys js2-mode-map
+                  '(( "C-z f r"    . js2r-rename-var)))
+
   (setq-local company-backends '((company-dabbrev-code
                                   company-files
                                   company-keywords))))

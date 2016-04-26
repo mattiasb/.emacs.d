@@ -23,6 +23,7 @@
 (depends-on "cython-mode")
 (depends-on "dash")
 (depends-on "diminish")
+(depends-on "dumb-jump")
 (depends-on "dummy-h-mode")
 (depends-on "easy-repeat")
 (depends-on "editorconfig")
