@@ -109,6 +109,7 @@
 (depends-on "smart-region")
 (depends-on "smex")
 (depends-on "swiper")
+(depends-on "tmux-keys" :git "https://github.com/mattiasb/.emacs.d.git" :files ("tmux-keys" "packages/tmux-keys/tmux-keys.el"))
 (depends-on "vala-mode")
 (depends-on "vala-snippets")
 (depends-on "visual-regexp")

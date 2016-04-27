@@ -34,6 +34,9 @@
 (defun my/activate-global-keybindings ()
   "Activate global keybindings."
 
+  ;; Fix keys if we're in a tmux shell
+  (if (getenv "TMUX") (tmux-keys))
+
   (defvar my/global-remap-keys
     '((occur                    . my/occur-dwim)
       (isearch-forward          . my/isearch-forward-symbol-with-prefix)
