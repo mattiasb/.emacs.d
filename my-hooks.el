@@ -76,8 +76,16 @@
   (my/define-keys projectile-command-map
                   '(( "j"         . rtags-find-symbol))))
 
+(defun my/c++-mode-hook ()
+  "A mode hook for C++."
+  (c-add-style "my/c++-style"
+               '("cc-mode"
+                 (c-offsets-alist . ((innamespace . [0])))))
+  (c-set-style "my/c++-style"))
+
 (add-hook 'c-mode-hook   #'my/c-mode-hook)
 (add-hook 'c++-mode-hook #'my/c-mode-hook)
+(add-hook 'c++-mode-hook #'my/c++-mode-hook)
 
 ;; CMake
 (defun my/cmake-mode-hook ()
