@@ -105,10 +105,13 @@
 
 ;; Styles
 
-(c-add-style "smarteye"
-             '("stroustrup"
-               (c-basic-offset . 2)
-               (c-offsets-alist . ((innamespace . -)))))
+(c-add-style
+ "smarteye"
+ '("stroustrup"
+   (c-basic-offset  . 2)
+   (c-offsets-alist . ((innamespace       . 0)
+                       (substatement-open . 0)
+                       (inline-open       . 0)))))
 
 ;; Dir Locals
 (dir-locals-set-class-variables
@@ -119,7 +122,7 @@
 
 (dir-locals-set-class-variables
  'smarteye-code
- '((c-mode . ((c-file-style . "smarteye")))))
+ '((c++-mode . ((c-file-style . "smarteye")))))
 
 (dir-locals-set-directory-class "~/Code/git.smarteye.se/" 'smarteye-code)
 

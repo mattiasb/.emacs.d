@@ -167,7 +167,8 @@
  '(rtags-completions-enabled t)
  '(rust-indent-method-chain t)
  '(safe-local-variable-values
-   '((mtg-deck-format . vintage)
+   '((c-mode . c++)
+     (mtg-deck-format . vintage)
      (mtg-deck-format . standard)
      (mtg-deck-format . legacy)
      (mtg-deck-format . modern)
