@@ -145,6 +145,7 @@
 (defvar dired-mode-map)
 (defun my/dired-mode-hook ()
   "My `dired' mode hook."
+  (hl-line-mode)
   (dired-hide-details-mode)
   (my/define-keys dired-mode-map
                   '(( "W" . wdired-change-to-wdired-mode)
@@ -373,6 +374,7 @@
 ;; Package Menu
 (defun my/package-menu-mode-hook ()
   "My `package-menu' mode hook."
+  (hl-line-mode)
   (my/remap-keys package-menu-mode-map
                  '(("s" . "C-s")
                    ("R" . "r")
