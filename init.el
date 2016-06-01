@@ -70,7 +70,8 @@
                   ("\\.mcss$"     . css-mode)
                   ("\\.m$"        . octave-mode)
                   ("\\.dec$"      . mtg-deck-mode)
-                  ("\/Cask$"      . emacs-lisp-mode)))
+                  ("\/Cask$"      . emacs-lisp-mode)
+                  ("\\.h$"        . my/guess-cc-mode)))
 
 (my/shorten-major-modes '((markdown-mode   . "M↓")
                           (js2-mode        . "JS")

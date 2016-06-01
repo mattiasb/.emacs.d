@@ -784,5 +784,14 @@ With a prefix ARG always prompt for command to use."
         (forward-line))
       (insert line-text))))
 
+;;;###autoload
+(defun my/guess-cc-mode ()
+  "Guess whether to activate `c-mode' or `c++-mode' for a .h-file."
+  (interactive)
+  (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
+    (if (file-exists-p c-file)
+        (c-mode)
+      (c++-mode))))
+
 (provide 'funcs)
 ;;; funcs.el ends here
