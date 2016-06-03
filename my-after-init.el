@@ -42,7 +42,8 @@
       (isearch-forward          . my/isearch-forward-symbol-with-prefix)
       (isearch-backward         . my/isearch-backward-symbol-with-prefix)
       (execute-extended-command . smex)
-      (delete-other-windows     . zygospore-toggle-delete-other-windows)))
+      (delete-other-windows     . zygospore-toggle-delete-other-windows)
+      (fill-paragraph           . endless/fill-or-unfill)))
 
   (defvar my/global-keybindings
     '(
