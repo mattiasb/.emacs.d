@@ -20,6 +20,7 @@
 (depends-on "company-restclient")
 (depends-on "company-shell")
 (depends-on "control-mode" :git "https://github.com/mattiasb/control-mode.git" :branch "global-exceptions")
+(depends-on "cycle-quotes")
 (depends-on "cython-mode")
 (depends-on "dash")
 (depends-on "diminish")

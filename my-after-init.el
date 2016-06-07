@@ -104,6 +104,7 @@
       ( "C-z c"       .  my/toggle-comment)
       ( "C-z <up>"    .  my/toggle-programming-case-word-at-point)
       ( "C-z <down>"  .  my/toggle-programming-case-word-at-point-reverse)
+      ( "C-\""        .  cycle-quotes)
       ( "C-z u"       .  insert-char)
       ( "C-z ="       .  my/calc-thing-at-point)
       ( "C-z +"       .  shift-number-up)
