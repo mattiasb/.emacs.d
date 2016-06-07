@@ -41,7 +41,6 @@
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-cython")
-(depends-on "flycheck-jscs" :git "https://github.com/mattiasb/.emacs.d.git" :files ("flycheck-jscs" "packages/flycheck-jscs/flycheck-jscs.el"))
 (depends-on "flycheck-package")
 (depends-on "flycheck-pos-tip")
 (depends-on "flycheck-rust")
