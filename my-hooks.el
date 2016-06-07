@@ -436,6 +436,8 @@
                     ( "d"   . projectile-dired)
                     ( "D"   . projectile-find-dir)))
 
+  (control-mode-reload-bindings)
+
   (def-projectile-commander-method ?d
     "Open project root in dired."
     (projectile-dired))
