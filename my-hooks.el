@@ -360,6 +360,14 @@
 
 (add-hook 'mtg-deck-mode-hook #'my/mtg-deck-mode-hook)
 
+;; Multiple Cursors
+(defun my/multiple-cursors-mode-enabled-hook ()
+  "My `multiple-cursors' mode hook."
+  (control-mode-reload-bindings))
+
+(add-hook 'multiple-cursors-mode-enabled-hook
+          #'my/multiple-cursors-mode-enabled-hook)
+
 ;; nXML
 (defvar nxml-mode-map)
 (defun my/nxml-mode-hook ()
