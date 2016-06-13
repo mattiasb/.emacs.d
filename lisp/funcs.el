@@ -794,7 +794,8 @@ With a prefix ARG always prompt for command to use."
       (c++-mode))))
 
 ;;;###autoload
-(defun endless/fill-or-unfill ()
+;; From: http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html
+(defun my/fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
   (interactive)
   (let ((fill-column
@@ -804,8 +805,6 @@ With a prefix ARG always prompt for command to use."
            fill-column)))
     (call-interactively #'fill-paragraph)))
 
-(global-set-key [remap fill-paragraph]
-                #'endless/fill-or-unfill)
 
 (provide 'funcs)
 ;;; funcs.el ends here
