@@ -135,22 +135,22 @@
 
 ;;; Advice
 
-(advice-add #'isearch-forward-symbol-at-point  :after  #'god-mode-isearch-activate)
-(advice-add #'isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
-(advice-add #'popup-create                     :before #'my/fci-turn-off)
-(advice-add #'popup-delete                     :after  #'my/fci-turn-on)
+(advice-add #'isearch-forward-symbol-at-point     :after  #'god-mode-isearch-activate)
+(advice-add #'my/isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
+(advice-add #'popup-create                        :before #'my/fci-turn-off)
+(advice-add #'popup-delete                        :after  #'my/fci-turn-on)
 
-(advice-add #'ido-find-file                    :after  #'my/reopen-file-as-root)
+(advice-add #'ido-find-file                       :after  #'my/reopen-file-as-root)
 
-(advice-add #'backward-page                    :after  #'recenter)
-(advice-add #'forward-page                     :after  #'recenter)
+(advice-add #'backward-page                       :after  #'recenter)
+(advice-add #'forward-page                        :after  #'recenter)
 
-(advice-add #'diff-buffer-with-file            :after  (lambda (&rest _) (other-window 1)))
-(advice-add #'delete-window                    :after  (lambda (&rest _) (balance-windows)))
-(advice-add #'split-window-right               :after  #'balance-windows)
-(advice-add #'split-window-below               :after  #'balance-windows)
-(advice-add #'split-window-right               :after  (lambda () (other-window 1)))
-(advice-add #'split-window-below               :after  (lambda () (other-window 1)))
+(advice-add #'diff-buffer-with-file               :after  (lambda (&rest _) (other-window 1)))
+(advice-add #'delete-window                       :after  (lambda (&rest _) (balance-windows)))
+(advice-add #'split-window-right                  :after  #'balance-windows)
+(advice-add #'split-window-below                  :after  #'balance-windows)
+(advice-add #'split-window-right                  :after  (lambda () (other-window 1)))
+(advice-add #'split-window-below                  :after  (lambda () (other-window 1)))
 
 ;; Kill terminal buffer when the terminal process exits
 (advice-add #'term-sentinel
