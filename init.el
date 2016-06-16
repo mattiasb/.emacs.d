@@ -28,6 +28,7 @@
 
 ;;; Code:
 
+;; (package-initialize)  ; Stupid Emacs 25
 
 ;;; Settings
 
