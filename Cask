@@ -79,7 +79,7 @@
 (depends-on "magit-gitflow")
 (depends-on "magit-popup")
 (depends-on "markdown-mode")
-(depends-on "move-text")
+(depends-on "move-dup")
 (depends-on "mtg-deck-mode" :git "https://github.com/mattiasb/mtg-deck-mode.git" :branch "wip/completion" :files ("*.el" "formats"))
 (depends-on "multiple-cursors")
 (depends-on "mwim")

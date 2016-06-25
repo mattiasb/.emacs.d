@@ -774,17 +774,6 @@ With a prefix ARG always prompt for command to use."
                       (shell-quote-argument buffer-file-name))))))
 
 ;;;###autoload
-(defun my/duplicate-line ()
-  "Duplicate current line."
-  (interactive)
-  (save-excursion
-    (let ((line-text (thing-at-point 'line)))
-      (if (eobp)
-          (insert ?\n)
-        (forward-line))
-      (insert line-text))))
-
-;;;###autoload
 (defun my/guess-cc-mode ()
   "Guess whether to activate `c-mode' or `c++-mode' for a .h-file."
   (interactive)

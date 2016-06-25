@@ -100,8 +100,10 @@
       ;; TEXT MANIPULATION
 
       ;; General
-      ( "M-<up>"      .  move-text-up)
-      ( "M-<down>"    .  move-text-down)
+      ( "M-<up>"      .  md/move-lines-up)
+      ( "M-<down>"    .  md/move-lines-down)
+      ( "C-z D"       .  md/duplicate-up)
+      ( "C-z d"       .  md/duplicate-down)
       ( "C-z a"       .  align-string)
       ( "C-z ."       .  align-by-current-symbol)
       ( "C-z c"       .  my/toggle-comment)
@@ -113,7 +115,6 @@
       ( "C-z +"       .  shift-number-up)
       ( "C-z -"       .  shift-number-down)
       ( "C-z c"       .  my/ispell-word-then-abbrev)
-      ( "C-z d"       .  my/duplicate-line)
       ( "C-z i f"     .  my/insert-file-name)
       ( "C-a"         .  mwim-beginning-of-code-or-line)
       ( "C-e"         .  mwim-end-of-code-or-line)
