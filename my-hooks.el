@@ -526,6 +526,15 @@
 
 (add-hook 'sh-mode-hook #'my/sh-mode-hook)
 
+
+;; Sql
+(defun my/sql-mode-hook ()
+  "My `sql' mode hook."
+  (sqlup-mode))
+
+(add-hook 'sql-mode-hook #'my/sql-mode-hook)
+
+
 ;; Vala
 (defvar flycheck-checkers)
 (defun my/vala-mode-hook ()
