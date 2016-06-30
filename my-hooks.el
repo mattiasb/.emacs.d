@@ -28,6 +28,15 @@
 
 ;;; Code:
 
+;; AG
+(defvar ag-mode-map)
+(defun my/ag-mode-hook ()
+  "My `ag' mode hook."
+  (my/define-keys ag-mode-map
+                  '(( "W" . wgrep-change-to-wgrep-mode))))
+
+(add-hook 'ag-mode-hook #'my/ag-mode-hook)
+
 ;; Browse Kill Ring
 (defvar browse-kill-ring-mode-map)
 (defun my/browse-kill-ring-mode-hook ()
@@ -452,15 +461,6 @@
                (format "*ansi-term [%s]*" (projectile-project-name)))))
 
 (add-hook 'projectile-mode-hook #'my/projectile-mode-hook)
-
-;; PT
-(defvar pt-search-mode-map)
-(defun my/pt-search-mode-hook ()
-  "My `pt-search' mode hook."
-  (my/define-keys pt-search-mode-map
-                  '(( "W" . wgrep-change-to-wgrep-mode))))
-
-(add-hook 'pt-search-mode-hook #'my/pt-search-mode-hook)
 
 ;; Python
 (defvar python-mode-map)
