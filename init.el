@@ -93,7 +93,6 @@
                           (magit-gitflow-mode       . " Flow")
                           (magit-filenotify-mode    . " Notify")
                           (yas-minor-mode           . "")
-                          (fancy-narrow-mode        . "")
                           (haskell-indentation-mode . "")
                           (racer-mode               . "")
                           (aggressive-indent-mode   . " ⇒")
@@ -183,10 +182,6 @@
                                   describe-mode
                                   describe-function
                                   describe-bindings))
-(advice-add #'keyfreq-show
-            :after (lambda (&rest _)
-                     (my/focus-buffer-dwim "*KeyFreq*")
-                     (tabulated-list-mode)))
 
 (provide 'init)
 ;;; init.el ends here

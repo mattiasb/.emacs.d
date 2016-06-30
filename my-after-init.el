@@ -167,11 +167,6 @@
   (global-control-mode)
   (my/activate-god-mode-isearch))
 
-(defun my/activate-keyfreq-mode ()
-  "Activate KeyFreq Mode."
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
-
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
   (cask-initialize)
@@ -184,7 +179,6 @@
   (ido-vertical-mode)
   (ido-ubiquitous-mode)
   (flx-ido-mode)
-  (fancy-narrow-mode)
   (which-key-mode)
   (auto-insert-mode)
   (auto-compile-on-save-mode)
@@ -197,7 +191,6 @@
   (projectile-global-mode)
   (recentf-mode)
   (abbrev-mode)
-  (my/activate-keyfreq-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)
   (my/activate-yas))

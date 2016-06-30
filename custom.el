@@ -156,11 +156,13 @@
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")))
+ '(package-selected-packages
+   '(sqlup-mode zygospore yaml-mode ws-butler which-key wgrep-pt visual-regexp-steroids vala-snippets vala-mode tmux-keys swiper smex smart-region shift-number sh-extra-font-lock sass-mode rtags restart-emacs racer pt powerline php-mode pallet niceify-info mwim mtg-deck-mode move-dup markdown-mode magit-gitflow magit-filenotify lua-mode lisp-extra-font-lock json-mode js2-refactor ido-vertical-mode ido-ubiquitous ibuffer-projectile html5-schema highlight-numbers helm haskell-mode god-mode go-eldoc gitignore-mode gitconfig-mode git-gutter flycheck-vala flycheck-status-emoji flycheck-rust flycheck-pos-tip flycheck-package flycheck-cython flycheck-cask flx-ido fill-column-indicator emr elpy editorconfig easy-repeat dumb-jump diminish cython-mode cycle-quotes control-mode company-shell company-restclient company-quickhelp company-go cmake-mode buffer-move browse-kill-ring auto-compile ascii-art-to-unicode align-string align-by-current-symbol aggressive-indent ace-jump-mode))
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix (kbd "C-z p"))
  '(projectile-switch-project-action 'projectile-commander)
- '(ring-bell-function 'ignore t)
+ '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
