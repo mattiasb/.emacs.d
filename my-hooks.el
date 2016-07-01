@@ -544,7 +544,7 @@
   (my/remap-keys woman-mode-map
                  '(("a" . "s")
                    ("s" . "C-s")
-                   ("r" . "R")
+                   ("R" . "r")
                    ("r" . "C-r"))))
 
 (add-hook 'woman-mode-hook #'my/woman-mode-hook)
