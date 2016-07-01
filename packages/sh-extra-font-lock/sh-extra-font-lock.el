@@ -26,9 +26,11 @@
 
 ;;; Commentary:
 
-;; `sh-extra-font-lock' provides syntax highlighting of variables inside
-;; strings for `sh-mode'. Written by Anders Lindgren and packaged up
-;; (including some docstring and naming fixes) by Mattias Bengtsson.
+;; This package provides syntax highlighting of variables inside strings for
+;; `sh-mode'.
+;;
+;; Written by Anders Lindgren and packaged up (including some docstring and
+;; naming fixes) by Mattias Bengtsson.
 ;;
 ;; To activate this just add the following to your `init.el':
 ;; (add-hook 'sh-mode-hook 'sh-script-extra-font-lock-activate)
