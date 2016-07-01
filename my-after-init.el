@@ -50,9 +50,18 @@
 
   (defvar my/global-keybindings
     '(
-      ;; Global overrides
-      ( "M-."         .  nil)
-      ( "C-M-."       .  nil)
+      ;; XRef
+      ( "M-,"	         . nil)
+      ( "M-."	         . nil)
+      ( "M-?"	         . nil)
+      ( "C-M-."	         . nil)
+      ( "C-x 4"          . nil)
+      ( "C-x 5"          . nil)
+      ( "M-<left>"       . xref-pop-marker-stack)
+      ( "C-<return>"     . xref-find-definitions)
+      ( "M-?"	         . xref-find-references)
+      ( "C-x 4 <return>" . xref-find-definitions-other-window)
+      ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
       ;; Windows
       ( "C-z"         .  nil)
@@ -87,8 +96,6 @@
       ( "C-z n"       .  make-frame)
       ( "C-<next>"    .  forward-page)
       ( "C-<prior>"   .  backward-page)
-      ( "M-<left>"    .  pop-tag-mark)
-      ( "M-<right>"   .  nil)
 
       ;; Move buffers
       ( "<C-S-up>"    .  buf-move-up)
