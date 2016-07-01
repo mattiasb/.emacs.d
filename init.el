@@ -147,6 +147,7 @@
 (advice-add #'backward-page                       :after  #'recenter)
 (advice-add #'forward-page                        :after  #'recenter)
 
+(advice-add #'projectile-ag                       :after  (lambda (&rest _) (other-window 1)))
 (advice-add #'diff-buffer-with-file               :after  (lambda (&rest _) (other-window 1)))
 (advice-add #'delete-window                       :after  (lambda (&rest _) (balance-windows)))
 (advice-add #'split-window-right                  :after  #'balance-windows)
