@@ -98,7 +98,9 @@
                           (aggressive-indent-mode   . " ⇒")
                           (which-key-mode           . "")
                           (magit-auto-revert-mode   . "")
-                          (abbrev-mode              . "")))
+                          (sqlup-mode               . " ⇑")
+                          (abbrev-mode              . "")
+                          (flyspell-mode            . " ✎")))
 
 
 ;;; Project specific settings
