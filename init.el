@@ -181,7 +181,10 @@
                                   describe-variable
                                   describe-mode
                                   describe-function
-                                  describe-bindings))
+                                  describe-bindings
+                                  describe-symbol
+                                  describe-package
+                                  describe-theme))
 
 (provide 'init)
 ;;; init.el ends here
