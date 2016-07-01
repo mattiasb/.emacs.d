@@ -320,7 +320,9 @@
 (defun my/magit-mode-hook ()
   "My `magit' mode hook."
   (require 'magit-gitflow)
-  (turn-on-magit-gitflow))
+  (turn-on-magit-gitflow)
+  (add-hook 'magit-post-refresh-hook
+            #'git-gutter:update-all-windows))
 
 (defvar magit-blame-mode-map)
 (defun my/magit-blame-mode-hook ()
