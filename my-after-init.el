@@ -28,7 +28,6 @@
 
 ;;; Code:
 
-(require 'cask  "~/.emacs.d/lisp/cask/cask.el")
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
 
 (defun my/activate-global-keybindings ()
@@ -176,8 +175,6 @@
 
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
-  (cask-initialize)
-  (pallet-mode)
   (my/activate-control-mode)
   (powerline-major-mode)
   (powerline-default-theme)

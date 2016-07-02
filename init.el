@@ -28,8 +28,6 @@
 
 ;;; Code:
 
-;; (package-initialize)  ; Stupid Emacs 25
-
 ;;; Settings
 
 ;; Unset these early to remove at least some of the inital flicker.
@@ -57,6 +55,12 @@
 ;; Maximize on start
 (my/maximize)
 
+;; Install packages on start
+(package-initialize)
+(unless (seq-every-p #'package-installed-p
+                     package-selected-packages)
+  (package-refresh-contents)
+  (package-install-selected-packages))
 
 ;;; Modes – General
 
