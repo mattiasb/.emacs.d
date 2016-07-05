@@ -817,5 +817,14 @@ With a prefix ARG always prompt for command to use."
         (t
          (insert file))))
 
+;;;###autoload
+(defun my/package-init ()
+  "Initialize the package system."
+  (package-initialize)
+  (unless (seq-every-p #'package-installed-p
+                       package-selected-packages)
+    (package-refresh-contents)
+    (package-install-selected-packages)))
+
 (provide 'funcs)
 ;;; funcs.el ends here

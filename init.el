@@ -55,12 +55,8 @@
 ;; Maximize on start
 (my/maximize)
 
-;; Install packages on start
-(package-initialize)
-(unless (seq-every-p #'package-installed-p
-                     package-selected-packages)
-  (package-refresh-contents)
-  (package-install-selected-packages))
+;; (package-initialize) and install missing packages on start
+(my/package-init)
 
 ;;; Modes – General
 
