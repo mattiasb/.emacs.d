@@ -186,6 +186,7 @@
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
+ '(vc-handled-backends nil)
  '(vr/auto-show-help nil)
  '(vr/match-separator-string " → ")
  '(vr/match-separator-use-custom-face t)
