@@ -120,7 +120,7 @@
       ( "C-z ="       .  my/calc-thing-at-point)
       ( "C-z +"       .  shift-number-up)
       ( "C-z -"       .  shift-number-down)
-      ( "C-z c"       .  my/ispell-word-then-abbrev)
+      ( "C-z S"       .  my/ispell-word-then-abbrev)
       ( "C-z i f"     .  my/insert-file-name)
       ( "C-a"         .  mwim-beginning-of-code-or-line)
       ( "C-e"         .  mwim-end-of-code-or-line)
