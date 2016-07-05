@@ -30,7 +30,9 @@
 
 ;;; Settings
 
-;; Unset these early to remove at least some of the inital flicker.
+;; Set theme and unset some menu bar stuff early to remove at least some of the
+;; inital flicker.
+(load-theme 'wombat)
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
