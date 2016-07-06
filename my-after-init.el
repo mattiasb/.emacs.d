@@ -122,6 +122,8 @@
       ( "C-z -"       .  shift-number-down)
       ( "C-z S"       .  my/ispell-word-then-abbrev)
       ( "C-z i f"     .  my/insert-file-name)
+      ( "C-S-a"       .  beginning-of-line)
+      ( "C-S-e"       .  end-of-line)
       ( "C-a"         .  mwim-beginning-of-code-or-line)
       ( "C-e"         .  mwim-end-of-code-or-line)
 
