@@ -833,7 +833,7 @@ With a prefix ARG always prompt for command to use."
 ;;;###autoload
 (defun my/set-terminal-cursors ()
   "Set up the terminal cursors."
-  (send-string-to-terminal "\033]12;tomato3\007")
+  (send-string-to-terminal (concat "\033]12;" (face-background 'cursor) "\007"))
   (add-hook 'kill-emacs-hook
             (lambda ()
               (send-string-to-terminal "\033]12;white\007"))))
