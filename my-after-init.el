@@ -36,6 +36,9 @@
   ;; Fix keys if we're in a tmux shell
   (if (getenv "TMUX") (tmux-keys))
 
+  ;; Fix ESC in terminal
+  (evil-esc-mode)
+
   (defvar my/global-remap-keys
     '((occur                    . my/occur-dwim)
       (isearch-forward          . my/isearch-forward-symbol-with-prefix)
