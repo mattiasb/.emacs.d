@@ -583,9 +583,13 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 ;;;###autoload
 (defun my/control-mode-set-cursor ()
   "Update cursor based for `control-mode'."
-  (setq cursor-type (if control-mode
-                        'box
-                      '(bar . 5))))
+  (if (display-graphic-p)
+      (setq cursor-type (if control-mode
+                            'box
+                          '(bar . 5)))
+    (send-string-to-terminal (if control-mode
+                                 "\e[1 q"
+                               "\e[5 q"))))
 
 ;;;###autoload
 (defun my/control-mode-off ()
@@ -825,6 +829,14 @@ With a prefix ARG always prompt for command to use."
                        package-selected-packages)
     (package-refresh-contents)
     (package-install-selected-packages)))
+
+;;;###autoload
+(defun my/set-terminal-cursors ()
+  "Set up the terminal cursors."
+  (send-string-to-terminal "\033]12;tomato3\007")
+  (add-hook 'kill-emacs-hook
+            (lambda ()
+              (send-string-to-terminal "\033]12;white\007"))))
 
 (provide 'funcs)
 ;;; funcs.el ends here

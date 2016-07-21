@@ -30,15 +30,16 @@
 
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
 
+(defun my/activate-terminal-workarounds ()
+  "Activate terminal workarounds."
+  (if (getenv "TMUX")
+      (tmux-keys))
+
+  (evil-esc-mode)
+  (my/set-terminal-cursors))
+
 (defun my/activate-global-keybindings ()
   "Activate global keybindings."
-
-  ;; Fix keys if we're in a tmux shell
-  (if (getenv "TMUX") (tmux-keys))
-
-  ;; Fix ESC in terminal
-  (evil-esc-mode)
-
   (defvar my/global-remap-keys
     '((occur                    . my/occur-dwim)
       (isearch-forward          . my/isearch-forward-symbol-with-prefix)
@@ -180,6 +181,8 @@
 
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
+  (unless (display-graphic-p)
+    (my/activate-terminal-workarounds))
   (my/activate-control-mode)
   (powerline-major-mode)
   (powerline-default-theme)
