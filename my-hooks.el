@@ -70,7 +70,9 @@
   (rtags-start-process-unless-running)
   (setq-local rtags-completions-enabled t)
   (rtags-enable-standard-keybindings c-mode-base-map)
-  (setq-local company-backends '((company-rtags)))
+  (setq-local company-backends '((company-rtags
+                                  company-keywords
+                                  company-files)))
 
   ;; Work around bug where c-mode-base-map doesn't inherit from
   ;; prog-mode-map
@@ -91,10 +93,10 @@
 ;; CMake
 (defun my/cmake-mode-hook ()
   "My `cmake' mode hook."
-  (setq-local company-backends
-              '((company-cmake
-                 company-files
-                 company-dabbrev-code))))
+  (setq-local company-backends '((company-cmake
+                                  company-keywords
+                                  company-files
+                                  company-dabbrev-code))))
 
 (add-hook 'cmake-mode-hook #'my/prog-mode)
 (add-hook 'cmake-mode-hook #'my/cmake-mode-hook)
@@ -197,7 +199,9 @@
   (go-eldoc-setup)
 
   (setq-local tab-width 4)
-  (setq-local company-backends '(company-go))
+  (setq-local company-backends '(company-go
+                                 company-keywords
+                                 company-files))
 
   (my/define-keys go-mode-map
                   '(( "C-z i a"    . go-import-add)
@@ -374,7 +378,9 @@
 (defvar nxml-mode-map)
 (defun my/nxml-mode-hook ()
   "My `nxml' mode hook."
-  (setq-local company-backends '(company-nxml))
+  (setq-local company-backends '(company-nxml
+                                 company-keywords
+                                 company-files))
   (my/define-keys nxml-mode-map
                   '(( "<tab>" . my/indent-snippet-or-complete))))
 
@@ -510,9 +516,9 @@
 (defun my/sh-mode-hook ()
   "My `sh' mode hook."
   (setq-local company-backends '((company-shell
-                                  company-dabbrev-code
+                                  company-keywords
                                   company-files
-                                  company-keywords)))
+                                  company-dabbrev-code)))
   (sh-extra-font-lock-activate))
 
 (add-hook 'sh-mode-hook #'my/sh-mode-hook)
