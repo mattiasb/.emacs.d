@@ -149,14 +149,30 @@
 (advice-add #'backward-page                       :after  #'recenter)
 (advice-add #'forward-page                        :after  #'recenter)
 
-(advice-add #'projectile-ag                       :after  (lambda (&rest _) (other-window 1)))
-(advice-add #'flycheck-list-errors                :after  (lambda (&rest _) (other-window 1)))
-(advice-add #'diff-buffer-with-file               :after  (lambda (&rest _) (other-window 1)))
-(advice-add #'delete-window                       :after  (lambda (&rest _) (balance-windows)))
-(advice-add #'split-window-right                  :after  #'balance-windows)
-(advice-add #'split-window-below                  :after  #'balance-windows)
-(advice-add #'split-window-right                  :after  (lambda () (other-window 1)))
-(advice-add #'split-window-below                  :after  (lambda () (other-window 1)))
+(mapc #'my/advice-other-window-after '(rtags-find-all-references-at-point
+                                       rtags-find-references
+                                       rtags-find-references-at-point
+                                       rtags-find-references-current-dir
+                                       rtags-find-references-current-file
+                                       rtags-references-tree
+                                       projectile-ag
+                                       flycheck-list-errors
+                                       diff-buffer-with-file
+                                       delete-window
+                                       split-window-right
+                                       split-window-below))
+
+(mapc #'my/advice-describe-func '(package-menu-describe-package
+                                  describe-variable
+                                  describe-mode
+                                  describe-function
+                                  describe-bindings
+                                  describe-symbol
+                                  describe-package
+                                  describe-theme))
+
+(advice-add #'split-window-right :after #'balance-windows)
+(advice-add #'split-window-below :after #'balance-windows)
 
 ;; Kill terminal buffer when the terminal process exits
 (advice-add #'term-sentinel
@@ -182,15 +198,6 @@
             :around (lambda (func &rest args)
                       (let ((x-gtk-use-system-tooltips nil))
                         (apply func args))))
-
-(mapc #'my/advice-describe-func '(package-menu-describe-package
-                                  describe-variable
-                                  describe-mode
-                                  describe-function
-                                  describe-bindings
-                                  describe-symbol
-                                  describe-package
-                                  describe-theme))
 
 (provide 'init)
 ;;; init.el ends here

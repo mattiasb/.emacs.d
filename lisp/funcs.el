@@ -614,6 +614,14 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (advice-add describe-function
               :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
 
+(defun my/other-window (&rest args)
+  "Like `(other-window 1)' but skip ARGS."
+  (other-window 1))
+
+(defun my/advice-other-window-after (func)
+  "Advice FUNC to switch window after been run."
+  (advice-add func :after #'my/other-window))
+
 ;;;###autoload
 (defun my/rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
