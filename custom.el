@@ -72,6 +72,7 @@
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-minimum-width 40)
+ '(compilation-read-command nil)
  '(compilation-scroll-output t)
  '(custom-buffer-done-kill t)
  '(custom-enabled-themes '(wombat))
