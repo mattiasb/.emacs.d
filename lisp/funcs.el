@@ -604,15 +604,10 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (global-control-mode 1))
 
 ;;;###autoload
-(defun my/focus-buffer-dwim (buffer)
-  "Switch to BUFFER in other window unless it's currently in view."
-  (unless (string-equal buffer (buffer-name (current-buffer)))
-    (switch-to-buffer-other-window buffer)))
-
-(defun my/advice-describe-func (describe-function)
-  "Advice DESCRIBE-FUNCTION to switch to the *Help* buffer after popping it up."
-  (advice-add describe-function
-              :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
+(defun my/split-window (&optional window)
+  "Create new WINDOW and select it."
+  (let ((new-window (split-window-sensibly window)))
+    (select-window new-window)))
 
 ;;;###autoload
 (defun my/rename-current-buffer-and-file ()
