@@ -841,10 +841,22 @@ With a prefix ARG always prompt for command to use."
               (send-string-to-terminal "\033]12;white\007"))))
 
 ;;;###autoload
-(defun my/jhbuild-generate-compilation-db (module)
-  "Create a `compile_commands.json' file for the specified `JHBuild' MODULE."
+(defun my/projectile-regen-rtags ()
+  "Update rtags for current project."
+  (interactive)
+  (let* ((project (projectile-project-name))
+         (type (projectile-project-type)))
+    (when (eq type 'jhbuild)
+      (my/projectile-update-rtags-jhbuild project))))
 
-  )
+(defun my/projectile-regen-rtags-jhbuild (module)
+  "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
+  (let* ((jhbuild-prefix (format "jhbuild run --in-builddir=%s -- " module))
+         (compile-cmd (mapconcat
+                       (lambda (s) (concat jhbuild-prefix s))
+                       '("make clean" "bear make" "rc -J compile_commands.json")
+                       " && ")))
+    (compile compile-cmd)))
 
 (provide 'funcs)
 ;;; funcs.el ends here
