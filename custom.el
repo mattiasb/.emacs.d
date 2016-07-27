@@ -213,10 +213,9 @@
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
-;; These apparently can't be set through customize
+;; Real ugly, but apparently can't be set through customize
 (defvar magit-last-seen-setup-instructions)
 (setq magit-last-seen-setup-instructions "1.4.0")
-(setq split-window-preferred-function #'my/split-window)
 
 (custom-theme-set-faces
  'wombat
