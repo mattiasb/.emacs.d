@@ -847,7 +847,7 @@ With a prefix ARG always prompt for command to use."
   (let* ((project (projectile-project-name))
          (type (projectile-project-type)))
     (when (eq type 'jhbuild)
-      (my/projectile-update-rtags-jhbuild project))))
+      (my/projectile-regen-rtags-jhbuild project))))
 
 (defun my/projectile-regen-rtags-jhbuild (module)
   "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
