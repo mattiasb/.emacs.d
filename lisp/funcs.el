@@ -712,12 +712,14 @@ passed on unchanged."
                            error-buffer
                            display-error-buffer))
 
+;; TODO: Save URL in kill-ring
 ;;;###autoload
 (defun my/fpaste-dwim ()
   "Push the current region or buffer to paste.fedoraproject.org."
   (interactive)
   (my/shell-command-dwim (format "fpaste -n %s" (user-login-name))))
 
+;; TODO: Make this work
 ;;;###autoload
 (defun my/fpaste-insert (url)
   "Fetch an fpaste from URL."
@@ -837,6 +839,12 @@ With a prefix ARG always prompt for command to use."
   (add-hook 'kill-emacs-hook
             (lambda ()
               (send-string-to-terminal "\033]12;white\007"))))
+
+;;;###autoload
+(defun my/jhbuild-generate-compilation-db (module)
+  "Create a `compile_commands.json' file for the specified `JHBuild' MODULE."
+
+  )
 
 (provide 'funcs)
 ;;; funcs.el ends here
