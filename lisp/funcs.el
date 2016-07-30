@@ -815,7 +815,14 @@ With a prefix ARG always prompt for command to use."
   (unless (seq-every-p #'package-installed-p
                        package-selected-packages)
     (package-refresh-contents)
+    (my/install-packages-in-dir "~/.emacs.d/packages/")
     (package-install-selected-packages)))
+
+;;;###autoload
+(defun my/install-packages-in-dir (directory)
+  "Install all packages in DIRECTORY."
+  (mapc #'package-install-file
+        (directory-files directory t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
 
 ;;;###autoload
 (defun my/set-terminal-cursors ()
