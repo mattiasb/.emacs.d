@@ -843,5 +843,14 @@ With a prefix ARG always prompt for command to use."
                        " && ")))
     (compile compile-cmd)))
 
+;;;###autoload
+(defun my/projectile-index-projects ()
+  "Index my project directories."
+  (interactive)
+  (mapc #'projectile-discover-projects-in-directory
+        '("~/Code/github"
+          "~/Code/gnome/src/"
+          "~/Code/Projects")))
+
 (provide 'funcs)
 ;;; funcs.el ends here
