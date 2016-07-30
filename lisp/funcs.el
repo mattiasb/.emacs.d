@@ -809,29 +809,6 @@ With a prefix ARG always prompt for command to use."
     (call-interactively #'fill-paragraph)))
 
 ;;;###autoload
-;; Based on https://www.emacswiki.org/emacs/InsertFileName
-(defun my/insert-file-name (file &optional universal-arg)
-  "Insert name of FILE into buffer after point, modified with UNIVERSAL-ARG.
-
-  Prefixed with \\[universal-argument], expand the file name to
-  its fully canocalized path.  See `expand-file-name'.
-
-  Prefixed with \\[negative-argument], use relative path to file
-  name from current directory, `default-directory'.  See
-  `file-relative-name'.
-
-  The default with no prefix is to insert the file name exactly as
-  it appears in the minibuffer prompt."
-  ;; Based on insert-file in Emacs -- ashawley 20080926
-  (interactive "*fInsert file name: \nP")
-  (cond ((eq '- universal-arg)
-         (insert (file-relative-name file)))
-        ((not (null universal-arg))
-         (insert (expand-file-name file)))
-        (t
-         (insert file))))
-
-;;;###autoload
 (defun my/package-init ()
   "Initialize the package system."
   (package-initialize)
