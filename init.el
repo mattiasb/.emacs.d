@@ -156,6 +156,7 @@
                                        rtags-find-references-current-file
                                        rtags-references-tree
                                        projectile-ag
+                                       projectile-compile-project
                                        flycheck-list-errors
                                        diff-buffer-with-file
                                        delete-window
