@@ -855,9 +855,14 @@ With a prefix ARG always prompt for command to use."
   "Index my project directories."
   (interactive)
   (mapc #'projectile-discover-projects-in-directory
-        '("~/Code/github"
+        '("~/Code/github/"
           "~/Code/gnome/src/"
-          "~/Code/Projects")))
+          "~/Code/Projects/"))
+  (mapc #'projectile-add-known-project
+        '("~/.emacs.d/"
+          "~/.config/"
+          "~/.local/bin/"))
+  (projectile-cleanup-known-projects))
 
 (provide 'funcs)
 ;;; funcs.el ends here
