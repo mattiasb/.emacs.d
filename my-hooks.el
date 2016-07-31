@@ -302,6 +302,13 @@
 
 (add-hook 'tern-mode-hook #'my/tern-mode-hook)
 
+;; JSON
+(defun my/json-mode-hook ()
+  "My `json' mode hook."
+  (highlight-numbers-mode -1))
+
+(add-hook 'json-mode-hook #'my/json-mode-hook)
+
 ;; Lua
 (defun my/lua-mode-hook ()
   "My `lua' mode hook."
