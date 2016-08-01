@@ -830,7 +830,7 @@ With a prefix ARG always prompt for command to use."
   (send-string-to-terminal (concat "\033]12;" (face-background 'cursor) "\007"))
   (add-hook 'kill-emacs-hook
             (lambda ()
-              (send-string-to-terminal "\033]12;white\007"))))
+              (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
 ;;;###autoload
 (defun my/projectile-regen-rtags ()
