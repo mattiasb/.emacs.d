@@ -66,8 +66,11 @@
       ( "C-x 4 <return>" . xref-find-definitions-other-window)
       ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
-      ;; Windows
+      ;; Take over C-z
       ( "C-z"         .  nil)
+      ( "C-z C-z"     .  suspend-frame)
+
+      ;; Windows
       ( "C-z w c"     .  customize)
       ( "C-z w p"     .  list-packages)
       ( "C-z w t"     .  ansi-term)
