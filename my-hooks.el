@@ -442,7 +442,7 @@
                                     (lambda () nil)
                                     "jhbuild make"
                                     "make check"
-                                    "jhbuild run ${PWD##*/}")
+                                    "jhbuild make && jhbuild run ${PWD##*/}")
 
   (my/define-keys projectile-command-map
                   '(( "B"   . projectile-ibuffer)
