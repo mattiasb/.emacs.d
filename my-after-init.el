@@ -85,6 +85,7 @@
       ( "C-z t w"     .  whitespace-mode)
       ( "C-z t a"     .  aggressive-indent-mode)
       ( "C-z t b"     .  magit-blame)
+      ( "C-z t p"     .  electric-pair-mode)
       ( "<escape>"    .  my/control-mode-on)
       ( "<insert>"    .  global-control-mode)
 
