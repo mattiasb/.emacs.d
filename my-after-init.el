@@ -191,6 +191,7 @@
   (powerline-major-mode)
   (powerline-default-theme)
   (global-git-gutter-mode)
+  (flimenu-global-mode)
   (ido-mode)
   (ido-vertical-mode)
   (ido-ubiquitous-mode)

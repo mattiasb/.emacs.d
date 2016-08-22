@@ -171,7 +171,6 @@
 ;; ELisp
 (defun my/emacs-lisp-mode-hook ()
   "My `emacs-lisp' mode hook."
-  (my/set-imenu-create-index-function nil "/")
   (setq page-delimiter
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n"))))
@@ -275,13 +274,15 @@
 
 ;; JS2
 (defvar js2-mode-map)
+(defvar flimenu-imenu-separator)
 (autoload 'js2r-rename-var "js2-refactor" "" t nil)
+
 (defun my/js2-mode-hook ()
   "My `js2' mode hook."
   (require 'js2-refactor)
   (js2-imenu-extras-mode)
+  (setq flimenu-imenu-separator ".")
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
-  (my/set-imenu-create-index-function #'js2-mode-create-imenu-index ".")
 
   (my/define-keys js2-mode-map
                   '(( "C-z f r"    . js2r-rename-var)))
