@@ -58,8 +58,6 @@
       ( "M-."	         . nil)
       ( "M-?"	         . nil)
       ( "C-M-."	         . nil)
-      ( "C-x 4"          . nil)
-      ( "C-x 5"          . nil)
       ( "M-<left>"       . xref-pop-marker-stack)
       ( "C-<return>"     . xref-find-definitions)
       ( "M-?"	         . xref-find-references)
