@@ -54,13 +54,13 @@
   (defvar my/global-keybindings
     '(
       ;; XRef
-      ( "M-,"	         . nil)
-      ( "M-."	         . nil)
-      ( "M-?"	         . nil)
-      ( "C-M-."	         . nil)
+      ( "M-,"            . nil)
+      ( "M-."            . nil)
+      ( "M-?"            . nil)
+      ( "C-M-."          . nil)
       ( "M-<left>"       . xref-pop-marker-stack)
       ( "C-<return>"     . xref-find-definitions)
-      ( "M-?"	         . xref-find-references)
+      ( "M-?"            . xref-find-references)
       ( "C-x 4 <return>" . xref-find-definitions-other-window)
       ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
