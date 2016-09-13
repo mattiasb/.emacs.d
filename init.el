@@ -200,5 +200,11 @@
                       (let ((x-gtk-use-system-tooltips nil))
                         (apply func args))))
 
+(advice-add #'projectile-project-root
+            :around (lambda (func &rest args)
+                      (unless (or (string-match-p "/run/user/[0-9]+/gvfs/" default-directory)
+                                  (file-remote-p default-directory))
+                        (apply func args))))
+
 (provide 'init)
 ;;; init.el ends here
