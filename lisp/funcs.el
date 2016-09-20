@@ -864,5 +864,11 @@ With a prefix ARG always prompt for command to use."
           "~/.local/bin/"))
   (projectile-cleanup-known-projects))
 
+;;;###autoload
+(defun my/quit-iedit-mode ()
+  "Turn off `iedit-mode'."
+  (interactive)
+  (iedit-mode -1))
+
 (provide 'funcs)
 ;;; funcs.el ends here

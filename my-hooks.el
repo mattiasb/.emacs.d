@@ -251,6 +251,15 @@
 
 (add-hook 'ibuffer-hook 'my/ibuffer-hook)
 
+;; Iedit
+(defvar iedit-mode-keymap)
+(defun my/iedit-mode-hook ()
+  "My `iedit' mode hook."
+  (my/define-keys iedit-mode-keymap
+                  '(("<return>" . my/quit-iedit-mode))))
+
+(add-hook 'iedit-mode-hook #'my/iedit-mode-hook)
+
 ;; IELM
 (defvar ielm-map)
 (defun my/ielm-mode-hook ()
@@ -427,6 +436,7 @@
 
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
+                    ( "C-z f e"     . iedit-mode)
                     ( "C-z f f"     . emr-show-refactor-menu)))
   (my/remap-keys  prog-mode-map
                   '(( "RET"         . "M-j"))))

@@ -258,6 +258,7 @@
  '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
  '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
  '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
+ '(iedit-occurrence ((t (:inherit region))))
  '(js2-highlight-vars-face ((t (:background "gray24"))))
  '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
