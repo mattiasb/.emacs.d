@@ -4,6 +4,9 @@ SNIPPETS:=$(patsubst licenses/%,snippets/text-mode/%,$(LICENSES))
 
 .PHONY: all
 
+/usr/bin/npm:
+	pkcon install npm
+
 $(YASEL_BIN): /usr/bin/npm
 	npm install -g yasel
 
