@@ -46,7 +46,8 @@
       (isearch-backward         . my/isearch-backward-symbol-with-prefix)
       (execute-extended-command . smex)
       (delete-other-windows     . zygospore-toggle-delete-other-windows)
-      (fill-paragraph           . my/fill-or-unfill)))
+      (fill-paragraph           . my/fill-or-unfill)
+      (kill-buffer              . kill-this-buffer)))
 
   ;; TODO: Why isn't this working above?
   (global-set-key [remap fill-paragraph] #'my/fill-or-unfill)
