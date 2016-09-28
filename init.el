@@ -5,9 +5,9 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 20141020
 ;; Keywords         : init
-;; Package-Requires : ()
+;; Package-Requires : ((emacs "25.1"))
 ;; URL              : https://github.com/moonlite/.emacs.d
-;; Compatibility    : GNU Emacs: 24.x
+;; Compatibility    : GNU Emacs: 25.x
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
