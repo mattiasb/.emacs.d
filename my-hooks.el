@@ -444,8 +444,13 @@
 (add-hook 'prog-mode-hook #'my/prog-mode)
 
 ;; Projectile
+(defvar projectile-known-projects)
 (defun my/projectile-mode-hook ()
   "My `projectile' mode hook."
+
+  (unless projectile-known-projects
+    (my/projectile-index-projects))
+
   (setq projectile-mode-line
         '(:eval (format " [%s]" (projectile-project-name))))
 
