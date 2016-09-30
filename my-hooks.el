@@ -462,6 +462,8 @@
 
   (my/define-keys projectile-command-map
                   '(( "B"   . projectile-ibuffer)
+                    ( "i"   . my/projectile-index-projects)
+                    ( "I"   . projectile-invalidate-cache)
                     ( "d"   . projectile-dired)
                     ( "D"   . projectile-find-dir)))
 
