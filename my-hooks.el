@@ -448,7 +448,8 @@
 (defun my/projectile-mode-hook ()
   "My `projectile' mode hook."
 
-  (my/projectile-index-projects)
+  (unless projectile-known-projects
+    (my/projectile-index-projects))
 
   (setq projectile-mode-line
         '(:eval (format " [%s]" (projectile-project-name))))
