@@ -6,10 +6,7 @@ SNIPPETS:=$(patsubst licenses/%,snippets/text-mode/%,$(LICENSES))
 
 all: $(SNIPPETS)
 
-/usr/bin/npm:
-	pkcon install npm
-
-$(YASEL_BIN): /usr/bin/npm
+$(YASEL_BIN):
 	npm install -g yasel
 
 snippets/text-mode/%: $(YASEL_BIN)
