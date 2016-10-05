@@ -869,6 +869,13 @@ Optionally only search as deep as DEPTH."
   (projectile-cleanup-known-projects))
 
 ;;;###autoload
+(defun my/projectile-gitg ()
+  "Run gitg at root of project."
+  (interactive)
+  (projectile-with-default-dir (projectile-project-root)
+    (call-process "/usr/bin/gitg" nil 0)))
+
+;;;###autoload
 (defun my/quit-iedit-mode ()
   "Turn off `iedit-mode'."
   (interactive)

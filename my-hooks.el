@@ -465,6 +465,7 @@
                     ( "i"   . my/projectile-index-projects)
                     ( "I"   . projectile-invalidate-cache)
                     ( "d"   . projectile-dired)
+                    ( "V"   . my/projectile-gitg)
                     ( "D"   . projectile-find-dir)))
 
   (control-mode-reload-bindings)
