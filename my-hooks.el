@@ -188,6 +188,20 @@
 
 (add-hook 'flycheck-mode-hook #'my/flycheck-mode-hook)
 
+;; Flyspell
+(defvar flyspell-mode-map)
+(defun my/flyspell-mode-hook ()
+  "My `flyspell' mode hook."
+  (require 'flyspell-correct-popup)
+  (flyspell-buffer)
+  (my/define-keys flyspell-mode-map
+                  '(("C-," . my/flyspell-goto-previous-error)
+                    ("C-." . flyspell-goto-next-error)
+                    ("C-;" . flyspell-correct-previous-word-generic)
+                    ("C-:" . my/flyspell-correct-next-word-generic))))
+
+(add-hook 'flyspell-mode-hook #'my/flyspell-mode-hook)
+
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'my/create-non-existent-directory)
 
@@ -311,6 +325,13 @@
                     ( "C-z f r"    . tern-rename-variable))))
 
 (add-hook 'tern-mode-hook #'my/tern-mode-hook)
+
+;; Text
+(defun my/text-mode-hook ()
+  "My `text' mode hook."
+  (flyspell-mode))
+
+(add-hook 'text-mode-hook #'my/text-mode-hook)
 
 ;; JSON
 (defun my/json-mode-hook ()

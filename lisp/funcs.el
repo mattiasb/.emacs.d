@@ -881,5 +881,55 @@ Optionally only search as deep as DEPTH."
   (interactive)
   (iedit-mode -1))
 
+(defvar flyspell-old-buffer-error)
+(defvar flyspell-old-pos-error)
+;;;###autoload
+(defun my/flyspell-goto-previous-error ()
+  "Go to ARG previous spelling error."
+  (interactive)
+  (let ((arg 1))
+    (while (not (= 0 arg))
+      (let ((pos (point))
+            (min (point-min)))
+        (if (and (eq (current-buffer) flyspell-old-buffer-error)
+                 (eq pos flyspell-old-pos-error))
+            (progn
+              (if (= flyspell-old-pos-error min)
+                  ;; goto beginning of buffer
+                  (progn
+                    (message "Restarting from end of buffer")
+                    (goto-char (point-max)))
+                (backward-word 1))
+              (setq pos (point))))
+        ;; seek the next error
+        (while (and (> pos min)
+                    (let ((ovs (overlays-at pos))
+                          (r '()))
+                      (while (and (not r) (consp ovs))
+                        (if (flyspell-overlay-p (car ovs))
+                            (setq r t)
+                          (setq ovs (cdr ovs))))
+                      (not r)))
+          (backward-word 1)
+          (setq pos (point)))
+        ;; save the current location for next invocation
+        (setq arg (1- arg))
+        (setq flyspell-old-pos-error pos)
+        (setq flyspell-old-buffer-error (current-buffer))
+        (goto-char pos)
+        (if (= pos min)
+            (progn
+              (message "No more miss-spelled word!")
+              (setq arg 0)))))))
+
+;;;###autoload
+(defun my/flyspell-correct-next-word-generic ()
+  "Correct the first misspelled word that occurs after point."
+  (interactive)
+
+  (save-excursion
+    (flyspell-goto-next-error)
+    (flyspell-correct-word-generic)))
+
 (provide 'funcs)
 ;;; funcs.el ends here
