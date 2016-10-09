@@ -5,7 +5,7 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 20141020
 ;; Keywords         : extensions, tools
-;; Package-Requires : ()
+;; Package-Requires : ((emacs "25.1"))
 ;; URL              : TBA
 ;; Doc URL          : TBA
 ;; Compatibility    : GNU Emacs: 24.x
@@ -450,7 +450,6 @@ depending on context."
       (if (and (= old-indent (current-indentation))
                (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
           (company-complete-common)))))
-
 
 ;;;###autoload
 (defun my/snippet-or-complete ()
