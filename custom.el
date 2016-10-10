@@ -88,6 +88,7 @@
  '(electric-pair-mode t)
  '(elpy-modules
    '(elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-yasnippet elpy-module-sane-defaults))
+ '(ensime-completion-style nil)
  '(expand-region-contract-fast-key "S-SPC")
  '(expand-region-preferred-python-mode 'elpy-mode)
  '(fci-rule-color "gray21")
@@ -156,9 +157,11 @@
  '(nxml-slash-auto-complete-flag t)
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.org/packages/")))
+     ("melpa" . "http://melpa.org/packages/")
+     ("melpa-stable" . "http://stable.melpa.org/packages/")))
+ '(package-pinned-packages '((ensime . "melpa-stable")))
  '(package-selected-packages
-   '(flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen ripgrep fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig elpy emr fill-column-indicator flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-ubiquitous ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs rtags sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode zygospore))
+   '(ensime flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen ripgrep fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig elpy emr fill-column-indicator flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-ubiquitous ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs rtags sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode zygospore))
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix (kbd "C-z p"))

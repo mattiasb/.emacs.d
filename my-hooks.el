@@ -295,6 +295,15 @@
 (add-hook 'Info-mode-hook #'my/Info-mode-hook)
 (add-hook 'Info-selection-hook #'niceify-info)
 
+;; Java
+(defun my/java-mode-hook ()
+  "My `java' mode hook."
+  (require 'ensime-company)
+  (ensime)
+  (setq-local company-backends '((ensime-company))))
+
+(add-hook 'java-mode-hook #'my/java-mode-hook)
+
 ;; JS2
 (defvar js2-mode-map)
 (defvar flimenu-imenu-separator)
