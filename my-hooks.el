@@ -374,6 +374,7 @@
 (defvar markdown-mode-map)
 (defun my/markdown-mode-hook ()
   "My `markdown' mode hook."
+  (flyspell-mode)
   (setq-local fill-column 80)
   (fci-mode)
   (auto-fill-mode)
