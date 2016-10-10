@@ -326,13 +326,6 @@
 
 (add-hook 'tern-mode-hook #'my/tern-mode-hook)
 
-;; Text
-(defun my/text-mode-hook ()
-  "My `text' mode hook."
-  (flyspell-mode))
-
-(add-hook 'text-mode-hook #'my/text-mode-hook)
-
 ;; JSON
 (defun my/json-mode-hook ()
   "My `json' mode hook."
