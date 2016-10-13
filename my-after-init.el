@@ -85,6 +85,7 @@
       ( "C-z t a"     .  aggressive-indent-mode)
       ( "C-z t b"     .  magit-blame)
       ( "C-z t e p"   .  electric-pair-mode)
+      ( "C-z t e l"   .  electric-layout-mode)
       ( "C-z t p"     .  projectile-global-mode)
       ( "<escape>"    .  my/control-mode-on)
       ( "<insert>"    .  global-control-mode)
