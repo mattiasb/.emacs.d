@@ -921,14 +921,5 @@ Optionally only search as deep as DEPTH."
               (message "No more miss-spelled word!")
               (setq arg 0)))))))
 
-;;;###autoload
-(defun my/flyspell-correct-next-word-generic ()
-  "Correct the first misspelled word that occurs after point."
-  (interactive)
-
-  (save-excursion
-    (flyspell-goto-next-error)
-    (flyspell-correct-word-generic)))
-
 (provide 'funcs)
 ;;; funcs.el ends here

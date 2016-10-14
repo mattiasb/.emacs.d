@@ -198,7 +198,7 @@
                   '(("C-," . my/flyspell-goto-previous-error)
                     ("C-." . flyspell-goto-next-error)
                     ("C-;" . flyspell-correct-previous-word-generic)
-                    ("C-:" . my/flyspell-correct-next-word-generic))))
+                    ("C-:" . flyspell-correct-next-word-generic))))
 
 (add-hook 'flyspell-mode-hook #'my/flyspell-mode-hook)
 
