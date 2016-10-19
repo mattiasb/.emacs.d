@@ -240,7 +240,10 @@
   "My `help' mode hook."
   (my/define-keys help-mode-map
                   '(( "M-<left>"  . help-go-back)
-                    ( "M-<right>" . help-go-forward))))
+                    ( "M-<right>" . help-go-forward)))
+  (my/remap-keys help-mode-map
+                 '(("s" . "C-s")
+                   ("r" . "C-r"))))
 
 (add-hook 'help-mode-hook #'my/help-mode-hook)
 
