@@ -461,7 +461,10 @@
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
                     ( "C-z f e"     . iedit-mode)
-                    ( "C-z f f"     . emr-show-refactor-menu)))
+                    ( "C-z f f"     . emr-show-refactor-menu)
+                    ( "C-z d"       . nil)
+                    ( "C-z d d"     . my/realgud-debug)
+                    ( "C-z d a"     . realgud-short-key-mode)))
   (my/remap-keys  prog-mode-map
                   '(( "RET"         . "M-j"))))
 
@@ -511,14 +514,26 @@
 
 ;; Python
 (defvar python-mode-map)
+(defvar my/realgud-debugger)
 (defun my/python-mode-hook ()
   "My `python' mode hook."
+  (setq-local my/realgud-debugger #'realgud:ipdb)
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
   (my/define-keys python-mode-map
                   '(( "C-<return>" . elpy-goto-definition)
                     ( "."          . my/dot-and-complete))))
 
 (add-hook 'python-mode-hook #'my/python-mode-hook)
+
+;; Realgud Track
+(defvar realgud-track-mode-map)
+(defun my/realgud-track-mode-hook ()
+  "My `realgud-track' mode hook."
+  (my/define-keys realgud-track-mode-map
+                  '(( "."          . my/dot-and-complete)
+                    ( "<tab>"  . my/snippet-or-complete))))
+
+(add-hook 'realgud-track-mode-hook #'my/realgud-track-mode-hook)
 
 ;; REST Client
 (defvar restclient-mode-map)
@@ -565,6 +580,7 @@
 ;; Shell script
 (defun my/sh-mode-hook ()
   "My `sh' mode hook."
+  (setq-local my/realgud-debugger #'realgud:bashdb)
   (setq-local company-backends '((company-shell
                                   company-keywords
                                   company-files

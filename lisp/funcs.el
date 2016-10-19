@@ -921,5 +921,16 @@ Optionally only search as deep as DEPTH."
               (message "No more miss-spelled word!")
               (setq arg 0)))))))
 
+(defvar my/realgud-debugger
+  (lambda ()
+    (interactive)
+    (error "No debugger for this mode")))
+
+(defun my/realgud-debug ()
+  "Run a `realgud' debugger."
+  (interactive)
+  (require 'realgud)
+  (call-interactively my/realgud-debugger))
+
 (provide 'funcs)
 ;;; funcs.el ends here
