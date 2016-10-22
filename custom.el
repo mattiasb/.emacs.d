@@ -101,7 +101,7 @@
    '(special-mode dired-mode term-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols 'unicode)
- '(haskell-mode-hook '(turn-on-haskell-indentation) t)
+ '(haskell-mode-hook '(turn-on-haskell-indentation))
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
