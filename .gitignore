@@ -32,3 +32,4 @@ TAGS
 /.testrun
 /ido.last
 /ensime/*
+anaconda-mode/*

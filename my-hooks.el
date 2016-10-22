@@ -516,17 +516,33 @@
 (add-hook 'projectile-mode-hook #'my/projectile-mode-hook)
 
 ;; Python
+(defvar anaconda-mode-map)
 (defvar python-mode-map)
 (defvar my/realgud-debugger)
 (defun my/python-mode-hook ()
   "My `python' mode hook."
-  (setq-local my/realgud-debugger #'realgud:ipdb)
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
+  (setq-local my/realgud-debugger #'realgud:ipdb)
+  (setq-local company-backends '(company-anaconda))
+  (anaconda-mode)
+  (anaconda-eldoc-mode)
   (my/define-keys python-mode-map
-                  '(( "C-<return>" . elpy-goto-definition)
-                    ( "."          . my/dot-and-complete))))
+                  '(( "."          . my/dot-and-complete))))
 
 (add-hook 'python-mode-hook #'my/python-mode-hook)
+
+;; Anaconda
+;; TODO: Figure out bindings for this
+;; M-, 		anaconda-mode-find-assignments
+;; M-? 		anaconda-mode-show-doc
+(defun my/anaconda-mode-hook ()
+  "My `anaconda' mode hook."
+  (my/define-keys anaconda-mode-map
+                  '(( "M-<left>"   . anaconda-mode-go-back)
+                    ( "C-<return>" . anaconda-mode-find-definitions)
+                    ( "M-?"        . anaconda-mode-find-references))))
+
+(add-hook 'anaconda-mode-hook #'my/anaconda-mode-hook)
 
 ;; Realgud Track
 (defvar realgud-track-mode-map)
