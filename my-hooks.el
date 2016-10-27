@@ -519,6 +519,7 @@
 (defvar anaconda-mode-map)
 (defvar python-mode-map)
 (defvar my/realgud-debugger)
+(defvar yas-indent-line)
 (defun my/python-mode-hook ()
   "My `python' mode hook."
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
@@ -526,6 +527,7 @@
   (setq-local company-backends '(company-anaconda))
   (anaconda-mode)
   (anaconda-eldoc-mode)
+  (setq-local yas-indent-line 'fixed)
   (my/define-keys python-mode-map
                   '(( "."          . my/dot-and-complete))))
 
