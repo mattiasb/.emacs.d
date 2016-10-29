@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: Callback
-# key: cb
+# key: function
 # --
 (function(${1:args}) {
 $0

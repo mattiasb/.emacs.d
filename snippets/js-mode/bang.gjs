@@ -1,6 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: join
-# key: join
-# binding: C-z s j
+# name: #!/usr/bin/gjs
+# key: !
 # --
-[$0].join($1)
+#!/usr/bin/gjs
+

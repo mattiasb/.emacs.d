@@ -1,5 +1,6 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: !
+# name: #!/usr/bin/env node
 # key: !
 # --
 #!/usr/bin/env node
+
