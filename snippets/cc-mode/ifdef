@@ -2,7 +2,7 @@
 # name: ifdef
 # key: ifdef
 # --
-#ifdef ${1:MACRO}
+ifdef ${1:MACRO}
 
 $0
 

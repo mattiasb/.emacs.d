@@ -1,5 +1,5 @@
 # name: Once
-# key: once
+# binding: C-z s h
 # --
 #ifndef ${1:_`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H_}
 #define $1
