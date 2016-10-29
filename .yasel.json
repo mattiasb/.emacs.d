@@ -32,6 +32,9 @@
         "body": "  * ",
         "post": "--]]"
     },
+    "python-mode": {
+        "body": "# "
+    },
     "rust-mode": {
         "body": "// "
     },
