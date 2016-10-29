@@ -10,4 +10,4 @@ $(YASEL_BIN):
 	npm install -g yasel
 
 snippets/text-mode/%: $(YASEL_BIN)
-	yasel licenses/ snippets/
+	yasel -k "C-z s l" licenses/ snippets/
