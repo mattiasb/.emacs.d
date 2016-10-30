@@ -162,6 +162,12 @@
   (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode))
 
+(defun my/activate-yatemplate ()
+  "Activate YATemplate."
+
+  (yatemplate-fill-alist)
+  (auto-insert-mode 1))
+
 (defvar god-mode-isearch-map)
 (defun my/activate-god-mode-isearch ()
   "Activate `god-mode-isearch'."
@@ -209,7 +215,8 @@
   (abbrev-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)
-  (my/activate-yas))
+  (my/activate-yas)
+  (my/activate-yatemplate))
 
 ;;;
 
