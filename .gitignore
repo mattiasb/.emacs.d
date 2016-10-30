@@ -33,3 +33,4 @@ TAGS
 /ido.last
 /ensime/*
 anaconda-mode/*
+.yas-compiled-snippets.el
