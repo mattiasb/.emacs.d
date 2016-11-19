@@ -210,7 +210,7 @@
   (easy-repeat-mode)
   (smart-region-on)
   (global-aggressive-indent-mode)
-  (projectile-global-mode)
+  (projectile-mode)
   (recentf-mode)
   (abbrev-mode)
   (my/activate-god-mode-isearch)
