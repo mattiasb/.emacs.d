@@ -95,7 +95,7 @@
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
  '(gc-cons-threshold 20000000)
- '(git-commit-summary-max-length 40)
+ '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
    '(special-mode dired-mode term-mode magit-popup-mode woman-mode customize-mode compilation-mode))

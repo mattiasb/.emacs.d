@@ -358,10 +358,10 @@
 (defun my/git-commit-mode-hook ()
   "My `git-commit' mode hook."
   (my/control-mode-off)
-  (flyspell-mode)
-  (auto-fill-mode)
-  (fci-mode 1)
-  (setq-local fill-column 72))
+  (setq-local fill-column 72)
+  (git-commit-turn-on-flyspell)
+  (git-commit-turn-on-auto-fill)
+  (fci-mode 1))
 
 (autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
 (defun my/magit-mode-hook ()
