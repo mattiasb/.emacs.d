@@ -482,7 +482,9 @@
     (my/projectile-index-projects))
 
   (setq projectile-mode-line
-        '(:eval (format " [%s]" (projectile-project-name))))
+        '(:eval (if (file-remote-p default-directory)
+                    " [?]"
+                  (format " [%s]" (projectile-project-name)))))
 
   (projectile-register-project-type 'jhbuild
                                     (lambda () nil)
