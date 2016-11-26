@@ -266,8 +266,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(iedit-occurrence ((t (:inherit region))))
- '(vr/match-0 ((t (:inherit region))))
- '(vr/match-1 ((t (:inherit region))))
  '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
@@ -275,7 +273,9 @@
  '(markdown-header-face-3 ((t (:inherit markdown-header-face :height 1.3))))
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
- '(markdown-header-face-6 ((t (:inherit markdown-header-face)))))
+ '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
+ '(vr/match-0 ((t (:inherit region))))
+ '(vr/match-1 ((t (:inherit region)))))
 
 (provide 'custom)
 ;;; custom.el ends here
