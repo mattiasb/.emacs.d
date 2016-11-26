@@ -154,6 +154,7 @@
 
 ;; Dired
 (defvar dired-mode-map)
+(require 'dired-imenu)
 (defun my/dired-mode-hook ()
   "My `dired' mode hook."
   (hl-line-mode)
