@@ -224,6 +224,7 @@
   (global-aggressive-indent-mode)
   (recentf-mode)
   (abbrev-mode)
+  (auto-dim-other-buffers-mode)
   (my/activate-projectile-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)

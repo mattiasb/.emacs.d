@@ -32,7 +32,6 @@
 
 ;; Set theme and unset some menu bar stuff early to remove at least some of the
 ;; inital flicker.
-(load-theme 'wombat)
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -41,6 +40,9 @@
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
+
+;; (package-initialize) and install missing packages on start
+(my/package-init)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -56,9 +58,6 @@
 
 ;; Maximize on start
 (my/maximize)
-
-;; (package-initialize) and install missing packages on start
-(my/package-init)
 
 ;;; Modes – General
 
