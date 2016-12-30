@@ -37,6 +37,18 @@
 
 (add-hook 'ag-mode-hook #'my/ag-mode-hook)
 
+;; Backward Forward
+(defun my/backward-forward-mode-hook ()
+  "My `backward-forward' mode hook."
+  (defvar backward-forward-mode-map)
+  (my/define-keys backward-forward-mode-map
+                  '(("M-<left>"  . backward-forward-previous-location)
+                    ("M-<right>" . backward-forward-next-location)
+                    ("C-<left>"  . nil)
+                    ("C-<right>" . nil))))
+
+(add-hook 'backward-forward-mode-hook #'my/backward-forward-mode-hook)
+
 ;; Browse Kill Ring
 (defvar browse-kill-ring-mode-map)
 (defun my/browse-kill-ring-mode-hook ()
@@ -78,8 +90,6 @@
   ;; prog-mode-map
   (my/define-keys c-mode-base-map
                   '(( "C-<return>" . rtags-find-symbol-at-point)
-                    ( "M-<left>"   . rtags-location-stack-back)
-                    ( "M-<right>"  . rtags-location-stack-forward)
                     ( "C-z f r"    . rtags-rename-symbol)
                     ( "."          . my/dot-and-complete)
                     ( ":"          . my/double-colon-and-complete)
@@ -333,8 +343,7 @@
 (defun my/tern-mode-hook ()
   "My `tern' mode hook."
   (my/define-keys tern-mode-keymap
-                  '(( "M-<left>"   . tern-pop-find-definition)
-                    ( "C-<return>" . tern-find-definition)
+                  '(( "C-<return>" . tern-find-definition)
                     ( "C-z f r"    . tern-rename-variable))))
 
 (add-hook 'tern-mode-hook #'my/tern-mode-hook)
@@ -461,6 +470,7 @@
   (fci-mode)
   (highlight-numbers-mode)
   (emr-initialize)
+  (backward-forward-mode)
 
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
@@ -543,9 +553,8 @@
 (defun my/anaconda-mode-hook ()
   "My `anaconda' mode hook."
   (my/define-keys anaconda-mode-map
-                  '(( "M-<left>"   . anaconda-mode-go-back)
-                    ( "C-<return>" . anaconda-mode-find-definitions)
-                    ( "M-?"        . anaconda-mode-find-references))))
+                  (( "C-<return>" . anaconda-mode-find-definitions)
+                   ( "M-?"        . anaconda-mode-find-references))))
 
 (add-hook 'anaconda-mode-hook #'my/anaconda-mode-hook)
 
