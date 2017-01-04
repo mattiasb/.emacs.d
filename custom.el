@@ -75,7 +75,6 @@
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
  '(custom-buffer-done-kill t)
- '(custom-enabled-themes '(apropospriate-dark))
  '(custom-safe-themes t)
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")

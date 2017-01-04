@@ -41,11 +41,14 @@
 (setq load-prefer-newer t)
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 ;; (package-initialize) and install missing packages on start
 (my/package-init)
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; Load theme early.
+(load-theme 'apropospriate-dark t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
