@@ -3,13 +3,14 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-	mwim-beginning-of-code-or-line
-	mwim-end-of-code-or-line
-	))
+        mwim-beginning-of-code-or-line
+        mwim-end-of-code-or-line
+        shift-number-down
+        ))
 
 (setq mc/cmds-to-run-once
       '(
-	my/control-mode-off
-	my/control-mode-on
-	smart-region
-	))
+        my/control-mode-off
+        my/control-mode-on
+        smart-region
+        ))
