@@ -493,7 +493,9 @@
     (my/projectile-index-projects))
 
   (setq projectile-mode-line
-        '(:eval (if (file-remote-p default-directory)
+        '(:eval (if (or (file-remote-p default-directory)
+                        (string-match-p "/run/user/[0-9]+/gvfs/"
+                                        default-directory))
                     " [?]"
                   (format " [%s]" (projectile-project-name)))))
 

@@ -188,17 +188,17 @@
   (global-control-mode)
   (my/activate-god-mode-isearch))
 
-(defun my/activate-projectile-mode ()
-  "Activate Projectile Mode."
-  ;; This needs to be set before loading projectile
-  ;; and also can't be set from custom.el apparently
-  (setq projectile-mode-line
-        '(:eval (if (or (file-remote-p default-directory)
-                        (string-match-p "/run/user/[0-9]+/gvfs/"
-                                        default-directory))
-                    " [?]"
-                  (format " [%s]" (projectile-project-name)))))
-  (projectile-mode))
+;; (defun my/activate-projectile-mode ()
+;;   "Activate Projectile Mode."
+;;   ;; This needs to be set before loading projectile
+;;   ;; and also can't be set from custom.el apparently
+;;   (setq projectile-mode-line
+;;         '(:eval (if (or (file-remote-p default-directory)
+;;                         (string-match-p "/run/user/[0-9]+/gvfs/"
+;;                                         default-directory))
+;;                     " [?]"
+;;                   (format " [%s]" (projectile-project-name)))))
+;;   (projectile-mode))
 
 (defun my/activate-modes ()
   "Activate a bunch of global modes."
@@ -224,8 +224,8 @@
   (global-aggressive-indent-mode)
   (recentf-mode)
   (abbrev-mode)
+  (projectile-mode)
   (auto-dim-other-buffers-mode)
-  (my/activate-projectile-mode)
   (my/activate-god-mode-isearch)
   (my/activate-visual-regexp)
   (my/activate-yas)

@@ -140,8 +140,8 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (load "~/.emacs.d/my-after-init.el")
-            (load "~/.emacs.d/my-hooks.el")))
+            (load "~/.emacs.d/my-hooks.el")
+            (load "~/.emacs.d/my-after-init.el")))
 
 ;;; Advice
 
