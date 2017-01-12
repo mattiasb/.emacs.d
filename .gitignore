@@ -33,3 +33,4 @@ TAGS
 /ensime/*
 anaconda-mode/*
 .yas-compiled-snippets.el
+flycheck_*.el
