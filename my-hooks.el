@@ -474,7 +474,7 @@
 
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/indent-snippet-or-complete)
-                    ( "C-z f e"     . iedit-mode)
+                    ( "C-z f e"     . mc/mark-all-symbols-like-this-in-defun)
                     ( "C-z f f"     . emr-show-refactor-menu)
                     ( "C-z d"       . nil)
                     ( "C-z d d"     . my/realgud-debug)
