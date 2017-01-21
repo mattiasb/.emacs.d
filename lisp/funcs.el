@@ -313,7 +313,7 @@ In reverse."
     (progn
       (insert char)
       (when do-complete
-        (company-complete-common)))))
+        (company-complete)))))
 
 ;;;###autoload
 (defun my/isearch-forward-symbol-with-prefix (p)
@@ -430,35 +430,30 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   "Tab indent, insert snippet or complete (using `company-mode')
 depending on context."
   (interactive)
-  (if (minibufferp)
-      (minibuffer-complete)
-    (let ((old-indent (current-indentation)))
-      (indent-for-tab-command)
-      (if (and (= old-indent (current-indentation))
-               (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-               (null (my/yas-expand)))
-          (company-complete-common)))))
+  (let ((old-indent (current-indentation)))
+    (indent-for-tab-command)
+    (if (and (= old-indent (current-indentation))
+             (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
+             (null (my/yas-expand)))
+        (company-complete-common))))
 
 ;;;###autoload
 (defun my/indent-or-complete ()
   "Auto indent or complete (using `company-mode') depending on context."
   (interactive)
-  (if (minibufferp)
-      (minibuffer-complete)
-    (let ((old-indent (current-indentation)))
-      (indent-for-tab-command)
-      (if (and (= old-indent (current-indentation))
-               (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
-          (company-complete-common)))))
+  (let ((old-indent (current-indentation)))
+    (indent-for-tab-command)
+    (if (and (= old-indent (current-indentation))
+             (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
+        (company-complete-common))))
 
 ;;;###autoload
 (defun my/snippet-or-complete ()
   "Insert snippet or complete (using `company-mode') depending on context."
   (interactive)
-  (if (minibufferp)
-      (minibuffer-complete)
-    (when (null (my/yas-expand))
-      (company-complete-common))))
+  (when (and (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
+             (null (my/yas-expand)))
+    (company-complete)))
 
 ;;;###autoload
 (defun my/fci-turn-off (&rest _)
