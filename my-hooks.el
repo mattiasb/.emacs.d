@@ -294,7 +294,7 @@
   "My `ielm' mode hook."
   (company-mode)
   (my/define-keys ielm-map
-                  '(( "<tab>" . my/indent-snippet-or-complete))))
+                  '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'ielm-mode-hook #'my/ielm-mode-hook)
 
@@ -436,7 +436,7 @@
                                  company-keywords
                                  company-files))
   (my/define-keys nxml-mode-map
-                  '(( "<tab>" . my/indent-snippet-or-complete))))
+                  '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'nxml-mode-hook #'my/nxml-mode-hook)
 (add-hook 'nxml-mode-hook #'my/prog-mode)
@@ -473,7 +473,7 @@
   (backward-forward-mode)
 
   (my/define-keys prog-mode-map
-                  '(( "<tab>"       . my/indent-snippet-or-complete)
+                  '(( "<tab>"       . my/snippet-or-complete)
                     ( "C-z f e"     . mc/mark-all-symbols-like-this-in-defun)
                     ( "C-z f f"     . emr-show-refactor-menu)
                     ( "C-z d"       . nil)
@@ -544,7 +544,8 @@
   (anaconda-eldoc-mode)
   (setq-local yas-indent-line 'fixed)
   (my/define-keys python-mode-map
-                  '(( "."          . my/dot-and-complete))))
+                  '(( "."         . my/dot-and-complete)
+                    ( "<tab>"     . my/indent-snippet-or-complete))))
 
 (add-hook 'python-mode-hook #'my/python-mode-hook)
 
@@ -553,10 +554,10 @@
 (defun my/anaconda-mode-hook ()
   "My `anaconda' mode hook."
   (my/define-keys anaconda-mode-map
-                  (( "C-<return>" . anaconda-mode-find-definitions)
-                   ( "M-<return>" . anaconda-mode-find-assignments)
-                   ( "C-z h d"    . anaconda-mode-show-doc)
-                   ( "M-?"        . anaconda-mode-find-references))))
+                  '(( "C-<return>" . anaconda-mode-find-definitions)
+                    ( "M-<return>" . anaconda-mode-find-assignments)
+                    ( "C-z h d"    . anaconda-mode-show-doc)
+                    ( "M-?"        . anaconda-mode-find-references))))
 
 (add-hook 'anaconda-mode-hook #'my/anaconda-mode-hook)
 
@@ -565,7 +566,7 @@
 (defun my/realgud-track-mode-hook ()
   "My `realgud-track' mode hook."
   (my/define-keys realgud-track-mode-map
-                  '(( "."          . my/dot-and-complete)
+                  '(( "."      . my/dot-and-complete)
                     ( "<tab>"  . my/snippet-or-complete))))
 
 (add-hook 'realgud-track-mode-hook #'my/realgud-track-mode-hook)
