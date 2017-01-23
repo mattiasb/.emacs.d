@@ -82,9 +82,7 @@
   (rtags-start-process-unless-running)
   (setq-local rtags-completions-enabled t)
   (rtags-enable-standard-keybindings c-mode-base-map)
-  (setq-local company-backends '((company-rtags
-                                  company-keywords
-                                  company-files)))
+  (setq-local company-backends '(company-rtags))
 
   ;; Work around bug where c-mode-base-map doesn't inherit from
   ;; prog-mode-map
