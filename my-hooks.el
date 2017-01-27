@@ -614,6 +614,12 @@
 ;; Shell script
 (defun my/sh-mode-hook ()
   "My `sh' mode hook."
+  (setq-local defun-prompt-regexp
+              (concat "^\\("
+                      "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
+                      "\\|"
+                      "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
+                      "\\)[ \t]*"))
   (setq-local my/realgud-debugger #'realgud:bashdb)
   (setq-local company-backends '((company-shell
                                   company-keywords
