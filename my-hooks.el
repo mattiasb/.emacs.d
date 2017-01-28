@@ -472,7 +472,7 @@
 
   (my/define-keys prog-mode-map
                   '(( "<tab>"       . my/snippet-or-complete)
-                    ( "C-z f e"     . mc/mark-all-symbols-like-this-in-defun)
+                    ( "C-z f e"     . my/iedit-in-defun)
                     ( "C-z f f"     . emr-show-refactor-menu)
                     ( "C-z d"       . nil)
                     ( "C-z d d"     . my/realgud-debug)

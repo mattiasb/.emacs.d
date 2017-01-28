@@ -927,5 +927,11 @@ Optionally only search as deep as DEPTH."
   (require 'realgud)
   (call-interactively my/realgud-debugger))
 
+(defun my/iedit-in-defun ()
+  "`iedit' restricted to current `defun'."
+  (interactive)
+  (progn (iedit-mode)
+         (iedit-restrict-function)))
+
 (provide 'funcs)
 ;;; funcs.el ends here
