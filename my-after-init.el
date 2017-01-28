@@ -92,7 +92,7 @@
 
       ;; Other
       ( "C-z D"       .  diff-buffer-with-file)
-      ( "C-z R"       .  restart-emacs)
+      ( "C-z R"       .  my/restart-emacs)
 
       ;; NAVIGATION
 

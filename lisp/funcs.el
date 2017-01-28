@@ -933,5 +933,14 @@ Optionally only search as deep as DEPTH."
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
+(defun my/restart-emacs ()
+  "Restart Emacs with desktop restored."
+  (interactive)
+  (let ((desktop-dir (getenv "XDG_RUNTIME_DIR")))
+    (desktop-save desktop-dir)
+    (restart-emacs (list "--eval"
+                         (format "(progn (desktop-read \"%s\") (desktop-remove))"
+                                 desktop-dir)))))
+
 (provide 'funcs)
 ;;; funcs.el ends here
