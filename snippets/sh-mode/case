@@ -2,11 +2,11 @@
 # name: case
 # key: case
 # binding: direct-keybinding
-# expand-env: ((yas-indent-line 'auto))
+# expand-env: ((yas-indent-line 'fixed))
 # --
 case "$1" in
-${2:*})
-$0
-return
-;;
+    ${2:*})
+        $0
+        return
+        ;;
 esac
