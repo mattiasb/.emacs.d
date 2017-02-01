@@ -48,7 +48,7 @@
 (my/package-init)
 
 ;; Load theme early.
-(load-theme 'apropospriate-dark t)
+(load-theme 'madhat2r t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)

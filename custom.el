@@ -159,7 +159,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-pinned-packages '((ensime . "melpa-stable")))
  '(package-selected-packages
-   '(backward-forward dired-imenu apropospriate-theme auto-dim-other-buffers toml-mode yatemplate company-anaconda anaconda-mode realgud ensime flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen ripgrep fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig emr fill-column-indicator flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-ubiquitous ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs rtags sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode zygospore))
+   '(madhat2r-theme backward-forward dired-imenu apropospriate-theme auto-dim-other-buffers toml-mode yatemplate company-anaconda anaconda-mode realgud ensime flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen ripgrep fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig emr fill-column-indicator flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-ubiquitous ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs rtags sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode zygospore))
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix (kbd "C-z p"))
@@ -244,6 +244,7 @@
    '(highlight-symbol-face ((t (:background "gray21"))))
    '(hl-line ((t (:background "gray21"))))
    '(iedit-occurrence ((t (:inherit region))))
+   '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
    '(popup-face ((t (:inherit default :background "#3d3d3d"))))
    '(popup-isearch-match ((t (:inherit (font-lock-constant-face popup-face)))))
    '(popup-menu-mouse-face ((t nil)))
@@ -257,6 +258,7 @@
 (when (custom-theme-enabled-p 'apropospriate-dark)
   (custom-theme-set-faces
    'apropospriate-dark
+   '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
    '(highlight-symbol-face ((t (:background "gray21"))))))
 
 (custom-set-faces
@@ -265,7 +267,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(iedit-occurrence ((t (:inherit region))))
- '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
+
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.5))))
