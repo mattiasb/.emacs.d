@@ -153,6 +153,17 @@
 (add-hook 'company-completion-finished-hook  #'my/fci-turn-on)
 (add-hook 'company-completion-cancelled-hook #'my/fci-turn-on)
 
+
+;; Compilation Mode
+
+(defvar compilation-filter-start)
+(defun my/compilation-filter-hook ()
+  "My `compilation-filter' mode hook."
+  (require 'ansi-color)
+  (when (eq major-mode 'compilation-mode)
+    (ansi-color-apply-on-region compilation-filter-start (point-max))))
+(add-hook 'compilation-filter-hook #'my/compilation-filter-hook)
+
 ;; Cython
 (defun my/cython-mode-hook ()
   "My `cython' mode hook."
