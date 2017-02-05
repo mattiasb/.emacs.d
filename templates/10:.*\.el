@@ -3,7 +3,7 @@
 ${2:$$(my/yas-choose-license)}
 
 ;; Version: ${3:`(my/get-date (nth 0 my/time-formats))`}
-;; Keywords: ${4:none}
+;; Keywords: ${4:$$(my/yas-choose-package-keyword)}
 ;; Package-Requires: ($5)
 ;; URL: ${6:TBA}
 ;; Doc URL: ${7:TBA}
