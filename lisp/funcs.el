@@ -912,7 +912,7 @@ Optionally only search as deep as DEPTH."
 (defun my/quit-iedit-mode ()
   "Turn off `iedit-mode'."
   (interactive)
-  (iedit-mode -1))
+  (iedit-quit))
 
 (defvar flyspell-old-buffer-error)
 (defvar flyspell-old-pos-error)
@@ -970,7 +970,8 @@ Optionally only search as deep as DEPTH."
   "`iedit' restricted to current `defun'."
   (interactive)
   (progn (iedit-mode)
-         (iedit-restrict-function)))
+         (iedit-restrict-function)
+         (er/mark-symbol)))
 
 (defun my/restart-emacs ()
   "Restart Emacs with desktop restored."

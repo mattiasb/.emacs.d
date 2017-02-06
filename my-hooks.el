@@ -293,9 +293,11 @@
 (defun my/iedit-mode-hook ()
   "My `iedit' mode hook."
   (my/define-keys iedit-mode-keymap
-                  '(("<return>" . my/quit-iedit-mode))))
+                  '(("C-g"      . iedit-quit)
+                    ("<return>" . iedit-quit))))
 
 (add-hook 'iedit-mode-hook #'my/iedit-mode-hook)
+(add-hook 'iedit-aborting-hook #'deactivate-mark)
 
 ;; IELM
 (defvar ielm-map)
