@@ -59,6 +59,9 @@
 
 ;;; Early init code
 
+;; Make ^ work
+(require 'iso-transl)
+
 ;; Maximize on start
 (my/maximize)
 
