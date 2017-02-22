@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with This program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
-;; Author: Anders Lindgren <andlind@gmail.com>
+;; Author: Anders Lindgren <https://www.emacswiki.org/emacs/AndersLindgren>
 ;;         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
 ;; Version: 20150625
