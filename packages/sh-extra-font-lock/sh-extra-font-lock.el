@@ -18,8 +18,8 @@
 ;; Author: Anders Lindgren <https://www.emacswiki.org/emacs/AndersLindgren>
 ;;         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
-;; Version: 20150625
-;; Keywords: sh
+;; Version: 20170222
+;; Keywords: languages
 ;; Package-Requires: ()
 ;; URL: http://emacs.stackexchange.com/a/13408/450
 ;; Compatibility: GNU Emacs: 24.x
