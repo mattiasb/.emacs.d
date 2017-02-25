@@ -75,6 +75,7 @@
       ( "C-z w t"     .  ansi-term)
       ( "C-z w r"     .  my/restclient)
       ( "C-z w e"     .  ielm)
+      ( "C-z w d"     .  todotxt)
 
       ;; Documentation
       ( "C-z h i"     .  info-display-manual)

@@ -359,6 +359,20 @@
 
 (add-hook 'tern-mode-hook #'my/tern-mode-hook)
 
+;; Todotxt
+(autoload 'todotxt "todotxt" "" t nil)
+(autoload 'todotxt-mode "todotxt" "" t nil)
+(defvar todotxt-mode-map)
+(defun my/todotxt-mode-hook ()
+  "My `todotxt' mode hook."
+  (my/define-keys todotxt-mode-map
+                  '(("j" . nil)
+                    ("k" . todotxt-nuke-item)
+                    ("_" . todotxt-undo)
+                    ("u" . universal-argument))))
+
+(add-hook 'todotxt-mode-hook #'my/todotxt-mode-hook)
+
 ;; JSON
 (defun my/json-mode-hook ()
   "My `json' mode hook."
