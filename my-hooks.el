@@ -369,7 +369,7 @@
                   '(("j" . nil)
                     ("k" . todotxt-nuke-item)
                     ("_" . todotxt-undo)
-                    ("u" . universal-argument))))
+                    ("u" . nil))))
 
 (add-hook 'todotxt-mode-hook #'my/todotxt-mode-hook)
 
