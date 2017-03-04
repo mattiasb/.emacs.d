@@ -28,6 +28,9 @@
 
 ;;; Code:
 
+;; ;; After Save
+(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+
 ;; AG
 (defvar ag-mode-map)
 (defun my/ag-mode-hook ()
