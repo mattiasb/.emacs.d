@@ -95,6 +95,9 @@
       ( "C-z D"       .  diff-buffer-with-file)
       ( "C-z R"       .  my/restart-emacs)
 
+      ;; Magit
+      ( "C-z m c"     .  magit-commit)
+
       ;; NAVIGATION
 
       ;; General
