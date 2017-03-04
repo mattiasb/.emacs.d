@@ -97,6 +97,7 @@
 
       ;; Magit
       ( "C-z m c"     .  magit-commit)
+      ( "C-z m p"     .  magit-push-matching)
 
       ;; NAVIGATION
 
