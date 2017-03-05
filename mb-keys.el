@@ -17,12 +17,11 @@
 ;;
 ;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
-;; Version: 20170304
-;; Keywords: local
-;; Package-Requires: ()
-;; URL: TBA
-;; Doc URL: TBA
-;; Compatibility: GNU Emacs: 24.x
+;; Version          : 20170304
+;; Keywords         : local
+;; URL              : https://github.com/moonlite/.emacs.d
+;; Doc URL          : TBA
+;; Compatibility    : GNU Emacs: 25.x
 
 ;;; Commentary:
 
