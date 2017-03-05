@@ -1,4 +1,4 @@
-;;; mb-cmds.el --- My commands -*- lexical-binding: t; -*-
+;;; mb-cmd.el --- My commands -*- lexical-binding: t; -*-
 
 ;; Copyright ⓒ 2017 Mattias Bengtsson
 ;;
@@ -555,5 +555,5 @@ With a prefix ARG always prompt for command to use."
                                  desktop-dir)))))
 
 
-(provide 'mb-cmds)
-;;; mb-cmds.el ends here
+(provide 'mb-cmd)
+;;; mb-cmd.el ends here

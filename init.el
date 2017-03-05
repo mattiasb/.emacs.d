@@ -40,8 +40,8 @@
 ;; Load path
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
-(require 'mb-f    "~/.emacs.d/lisp/mb-f.el")
-(require 'mb-cmds "~/.emacs.d/lisp/mb-cmds.el")
+(require 'mb-f   "~/.emacs.d/lisp/mb-f.el")
+(require 'mb-cmd "~/.emacs.d/lisp/mb-cmd.el")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
