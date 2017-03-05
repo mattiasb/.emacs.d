@@ -93,9 +93,13 @@
 (defun my/define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
   (dolist (binding keybindings)
-    (let* ((key  (kbd (car binding)))
-           (func (cdr binding)))
-      (define-key mode-map key func))))
+    (let* ((key   (kbd (car binding)))
+           (def   (cdr binding))
+           (def-v (when (boundp def) (symbol-value def))))
+      (if (fboundp def)
+          (define-key mode-map key def)
+        (when (keymapp def-v)
+          (define-key mode-map key (quote def-v)))))))
 
 ;;;###autoload
 (defun my/remap-keys (mode-map mappings)
@@ -111,6 +115,14 @@
             (func-remap (substitute-key-definition (car mapping)
                                                    (cdr mapping)
                                                    mode-map))))))
+
+(defmacro my/define-keymap (keymap bindings)
+  "Define a new KEYMAP and add a bunch of BINDINGS."
+  `(progn (defvar ,keymap
+            (let ((map (make-sparse-keymap)))
+              (my/define-keys map ,bindings)
+              map))
+          (fset (quote ,keymap) ,keymap)))
 
 ;;;###autoload
 (defun my/mapcar-head (fn-head fn-rest list)
