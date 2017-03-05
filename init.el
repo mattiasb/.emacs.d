@@ -40,8 +40,7 @@
 ;; Load path
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
-(require 'mb-f   "~/.emacs.d/lisp/mb-f.el")
-(require 'mb-cmd "~/.emacs.d/lisp/mb-cmd.el")
+(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -66,7 +65,7 @@
 (require 'iso-transl)
 
 ;; Maximize on start
-(mb-cmd-maximize)
+(mb-f-maximize)
 
 ;;; Modes – General
 
@@ -146,6 +145,7 @@
 
 (add-hook 'after-init-hook
           (lambda ()
+            (require 'mb-cmd "~/.emacs.d/lisp/mb-cmd.el")
             (load "~/.emacs.d/mb-hooks.el")
             (mb-init)))
 

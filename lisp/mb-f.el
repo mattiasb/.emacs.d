@@ -29,6 +29,15 @@
 
 ;;; Code:
 
+(defun mb-f-maximize ()
+  "Maximize Emacs."
+  (interactive)
+  (when (display-graphic-p)
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                           '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                           '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
+
 (defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
   (dolist (mode-and-line modes)

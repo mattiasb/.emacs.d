@@ -31,15 +31,17 @@
 
 (require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
-;;;###autoload
+(require 'company)
+(require 'ido)
+(require 'magit)
+(require 'projectile)
+(require 'iedit)
+(require 'flyspell)
+
 (defun mb-cmd-maximize ()
   "Maximize Emacs."
   (interactive)
-  (when (display-graphic-p)
-    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                           '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                           '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
+  (mb-f-maximize))
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
@@ -122,7 +124,9 @@ With a prefix argument P, isearch for the symbol at point."
 The prefix argument is currently unused.
 Like ordinary incremental search except that your input is treated
 as a symbol surrounded by symbol boundary constructs \\_< and \\_>.
-See the command `isearch-forward' for more information."
+See the command `isearch-forward' for more information.
+
+Disable rescursive edit when NO-RECURSIVE-EDIT is nil."
   (interactive "P\np")
   (isearch-mode nil nil nil (not no-recursive-edit) 'isearch-symbol-regexp))
 
@@ -263,7 +267,7 @@ depending on context."
 (defun mb-cmd-uniquify-buffer-lines ()
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
-  (uniquify-region-lines (point-min) (point-max)))
+  (mb-cmd-uniquify-region-lines (point-min) (point-max)))
 
 ;;;###autoload
 (defun mb-cmd-occur-dwim ()
