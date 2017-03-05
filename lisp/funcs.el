@@ -96,10 +96,10 @@
     (let* ((key   (kbd (car binding)))
            (def   (cdr binding))
            (def-v (when (boundp def) (symbol-value def))))
-      (if (fboundp def)
+      (if (or (fboundp def)
+              (not (keymapp def-v)))
           (define-key mode-map key def)
-        (when (keymapp def-v)
-          (define-key mode-map key (quote def-v)))))))
+        (define-key mode-map key (quote def-v))))))
 
 ;;;###autoload
 (defun my/remap-keys (mode-map mappings)
