@@ -161,23 +161,6 @@ With a prefix argument P, isearch for the symbol at point."
        #'isearch-backward))))
 
 ;;;###autoload
-(defmacro mb-cmd-bol-with-prefix (function)
-  "Define a new function which call FUNCTION.
-Except it moves to beginning of line before calling FUNCTION when
-called with a prefix argument.  The FUNCTION still receives the prefix argument."
-  (let ((name (intern (format "my/%s-BOL" function))))
-    `(progn
-       (defun ,name (p)
-         ,(format
-           "Call `%s', but move to BOL when called with a prefix argument."
-           function)
-         (interactive "P")
-         (when p
-           (forward-line 0))
-         (call-interactively ',function))
-       ',name)))
-
-;;;###autoload
 (defun mb-cmd-ido-scroll-down ()
   "A bit more eager `ido-next-match'."
   (interactive)
@@ -249,12 +232,6 @@ depending on context."
   (insert "# -*- restclient -*-\n\n"))
 
 ;;;###autoload
-(defun mb-cmd-magit-mode-quit ()
-  "Quit and kill magit-status window and frame."
-  (interactive)
-  (magit-mode-quit-window 4))
-
-;;;###autoload
 (defun mb-cmd-uniquify-region-lines (beg end)
   "Remove duplicate adjacent lines in region BEG to END."
   (interactive "*r")
@@ -321,24 +298,6 @@ depending on context."
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
-;;;###autoload
-(defun mb-cmd-list-installed-packages ()
-  "Like `package-list-packages', but show only installed optional packages."
-  (interactive)
-  (package-initialize)
-  (package-show-package-list
-   (cl-remove-if-not (lambda (x) (and (not (package-built-in-p x))
-                                      (package-installed-p x)))
-                     (mapcar #'car package-archive-contents))))
-
-;;;###autoload
-(defun mb-cmd-set-proxy ()
-  "Automatically set HTTP proxy in Emacs based on system environment."
-  (interactive)
-  (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))
-      (setq-default url-proxy-services '(("http"  . (getenv "HTTP_PROXY"))
-                                         ("https" . (getenv "HTTPS_PROXY"))
-                                         ))))
 ;;;###autoload
 (defun mb-cmd-term-paste (&optional string)
   "Paste STRING into a term-buffer."
@@ -481,12 +440,6 @@ With a prefix ARG always prompt for command to use."
   (interactive)
   (projectile-with-default-dir (projectile-project-root)
     (call-process "/usr/bin/gitg" nil 0)))
-
-;;;###autoload
-(defun mb-cmd-quit-iedit-mode ()
-  "Turn off `iedit-mode'."
-  (interactive)
-  (iedit-quit))
 
 (defvar flyspell-old-buffer-error)
 (defvar flyspell-old-pos-error)
