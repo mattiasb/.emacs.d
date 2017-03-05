@@ -19,8 +19,8 @@
 
 ;; Version          : 20170304
 ;; Keywords         : local
+;; Package-Requires : ((emacs "25.1"))
 ;; URL              : https://github.com/moonlite/.emacs.d
-;; Doc URL          : TBA
 ;; Compatibility    : GNU Emacs: 25.x
 
 ;;; Commentary:
@@ -28,6 +28,8 @@
 ;;; Note:
 
 ;;; Code:
+
+(require 'funcs "~/.emacs.d/lisp/funcs.el")
 
 (defconst mb-keys--global-remaps
   '((occur                    . my/occur-dwim)
