@@ -59,6 +59,7 @@
 
 ;;; Early init code
 
+(require 'mb-init "~/.emacs.d/mb-init.el")
 ;; Make ^ work
 (require 'iso-transl)
 
@@ -144,7 +145,7 @@
 (add-hook 'after-init-hook
           (lambda ()
             (load "~/.emacs.d/my-hooks.el")
-            (load "~/.emacs.d/my-after-init.el")))
+            (mb-init)))
 
 ;;; Advice
 
