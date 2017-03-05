@@ -28,7 +28,7 @@
 
 ;;; Code:
 
-(require 'funcs "~/.emacs.d/lisp/funcs.el")
+(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 (require 'mb-keys "~/.emacs.d/mb-keys.el")
 
 (defun mb-init--terminal-workarounds ()

@@ -1,15 +1,7 @@
-;;; funcs.el --- Some functions and macros I use.    -*- lexical-binding: t; -*-
+;;; mb-cmds.el --- My commands -*- lexical-binding: t; -*-
 
-;; Copyright ⓒ 2013-2016 Mattias Bengtsson
-
-;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-;; Version          : 20141020
-;; Keywords         : extensions, tools
-;; Package-Requires : ((emacs "25.1"))
-;; URL              : TBA
-;; Doc URL          : TBA
-;; Compatibility    : GNU Emacs: 24.x
-
+;; Copyright ⓒ 2017 Mattias Bengtsson
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
@@ -22,12 +14,22 @@
 ;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with This program.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+
+;; Version          : 20170305
+;; Keywords         : tools
+;; Package-Requires : ((emacs "25.1"))
+;; URL              : https://github.com/moonlite/.emacs.d
+;; Compatibility    : GNU Emacs: 25.x
 
 ;;; Commentary:
 
 ;;; Note:
 
 ;;; Code:
+
+(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 ;;;###autoload
 (defun my/maximize ()
@@ -40,180 +42,18 @@
                            '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
 
 ;;;###autoload
-(defun my/shorten-minor-modes (modes)
-  "Shorten the displayed name for MODES in the modeline."
-  (dolist (mode-and-line modes)
-    (let ((line (cdr mode-and-line))
-          (mode (car mode-and-line)))
-      (my/shorten-minor-mode mode line))))
-
-;;;###autoload
-(defun my/shorten-minor-mode (mode line)
-  "Replace the displayed name for MODE by LINE."
-  (let ((hook (intern (concat (symbol-name mode) "-hook"))))
-    (add-hook hook (lambda () (diminish mode line)))))
-
-;;;###autoload
-(defun my/shorten-major-modes (modes)
-  "Shorten the displayed name for MODES in the mode line."
-  (dolist (mode-and-line modes)
-    (let ((line (cdr mode-and-line))
-          (mode (car mode-and-line)))
-      (my/shorten-major-mode mode line))))
-
-;;;###autoload
-(defun my/shorten-major-mode (mode line)
-  "Replace the displayed name for MODE by LINE."
-  (let ((hook (intern (concat (symbol-name mode) "-hook"))))
-    (add-hook hook (lambda () (setq-local mode-name line)))))
-
-;;;###autoload
 (defun my/byte-compile ()
   "Byte compile my configs."
   (interactive)
   (byte-recompile-directory "~/.emacs.d" 0))
 
 ;;;###autoload
-(defun my/auto-modes (modes)
-  "Add many MODES to `auto-mode-alist'."
-  (setq auto-mode-alist (append modes auto-mode-alist)))
-
-;;;###autoload
-(defun my/global-define-keys (keybindings)
-  "Set a bunch of global KEYBINDINGS at the same time."
-  (my/define-keys (current-global-map)
-                  keybindings))
-
-;;;###autoload
-(defun my/global-remap-keys (mappings)
-  "Remap a bunch of global keybindings defined in MAPPINGS."
-  (my/remap-keys (current-global-map) mappings))
-
-;;;###autoload
-(defun my/define-keys (mode-map keybindings)
-  "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
-  (dolist (binding keybindings)
-    (let* ((key   (kbd (car binding)))
-           (def   (cdr binding))
-           (def-v (when (boundp def) (symbol-value def))))
-      (if (or (fboundp def)
-              (not (keymapp def-v)))
-          (define-key mode-map key def)
-        (define-key mode-map key (quote def-v))))))
-
-;;;###autoload
-(defun my/remap-keys (mode-map mappings)
-  "Remap a bunch of MODE-MAP keybindings defined in MAPPINGS."
-  (dolist (mapping mappings)
-    (let* ((key        (car mapping))
-           (value      (cdr mapping))
-           (func-remap (and (functionp key) (functionp value)))
-           (key-remap  (and (stringp key) (stringp value))))
-      (cond (key-remap (define-key mode-map
-                         (kbd key)
-                         (key-binding (kbd value))))
-            (func-remap (substitute-key-definition (car mapping)
-                                                   (cdr mapping)
-                                                   mode-map))))))
-
-(defmacro my/define-keymap (keymap bindings)
-  "Define a new KEYMAP and add a bunch of BINDINGS."
-  `(progn (defvar ,keymap
-            (let ((map (make-sparse-keymap)))
-              (my/define-keys map ,bindings)
-              map))
-          (fset (quote ,keymap) ,keymap)))
-
-;;;###autoload
-(defun my/mapcar-head (fn-head fn-rest list)
-  "Like MAPCAR, but apply FN-HEAD to CAR and FN-REST to CDR of LIST."
-  (cons (funcall fn-head (car list))
-        (mapcar fn-rest (cdr list))))
-
-(defun my/mapconcat-head (fn-head fn-rest list sep)
-  "Like `mapconcat', but apply FN-HEAD to CAR and FN-REST to CDR of LIST.
-Just like `mapconcat' the last argument (SEP) is used as separator."
-  (mapconcat #'identity
-             (my/mapcar-head fn-head fn-rest list)
-             sep))
-
-;;;###autoload
-(defun my/split-name (s)
-  "Split S by name."
-  (split-string
-   (let ((case-fold-search nil))
-     (downcase
-      (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
-   "[^A-Za-z0-9]+"))
-
-;;;###autoload
-(defun my/lower-camel-case (s)
-  "Camel case S."
-  (my/mapconcat-head 'downcase
-                     'capitalize
-                     (my/split-name s)
-                     ""))
-
-;;;###autoload
-(defun my/camel-case (s)
-  "Camel case S."
-  (mapconcat #'capitalize (my/split-name s) ""))
-
-;;;###autoload
-(defun my/snake-case (s)
-  "Snake case S."
-  (mapconcat #'downcase (my/split-name s) "_"))
-
-;;;###autoload
-(defun my/dash-case (s)
-  "Dash case S."
-  (mapconcat #'downcase (my/split-name s) "-"))
-
-;;;###autoload
-(defun my/is-dash-case (s)
-  "Return T if S is in dash-case."
-  (let ((case-fold-search nil))
-    (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s)))
-
-;;;###autoload
-(defun my/is-camel-case (s)
-  "Return T if S is in camel-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s)))
-
-;;;###autoload
-(defun my/is-lower-camel-case (s)
-  "Return T if S is in lower-camel-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s)))
-
-;;;###autoload
-(defun my/is-snake-case (s)
-  "Return T if S is in snake-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
-
-;;;###autoload
-(defun my/toggle-programming-case (s) ;; UP
-  "Toggle programming style casing of S."
-  (cond ((my/is-snake-case       s) (my/dash-case        s))
-        ((my/is-dash-case        s) (my/camel-case       s))
-        ((my/is-camel-case       s) (my/lower-camel-case s))
-        ((my/is-lower-camel-case s) (my/snake-case       s))))
-
-;;;###autoload
-(defun my/toggle-programming-case-reverse (s)
-  "Toggle programming style casing of S in reverse."
-  (cond ((my/is-dash-case        s) (my/snake-case       s))
-        ((my/is-snake-case       s) (my/lower-camel-case s))
-        ((my/is-lower-camel-case s) (my/camel-case       s))
-        ((my/is-camel-case       s) (my/dash-case        s))))
-
 (defun my/toggle-programming-case-word-at-point ()
   "Toggle programming style casing of word a point."
   (interactive)
   (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case))
 
+;;;###autoload
 (defun my/toggle-programming-case-word-at-point-reverse ()
   "Toggle programming style casing of word a point.
 In reverse."
@@ -221,110 +61,10 @@ In reverse."
   (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case-reverse))
 
 ;;;###autoload
-(defun my/operate-on-thing-or-region (thing fn)
-  "Replace THING or region with the value of the function FN."
-  (let (pos1 pos2 meat excerpt)
-    (if (and transient-mark-mode mark-active)
-        (setq pos1 (region-beginning)
-              pos2 (region-end))
-      (setq pos1 (car (bounds-of-thing-at-point thing))
-            pos2 (cdr (bounds-of-thing-at-point thing))))
-    (setq excerpt (buffer-substring-no-properties pos1 pos2))
-    (setq meat (funcall fn excerpt))
-    (delete-region pos1 pos2)
-    (insert  meat)))
-
 (defun my/calc-thing-at-point ()
   "Replace math expression at point or in region with it's value."
   (interactive)
   (my/operate-on-thing-or-region 'symbol #'calc-eval))
-
-;;;###autoload
-(defun my/preceding-char-match-p (pattern)
-  "Match preceding char with PATTERN."
-  (let ((str (string (preceding-char))))
-    (string-match-p pattern str)))
-
-;;;###autoload
-(defun my/following-char-match-p (pattern)
-  "Match following char with PATTERN."
-  (let ((str (string (following-char))))
-    (string-match-p pattern str)))
-
-(defvar my/time-formats '("%Y%m%d" "%Y-%m-%d" "%A, %d. %B %Y"))
-
-(defun my/get-date (format)
-  "Get the current date in FORMAT."
-  (let ((system-time-locale "en_US"))
-    (format-time-string format)))
-
-(defun my/get-year ()
-  "Get the curret year."
-  (my/get-date "%Y"))
-
-(defun my/autoinsert-yas-expand()
-  "Replace text in yasnippet template."
-  (yas-expand-snippet (buffer-string)
-                      (point-min)
-                      (point-max)))
-
-(defun my/yas-choose-package-keyword ()
-  "Choose a package keyword to expand."
-  (yas-choose-value "abbrev"
-                    "bib"
-                    "c"
-                    "calendar"
-                    "comm"
-                    "convenience"
-                    "data"
-                    "docs"
-                    "emulations"
-                    "extensions"
-                    "faces"
-                    "files"
-                    "frames"
-                    "games"
-                    "hardware"
-                    "help"
-                    "hypermedia"
-                    "i18n"
-                    "internal"
-                    "languages"
-                    "lisp"
-                    "local"
-                    "maint"
-                    "mail"
-                    "matching"
-                    "mouse"
-                    "multimedia"
-                    "news"
-                    "outlines"
-                    "processes"
-                    "terminals"
-                    "tex"
-                    "tools"
-                    "unix"
-                    "vc"
-                    "wp"))
-
-(defun my/yas-choose-license ()
-  "Choose a license to expand."
-  (yas-choose-value
-   (directory-files "~/.emacs.d/licenses/"
-                    nil
-                    "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$")))
-
-(defun my/get-user-mail-address ()
-  "Get variable `user-mail-address' with fallback."
-  (if (boundp 'user-mail-address)
-      user-mail-address
-    "user@example.com"))
-
-(defun my/get-user-full-name ()
-  "Get variable `user-full-name' with fallback."
-  (if (boundp 'user-full-name)
-      user-full-name
-    "Full Name"))
 
 ;;;###autoload
 (defun my/dot-and-complete ()
@@ -433,17 +173,6 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
          (call-interactively ',function))
        ',name)))
 
-(defvar ido-matches)
-(defvar ido-max-prospects)
-(defun my/ido-visible-prospects ()
-  "The number of visible prospects."
-  ;; TODO: fix smex's `…' (The out-commented stuff is for that)
-  (let* ((available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
-         ;; (prospects-len (length ido-matches))
-         ;; (dot-dot (< available-lines (max ido-max-prospects prospects-len)))
-         )
-    (1- available-lines)))
-
 ;;;###autoload
 (defun my/ido-scroll-down ()
   "A bit more eager `ido-next-match'."
@@ -457,6 +186,7 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   (dotimes (_ (my/ido-visible-prospects) nil) (ido-prev-match)))
 
 (defvar company-tooltip-limit)
+;;;###autoload
 (defun my/company-scroll-down ()
   "A bit more eager `company-select-next'."
   (interactive)
@@ -467,14 +197,6 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
   "A bit more eager `company-select-previous'."
   (interactive)
   (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
-
-;;;###autoload
-(defvar yas-fallback-behavior)
-(defun my/yas-expand ()
-  "Perform a `yas-expand' but return nil on failure."
-  (when (yas-minor-mode)
-    (let ((yas-fallback-behavior 'return-nil))
-      (yas-expand))))
 
 ;;;###autoload
 (defun my/indent-snippet-or-complete ()
@@ -507,33 +229,12 @@ depending on context."
     (company-complete)))
 
 ;;;###autoload
-(defun my/fci-turn-off (&rest _)
-  "Turn off `fci-mode'."
-  (when (boundp 'fci-mode)
-    (turn-off-fci-mode)))
-
-;;;###autoload
-(defun my/fci-turn-on (&rest _)
-  "Turn on `fci-mode'."
-  (when (boundp 'fci-mode)
-    (turn-on-fci-mode)))
-
-;;;###autoload
 (defun my/reopen-file-as-root ()
   "Re-open file the current buffer is visiting as root."
   (interactive)
   (when buffer-file-name
     (unless (file-writable-p buffer-file-name)
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
-
-;;;###autoload
-(defun my/create-non-existent-directory ()
-  "Offer to create parent directory for current buffer if it doesn't exist."
-  (let ((parent-directory (file-name-directory buffer-file-name)))
-    (when (and (not (file-exists-p parent-directory))
-               (y-or-n-p (format "Directory `%s' does not exist! Create it? "
-                                 parent-directory)))
-      (make-directory parent-directory t))))
 
 ;;;###autoload
 (defun my/restclient ()
@@ -548,39 +249,6 @@ depending on context."
   "Quit and kill magit-status window and frame."
   (interactive)
   (magit-mode-quit-window 4))
-
-;;;###autoload
-(defun my/aim-new-block (mode control-stmts &optional char-tokens)
-  "Does this line suggest a new block in MODE.
-CONTROL-STMTS is a list of new block introducing control statements.
-The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
-  (let* ((control-stmt-regex (concat "\\b\\("
-                                     (mapconcat #'identity control-stmts "\\|")
-                                     "\\)\\b"))
-         (char-tokens (or char-tokens "[;{}]"))
-         (complete-regex (concat "\\("
-                                 "[" char-tokens "]"
-                                 "\\|"
-                                 control-stmt-regex
-                                 "\\)")))
-    (and (derived-mode-p mode)
-         (null (string-match complete-regex (thing-at-point 'line))))))
-
-;;;###autoload
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
-  "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
-  (require 'popup)
-  (popup-menu*
-   (mapcar
-    (lambda (choice)
-      (popup-make-item
-       (or (and display-fn (funcall display-fn choice))
-           choice)
-       :value choice))
-    choices)
-   :prompt prompt
-   ;; start isearch mode immediately
-   :isearch t))
 
 ;;;###autoload
 (defun my/uniquify-region-lines (beg end)
@@ -610,11 +278,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (call-interactively #'occur))
 
 ;;;###autoload
-(defun my/wrap-in-comment (string)
-  "Wrap STRING inside comment."
-  (format "%s%s%s" comment-start string comment-end))
-
-;;;###autoload
 (defun my/toggle-comment ()
   "Comments or uncomments current region or line."
   (interactive)
@@ -623,18 +286,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
         (setq beg (region-beginning) end (region-end))
       (setq beg (line-beginning-position) end (line-end-position)))
     (comment-or-uncomment-region beg end)))
-
-(defvar control-mode)
-;;;###autoload
-(defun my/control-mode-set-cursor ()
-  "Update cursor based for `control-mode'."
-  (if (display-graphic-p)
-      (setq cursor-type (if control-mode
-                            'box
-                          '(bar . 5)))
-    (send-string-to-terminal (if control-mode
-                                 "\e[1 q"
-                               "\e[5 q"))))
 
 ;;;###autoload
 (defun my/control-mode-off ()
@@ -647,25 +298,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Turn on `control-mode'."
   (interactive)
   (global-control-mode 1))
-
-;;;###autoload
-(defun my/focus-buffer-dwim (buffer)
-  "Switch to BUFFER in other window unless it's currently in view."
-  (unless (string-equal buffer (buffer-name (current-buffer)))
-    (switch-to-buffer-other-window buffer)))
-
-(defun my/advice-describe-func (describe-function)
-  "Advice DESCRIBE-FUNCTION to switch to the *Help* buffer after popping it up."
-  (advice-add describe-function
-              :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
-
-(defun my/other-window (&rest args)
-  "Like `(other-window 1)' but skip ARGS."
-  (other-window 1))
-
-(defun my/advice-other-window-after (func)
-  "Advice FUNC to switch window after been run."
-  (advice-add func :after #'my/other-window))
 
 ;;;###autoload
 (defun my/rename-current-buffer-and-file ()
@@ -783,39 +415,6 @@ passed on unchanged."
     (shell-command cmd t err-buf)))
 
 ;;;###autoload
-(defun my/set-imenu-create-index-function (&optional function separator)
-  "Set up a flat `imenu'.
-Generate index with FUNCTION (default: `imenu-create-index-function').
-Separate with SEPARATOR if set (default: '/')"
-  (let ((func (or function imenu-create-index-function))
-        (sepa (or separator "/")))
-    (setq-local imenu-create-index-function
-                (lambda ()
-                  (my/flatten-imenu-index (funcall func) sepa)))))
-
-;;;###autoload
-(defun my/flatten-imenu-index (index separator)
-  "Flatten `imenu' INDEX w/ SEPARATOR."
-  (let ((cdr-is-index (listp (cdr index))))
-    (cond ((not (stringp (car index)))
-           (cl-mapcan (lambda (idx) (my/flatten-imenu-index idx separator))
-                      index))
-          (cdr-is-index (my/imenu-prefix-flattened index separator))
-          (t (list index)))))
-
-;;;###autoload
-(defun my/imenu-prefix-flattened (index separator)
-  "Flatten `imenu' INDEX w/ SEPARATOR."
-  (let ((flattened (my/flatten-imenu-index (cdr index) separator)))
-    (cl-loop for sub-item in flattened
-             collect
-             `(,(concat (car index)
-                        separator
-                        (car sub-item))
-               .
-               ,(cdr sub-item)))))
-
-;;;###autoload
 (defun my/open-with (arg)
   ;; Taken from Prelude
   "Open visited file in default external program.
@@ -854,30 +453,6 @@ With a prefix ARG always prompt for command to use."
     (call-interactively #'fill-paragraph)))
 
 ;;;###autoload
-(defun my/package-init ()
-  "Initialize the package system."
-  (package-initialize)
-  (unless (seq-every-p #'package-installed-p
-                       package-selected-packages)
-    (package-refresh-contents)
-    (my/install-packages-in-dir "~/.emacs.d/packages/")
-    (package-install-selected-packages)))
-
-;;;###autoload
-(defun my/install-packages-in-dir (directory)
-  "Install all packages in DIRECTORY."
-  (mapc #'package-install-file
-        (directory-files directory t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
-
-;;;###autoload
-(defun my/set-terminal-cursors ()
-  "Set up the terminal cursors."
-  (send-string-to-terminal (concat "\033]12;" (face-background 'cursor) "\007"))
-  (add-hook 'kill-emacs-hook
-            (lambda ()
-              (send-string-to-terminal "\033]12;white\007\e[1 q"))))
-
-;;;###autoload
 (defun my/projectile-regen-rtags ()
   "Update rtags for current project."
   (interactive)
@@ -885,23 +460,6 @@ With a prefix ARG always prompt for command to use."
          (type (projectile-project-type)))
     (when (eq type 'jhbuild)
       (my/projectile-regen-rtags-jhbuild project))))
-
-(defun my/projectile-regen-rtags-jhbuild (module)
-  "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
-  (let* ((jhbuild-prefix (format "jhbuild run --in-builddir=%s -- " module))
-         (compile-cmd (mapconcat
-                       (lambda (s) (concat jhbuild-prefix s))
-                       '("make clean" "bear make" "rc -J compile_commands.json")
-                       " && ")))
-    (compile compile-cmd)))
-
-(defun my/find-git-projects (dir &optional depth)
-  "Find all git projects under DIR.
-Optionally only search as deep as DEPTH."
-  (let* ((depth-flag (if depth (format "-maxdepth %d" depth) ""))
-         (cmd (format "find %s %s -name '.git' -type d" dir depth-flag))
-         (result (split-string (shell-command-to-string cmd))))
-    (mapcar (lambda (s) (substring s 0 -4)) result)))
 
 ;;;###autoload
 (defun my/projectile-index-projects ()
@@ -972,12 +530,14 @@ Optionally only search as deep as DEPTH."
     (interactive)
     (error "No debugger for this mode")))
 
+;;;###autoload
 (defun my/realgud-debug ()
   "Run a `realgud' debugger."
   (interactive)
   (require 'realgud)
   (call-interactively my/realgud-debugger))
 
+;;;###autoload
 (defun my/iedit-in-defun ()
   "`iedit' restricted to current `defun'."
   (interactive)
@@ -985,6 +545,7 @@ Optionally only search as deep as DEPTH."
          (iedit-restrict-function)
          (er/mark-symbol)))
 
+;;;###autoload
 (defun my/restart-emacs ()
   "Restart Emacs with desktop restored."
   (interactive)
@@ -994,5 +555,6 @@ Optionally only search as deep as DEPTH."
                          (format "(progn (desktop-read \"%s\") (desktop-remove))"
                                  desktop-dir)))))
 
-(provide 'funcs)
-;;; funcs.el ends here
+
+(provide 'mb-cmds)
+;;; mb-cmds.el ends here

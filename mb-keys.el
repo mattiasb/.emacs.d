@@ -29,7 +29,7 @@
 
 ;;; Code:
 
-(require 'funcs "~/.emacs.d/lisp/funcs.el")
+(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 (defconst mb-keys--global-remaps
   '((occur                    . my/occur-dwim)
