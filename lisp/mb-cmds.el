@@ -51,20 +51,20 @@
 (defun my/toggle-programming-case-word-at-point ()
   "Toggle programming style casing of word a point."
   (interactive)
-  (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case))
+  (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case))
 
 ;;;###autoload
 (defun my/toggle-programming-case-word-at-point-reverse ()
   "Toggle programming style casing of word a point.
 In reverse."
   (interactive)
-  (my/operate-on-thing-or-region 'symbol #'my/toggle-programming-case-reverse))
+  (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case-reverse))
 
 ;;;###autoload
 (defun my/calc-thing-at-point ()
   "Replace math expression at point or in region with it's value."
   (interactive)
-  (my/operate-on-thing-or-region 'symbol #'calc-eval))
+  (mb-f-operate-on-thing-or-region 'symbol #'calc-eval))
 
 ;;;###autoload
 (defun my/dot-and-complete ()
@@ -177,13 +177,13 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
 (defun my/ido-scroll-down ()
   "A bit more eager `ido-next-match'."
   (interactive)
-  (dotimes (_ (my/ido-visible-prospects) nil) (ido-next-match)))
+  (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-next-match)))
 
 ;;;###autoload
 (defun my/ido-scroll-up ()
   "A bit more eager `ido-prev-match'."
   (interactive)
-  (dotimes (_ (my/ido-visible-prospects) nil) (ido-prev-match)))
+  (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-prev-match)))
 
 (defvar company-tooltip-limit)
 ;;;###autoload
@@ -206,8 +206,8 @@ depending on context."
   (let ((old-indent (current-indentation)))
     (indent-for-tab-command)
     (if (and (= old-indent (current-indentation))
-             (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-             (null (my/yas-expand)))
+             (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
+             (null (mb-f-yas-expand)))
         (company-complete-common))))
 
 ;;;###autoload
@@ -217,15 +217,15 @@ depending on context."
   (let ((old-indent (current-indentation)))
     (indent-for-tab-command)
     (if (and (= old-indent (current-indentation))
-             (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
+             (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
         (company-complete-common))))
 
 ;;;###autoload
 (defun my/snippet-or-complete ()
   "Insert snippet or complete (using `company-mode') depending on context."
   (interactive)
-  (when (and (my/preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-             (null (my/yas-expand)))
+  (when (and (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
+             (null (mb-f-yas-expand)))
     (company-complete)))
 
 ;;;###autoload
@@ -459,7 +459,7 @@ With a prefix ARG always prompt for command to use."
   (let* ((project (projectile-project-name))
          (type (projectile-project-type)))
     (when (eq type 'jhbuild)
-      (my/projectile-regen-rtags-jhbuild project))))
+      (mb-f-projectile-regen-rtags-jhbuild project))))
 
 ;;;###autoload
 (defun my/projectile-index-projects ()
@@ -467,7 +467,7 @@ With a prefix ARG always prompt for command to use."
   (interactive)
 
   (mapc #'projectile-add-known-project
-        (my/find-git-projects "~/" 5))
+        (mb-f-find-git-projects "~/" 5))
 
   (projectile-cleanup-known-projects))
 

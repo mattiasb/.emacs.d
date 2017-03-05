@@ -47,7 +47,7 @@
 (load custom-file)
 
 ;; (package-initialize) and install missing packages on start
-(my/package-init)
+(mb-f-package-init)
 
 ;; Load theme early.
 (load-theme 'madhat2r t)
@@ -70,51 +70,51 @@
 
 ;;; Modes – General
 
-(my/auto-modes  '(("\\.inl\\'"    . c++-mode)
-                  ("\\.ui$"       . nxml-mode)
-                  ("\\.js$"       . js2-mode)
-                  ("\\.jshintrc$" . js2-mode)
-                  ("\\.jscsrc$"   . json-mode)
-                  ("\\.geojson$"  . json-mode)
-                  ("\\.vala$"     . vala-mode)
-                  ("\\.mapcss$"   . css-mode)
-                  ("\\.mcss$"     . css-mode)
-                  ("\\.m$"        . octave-mode)
-                  ("\\.dec$"      . mtg-deck-mode)
-                  ("\/Cask$"      . emacs-lisp-mode)
-                  ("\\.h$"        . my/guess-cc-mode)))
+(mb-f-auto-modes  '(("\\.inl\\'"    . c++-mode)
+                    ("\\.ui$"       . nxml-mode)
+                    ("\\.js$"       . js2-mode)
+                    ("\\.jshintrc$" . js2-mode)
+                    ("\\.jscsrc$"   . json-mode)
+                    ("\\.geojson$"  . json-mode)
+                    ("\\.vala$"     . vala-mode)
+                    ("\\.mapcss$"   . css-mode)
+                    ("\\.mcss$"     . css-mode)
+                    ("\\.m$"        . octave-mode)
+                    ("\\.dec$"      . mtg-deck-mode)
+                    ("\/Cask$"      . emacs-lisp-mode)
+                    ("\\.h$"        . my/guess-cc-mode)))
 
-(my/shorten-major-modes '((markdown-mode   . "M↓")
-                          (js2-mode        . "JS")
-                          (nxml-mode       . "XML")
-                          (c-mode          . "C")
-                          (c++-mode        . "C++")
-                          (cmake-mode      . "CMake")
-                          (emacs-lisp-mode . "Elisp")
-                          (go-mode         . "Go")
-                          (haskell-mode    . "λ")
-                          (snippet-mode    . "Yas")))
+(mb-f-shorten-major-modes '((markdown-mode   . "M↓")
+                            (js2-mode        . "JS")
+                            (nxml-mode       . "XML")
+                            (c-mode          . "C")
+                            (c++-mode        . "C++")
+                            (cmake-mode      . "CMake")
+                            (emacs-lisp-mode . "Elisp")
+                            (go-mode         . "Go")
+                            (haskell-mode    . "λ")
+                            (snippet-mode    . "Yas")))
 
-(my/shorten-minor-modes '((abbrev-mode                 . " A")
-                          (aggressive-indent-mode      . " ⇒")
-                          (anaconda-mode               . " 🐍")
-                          (auto-dim-other-buffers-mode . "")
-                          (auto-revert-mode            . " ⎌")
-                          (company-mode                . " C")
-                          (control-mode                . "")
-                          (eldoc-mode                  . " 🕮")
-                          (fancy-narrow-mode           . "")
-                          (flyspell-mode               . " ✎")
-                          (git-gutter-mode             . "")
-                          (haskell-indentation-mode    . "")
-                          (magit-auto-revert-mode      . "")
-                          (magit-filenotify-mode       . " Notify")
-                          (magit-gitflow-mode          . " Flow")
-                          (racer-mode                  . "")
-                          (sqlup-mode                  . " ⇑")
-                          (which-key-mode              . "")
-                          (ws-butler-mode              . " W")
-                          (yas-minor-mode              . "")))
+(mb-f-shorten-minor-modes '((abbrev-mode                 . " A")
+                            (aggressive-indent-mode      . " ⇒")
+                            (anaconda-mode               . " 🐍")
+                            (auto-dim-other-buffers-mode . "")
+                            (auto-revert-mode            . " ⎌")
+                            (company-mode                . " C")
+                            (control-mode                . "")
+                            (eldoc-mode                  . " 🕮")
+                            (fancy-narrow-mode           . "")
+                            (flyspell-mode               . " ✎")
+                            (git-gutter-mode             . "")
+                            (haskell-indentation-mode    . "")
+                            (magit-auto-revert-mode      . "")
+                            (magit-filenotify-mode       . " Notify")
+                            (magit-gitflow-mode          . " Flow")
+                            (racer-mode                  . "")
+                            (sqlup-mode                  . " ⇑")
+                            (which-key-mode              . "")
+                            (ws-butler-mode              . " W")
+                            (yas-minor-mode              . "")))
 
 
 ;;; Project specific settings
@@ -153,36 +153,36 @@
 
 (advice-add #'isearch-forward-symbol-at-point     :after  #'god-mode-isearch-activate)
 (advice-add #'my/isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
-(advice-add #'popup-create                        :before #'my/fci-turn-off)
-(advice-add #'popup-delete                        :after  #'my/fci-turn-on)
+(advice-add #'popup-create                        :before #'mb-f-fci-turn-off)
+(advice-add #'popup-delete                        :after  #'mb-f-fci-turn-on)
 
 (advice-add #'ido-find-file                       :after  #'my/reopen-file-as-root)
 
 (advice-add #'backward-page                       :after  #'recenter)
 (advice-add #'forward-page                        :after  #'recenter)
 
-(mapc #'my/advice-other-window-after '(rtags-find-all-references-at-point
-                                       rtags-find-references
-                                       rtags-find-references-at-point
-                                       rtags-find-references-current-dir
-                                       rtags-find-references-current-file
-                                       rtags-references-tree
-                                       projectile-ag
-                                       projectile-compile-project
-                                       flycheck-list-errors
-                                       diff-buffer-with-file
-                                       delete-window
-                                       split-window-right
-                                       split-window-below))
+(mapc #'mb-f-advice-other-window-after '(rtags-find-all-references-at-point
+                                         rtags-find-references
+                                         rtags-find-references-at-point
+                                         rtags-find-references-current-dir
+                                         rtags-find-references-current-file
+                                         rtags-references-tree
+                                         projectile-ag
+                                         projectile-compile-project
+                                         flycheck-list-errors
+                                         diff-buffer-with-file
+                                         delete-window
+                                         split-window-right
+                                         split-window-below))
 
-(mapc #'my/advice-describe-func '(package-menu-describe-package
-                                  describe-variable
-                                  describe-mode
-                                  describe-function
-                                  describe-bindings
-                                  describe-symbol
-                                  describe-package
-                                  describe-theme))
+(mapc #'mb-f-advice-describe-func '(package-menu-describe-package
+                                    describe-variable
+                                    describe-mode
+                                    describe-function
+                                    describe-bindings
+                                    describe-symbol
+                                    describe-package
+                                    describe-theme))
 
 (advice-add #'split-window-right :after #'balance-windows)
 (advice-add #'split-window-below :after #'balance-windows)

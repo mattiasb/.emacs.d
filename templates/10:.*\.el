@@ -1,9 +1,9 @@
 ;;; `(buffer-name)` --- $1 -*- lexical-binding: t; -*-
 
-${2:$$(my/yas-choose-license)}
+${2:$$(mb-f-yas-choose-license)}
 
-;; Version	    : ${3:`(my/get-date (nth 0 my/time-formats))`}
-;; Keywords	    : ${4:$$(my/yas-choose-package-keyword)}
+;; Version	    : ${3:`(mb-f-get-date (nth 0 mb-f-time-formats))`}
+;; Keywords	    : ${4:$$(mb-f-yas-choose-package-keyword)}
 ;; Package-Requires : ($5)
 ;; URL		    : ${6:TBA}
 ;; Doc URL	    : ${7:TBA}

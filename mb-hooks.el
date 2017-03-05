@@ -36,8 +36,8 @@
 (defvar ag-mode-map)
 (defun mb-hooks--ag-mode ()
   "My `ag' mode hook."
-  (my/define-keys ag-mode-map
-                  '(( "W" . wgrep-change-to-wgrep-mode))))
+  (mb-f-define-keys ag-mode-map
+                    '(( "W" . wgrep-change-to-wgrep-mode))))
 
 (add-hook 'ag-mode-hook #'mb-hooks--ag-mode)
 
@@ -45,11 +45,11 @@
 (defun mb-hooks--backward-forward-mode ()
   "My `backward-forward' mode hook."
   (defvar backward-forward-mode-map)
-  (my/define-keys backward-forward-mode-map
-                  '(("M-<left>"  . backward-forward-previous-location)
-                    ("M-<right>" . backward-forward-next-location)
-                    ("C-<left>"  . nil)
-                    ("C-<right>" . nil))))
+  (mb-f-define-keys backward-forward-mode-map
+                    '(("M-<left>"  . backward-forward-previous-location)
+                      ("M-<right>" . backward-forward-next-location)
+                      ("C-<left>"  . nil)
+                      ("C-<right>" . nil))))
 
 (add-hook 'backward-forward-mode-hook #'mb-hooks--backward-forward-mode)
 
@@ -57,12 +57,12 @@
 (defvar browse-kill-ring-mode-map)
 (defun mb-hooks--browse-kill-ring-mode ()
   "My `browse-kill-ring' mode hook."
-  (my/define-keys browse-kill-ring-mode-map
-                  '(( "<down>"    . browse-kill-ring-forward)
-                    ( "<tab>"     . browse-kill-ring-forward)
-                    ( "<up>"      . browse-kill-ring-previous)
-                    ( "<backtab>" . browse-kill-ring-previous)
-                    ( "C-g"       . browse-kill-ring-quit))))
+  (mb-f-define-keys browse-kill-ring-mode-map
+                    '(( "<down>"    . browse-kill-ring-forward)
+                      ( "<tab>"     . browse-kill-ring-forward)
+                      ( "<up>"      . browse-kill-ring-previous)
+                      ( "<backtab>" . browse-kill-ring-previous)
+                      ( "C-g"       . browse-kill-ring-quit))))
 
 (add-hook 'browse-kill-ring-mode-hook #'mb-hooks--browse-kill-ring-mode)
 
@@ -90,14 +90,14 @@
 
   ;; Work around bug where c-mode-base-map doesn't inherit from
   ;; prog-mode-map
-  (my/define-keys c-mode-base-map
-                  '(( "C-<return>" . rtags-find-symbol-at-point)
-                    ( "C-z f r"    . rtags-rename-symbol)
-                    ( "."          . my/dot-and-complete)
-                    ( ":"          . my/double-colon-and-complete)
-                    ( ">"          . my/arrow-and-complete)))
-  (my/define-keys projectile-command-map
-                  '(( "j"         . rtags-find-symbol))))
+  (mb-f-define-keys c-mode-base-map
+                    '(( "C-<return>" . rtags-find-symbol-at-point)
+                      ( "C-z f r"    . rtags-rename-symbol)
+                      ( "."          . my/dot-and-complete)
+                      ( ":"          . my/double-colon-and-complete)
+                      ( ">"          . my/arrow-and-complete)))
+  (mb-f-define-keys projectile-command-map
+                    '(( "j"         . rtags-find-symbol))))
 
 (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
 (add-hook 'c++-mode-hook #'mb-hooks--c-mode)
@@ -118,13 +118,13 @@
 (defvar control-mode-keymap)
 (defun mb-hooks--control-mode ()
   "My `control' mode hook."
-  (my/control-mode-set-cursor)
-  (my/define-keys control-mode-keymap
-                  '(( "i"           . my/control-mode-off)
-                    ( "<escape>"    . ESC-prefix)
-                    ( "x x"         . smex)
-                    ( "x s"         . save-buffer)
-                    ( "x S"         . save-some-buffers))))
+  (mb-f-control-mode-set-cursor)
+  (mb-f-define-keys control-mode-keymap
+                    '(( "i"           . my/control-mode-off)
+                      ( "<escape>"    . ESC-prefix)
+                      ( "x x"         . smex)
+                      ( "x s"         . save-buffer)
+                      ( "x S"         . save-some-buffers))))
 
 (add-hook 'control-mode-keymap-generation-functions
           'control-mode-ctrlx-hacks)
@@ -144,18 +144,18 @@
        (undo-boundary)
        (company-complete-selection)))
 
-  (my/define-keys company-active-map
-                  '(( "\C-n"    . company-select-next)
-                    ( "\C-p"    . company-select-previous)
-                    ( "<next>"  . my/company-scroll-down)
-                    ( "<prior>" . my/company-scroll-up)
-                    ( "\C-v"    . company-show-location)
-                    ( "\C-g"    . company-abort))))
+  (mb-f-define-keys company-active-map
+                    '(( "\C-n"    . company-select-next)
+                      ( "\C-p"    . company-select-previous)
+                      ( "<next>"  . my/company-scroll-down)
+                      ( "<prior>" . my/company-scroll-up)
+                      ( "\C-v"    . company-show-location)
+                      ( "\C-g"    . company-abort))))
 
 (add-hook 'company-mode-hook                 #'mb-hooks--company-mode)
-(add-hook 'company-completion-started-hook   #'my/fci-turn-off)
-(add-hook 'company-completion-finished-hook  #'my/fci-turn-on)
-(add-hook 'company-completion-cancelled-hook #'my/fci-turn-on)
+(add-hook 'company-completion-started-hook   #'mb-f-fci-turn-off)
+(add-hook 'company-completion-finished-hook  #'mb-f-fci-turn-on)
+(add-hook 'company-completion-cancelled-hook #'mb-f-fci-turn-on)
 
 
 ;; Compilation Mode
@@ -182,13 +182,13 @@
   "My `dired' mode hook."
   (hl-line-mode)
   (dired-hide-details-mode)
-  (my/define-keys dired-mode-map
-                  '(( "W" . wdired-change-to-wdired-mode)
-                    ( "F" . find-name-dired)
-                    ( "c" . find-file)))
-  (my/remap-keys dired-mode-map
-                 '(("s" . "C-s")
-                   ("r" . "C-r"))))
+  (mb-f-define-keys dired-mode-map
+                    '(( "W" . wdired-change-to-wdired-mode)
+                      ( "F" . find-name-dired)
+                      ( "c" . find-file)))
+  (mb-f-remap-keys dired-mode-map
+                   '(("s" . "C-s")
+                     ("r" . "C-r"))))
 
 (add-hook 'dired-mode-hook #'mb-hooks--dired-mode)
 
@@ -218,16 +218,16 @@
   "My `flyspell' mode hook."
   (require 'flyspell-correct-popup)
   (flyspell-buffer)
-  (my/define-keys flyspell-mode-map
-                  '(("C-," . my/flyspell-goto-previous-error)
-                    ("C-." . flyspell-goto-next-error)
-                    ("C-;" . flyspell-correct-previous-word-generic)
-                    ("C-:" . flyspell-correct-next-word-generic))))
+  (mb-f-define-keys flyspell-mode-map
+                    '(("C-," . my/flyspell-goto-previous-error)
+                      ("C-." . flyspell-goto-next-error)
+                      ("C-;" . flyspell-correct-previous-word-generic)
+                      ("C-:" . flyspell-correct-next-word-generic))))
 
 (add-hook 'flyspell-mode-hook #'mb-hooks--flyspell-mode)
 
 ;; Find-file
-(add-hook 'find-file-not-found-functions #'my/create-non-existent-directory)
+(add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 
 ;; Go
 (defvar go-mode-map)
@@ -240,13 +240,13 @@
                                  company-keywords
                                  company-files))
 
-  (my/define-keys go-mode-map
-                  '(( "C-z i a"    . go-import-add)
-                    ( "C-z i r"    . go-remove-unused-imports)
-                    ( "C-z i g"    . go-goto-imports)
-                    ( "C-z d"      . godoc-at-point)
-                    ( "C-<return>" . godef-jump)
-                    ( "."          . my/dot-and-complete))))
+  (mb-f-define-keys go-mode-map
+                    '(( "C-z i a"    . go-import-add)
+                      ( "C-z i r"    . go-remove-unused-imports)
+                      ( "C-z i g"    . go-goto-imports)
+                      ( "C-z d"      . godoc-at-point)
+                      ( "C-<return>" . godef-jump)
+                      ( "."          . my/dot-and-complete))))
 
 (add-hook 'go-mode-hook #'mb-hooks--go-mode)
 
@@ -262,12 +262,12 @@
 (defvar help-mode-map)
 (defun mb-hooks--help-mode ()
   "My `help' mode hook."
-  (my/define-keys help-mode-map
-                  '(( "M-<left>"  . help-go-back)
-                    ( "M-<right>" . help-go-forward)))
-  (my/remap-keys help-mode-map
-                 '(("s" . "C-s")
-                   ("r" . "C-r"))))
+  (mb-f-define-keys help-mode-map
+                    '(( "M-<left>"  . help-go-back)
+                      ( "M-<right>" . help-go-forward)))
+  (mb-f-remap-keys help-mode-map
+                   '(("s" . "C-s")
+                     ("r" . "C-r"))))
 
 (add-hook 'help-mode-hook #'mb-hooks--help-mode)
 
@@ -275,10 +275,10 @@
 (defvar ido-common-completion-map)
 (defun mb-hooks--ido-setup ()
   "My `ido' mode hook."
-  (my/define-keys ido-common-completion-map
-                  '(( "<tab"    . ido-complete)
-                    ( "<next>"  . my/ido-scroll-down)
-                    ( "<prior>" . my/ido-scroll-up))))
+  (mb-f-define-keys ido-common-completion-map
+                    '(( "<tab"    . ido-complete)
+                      ( "<next>"  . my/ido-scroll-down)
+                      ( "<prior>" . my/ido-scroll-up))))
 
 (add-hook 'ido-setup-hook #'mb-hooks--ido-setup)
 
@@ -296,9 +296,9 @@
 (defvar iedit-mode-keymap)
 (defun mb-hooks--iedit-mode ()
   "My `iedit' mode hook."
-  (my/define-keys iedit-mode-keymap
-                  '(("C-g"      . iedit-quit)
-                    ("<return>" . iedit-quit))))
+  (mb-f-define-keys iedit-mode-keymap
+                    '(("C-g"      . iedit-quit)
+                      ("<return>" . iedit-quit))))
 
 (add-hook 'iedit-mode-hook #'mb-hooks--iedit-mode)
 (add-hook 'iedit-aborting-hook #'deactivate-mark)
@@ -308,18 +308,18 @@
 (defun mb-hooks--ielm-mode ()
   "My `ielm' mode hook."
   (company-mode)
-  (my/define-keys ielm-map
-                  '(( "<tab>" . my/snippet-or-complete))))
+  (mb-f-define-keys ielm-map
+                    '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'ielm-mode-hook #'mb-hooks--ielm)
 
 ;; Info
 (defun mb-hooks--Info-mode ()
   "My `Info' mode hook."
-  (my/define-keys Info-mode-map
-                  '(( "M-<left>"  . Info-history-back)
-                    ( "M-<right>" . Info-history-forward)
-                    ( "M-<up>"    . Info-up))))
+  (mb-f-define-keys Info-mode-map
+                    '(( "M-<left>"  . Info-history-back)
+                      ( "M-<right>" . Info-history-forward)
+                      ( "M-<up>"    . Info-up))))
 
 (add-hook 'Info-mode-hook #'mb-hooks--Info-mode)
 (add-hook 'Info-selection-hook #'niceify-info)
@@ -345,8 +345,8 @@
   (setq flimenu-imenu-separator ".")
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
 
-  (my/define-keys js2-mode-map
-                  '(( "C-z f r"    . js2r-rename-var)))
+  (mb-f-define-keys js2-mode-map
+                    '(( "C-z f r"    . js2r-rename-var)))
 
   (setq-local company-backends '((company-dabbrev-code
                                   company-files
@@ -357,9 +357,9 @@
 (defvar tern-mode-keymap)
 (defun mb-hooks--tern-mode ()
   "My `tern' mode hook."
-  (my/define-keys tern-mode-keymap
-                  '(( "C-<return>" . tern-find-definition)
-                    ( "C-z f r"    . tern-rename-variable))))
+  (mb-f-define-keys tern-mode-keymap
+                    '(( "C-<return>" . tern-find-definition)
+                      ( "C-z f r"    . tern-rename-variable))))
 
 (add-hook 'tern-mode-hook #'mb-hooks--tern-mode)
 
@@ -369,11 +369,11 @@
 (defvar todotxt-mode-map)
 (defun mb-hooks--todotxt-mode ()
   "My `todotxt' mode hook."
-  (my/define-keys todotxt-mode-map
-                  '(("j" . nil)
-                    ("k" . todotxt-nuke-item)
-                    ("_" . todotxt-undo)
-                    ("u" . nil))))
+  (mb-f-define-keys todotxt-mode-map
+                    '(("j" . nil)
+                      ("k" . todotxt-nuke-item)
+                      ("_" . todotxt-undo)
+                      ("u" . nil))))
 
 (add-hook 'todotxt-mode-hook #'mb-hooks--todotxt-mode)
 
@@ -413,8 +413,8 @@
 (defvar magit-blame-mode-map)
 (defun mb-hooks--magit-blame-mode ()
   "My `magit-blame' mode hook."
-  (my/define-keys magit-blame-mode-map
-                  '(( "C-z t b"     .  magit-blame-quit))))
+  (mb-f-define-keys magit-blame-mode-map
+                    '(( "C-z t b"     .  magit-blame-quit))))
 
 (add-hook 'magit-status-mode-hook #'magit-filenotify-mode)
 (add-hook 'magit-blame-mode-hook  #'mb-hooks--magit-blame-mode)
@@ -430,11 +430,11 @@
   (fci-mode)
   (auto-fill-mode)
   (setq-local indent-tabs-mode nil)
-  (my/define-keys markdown-mode-map
-                  '(( "C-<return>" . markdown-jump)
-                    ( "C-c C-c p"  . my/open-with)
-                    ( "M-<up>"     . nil)
-                    ( "M-<down>"   . nil))))
+  (mb-f-define-keys markdown-mode-map
+                    '(( "C-<return>" . markdown-jump)
+                      ( "C-c C-c p"  . my/open-with)
+                      ( "M-<up>"     . nil)
+                      ( "M-<down>"   . nil))))
 
 (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode)
 
@@ -444,8 +444,8 @@
   "My `mtg-deck' mode hook."
   (company-mode)
   (setq-local company-backends '(company-capf))
-  (my/define-keys mtg-deck-mode-map
-                  '(( "<tab>" . my/snippet-or-complete))))
+  (mb-f-define-keys mtg-deck-mode-map
+                    '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode)
 
@@ -464,8 +464,8 @@
   (setq-local company-backends '(company-nxml
                                  company-keywords
                                  company-files))
-  (my/define-keys nxml-mode-map
-                  '(( "<tab>" . my/snippet-or-complete))))
+  (mb-f-define-keys nxml-mode-map
+                    '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
 (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode)
@@ -474,10 +474,10 @@
 (defun mb-hooks--package-menu-mode ()
   "My `package-menu' mode hook."
   (hl-line-mode)
-  (my/remap-keys package-menu-mode-map
-                 '(("s" . "C-s")
-                   ("R" . "r")
-                   ("r" . "C-r"))))
+  (mb-f-remap-keys package-menu-mode-map
+                   '(("s" . "C-s")
+                     ("R" . "r")
+                     ("r" . "C-r"))))
 
 (add-hook 'package-menu-mode-hook #'mb-hooks--package-menu-mode)
 
@@ -501,15 +501,15 @@
   (emr-initialize)
   (backward-forward-mode)
 
-  (my/define-keys prog-mode-map
-                  '(( "<tab>"       . my/snippet-or-complete)
-                    ( "C-z f e"     . my/iedit-in-defun)
-                    ( "C-z f f"     . emr-show-refactor-menu)
-                    ( "C-z d"       . nil)
-                    ( "C-z d d"     . my/realgud-debug)
-                    ( "C-z d a"     . realgud-short-key-mode)))
-  (my/remap-keys  prog-mode-map
-                  '(( "RET"         . "M-j"))))
+  (mb-f-define-keys prog-mode-map
+                    '(( "<tab>"       . my/snippet-or-complete)
+                      ( "C-z f e"     . my/iedit-in-defun)
+                      ( "C-z f f"     . emr-show-refactor-menu)
+                      ( "C-z d"       . nil)
+                      ( "C-z d d"     . my/realgud-debug)
+                      ( "C-z d a"     . realgud-short-key-mode)))
+  (mb-f-remap-keys  prog-mode-map
+                    '(( "RET"         . "M-j"))))
 
 (add-hook 'prog-mode-hook #'mb-hooks--prog-mode)
 
@@ -534,13 +534,13 @@
                                     "make check"
                                     "jhbuild make && jhbuild run ${PWD##*/}")
 
-  (my/define-keys projectile-command-map
-                  '(( "B"   . projectile-ibuffer)
-                    ( "i"   . my/projectile-index-projects)
-                    ( "I"   . projectile-invalidate-cache)
-                    ( "d"   . projectile-dired)
-                    ( "V"   . my/projectile-gitg)
-                    ( "D"   . projectile-find-dir)))
+  (mb-f-define-keys projectile-command-map
+                    '(( "B"   . projectile-ibuffer)
+                      ( "i"   . my/projectile-index-projects)
+                      ( "I"   . projectile-invalidate-cache)
+                      ( "d"   . projectile-dired)
+                      ( "V"   . my/projectile-gitg)
+                      ( "D"   . projectile-find-dir)))
 
   (control-mode-reload-bindings)
 
@@ -572,9 +572,9 @@
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (setq-local yas-indent-line 'fixed)
-  (my/define-keys python-mode-map
-                  '(( "."         . my/dot-and-complete)
-                    ( "<tab>"     . my/indent-snippet-or-complete))))
+  (mb-f-define-keys python-mode-map
+                    '(( "."         . my/dot-and-complete)
+                      ( "<tab>"     . my/indent-snippet-or-complete))))
 
 (add-hook 'python-mode-hook #'mb-hooks--python-mode)
 
@@ -582,11 +582,11 @@
 ;; TODO: Figure out bindings for this
 (defun mb-hooks--anaconda-mode ()
   "My `anaconda' mode hook."
-  (my/define-keys anaconda-mode-map
-                  '(( "C-<return>" . anaconda-mode-find-definitions)
-                    ( "M-<return>" . anaconda-mode-find-assignments)
-                    ( "C-z h d"    . anaconda-mode-show-doc)
-                    ( "M-?"        . anaconda-mode-find-references))))
+  (mb-f-define-keys anaconda-mode-map
+                    '(( "C-<return>" . anaconda-mode-find-definitions)
+                      ( "M-<return>" . anaconda-mode-find-assignments)
+                      ( "C-z h d"    . anaconda-mode-show-doc)
+                      ( "M-?"        . anaconda-mode-find-references))))
 
 (add-hook 'anaconda-mode-hook #'mb-hooks--anaconda-mode)
 
@@ -594,9 +594,9 @@
 (defvar realgud-track-mode-map)
 (defun mb-hooks--realgud-track-mode ()
   "My `realgud-track' mode hook."
-  (my/define-keys realgud-track-mode-map
-                  '(( "."      . my/dot-and-complete)
-                    ( "<tab>"  . my/snippet-or-complete))))
+  (mb-f-define-keys realgud-track-mode-map
+                    '(( "."      . my/dot-and-complete)
+                      ( "<tab>"  . my/snippet-or-complete))))
 
 (add-hook 'realgud-track-mode-hook #'mb-hooks--realgud-track-mode)
 
@@ -606,8 +606,8 @@
   "My `restclient' mode hook."
   (company-mode)
   (setq-local company-backends '((company-restclient)))
-  (my/define-keys restclient-mode-map
-                  '(( "<tab>" . my/snippet-or-complete))))
+  (mb-f-define-keys restclient-mode-map
+                    '(( "<tab>" . my/snippet-or-complete))))
 
 (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode)
 
@@ -616,10 +616,10 @@
 (defun mb-hooks--rust-mode ()
   "My `rust' mode hook."
   (racer-mode)
-  (my/define-keys rust-mode-map
-                  '(( "C-<return>" . racer-find-definition)
-                    ( "."          . my/dot-and-complete)
-                    ( ":"          . my/double-colon-and-complete))))
+  (mb-f-define-keys rust-mode-map
+                    '(( "C-<return>" . racer-find-definition)
+                      ( "."          . my/dot-and-complete)
+                      ( ":"          . my/double-colon-and-complete))))
 
 (add-hook 'rust-mode-hook #'mb-hooks--rust-mode)
 
@@ -629,10 +629,10 @@
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
   (setq yas-dont-activate t)
-  (my/define-keys term-raw-map
-                  '(( "M-x"       . smex)
-                    ( "C-y"       . my/term-paste)
-                    ( "<escape>"  . ESC-prefix))))
+  (mb-f-define-keys term-raw-map
+                    '(( "M-x"       . smex)
+                      ( "C-y"       . my/term-paste)
+                      ( "<escape>"  . ESC-prefix))))
 
 (defun mb-hooks--term-exec ()
   "My `term' mode hook."
@@ -683,11 +683,11 @@
 (defvar woman-mode-map)
 (defun mb-hooks--woman-mode ()
   "My `woman' mode hook."
-  (my/remap-keys woman-mode-map
-                 '(("a" . "s")
-                   ("s" . "C-s")
-                   ("R" . "r")
-                   ("r" . "C-r"))))
+  (mb-f-remap-keys woman-mode-map
+                   '(("a" . "s")
+                     ("s" . "C-s")
+                     ("R" . "r")
+                     ("r" . "C-r"))))
 
 (add-hook 'woman-mode-hook #'mb-hooks--woman-mode)
 

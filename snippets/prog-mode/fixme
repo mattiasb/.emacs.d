@@ -2,4 +2,4 @@
 # name: FIXME
 # key: fixme
 # --
-`(my/wrap-in-comment "FIXME: ")`
+`(mb-f-wrap-in-comment "FIXME: ")`

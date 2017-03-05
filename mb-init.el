@@ -38,7 +38,7 @@
       (tmux-keys))
 
   (evil-esc-mode)
-  (my/set-terminal-cursors))
+  (mb-f-set-terminal-cursors))
 
 (defun mb-init--global-keybindings ()
   "Activate global keybindings."
@@ -49,9 +49,9 @@
 (defun mb-init--visual-regexp ()
   "Activate visual-regexp."
   (require 'visual-regexp-steroids)
-  (my/define-keys esc-map
-                  '(( "C-r" . vr/isearch-backward)
-                    ( "C-s" . vr/isearch-forward))))
+  (mb-f-define-keys esc-map
+                    '(( "C-r" . vr/isearch-backward)
+                      ( "C-s" . vr/isearch-forward))))
 
 (defun mb-init--yas ()
   "Activate YASnippet."
@@ -69,19 +69,19 @@
 (defun mb-init--god-mode-isearch ()
   "Activate `god-mode-isearch'."
   (require 'god-mode-isearch)
-  (my/define-keys isearch-mode-map
-                  '(( "<escape>" . god-mode-isearch-activate)
-                    ( "<insert>" . god-mode-isearch-activate)))
-  (my/define-keys god-mode-isearch-map
-                  '(( "g"        . isearch-cancel)
-                    ( "i"        . god-mode-isearch-disable)
-                    ( "<insert>" . god-mode-isearch-disable))))
+  (mb-f-define-keys isearch-mode-map
+                    '(( "<escape>" . god-mode-isearch-activate)
+                      ( "<insert>" . god-mode-isearch-activate)))
+  (mb-f-define-keys god-mode-isearch-map
+                    '(( "g"        . isearch-cancel)
+                      ( "i"        . god-mode-isearch-disable)
+                      ( "<insert>" . god-mode-isearch-disable))))
 
 (defun mb-init--control-mode ()
   "Activate Control Mode."
   (require 'control-mode)
   (add-hook 'after-change-major-mode-hook
-            #'my/control-mode-set-cursor)
+            #'mb-f-control-mode-set-cursor)
   (global-control-mode)
   (mb-init--god-mode-isearch))
 

@@ -29,44 +29,44 @@
 
 ;;; Code:
 
-(defun my/shorten-minor-modes (modes)
+(defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
   (dolist (mode-and-line modes)
     (let ((line (cdr mode-and-line))
           (mode (car mode-and-line)))
-      (my/shorten-minor-mode mode line))))
+      (mb-f-shorten-minor-mode mode line))))
 
-(defun my/shorten-minor-mode (mode line)
+(defun mb-f-shorten-minor-mode (mode line)
   "Replace the displayed name for MODE by LINE."
   (let ((hook (intern (concat (symbol-name mode) "-hook"))))
     (add-hook hook (lambda () (diminish mode line)))))
 
-(defun my/shorten-major-modes (modes)
+(defun mb-f-shorten-major-modes (modes)
   "Shorten the displayed name for MODES in the mode line."
   (dolist (mode-and-line modes)
     (let ((line (cdr mode-and-line))
           (mode (car mode-and-line)))
-      (my/shorten-major-mode mode line))))
+      (mb-f-shorten-major-mode mode line))))
 
-(defun my/shorten-major-mode (mode line)
+(defun mb-f-shorten-major-mode (mode line)
   "Replace the displayed name for MODE by LINE."
   (let ((hook (intern (concat (symbol-name mode) "-hook"))))
     (add-hook hook (lambda () (setq-local mode-name line)))))
 
-(defun my/auto-modes (modes)
+(defun mb-f-auto-modes (modes)
   "Add many MODES to `auto-mode-alist'."
   (setq auto-mode-alist (append modes auto-mode-alist)))
 
-(defun my/global-define-keys (keybindings)
+(defun mb-f-global-define-keys (keybindings)
   "Set a bunch of global KEYBINDINGS at the same time."
-  (my/define-keys (current-global-map)
-                  keybindings))
+  (mb-f-define-keys (current-global-map)
+                    keybindings))
 
-(defun my/global-remap-keys (mappings)
+(defun mb-f-global-remap-keys (mappings)
   "Remap a bunch of global keybindings defined in MAPPINGS."
-  (my/remap-keys (current-global-map) mappings))
+  (mb-f-remap-keys (current-global-map) mappings))
 
-(defun my/define-keys (mode-map keybindings)
+(defun mb-f-define-keys (mode-map keybindings)
   "Set a bunch of MODE-MAP specific KEYBINDINGS at the same time."
   (dolist (binding keybindings)
     (let* ((key   (kbd (car binding)))
@@ -77,7 +77,7 @@
           (define-key mode-map key def)
         (define-key mode-map key (quote def-v))))))
 
-(defun my/remap-keys (mode-map mappings)
+(defun mb-f-remap-keys (mode-map mappings)
   "Remap a bunch of MODE-MAP keybindings defined in MAPPINGS."
   (dolist (mapping mappings)
     (let* ((key        (car mapping))
@@ -91,27 +91,27 @@
                                                    (cdr mapping)
                                                    mode-map))))))
 
-(defmacro my/define-keymap (keymap bindings)
+(defmacro mb-f-define-keymap (keymap bindings)
   "Define a new KEYMAP and add a bunch of BINDINGS."
   `(progn (defvar ,keymap
             (let ((map (make-sparse-keymap)))
-              (my/define-keys map ,bindings)
+              (mb-f-define-keys map ,bindings)
               map))
           (fset (quote ,keymap) ,keymap)))
 
-(defun my/mapcar-head (fn-head fn-rest list)
+(defun mb-f-mapcar-head (fn-head fn-rest list)
   "Like MAPCAR, but apply FN-HEAD to CAR and FN-REST to CDR of LIST."
   (cons (funcall fn-head (car list))
         (mapcar fn-rest (cdr list))))
 
-(defun my/mapconcat-head (fn-head fn-rest list sep)
+(defun mb-f-mapconcat-head (fn-head fn-rest list sep)
   "Like `mapconcat', but apply FN-HEAD to CAR and FN-REST to CDR of LIST.
 Just like `mapconcat' the last argument (SEP) is used as separator."
   (mapconcat #'identity
-             (my/mapcar-head fn-head fn-rest list)
+             (mb-f-mapcar-head fn-head fn-rest list)
              sep))
 
-(defun my/split-name (s)
+(defun mb-f-split-name (s)
   "Split S by name."
   (split-string
    (let ((case-fold-search nil))
@@ -119,60 +119,60 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
       (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
    "[^A-Za-z0-9]+"))
 
-(defun my/lower-camel-case (s)
+(defun mb-f-lower-camel-case (s)
   "Camel case S."
-  (my/mapconcat-head 'downcase
-                     'capitalize
-                     (my/split-name s)
-                     ""))
+  (mb-f-mapconcat-head 'downcase
+                       'capitalize
+                       (mb-f-split-name s)
+                       ""))
 
-(defun my/camel-case (s)
+(defun mb-f-camel-case (s)
   "Camel case S."
-  (mapconcat #'capitalize (my/split-name s) ""))
+  (mapconcat #'capitalize (mb-f-split-name s) ""))
 
-(defun my/snake-case (s)
+(defun mb-f-snake-case (s)
   "Snake case S."
-  (mapconcat #'downcase (my/split-name s) "_"))
+  (mapconcat #'downcase (mb-f-split-name s) "_"))
 
-(defun my/dash-case (s)
+(defun mb-f-dash-case (s)
   "Dash case S."
-  (mapconcat #'downcase (my/split-name s) "-"))
+  (mapconcat #'downcase (mb-f-split-name s) "-"))
 
-(defun my/is-dash-case (s)
+(defun mb-f-dash-case-p (s)
   "Return T if S is in dash-case."
   (let ((case-fold-search nil))
     (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s)))
 
-(defun my/is-camel-case (s)
+(defun mb-f-camel-case-p (s)
   "Return T if S is in camel-case."
   (let ((case-fold-search nil))
     (string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s)))
 
-(defun my/is-lower-camel-case (s)
+(defun mb-f-lower-camel-case-p (s)
   "Return T if S is in lower-camel-case."
   (let ((case-fold-search nil))
     (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s)))
 
-(defun my/is-snake-case (s)
+(defun mb-f-snake-case-p (s)
   "Return T if S is in snake-case."
   (let ((case-fold-search nil))
     (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
 
-(defun my/toggle-programming-case (s) ;; UP
+(defun mb-f-toggle-programming-case (s) ;; UP
   "Toggle programming style casing of S."
-  (cond ((my/is-snake-case       s) (my/dash-case        s))
-        ((my/is-dash-case        s) (my/camel-case       s))
-        ((my/is-camel-case       s) (my/lower-camel-case s))
-        ((my/is-lower-camel-case s) (my/snake-case       s))))
+  (cond ((mb-f-snake-case-p       s) (mb-f-dash-case        s))
+        ((mb-f-dash-case-p        s) (mb-f-camel-case       s))
+        ((mb-f-camel-case-p       s) (mb-f-lower-camel-case s))
+        ((mb-f-lower-camel-case-p s) (mb-f-snake-case       s))))
 
-(defun my/toggle-programming-case-reverse (s)
+(defun mb-f-toggle-programming-case-reverse (s)
   "Toggle programming style casing of S in reverse."
-  (cond ((my/is-dash-case        s) (my/snake-case       s))
-        ((my/is-snake-case       s) (my/lower-camel-case s))
-        ((my/is-lower-camel-case s) (my/camel-case       s))
-        ((my/is-camel-case       s) (my/dash-case        s))))
+  (cond ((mb-f-dash-case-p        s) (mb-f-snake-case       s))
+        ((mb-f-snake-case-p       s) (mb-f-lower-camel-case s))
+        ((mb-f-lower-camel-case-p s) (mb-f-camel-case       s))
+        ((mb-f-camel-case-p       s) (mb-f-dash-case        s))))
 
-(defun my/operate-on-thing-or-region (thing fn)
+(defun mb-f-operate-on-thing-or-region (thing fn)
   "Replace THING or region with the value of the function FN."
   (let (pos1 pos2 meat excerpt)
     (if (and transient-mark-mode mark-active)
@@ -185,34 +185,34 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
     (delete-region pos1 pos2)
     (insert  meat)))
 
-(defun my/preceding-char-match-p (pattern)
+(defun mb-f-preceding-char-match-p (pattern)
   "Match preceding char with PATTERN."
   (let ((str (string (preceding-char))))
     (string-match-p pattern str)))
 
-(defun my/following-char-match-p (pattern)
+(defun mb-f-following-char-match-p (pattern)
   "Match following char with PATTERN."
   (let ((str (string (following-char))))
     (string-match-p pattern str)))
 
-(defvar my/time-formats '("%Y%m%d" "%Y-%m-%d" "%A, %d. %B %Y"))
+(defvar mb-f-time-formats '("%Y%m%d" "%Y-%m-%d" "%A, %d. %B %Y"))
 
-(defun my/get-date (format)
+(defun mb-f-get-date (format)
   "Get the current date in FORMAT."
   (let ((system-time-locale "en_US"))
     (format-time-string format)))
 
-(defun my/get-year ()
+(defun mb-f-get-year ()
   "Get the curret year."
-  (my/get-date "%Y"))
+  (mb-f-get-date "%Y"))
 
-(defun my/autoinsert-yas-expand()
+(defun mb-f-autoinsert-yas-expand()
   "Replace text in yasnippet template."
   (yas-expand-snippet (buffer-string)
                       (point-min)
                       (point-max)))
 
-(defun my/yas-choose-package-keyword ()
+(defun mb-f-yas-choose-package-keyword ()
   "Choose a package keyword to expand."
   (yas-choose-value "abbrev"
                     "bib"
@@ -251,20 +251,20 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
                     "vc"
                     "wp"))
 
-(defun my/yas-choose-license ()
+(defun mb-f-yas-choose-license ()
   "Choose a license to expand."
   (yas-choose-value
    (directory-files "~/.emacs.d/licenses/"
                     nil
                     "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$")))
 
-(defun my/get-user-mail-address ()
+(defun mb-f-get-user-mail-address ()
   "Get variable `user-mail-address' with fallback."
   (if (boundp 'user-mail-address)
       user-mail-address
     "user@example.com"))
 
-(defun my/get-user-full-name ()
+(defun mb-f-get-user-full-name ()
   "Get variable `user-full-name' with fallback."
   (if (boundp 'user-full-name)
       user-full-name
@@ -272,7 +272,7 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
 
 (defvar ido-matches)
 (defvar ido-max-prospects)
-(defun my/ido-visible-prospects ()
+(defun mb-f-ido-visible-prospects ()
   "The number of visible prospects."
   ;; TODO: fix smex's `…' (The out-commented stuff is for that)
   (let* ((available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
@@ -282,23 +282,23 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
     (1- available-lines)))
 
 (defvar yas-fallback-behavior)
-(defun my/yas-expand ()
+(defun mb-f-yas-expand ()
   "Perform a `yas-expand' but return nil on failure."
   (when (yas-minor-mode)
     (let ((yas-fallback-behavior 'return-nil))
       (yas-expand))))
 
-(defun my/fci-turn-off (&rest _)
+(defun mb-f-fci-turn-off (&rest _)
   "Turn off `fci-mode'."
   (when (boundp 'fci-mode)
     (turn-off-fci-mode)))
 
-(defun my/fci-turn-on (&rest _)
+(defun mb-f-fci-turn-on (&rest _)
   "Turn on `fci-mode'."
   (when (boundp 'fci-mode)
     (turn-on-fci-mode)))
 
-(defun my/create-non-existent-directory ()
+(defun mb-f-create-non-existent-directory ()
   "Offer to create parent directory for current buffer if it doesn't exist."
   (let ((parent-directory (file-name-directory buffer-file-name)))
     (when (and (not (file-exists-p parent-directory))
@@ -306,7 +306,7 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
                                  parent-directory)))
       (make-directory parent-directory t))))
 
-(defun my/aim-new-block (mode control-stmts &optional char-tokens)
+(defun mb-f-aim-new-block (mode control-stmts &optional char-tokens)
   "Does this line suggest a new block in MODE.
 CONTROL-STMTS is a list of new block introducing control statements.
 The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
@@ -322,7 +322,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (and (derived-mode-p mode)
          (null (string-match complete-regex (thing-at-point 'line))))))
 
-(defun yas-popup-isearch-prompt (prompt choices &optional display-fn)
+(defun mb-f-yas-popup (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
   (require 'popup)
   (popup-menu*
@@ -337,12 +337,12 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
    ;; start isearch mode immediately
    :isearch t))
 
-(defun my/wrap-in-comment (string)
+(defun mb-f-wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
 
 (defvar control-mode)
-(defun my/control-mode-set-cursor ()
+(defun mb-f-control-mode-set-cursor ()
   "Update cursor based for `control-mode'."
   (if (display-graphic-p)
       (setq cursor-type (if control-mode
@@ -351,25 +351,26 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (send-string-to-terminal (if control-mode
                                  "\e[1 q"
                                "\e[5 q"))))
-(defun my/focus-buffer-dwim (buffer)
+(defun mb-f-focus-buffer-dwim (buffer)
   "Switch to BUFFER in other window unless it's currently in view."
   (unless (string-equal buffer (buffer-name (current-buffer)))
     (switch-to-buffer-other-window buffer)))
 
-(defun my/advice-describe-func (describe-function)
+(defun mb-f-advice-describe-func (describe-function)
   "Advice DESCRIBE-FUNCTION to switch to the *Help* buffer after popping it up."
   (advice-add describe-function
-              :after (lambda (&rest _) (my/focus-buffer-dwim "*Help*"))))
+              :after (lambda (&rest _) (mb-f-focus-buffer-dwim "*Help*"))))
 
-(defun my/other-window (&rest args)
+(defun mb-f-other-window (&rest args)
   "Like `(other-window 1)' but skip ARGS."
+  (ignore args)
   (other-window 1))
 
-(defun my/advice-other-window-after (func)
+(defun mb-f-advice-other-window-after (func)
   "Advice FUNC to switch window after been run."
-  (advice-add func :after #'my/other-window))
+  (advice-add func :after #'mb-f-other-window))
 
-(defun my/set-imenu-create-index-function (&optional function separator)
+(defun mb-f-set-imenu-create-index-function (&optional function separator)
   "Set up a flat `imenu'.
 Generate index with FUNCTION (default: `imenu-create-index-function').
 Separate with SEPARATOR if set (default: '/')"
@@ -377,20 +378,20 @@ Separate with SEPARATOR if set (default: '/')"
         (sepa (or separator "/")))
     (setq-local imenu-create-index-function
                 (lambda ()
-                  (my/flatten-imenu-index (funcall func) sepa)))))
+                  (mb-f-flatten-imenu-index (funcall func) sepa)))))
 
-(defun my/flatten-imenu-index (index separator)
+(defun mb-f-flatten-imenu-index (index separator)
   "Flatten `imenu' INDEX w/ SEPARATOR."
   (let ((cdr-is-index (listp (cdr index))))
     (cond ((not (stringp (car index)))
-           (cl-mapcan (lambda (idx) (my/flatten-imenu-index idx separator))
+           (cl-mapcan (lambda (idx) (mb-f-flatten-imenu-index idx separator))
                       index))
-          (cdr-is-index (my/imenu-prefix-flattened index separator))
+          (cdr-is-index (mb-f-imenu-prefix-flattened index separator))
           (t (list index)))))
 
-(defun my/imenu-prefix-flattened (index separator)
+(defun mb-f-imenu-prefix-flattened (index separator)
   "Flatten `imenu' INDEX w/ SEPARATOR."
-  (let ((flattened (my/flatten-imenu-index (cdr index) separator)))
+  (let ((flattened (mb-f-flatten-imenu-index (cdr index) separator)))
     (cl-loop for sub-item in flattened
              collect
              `(,(concat (car index)
@@ -399,28 +400,28 @@ Separate with SEPARATOR if set (default: '/')"
                .
                ,(cdr sub-item)))))
 
-(defun my/package-init ()
+(defun mb-f-package-init ()
   "Initialize the package system."
   (package-initialize)
   (unless (seq-every-p #'package-installed-p
                        package-selected-packages)
     (package-refresh-contents)
-    (my/install-packages-in-dir "~/.emacs.d/packages/")
+    (mb-f-install-packages-in-dir "~/.emacs.d/packages/")
     (package-install-selected-packages)))
 
-(defun my/install-packages-in-dir (directory)
+(defun mb-f-install-packages-in-dir (directory)
   "Install all packages in DIRECTORY."
   (mapc #'package-install-file
         (directory-files directory t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
 
-(defun my/set-terminal-cursors ()
+(defun mb-f-set-terminal-cursors ()
   "Set up the terminal cursors."
   (send-string-to-terminal (concat "\033]12;" (face-background 'cursor) "\007"))
   (add-hook 'kill-emacs-hook
             (lambda ()
               (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
-(defun my/projectile-regen-rtags-jhbuild (module)
+(defun mb-f-projectile-regen-rtags-jhbuild (module)
   "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
   (let* ((jhbuild-prefix (format "jhbuild run --in-builddir=%s -- " module))
          (compile-cmd (mapconcat
@@ -429,7 +430,7 @@ Separate with SEPARATOR if set (default: '/')"
                        " && ")))
     (compile compile-cmd)))
 
-(defun my/find-git-projects (dir &optional depth)
+(defun mb-f-find-git-projects (dir &optional depth)
   "Find all git projects under DIR.
 Optionally only search as deep as DEPTH."
   (let* ((depth-flag (if depth (format "-maxdepth %d" depth) ""))

@@ -1,4 +1,4 @@
-${1:$$(my/yas-choose-license)}
+${1:$$(mb-f-yas-choose-license)}
 
 ---------------------------
 -- Source initialization --

@@ -1,4 +1,4 @@
-Copyright ⓒ ${1:`(my/get-year)`} ${2:`(my/get-user-full-name)`}
+Copyright ⓒ ${1:`(mb-f-get-year)`} ${2:`(mb-f-get-user-full-name)`}
 
 ${3:This program} is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -13,4 +13,4 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with $3.  If not, see <http://www.gnu.org/licenses/>.
 
-Author: ${4:`(my/get-user-full-name)`} <${5:`(my/get-user-mail-address)`}>
+Author: ${4:`(mb-f-get-user-full-name)`} <${5:`(mb-f-get-user-mail-address)`}>

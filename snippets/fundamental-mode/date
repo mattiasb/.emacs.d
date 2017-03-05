@@ -3,4 +3,4 @@
 # key: date
 # binding: C-z s d
 # --
-`(yas-choose-value (mapcar 'my/get-date my/time-formats))`
+`(yas-choose-value (mapcar 'mb-f-get-date mb-f-time-formats))`

@@ -1,4 +1,4 @@
-Copyright ⓒ ${1:`(my/get-year)`} ${2:`(my/get-user-full-name)`}
+Copyright ⓒ ${1:`(mb-f-get-year)`} ${2:`(mb-f-get-user-full-name)`}
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -12,4 +12,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Author: ${3:`(my/get-user-full-name)`} <${5:`(my/get-user-mail-address)`}>
+Author: ${3:`(mb-f-get-user-full-name)`} <${5:`(mb-f-get-user-mail-address)`}>
