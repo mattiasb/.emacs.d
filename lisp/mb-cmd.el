@@ -32,7 +32,7 @@
 (require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 ;;;###autoload
-(defun my/maximize ()
+(defun mb-cmd-maximize ()
   "Maximize Emacs."
   (interactive)
   (when (display-graphic-p)
@@ -42,62 +42,62 @@
                            '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
 
 ;;;###autoload
-(defun my/byte-compile ()
+(defun mb-cmd-byte-compile ()
   "Byte compile my configs."
   (interactive)
   (byte-recompile-directory "~/.emacs.d" 0))
 
 ;;;###autoload
-(defun my/toggle-programming-case-word-at-point ()
+(defun mb-cmd-toggle-programming-case-word-at-point ()
   "Toggle programming style casing of word a point."
   (interactive)
   (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case))
 
 ;;;###autoload
-(defun my/toggle-programming-case-word-at-point-reverse ()
+(defun mb-cmd-toggle-programming-case-word-at-point-reverse ()
   "Toggle programming style casing of word a point.
 In reverse."
   (interactive)
   (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case-reverse))
 
 ;;;###autoload
-(defun my/calc-thing-at-point ()
+(defun mb-cmd-calc-thing-at-point ()
   "Replace math expression at point or in region with it's value."
   (interactive)
   (mb-f-operate-on-thing-or-region 'symbol #'calc-eval))
 
 ;;;###autoload
-(defun my/dot-and-complete ()
+(defun mb-cmd-dot-and-complete ()
   "Quicker auto-complete on objects and structs."
   (interactive)
-  (my/char-and-complete ?.))
+  (mb-cmd-char-and-complete ?.))
 
 ;;;###autoload
-(defun my/double-colon-and-complete ()
+(defun mb-cmd-double-colon-and-complete ()
   "Quicker auto-complete on namespaces and modules."
   (interactive)
-  (my/char-and-complete ?: ?:))
+  (mb-cmd-char-and-complete ?: ?:))
 
 ;;;###autoload
-(defun my/arrow-and-complete ()
+(defun mb-cmd-arrow-and-complete ()
   "Quicker auto-complete on namespaces and modules."
   (interactive)
-  (my/char-and-complete ?> ?-))
+  (mb-cmd-char-and-complete ?> ?-))
 
 ;;;###autoload
-(defun my/slash-and-complete ()
+(defun mb-cmd-slash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
-  (my/char-and-complete ?/))
+  (mb-cmd-char-and-complete ?/))
 
 ;;;###autoload
-(defun my/dash-and-complete ()
+(defun mb-cmd-dash-and-complete ()
   "Quicker auto-complete in lisp-code."
   (interactive)
-  (my/char-and-complete ?-))
+  (mb-cmd-char-and-complete ?-))
 
 ;;;###autoload
-(defun my/char-and-complete (char &optional prev)
+(defun mb-cmd-char-and-complete (char &optional prev)
   "Insert CHAR and complete if `preceding-char' is equal to PREV."
   (interactive)
   (let ((do-complete (if prev (char-equal prev (preceding-char)) t)))
@@ -107,7 +107,7 @@ In reverse."
         (company-complete)))))
 
 ;;;###autoload
-(defun my/isearch-forward-symbol-with-prefix (p)
+(defun mb-cmd-isearch-forward-symbol-with-prefix (p)
   "Like function `isearch-forward', unless prefix argument is provided.
 With a prefix argument P, isearch for the symbol at point."
   (interactive "P")
@@ -117,7 +117,7 @@ With a prefix argument P, isearch for the symbol at point."
        #'isearch-forward))))
 
 ;;;###autoload
-(defun my/isearch-backward-symbol (&optional _not-symbol no-recursive-edit)
+(defun mb-cmd-isearch-backward-symbol (&optional _not-symbol no-recursive-edit)
   "Do incremental search forward for a symbol.
 The prefix argument is currently unused.
 Like ordinary incremental search except that your input is treated
@@ -127,14 +127,14 @@ See the command `isearch-forward' for more information."
   (isearch-mode nil nil nil (not no-recursive-edit) 'isearch-symbol-regexp))
 
 ;;;###autoload
-(defun my/isearch-backward-symbol-at-point ()
+(defun mb-cmd-isearch-backward-symbol-at-point ()
   "Do incremental search backward for a symbol found near point.
 Like ordinary incremental search except that the symbol found at point
 is added to the search string initially as a regexp surrounded
 by symbol boundary constructs \\_< and \\_>.
 See the command `isearch-backward-symbol' for more information."
   (interactive)
-  (my/isearch-backward-symbol nil 1)
+  (mb-cmd-isearch-backward-symbol nil 1)
   (let ((bounds (find-tag-default-bounds)))
     (cond
      (bounds
@@ -147,17 +147,17 @@ See the command `isearch-backward-symbol' for more information."
       (isearch-update)))))
 
 ;;;###autoload
-(defun my/isearch-backward-symbol-with-prefix (p)
+(defun mb-cmd-isearch-backward-symbol-with-prefix (p)
   "Like function `isearch-backward', unless prefix argument is provided.
 With a prefix argument P, isearch for the symbol at point."
   (interactive "P")
   (let ((current-prefix-arg nil))
     (call-interactively
-     (if p #'my/isearch-backward-symbol-at-point
+     (if p #'mb-cmd-isearch-backward-symbol-at-point
        #'isearch-backward))))
 
 ;;;###autoload
-(defmacro my/bol-with-prefix (function)
+(defmacro mb-cmd-bol-with-prefix (function)
   "Define a new function which call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the prefix argument."
@@ -174,32 +174,32 @@ called with a prefix argument.  The FUNCTION still receives the prefix argument.
        ',name)))
 
 ;;;###autoload
-(defun my/ido-scroll-down ()
+(defun mb-cmd-ido-scroll-down ()
   "A bit more eager `ido-next-match'."
   (interactive)
   (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-next-match)))
 
 ;;;###autoload
-(defun my/ido-scroll-up ()
+(defun mb-cmd-ido-scroll-up ()
   "A bit more eager `ido-prev-match'."
   (interactive)
   (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-prev-match)))
 
 (defvar company-tooltip-limit)
 ;;;###autoload
-(defun my/company-scroll-down ()
+(defun mb-cmd-company-scroll-down ()
   "A bit more eager `company-select-next'."
   (interactive)
   (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-next)))
 
 ;;;###autoload
-(defun my/company-scroll-up ()
+(defun mb-cmd-company-scroll-up ()
   "A bit more eager `company-select-previous'."
   (interactive)
   (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
 
 ;;;###autoload
-(defun my/indent-snippet-or-complete ()
+(defun mb-cmd-indent-snippet-or-complete ()
   "Tab indent, insert snippet or complete (using `company-mode')
 depending on context."
   (interactive)
@@ -211,7 +211,7 @@ depending on context."
         (company-complete-common))))
 
 ;;;###autoload
-(defun my/indent-or-complete ()
+(defun mb-cmd-indent-or-complete ()
   "Auto indent or complete (using `company-mode') depending on context."
   (interactive)
   (let ((old-indent (current-indentation)))
@@ -221,7 +221,7 @@ depending on context."
         (company-complete-common))))
 
 ;;;###autoload
-(defun my/snippet-or-complete ()
+(defun mb-cmd-snippet-or-complete ()
   "Insert snippet or complete (using `company-mode') depending on context."
   (interactive)
   (when (and (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
@@ -229,7 +229,7 @@ depending on context."
     (company-complete)))
 
 ;;;###autoload
-(defun my/reopen-file-as-root ()
+(defun mb-cmd-reopen-file-as-root ()
   "Re-open file the current buffer is visiting as root."
   (interactive)
   (when buffer-file-name
@@ -237,7 +237,7 @@ depending on context."
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
 
 ;;;###autoload
-(defun my/restclient ()
+(defun mb-cmd-restclient ()
   "Create a `restclient-mode' buffer."
   (interactive)
   (switch-to-buffer (get-buffer-create "*REST*"))
@@ -245,13 +245,13 @@ depending on context."
   (insert "# -*- restclient -*-\n\n"))
 
 ;;;###autoload
-(defun my/magit-mode-quit ()
+(defun mb-cmd-magit-mode-quit ()
   "Quit and kill magit-status window and frame."
   (interactive)
   (magit-mode-quit-window 4))
 
 ;;;###autoload
-(defun my/uniquify-region-lines (beg end)
+(defun mb-cmd-uniquify-region-lines (beg end)
   "Remove duplicate adjacent lines in region BEG to END."
   (interactive "*r")
   (save-excursion
@@ -260,13 +260,13 @@ depending on context."
       (replace-match "\\1"))))
 
 ;;;###autoload
-(defun my/uniquify-buffer-lines ()
+(defun mb-cmd-uniquify-buffer-lines ()
   "Remove duplicate adjacent lines in the current buffer."
   (interactive)
   (uniquify-region-lines (point-min) (point-max)))
 
 ;;;###autoload
-(defun my/occur-dwim ()
+(defun mb-cmd-occur-dwim ()
   "Call `occur' with a sane default."
   (interactive)
   (push (if (region-active-p)
@@ -278,7 +278,7 @@ depending on context."
   (call-interactively #'occur))
 
 ;;;###autoload
-(defun my/toggle-comment ()
+(defun mb-cmd-toggle-comment ()
   "Comments or uncomments current region or line."
   (interactive)
   (let (beg end)
@@ -288,19 +288,19 @@ depending on context."
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
-(defun my/control-mode-off ()
+(defun mb-cmd-control-mode-off ()
   "Turn off `control-mode'."
   (interactive)
   (global-control-mode 0))
 
 ;;;###autoload
-(defun my/control-mode-on ()
+(defun mb-cmd-control-mode-on ()
   "Turn on `control-mode'."
   (interactive)
   (global-control-mode 1))
 
 ;;;###autoload
-(defun my/rename-current-buffer-and-file ()
+(defun mb-cmd-rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
   (let ((name (buffer-name))
@@ -318,7 +318,7 @@ depending on context."
                    name (file-name-nondirectory new-name)))))))
 
 ;;;###autoload
-(defun my/list-installed-packages ()
+(defun mb-cmd-list-installed-packages ()
   "Like `package-list-packages', but show only installed optional packages."
   (interactive)
   (package-initialize)
@@ -328,7 +328,7 @@ depending on context."
                      (mapcar #'car package-archive-contents))))
 
 ;;;###autoload
-(defun my/set-proxy ()
+(defun mb-cmd-set-proxy ()
   "Automatically set HTTP proxy in Emacs based on system environment."
   (interactive)
   (if (and (getenv "HTTP_PROXY") (getenv "HTTPS_PROXY"))
@@ -336,7 +336,7 @@ depending on context."
                                          ("https" . (getenv "HTTPS_PROXY"))
                                          ))))
 ;;;###autoload
-(defun my/term-paste (&optional string)
+(defun mb-cmd-term-paste (&optional string)
   "Paste STRING into a term-buffer."
   (interactive)
   (process-send-string
@@ -346,7 +346,7 @@ depending on context."
 ;; Taken from here:
 ;; http://endlessparentheses.com/ispell-and-abbrev-the-perfect-auto-correct.html
 ;;;###autoload
-(defun my/ispell-word-then-abbrev (p)
+(defun mb-cmd-ispell-word-then-abbrev (p)
   "Call `ispell-word', then create an abbrev for it.
 With prefix P, create local abbrev.  Otherwise it will
 be global.
@@ -380,7 +380,7 @@ abort completely with `C-g'."
       (user-error "No typo at or before point"))))
 
 ;;;###autoload
-(defun my/shell-command-dwim (command &optional
+(defun mb-cmd-shell-command-dwim (command &optional
                                       output-buffer
                                       replace
                                       error-buffer
@@ -399,14 +399,14 @@ passed on unchanged."
 
 ;; TODO: Save URL in kill-ring
 ;;;###autoload
-(defun my/fpaste-dwim ()
+(defun mb-cmd-fpaste-dwim ()
   "Push the current region or buffer to paste.fedoraproject.org."
   (interactive)
-  (my/shell-command-dwim (format "fpaste -n %s" (user-login-name))))
+  (mb-cmd-shell-command-dwim (format "fpaste -n %s" (user-login-name))))
 
 ;; TODO: Make this work
 ;;;###autoload
-(defun my/fpaste-insert (url)
+(defun mb-cmd-fpaste-insert (url)
   "Fetch an fpaste from URL."
   (interactive "sFPaste URL: ")
   (let* ((url (format "%s/raw" url))
@@ -415,7 +415,7 @@ passed on unchanged."
     (shell-command cmd t err-buf)))
 
 ;;;###autoload
-(defun my/open-with (arg)
+(defun mb-cmd-open-with (arg)
   ;; Taken from Prelude
   "Open visited file in default external program.
 With a prefix ARG always prompt for command to use."
@@ -432,7 +432,7 @@ With a prefix ARG always prompt for command to use."
                       (shell-quote-argument buffer-file-name))))))
 
 ;;;###autoload
-(defun my/guess-cc-mode ()
+(defun mb-cmd-guess-cc-mode ()
   "Guess whether to activate `c-mode' or `c++-mode' for a .h-file."
   (interactive)
   (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
@@ -442,7 +442,7 @@ With a prefix ARG always prompt for command to use."
 
 ;;;###autoload
 ;; From: http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html
-(defun my/fill-or-unfill ()
+(defun mb-cmd-fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."
   (interactive)
   (let ((fill-column
@@ -453,7 +453,7 @@ With a prefix ARG always prompt for command to use."
     (call-interactively #'fill-paragraph)))
 
 ;;;###autoload
-(defun my/projectile-regen-rtags ()
+(defun mb-cmd-projectile-regen-rtags ()
   "Update rtags for current project."
   (interactive)
   (let* ((project (projectile-project-name))
@@ -462,7 +462,7 @@ With a prefix ARG always prompt for command to use."
       (mb-f-projectile-regen-rtags-jhbuild project))))
 
 ;;;###autoload
-(defun my/projectile-index-projects ()
+(defun mb-cmd-projectile-index-projects ()
   "Index my project directories."
   (interactive)
 
@@ -472,14 +472,14 @@ With a prefix ARG always prompt for command to use."
   (projectile-cleanup-known-projects))
 
 ;;;###autoload
-(defun my/projectile-gitg ()
+(defun mb-cmd-projectile-gitg ()
   "Run gitg at root of project."
   (interactive)
   (projectile-with-default-dir (projectile-project-root)
     (call-process "/usr/bin/gitg" nil 0)))
 
 ;;;###autoload
-(defun my/quit-iedit-mode ()
+(defun mb-cmd-quit-iedit-mode ()
   "Turn off `iedit-mode'."
   (interactive)
   (iedit-quit))
@@ -487,7 +487,7 @@ With a prefix ARG always prompt for command to use."
 (defvar flyspell-old-buffer-error)
 (defvar flyspell-old-pos-error)
 ;;;###autoload
-(defun my/flyspell-goto-previous-error ()
+(defun mb-cmd-flyspell-goto-previous-error ()
   "Go to ARG previous spelling error."
   (interactive)
   (let ((arg 1))
@@ -525,27 +525,27 @@ With a prefix ARG always prompt for command to use."
               (message "No more miss-spelled word!")
               (setq arg 0)))))))
 
-(defvar my/realgud-debugger
+(defvar mb-cmd-realgud-debugger
   (lambda ()
     (interactive)
     (error "No debugger for this mode")))
 
 ;;;###autoload
-(defun my/realgud-debug ()
+(defun mb-cmd-realgud-debug ()
   "Run a `realgud' debugger."
   (interactive)
   (require 'realgud)
-  (call-interactively my/realgud-debugger))
+  (call-interactively mb-cmd-realgud-debugger))
 
 ;;;###autoload
-(defun my/iedit-in-defun ()
+(defun mb-cmd-iedit-in-defun ()
   "`iedit' restricted to current `defun'."
   (interactive)
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
 ;;;###autoload
-(defun my/restart-emacs ()
+(defun mb-cmd-restart-emacs ()
   "Restart Emacs with desktop restored."
   (interactive)
   (let ((desktop-dir (getenv "XDG_RUNTIME_DIR")))

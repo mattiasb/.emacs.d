@@ -93,9 +93,9 @@
   (mb-f-define-keys c-mode-base-map
                     '(( "C-<return>" . rtags-find-symbol-at-point)
                       ( "C-z f r"    . rtags-rename-symbol)
-                      ( "."          . my/dot-and-complete)
-                      ( ":"          . my/double-colon-and-complete)
-                      ( ">"          . my/arrow-and-complete)))
+                      ( "."          . mb-cmd-dot-and-complete)
+                      ( ":"          . mb-cmd-double-colon-and-complete)
+                      ( ">"          . mb-cmd-arrow-and-complete)))
   (mb-f-define-keys projectile-command-map
                     '(( "j"         . rtags-find-symbol))))
 
@@ -120,7 +120,7 @@
   "My `control' mode hook."
   (mb-f-control-mode-set-cursor)
   (mb-f-define-keys control-mode-keymap
-                    '(( "i"           . my/control-mode-off)
+                    '(( "i"           . mb-cmd-control-mode-off)
                       ( "<escape>"    . ESC-prefix)
                       ( "x x"         . smex)
                       ( "x s"         . save-buffer)
@@ -147,8 +147,8 @@
   (mb-f-define-keys company-active-map
                     '(( "\C-n"    . company-select-next)
                       ( "\C-p"    . company-select-previous)
-                      ( "<next>"  . my/company-scroll-down)
-                      ( "<prior>" . my/company-scroll-up)
+                      ( "<next>"  . mb-cmd-company-scroll-down)
+                      ( "<prior>" . mb-cmd-company-scroll-up)
                       ( "\C-v"    . company-show-location)
                       ( "\C-g"    . company-abort))))
 
@@ -219,7 +219,7 @@
   (require 'flyspell-correct-popup)
   (flyspell-buffer)
   (mb-f-define-keys flyspell-mode-map
-                    '(("C-," . my/flyspell-goto-previous-error)
+                    '(("C-," . mb-cmd-flyspell-goto-previous-error)
                       ("C-." . flyspell-goto-next-error)
                       ("C-;" . flyspell-correct-previous-word-generic)
                       ("C-:" . flyspell-correct-next-word-generic))))
@@ -246,7 +246,7 @@
                       ( "C-z i g"    . go-goto-imports)
                       ( "C-z d"      . godoc-at-point)
                       ( "C-<return>" . godef-jump)
-                      ( "."          . my/dot-and-complete))))
+                      ( "."          . mb-cmd-dot-and-complete))))
 
 (add-hook 'go-mode-hook #'mb-hooks--go-mode)
 
@@ -277,8 +277,8 @@
   "My `ido' mode hook."
   (mb-f-define-keys ido-common-completion-map
                     '(( "<tab"    . ido-complete)
-                      ( "<next>"  . my/ido-scroll-down)
-                      ( "<prior>" . my/ido-scroll-up))))
+                      ( "<next>"  . mb-cmd-ido-scroll-down)
+                      ( "<prior>" . mb-cmd-ido-scroll-up))))
 
 (add-hook 'ido-setup-hook #'mb-hooks--ido-setup)
 
@@ -309,7 +309,7 @@
   "My `ielm' mode hook."
   (company-mode)
   (mb-f-define-keys ielm-map
-                    '(( "<tab>" . my/snippet-or-complete))))
+                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 (add-hook 'ielm-mode-hook #'mb-hooks--ielm)
 
@@ -396,7 +396,7 @@
 ;; Magit
 (defun mb-hooks--git-commit-mode ()
   "My `git-commit' mode hook."
-  (my/control-mode-off)
+  (mb-cmd-control-mode-off)
   (setq-local fill-column 72)
   (git-commit-turn-on-flyspell)
   (git-commit-turn-on-auto-fill)
@@ -432,7 +432,7 @@
   (setq-local indent-tabs-mode nil)
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
-                      ( "C-c C-c p"  . my/open-with)
+                      ( "C-c C-c p"  . mb-cmd-open-with)
                       ( "M-<up>"     . nil)
                       ( "M-<down>"   . nil))))
 
@@ -445,7 +445,7 @@
   (company-mode)
   (setq-local company-backends '(company-capf))
   (mb-f-define-keys mtg-deck-mode-map
-                    '(( "<tab>" . my/snippet-or-complete))))
+                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode)
 
@@ -465,7 +465,7 @@
                                  company-keywords
                                  company-files))
   (mb-f-define-keys nxml-mode-map
-                    '(( "<tab>" . my/snippet-or-complete))))
+                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 (add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
 (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode)
@@ -502,11 +502,11 @@
   (backward-forward-mode)
 
   (mb-f-define-keys prog-mode-map
-                    '(( "<tab>"       . my/snippet-or-complete)
-                      ( "C-z f e"     . my/iedit-in-defun)
+                    '(( "<tab>"       . mb-cmd-snippet-or-complete)
+                      ( "C-z f e"     . mb-cmd-iedit-in-defun)
                       ( "C-z f f"     . emr-show-refactor-menu)
                       ( "C-z d"       . nil)
-                      ( "C-z d d"     . my/realgud-debug)
+                      ( "C-z d d"     . mb-cmd-realgud-debug)
                       ( "C-z d a"     . realgud-short-key-mode)))
   (mb-f-remap-keys  prog-mode-map
                     '(( "RET"         . "M-j"))))
@@ -519,7 +519,7 @@
   "My `projectile' mode hook."
 
   (unless projectile-known-projects
-    (my/projectile-index-projects))
+    (mb-cmd-projectile-index-projects))
 
   (setq projectile-mode-line
         '(:eval (if (or (file-remote-p default-directory)
@@ -536,10 +536,10 @@
 
   (mb-f-define-keys projectile-command-map
                     '(( "B"   . projectile-ibuffer)
-                      ( "i"   . my/projectile-index-projects)
+                      ( "i"   . mb-cmd-projectile-index-projects)
                       ( "I"   . projectile-invalidate-cache)
                       ( "d"   . projectile-dired)
-                      ( "V"   . my/projectile-gitg)
+                      ( "V"   . mb-cmd-projectile-gitg)
                       ( "D"   . projectile-find-dir)))
 
   (control-mode-reload-bindings)
@@ -562,19 +562,19 @@
 ;; Python
 (defvar anaconda-mode-map)
 (defvar python-mode-map)
-(defvar my/realgud-debugger)
+(defvar mb-cmd-realgud-debugger)
 (defvar yas-indent-line)
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
-  (setq-local my/realgud-debugger #'realgud:ipdb)
+  (setq-local mb-cmd-realgud-debugger #'realgud:ipdb)
   (setq-local company-backends '(company-anaconda))
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (setq-local yas-indent-line 'fixed)
   (mb-f-define-keys python-mode-map
-                    '(( "."         . my/dot-and-complete)
-                      ( "<tab>"     . my/indent-snippet-or-complete))))
+                    '(( "."         . mb-cmd-dot-and-complete)
+                      ( "<tab>"     . mb-cmd-indent-snippet-or-complete))))
 
 (add-hook 'python-mode-hook #'mb-hooks--python-mode)
 
@@ -595,8 +595,8 @@
 (defun mb-hooks--realgud-track-mode ()
   "My `realgud-track' mode hook."
   (mb-f-define-keys realgud-track-mode-map
-                    '(( "."      . my/dot-and-complete)
-                      ( "<tab>"  . my/snippet-or-complete))))
+                    '(( "."      . mb-cmd-dot-and-complete)
+                      ( "<tab>"  . mb-cmd-snippet-or-complete))))
 
 (add-hook 'realgud-track-mode-hook #'mb-hooks--realgud-track-mode)
 
@@ -607,7 +607,7 @@
   (company-mode)
   (setq-local company-backends '((company-restclient)))
   (mb-f-define-keys restclient-mode-map
-                    '(( "<tab>" . my/snippet-or-complete))))
+                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode)
 
@@ -618,8 +618,8 @@
   (racer-mode)
   (mb-f-define-keys rust-mode-map
                     '(( "C-<return>" . racer-find-definition)
-                      ( "."          . my/dot-and-complete)
-                      ( ":"          . my/double-colon-and-complete))))
+                      ( "."          . mb-cmd-dot-and-complete)
+                      ( ":"          . mb-cmd-double-colon-and-complete))))
 
 (add-hook 'rust-mode-hook #'mb-hooks--rust-mode)
 
@@ -631,7 +631,7 @@
   (setq yas-dont-activate t)
   (mb-f-define-keys term-raw-map
                     '(( "M-x"       . smex)
-                      ( "C-y"       . my/term-paste)
+                      ( "C-y"       . mb-cmd-term-paste)
                       ( "<escape>"  . ESC-prefix))))
 
 (defun mb-hooks--term-exec ()
@@ -651,7 +651,7 @@
                       "\\|"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
-  (setq-local my/realgud-debugger #'realgud:bashdb)
+  (setq-local mb-cmd-realgud-debugger #'realgud:bashdb)
   (setq-local company-backends '((company-shell
                                   company-keywords
                                   company-files

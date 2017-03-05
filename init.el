@@ -66,7 +66,7 @@
 (require 'iso-transl)
 
 ;; Maximize on start
-(my/maximize)
+(mb-cmd-maximize)
 
 ;;; Modes – General
 
@@ -82,7 +82,7 @@
                     ("\\.m$"        . octave-mode)
                     ("\\.dec$"      . mtg-deck-mode)
                     ("\/Cask$"      . emacs-lisp-mode)
-                    ("\\.h$"        . my/guess-cc-mode)))
+                    ("\\.h$"        . mb-cmd-guess-cc-mode)))
 
 (mb-f-shorten-major-modes '((markdown-mode   . "M↓")
                             (js2-mode        . "JS")
@@ -152,11 +152,11 @@
 ;;; Advice
 
 (advice-add #'isearch-forward-symbol-at-point     :after  #'god-mode-isearch-activate)
-(advice-add #'my/isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
+(advice-add #'mb-cmd-isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
 (advice-add #'popup-create                        :before #'mb-f-fci-turn-off)
 (advice-add #'popup-delete                        :after  #'mb-f-fci-turn-on)
 
-(advice-add #'ido-find-file                       :after  #'my/reopen-file-as-root)
+(advice-add #'ido-find-file                       :after  #'mb-cmd-reopen-file-as-root)
 
 (advice-add #'backward-page                       :after  #'recenter)
 (advice-add #'forward-page                        :after  #'recenter)

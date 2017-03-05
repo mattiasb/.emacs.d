@@ -32,12 +32,12 @@
 (require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 (defconst mb-keys--global-remaps
-  '((occur                    . my/occur-dwim)
-    (isearch-forward          . my/isearch-forward-symbol-with-prefix)
-    (isearch-backward         . my/isearch-backward-symbol-with-prefix)
+  '((occur                    . mb-cmd-occur-dwim)
+    (isearch-forward          . mb-cmd-isearch-forward-symbol-with-prefix)
+    (isearch-backward         . mb-cmd-isearch-backward-symbol-with-prefix)
     (execute-extended-command . smex)
     (delete-other-windows     . zygospore-toggle-delete-other-windows)
-    (fill-paragraph           . my/fill-or-unfill)
+    (fill-paragraph           . mb-cmd-fill-or-unfill)
     (kill-buffer              . kill-this-buffer)))
 
 (defconst mb-keys--global-bindings
@@ -56,7 +56,7 @@
     ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
     ;; Control-mode
-    ( "<escape>"       . my/control-mode-on)
+    ( "<escape>"       . mb-cmd-control-mode-on)
     ( "<insert>"       . global-control-mode)
 
     ;; NAVIGATION
@@ -88,7 +88,7 @@
                       ( "d"      . todotxt)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
-                      ( "r"      . my/restclient)
+                      ( "r"      . mb-cmd-restclient)
                       ( "t"      . ansi-term)))
 
 ;; My Help keymap
@@ -132,10 +132,10 @@
                       ( "."      . align-by-current-symbol)
                       ( "<down>" . md/duplicate-down)
                       ( "<up>"   . md/duplicate-up)
-                      ( "="      . my/calc-thing-at-point)
-                      ( "S"      . my/ispell-word-then-abbrev)
+                      ( "="      . mb-cmd-calc-thing-at-point)
+                      ( "S"      . mb-cmd-ispell-word-then-abbrev)
                       ( "a"      . align-string)
-                      ( "c"      . my/toggle-comment)
+                      ( "c"      . mb-cmd-toggle-comment)
                       ( "p"      . projectile-command-map)
                       ( "q"      . vr/query-replace)
                       ( "r"      . vr/replace)
@@ -144,11 +144,11 @@
                       ;; Other
                       ( "C-z"    . suspend-frame)
                       ( "D"      . diff-buffer-with-file)
-                      ( "R"      . my/restart-emacs)
+                      ( "R"      . mb-cmd-restart-emacs)
                       ( "b"      . browse-url-at-point)
                       ( "g"      . imenu)
                       ( "n"      . make-frame)
-                      ( "o"      . my/open-with)))
+                      ( "o"      . mb-cmd-open-with)))
 
 (defun mb-keys-activate ()
   "Activate keybinding."
