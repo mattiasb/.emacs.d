@@ -144,7 +144,7 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (load "~/.emacs.d/my-hooks.el")
+            (load "~/.emacs.d/mb-hooks.el")
             (mb-init)))
 
 ;;; Advice
