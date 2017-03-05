@@ -29,6 +29,7 @@
 ;;; Code:
 
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
+(require 'my-keys "~/.emacs.d/my-keys.el")
 
 (defun my/activate-terminal-workarounds ()
   "Activate terminal workarounds."
@@ -40,7 +41,6 @@
 
 (defun my/activate-global-keybindings ()
   "Activate global keybindings."
-  (require 'my-keys "~/.emacs.d/my-keys.el")
 
   (my/global-remap-keys my/global-remap-bindings)
   (my/global-define-keys my/global-keymap-bindings)
