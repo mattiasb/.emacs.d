@@ -118,8 +118,8 @@
 
 ;;;
 
-(my/activate-modes)
 (my/activate-global-keybindings)
+(my/activate-modes)
 
 (provide 'my-after-init)
 ;;; my-after-init.el ends here
