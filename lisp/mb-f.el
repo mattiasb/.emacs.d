@@ -378,36 +378,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Advice FUNC to switch window after been run."
   (advice-add func :after #'mb-f-other-window))
 
-(defun mb-f-set-imenu-create-index-function (&optional function separator)
-  "Set up a flat `imenu'.
-Generate index with FUNCTION (default: `imenu-create-index-function').
-Separate with SEPARATOR if set (default: '/')"
-  (let ((func (or function imenu-create-index-function))
-        (sepa (or separator "/")))
-    (setq-local imenu-create-index-function
-                (lambda ()
-                  (mb-f-flatten-imenu-index (funcall func) sepa)))))
-
-(defun mb-f-flatten-imenu-index (index separator)
-  "Flatten `imenu' INDEX w/ SEPARATOR."
-  (let ((cdr-is-index (listp (cdr index))))
-    (cond ((not (stringp (car index)))
-           (cl-mapcan (lambda (idx) (mb-f-flatten-imenu-index idx separator))
-                      index))
-          (cdr-is-index (mb-f-imenu-prefix-flattened index separator))
-          (t (list index)))))
-
-(defun mb-f-imenu-prefix-flattened (index separator)
-  "Flatten `imenu' INDEX w/ SEPARATOR."
-  (let ((flattened (mb-f-flatten-imenu-index (cdr index) separator)))
-    (cl-loop for sub-item in flattened
-             collect
-             `(,(concat (car index)
-                        separator
-                        (car sub-item))
-               .
-               ,(cdr sub-item)))))
-
 (defun mb-f-package-init ()
   "Initialize the package system."
   (package-initialize)
