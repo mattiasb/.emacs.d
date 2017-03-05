@@ -542,8 +542,7 @@ With a prefix ARG always prompt for command to use."
   "`iedit' restricted to current `defun'."
   (interactive)
   (progn (iedit-mode)
-         (iedit-restrict-function)
-         (er/mark-symbol)))
+         (iedit-restrict-function)))
 
 ;;;###autoload
 (defun my/restart-emacs ()
