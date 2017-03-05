@@ -370,9 +370,8 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (advice-add describe-function
               :after (lambda (&rest _) (mb-f-focus-buffer-dwim "*Help*"))))
 
-(defun mb-f-other-window (&rest args)
-  "Like `(other-window 1)' but skip ARGS."
-  (ignore args)
+(defun mb-f-other-window (&rest _args)
+  "Like `(other-window 1)' but skip all arguments."
   (other-window 1))
 
 (defun mb-f-advice-other-window-after (func)
