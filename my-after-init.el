@@ -29,7 +29,7 @@
 ;;; Code:
 
 (require 'funcs "~/.emacs.d/lisp/funcs.el")
-(require 'my-keys "~/.emacs.d/my-keys.el")
+(require 'mb-keys "~/.emacs.d/mb-keys.el")
 
 (defun my/activate-terminal-workarounds ()
   "Activate terminal workarounds."
@@ -42,8 +42,8 @@
 (defun my/activate-global-keybindings ()
   "Activate global keybindings."
 
-  (my/global-remap-keys my/global-remap-bindings)
-  (my/global-define-keys my/global-keymap-bindings)
+  (my/global-remap-keys mb-keys-global-remap-bindings)
+  (my/global-define-keys mb-keys-global-keymap-bindings)
   (windmove-default-keybindings))
 
 (defun my/activate-visual-regexp ()

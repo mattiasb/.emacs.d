@@ -1,4 +1,4 @@
-;;; my-keys.el --- My global keybindings -*- lexical-binding: t; -*-
+;;; mb-keys.el --- My global keybindings -*- lexical-binding: t; -*-
 
 ;; Copyright ⓒ 2017 Mattias Bengtsson
 ;;
@@ -30,7 +30,7 @@
 
 ;;; Code:
 
-(defconst my/global-remap-bindings
+(defconst mb-keys-global-remap-bindings
   '((occur                    . my/occur-dwim)
     (isearch-forward          . my/isearch-forward-symbol-with-prefix)
     (isearch-backward         . my/isearch-backward-symbol-with-prefix)
@@ -39,9 +39,9 @@
     (fill-paragraph           . my/fill-or-unfill)
     (kill-buffer              . kill-this-buffer)))
 
-(defconst my/global-keymap-bindings
+(defconst mb-keys-global-keymap-bindings
   '(;; Keymaps
-    ( "C-z"            . my/default-keymap)
+    ( "C-z"            . mb-keys-default-keymap)
 
     ;; XRef
     ( "M-,"            . nil)
@@ -82,7 +82,7 @@
     ( "C-a"           . mwim-beginning-of-code-or-line)
     ( "C-e"           . mwim-end-of-code-or-line)))
 
-(my/define-keymap my/windows-keymap
+(my/define-keymap mb-keys-windows-keymap
                   '(( "c"      . customize)
                     ( "d"      . todotxt)
                     ( "e"      . ielm)
@@ -91,12 +91,12 @@
                     ( "t"      . ansi-term)))
 
 ;; My Help keymap
-(my/define-keymap my/help-keymap
+(my/define-keymap mb-keys-help-keymap
                   '(( "i"      . info-display-manual)
                     ( "m"      . woman)))
 
 ;; My Toggle keymap
-(my/define-keymap my/toggle-keymap
+(my/define-keymap mb-keys-toggle-keymap
                   '(( "a"      . aggressive-indent-mode)
                     ( "b"      . magit-blame)
                     ( "e l"    . electric-layout-mode)
@@ -105,25 +105,25 @@
                     ( "w"      . whitespace-mode)))
 
 ;; My Magit keymap
-(my/define-keymap my/magit-keymap
+(my/define-keymap mb-keys-magit-keymap
                   '(( "c"      . magit-commit)
                     ( "p"      . magit-push-matching)))
 
 ;; My Yas keymap
-(my/define-keymap my/yas-keymap
+(my/define-keymap mb-keys-yas-keymap
                   '(( "i"      . yas-insert-snippet)
                     ( "c"      . yas-new-snippet)
                     ( "e"      . yas-visit-snippet-file)
                     ( "r"      . yas-reload-all)
                     ( "t"      . auto-insert)))
 
-(my/define-keymap my/default-keymap
+(my/define-keymap mb-keys-default-keymap
                   '(;; Keymaps
-                    ( "h"      . my/help-keymap)
-                    ( "m"      . my/magit-keymap)
-                    ( "s"      . my/yas-keymap)
-                    ( "t"      . my/toggle-keymap)
-                    ( "w"      . my/windows-keymap)
+                    ( "h"      . mb-keys-help-keymap)
+                    ( "m"      . mb-keys-magit-keymap)
+                    ( "s"      . mb-keys-yas-keymap)
+                    ( "t"      . mb-keys-toggle-keymap)
+                    ( "w"      . mb-keys-windows-keymap)
 
                     ;; Text manipulation
                     ( "+"      . shift-number-up)
@@ -149,5 +149,5 @@
                     ( "n"      . make-frame)
                     ( "o"      . my/open-with)))
 
-(provide 'my-keys)
-;;; my-keys.el ends here
+(provide 'mb-keys)
+;;; mb-keys.el ends here
