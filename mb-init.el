@@ -1,14 +1,7 @@
 ;;; mb-init.el --- My after-init-hook file -*- lexical-binding: t; -*-
 
 ;; Copyright ⓒ 2013-2016 Mattias Bengtsson
-
-;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-;; Version          : 20160417
-;; Keywords         : init
-;; Package-Requires : ((emacs "25.1"))
-;; URL              : https://github.com/moonlite/.emacs.d
-;; Compatibility    : GNU Emacs: 25.x
-
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +14,14 @@
 ;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with This program.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+
+;; Version          : 20160417
+;; Keywords         : local
+;; Package-Requires : ((emacs "25.1"))
+;; URL              : https://github.com/moonlite/.emacs.d
+;; Compatibility    : GNU Emacs: 25.x
 
 ;;; Commentary:
 

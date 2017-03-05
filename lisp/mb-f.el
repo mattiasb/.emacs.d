@@ -1,7 +1,7 @@
 ;;; mb-f.el --- Some functions and macros I use.    -*- lexical-binding: t; -*-
 
 ;; Copyright ⓒ 2013-2016 Mattias Bengtsson
-
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with This program.  If not, see <http://www.gnu.org/licenses/>.
 ;;
-;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
 ;; Version          : 20170305
 ;; Keywords         : extensions, tools
