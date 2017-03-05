@@ -30,7 +30,7 @@
 
 ;;; Code:
 
-(defconst mb-keys-global-remap-bindings
+(defconst mb-keys--global-remaps
   '((occur                    . my/occur-dwim)
     (isearch-forward          . my/isearch-forward-symbol-with-prefix)
     (isearch-backward         . my/isearch-backward-symbol-with-prefix)
@@ -39,9 +39,9 @@
     (fill-paragraph           . my/fill-or-unfill)
     (kill-buffer              . kill-this-buffer)))
 
-(defconst mb-keys-global-keymap-bindings
+(defconst mb-keys--global-bindings
   '(;; Keymaps
-    ( "C-z"            . mb-keys-default-keymap)
+    ( "C-z"            . mb-keys--default-map)
 
     ;; XRef
     ( "M-,"            . nil)
@@ -82,7 +82,7 @@
     ( "C-a"           . mwim-beginning-of-code-or-line)
     ( "C-e"           . mwim-end-of-code-or-line)))
 
-(my/define-keymap mb-keys-windows-keymap
+(my/define-keymap mb-keys--windows-map
                   '(( "c"      . customize)
                     ( "d"      . todotxt)
                     ( "e"      . ielm)
@@ -91,12 +91,12 @@
                     ( "t"      . ansi-term)))
 
 ;; My Help keymap
-(my/define-keymap mb-keys-help-keymap
+(my/define-keymap mb-keys--help-map
                   '(( "i"      . info-display-manual)
                     ( "m"      . woman)))
 
 ;; My Toggle keymap
-(my/define-keymap mb-keys-toggle-keymap
+(my/define-keymap mb-keys--toggle-map
                   '(( "a"      . aggressive-indent-mode)
                     ( "b"      . magit-blame)
                     ( "e l"    . electric-layout-mode)
@@ -105,25 +105,25 @@
                     ( "w"      . whitespace-mode)))
 
 ;; My Magit keymap
-(my/define-keymap mb-keys-magit-keymap
+(my/define-keymap mb-keys--magit-map
                   '(( "c"      . magit-commit)
                     ( "p"      . magit-push-matching)))
 
 ;; My Yas keymap
-(my/define-keymap mb-keys-yas-keymap
+(my/define-keymap mb-keys--yas-map
                   '(( "i"      . yas-insert-snippet)
                     ( "c"      . yas-new-snippet)
                     ( "e"      . yas-visit-snippet-file)
                     ( "r"      . yas-reload-all)
                     ( "t"      . auto-insert)))
 
-(my/define-keymap mb-keys-default-keymap
+(my/define-keymap mb-keys--default-map
                   '(;; Keymaps
-                    ( "h"      . mb-keys-help-keymap)
-                    ( "m"      . mb-keys-magit-keymap)
-                    ( "s"      . mb-keys-yas-keymap)
-                    ( "t"      . mb-keys-toggle-keymap)
-                    ( "w"      . mb-keys-windows-keymap)
+                    ( "h"      . mb-keys--help-map)
+                    ( "m"      . mb-keys--magit-map)
+                    ( "s"      . mb-keys--yas-map)
+                    ( "t"      . mb-keys--toggle-map)
+                    ( "w"      . mb-keys--windows-map)
 
                     ;; Text manipulation
                     ( "+"      . shift-number-up)
@@ -148,6 +148,11 @@
                     ( "g"      . imenu)
                     ( "n"      . make-frame)
                     ( "o"      . my/open-with)))
+
+(defun mb-keys-activate ()
+  "Activate keybinding."
+  (my/global-remap-keys mb-keys--global-remaps)
+  (my/global-define-keys mb-keys--global-bindings))
 
 (provide 'mb-keys)
 ;;; mb-keys.el ends here

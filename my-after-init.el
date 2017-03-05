@@ -42,8 +42,7 @@
 (defun my/activate-global-keybindings ()
   "Activate global keybindings."
 
-  (my/global-remap-keys mb-keys-global-remap-bindings)
-  (my/global-define-keys mb-keys-global-keymap-bindings)
+  (mb-keys-activate)
   (windmove-default-keybindings))
 
 (defun my/activate-visual-regexp ()
