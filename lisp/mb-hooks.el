@@ -307,7 +307,7 @@
   (mb-f-define-keys ielm-map
                     '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
-(add-hook 'ielm-mode-hook #'mb-hooks--ielm)
+(add-hook 'ielm-mode-hook #'mb-hooks--ielm-mode)
 
 ;; Info
 (defun mb-hooks--Info-mode ()
