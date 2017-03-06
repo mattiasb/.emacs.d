@@ -621,10 +621,10 @@
 
 ;; Shell
 (defvar term-raw-map)
-(defvar yas-dont-activate)
+(defvar yas-dont-activate-functions)
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
-  (setq yas-dont-activate t)
+  (setq yas-dont-activate-functions t)
   (mb-f-define-keys term-raw-map
                     '(( "M-x"       . smex)
                       ( "C-y"       . mb-cmd-term-paste)
