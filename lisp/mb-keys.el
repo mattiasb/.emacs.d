@@ -30,6 +30,7 @@
 ;;; Code:
 
 (require 'mb-f)
+(require 'mb-cmd)
 
 (defconst mb-keys--global-remaps
   '((occur                    . mb-cmd-occur-dwim)
