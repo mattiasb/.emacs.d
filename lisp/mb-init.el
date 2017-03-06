@@ -89,6 +89,7 @@
   "Activate a bunch of global modes."
   (unless (display-graphic-p)
     (mb-init--terminal-workarounds))
+  (require 'dired-imenu)
   (mb-init--control-mode)
   (powerline-major-mode)
   (powerline-default-theme)

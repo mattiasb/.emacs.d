@@ -94,6 +94,8 @@
  '(flycheck-cython-executable "cython3")
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
+ '(flyspell-prog-text-faces
+   '(font-lock-comment-face font-lock-doc-face))
  '(gc-cons-threshold 20000000)
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)

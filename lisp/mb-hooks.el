@@ -29,6 +29,9 @@
 
 ;;; Code:
 
+(require 'mb-f)
+(require 'mb-cmd)
+
 ;; After Save
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
@@ -173,7 +176,6 @@
 
 ;; Dired
 (defvar dired-mode-map)
-(require 'dired-imenu)
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (hl-line-mode)
@@ -478,7 +480,6 @@
 (add-hook 'package-menu-mode-hook #'mb-hooks--package-menu-mode)
 
 ;; Prog
-(defvar flyspell-prog-text-faces)
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
 
@@ -489,8 +490,7 @@
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
-  (setq flyspell-prog-text-faces
-        '(font-lock-comment-face font-lock-doc-face))
+
   (flyspell-prog-mode)
   (fci-mode)
   (highlight-numbers-mode)
@@ -647,7 +647,6 @@
                       "\\|"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
-  (setq-local mb-cmd-realgud-debugger #'realgud:bashdb)
   (setq-local company-backends '((company-shell
                                   company-keywords
                                   company-files
