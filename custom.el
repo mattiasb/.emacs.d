@@ -185,7 +185,6 @@
  '(scroll-step 1)
  '(show-paren-mode t)
  '(tab-width 8)
- '(todotxt-file "~/Documents/todo.txt")
  '(tool-bar-mode nil)
  '(tooltip-mode nil)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
@@ -217,9 +216,12 @@
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
-;; Real ugly, but apparently can't be set through customize
+;; Real ugly, but apparently these can't be set through customize
+
 (defvar magit-last-seen-setup-instructions)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(defvar todotxt-file)
+(setq todotxt-file "~/Documents/todo.txt")
 
 (when (custom-theme-enabled-p 'wombat)
   (custom-theme-set-faces
