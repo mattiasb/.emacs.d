@@ -29,7 +29,7 @@
 
 ;;; Code:
 
-(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
+(require 'mb-f)
 
 (require 'company)
 (require 'ido)

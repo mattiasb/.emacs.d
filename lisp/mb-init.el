@@ -29,8 +29,8 @@
 
 ;;; Code:
 
-(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
-(require 'mb-keys "~/.emacs.d/mb-keys.el")
+(require 'mb-f)
+(require 'mb-keys)
 
 (defun mb-init--terminal-workarounds ()
   "Activate terminal workarounds."

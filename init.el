@@ -41,7 +41,8 @@
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
-(require 'mb-f "~/.emacs.d/lisp/mb-f.el")
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'mb-f)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
@@ -61,7 +62,6 @@
 
 ;;; Early init code
 
-(require 'mb-init "~/.emacs.d/mb-init.el")
 ;; Make ^ work
 (require 'iso-transl)
 
@@ -146,8 +146,8 @@
 
 (add-hook 'after-init-hook
           (lambda ()
-            (require 'mb-cmd "~/.emacs.d/lisp/mb-cmd.el")
-            (load "~/.emacs.d/mb-hooks.el")
+            (require 'mb-init)
+            (require 'mb-hooks)
             (mb-init)))
 
 ;;; Advice
