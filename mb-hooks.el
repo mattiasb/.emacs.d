@@ -83,13 +83,8 @@
   "A mode hook for C and C++."
   (require 'rtags)
   (require 'company-rtags)
-  (rtags-start-process-unless-running)
-  (setq-local rtags-completions-enabled t)
-  (rtags-enable-standard-keybindings c-mode-base-map)
   (setq-local company-backends '(company-rtags))
 
-  ;; Work around bug where c-mode-base-map doesn't inherit from
-  ;; prog-mode-map
   (mb-f-define-keys c-mode-base-map
                     '(( "C-<return>" . rtags-find-symbol-at-point)
                       ( "C-z f r"    . rtags-rename-symbol)

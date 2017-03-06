@@ -40,6 +40,7 @@
 ;; Load path
 (defvar load-prefer-newer)
 (setq load-prefer-newer t)
+(add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
 (require 'mb-f "~/.emacs.d/lisp/mb-f.el")
 
 (setq custom-file "~/.emacs.d/custom.el")

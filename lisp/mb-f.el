@@ -404,7 +404,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (let* ((jhbuild-prefix (format "jhbuild run --in-builddir=%s -- " module))
          (compile-cmd (mapconcat
                        (lambda (s) (concat jhbuild-prefix s))
-                       '("make clean" "bear make" "rc -J compile_commands.json")
+                       '("make clean" "bear make" "rc -J ./compile_commands.json")
                        " && ")))
     (compile compile-cmd)))
 
