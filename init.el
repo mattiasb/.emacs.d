@@ -171,6 +171,7 @@
 
 (advice-add #'split-window-right :after #'balance-windows)
 (advice-add #'split-window-below :after #'balance-windows)
+(advice-add #'delete-window      :after #'balance-windows)
 
 ;; Kill terminal buffer when the terminal process exits
 (advice-add #'term-sentinel
