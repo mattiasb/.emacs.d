@@ -92,6 +92,7 @@
  '(fci-rule-color "gray21")
  '(flycheck-completion-system 'ido)
  '(flycheck-cython-executable "cython3")
+ '(flycheck-emacs-lisp-load-path 'inherit)
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
  '(flyspell-prog-text-faces
