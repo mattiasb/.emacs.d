@@ -501,16 +501,5 @@ With a prefix ARG always prompt for command to use."
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
-;;;###autoload
-(defun mb-cmd-restart-emacs ()
-  "Restart Emacs with desktop restored."
-  (interactive)
-  (let ((desktop-dir (getenv "XDG_RUNTIME_DIR")))
-    (desktop-save desktop-dir)
-    (restart-emacs (list "--eval"
-                         (format "(progn (desktop-read \"%s\") (desktop-remove))"
-                                 desktop-dir)))))
-
-
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

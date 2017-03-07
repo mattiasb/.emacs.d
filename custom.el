@@ -168,6 +168,7 @@
  '(projectile-switch-project-action 'projectile-commander)
  '(racer-cmd "/home/mattiasb/.local/bin/racer")
  '(racer-rust-src-path "/home/mattiasb/Code/rust-lang/rust/src/")
+ '(restart-emacs-restore-frames t)
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
    '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
