@@ -52,9 +52,6 @@
 
 ;;; Early init code
 
-;; Make ^ work
-(require 'iso-transl)
-
 ;; Maximize on start
 (mb-f-maximize)
 

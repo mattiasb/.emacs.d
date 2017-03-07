@@ -89,6 +89,8 @@
   "Activate a bunch of global modes."
   (unless (display-graphic-p)
     (mb-init--terminal-workarounds))
+  ;; Make ^ work
+  (require 'iso-transl)
   (require 'dired-imenu)
   (mb-init--control-mode)
   (powerline-major-mode)
