@@ -31,7 +31,6 @@
 
 (defun mb-f-maximize ()
   "Maximize Emacs."
-  (interactive)
   (when (display-graphic-p)
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
                            '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
@@ -289,13 +288,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
          ;; (dot-dot (< available-lines (max ido-max-prospects prospects-len)))
          )
     (1- available-lines)))
-
-(defvar yas-fallback-behavior)
-(defun mb-f-yas-expand ()
-  "Perform a `yas-expand' but return nil on failure."
-  (when (yas-minor-mode)
-    (let ((yas-fallback-behavior 'return-nil))
-      (yas-expand))))
 
 (defun mb-f-fci-turn-off (&rest _)
   "Turn off `fci-mode'."

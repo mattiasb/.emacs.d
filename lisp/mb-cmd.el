@@ -194,7 +194,7 @@ depending on context."
     (indent-for-tab-command)
     (if (and (= old-indent (current-indentation))
              (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-             (null (mb-f-yas-expand)))
+             (null (yas-expand)))
         (company-complete-common))))
 
 ;;;###autoload
@@ -212,7 +212,7 @@ depending on context."
   "Insert snippet or complete (using `company-mode') depending on context."
   (interactive)
   (when (and (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-             (null (mb-f-yas-expand)))
+             (null (yas-expand)))
     (company-complete)))
 
 ;;;###autoload
