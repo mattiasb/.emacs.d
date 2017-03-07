@@ -31,12 +31,6 @@
 
 ;;; Settings
 
-;; Set theme and unset some menu bar stuff early to remove at least some of the
-;; inital flicker.
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
