@@ -50,13 +50,13 @@
   (byte-recompile-directory "~/.emacs.d" 0))
 
 ;;;###autoload
-(defun mb-cmd-toggle-programming-case-word-at-point ()
+(defun mb-cmd-toggle-programming-case-word-at-point (&rest _)
   "Toggle programming style casing of word a point."
   (interactive)
   (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case))
 
 ;;;###autoload
-(defun mb-cmd-toggle-programming-case-word-at-point-reverse ()
+(defun mb-cmd-toggle-programming-case-word-at-point-reverse (&rest _)
   "Toggle programming style casing of word a point.
 In reverse."
   (interactive)
@@ -131,7 +131,7 @@ Disable rescursive edit when NO-RECURSIVE-EDIT is nil."
   (isearch-mode nil nil nil (not no-recursive-edit) 'isearch-symbol-regexp))
 
 ;;;###autoload
-(defun mb-cmd-isearch-backward-symbol-at-point ()
+(defun mb-cmd-isearch-backward-symbol-at-point (&rest _)
   "Do incremental search backward for a symbol found near point.
 Like ordinary incremental search except that the symbol found at point
 is added to the search string initially as a regexp surrounded
