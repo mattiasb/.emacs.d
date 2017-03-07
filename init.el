@@ -37,28 +37,18 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; Load path
-(defvar load-prefer-newer)
-(setq load-prefer-newer t)
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (require 'mb-f)
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
 
 ;; (package-initialize) and install missing packages on start
 (mb-f-package-init)
 
 ;; Load theme early.
 (load-theme 'madhat2r t)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
-(defalias 'list-buffers 'ibuffer)
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
 
 ;;; Early init code
 
@@ -115,16 +105,6 @@
                             (which-key-mode              . "")
                             (ws-butler-mode              . " W")
                             (yas-minor-mode              . "")))
-
-
-;;; Project specific settings
-
-;; Dir Locals
-(dir-locals-set-class-variables
- 'gnome-code
- '((nil . ((projectile-project-type . jhbuild)))))
-
-(dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
 
 ;;; Post-init code
 

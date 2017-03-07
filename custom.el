@@ -137,6 +137,7 @@
  '(keyfreq-buffer "*KeyFreq*")
  '(keyfreq-mode t)
  '(large-file-warning-threshold 100000000)
+ '(load-prefer-newer t)
  '(lua-indent-level 2)
  '(lua-prefix-key "C-z")
  '(magit-auto-revert-mode-lighter "")
@@ -283,6 +284,24 @@
  '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
  '(vr/match-0 ((t (:inherit region))))
  '(vr/match-1 ((t (:inherit region)))))
+
+;;; Non-customizable settings
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'list-buffers 'ibuffer)
+
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;;; Project specific settings
+
+;; Dir Locals
+(dir-locals-set-class-variables
+ 'gnome-code
+ '((nil . ((projectile-project-type . jhbuild)))))
+
+(dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
+
 
 (provide 'custom)
 ;;; custom.el ends here
