@@ -119,28 +119,12 @@
 
 ;;; Project specific settings
 
-;; Styles
-
-(c-add-style
- "smarteye"
- '("stroustrup"
-   (c-basic-offset  . 2)
-   (c-offsets-alist . ((innamespace       . 0)
-                       (substatement-open . 0)
-                       (inline-open       . 0)))))
-
 ;; Dir Locals
 (dir-locals-set-class-variables
  'gnome-code
  '((nil . ((projectile-project-type . jhbuild)))))
 
 (dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
-
-(dir-locals-set-class-variables
- 'smarteye-code
- '((c++-mode . ((c-file-style . "smarteye")))))
-
-(dir-locals-set-directory-class "~/Code/git.smarteye.se/" 'smarteye-code)
 
 ;;; Post-init code
 
