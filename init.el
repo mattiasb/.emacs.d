@@ -107,15 +107,15 @@
 
 ;;; Advice
 
-(advice-add #'isearch-forward-symbol-at-point     :after  #'god-mode-isearch-activate)
+(advice-add #'isearch-forward-symbol-at-point         :after  #'god-mode-isearch-activate)
 (advice-add #'mb-cmd-isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
-(advice-add #'popup-create                        :before #'mb-f-fci-turn-off)
-(advice-add #'popup-delete                        :after  #'mb-f-fci-turn-on)
+(advice-add #'popup-create                            :before #'mb-f-fci-turn-off)
+(advice-add #'popup-delete                            :after  #'mb-f-fci-turn-on)
 
-(advice-add #'ido-find-file                       :after  #'mb-cmd-reopen-file-as-root)
+(advice-add #'ido-find-file                           :after  #'mb-cmd-reopen-file-as-root)
 
-(advice-add #'backward-page                       :after  #'recenter)
-(advice-add #'forward-page                        :after  #'recenter)
+(advice-add #'backward-page                           :after  #'recenter)
+(advice-add #'forward-page                            :after  #'recenter)
 
 (mapc #'mb-f-advice-other-window-after '(rtags-find-all-references-at-point
                                          rtags-find-references
