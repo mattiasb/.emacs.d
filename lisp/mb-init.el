@@ -31,6 +31,8 @@
 
 (require 'mb-f)
 (require 'mb-keys)
+(require 'mb-modes)
+(require 'mb-advices)
 
 (defun mb-init--terminal-workarounds ()
   "Activate terminal workarounds."
@@ -123,6 +125,9 @@
 
 (defun mb-init ()
   "Initialize Emacs."
+  (mb-modes-activate)
+  (mb-advices-activate)
+  (require 'mb-hooks)
   (mb-init--global-keybindings)
   (mb-init--modes))
 

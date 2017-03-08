@@ -18,7 +18,7 @@
 ;; Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
 ;; Version          : 20141020
-;; Keywords         : init
+;; Keywords         : local
 ;; Package-Requires : ((emacs "25.1"))
 ;; URL              : https://github.com/moonlite/.emacs.d
 ;; Compatibility    : GNU Emacs: 25.x
@@ -45,16 +45,8 @@
 
 ;;; Post-init code
 
-(add-hook 'after-init-hook
-          (lambda ()
-            (require 'mb-modes)
-            (require 'mb-advices)
-            (require 'mb-init)
-
-            (mb-modes-activate)
-            (mb-advices-activate)
-            (require 'mb-hooks)
-            (mb-init)))
+(require 'mb-init)
+(mb-init)
 
 (provide 'init)
 ;;; init.el ends here

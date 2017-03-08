@@ -30,6 +30,12 @@
 
 ;;; Code:
 
+(require 'term)
+(require 'god-mode-isearch)
+(require 'mb-cmd)
+(require 'flycheck)
+(require 'flycheck-pos-tip)
+
 (defun mb-advices-activate ()
   "Activate my advices."
 

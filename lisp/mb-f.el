@@ -29,6 +29,10 @@
 
 ;;; Code:
 
+(require 'yasnippet)
+(require 'fill-column-indicator)
+(require 'popup)
+
 (defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
   (dolist (mode-and-line modes)
