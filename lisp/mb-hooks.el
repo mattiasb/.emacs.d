@@ -182,17 +182,17 @@
   (hl-line-mode)
   (dired-omit-mode)
   (dired-hide-details-mode)
+  (dired-hide-dotfiles-mode)
   (mb-f-define-keys dired-mode-map
                     '(( "W" . wdired-change-to-wdired-mode)
                       ( "F" . find-name-dired)
                       ( "c" . find-file)
-                      ( "." . mb-cmd-dired-dotfiles-toggle)))
+                      ( "." . dired-hide-dotfiles-mode)))
   (mb-f-remap-keys dired-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r"))))
 
 (add-hook 'dired-mode-hook #'mb-hooks--dired-mode)
-(add-hook 'dired-after-readin-hook #'mb-cmd-dired-dotfiles-hide)
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
