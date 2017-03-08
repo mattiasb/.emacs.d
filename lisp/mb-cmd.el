@@ -501,5 +501,33 @@ With a prefix ARG always prompt for command to use."
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
+(defvar mb-cmd-dired-dotfiles-show-p t)
+;;;###autoload
+(defun mb-cmd-dired-dotfiles-toggle ()
+  "Toggle dot-files visibility."
+  (interactive)
+  (when (equal major-mode 'dired-mode)
+    (message (format "show: %s" mb-cmd-dired-dotfiles-show-p))
+    (if mb-cmd-dired-dotfiles-show-p
+        (mb-cmd-dired-dotfiles-hide)
+      (mb-cmd-dired-dotfiles-show))))
+
+(defun mb-cmd-dired-dotfiles-hide ()
+  "Hide dot-files."
+  (interactive)
+  (when (and (equal major-mode 'dired-mode)
+             mb-cmd-dired-dotfiles-show-p)
+    (setq-local mb-cmd-dired-dotfiles-show-p nil)
+    (dired-mark-files-regexp "^\\\.")
+    (dired-do-kill-lines)))
+
+(defun mb-cmd-dired-dotfiles-show ()
+  "Show dot-files."
+  (interactive)
+  (when (and (equal major-mode 'dired-mode)
+             (not mb-cmd-dired-dotfiles-show-p))
+    (revert-buffer)
+    (setq-local mb-cmd-dired-dotfiles-show-p t)))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
