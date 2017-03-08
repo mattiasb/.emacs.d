@@ -38,10 +38,10 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 ;;; Early init code
-(require 'mb-f)
-(mb-f-package-init)
+(require 'mb-fe)
+(mb-fe-package-init)
+(mb-fe-maximize)
 (load-theme 'madhat2r t)
-(mb-f-maximize)
 
 ;;; Post-init code
 

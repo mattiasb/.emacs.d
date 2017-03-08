@@ -29,14 +29,6 @@
 
 ;;; Code:
 
-(defun mb-f-maximize ()
-  "Maximize Emacs."
-  (when (display-graphic-p)
-    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                           '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
-    (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
-                           '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))))
-
 (defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
   (dolist (mode-and-line modes)
@@ -369,20 +361,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 (defun mb-f-advice-other-window-after (func)
   "Advice FUNC to switch window after been run."
   (advice-add func :after #'mb-f-other-window))
-
-(defun mb-f-package-init ()
-  "Initialize the package system."
-  (package-initialize)
-  (unless (seq-every-p #'package-installed-p
-                       package-selected-packages)
-    (package-refresh-contents)
-    (mb-f-install-packages-in-dir "~/.emacs.d/packages/")
-    (package-install-selected-packages)))
-
-(defun mb-f-install-packages-in-dir (directory)
-  "Install all packages in DIRECTORY."
-  (mapc #'package-install-file
-        (directory-files directory t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
 
 (defun mb-f-set-terminal-cursors ()
   "Set up the terminal cursors."
