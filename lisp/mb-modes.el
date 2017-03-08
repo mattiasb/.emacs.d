@@ -84,7 +84,6 @@
     (ws-butler-mode              . " W")
     (yas-minor-mode              . "")))
 
-
 (defun mb-modes-activate ()
   "Activate mode configurations."
   (mb-f-auto-modes          mb-modes--filepattern-to-mode-map)
