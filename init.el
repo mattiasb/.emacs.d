@@ -36,138 +36,25 @@
 
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
-(require 'mb-f)
-
-;; (package-initialize) and install missing packages on start
-(mb-f-package-init)
-
-;; Load theme early.
-(load-theme 'madhat2r t)
 
 ;;; Early init code
-
-;; Maximize on start
+(require 'mb-f)
+(mb-f-package-init)
+(load-theme 'madhat2r t)
 (mb-f-maximize)
-
-;;; Modes – General
-
-(mb-f-auto-modes  '(("\\.inl\\'"    . c++-mode)
-                    ("\\.ui$"       . nxml-mode)
-                    ("\\.js$"       . js2-mode)
-                    ("\\.jshintrc$" . js2-mode)
-                    ("\\.jscsrc$"   . json-mode)
-                    ("\\.geojson$"  . json-mode)
-                    ("\\.vala$"     . vala-mode)
-                    ("\\.mapcss$"   . css-mode)
-                    ("\\.mcss$"     . css-mode)
-                    ("\\.m$"        . octave-mode)
-                    ("\\.dec$"      . mtg-deck-mode)
-                    ("\/Cask$"      . emacs-lisp-mode)
-                    ("\\.h$"        . mb-cmd-guess-cc-mode)))
-
-(mb-f-shorten-major-modes '((markdown-mode   . "M↓")
-                            (js2-mode        . "JS")
-                            (nxml-mode       . "XML")
-                            (c-mode          . "C")
-                            (c++-mode        . "C++")
-                            (cmake-mode      . "CMake")
-                            (emacs-lisp-mode . "Elisp")
-                            (go-mode         . "Go")
-                            (haskell-mode    . "λ")
-                            (snippet-mode    . "Yas")))
-
-(mb-f-shorten-minor-modes '((abbrev-mode                 . " A")
-                            (aggressive-indent-mode      . " ⇒")
-                            (anaconda-mode               . " 🐍")
-                            (auto-dim-other-buffers-mode . "")
-                            (auto-revert-mode            . " ⎌")
-                            (company-mode                . " C")
-                            (control-mode                . "")
-                            (eldoc-mode                  . " 🕮")
-                            (fancy-narrow-mode           . "")
-                            (flyspell-mode               . " ✎")
-                            (git-gutter-mode             . "")
-                            (haskell-indentation-mode    . "")
-                            (magit-auto-revert-mode      . "")
-                            (magit-filenotify-mode       . " Notify")
-                            (magit-gitflow-mode          . " Flow")
-                            (racer-mode                  . "")
-                            (sqlup-mode                  . " ⇑")
-                            (which-key-mode              . "")
-                            (ws-butler-mode              . " W")
-                            (yas-minor-mode              . "")))
 
 ;;; Post-init code
 
 (add-hook 'after-init-hook
           (lambda ()
+            (require 'mb-modes)
+            (require 'mb-advices)
             (require 'mb-init)
+
+            (mb-modes-activate)
+            (mb-advices-activate)
             (require 'mb-hooks)
             (mb-init)))
-
-;;; Advice
-
-(advice-add #'isearch-forward-symbol-at-point         :after  #'god-mode-isearch-activate)
-(advice-add #'mb-cmd-isearch-backward-symbol-at-point :after  #'god-mode-isearch-activate)
-(advice-add #'popup-create                            :before #'mb-f-fci-turn-off)
-(advice-add #'popup-delete                            :after  #'mb-f-fci-turn-on)
-
-(advice-add #'ido-find-file                           :after  #'mb-cmd-reopen-file-as-root)
-
-(advice-add #'backward-page                           :after  #'recenter)
-(advice-add #'forward-page                            :after  #'recenter)
-
-(mapc #'mb-f-advice-other-window-after '(rtags-find-all-references-at-point
-                                         rtags-find-references
-                                         rtags-find-references-at-point
-                                         rtags-find-references-current-dir
-                                         rtags-find-references-current-file
-                                         rtags-references-tree
-                                         projectile-ag
-                                         projectile-compile-project
-                                         flycheck-list-errors
-                                         diff-buffer-with-file
-                                         delete-window
-                                         split-window-right
-                                         split-window-below))
-
-(mapc #'mb-f-advice-describe-func '(package-menu-describe-package
-                                    describe-variable
-                                    describe-mode
-                                    describe-function
-                                    describe-bindings
-                                    describe-symbol
-                                    describe-package
-                                    describe-theme))
-
-(advice-add #'split-window-right :after #'balance-windows)
-(advice-add #'split-window-below :after #'balance-windows)
-(advice-add #'delete-window      :after #'balance-windows)
-
-;; Kill terminal buffer when the terminal process exits
-(advice-add #'term-sentinel
-            :after (lambda (proc _)
-                     (when (memq (process-status proc) '(signal exit))
-                       (kill-buffer (process-buffer proc)))))
-
-(advice-add #'ansi-term
-            :before (lambda (&rest _)
-                      (interactive (list "/bin/bash"))))
-
-(advice-add #'custom-save-all
-            :around (lambda (func &rest args)
-                      (let ((print-quoted t))
-                        (apply func args))))
-
-(advice-add #'save-buffers-kill-emacs
-            :around (lambda (func &rest args)
-                      (cl-flet ((process-list ()))
-                        (apply func args))))
-
-(advice-add #'flycheck-pos-tip-error-messages
-            :around (lambda (func &rest args)
-                      (let ((x-gtk-use-system-tooltips nil))
-                        (apply func args))))
 
 (provide 'init)
 ;;; init.el ends here
