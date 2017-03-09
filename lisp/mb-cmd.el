@@ -502,5 +502,12 @@ With a prefix ARG always prompt for command to use."
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
+;;;###autoload
+(defun mb-cmd-find-file-default (&rest args)
+  "Wrapped `find-file' that avoids ido and passes on ARGS."
+  (interactive (advice-eval-interactive-spec
+                (cadr (interactive-form #'find-file))))
+  (apply #'find-file args))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

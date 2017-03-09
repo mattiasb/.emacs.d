@@ -186,7 +186,7 @@
   (mb-f-define-keys dired-mode-map
                     '(( "W" . wdired-change-to-wdired-mode)
                       ( "F" . find-name-dired)
-                      ( "c" . find-file)
+                      ( "c" . mb-cmd-find-file-default)
                       ( "." . dired-hide-dotfiles-mode)))
   (mb-f-remap-keys dired-mode-map
                    '(("s" . "C-s")
