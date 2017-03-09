@@ -44,7 +44,7 @@
   (unless (seq-every-p #'package-installed-p
                        package-selected-packages)
     (package-refresh-contents)
-    (mb-f-install-packages-in-dir "~/.emacs.d/packages/")
+    (mb-fe-install-packages-in-dir "~/.emacs.d/packages/")
     (package-install-selected-packages)))
 
 (defun mb-fe-install-packages-in-dir (directory)

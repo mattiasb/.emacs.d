@@ -29,6 +29,7 @@
 
 ;;; Code:
 
+(require 'mb-fe)
 (require 'mb-f)
 
 (require 'company)
@@ -41,7 +42,7 @@
 (defun mb-cmd-maximize ()
   "Maximize Emacs."
   (interactive)
-  (mb-f-maximize))
+  (mb-fe-maximize))
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
