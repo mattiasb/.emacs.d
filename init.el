@@ -31,8 +31,7 @@
 
 ;;; Settings
 
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(load "~/.emacs.d/custom.el")
 
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
 (add-to-list 'load-path "~/.emacs.d/lisp/")
