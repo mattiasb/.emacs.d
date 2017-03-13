@@ -10,7 +10,7 @@
 
 (setq mc/cmds-to-run-once
       '(
-        my/control-mode-off
-        my/control-mode-on
+        mb-cmd-control-mode-off
+        mb-cmd-control-mode-on
         smart-region
         ))
