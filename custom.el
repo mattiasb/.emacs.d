@@ -188,6 +188,7 @@
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)
+ '(shift-select-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
  '(tool-bar-mode nil)
