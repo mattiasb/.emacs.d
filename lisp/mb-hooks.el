@@ -176,6 +176,7 @@
 
 ;; Dired
 (defvar dired-mode-map)
+(autoload 'dired-omit-mode "dired-x" "" t nil)
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (require 'dired-x)
@@ -405,6 +406,7 @@
   (fci-mode 1))
 
 (autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
+(autoload 'git-gutter:update-all-windows "git-gutter" "" t nil)
 (defun mb-hooks--magit-mode ()
   "My `magit' mode hook."
   (require 'magit-gitflow)
@@ -452,6 +454,7 @@
 (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode)
 
 ;; Multiple Cursors
+(autoload 'control-mode-reload-bindings "control-mode" "" t nil)
 (defun mb-hooks--multiple-cursors-mode-enabled ()
   "My `multiple-cursors' mode hook."
   (control-mode-reload-bindings))
@@ -566,6 +569,7 @@
 (defvar python-mode-map)
 (defvar mb-cmd-realgud-debugger)
 (defvar yas-indent-line)
+(autoload 'realgud:ipdb "realgud" "" t nil)
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
