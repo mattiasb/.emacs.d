@@ -390,5 +390,21 @@ Optionally only search as deep as DEPTH."
          (result (split-string (shell-command-to-string cmd))))
     (mapcar (lambda (s) (substring s 0 -4)) result)))
 
+(defun mb-f-enclosing-paren ()
+  "Return the opening paren type we're currently enclosed by or nil."
+  (let ((ppss (syntax-ppss)))
+    (when (nth 1 ppss)
+      (char-after (nth 1 ppss)))))
+
+(defun mb-f-python-electric-newline ()
+  "Electric newline for Python."
+  (let ((paren (mb-f-enclosing-paren)))
+    (if (not (or (eq paren ?\{)
+                 (eq paren ?\[)
+                 (eq paren ?\()
+                 (looking-back "\\blambda\\b.*" nil nil)))
+        'after
+      nil)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

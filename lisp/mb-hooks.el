@@ -491,10 +491,12 @@
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
 
+  (unless (derived-mode-p 'emacs-lisp-mode)
+    (electric-operator-mode))
+
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
-
   (flyspell-prog-mode)
   (fci-mode)
   (highlight-numbers-mode)
@@ -571,6 +573,10 @@
   (setq-local company-backends '(company-anaconda))
   (anaconda-mode)
   (anaconda-eldoc-mode)
+
+  (add-to-list 'electric-layout-rules
+               (cons ?: #'mb-f-python-electric-newline))
+
   (setq-local yas-indent-line 'fixed)
   (mb-f-define-keys python-mode-map
                     '(( "."         . mb-cmd-dot-and-complete)
