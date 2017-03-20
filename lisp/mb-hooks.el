@@ -573,9 +573,13 @@
   (setq-local company-backends '(company-anaconda))
   (anaconda-mode)
   (anaconda-eldoc-mode)
+  (importmagic-mode)
 
   (add-to-list 'electric-layout-rules
                (cons ?: #'mb-f-python-electric-newline))
+  ;; sort imports and conform to PEP0008 on save
+  (add-hook 'before-save-hook 'py-isort-before-save)
+  (py-autopep8-enable-on-save)
 
   (setq-local yas-indent-line 'fixed)
   (mb-f-define-keys python-mode-map
