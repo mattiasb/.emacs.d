@@ -29,7 +29,6 @@
 
 ;;; Code:
 
-(require 'mb-fe)
 (require 'mb-f)
 
 (require 'company)
