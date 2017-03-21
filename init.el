@@ -40,7 +40,7 @@
 
 (require 'mb-fe)
 (mb-fe-package-init)
-(mb-fe-maximize)
+(toggle-frame-maximized)
 (load-theme 'madhat2r t)
 
 ;;; Post package initialization
