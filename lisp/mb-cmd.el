@@ -30,13 +30,17 @@
 ;;; Code:
 
 (require 'mb-f)
-
-(require 'company)
-(require 'ido)
-(require 'magit)
 (require 'projectile)
-(require 'iedit)
-(require 'flyspell)
+(require 'ido)
+
+(autoload 'company-complete        "company" "" t nil)
+(autoload 'company-select-next     "company" "" t nil)
+(autoload 'company-select-previous "company" "" t nil)
+(autoload 'company-complete-common "company" "" t nil)
+
+(autoload 'iedit-restrict-function "iedit" "" t nil)
+
+(autoload 'flyspell-overlay-p "flyspell")
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
