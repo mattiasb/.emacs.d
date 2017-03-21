@@ -39,11 +39,6 @@
 (require 'iedit)
 (require 'flyspell)
 
-(defun mb-cmd-maximize ()
-  "Maximize Emacs."
-  (interactive)
-  (mb-fe-maximize))
-
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
   "Byte compile my configs."
