@@ -545,7 +545,8 @@
                       ( "I"   . projectile-invalidate-cache)
                       ( "d"   . projectile-dired)
                       ( "V"   . mb-cmd-projectile-gitg)
-                      ( "D"   . projectile-find-dir)))
+                      ( "D"   . projectile-find-dir)
+                      ( "s S" . mb-cmd-projectile-ag-regex)))
 
   (control-mode-reload-bindings)
 
