@@ -707,5 +707,13 @@
 
 (add-hook 'woman-mode-hook #'mb-hooks--woman-mode)
 
+;; Yaml
+(defun mb-hooks--yaml-mode-hook ()
+  "My `yaml' mode hook."
+  (flycheck-yamllint-setup)
+  (flycheck-mode))
+
+(add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook)
+
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here
