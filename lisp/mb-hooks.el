@@ -397,6 +397,8 @@
 (add-hook 'lua-mode-hook #'mb-hooks--lua-mode)
 
 ;; Magit
+(autoload 'git-commit-turn-on-flyspell "git-commit" "" t nil)
+(autoload 'git-commit-turn-on-auto-fill "git-commit" "" t nil)
 (defun mb-hooks--git-commit-mode ()
   "My `git-commit' mode hook."
   (mb-cmd-control-mode-off)
