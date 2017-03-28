@@ -5,9 +5,9 @@
 # --
 
 ;; ${1:$(mapconcat 'capitalize (split-string (or (yas-text) "") "-") " ")}
-(defun my/$1-mode-hook ()
+(defun mb-hooks--$1-mode ()
   "My `${1:}' mode hook."
   ${2:(mb-f-define-keys $1-mode-map
                         '(($0)))})
 
-(add-hook '$1-mode-hook #'my/$1-mode-hook)
+(add-hook '$1-mode-hook #'mb-hooks--$1-mode)
