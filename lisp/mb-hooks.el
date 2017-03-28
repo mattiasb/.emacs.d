@@ -256,8 +256,7 @@
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
   "My `haskell' mode hook."
-  (setq-local electric-indent-mode nil)
-  (turn-on-haskell-indentation))
+  (haskell-indentation-mode))
 
 (add-hook 'haskell-mode-hook #'mb-hooks--haskell-mode)
 
