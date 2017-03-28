@@ -396,6 +396,13 @@ Optionally only search as deep as DEPTH."
     (when (nth 1 ppss)
       (char-after (nth 1 ppss)))))
 
+(defun mb-f-elisp-get-namespace ()
+  "Get the namespace of the current module."
+  (if (and (derived-mode-p 'emacs-lisp-mode)
+           (string= (file-name-extension (buffer-name)) "el"))
+      (concat (file-name-base) "-")
+    ""))
+
 (defun mb-f-python-electric-newline ()
   "Electric newline for Python."
   (let ((paren (mb-f-enclosing-paren)))
