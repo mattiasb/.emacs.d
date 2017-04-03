@@ -258,7 +258,7 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
 (defun mb-f-yas-choose-license ()
   "Choose a license to expand."
   (yas-choose-value
-   (directory-files "~/.emacs.d/licenses/"
+   (directory-files (concat user-emacs-directory "licenses/")
                     nil
                     "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$")))
 

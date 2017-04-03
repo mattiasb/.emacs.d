@@ -58,7 +58,7 @@
 (defun mb-init--yas ()
   "Activate YASnippet."
   ;; This needs to be set here, or customize will bork.
-  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq-default yas-snippet-dirs (concat user-emacs-directory "snippets/"))
   (yas-global-mode))
 
 (defun mb-init--yatemplate ()

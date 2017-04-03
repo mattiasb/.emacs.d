@@ -31,10 +31,10 @@
 
 ;;; Settings
 
-(load "~/.emacs.d/custom.el")
+(load (concat user-emacs-directory "custom.el"))
 
 (add-to-list 'load-path "~/.local/share/emacs/site-lisp/rtags/")
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path (concat user-emacs-directory "lisp/"))
 
 ;;; Early init code
 

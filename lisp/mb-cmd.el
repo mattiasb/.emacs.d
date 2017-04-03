@@ -46,7 +46,7 @@
 (defun mb-cmd-byte-compile ()
   "Byte compile my configs."
   (interactive)
-  (byte-recompile-directory "~/.emacs.d" 0))
+  (byte-recompile-directory user-emacs-directory 0))
 
 ;;;###autoload
 (defun mb-cmd-toggle-programming-case-word-at-point (&rest _)

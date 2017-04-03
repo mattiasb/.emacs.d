@@ -46,7 +46,7 @@
      (("\\.lua\\'" . "Lua")
       .
       ["default.lua" my/autoinsert-yas-expand])))
- '(auto-insert-directory "~/.emacs.d/templates/")
+ '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(blink-cursor-blinks -1)
  '(browse-kill-ring-current-entry-face 'bold)
  '(browse-kill-ring-display-duplicates nil)
@@ -79,7 +79,7 @@
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
  '(custom-buffer-done-kill t)
- '(custom-file "~/.emacs.d/custom.el")
+ '(custom-file (concat user-emacs-directory "custom.el"))
  '(custom-safe-themes t)
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
@@ -154,7 +154,7 @@
  '(magit-unstage-all-confirm nil)
  '(markdown-asymmetric-header nil)
  '(markdown-command
-   "pandoc -s -f markdown_github -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
+   (concat "pandoc -s -f markdown_github -c file://" (file-truename user-emacs-directory) "github-pandoc.css"))
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
@@ -177,7 +177,7 @@
  '(restart-emacs-restore-frames t)
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
-   '("~/.emacs.d/schemas/schemas.xml" "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
+   '((concat user-emacs-directory "schemas/schemas.xml") "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(rust-indent-method-chain t)
