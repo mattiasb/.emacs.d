@@ -484,6 +484,7 @@
   (hl-line-mode)
   (mb-f-remap-keys package-menu-mode-map
                    '(("s" . "C-s")
+                     ("l" . "C-l")
                      ("R" . "r")
                      ("r" . "C-r"))))
 
