@@ -181,6 +181,7 @@
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (require 'dired-x)
+  (auto-revert-mode)
   (hl-line-mode)
   (dired-omit-mode)
   (dired-hide-details-mode)
