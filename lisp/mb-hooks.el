@@ -211,7 +211,8 @@
   (flycheck-pos-tip-mode)
   (flycheck-status-emoji-mode)
   (flycheck-cask-setup)
-  (flycheck-package-setup))
+  (flycheck-package-setup)
+  (flycheck-rust-setup))
 
 (add-hook 'flycheck-mode-hook #'mb-hooks--flycheck-mode)
 
