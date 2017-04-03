@@ -177,6 +177,7 @@
 ;; Dired
 (defvar dired-mode-map)
 (autoload 'dired-omit-mode "dired-x" "" t nil)
+(autoload 'dired-hide-details-mode "dired" "" t nil)
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (require 'dired-x)
