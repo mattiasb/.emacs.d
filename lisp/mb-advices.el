@@ -65,7 +65,6 @@
           projectile-compile-project
           flycheck-list-errors
           diff-buffer-with-file
-          delete-window
           split-window-right
           split-window-below))
 
