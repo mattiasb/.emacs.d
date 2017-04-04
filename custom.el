@@ -154,7 +154,9 @@
  '(magit-unstage-all-confirm nil)
  '(markdown-asymmetric-header nil)
  '(markdown-command
-   (concat "pandoc -s -f markdown_github -c file://" (file-truename user-emacs-directory) "github-pandoc.css"))
+   (concat "pandoc -s -f markdown_github -c file://"
+           (file-truename user-emacs-directory)
+           "github-pandoc.css"))
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
@@ -177,7 +179,8 @@
  '(restart-emacs-restore-frames t)
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
-   '((concat user-emacs-directory "schemas/schemas.xml") "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
+   '((concat user-emacs-directory "schemas/schemas.xml")
+     "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(rust-indent-method-chain t)
