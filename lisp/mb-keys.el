@@ -90,7 +90,7 @@
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
-                      ( "t"      . ansi-term)))
+                      ( "a"      . ansi-term)))
 
 ;; My Help keymap
 (mb-f-define-keymap mb-keys--help-map

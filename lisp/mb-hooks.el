@@ -415,6 +415,16 @@
   "My `magit' mode hook."
   (require 'magit-gitflow)
   (turn-on-magit-gitflow)
+
+  (magit-define-popup-action 'magit-run-popup
+    ?g "Gitg" #'mb-cmd-projectile-gitg)
+
+  (magit-define-popup-action 'magit-run-popup
+    ?a "ansi-term" #'mb-cmd-projectile-ansi-term)
+
+  (magit-define-popup-action 'magit-run-popup
+    ?t "gnome-terminal" #'mb-cmd-projectile-gnome-terminal)
+
   (add-hook 'magit-post-refresh-hook
             #'git-gutter:update-all-windows))
 
@@ -551,7 +561,9 @@
                       ( "d"   . projectile-dired)
                       ( "V"   . mb-cmd-projectile-gitg)
                       ( "D"   . projectile-find-dir)
-                      ( "s S" . mb-cmd-projectile-ag-regex)))
+                      ( "s S" . mb-cmd-projectile-ag-regex)
+                      ( "w a" . mb-cmd-projectile-ansi-term)
+                      ( "w t" . mb-cmd-projectile-gnome-terminal)))
 
   (control-mode-reload-bindings)
 
@@ -563,10 +575,17 @@
     "Go back to project selection."
     (projectile-switch-project))
 
+  (def-projectile-commander-method ?a
+    "Start an `ansi-term' session in the project root."
+    (mb-cmd-projectile-ansi-term))
+
   (def-projectile-commander-method ?t
-    "Open a terminal in the project root."
-    (ansi-term (getenv "SHELL")
-               (format "*ansi-term [%s]*" (projectile-project-name)))))
+    "Spawn gnome-terminal in the project root."
+    (mb-cmd-projectile-gnome-terminal))
+
+  (def-projectile-commander-method ?V
+    "Spawn gitg in the project root."
+    (mb-cmd-projectile-gitg)))
 
 (add-hook 'projectile-mode-hook #'mb-hooks--projectile-mode)
 

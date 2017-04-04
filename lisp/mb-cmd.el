@@ -445,8 +445,28 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-projectile-gitg ()
   "Run gitg at root of project."
   (interactive)
+  (mb-cmd-projectile-spawn "/bin/gitg"))
+
+;;;###autoload
+(defun mb-cmd-projectile-gnome-terminal ()
+  "Run gitg at root of project."
+  (interactive)
+  (mb-cmd-projectile-spawn "/bin/gnome-terminal"))
+
+;;;###autoload
+(defun mb-cmd-projectile-spawn (command)
+  "Start an external COMMAND w/ `call-process' at the project root."
+  (interactive)
   (projectile-with-default-dir (projectile-project-root)
-    (call-process "/usr/bin/gitg" nil 0)))
+    (call-process command nil 0)))
+
+;;;###autoload
+(defun mb-cmd-projectile-ansi-term ()
+  "Start `ansi-term' in the project root."
+  (interactive)
+  (projectile-with-default-dir (projectile-project-root)
+    (ansi-term (getenv "SHELL")
+               (format "*ansi-term [%s]*" (projectile-project-name)))))
 
 (defvar flyspell-old-buffer-error)
 (defvar flyspell-old-pos-error)
