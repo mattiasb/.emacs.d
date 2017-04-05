@@ -419,6 +419,8 @@
 
 (autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
 (autoload 'git-gutter:update-all-windows "git-gutter" "" t nil)
+(autoload 'magit-define-popup-action "magit-popup")
+
 (defun mb-hooks--magit-mode ()
   "My `magit' mode hook."
   (require 'magit-gitflow)
