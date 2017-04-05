@@ -64,9 +64,7 @@
           projectile-ag
           projectile-compile-project
           flycheck-list-errors
-          diff-buffer-with-file
-          split-window-right
-          split-window-below))
+          diff-buffer-with-file))
 
   (mapc #'mb-f-advice-describe-func
         '(package-menu-describe-package
@@ -77,10 +75,6 @@
           describe-symbol
           describe-package
           describe-theme))
-
-  (advice-add #'split-window-right :after #'balance-windows)
-  (advice-add #'split-window-below :after #'balance-windows)
-  (advice-add #'delete-window      :after #'balance-windows)
 
   ;; Kill terminal buffer when the terminal process exits
   (advice-add #'term-sentinel

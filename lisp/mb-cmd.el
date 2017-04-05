@@ -535,5 +535,28 @@ With a prefix ARG always prompt for command to use."
                 (cadr (interactive-form #'find-file))))
   (apply #'find-file args))
 
+;;;###autoload
+(defun mb-cmd-split-window-right ()
+  "Split window right, rebalance and switch."
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (mb-f-other-window))
+
+;;;###autoload
+(defun mb-cmd-split-window-below ()
+  "Split window below, rebalance and switch."
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (mb-f-other-window))
+
+;;;###autoload
+(defun mb-cmd-delete-window ()
+  "Delete window and rebalance."
+  (interactive)
+  (delete-window)
+  (balance-windows))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
