@@ -81,19 +81,27 @@
 ;; C / C++
 (defvar rtags-completions-enabled)
 (defvar company-backends)
+(defvar flycheck-disabled-checkers)
 (defvar projectile-command-map)
+(autoload 'rtags-diagnostics "rtags" "" t nil)
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
   (require 'rtags)
+  (require 'flycheck-rtags)
   (require 'company-rtags)
+  (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
   (setq-local company-backends '(company-rtags))
-
+  (backward-forward-mode -1)
   (mb-f-define-keys c-mode-base-map
-                    '(( "C-<return>" . rtags-find-symbol-at-point)
-                      ( "C-z f r"    . rtags-rename-symbol)
-                      ( "."          . mb-cmd-dot-and-complete)
-                      ( ":"          . mb-cmd-double-colon-and-complete)
-                      ( ">"          . mb-cmd-arrow-and-complete)))
+                    '(( "M-<left>"       . rtags-location-stack-back)
+                      ( "M-<right>"      . rtags-location-stack-forward)
+                      ( "C-<return>"     . rtags-find-symbol-at-point)
+                      ( "M-?"            . rtags-find-references)
+                      ( "C-x 4 <return>" . rtags-show-target-in-other-window)
+                      ( "C-z f r"        . rtags-rename-symbol)
+                      ( "."              . mb-cmd-dot-and-complete)
+                      ( ":"              . mb-cmd-double-colon-and-complete)
+                      ( ">"              . mb-cmd-arrow-and-complete)))
   (mb-f-define-keys projectile-command-map
                     '(( "j"         . rtags-find-symbol)
                       ( "R"         . mb-cmd-projectile-regen-rtags))))

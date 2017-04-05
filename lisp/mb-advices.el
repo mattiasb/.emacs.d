@@ -54,6 +54,9 @@
   (advice-add #'backward-page :after  #'recenter)
   (advice-add #'forward-page  :after  #'recenter)
 
+  (advice-add #'rtags-show-target-in-other-window
+              :after  #'balance-windows)
+
   (mapc #'mb-f-advice-other-window-after
         '(rtags-find-all-references-at-point
           rtags-find-references
@@ -61,6 +64,7 @@
           rtags-find-references-current-dir
           rtags-find-references-current-file
           rtags-references-tree
+          rtags-show-target-in-other-window
           projectile-ag
           projectile-compile-project
           flycheck-list-errors

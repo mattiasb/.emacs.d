@@ -375,11 +375,17 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 
 (defun mb-f-projectile-regen-rtags-jhbuild (module)
   "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
-  (let* ((jhbuild-prefix (format "jhbuild run --in-builddir=%s -- " module))
-         (compile-cmd (mapconcat
-                       (lambda (s) (concat jhbuild-prefix s))
-                       '("make clean" "bear make" "rc -J ./compile_commands.json")
-                       " && ")))
+  (let* ((cd-cmd (format "pushd $(jhbuild run --in-builddir=%s -- pwd)"
+                         module))
+         (compile-cmd (concat cd-cmd
+                              " && "
+                              "jhbuild run make clean"
+                              " && "
+                              "jhbuild run bear make"
+                              " && "
+                              "rc -J ./compile_commands.json"
+                              " ; "
+                              "popd")))
     (compile compile-cmd)))
 
 (defun mb-f-find-git-projects (dir &optional depth)
