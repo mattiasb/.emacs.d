@@ -373,20 +373,48 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
             (lambda ()
               (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
-(defun mb-f-projectile-regen-rtags-jhbuild (module)
-  "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc."
+(defun mb-f-projectile-regen-rtags-jhbuild (module autotools)
+  "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc.
+
+Optionally perform a `bear make' compile if this is an
+AUTOTOOLS project.
+
+Meson projects Just Works™ and CMake will work automatically as
+well if you add this line:
+    `cmakeargs = '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON''
+... to your ~/.config/jhbuildrc"
   (let* ((cd-cmd (format "pushd $(jhbuild run --in-builddir=%s -- pwd)"
                          module))
-         (compile-cmd (concat cd-cmd
-                              " && "
-                              "jhbuild run make clean"
-                              " && "
-                              "jhbuild run bear make"
-                              " && "
-                              "rc -J ./compile_commands.json"
-                              " ; "
-                              "popd")))
-    (compile compile-cmd)))
+         (compile-cmd (if autotools (concat " && "
+                                            "jhbuild run make clean"
+                                            " && "
+                                            "jhbuild run bear make")
+                        nil))
+         (import-cmd (concat cd-cmd
+                             compile-cmd
+                             " && "
+                             "rc -J ./compile_commands.json"
+                             " ; "
+                             "popd")))
+    (compile import-cmd)))
+
+(defun mb-f-projectile-autotools-p (&optional only)
+  "Predicate that determines if current project is an autotools project.
+Optionally return t ONLY if this project also isn't a Meson or CMake project."
+  (let ((autotools (file-exists-p
+                    (concat (projectile-project-root) "configure.ac"))))
+    (or (and (not only) autotools)
+        (and only autotools
+             (not (mb-f-projectile-meson-p))
+             (not (mb-f-projectile-cmake-p))))))
+
+(defun mb-f-projectile-meson-p ()
+  "Predicate that determines if current project is a Meson project."
+  (file-exists-p (concat (projectile-project-root) "meson.build")))
+
+(defun mb-f-projectile-cmake-p ()
+  "Predicate that determines if current project is a CMake project."
+  (file-exists-p (concat (projectile-project-root) "CMakeLists.txt")))
 
 (defun mb-f-find-git-projects (dir &optional depth)
   "Find all git projects under DIR.

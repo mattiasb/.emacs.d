@@ -429,7 +429,8 @@ With a prefix ARG always prompt for command to use."
   (let* ((project (projectile-project-name))
          (type (projectile-project-type)))
     (when (eq type 'jhbuild)
-      (mb-f-projectile-regen-rtags-jhbuild project))))
+      (mb-f-projectile-regen-rtags-jhbuild project
+                                           (mb-f-projectile-autotools-p t)))))
 
 ;;;###autoload
 (defun mb-cmd-projectile-index-projects ()
