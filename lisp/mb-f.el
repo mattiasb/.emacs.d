@@ -385,7 +385,7 @@ well if you add this line:
   (let* ((autotools    (mb-f-projectile-autotools-p t))
          (module       (projectile-project-name))
          (src-dir      (projectile-project-root))
-         (cd-build-dir (format "pushd $(jhbuild run --in-builddir=%s -- pwd)"
+         (cd-build-dir (format " pushd $(jhbuild run --in-builddir=%s -- pwd)"
                                module)))
     (if autotools
         (compile (concat " CC=cdcc-gcc CXX=cdcc-g++ jhbuild make -c"
@@ -393,12 +393,12 @@ well if you add this line:
                          " cdcc-gen " src-dir
                          " &&"
                          (format " rc -J %s/compile_commands.json" src-dir)))
-      (compile (concat "jhbuild make"
+      (compile (concat " jhbuild make"
                        " &&"
                        cd-build-dir
                        " &&"
-                       "rc -J ./compile_commands.json"
-                       "; popd")))))
+                       " rc -J ./compile_commands.json"
+                       " ; popd")))))
 
 (defun mb-f-projectile-regen-rtags-cmake ()
   "Create a `compile_commands.json' file for current project and feed it to rc."
