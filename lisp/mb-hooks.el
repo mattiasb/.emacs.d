@@ -82,15 +82,22 @@
 (defvar rtags-completions-enabled)
 (defvar company-backends)
 (defvar flycheck-disabled-checkers)
+(defvar flycheck-check-syntax-automatically)
+(defvar flycheck-highlighting-mode)
 (defvar projectile-command-map)
 (autoload 'rtags-diagnostics "rtags" "" t nil)
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
   (require 'rtags)
+
   (require 'flycheck-rtags)
-  (require 'company-rtags)
   (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
+  (setq-local flycheck-highlighting-mode nil)
+  (setq-local flycheck-check-syntax-automatically nil)
+
+  (require 'company-rtags)
   (setq-local company-backends '(company-rtags))
+
   (backward-forward-mode -1)
   (mb-f-define-keys c-mode-base-map
                     '(( "M-<left>"       . rtags-location-stack-back)

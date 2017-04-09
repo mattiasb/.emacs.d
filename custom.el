@@ -97,6 +97,7 @@
  '(fci-rule-color "gray21")
  '(flycheck-completion-system 'ido)
  '(flycheck-cython-executable "cython3")
+ '(flycheck-display-errors-function 'ignore)
  '(flycheck-emacs-lisp-load-path 'inherit)
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
@@ -197,6 +198,7 @@
      "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
+ '(rtags-display-current-error-as-message nil)
  '(rust-indent-method-chain t)
  '(safe-local-variable-values
    '((c-mode . c++)
