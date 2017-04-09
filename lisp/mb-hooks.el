@@ -110,8 +110,8 @@
                       ( ":"              . mb-cmd-double-colon-and-complete)
                       ( ">"              . mb-cmd-arrow-and-complete)))
   (mb-f-define-keys projectile-command-map
-                    '(( "j"         . rtags-find-symbol)
-                      ( "R"         . mb-cmd-projectile-regen-rtags))))
+                    '(( "j"              . rtags-find-symbol)
+                      ( "R"              . mb-cmd-projectile-regen-rtags))))
 
 (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
 (add-hook 'c++-mode-hook #'mb-hooks--c-mode)
