@@ -426,11 +426,13 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-projectile-regen-rtags ()
   "Update rtags for current project."
   (interactive)
-  (let* ((project (projectile-project-name))
-         (type (projectile-project-type)))
-    (when (eq type 'jhbuild)
-      (mb-f-projectile-regen-rtags-jhbuild project
-                                           (mb-f-projectile-autotools-p t)))))
+  (if (eq (projectile-project-type) 'jhbuild)
+      (mb-f-projectile-regen-rtags-jhbuild)
+    (cond ((mb-f-projectile-meson-p)
+           (mb-f-projectile-regen-rtags-meson))
+          ((mb-f-projectile-cmake-p)
+           (mb-f-projectile-regen-rtags-cmake))
+          (t (message "Unsupported supported build system!")))))
 
 ;;;###autoload
 (defun mb-cmd-projectile-index-projects ()

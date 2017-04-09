@@ -373,30 +373,57 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
             (lambda ()
               (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
-(defun mb-f-projectile-regen-rtags-jhbuild (module autotools)
-  "Create a `compile_commands.json' file for `JHBuild' MODULE and feed it to rc.
+(defun mb-f-projectile-regen-rtags-jhbuild ()
+  "Create `compile_commands.json' for this `JHBuild' module and feed it to rc.
 
-Optionally perform a `bear make' compile if this is an
-AUTOTOOLS project.
+Perform a `bear make' compile if this is an autotools project.
 
 Meson projects Just Works™ and CMake will work automatically as
 well if you add this line:
     `cmakeargs = '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON''
 ... to your ~/.config/jhbuildrc"
-  (let* ((cd-cmd (format "pushd $(jhbuild run --in-builddir=%s -- pwd)"
-                         module))
-         (compile-cmd (if autotools (concat " && "
-                                            "jhbuild run make clean"
-                                            " && "
-                                            "jhbuild run bear make")
-                        nil))
-         (import-cmd (concat cd-cmd
-                             compile-cmd
-                             " && "
-                             "rc -J ./compile_commands.json"
-                             " ; "
-                             "popd")))
-    (compile import-cmd)))
+  (let* ((autotools    (mb-f-projectile-autotools-p t))
+         (module       (projectile-project-name))
+         (src-dir      (projectile-project-root))
+         (cd-build-dir (format "pushd $(jhbuild run --in-builddir=%s -- pwd)"
+                               module)))
+    (if autotools
+        (compile (concat " CC=cdcc-gcc CXX=cdcc-g++ jhbuild make -c"
+                         " &&"
+                         " cdcc-gen " src-dir
+                         " &&"
+                         (format " rc -J %s/compile_commands.json" src-dir)))
+      (compile (concat "jhbuild make"
+                       " &&"
+                       cd-build-dir
+                       " &&"
+                       "rc -J ./compile_commands.json"
+                       "; popd")))))
+
+(defun mb-f-projectile-regen-rtags-cmake ()
+  "Create a `compile_commands.json' file for current project and feed it to rc."
+  (let* ((project-root     (projectile-project-root))
+         (build-dir-prefix (concat "build-" (projectile-project-name)))
+         (build-dir        (make-temp-file build-dir-prefix t "")))
+    (compile (concat "mkdir -p " build-dir
+                     " &&"
+                     " pushd " build-dir
+                     " &&"
+                     " cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON " project-root
+                     " &&"
+                     " rc -J ./compile_commands.json"
+                     " ; popd"))))
+
+(defun mb-f-projectile-regen-rtags-meson ()
+  "Create a `compile_commands.json' file for current project and feed it to rc."
+  (let* ((build-dir-prefix (concat "build-" (projectile-project-name)))
+         (build-dir        (make-temp-file build-dir-prefix t "")))
+    (compile (concat " pushd " (projectile-project-root)
+                     " &&"
+                     " meson " build-dir
+                     " && "
+                     (format "rc -J %s/compile_commands.json" build-dir)
+                     "; popd"))))
 
 (defun mb-f-projectile-autotools-p (&optional only)
   "Predicate that determines if current project is an autotools project.
