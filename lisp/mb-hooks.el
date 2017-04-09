@@ -525,7 +525,6 @@
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
-  (flyspell-prog-mode)
   (fci-mode)
   (highlight-numbers-mode)
   (emr-initialize)
