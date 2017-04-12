@@ -373,6 +373,8 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
             (lambda ()
               (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
+(defvar mb-f-jhbuild-src-path   "~/Code/gnome/src")
+(defvar mb-f-jhbuild-build-path "~/Code/gnome/build")
 (defun mb-f-projectile-regen-rtags-jhbuild ()
   "Create `compile_commands.json' for this `JHBuild' module and feed it to rc.
 
@@ -385,23 +387,22 @@ Meson projects Just Works™ and CMake will work automatically as
 well if you add this line:
     `cmakeargs = '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON''
 ... to your ~/.config/jhbuildrc"
-  (let* ((autotools    (mb-f-projectile-autotools-p t))
-         (module       (projectile-project-name))
-         (src-dir      (projectile-project-root))
-         (cd-build-dir (format " pushd $(jhbuild run --in-builddir=%s -- pwd)"
-                               module)))
-    (if autotools
-        (compile (concat " jhbuild make"
-                         " &&"
-                         " cdcc-gen " src-dir
-                         " &&"
-                         (format " rc -J %s/compile_commands.json" src-dir)))
-      (compile (concat " jhbuild make"
-                       " &&"
-                       cd-build-dir
-                       " &&"
-                       " rc -J ./compile_commands.json"
-                       " ; popd")))))
+  (let* ((autotools (mb-f-projectile-autotools-p t))
+         (module    (projectile-project-name))
+         (src-dir   (projectile-project-root))
+         (build-dir (format "%s/%s" mb-f-jhbuild-build-path module))
+         (extra-cmd (if autotools
+                        (concat " cdcc-gen " src-dir
+                                " &&"
+                                (format " mv %s/compile_commands.json %s"
+                                        src-dir
+                                        build-dir))
+                      "true")))
+    (compile (concat " jhbuild make"
+                     " &&"
+                     extra-cmd
+                     " &&"
+                     " rc -J " build-dir "/compile_commands.json" ))))
 
 (defun mb-f-projectile-regen-rtags-cmake ()
   "Create a `compile_commands.json' file for current project and feed it to rc."
