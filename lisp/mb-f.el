@@ -376,7 +376,10 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 (defun mb-f-projectile-regen-rtags-jhbuild ()
   "Create `compile_commands.json' for this `JHBuild' module and feed it to rc.
 
-Perform a `cdcc' compile if this is an autotools project.
+Perform a `cdcc-gen' and get the compile_commands.json from the
+src-dir if this is an autotools project.
+
+Needs `autogenargs += ' CC=cdcc-gcc CXX=cdcc-g++'' in jhbuildrc.
 
 Meson projects Just Works™ and CMake will work automatically as
 well if you add this line:
@@ -388,7 +391,7 @@ well if you add this line:
          (cd-build-dir (format " pushd $(jhbuild run --in-builddir=%s -- pwd)"
                                module)))
     (if autotools
-        (compile (concat " CC=cdcc-gcc CXX=cdcc-g++ jhbuild make -c"
+        (compile (concat " jhbuild make"
                          " &&"
                          " cdcc-gen " src-dir
                          " &&"
