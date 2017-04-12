@@ -101,6 +101,7 @@
  '(flycheck-emacs-lisp-load-path 'inherit)
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
+ '(flycheck-pos-tip-max-width 60)
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-summary-max-length 50)
