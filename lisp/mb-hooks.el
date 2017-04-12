@@ -198,6 +198,7 @@
   (require 'dired-x)
   (auto-revert-mode)
   (hl-line-mode)
+  (all-the-icons-dired-mode)
   (dired-omit-mode)
   (dired-hide-details-mode)
   (dired-hide-dotfiles-mode)
