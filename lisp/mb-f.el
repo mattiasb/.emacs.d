@@ -376,7 +376,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 (defun mb-f-projectile-regen-rtags-jhbuild ()
   "Create `compile_commands.json' for this `JHBuild' module and feed it to rc.
 
-Perform a `bear make' compile if this is an autotools project.
+Perform a `cdcc' compile if this is an autotools project.
 
 Meson projects Just Works™ and CMake will work automatically as
 well if you add this line:
