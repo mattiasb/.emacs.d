@@ -373,6 +373,16 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
             (lambda ()
               (send-string-to-terminal "\033]12;white\007\e[1 q"))))
 
+(defun mb-f-set-terminal-window-separator ()
+  "Set a unicode terminal window separator character."
+  (add-hook 'window-configuration-change-hook
+            (lambda ()
+              (let ((display-table (or buffer-display-table
+                                       standard-display-table)))
+                (set-display-table-slot display-table 5 ?│)
+                (set-window-display-table (selected-window)
+                                          display-table)))))
+
 (defvar mb-f-jhbuild-src-path   "~/Code/gnome/src")
 (defvar mb-f-jhbuild-build-path "~/Code/gnome/build")
 (defun mb-f-projectile-regen-rtags-jhbuild ()

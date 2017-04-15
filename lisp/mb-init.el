@@ -40,7 +40,8 @@
       (tmux-keys))
 
   (evil-esc-mode)
-  (mb-f-set-terminal-cursors))
+  (mb-f-set-terminal-cursors)
+  (mb-f-set-terminal-window-separator))
 
 (defun mb-init--global-keybindings ()
   "Activate global keybindings."
