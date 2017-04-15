@@ -88,6 +88,19 @@
   (global-control-mode)
   (mb-init--god-mode-isearch))
 
+(defun mb-init--spaceline ()
+  "Activate Spacelin."
+  (require 'spaceline-all-the-icons)
+  (spaceline-all-the-icons-theme)
+  (spaceline-toggle-all-the-icons-hud-off)
+  (spaceline-toggle-all-the-icons-time-off)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
+  (spaceline-toggle-all-the-icons-buffer-size-off)
+  (spaceline-toggle-all-the-icons-git-status-on)
+  (spaceline-toggle-all-the-icons-git-ahead-on)
+  (spaceline-toggle-all-the-icons-separator-right-active-1-off)
+  (spaceline-toggle-all-the-icons-separator-right-active-2-off))
+
 (defun mb-init--modes ()
   "Activate a bunch of global modes."
   (unless (display-graphic-p)
@@ -117,6 +130,7 @@
   (abbrev-mode)
   (projectile-mode)
   (auto-dim-other-buffers-mode)
+  (mb-init--spaceline)
   (mb-init--god-mode-isearch)
   (mb-init--visual-regexp)
   (mb-init--yas)
