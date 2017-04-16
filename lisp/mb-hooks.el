@@ -196,6 +196,7 @@
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (require 'dired-x)
+  (require 'tramp)
   (auto-revert-mode)
   (hl-line-mode)
   (all-the-icons-dired-mode)
