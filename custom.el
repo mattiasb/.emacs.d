@@ -60,8 +60,6 @@
  '(browse-kill-ring-show-preview nil)
  '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
- '(company-auto-complete t)
- '(company-auto-complete-chars '(32 40 41 46))
  '(company-backends
    '(company-elisp company-nxml company-css company-cmake company-capf
                    (company-dabbrev-code company-keywords)
