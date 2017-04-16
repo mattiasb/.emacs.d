@@ -560,9 +560,9 @@
 
   (projectile-register-project-type 'jhbuild
                                     (lambda () nil)
-                                    "jhbuild make"
-                                    "make check"
-                                    "jhbuild make && jhbuild run ${PWD##*/}")
+                                    :compile "jhbuild make"
+                                    :test "make check"
+                                    :run "jhbuild make && jhbuild run ${PWD##*/}")
 
   (mb-f-define-keys projectile-command-map
                     '(( "B"   . projectile-ibuffer)
