@@ -565,7 +565,9 @@
                                     :compile "jhbuild make"
                                     :test "make check"
                                     :run "jhbuild make && jhbuild run ${PWD##*/}")
-
+  (projectile-register-project-type 'win-batch
+                                    '("build.bat")
+                                    :compile "cmd.exe \"/c build\"")
   (mb-f-define-keys projectile-command-map
                     '(( "B"   . projectile-ibuffer)
                       ( "i"   . mb-cmd-projectile-index-projects)
