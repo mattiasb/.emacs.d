@@ -475,7 +475,8 @@
   (company-mode)
   (setq-local company-backends '(company-capf))
   (mb-f-define-keys mtg-deck-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
+                    '(( "C-<return>" . mtg-deck-show-card-at-point)
+                      ( "<tab>" . mb-cmd-snippet-or-complete))))
 
 (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode)
 
