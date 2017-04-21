@@ -695,6 +695,8 @@
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
+  (electric-operator-add-rules-for-mode 'sh-mode
+                                        (cons "=" nil))
   (setq-local defun-prompt-regexp
               (concat "^\\("
                       "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
