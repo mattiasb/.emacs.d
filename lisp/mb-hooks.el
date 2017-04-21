@@ -98,6 +98,7 @@
   (require 'company-rtags)
   (setq-local company-backends '(company-rtags))
 
+  ;; Use the RTags back-forward stuff instead
   (backward-forward-mode -1)
   (mb-f-define-keys c-mode-base-map
                     '(( "M-<left>"       . rtags-location-stack-back)
