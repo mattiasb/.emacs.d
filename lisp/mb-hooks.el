@@ -415,6 +415,7 @@
   "My `git-commit' mode hook."
   (mb-cmd-control-mode-off)
   (setq-local fill-column 72)
+  (auto-fill-mode)
   (git-commit-turn-on-flyspell)
   (git-commit-turn-on-auto-fill)
   (fci-mode 1))
