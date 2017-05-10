@@ -618,7 +618,7 @@
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (importmagic-mode)
-
+  (aggressive-indent-mode -1)
   (add-to-list 'electric-layout-rules
                (cons ?: #'mb-f-python-electric-newline))
   ;; sort imports and conform to PEP0008 on save
@@ -627,8 +627,10 @@
 
   (setq-local yas-indent-line 'fixed)
   (mb-f-define-keys python-mode-map
-                    '(( "."         . mb-cmd-dot-and-complete)
-                      ( "<tab>"     . mb-cmd-indent-snippet-or-complete))))
+                    '(( "."           . mb-cmd-dot-and-complete)
+                      ( "<tab>"       . mb-cmd-indent-snippet-or-complete)
+                      ( "C-z <right>" . python-indent-shift-right)
+                      ( "C-z <left>"  . python-indent-shift-left))))
 
 (add-hook 'python-mode-hook #'mb-hooks--python-mode)
 
