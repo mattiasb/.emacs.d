@@ -619,6 +619,7 @@
   (anaconda-eldoc-mode)
   (importmagic-mode)
   (aggressive-indent-mode -1)
+  (indent-tools-minor-mode)
   (add-to-list 'electric-layout-rules
                (cons ?: #'mb-f-python-electric-newline))
   ;; sort imports and conform to PEP0008 on save
@@ -629,8 +630,8 @@
   (mb-f-define-keys python-mode-map
                     '(( "."           . mb-cmd-dot-and-complete)
                       ( "<tab>"       . mb-cmd-indent-snippet-or-complete)
-                      ( "C-z <right>" . python-indent-shift-right)
-                      ( "C-z <left>"  . python-indent-shift-left))))
+                      ( "C-z <left>"  . indent-tools-demote)
+                      ( "C-z <right>" . indent-tools-indent))))
 
 (add-hook 'python-mode-hook #'mb-hooks--python-mode)
 
@@ -759,10 +760,15 @@
 (add-hook 'woman-mode-hook #'mb-hooks--woman-mode)
 
 ;; Yaml
+(defvar yaml-mode-map)
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
   (flycheck-yamllint-setup)
-  (flycheck-mode))
+  (flycheck-mode)
+  (indent-tools-minor-mode)
+  (mb-f-define-keys yaml-mode-map
+                    '(( "C-z <left>"  . indent-tools-demote)
+                      ( "C-z <right>" . indent-tools-indent))))
 
 (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook)
 
