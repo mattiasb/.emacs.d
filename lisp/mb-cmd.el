@@ -561,5 +561,12 @@ With a prefix ARG always prompt for command to use."
   (delete-window)
   (balance-windows))
 
+;;;###autoload
+(defun mb-cmd-git-commit-insert-issue-fix ()
+  "Insert an issue fix into a git commit message."
+  (interactive)
+  (insert "Fixes: ")
+  (call-interactively #'git-commit-insert-issue-ask-issues))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

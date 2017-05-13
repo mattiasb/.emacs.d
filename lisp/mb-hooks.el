@@ -411,6 +411,7 @@
 ;; Magit
 (autoload 'git-commit-turn-on-flyspell "git-commit" "" t nil)
 (autoload 'git-commit-turn-on-auto-fill "git-commit" "" t nil)
+(defvar git-commit-mode-map)
 (defun mb-hooks--git-commit-mode ()
   "My `git-commit' mode hook."
   (mb-cmd-control-mode-off)
@@ -418,7 +419,10 @@
   (auto-fill-mode)
   (git-commit-turn-on-flyspell)
   (git-commit-turn-on-auto-fill)
-  (fci-mode 1))
+  (git-commit-insert-issue-mode)
+  (fci-mode 1)
+  (mb-f-define-keys git-commit-mode-map
+                    '(( "C-c C-f" . mb-cmd-git-commit-insert-issue-fix))))
 
 (autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
 (autoload 'git-gutter:update-all-windows "git-gutter" "" t nil)
