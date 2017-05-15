@@ -411,7 +411,7 @@
 ;; Magit
 (autoload 'git-commit-turn-on-flyspell "git-commit" "" t nil)
 (autoload 'git-commit-turn-on-auto-fill "git-commit" "" t nil)
-(defvar git-commit-mode-map)
+
 (defun mb-hooks--git-commit-mode ()
   "My `git-commit' mode hook."
   (mb-cmd-control-mode-off)
@@ -420,41 +420,34 @@
   (git-commit-turn-on-flyspell)
   (git-commit-turn-on-auto-fill)
   (git-commit-insert-issue-mode)
-  (fci-mode 1)
-  (mb-f-define-keys git-commit-mode-map
-                    '(( "C-c C-f" . mb-cmd-git-commit-insert-issue-fix))))
+  (fci-mode 1))
 
-(autoload 'turn-on-magit-gitflow "magit-gitflow" "" t nil)
 (autoload 'git-gutter:update-all-windows "git-gutter" "" t nil)
-(autoload 'magit-define-popup-action "magit-popup")
+(with-eval-after-load "magit"
+  (require 'magithub)
+  (magithub-feature-autoinject 't)
 
-(defun mb-hooks--magit-mode ()
-  "My `magit' mode hook."
-  (require 'magit-gitflow)
-  (turn-on-magit-gitflow)
+  (magit-define-popup-action 'magit-run-popup ?g "Gitg"
+    #'mb-cmd-projectile-gitg)
 
-  (magit-define-popup-action 'magit-run-popup
-    ?g "Gitg" #'mb-cmd-projectile-gitg)
+  (magit-define-popup-action 'magit-run-popup ?a "ansi-term"
+    #'mb-cmd-projectile-ansi-term)
 
-  (magit-define-popup-action 'magit-run-popup
-    ?a "ansi-term" #'mb-cmd-projectile-ansi-term)
+  (magit-define-popup-action 'magit-run-popup ?t "gnome-terminal"
+    #'mb-cmd-projectile-gnome-terminal)
 
-  (magit-define-popup-action 'magit-run-popup
-    ?t "gnome-terminal" #'mb-cmd-projectile-gnome-terminal)
-
-  (add-hook 'magit-post-refresh-hook
-            #'git-gutter:update-all-windows))
-
-(defvar magit-blame-mode-map)
-(defun mb-hooks--magit-blame-mode ()
-  "My `magit-blame' mode hook."
+  (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
-                    '(( "C-z t b"     .  magit-blame-quit))))
+                    '(( "C-z t b" .  magit-blame-quit)))
 
-(add-hook 'magit-status-mode-hook #'magit-filenotify-mode)
-(add-hook 'magit-blame-mode-hook  #'mb-hooks--magit-blame-mode)
-(add-hook 'magit-mode-hook        #'mb-hooks--magit-mode)
-(add-hook 'git-commit-mode-hook   #'mb-hooks--git-commit-mode)
+  (defvar git-commit-mode-map)
+  (mb-f-define-keys git-commit-mode-map
+                    '(( "C-c C-f" . mb-cmd-git-commit-insert-issue-fix)))
+
+  (add-hook 'magit-mode-hook         #'turn-on-magit-gitflow)
+  (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
+  (add-hook 'magit-status-mode-hook  #'magit-filenotify-mode)
+  (add-hook 'git-commit-mode-hook    #'mb-hooks--git-commit-mode))
 
 ;; Markdown
 (defvar markdown-mode-map)
