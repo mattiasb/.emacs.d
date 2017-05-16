@@ -432,7 +432,7 @@ With a prefix ARG always prompt for command to use."
            (mb-f-projectile-regen-rtags-meson))
           ((mb-f-projectile-cmake-p)
            (mb-f-projectile-regen-rtags-cmake))
-          (t (message "Unsupported supported build system!")))))
+          (t (message "Unsupported build system!")))))
 
 ;;;###autoload
 (defun mb-cmd-projectile-index-projects ()
