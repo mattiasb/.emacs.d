@@ -213,6 +213,27 @@
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
   "My `emacs-lisp' mode hook."
+  ;; This and the next imenu expression is based on code from Sebastian Wiesner
+  ;; https://github.com/lunaryorn/my-old-.emacs.d/blob/master/lisp/lunaryorn-elisp.el#L51
+  (add-to-list 'imenu-generic-expression
+               `("Use Package" ,(rx "(use-package"
+                                    (optional "-with-elapsed-timer")
+                                    symbol-end
+                                    (1+ (syntax whitespace))
+                                    symbol-start
+                                    (group-n 1 (1+ (or (syntax word)
+                                                       (syntax symbol))))
+                                    symbol-end)
+                 1))
+  (add-to-list 'imenu-generic-expression
+               `("After Load" ,(rx "(with-eval-after-load"
+                                   symbol-end
+                                   (1+ whitespace)
+                                   (syntax string-quote)
+                                   (group-n 1 (1+ (or (syntax word)
+                                                      (syntax symbol))))
+                                   (syntax string-quote))
+                 1))
   (setq page-delimiter
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n"))))
