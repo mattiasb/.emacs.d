@@ -577,9 +577,8 @@
 (add-hook 'prog-mode-hook #'mb-hooks--prog-mode)
 
 ;; Projectile
-(defvar projectile-known-projects)
-(defun mb-hooks--projectile-mode ()
-  "My `projectile' mode hook."
+(with-eval-after-load "projectile"
+  (defvar projectile-known-projects)
 
   (unless projectile-known-projects
     (mb-cmd-projectile-index-projects))
@@ -610,8 +609,6 @@
                       ( "w a" . mb-cmd-projectile-ansi-term)
                       ( "w t" . mb-cmd-projectile-gnome-terminal)))
 
-  (control-mode-reload-bindings)
-
   (def-projectile-commander-method ?d
     "Open project root in dired."
     (projectile-dired))
@@ -630,9 +627,9 @@
 
   (def-projectile-commander-method ?V
     "Spawn gitg in the project root."
-    (mb-cmd-projectile-gitg)))
+    (mb-cmd-projectile-gitg))
 
-(add-hook 'projectile-mode-hook #'mb-hooks--projectile-mode)
+  (add-hook 'projectile-mode-hook #'control-mode-reload-bindings))
 
 ;; Python
 (defvar anaconda-mode-map)
