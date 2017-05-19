@@ -49,13 +49,6 @@
   (mb-keys-activate)
   (windmove-default-keybindings))
 
-(defun mb-init--visual-regexp ()
-  "Activate visual-regexp."
-  (require 'visual-regexp-steroids)
-  (mb-f-define-keys esc-map
-                    '(( "C-r" . vr/isearch-backward)
-                      ( "C-s" . vr/isearch-forward))))
-
 (defun mb-init--yas ()
   "Activate YASnippet."
   ;; This needs to be set here, or customize will bork.
@@ -108,6 +101,8 @@
   ;; Make ^ work
   (require 'iso-transl)
   (require 'dired-imenu)
+  (require 'visual-regexp-steroids)
+
   (mb-init--control-mode)
   (powerline-major-mode)
   (powerline-default-theme)
@@ -132,7 +127,6 @@
   (auto-dim-other-buffers-mode)
   (mb-init--spaceline)
   (mb-init--god-mode-isearch)
-  (mb-init--visual-regexp)
   (mb-init--yas)
   (mb-init--yatemplate))
 

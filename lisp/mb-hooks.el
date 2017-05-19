@@ -777,6 +777,12 @@
 (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
 (add-hook 'vala-mode-hook #'mb-hooks--vala-mode)
 
+;; Visual Regexp
+(with-eval-after-load "visual-regexp-steroids"
+  (mb-f-define-keys esc-map
+                    '(( "C-r" . vr/isearch-backward)
+                      ( "C-s" . vr/isearch-forward))))
+
 ;; Woman
 (defvar woman-mode-map)
 (defun mb-hooks--woman-mode ()
