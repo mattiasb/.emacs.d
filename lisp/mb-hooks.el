@@ -447,14 +447,18 @@
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
+(with-eval-after-load "magithub"
+  (declare-function magithub-feature-autoinject "magithub.el")
+  (magithub-feature-autoinject 't))
+
 (with-eval-after-load "magit"
   (declare-function git-gutter:update-all-windows "git-gutter.el")
-  (declare-function magithub-feature-autoinject "magithub.el")
   (declare-function magit-define-popup-action "magit-popup.el")
 
-  (require 'magithub)
-
-  (magithub-feature-autoinject 't)
+  ;; magithub still seems a bit rough around the edges.
+  ;; Let's try it out again later.
+  ;;
+  ;; (require 'magithub)
 
   (magit-define-popup-action 'magit-run-popup ?g "Gitg"
     #'mb-cmd-projectile-gitg)
