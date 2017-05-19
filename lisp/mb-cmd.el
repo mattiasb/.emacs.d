@@ -33,14 +33,13 @@
 (require 'projectile)
 (require 'ido)
 
-(autoload 'company-complete        "company" "" t nil)
-(autoload 'company-select-next     "company" "" t nil)
-(autoload 'company-select-previous "company" "" t nil)
-(autoload 'company-complete-common "company" "" t nil)
+(declare-function company-complete        "company.el")
+(declare-function company-select-next     "company.el")
+(declare-function company-select-previous "company.el")
+(declare-function company-complete-common "company.el")
 
-(autoload 'iedit-restrict-function "iedit" "" t nil)
-
-(autoload 'flyspell-overlay-p "flyspell")
+(declare-function iedit-restrict-function "iedit.el")
+(declare-function flyspell-overlay-p      "flyspell.el")
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()

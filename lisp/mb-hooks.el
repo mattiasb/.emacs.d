@@ -85,9 +85,10 @@
 (defvar flycheck-check-syntax-automatically)
 (defvar flycheck-highlighting-mode)
 (defvar projectile-command-map)
-(autoload 'rtags-diagnostics "rtags" "" t nil)
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
+  (declare-function rtags-diagnostics "rtags.el")
+
   (require 'rtags)
 
   (require 'flycheck-rtags)
@@ -184,12 +185,14 @@
 
 ;; Dired
 (defvar dired-mode-map)
-(autoload 'dired-omit-mode "dired-x" "" t nil)
-(autoload 'dired-hide-details-mode "dired" "" t nil)
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
+  (declare-function dired-omit-mode "dired-x.el")
+  (declare-function dired-hide-details-mode "dired.el")
+
   (require 'dired-x)
   (require 'tramp)
+
   (auto-revert-mode)
   (hl-line-mode)
   (all-the-icons-dired-mode)
@@ -351,11 +354,12 @@
 ;; JS2
 (defvar js2-mode-map)
 (defvar flimenu-imenu-separator)
-(autoload 'js2r-rename-var "js2-refactor" "" t nil)
-
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."
+  (declare-function js2r-rename-var "js2-refactor.el")
+
   (require 'js2-refactor)
+
   (js2-imenu-extras-mode)
   (setq flimenu-imenu-separator ".")
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
@@ -409,11 +413,11 @@
 (add-hook 'lua-mode-hook #'mb-hooks--lua-mode)
 
 ;; Magit
-(autoload 'git-commit-turn-on-flyspell "git-commit" "" t nil)
-(autoload 'git-commit-turn-on-auto-fill "git-commit" "" t nil)
-
 (defun mb-hooks--git-commit-mode ()
   "My `git-commit' mode hook."
+  (declare-function git-commit-turn-on-flyspell "git-commit.el")
+  (declare-function git-commit-turn-on-auto-fill "git-commit.el")
+
   (mb-cmd-control-mode-off)
   (setq-local fill-column 72)
   (auto-fill-mode)
@@ -422,9 +426,13 @@
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
-(autoload 'git-gutter:update-all-windows "git-gutter" "" t nil)
 (with-eval-after-load "magit"
+  (declare-function git-gutter:update-all-windows "git-gutter.el")
+  (declare-function magithub-feature-autoinject "magithub.el")
+  (declare-function magit-define-popup-action "magit-popup.el")
+
   (require 'magithub)
+
   (magithub-feature-autoinject 't)
 
   (magit-define-popup-action 'magit-run-popup ?g "Gitg"
@@ -479,9 +487,9 @@
 (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode)
 
 ;; Multiple Cursors
-(autoload 'control-mode-reload-bindings "control-mode" "" t nil)
 (defun mb-hooks--multiple-cursors-mode-enabled ()
   "My `multiple-cursors' mode hook."
+  (declare-function control-mode-reload-bindings "control-mode.el")
   (control-mode-reload-bindings))
 
 (add-hook 'multiple-cursors-mode-enabled-hook
@@ -606,9 +614,10 @@
 (defvar python-mode-map)
 (defvar mb-cmd-realgud-debugger)
 (defvar yas-indent-line)
-(autoload 'realgud:ipdb "realgud" "" t nil)
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
+  (declare-function realgud:ipdb "realgud.el")
+
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
   (setq-local mb-cmd-realgud-debugger #'realgud:ipdb)
   (setq-local company-backends '(company-anaconda))
@@ -699,6 +708,8 @@
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
+  (declare-function electric-operator-add-rules-for-mode "electric-operator.el")
+
   (electric-operator-add-rules-for-mode 'sh-mode
                                         (cons "=" nil))
   (setq-local defun-prompt-regexp
