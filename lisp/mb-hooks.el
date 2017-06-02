@@ -130,21 +130,33 @@
 (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode)
 
 ;; Control
-(defvar control-mode)
-(defvar control-mode-keymap)
-(defun mb-hooks--control-mode ()
-  "My `control' mode hook."
-  (mb-f-control-mode-set-cursor)
+(with-eval-after-load "control-mode"
+  (require 'god-mode-isearch)
+  (setq-default control-mode t)
+  (global-control-mode)
+
+  (defvar control-mode-keymap)
   (mb-f-define-keys control-mode-keymap
                     '(( "i"           . mb-cmd-control-mode-off)
                       ( "<escape>"    . ESC-prefix)
                       ( "x x"         . smex)
                       ( "x s"         . save-buffer)
-                      ( "x S"         . save-some-buffers))))
+                      ( "x S"         . save-some-buffers)))
 
-(add-hook 'control-mode-keymap-generation-functions
-          'control-mode-ctrlx-hacks)
-(add-hook 'control-mode-hook #'mb-hooks--control-mode)
+  (mb-f-define-keys isearch-mode-map
+                    '(( "<escape>" . god-mode-isearch-activate)
+                      ( "<insert>" . god-mode-isearch-activate)))
+
+  (defvar god-mode-isearch-map)
+  (mb-f-define-keys god-mode-isearch-map
+                    '(( "g"        . isearch-cancel)
+                      ( "i"        . god-mode-isearch-disable)
+                      ( "<insert>" . god-mode-isearch-disable)))
+
+  (add-hook 'control-mode-keymap-generation-functions
+            #'control-mode-ctrlx-hacks)
+  (add-hook 'control-mode-hook
+            #'mb-f-control-mode-set-cursor))
 
 ;; Company
 (defvar company-active-map)

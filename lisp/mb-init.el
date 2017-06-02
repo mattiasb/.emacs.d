@@ -61,26 +61,6 @@
   (yatemplate-fill-alist)
   (auto-insert-mode 1))
 
-(defvar god-mode-isearch-map)
-(defun mb-init--god-mode-isearch ()
-  "Activate `god-mode-isearch'."
-  (require 'god-mode-isearch)
-  (mb-f-define-keys isearch-mode-map
-                    '(( "<escape>" . god-mode-isearch-activate)
-                      ( "<insert>" . god-mode-isearch-activate)))
-  (mb-f-define-keys god-mode-isearch-map
-                    '(( "g"        . isearch-cancel)
-                      ( "i"        . god-mode-isearch-disable)
-                      ( "<insert>" . god-mode-isearch-disable))))
-
-(defun mb-init--control-mode ()
-  "Activate Control Mode."
-  (require 'control-mode)
-  (add-hook 'after-change-major-mode-hook
-            #'mb-f-control-mode-set-cursor)
-  (global-control-mode)
-  (mb-init--god-mode-isearch))
-
 (defun mb-init--spaceline ()
   "Activate Spacelin."
   (require 'spaceline-all-the-icons)
@@ -102,8 +82,8 @@
   (require 'iso-transl)
   (require 'dired-imenu)
   (require 'visual-regexp-steroids)
+  (require 'control-mode)
 
-  (mb-init--control-mode)
   (powerline-major-mode)
   (powerline-default-theme)
   (global-git-gutter-mode)
@@ -126,7 +106,6 @@
   (projectile-mode)
   (auto-dim-other-buffers-mode)
   (mb-init--spaceline)
-  (mb-init--god-mode-isearch)
   (mb-init--yas)
   (mb-init--yatemplate))
 
