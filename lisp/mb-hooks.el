@@ -254,18 +254,17 @@
   (flycheck-rust-setup))
 
 ;; Flyspell
-(defvar flyspell-mode-map)
-(defun mb-hooks--flyspell-mode ()
-  "My `flyspell' mode hook."
+(with-eval-after-load "flyspell"
   (require 'flyspell-correct-popup)
-  (flyspell-buffer)
+
+  (defvar flyspell-mode-map)
   (mb-f-define-keys flyspell-mode-map
                     '(("C-," . mb-cmd-flyspell-goto-previous-error)
                       ("C-." . flyspell-goto-next-error)
                       ("C-;" . flyspell-correct-previous-word-generic)
-                      ("C-:" . flyspell-correct-next-word-generic))))
+                      ("C-:" . flyspell-correct-next-word-generic)))
 
-(add-hook 'flyspell-mode-hook #'mb-hooks--flyspell-mode)
+  (add-hook 'flyspell-mode-hook #'flyspell-buffer))
 
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
