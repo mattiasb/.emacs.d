@@ -337,14 +337,12 @@
   (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
 ;; IELM
-(defvar ielm-map)
-(defun mb-hooks--ielm-mode ()
-  "My `ielm' mode hook."
-  (company-mode)
+(with-eval-after-load "ielm"
+  (defvar ielm-map)
   (mb-f-define-keys ielm-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
+                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
 
-(add-hook 'ielm-mode-hook #'mb-hooks--ielm-mode)
+  (add-hook 'ielm-mode-hook #'company-mode))
 
 ;; Info
 (defun mb-hooks--Info-mode ()
