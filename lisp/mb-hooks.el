@@ -772,14 +772,15 @@
                     '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 ;; Vala
-(defvar flycheck-checkers)
 (defun mb-hooks--vala-mode ()
   "My `vala' mode hook."
-  (require 'flycheck-vala)
+  (defvar flycheck-checkers)
   (add-to-list 'flycheck-checkers 'vala-valac))
 
-(add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
-(add-hook 'vala-mode-hook #'mb-hooks--vala-mode)
+(with-eval-after-load "vala-mode"
+  (require 'flycheck-vala)
+  (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
+  (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
 
 ;; Visual Regexp
 (with-eval-after-load "visual-regexp-steroids"
