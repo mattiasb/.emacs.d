@@ -757,15 +757,19 @@
   (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;; Systemd
-(defvar systemd-mode-map)
 (defun mb-hooks-systemd-mode ()
   "My `systemd' mode hook."
   (company-mode)
-  (setq-local company-backends '(company-capf))
+  (defvar company-backends)
+  (setq-local company-backends '(company-capf)))
+
+
+(with-eval-after-load "systemd"
+  (add-hook 'systemd-mode-hook #'mb-hooks-systemd-mode)
+
+  (defvar systemd-mode-map)
   (mb-f-define-keys systemd-mode-map
                     '(( "<tab>" . mb-cmd-snippet-or-complete))))
-
-(add-hook 'systemd-mode-hook #'mb-hooks-systemd-mode)
 
 ;; Vala
 (defvar flycheck-checkers)
