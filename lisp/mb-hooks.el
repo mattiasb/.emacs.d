@@ -159,24 +159,21 @@
             #'mb-f-control-mode-set-cursor))
 
 ;; Company
-(defvar company-active-map)
-(defun mb-hooks--company-mode ()
-  "My `company' mode hook."
+(with-eval-after-load "company"
   (company-quickhelp-mode)
 
+  (defvar company-active-map)
   (mb-f-define-keys company-active-map
                     '(( "\C-n"    . company-select-next)
                       ( "\C-p"    . company-select-previous)
                       ( "<next>"  . mb-cmd-company-scroll-down)
                       ( "<prior>" . mb-cmd-company-scroll-up)
                       ( "\C-v"    . company-show-location)
-                      ( "\C-g"    . company-abort))))
+                      ( "\C-g"    . company-abort)))
 
-(add-hook 'company-mode-hook                 #'mb-hooks--company-mode)
-(add-hook 'company-completion-started-hook   #'mb-f-fci-turn-off)
-(add-hook 'company-completion-finished-hook  #'mb-f-fci-turn-on)
-(add-hook 'company-completion-cancelled-hook #'mb-f-fci-turn-on)
-
+  (add-hook 'company-completion-started-hook   #'mb-f-fci-turn-off)
+  (add-hook 'company-completion-finished-hook  #'mb-f-fci-turn-on)
+  (add-hook 'company-completion-cancelled-hook #'mb-f-fci-turn-on))
 
 ;; Compilation Mode
 
