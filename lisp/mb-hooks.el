@@ -561,8 +561,9 @@
   (fci-mode)
   (highlight-numbers-mode)
   (emr-initialize)
-  (backward-forward-mode)
+  (backward-forward-mode))
 
+(with-eval-after-load "prog-mode"
   (mb-f-define-keys prog-mode-map
                     '(( "<tab>"       . mb-cmd-snippet-or-complete)
                       ( "C-z f e"     . mb-cmd-iedit-in-defun)
@@ -571,9 +572,9 @@
                       ( "C-z d d"     . mb-cmd-realgud-debug)
                       ( "C-z d a"     . realgud-short-key-mode)))
   (mb-f-remap-keys  prog-mode-map
-                    '(( "RET"         . "M-j"))))
+                    '(( "RET"         . "M-j")))
 
-(add-hook 'prog-mode-hook #'mb-hooks--prog-mode)
+  (add-hook 'prog-mode-hook #'mb-hooks--prog-mode))
 
 ;; Projectile
 (with-eval-after-load "projectile"
