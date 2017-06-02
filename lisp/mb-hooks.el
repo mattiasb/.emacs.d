@@ -144,6 +144,8 @@
                       ( "i"        . god-mode-isearch-disable)
                       ( "<insert>" . god-mode-isearch-disable)))
 
+
+  (declare-function control-mode-ctrlx-hacks "control-mode.el")
   (add-hook 'control-mode-keymap-generation-functions
             #'control-mode-ctrlx-hacks)
   (add-hook 'control-mode-hook
