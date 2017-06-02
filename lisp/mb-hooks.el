@@ -186,21 +186,22 @@
   (require 'flycheck-cython))
 
 ;; Dired
-(defvar dired-mode-map)
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (declare-function dired-omit-mode "dired-x.el")
   (declare-function dired-hide-details-mode "dired.el")
-
-  (require 'dired-x)
-  (require 'tramp)
-
   (auto-revert-mode)
   (hl-line-mode)
   (all-the-icons-dired-mode)
   (dired-omit-mode)
   (dired-hide-details-mode)
-  (dired-hide-dotfiles-mode)
+  (dired-hide-dotfiles-mode))
+
+(with-eval-after-load "dired"
+  (require 'dired-x)
+  (require 'tramp)
+
+  (defvar dired-mode-map)
   (mb-f-define-keys dired-mode-map
                     '(( "W" . wdired-change-to-wdired-mode)
                       ( "F" . find-name-dired)
@@ -208,9 +209,9 @@
                       ( "." . dired-hide-dotfiles-mode)))
   (mb-f-remap-keys dired-mode-map
                    '(("s" . "C-s")
-                     ("r" . "C-r"))))
+                     ("r" . "C-r")))
 
-(add-hook 'dired-mode-hook #'mb-hooks--dired-mode)
+  (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
