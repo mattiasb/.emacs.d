@@ -731,24 +731,26 @@
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
-  (declare-function electric-operator-add-rules-for-mode "electric-operator.el")
 
-  (electric-operator-add-rules-for-mode 'sh-mode
-                                        (cons "=" nil))
   (setq-local defun-prompt-regexp
               (concat "^\\("
                       "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
                       "\\|"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
+
+  (sh-extra-font-lock-activate)
+  (defvar company-backends)
   (setq-local company-backends '((company-shell
                                   company-keywords
                                   company-files
-                                  company-dabbrev-code)))
-  (sh-extra-font-lock-activate))
+                                  company-dabbrev-code))))
 
-(add-hook 'sh-mode-hook #'mb-hooks--sh-mode)
-
+(with-eval-after-load "sh-script"
+  (require 'electric-operator)
+  (electric-operator-add-rules-for-mode 'sh-mode
+                                        (cons "=" nil))
+  (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
 (defun mb-hooks--sql-mode ()
