@@ -416,11 +416,13 @@
 ;; Lua
 (defun mb-hooks--lua-mode ()
   "My `lua' mode hook."
+  (defvar company-backends)
   (setq-local company-backends '((company-dabbrev-code
                                   company-files
                                   company-keywords))))
 
-(add-hook 'lua-mode-hook #'mb-hooks--lua-mode)
+(with-eval-after-load "lua-mode"
+  (add-hook 'lua-mode-hook #'mb-hooks--lua-mode))
 
 ;; Magit
 (defun mb-hooks--git-commit-mode ()
