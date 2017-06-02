@@ -789,16 +789,17 @@
                       ( "C-s" . vr/isearch-forward))))
 
 ;; Woman
-(defvar woman-mode-map)
 (defun mb-hooks--woman-mode ()
   "My `woman' mode hook."
+  (defvar woman-mode-map)
   (mb-f-remap-keys woman-mode-map
                    '(("a" . "s")
                      ("s" . "C-s")
                      ("R" . "r")
                      ("r" . "C-r"))))
 
-(add-hook 'woman-mode-hook #'mb-hooks--woman-mode)
+(with-eval-after-load "woman"
+  (add-hook 'woman-mode-hook #'mb-hooks--woman-mode))
 
 ;; Yaml
 (defvar yaml-mode-map)
