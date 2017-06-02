@@ -632,17 +632,21 @@
   (add-hook 'projectile-mode-hook #'control-mode-reload-bindings))
 
 ;; Python
-(defvar anaconda-mode-map)
-(defvar python-mode-map)
-(defvar mb-cmd-realgud-debugger)
-(defvar yas-indent-line)
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
   (declare-function realgud:ipdb "realgud.el")
 
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
+
+  (defvar yas-indent-line)
+  (setq-local yas-indent-line 'fixed)
+
+  (defvar mb-cmd-realgud-debugger)
   (setq-local mb-cmd-realgud-debugger #'realgud:ipdb)
+
+  (defvar company-backends)
   (setq-local company-backends '(company-anaconda))
+
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (importmagic-mode)
@@ -652,28 +656,25 @@
                (cons ?: #'mb-f-python-electric-newline))
   ;; sort imports and conform to PEP0008 on save
   (add-hook 'before-save-hook 'py-isort-before-save)
-  (py-autopep8-enable-on-save)
+  (py-autopep8-enable-on-save))
 
-  (setq-local yas-indent-line 'fixed)
+(with-eval-after-load "python"
+  (defvar python-mode-map)
   (mb-f-define-keys python-mode-map
                     '(( "."           . mb-cmd-dot-and-complete)
                       ( "<tab>"       . mb-cmd-indent-snippet-or-complete)
                       ( "C-z <left>"  . indent-tools-demote)
-                      ( "C-z <right>" . indent-tools-indent))))
+                      ( "C-z <right>" . indent-tools-indent)))
 
-(add-hook 'python-mode-hook #'mb-hooks--python-mode)
+  (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
-;; Anaconda
-;; TODO: Figure out bindings for this
-(defun mb-hooks--anaconda-mode ()
-  "My `anaconda' mode hook."
+(with-eval-after-load "anaconda-mode"
+  (defvar anaconda-mode-map)
   (mb-f-define-keys anaconda-mode-map
                     '(( "C-<return>" . anaconda-mode-find-definitions)
                       ( "M-<return>" . anaconda-mode-find-assignments)
                       ( "C-z h d"    . anaconda-mode-show-doc)
                       ( "M-?"        . anaconda-mode-find-references))))
-
-(add-hook 'anaconda-mode-hook #'mb-hooks--anaconda-mode)
 
 ;; Realgud Track
 (defvar realgud-track-mode-map)
