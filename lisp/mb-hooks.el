@@ -42,16 +42,13 @@
                     '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Backward Forward
-(defun mb-hooks--backward-forward-mode ()
-  "My `backward-forward' mode hook."
+(with-eval-after-load "backward-forward"
   (defvar backward-forward-mode-map)
   (mb-f-define-keys backward-forward-mode-map
                     '(("M-<left>"  . backward-forward-previous-location)
                       ("M-<right>" . backward-forward-next-location)
                       ("C-<left>"  . nil)
                       ("C-<right>" . nil))))
-
-(add-hook 'backward-forward-mode-hook #'mb-hooks--backward-forward-mode)
 
 ;; Browse Kill Ring
 (defvar browse-kill-ring-mode-map)
