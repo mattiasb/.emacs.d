@@ -182,11 +182,8 @@
   (add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter))
 
 ;; Cython
-(defun mb-hooks--cython-mode ()
-  "My `cython' mode hook."
+(with-eval-after-load "cython-mode"
   (require 'flycheck-cython))
-
-(add-hook 'cython-mode-hook #'mb-hooks--cython-mode)
 
 ;; Dired
 (defvar dired-mode-map)
