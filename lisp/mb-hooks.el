@@ -174,10 +174,12 @@
 (defvar compilation-filter-start)
 (defun mb-hooks--compilation-filter ()
   "My `compilation-filter' mode hook."
-  (require 'ansi-color)
   (when (eq major-mode 'compilation-mode)
+    (require 'ansi-color)
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
-(add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter)
+
+(with-eval-after-load "compile"
+  (add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter))
 
 ;; Cython
 (defun mb-hooks--cython-mode ()
