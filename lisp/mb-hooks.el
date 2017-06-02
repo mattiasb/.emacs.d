@@ -112,13 +112,14 @@
 ;; CMake
 (defun mb-hooks--cmake-mode ()
   "My `cmake' mode hook."
+  (defvar company-backends)
   (setq-local company-backends '((company-cmake
                                   company-keywords
                                   company-files
                                   company-dabbrev-code))))
-
-(add-hook 'cmake-mode-hook #'mb-hooks--prog-mode)
-(add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode)
+(with-eval-after-load "cmake"
+  (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode)
+  (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode))
 
 ;; Control
 (with-eval-after-load "control-mode"
