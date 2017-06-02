@@ -684,15 +684,18 @@
                       ( "<tab>"  . mb-cmd-snippet-or-complete))))
 
 ;; REST Client
-(defvar restclient-mode-map)
 (defun mb-hooks--restclient-mode ()
   "My `restclient' mode hook."
   (company-mode)
-  (setq-local company-backends '((company-restclient)))
-  (mb-f-define-keys restclient-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
+  (defvar company-backends)
+  (setq-local company-backends '((company-restclient))))
 
-(add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode)
+(with-eval-after-load "restclient"
+  (defvar restclient-mode-map)
+  (mb-f-define-keys restclient-mode-map
+                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
+
+  (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
 
 ;; Rust
 (defvar rust-mode-map)
