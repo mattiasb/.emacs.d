@@ -514,8 +514,9 @@
   (declare-function control-mode-reload-bindings "control-mode.el")
   (control-mode-reload-bindings))
 
-(add-hook 'multiple-cursors-mode-enabled-hook
-          #'mb-hooks--multiple-cursors-mode-enabled)
+(with-eval-after-load "multiple-cursors"
+  (add-hook 'multiple-cursors-mode-enabled-hook
+            #'mb-hooks--multiple-cursors-mode-enabled))
 
 ;; nXML
 (defvar nxml-mode-map)
