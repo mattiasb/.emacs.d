@@ -328,15 +328,13 @@
   (add-hook 'ibuffer-hook #'mb-hooks--ibuffer))
 
 ;; Iedit
-(defvar iedit-mode-keymap)
-(defun mb-hooks--iedit-mode ()
-  "My `iedit' mode hook."
+(with-eval-after-load "iedit"
+  (defvar iedit-mode-keymap)
   (mb-f-define-keys iedit-mode-keymap
                     '(("C-g"      . iedit-quit)
-                      ("<return>" . iedit-quit))))
+                      ("<return>" . iedit-quit)))
 
-(add-hook 'iedit-mode-hook #'mb-hooks--iedit-mode)
-(add-hook 'iedit-aborting-hook #'deactivate-mark)
+  (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
 ;; IELM
 (defvar ielm-map)
