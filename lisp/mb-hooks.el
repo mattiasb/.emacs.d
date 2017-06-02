@@ -36,13 +36,10 @@
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
 
 ;; AG
-(defvar ag-mode-map)
-(defun mb-hooks--ag-mode ()
-  "My `ag' mode hook."
+(with-eval-after-load "ag"
+  (defvar ag-mode-map)
   (mb-f-define-keys ag-mode-map
                     '(( "W" . wgrep-change-to-wgrep-mode))))
-
-(add-hook 'ag-mode-hook #'mb-hooks--ag-mode)
 
 ;; Backward Forward
 (defun mb-hooks--backward-forward-mode ()
