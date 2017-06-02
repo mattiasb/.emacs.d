@@ -397,16 +397,13 @@
 ;; Todotxt
 (autoload 'todotxt "todotxt" "" t nil)
 (autoload 'todotxt-mode "todotxt" "" t nil)
-(defvar todotxt-mode-map)
-(defun mb-hooks--todotxt-mode ()
-  "My `todotxt' mode hook."
+(with-eval-after-load "todotxt"
+  (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
                     '(("j" . nil)
                       ("k" . todotxt-nuke-item)
                       ("_" . todotxt-undo)
                       ("u" . nil))))
-
-(add-hook 'todotxt-mode-hook #'mb-hooks--todotxt-mode)
 
 ;; JSON
 (defun mb-hooks--json-mode ()
