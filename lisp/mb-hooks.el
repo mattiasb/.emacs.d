@@ -677,14 +677,11 @@
                       ( "M-?"        . anaconda-mode-find-references))))
 
 ;; Realgud Track
-(defvar realgud-track-mode-map)
-(defun mb-hooks--realgud-track-mode ()
-  "My `realgud-track' mode hook."
+(with-eval-after-load "realgud"
+  (defvar realgud-track-mode-map)
   (mb-f-define-keys realgud-track-mode-map
                     '(( "."      . mb-cmd-dot-and-complete)
                       ( "<tab>"  . mb-cmd-snippet-or-complete))))
-
-(add-hook 'realgud-track-mode-hook #'mb-hooks--realgud-track-mode)
 
 ;; REST Client
 (defvar restclient-mode-map)
