@@ -698,16 +698,14 @@
   (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
 
 ;; Rust
-(defvar rust-mode-map)
-(defun mb-hooks--rust-mode ()
-  "My `rust' mode hook."
-  (racer-mode)
+(with-eval-after-load "rust-mode"
+  (defvar rust-mode-map)
   (mb-f-define-keys rust-mode-map
                     '(( "C-<return>" . racer-find-definition)
                       ( "."          . mb-cmd-dot-and-complete)
-                      ( ":"          . mb-cmd-double-colon-and-complete))))
+                      ( ":"          . mb-cmd-double-colon-and-complete)))
 
-(add-hook 'rust-mode-hook #'mb-hooks--rust-mode)
+  (add-hook 'rust-mode-hook #'racer-mode))
 
 ;; Shell
 (defvar term-raw-map)
