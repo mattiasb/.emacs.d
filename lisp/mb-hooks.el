@@ -802,17 +802,19 @@
   (add-hook 'woman-mode-hook #'mb-hooks--woman-mode))
 
 ;; Yaml
-(defvar yaml-mode-map)
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
   (flycheck-yamllint-setup)
   (flycheck-mode)
-  (indent-tools-minor-mode)
+  (indent-tools-minor-mode))
+
+(with-eval-after-load "yaml-mode"
+  (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
                     '(( "C-z <left>"  . indent-tools-demote)
-                      ( "C-z <right>" . indent-tools-indent))))
+                      ( "C-z <right>" . indent-tools-indent)))
 
-(add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook)
+  (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
 
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here
