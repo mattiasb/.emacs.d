@@ -363,9 +363,11 @@
   "My `java' mode hook."
   (require 'ensime-company)
   (ensime)
+  (defvar company-backends)
   (setq-local company-backends '((ensime-company))))
 
-(add-hook 'java-mode-hook #'mb-hooks--java-mode)
+(with-eval-after-load "cc-mode"
+  (add-hook 'java-mode-hook #'mb-hooks--java-mode))
 
 ;; JS2
 (defvar js2-mode-map)
