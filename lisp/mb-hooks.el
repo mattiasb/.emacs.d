@@ -70,28 +70,31 @@
 (add-hook 'c-mode-common-hook #'mb-hooks--c-common)
 
 ;; C / C++
-(defvar rtags-completions-enabled)
-(defvar company-backends)
-(defvar flycheck-disabled-checkers)
-(defvar flycheck-check-syntax-automatically)
-(defvar flycheck-highlighting-mode)
-(defvar projectile-command-map)
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
-  (declare-function rtags-diagnostics "rtags.el")
+  (defvar company-backends)
+  (defvar flycheck-disabled-checkers)
+  (defvar flycheck-check-syntax-automatically)
+  (defvar flycheck-highlighting-mode)
 
-  (require 'rtags)
-
-  (require 'flycheck-rtags)
   (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
   (setq-local flycheck-highlighting-mode nil)
   (setq-local flycheck-check-syntax-automatically nil)
-
-  (require 'company-rtags)
   (setq-local company-backends '(company-rtags))
 
   ;; Use the RTags back-forward stuff instead
   (backward-forward-mode -1)
+
+  (defvar projectile-command-map)
+  (mb-f-define-keys projectile-command-map
+                    '(( "j"              . rtags-find-symbol)
+                      ( "R"              . mb-cmd-projectile-regen-rtags))))
+
+(with-eval-after-load "cc-mode"
+  (require 'rtags)
+  (require 'flycheck-rtags)
+  (require 'company-rtags)
+
   (mb-f-define-keys c-mode-base-map
                     '(( "M-<left>"       . rtags-location-stack-back)
                       ( "M-<right>"      . rtags-location-stack-forward)
@@ -102,12 +105,9 @@
                       ( "."              . mb-cmd-dot-and-complete)
                       ( ":"              . mb-cmd-double-colon-and-complete)
                       ( ">"              . mb-cmd-arrow-and-complete)))
-  (mb-f-define-keys projectile-command-map
-                    '(( "j"              . rtags-find-symbol)
-                      ( "R"              . mb-cmd-projectile-regen-rtags))))
 
-(add-hook 'c-mode-hook   #'mb-hooks--c-mode)
-(add-hook 'c++-mode-hook #'mb-hooks--c-mode)
+  (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
+  (add-hook 'c++-mode-hook #'mb-hooks--c-mode))
 
 ;; CMake
 (defun mb-hooks--cmake-mode ()
