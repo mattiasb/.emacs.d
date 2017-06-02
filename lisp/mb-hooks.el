@@ -370,35 +370,29 @@
   (add-hook 'java-mode-hook #'mb-hooks--java-mode))
 
 ;; JS2
-(defvar js2-mode-map)
-(defvar flimenu-imenu-separator)
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."
   (declare-function js2r-rename-var "js2-refactor.el")
 
-  (require 'js2-refactor)
+  (defvar flimenu-imenu-separator)
+  (setq-local flimenu-imenu-separator ".")
 
-  (js2-imenu-extras-mode)
-  (setq flimenu-imenu-separator ".")
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
+  (js2-imenu-extras-mode)
 
-  (mb-f-define-keys js2-mode-map
-                    '(( "C-z f r"    . js2r-rename-var)))
-
+  (defvar company-backends)
   (setq-local company-backends '((company-dabbrev-code
                                   company-files
                                   company-keywords))))
 
-(add-hook 'js2-mode-hook #'mb-hooks--js2-mode)
+(with-eval-after-load "js2-mode"
+  (require 'js2-refactor)
 
-(defvar tern-mode-keymap)
-(defun mb-hooks--tern-mode ()
-  "My `tern' mode hook."
-  (mb-f-define-keys tern-mode-keymap
-                    '(( "C-<return>" . tern-find-definition)
-                      ( "C-z f r"    . tern-rename-variable))))
+  (defvar js2-mode-map)
+  (mb-f-define-keys js2-mode-map
+                    '(( "C-z f r"    . js2r-rename-var)))
 
-(add-hook 'tern-mode-hook #'mb-hooks--tern-mode)
+  (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
 
 ;; Todotxt
 (autoload 'todotxt "todotxt" "" t nil)
