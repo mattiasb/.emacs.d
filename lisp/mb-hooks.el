@@ -708,23 +708,25 @@
   (add-hook 'rust-mode-hook #'racer-mode))
 
 ;; Shell
-(defvar term-raw-map)
-(defvar yas-dont-activate-functions)
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
-  (setq yas-dont-activate-functions t)
-  (mb-f-define-keys term-raw-map
-                    '(( "M-x"       . smex)
-                      ( "C-y"       . mb-cmd-term-paste)
-                      ( "<escape>"  . ESC-prefix))))
+  (defvar yas-dont-activate-functions)
+  (setq yas-dont-activate-functions t))
 
 (defun mb-hooks--term-exec ()
   "My `term' mode hook."
   (set-buffer-process-coding-system 'utf-8-unix
                                     'utf-8-unix))
 
-(add-hook 'term-mode-hook #'mb-hooks--term-mode)
-(add-hook 'term-exec-hook #'mb-hooks--term-exec)
+(with-eval-after-load "term"
+  (defvar term-raw-map)
+  (mb-f-define-keys term-raw-map
+                    '(( "M-x"       . smex)
+                      ( "C-y"       . mb-cmd-term-paste)
+                      ( "<escape>"  . ESC-prefix)))
+
+  (add-hook 'term-mode-hook #'mb-hooks--term-mode)
+  (add-hook 'term-exec-hook #'mb-hooks--term-exec))
 
 ;; Shell script
 (defun mb-hooks--sh-mode ()
