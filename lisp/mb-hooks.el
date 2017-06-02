@@ -753,11 +753,8 @@
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
-(defun mb-hooks--sql-mode ()
-  "My `sql' mode hook."
-  (sqlup-mode))
-
-(add-hook 'sql-mode-hook #'mb-hooks--sql-mode)
+(with-eval-after-load "sql"
+  (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;; Systemd
 (defvar systemd-mode-map)
