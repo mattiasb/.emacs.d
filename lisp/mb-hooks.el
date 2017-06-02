@@ -474,21 +474,24 @@
   (add-hook 'git-commit-mode-hook    #'mb-hooks--git-commit-mode))
 
 ;; Markdown
-(defvar markdown-mode-map)
 (defun mb-hooks--markdown-mode ()
   "My `markdown' mode hook."
-  (flyspell-mode)
   (setq-local fill-column 80)
-  (fci-mode)
-  (auto-fill-mode)
   (setq-local indent-tabs-mode nil)
+
+  (flyspell-mode)
+  (fci-mode)
+  (auto-fill-mode))
+
+(with-eval-after-load "markdown-mode"
+  (defvar markdown-mode-map)
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
                       ( "C-c C-c p"  . mb-cmd-open-with)
                       ( "M-<up>"     . nil)
-                      ( "M-<down>"   . nil))))
+                      ( "M-<down>"   . nil)))
 
-(add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode)
+  (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode))
 
 ;; MTG deck mode
 (defvar mtg-deck-mode-map)
