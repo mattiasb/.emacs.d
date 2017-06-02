@@ -308,15 +308,12 @@
                      ("r" . "C-r"))))
 
 ;; Ido
-(defvar ido-common-completion-map)
-(defun mb-hooks--ido-setup ()
-  "My `ido' mode hook."
+(with-eval-after-load "ido"
+  (defvar ido-common-completion-map)
   (mb-f-define-keys ido-common-completion-map
                     '(( "<tab"    . ido-complete)
                       ( "<next>"  . mb-cmd-ido-scroll-down)
                       ( "<prior>" . mb-cmd-ido-scroll-up))))
-
-(add-hook 'ido-setup-hook #'mb-hooks--ido-setup)
 
 ;; IBuffer
 (defvar ibuffer-sorting-mode)
