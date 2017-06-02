@@ -51,17 +51,14 @@
                       ("C-<right>" . nil))))
 
 ;; Browse Kill Ring
-(defvar browse-kill-ring-mode-map)
-(defun mb-hooks--browse-kill-ring-mode ()
-  "My `browse-kill-ring' mode hook."
+(with-eval-after-load "browse-kill-ring"
+  (defvar browse-kill-ring-mode-map)
   (mb-f-define-keys browse-kill-ring-mode-map
                     '(( "<down>"    . browse-kill-ring-forward)
                       ( "<tab>"     . browse-kill-ring-forward)
                       ( "<up>"      . browse-kill-ring-previous)
                       ( "<backtab>" . browse-kill-ring-previous)
                       ( "C-g"       . browse-kill-ring-quit))))
-
-(add-hook 'browse-kill-ring-mode-hook #'mb-hooks--browse-kill-ring-mode)
 
 ;; C common
 (defvar c-mode-base-map)
