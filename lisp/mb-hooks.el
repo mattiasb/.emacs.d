@@ -241,8 +241,9 @@
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n"))))
 
-(add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
-(add-hook 'emacs-lisp-mode-hook #'mb-hooks--emacs-lisp-mode)
+(with-eval-after-load "elisp-mode"
+  (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
+  (add-hook 'emacs-lisp-mode-hook #'mb-hooks--emacs-lisp-mode))
 
 ;; Flycheck
 (defun mb-hooks--flycheck-mode ()
