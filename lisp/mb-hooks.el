@@ -535,16 +535,14 @@
   (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
 
 ;; Package Menu
-(defun mb-hooks--package-menu-mode ()
-  "My `package-menu' mode hook."
-  (hl-line-mode)
+(with-eval-after-load "package"
   (mb-f-remap-keys package-menu-mode-map
                    '(("s" . "C-s")
                      ("l" . "C-l")
                      ("R" . "r")
-                     ("r" . "C-r"))))
+                     ("r" . "C-r")))
 
-(add-hook 'package-menu-mode-hook #'mb-hooks--package-menu-mode)
+  (add-hook 'package-menu-mode-hook #'hl-line-mode))
 
 ;; Prog
 (defun mb-hooks--prog-mode ()
