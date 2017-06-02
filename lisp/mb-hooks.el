@@ -316,14 +316,16 @@
                       ( "<prior>" . mb-cmd-ido-scroll-up))))
 
 ;; IBuffer
-(defvar ibuffer-sorting-mode)
 (defun mb-hooks--ibuffer ()
   "My `ibuffer' mode hook."
   (ibuffer-projectile-set-filter-groups)
+
+  (defvar ibuffer-sorting-mode)
   (unless (eq ibuffer-sorting-mode 'alphabetic)
     (ibuffer-do-sort-by-alphabetic)))
 
-(add-hook 'ibuffer-hook 'mb-hooks--ibuffer)
+(with-eval-after-load "ibuffer"
+  (add-hook 'ibuffer-hook #'mb-hooks--ibuffer))
 
 ;; Iedit
 (defvar iedit-mode-keymap)
