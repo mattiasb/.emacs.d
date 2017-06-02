@@ -519,17 +519,20 @@
             #'mb-hooks--multiple-cursors-mode-enabled))
 
 ;; nXML
-(defvar nxml-mode-map)
 (defun mb-hooks--nxml-mode ()
   "My `nxml' mode hook."
+  (defvar company-backends)
   (setq-local company-backends '(company-nxml
                                  company-keywords
-                                 company-files))
-  (mb-f-define-keys nxml-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
+                                 company-files)))
 
-(add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
-(add-hook 'nxml-mode-hook #'mb-hooks--prog-mode)
+(with-eval-after-load "nxml-mode"
+  (defvar nxml-mode-map)
+  (mb-f-define-keys nxml-mode-map
+                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
+
+  (add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
+  (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
 
 ;; Package Menu
 (defun mb-hooks--package-menu-mode ()
