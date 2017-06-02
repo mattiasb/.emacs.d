@@ -270,15 +270,18 @@
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 
 ;; Go
-(defvar go-mode-map)
 (defun mb-hooks--go-mode ()
   "My `go' mode hook."
   (go-eldoc-setup)
 
   (setq-local tab-width 4)
+  (defvar company-backends)
   (setq-local company-backends '(company-go
                                  company-keywords
-                                 company-files))
+                                 company-files)))
+
+(with-eval-after-load "go-mode"
+  (defvar go-mode-map)
 
   (mb-f-define-keys go-mode-map
                     '(( "C-z i a"    . go-import-add)
@@ -286,9 +289,9 @@
                       ( "C-z i g"    . go-goto-imports)
                       ( "C-z d"      . godoc-at-point)
                       ( "C-<return>" . godef-jump)
-                      ( "."          . mb-cmd-dot-and-complete))))
+                      ( "."          . mb-cmd-dot-and-complete)))
 
-(add-hook 'go-mode-hook #'mb-hooks--go-mode)
+  (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
