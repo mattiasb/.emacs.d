@@ -84,8 +84,6 @@
   (require 'visual-regexp-steroids)
   (require 'control-mode)
 
-  (powerline-major-mode)
-  (powerline-default-theme)
   (global-git-gutter-mode)
   (flimenu-global-mode)
   (fancy-narrow-mode)
