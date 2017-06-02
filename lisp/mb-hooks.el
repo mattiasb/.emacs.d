@@ -410,7 +410,8 @@
   "My `json' mode hook."
   (highlight-numbers-mode -1))
 
-(add-hook 'json-mode-hook #'mb-hooks--json-mode)
+(with-eval-after-load "json-mode"
+  (add-hook 'json-mode-hook #'mb-hooks--json-mode))
 
 ;; Lua
 (defun mb-hooks--lua-mode ()
