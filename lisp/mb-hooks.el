@@ -298,17 +298,14 @@
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
 
 ;; Help
-(defvar help-mode-map)
-(defun mb-hooks--help-mode ()
-  "My `help' mode hook."
+(with-eval-after-load "help-mode"
+  (defvar help-mode-map)
   (mb-f-define-keys help-mode-map
                     '(( "M-<left>"  . help-go-back)
                       ( "M-<right>" . help-go-forward)))
   (mb-f-remap-keys help-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r"))))
-
-(add-hook 'help-mode-hook #'mb-hooks--help-mode)
 
 ;; Ido
 (defvar ido-common-completion-map)
