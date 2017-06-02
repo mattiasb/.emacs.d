@@ -347,13 +347,16 @@
 ;; Info
 (defun mb-hooks--Info-mode ()
   "My `Info' mode hook."
+  (backward-forward-mode -1))
+
+(with-eval-after-load "info"
   (mb-f-define-keys Info-mode-map
                     '(( "M-<left>"  . Info-history-back)
                       ( "M-<right>" . Info-history-forward)
-                      ( "M-<up>"    . Info-up))))
+                      ( "M-<up>"    . Info-up)))
 
-(add-hook 'Info-mode-hook #'mb-hooks--Info-mode)
-(add-hook 'Info-selection-hook #'niceify-info)
+  (add-hook 'Info-mode-hook #'mb-hooks--Info-mode)
+  (add-hook 'Info-selection-hook #'niceify-info))
 
 ;; Java
 (defun mb-hooks--java-mode ()

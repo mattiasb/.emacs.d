@@ -105,7 +105,7 @@
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
-   '(help-mode special-mode view-mode dired-mode term-mode magit-popup-mode woman-mode customize-mode compilation-mode))
+   '(Info-mode help-mode special-mode view-mode dired-mode term-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols 'unicode)
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
