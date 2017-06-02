@@ -748,6 +748,9 @@
 
 (with-eval-after-load "sh-script"
   (require 'electric-operator)
+
+  (declare-function electric-operator-add-rules-for-mode
+                    "electric-operator.el")
   (electric-operator-add-rules-for-mode 'sh-mode
                                         (cons "=" nil))
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
