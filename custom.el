@@ -39,13 +39,6 @@
  '(ag-reuse-buffers t)
  '(ag-reuse-window t)
  '(auto-insert 'other)
- '(auto-insert-alist
-   '((("\\.el\\'" . "Emacs Lisp")
-      .
-      ["default.el" my/autoinsert-yas-expand])
-     (("\\.lua\\'" . "Lua")
-      .
-      ["default.lua" my/autoinsert-yas-expand])))
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(blink-cursor-blinks -1)
  '(browse-kill-ring-current-entry-face 'bold)
