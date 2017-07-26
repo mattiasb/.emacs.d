@@ -38,7 +38,6 @@
 
 ;;; Early init code
 
-(toggle-frame-maximized)
 (require 'mb-fe)
 (mb-fe-package-init)
 (load-theme 'madhat2r t)
