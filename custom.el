@@ -182,7 +182,7 @@
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-switch-project-action 'projectile-commander)
  '(racer-cmd "/home/mattiasb/.local/bin/racer")
- '(racer-rust-src-path "/home/mattiasb/Code/rust-lang/rust/src/")
+ '(racer-rust-src-path "/home/mattiasb/Code/github/rust-lang/rust/src/")
  '(restart-emacs-restore-frames t)
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
