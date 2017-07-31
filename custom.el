@@ -187,7 +187,7 @@
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
    '((concat user-emacs-directory "schemas/schemas.xml")
-     "/usr/share/emacs/24.3/etc/schema/schemas.xml" "schemas.xml"))
+     "/usr/share/emacs/25.2/etc/schema/schemas.xml" "schemas.xml"))
  '(rtags-autostart-diagnostics t)
  '(rtags-completions-enabled t)
  '(rtags-display-current-error-as-message nil)
