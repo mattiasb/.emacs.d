@@ -606,6 +606,7 @@
                       ( "V"   . mb-cmd-projectile-gitg)
                       ( "D"   . projectile-find-dir)
                       ( "s S" . mb-cmd-projectile-ag-regex)
+                      ( "s r" . projectile-ripgrep)
                       ( "w a" . mb-cmd-projectile-ansi-term)
                       ( "w t" . mb-cmd-projectile-gnome-terminal)))
 
