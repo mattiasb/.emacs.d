@@ -84,7 +84,6 @@
  '(electric-pair-mode t)
  '(ensime-completion-style nil)
  '(expand-region-contract-fast-key "S-SPC")
- '(expand-region-preferred-python-mode 'elpy-mode)
  '(fci-rule-color "gray21")
  '(flycheck-completion-system 'ido)
  '(flycheck-cython-executable "cython3")
