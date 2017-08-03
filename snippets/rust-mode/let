@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Let
+# key: let
+# --
+let ${1:mut }${2:pattern}${3:: ${4:Type}} = ${5:expr};

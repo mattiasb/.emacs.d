@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Type
+# key: type
+# --
+type ${1:TypeName} = ${2:TypeName};

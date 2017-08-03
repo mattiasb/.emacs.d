@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Match
+# key: match
+# --
+match ${1:expr} {
+      $0
+}
