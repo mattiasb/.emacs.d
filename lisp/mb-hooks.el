@@ -149,7 +149,16 @@
   (add-hook 'control-mode-keymap-generation-functions
             #'control-mode-ctrlx-hacks)
   (add-hook 'control-mode-hook
-            #'mb-f-control-mode-set-cursor))
+            #'mb-f-control-mode-set-cursor)
+
+  (defvar control-mode)
+  (defvar global-control-mode-exceptions)
+  (add-hook 'switch-buffer-functions
+            (lambda (&rest _)
+              (unless (or (equal control-mode global-control-mode)
+                          (memq major-mode global-control-mode-exceptions))
+                (control-mode))
+              (mb-f-control-mode-set-cursor))))
 
 ;; Company
 (with-eval-after-load "company"
