@@ -124,7 +124,6 @@
 ;; Control
 (with-eval-after-load "control-mode"
   (require 'god-mode-isearch)
-  (setq-default control-mode t)
   (global-control-mode)
 
   (defvar control-mode-keymap)
