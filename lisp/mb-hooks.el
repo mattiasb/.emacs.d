@@ -512,7 +512,8 @@
 (with-eval-after-load "mtg-deck-mode"
   (mb-f-define-keys mtg-deck-mode-map
                     '(( "C-<return>" . mtg-deck-show-card-at-point)
-                      ( "<tab>"      . mb-cmd-snippet-or-complete)))
+                      ( "<tab>"      . mb-cmd-snippet-or-complete)
+                      ( "C-c C-s"    . mtg-deck-sideboard-toggle)))
 
   (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode))
 
