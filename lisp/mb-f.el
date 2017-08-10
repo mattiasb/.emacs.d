@@ -344,7 +344,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (if (display-graphic-p)
       (setq cursor-type (if control-mode
                             'box
-                          '(bar . 5)))
+                          `(bar . ,(/ (display-pixel-width) 640))))
     (send-string-to-terminal (if control-mode
                                  "\e[1 q"
                                "\e[5 q"))))
