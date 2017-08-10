@@ -39,6 +39,7 @@
   (if (getenv "TMUX")
       (tmux-keys))
 
+  (menu-bar-mode -1)
   (evil-esc-mode)
   (mb-f-set-terminal-cursors)
   (mb-f-set-terminal-window-separator))
