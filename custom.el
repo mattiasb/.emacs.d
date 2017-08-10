@@ -240,7 +240,7 @@
 (defvar magit-last-seen-setup-instructions)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (defvar todotxt-file)
-(setq todotxt-file "~/Documents/todo.txt")
+(setq todotxt-file "~/Dropbox/todo.txt")
 
 (when (custom-theme-enabled-p 'wombat)
   (custom-theme-set-faces
