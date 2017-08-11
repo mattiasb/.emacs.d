@@ -77,32 +77,37 @@
   (defvar flycheck-check-syntax-automatically)
   (defvar flycheck-highlighting-mode)
 
-  (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
-  (setq-local flycheck-highlighting-mode nil)
-  (setq-local flycheck-check-syntax-automatically nil)
-  (setq-local company-backends '(company-rtags))
+  ;; I don't always have access to RTags since it can't reliably be installed
+  ;; from Melpa, so gracefully fall back
+  (when (featurep 'rtags)
+    (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
+    (setq-local flycheck-highlighting-mode nil)
+    (setq-local flycheck-check-syntax-automatically nil)
+    (setq-local company-backends '(company-rtags))
+    ;; Use the RTags back-forward stuff instead
+    (backward-forward-mode -1)
 
-  ;; Use the RTags back-forward stuff instead
-  (backward-forward-mode -1)
-
-  (defvar projectile-command-map)
-  (mb-f-define-keys projectile-command-map
-                    '(( "j"              . rtags-find-symbol)
-                      ( "R"              . mb-cmd-projectile-regen-rtags))))
+    (defvar projectile-command-map)
+    (mb-f-define-keys projectile-command-map
+                      '(( "j"              . rtags-find-symbol)
+                        ( "R"              . mb-cmd-projectile-regen-rtags)))))
 
 (with-eval-after-load "cc-mode"
-  (require 'rtags)
-  (require 'flycheck-rtags)
-  (require 'company-rtags)
+  ;; I don't always have access to RTags since it can't reliably be installed
+  ;; from Melpa, so gracefully fall back
+  (when (require 'rtags nil 'noerror)
+    (require 'flycheck-rtags)
+    (require 'company-rtags)
+    (mb-f-define-keys c-mode-base-map
+                      '(( "M-<left>"       . rtags-location-stack-back)
+                        ( "M-<right>"      . rtags-location-stack-forward)
+                        ( "C-<return>"     . rtags-find-symbol-at-point)
+                        ( "M-?"            . rtags-find-references)
+                        ( "C-x 4 <return>" . rtags-show-target-in-other-window)
+                        ( "C-z f r"        . rtags-rename-symbol))))
 
   (mb-f-define-keys c-mode-base-map
-                    '(( "M-<left>"       . rtags-location-stack-back)
-                      ( "M-<right>"      . rtags-location-stack-forward)
-                      ( "C-<return>"     . rtags-find-symbol-at-point)
-                      ( "M-?"            . rtags-find-references)
-                      ( "C-x 4 <return>" . rtags-show-target-in-other-window)
-                      ( "C-z f r"        . rtags-rename-symbol)
-                      ( "."              . mb-cmd-dot-and-complete)
+                    '(( "."              . mb-cmd-dot-and-complete)
                       ( ":"              . mb-cmd-double-colon-and-complete)
                       ( ">"              . mb-cmd-arrow-and-complete)))
 
