@@ -35,3 +35,4 @@ anaconda-mode/*
 .yas-compiled-snippets.el
 flycheck_*.el
 magithub/*
+/amx-items

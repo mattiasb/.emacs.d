@@ -36,7 +36,6 @@
   '((occur                    . mb-cmd-occur-dwim)
     (isearch-forward          . mb-cmd-isearch-forward-symbol-with-prefix)
     (isearch-backward         . mb-cmd-isearch-backward-symbol-with-prefix)
-    (execute-extended-command . smex)
     (delete-other-windows     . zygospore-toggle-delete-other-windows)
     (fill-paragraph           . mb-cmd-fill-or-unfill)
     (kill-buffer              . kill-this-buffer)

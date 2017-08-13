@@ -135,7 +135,7 @@
   (mb-f-define-keys control-mode-keymap
                     '(( "i"           . mb-cmd-control-mode-off)
                       ( "<escape>"    . ESC-prefix)
-                      ( "x x"         . smex)
+                      ( "x x"         . execute-extended-command)
                       ( "x s"         . save-buffer)
                       ( "x S"         . save-some-buffers)))
 
@@ -736,7 +736,7 @@
 (with-eval-after-load "term"
   (defvar term-raw-map)
   (mb-f-define-keys term-raw-map
-                    '(( "M-x"       . smex)
+                    '(( "M-x"       . execute-extended-command)
                       ( "C-y"       . mb-cmd-term-paste)
                       ( "<escape>"  . ESC-prefix)))
 
