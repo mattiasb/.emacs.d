@@ -86,7 +86,6 @@
   (browse-kill-ring-default-keybindings)
   (easy-repeat-mode)
   (smart-region-on)
-  (amx-mode)
   (global-aggressive-indent-mode)
   (recentf-mode)
   (abbrev-mode)
