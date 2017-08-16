@@ -282,6 +282,10 @@
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 
+;; Git Gutter
+(with-eval-after-load "git-gutter"
+  (run-at-time 0 5 #'git-gutter:update-all-windows))
+
 ;; Go
 (defun mb-hooks--go-mode ()
   "My `go' mode hook."
