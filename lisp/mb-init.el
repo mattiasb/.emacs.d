@@ -100,9 +100,9 @@
 
 (defun mb-init ()
   "Initialize Emacs."
+  (require 'mb-hooks)
   (mb-modes-activate)
   (mb-advices-activate)
-  (require 'mb-hooks)
   (mb-init--global-keybindings)
   (mb-init--modes))
 
