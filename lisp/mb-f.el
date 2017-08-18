@@ -348,6 +348,13 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (send-string-to-terminal (if control-mode
                                  "\e[1 q"
                                "\e[5 q"))))
+
+(defvar global-control-mode-exceptions)
+(defun mb-f-control-mode-in-sync ()
+  "Non-nil if control-mode and global-control-mode is in sync."
+  (or (equal control-mode global-control-mode)
+      (memq major-mode global-control-mode-exceptions)))
+
 (defun mb-f-focus-buffer-dwim (buffer)
   "Switch to BUFFER in other window unless it's currently in view."
   (unless (string-equal buffer (buffer-name (current-buffer)))

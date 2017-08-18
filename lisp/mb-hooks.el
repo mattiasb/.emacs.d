@@ -160,8 +160,7 @@
   (defvar global-control-mode-exceptions)
   (add-hook 'switch-buffer-functions
             (lambda (&rest _)
-              (unless (or (equal control-mode global-control-mode)
-                          (memq major-mode global-control-mode-exceptions))
+              (unless (mb-f-control-mode-in-sync)
                 (control-mode))
               (mb-f-control-mode-set-cursor))))
 
