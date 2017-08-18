@@ -164,8 +164,6 @@
   (add-hook 'control-mode-hook
             #'mb-f-control-mode-set-cursor)
 
-  (defvar control-mode)
-  (defvar global-control-mode-exceptions)
   (add-hook 'switch-buffer-functions
             (lambda (&rest _)
               (unless (mb-f-control-mode-in-sync)
