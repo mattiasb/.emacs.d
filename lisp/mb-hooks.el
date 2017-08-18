@@ -32,8 +32,16 @@
 (require 'mb-f)
 (require 'mb-cmd)
 
+;;; Standard hooks
+
 ;; After Save
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+
+;; Make new Frames have focus
+
+(add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
+
+;;; Packages
 
 ;; AG
 (with-eval-after-load "ag"
