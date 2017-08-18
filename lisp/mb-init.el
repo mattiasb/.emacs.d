@@ -71,6 +71,7 @@
   (require 'dired-imenu)
   (require 'visual-regexp-steroids)
   (require 'control-mode)
+  (require 'perspective)
 
   (global-git-gutter-mode)
   (flimenu-global-mode)

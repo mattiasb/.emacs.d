@@ -561,6 +561,10 @@
 
   (add-hook 'package-menu-mode-hook #'hl-line-mode))
 
+;; Perspective
+(with-eval-after-load "perspective"
+  (persp-mode))
+
 ;; Prog
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
