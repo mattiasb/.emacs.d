@@ -162,7 +162,9 @@
             (lambda (&rest _)
               (unless (mb-f-control-mode-in-sync)
                 (control-mode))
-              (mb-f-control-mode-set-cursor))))
+              (mb-f-control-mode-set-cursor)))
+  (add-hook 'after-make-frame-functions (lambda (_)
+                                          (mb-cmd-control-mode-on))))
 
 ;; Company
 (with-eval-after-load "company"
