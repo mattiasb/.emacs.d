@@ -449,16 +449,9 @@
   (add-hook 'lua-mode-hook #'mb-hooks--lua-mode))
 
 ;; Magit
-(defun mb-hooks--git-commit-mode ()
+(defun mb-hooks--git-commit-setup ()
   "My `git-commit' mode hook."
-  (declare-function git-commit-turn-on-flyspell "git-commit.el")
-  (declare-function git-commit-turn-on-auto-fill "git-commit.el")
-
   (mb-cmd-control-mode-off)
-  (setq-local fill-column 72)
-  (auto-fill-mode)
-  (git-commit-turn-on-flyspell)
-  (git-commit-turn-on-auto-fill)
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
@@ -495,7 +488,7 @@
   (add-hook 'magit-mode-hook         #'turn-on-magit-gitflow)
   (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
   (add-hook 'magit-status-mode-hook  #'magit-filenotify-mode)
-  (add-hook 'git-commit-mode-hook    #'mb-hooks--git-commit-mode))
+  (add-hook 'git-commit-setup-hook   #'mb-hooks--git-commit-setup))
 
 ;; Markdown
 (defun mb-hooks--markdown-mode ()
