@@ -567,5 +567,14 @@ With a prefix ARG always prompt for command to use."
   (insert "Fixes: ")
   (call-interactively #'git-commit-insert-issue-ask-issues))
 
+;;;###autoload
+(defun mb-cmd-new-frame-with-scratch ()
+  "Make a new frame with a new scratch buffer."
+  (interactive)
+  (defvar mb-cmd--scratch-counter 0)
+  (incf mb-cmd--scratch-counter)
+  (switch-to-buffer-other-frame (format "*scratch %s*"
+                                        mb-cmd--scratch-counter)))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
