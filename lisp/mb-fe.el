@@ -30,6 +30,15 @@
 
 ;;; Code:
 
+(require 'cl)
+
+(cl-flet ((always-yes (&rest _) t))
+  (defun mb-fe-no-confirm (fun &rest args)
+    "Apply FUN to ARGS, skipping user confirmations."
+    (cl-letf (((symbol-function 'y-or-n-p) #'always-yes)
+              ((symbol-function 'yes-or-no-p) #'always-yes))
+      (apply fun args))))
+
 (defun mb-fe-package-init ()
   "Initialize the package system."
   (package-initialize)
@@ -37,7 +46,7 @@
                        package-selected-packages)
     (package-refresh-contents)
     (mb-fe-install-packages-in-dir (concat user-emacs-directory "packages/"))
-    (package-install-selected-packages)))
+    (mb-fe-no-confirm #'package-install-selected-packages)))
 
 (defun mb-fe-install-packages-in-dir (directory)
   "Install all packages in DIRECTORY."
