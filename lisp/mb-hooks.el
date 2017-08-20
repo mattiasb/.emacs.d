@@ -233,6 +233,13 @@
 
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
+;; Electric operator
+(with-eval-after-load "electric-operator"
+  (electric-operator-add-rules-for-mode 'makefile-mode
+                                        (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'sh-mode
+                                        (cons "=" nil)))
+
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
   "My `emacs-lisp' mode hook."
@@ -775,12 +782,6 @@
                                   company-dabbrev-code))))
 
 (with-eval-after-load "sh-script"
-  (require 'electric-operator)
-
-  (declare-function electric-operator-add-rules-for-mode
-                    "electric-operator.el")
-  (electric-operator-add-rules-for-mode 'sh-mode
-                                        (cons "=" nil))
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
