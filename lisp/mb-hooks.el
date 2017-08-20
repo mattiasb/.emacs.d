@@ -738,6 +738,7 @@
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
   (defvar yas-dont-activate-functions)
+  (setq scroll-margin 0)
   (setq yas-dont-activate-functions t))
 
 (defun mb-hooks--term-exec ()
