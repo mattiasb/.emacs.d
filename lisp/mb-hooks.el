@@ -426,6 +426,10 @@
   (mb-f-define-keys todotxt-mode-map
                     '(("j" . nil)
                       ("k" . todotxt-nuke-item)
+                      ("N" . nil)
+                      ("+" . todotxt-add-item)
+                      ("a" . todotxt-archive)
+                      ("A" . nil)
                       ("_" . todotxt-undo)
                       ("u" . nil))))
 
