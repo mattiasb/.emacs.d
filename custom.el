@@ -100,7 +100,7 @@
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
-   '(ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
+   '(todotxt-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols 'unicode)
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)

@@ -438,7 +438,8 @@
                       ("a" . todotxt-archive)
                       ("A" . nil)
                       ("_" . todotxt-undo)
-                      ("u" . nil))))
+                      ("u" . nil)
+                      ("h" . describe-mode))))
 
 ;; JSON
 (defun mb-hooks--json-mode ()
