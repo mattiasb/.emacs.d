@@ -431,15 +431,17 @@
 (with-eval-after-load "todotxt"
   (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
-                    '(("j" . nil)
-                      ("k" . todotxt-nuke-item)
-                      ("N" . nil)
-                      ("+" . todotxt-add-item)
-                      ("a" . todotxt-archive)
-                      ("A" . nil)
-                      ("_" . todotxt-undo)
-                      ("u" . nil)
-                      ("h" . describe-mode))))
+                    '(("<return>" . todotxt-edit-item)
+                      ("e"        . nil)
+                      ("j"        . nil)
+                      ("k"        . todotxt-nuke-item)
+                      ("N"        . nil)
+                      ("+"        . todotxt-add-item)
+                      ("a"        . todotxt-archive)
+                      ("A"        . nil)
+                      ("_"        . todotxt-undo)
+                      ("u"        . nil)
+                      ("h"        . describe-mode))))
 
 ;; JSON
 (defun mb-hooks--json-mode ()
