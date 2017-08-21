@@ -441,6 +441,10 @@
                       ("A"        . nil)
                       ("_"        . todotxt-undo)
                       ("u"        . nil)
+                      ("f"        . todotxt-filter-for)
+                      ("/"        . nil)
+                      ("F"        . todotxt-filter-out)
+                      ("\\"       . nil)
                       ("h"        . describe-mode))))
 
 ;; JSON
