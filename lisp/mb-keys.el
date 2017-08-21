@@ -76,6 +76,9 @@
     ( "<C-S-left>"    . buf-move-left)
     ( "<C-S-right>"   . buf-move-right)
 
+    ;; Frames
+    ( "C-<tab>"       . other-frame)
+
     ;; TEXT MANIPULATION
 
     ;; General
