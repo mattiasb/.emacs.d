@@ -453,7 +453,7 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-projectile-gnome-terminal ()
   "Run gitg at root of project."
   (interactive)
-  (mb-cmd-projectile-spawn "/bin/gnome-terminal"))
+  (mb-cmd-projectile-spawn "/usr/bin/gnome-terminal"))
 
 ;;;###autoload
 (defun mb-cmd-projectile-spawn (command)
