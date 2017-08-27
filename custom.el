@@ -315,12 +315,13 @@
 
 ;;; Project specific settings
 
+;; TODO: Make this JHBuild project type work again
 ;; Dir Locals
-(dir-locals-set-class-variables
- 'gnome-code
- '((nil . ((projectile-project-type . jhbuild)))))
+;; (dir-locals-set-class-variables
+;;  'gnome-code
+;;  '((nil . ((projectile-project-type . jhbuild)))))
 
-(dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
+;; (dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
 
 
 (provide 'custom)
