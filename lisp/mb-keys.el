@@ -96,7 +96,8 @@
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
-                      ( "a"      . ansi-term)))
+                      ( "a"      . ansi-term)
+                      ( "s"      . dired-sidebar-toggle-sidebar)))
 
 ;; My Help keymap
 (mb-f-define-keymap mb-keys--help-map
