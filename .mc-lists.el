@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         mb-cmd-toggle-comment
+        mtg-deck-sideboard-toggle
         mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
         shift-number-down
