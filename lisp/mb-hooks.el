@@ -272,6 +272,13 @@
   (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
   (add-hook 'emacs-lisp-mode-hook #'mb-hooks--emacs-lisp-mode))
 
+;; Enriched Text mode
+;; Workaround security bug
+;; https://lists.gnu.org/archive/html/info-gnu/2017-09/msg00006.html
+(eval-after-load "enriched"
+  '(defun enriched-decode-display-prop (start end &optional _)
+     (list start end)))
+
 ;; Flycheck
 (with-eval-after-load "flycheck"
   (flycheck-pos-tip-mode)
