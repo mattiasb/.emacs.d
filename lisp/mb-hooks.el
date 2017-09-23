@@ -433,8 +433,6 @@
   (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
 
 ;; Todotxt
-(autoload 'todotxt "todotxt" "" t nil)
-(autoload 'todotxt-mode "todotxt" "" t nil)
 (with-eval-after-load "todotxt"
   (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
