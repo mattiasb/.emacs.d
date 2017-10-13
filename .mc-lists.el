@@ -4,6 +4,8 @@
 (setq mc/cmds-to-run-for-all
       '(
         cycle-quotes
+        electric-pair-delete-pair
+        markdown-outdent-or-delete
         mb-cmd-toggle-comment
         mtg-deck-sideboard-toggle
         mwim-beginning-of-code-or-line
