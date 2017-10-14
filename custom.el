@@ -238,6 +238,7 @@
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions '(mb-f-yas-popup))
+ '(yas-snippet-dirs (list (concat user-emacs-directory "snippets/")))
  '(yas-trigger-key nil)
  '(yas-trigger-symbol " ⇒")
  '(yas-triggers-in-field t)

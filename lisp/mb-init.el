@@ -50,18 +50,6 @@
   (mb-keys-activate)
   (windmove-default-keybindings))
 
-(defun mb-init--yas ()
-  "Activate YASnippet."
-  ;; This needs to be set here, or customize will bork.
-  (setq-default yas-snippet-dirs (concat user-emacs-directory "snippets/"))
-  (yas-global-mode))
-
-(defun mb-init--yatemplate ()
-  "Activate YATemplate."
-
-  (yatemplate-fill-alist)
-  (auto-insert-mode 1))
-
 (defun mb-init--modes ()
   "Activate a bunch of global modes."
   (unless (display-graphic-p)
@@ -94,8 +82,9 @@
   (auto-dim-other-buffers-mode)
   (powerline-major-mode)
   (powerline-default-theme)
-  (mb-init--yas)
-  (mb-init--yatemplate))
+  (yas-global-mode)
+  (yatemplate-fill-alist)
+  (auto-insert-mode))
 
 ;;;
 
