@@ -417,6 +417,9 @@
 
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
   (js2-imenu-extras-mode)
+  (add-node-modules-path)
+  (when (flycheck-eslint-config-exists-p)
+    (js-auto-format-mode))
 
   (defvar company-backends)
   (setq-local company-backends '((company-dabbrev-code
