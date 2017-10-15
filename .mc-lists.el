@@ -15,6 +15,7 @@
 
 (setq mc/cmds-to-run-once
       '(
+        iedit-switch-to-mc-mode
         mb-cmd-control-mode-off
         mb-cmd-control-mode-on
         smart-region
