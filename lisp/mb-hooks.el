@@ -414,7 +414,7 @@
 
   (defvar flimenu-imenu-separator)
   (setq-local flimenu-imenu-separator ".")
-
+  (flycheck-disable-checker 'javascript-jscs)
   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
   (js2-imenu-extras-mode)
   (add-node-modules-path)
