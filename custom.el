@@ -147,6 +147,8 @@
  '(js2-indent-on-enter-key t)
  '(js2-mirror-mode t)
  '(js2-mode-indent-ignore-first-tab t)
+ '(js2-mode-show-parse-errors nil)
+ '(js2-mode-show-strict-warnings nil)
  '(js2-skip-preprocessor-directives t)
  '(keyfreq-autosave-mode t)
  '(keyfreq-buffer "*KeyFreq*")
