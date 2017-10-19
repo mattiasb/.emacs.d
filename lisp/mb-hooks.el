@@ -706,10 +706,7 @@
   (aggressive-indent-mode -1)
   (indent-tools-minor-mode)
   (add-to-list 'electric-layout-rules
-               (cons ?: #'mb-f-python-electric-newline))
-  ;; sort imports and conform to PEP0008 on save
-  (add-hook 'before-save-hook 'py-isort-before-save)
-  (py-autopep8-enable-on-save))
+               (cons ?: #'mb-f-python-electric-newline)))
 
 (with-eval-after-load "python"
   (defvar python-mode-map)
