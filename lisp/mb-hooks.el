@@ -44,13 +44,13 @@
 ;;; Packages
 
 ;; AG
-(with-eval-after-load "ag"
+(with-eval-after-load 'ag
   (defvar ag-mode-map)
   (mb-f-define-keys ag-mode-map
                     '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Backward Forward
-(with-eval-after-load "backward-forward"
+(with-eval-after-load 'backward-forward
   (defvar backward-forward-mode-map)
   (mb-f-define-keys backward-forward-mode-map
                     '(("M-<left>"  . backward-forward-previous-location)
@@ -59,7 +59,7 @@
                       ("C-<right>" . nil))))
 
 ;; Browse Kill Ring
-(with-eval-after-load "browse-kill-ring"
+(with-eval-after-load 'browse-kill-ring
   (defvar browse-kill-ring-mode-map)
   (mb-f-define-keys browse-kill-ring-mode-map
                     '(( "<down>"    . browse-kill-ring-forward)
@@ -100,7 +100,7 @@
                       '(( "j"              . rtags-find-symbol)
                         ( "R"              . mb-cmd-projectile-regen-rtags)))))
 
-(with-eval-after-load "cc-mode"
+(with-eval-after-load 'cc-mode
   ;; I don't always have access to RTags since it can't reliably be installed
   ;; from Melpa, so gracefully fall back
   (when (require 'rtags nil 'noerror)
@@ -130,12 +130,12 @@
                                   company-keywords
                                   company-files
                                   company-dabbrev-code))))
-(with-eval-after-load "cmake"
+(with-eval-after-load 'cmake-mode
   (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode))
 
 ;; Control
-(with-eval-after-load "control-mode"
+(with-eval-after-load 'control-mode
   (require 'god-mode-isearch)
   (global-control-mode)
 
@@ -173,7 +173,7 @@
                                           (mb-cmd-control-mode-on))))
 
 ;; Company
-(with-eval-after-load "company"
+(with-eval-after-load 'company
   (company-quickhelp-mode)
 
   (defvar company-active-map)
@@ -202,7 +202,7 @@
   (add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter))
 
 ;; Cython
-(with-eval-after-load "cython-mode"
+(with-eval-after-load 'cython-mode
   (require 'flycheck-cython))
 
 ;; Dired
@@ -217,7 +217,7 @@
   (dired-hide-details-mode)
   (dired-hide-dotfiles-mode))
 
-(with-eval-after-load "dired"
+(with-eval-after-load 'dired
   (require 'dired-x)
   (require 'tramp)
 
@@ -234,7 +234,7 @@
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
 ;; Electric operator
-(with-eval-after-load "electric-operator"
+(with-eval-after-load 'electric-operator
   (electric-operator-add-rules-for-mode 'makefile-mode
                                         (cons "-" nil))
   (electric-operator-add-rules-for-mode 'sh-mode
@@ -268,19 +268,19 @@
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n"))))
 
-(with-eval-after-load "elisp-mode"
+(with-eval-after-load 'elisp-mode
   (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
   (add-hook 'emacs-lisp-mode-hook #'mb-hooks--emacs-lisp-mode))
 
 ;; Enriched Text mode
 ;; Workaround security bug
 ;; https://lists.gnu.org/archive/html/info-gnu/2017-09/msg00006.html
-(eval-after-load "enriched"
+(eval-after-load 'enriched
   '(defun enriched-decode-display-prop (start end &optional _)
      (list start end)))
 
 ;; Flycheck
-(with-eval-after-load "flycheck"
+(with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode)
   (flycheck-status-emoji-mode)
   (flycheck-cask-setup)
@@ -288,7 +288,7 @@
   (flycheck-rust-setup))
 
 ;; Flyspell
-(with-eval-after-load "flyspell"
+(with-eval-after-load 'flyspell
   (require 'flyspell-correct-popup)
 
   (defvar flyspell-mode-map)
@@ -304,7 +304,7 @@
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 
 ;; Git Gutter
-(with-eval-after-load "git-gutter"
+(with-eval-after-load 'git-gutter
   (run-at-time 0 5 #'git-gutter:update-all-windows))
 
 ;; Go
@@ -318,7 +318,7 @@
                                  company-keywords
                                  company-files)))
 
-(with-eval-after-load "go-mode"
+(with-eval-after-load 'go-mode
   (defvar go-mode-map)
 
   (mb-f-define-keys go-mode-map
@@ -332,11 +332,11 @@
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
 ;; Haskell
-(with-eval-after-load "haskell-mode"
+(with-eval-after-load 'haskell-mode
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
 
 ;; Help
-(with-eval-after-load "help-mode"
+(with-eval-after-load 'help-mode
   (defvar help-mode-map)
   (mb-f-define-keys help-mode-map
                     '(( "M-<left>"  . help-go-back)
@@ -346,7 +346,7 @@
                      ("r" . "C-r"))))
 
 ;; Ido
-(with-eval-after-load "ido"
+(with-eval-after-load 'ido
   (defvar ido-common-completion-map)
   (mb-f-define-keys ido-common-completion-map
                     '(( "<tab"    . ido-complete)
@@ -362,11 +362,11 @@
   (unless (eq ibuffer-sorting-mode 'alphabetic)
     (ibuffer-do-sort-by-alphabetic)))
 
-(with-eval-after-load "ibuffer"
+(with-eval-after-load 'ibuffer
   (add-hook 'ibuffer-hook #'mb-hooks--ibuffer))
 
 ;; Iedit
-(with-eval-after-load "iedit"
+(with-eval-after-load 'iedit
   (defvar iedit-mode-keymap)
   (mb-f-define-keys iedit-mode-keymap
                     '(("C-g"      . iedit-quit)
@@ -375,7 +375,7 @@
   (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
 ;; IELM
-(with-eval-after-load "ielm"
+(with-eval-after-load 'ielm
   (defvar ielm-map)
   (mb-f-define-keys ielm-map
                     '(( "<tab>" . mb-cmd-snippet-or-complete)))
@@ -387,7 +387,7 @@
   "My `Info' mode hook."
   (backward-forward-mode -1))
 
-(with-eval-after-load "info"
+(with-eval-after-load 'info
   (mb-f-define-keys Info-mode-map
                     '(( "M-<left>"  . Info-history-back)
                       ( "M-<right>" . Info-history-forward)
@@ -427,7 +427,7 @@
                                   company-files
                                   company-keywords))))
 
-(with-eval-after-load "js2-mode"
+(with-eval-after-load 'js2-mode
   (require 'js2-refactor)
 
   (defvar js2-mode-map)
@@ -437,7 +437,7 @@
   (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
 
 ;; Todotxt
-(with-eval-after-load "todotxt"
+(with-eval-after-load 'todotxt
   (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
                     '(("<return>" . todotxt-edit-item)
@@ -461,7 +461,7 @@
   "My `json' mode hook."
   (highlight-numbers-mode -1))
 
-(with-eval-after-load "json-mode"
+(with-eval-after-load 'json-mode
   (add-hook 'json-mode-hook #'mb-hooks--json-mode))
 
 ;; Lua
@@ -472,7 +472,7 @@
                                   company-files
                                   company-keywords))))
 
-(with-eval-after-load "lua-mode"
+(with-eval-after-load 'lua-mode
   (add-hook 'lua-mode-hook #'mb-hooks--lua-mode))
 
 ;; Magit
@@ -482,11 +482,11 @@
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
-(with-eval-after-load "magithub"
+(with-eval-after-load 'magithub
   (declare-function magithub-feature-autoinject "magithub.el")
   (magithub-feature-autoinject 't))
 
-(with-eval-after-load "magit"
+(with-eval-after-load 'magit
   (declare-function git-gutter:update-all-windows "git-gutter.el")
   (declare-function magit-define-popup-action "magit-popup.el")
 
@@ -527,7 +527,7 @@
   (fci-mode)
   (auto-fill-mode))
 
-(with-eval-after-load "markdown-mode"
+(with-eval-after-load 'markdown-mode
   (defvar markdown-mode-map)
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
@@ -545,7 +545,7 @@
   (defvar company-backends)
   (setq-local company-backends '(company-capf)))
 
-(with-eval-after-load "mtg-deck-mode"
+(with-eval-after-load 'mtg-deck-mode
   (mb-f-define-keys mtg-deck-mode-map
                     '(( "C-<return>" . mtg-deck-show-card-at-point)
                       ( "<tab>"      . mb-cmd-snippet-or-complete)
@@ -559,7 +559,7 @@
   (declare-function control-mode-reload-bindings "control-mode.el")
   (control-mode-reload-bindings))
 
-(with-eval-after-load "multiple-cursors"
+(with-eval-after-load 'multiple-cursors
   (add-hook 'multiple-cursors-mode-enabled-hook
             #'mb-hooks--multiple-cursors-mode-enabled))
 
@@ -571,7 +571,7 @@
                                  company-keywords
                                  company-files)))
 
-(with-eval-after-load "nxml-mode"
+(with-eval-after-load 'nxml-mode
   (defvar nxml-mode-map)
   (mb-f-define-keys nxml-mode-map
                     '(( "<tab>" . mb-cmd-snippet-or-complete)))
@@ -580,7 +580,7 @@
   (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
 
 ;; Package Menu
-(with-eval-after-load "package"
+(with-eval-after-load 'package
   (mb-f-remap-keys package-menu-mode-map
                    '(("s" . "C-s")
                      ("l" . "C-l")
@@ -590,7 +590,7 @@
   (add-hook 'package-menu-mode-hook #'hl-line-mode))
 
 ;; Perspective
-(with-eval-after-load "perspective"
+(with-eval-after-load 'perspective
   (persp-mode))
 
 ;; Prog
@@ -612,7 +612,7 @@
   (emr-initialize)
   (backward-forward-mode))
 
-(with-eval-after-load "prog-mode"
+(with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
                     '(( "<tab>"       . mb-cmd-snippet-or-complete)
                       ( "C-z f e"     . mb-cmd-iedit-in-defun)
@@ -626,7 +626,7 @@
   (add-hook 'prog-mode-hook #'mb-hooks--prog-mode))
 
 ;; Projectile
-(with-eval-after-load "projectile"
+(with-eval-after-load 'projectile
   (defvar projectile-known-projects)
 
   (unless projectile-known-projects
@@ -709,7 +709,7 @@
   (add-to-list 'electric-layout-rules
                (cons ?: #'mb-f-python-electric-newline)))
 
-(with-eval-after-load "python"
+(with-eval-after-load 'python
   (defvar python-mode-map)
   (mb-f-define-keys python-mode-map
                     '(( "."           . mb-cmd-dot-and-complete)
@@ -719,7 +719,7 @@
 
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
-(with-eval-after-load "anaconda-mode"
+(with-eval-after-load 'anaconda-mode
   (defvar anaconda-mode-map)
   (mb-f-define-keys anaconda-mode-map
                     '(( "C-<return>" . anaconda-mode-find-definitions)
@@ -728,7 +728,7 @@
                       ( "M-?"        . anaconda-mode-find-references))))
 
 ;; Realgud Track
-(with-eval-after-load "realgud"
+(with-eval-after-load 'realgud
   (defvar realgud-track-mode-map)
   (mb-f-define-keys realgud-track-mode-map
                     '(( "."      . mb-cmd-dot-and-complete)
@@ -741,7 +741,7 @@
   (defvar company-backends)
   (setq-local company-backends '((company-restclient))))
 
-(with-eval-after-load "restclient"
+(with-eval-after-load 'restclient
   (defvar restclient-mode-map)
   (mb-f-define-keys restclient-mode-map
                     '(( "<tab>" . mb-cmd-snippet-or-complete)))
@@ -749,7 +749,7 @@
   (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
 
 ;; Rust
-(with-eval-after-load "rust-mode"
+(with-eval-after-load 'rust-mode
   (defvar rust-mode-map)
   (mb-f-define-keys rust-mode-map
                     '(( "C-<return>" . racer-find-definition)
@@ -770,7 +770,7 @@
   (set-buffer-process-coding-system 'utf-8-unix
                                     'utf-8-unix))
 
-(with-eval-after-load "term"
+(with-eval-after-load 'term
   (defvar term-raw-map)
   (mb-f-define-keys term-raw-map
                     '(( "M-x"       . smex)
@@ -798,11 +798,11 @@
                                   company-files
                                   company-dabbrev-code))))
 
-(with-eval-after-load "sh-script"
+(with-eval-after-load 'sh-script
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
-(with-eval-after-load "sql"
+(with-eval-after-load 'sql
   (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;; Systemd
@@ -813,7 +813,7 @@
   (setq-local company-backends '(company-capf)))
 
 
-(with-eval-after-load "systemd"
+(with-eval-after-load 'systemd
   (add-hook 'systemd-mode-hook #'mb-hooks-systemd-mode)
 
   (defvar systemd-mode-map)
@@ -826,13 +826,13 @@
   (defvar flycheck-checkers)
   (add-to-list 'flycheck-checkers 'vala-valac))
 
-(with-eval-after-load "vala-mode"
+(with-eval-after-load 'vala-mode
   (require 'flycheck-vala)
   (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
 
 ;; Visual Regexp
-(with-eval-after-load "visual-regexp-steroids"
+(with-eval-after-load 'visual-regexp-steroids
   (mb-f-define-keys esc-map
                     '(( "C-r" . vr/isearch-backward)
                       ( "C-s" . vr/isearch-forward))))
@@ -847,7 +847,7 @@
                      ("R" . "r")
                      ("r" . "C-r"))))
 
-(with-eval-after-load "woman"
+(with-eval-after-load 'woman
   (add-hook 'woman-mode-hook #'mb-hooks--woman-mode))
 
 ;; Yaml
@@ -857,7 +857,7 @@
   (flycheck-mode)
   (indent-tools-minor-mode))
 
-(with-eval-after-load "yaml-mode"
+(with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
                     '(( "C-z <left>"  . indent-tools-demote)
