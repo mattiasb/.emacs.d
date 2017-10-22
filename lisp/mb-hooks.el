@@ -198,7 +198,7 @@
     (require 'ansi-color)
     (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
-(with-eval-after-load "compile"
+(with-eval-after-load 'compile
   (add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter))
 
 ;; Cython
@@ -405,7 +405,7 @@
   (defvar company-backends)
   (setq-local company-backends '((ensime-company))))
 
-(with-eval-after-load "cc-mode"
+(with-eval-after-load 'cc-mode
   (add-hook 'java-mode-hook #'mb-hooks--java-mode))
 
 ;; JS2
