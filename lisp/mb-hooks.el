@@ -259,10 +259,11 @@
                `("After Load" ,(rx "(with-eval-after-load"
                                    symbol-end
                                    (1+ whitespace)
-                                   (syntax string-quote)
+                                   (or (syntax string-quote)
+                                       (syntax expression-prefix))
                                    (group-n 1 (1+ (or (syntax word)
                                                       (syntax symbol))))
-                                   (syntax string-quote))
+                                   (optional (syntax string-quote)))
                  1))
   (setq page-delimiter
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
