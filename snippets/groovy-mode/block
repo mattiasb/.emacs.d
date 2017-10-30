@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: block
+# binding: C-z s b
+# --
+${1:block} {
+    $0
+}
