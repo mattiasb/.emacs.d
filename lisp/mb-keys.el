@@ -111,7 +111,8 @@
                       ( "e l"    . electric-layout-mode)
                       ( "e p"    . electric-pair-mode)
                       ( "p"      . projectile-mode)
-                      ( "w"      . whitespace-mode)))
+                      ( "w"      . whitespace-mode)
+                      ( "y"      . yas-minor-mode)))
 
 ;; My Magit keymap
 (mb-f-define-keymap mb-keys--magit-map
