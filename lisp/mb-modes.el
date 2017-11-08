@@ -60,7 +60,7 @@
     (emacs-lisp-mode . "Elisp")
     (go-mode         . "Go")
     (haskell-mode    . "λ")
-    (snippet-mode    . "Yas")))
+    (snippet-mode    . "Yas Snippet")))
 
 (defconst mb-modes--shortened-minor-modes
   '((abbrev-mode                 . " A")
@@ -82,7 +82,7 @@
     (sqlup-mode                  . " ⇑")
     (which-key-mode              . "")
     (ws-butler-mode              . " W")
-    (yas-minor-mode              . "")))
+    (yas-minor-mode              . " Y")))
 
 (defun mb-modes-activate ()
   "Activate mode configurations."
