@@ -35,7 +35,8 @@
 ;;; Standard hooks
 
 ;; After Save
-(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'after-save-hook
+          #'mb-f-executable-make-buffer-file-executable-if-script-p)
 
 ;; Make new Frames have focus
 

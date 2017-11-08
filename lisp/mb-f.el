@@ -498,5 +498,17 @@ Optionally only search as deep as DEPTH."
         'after
       nil)))
 
+(defun mb-f-executable-make-buffer-file-executable-if-script-p ()
+  "Make file executable according to umask.
+
+Version of `executable-make-buffer-file-executable-if-script-p'
+that checks that the hash-bang seems to involve a path."
+  (when (save-restriction
+          (widen)
+          (string= "#!/" (buffer-substring (point-min)
+                                           (+ 3 (point-min)))))
+    (executable-make-buffer-file-executable-if-script-p)))
+
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
