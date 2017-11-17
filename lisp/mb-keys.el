@@ -108,6 +108,7 @@
 (mb-f-define-keymap mb-keys--toggle-map
                     '(( "a"      . aggressive-indent-mode)
                       ( "b"      . magit-blame)
+                      ( "d s"    . dynamic-spaces-mode)
                       ( "e l"    . electric-layout-mode)
                       ( "e p"    . electric-pair-mode)
                       ( "p"      . projectile-mode)
