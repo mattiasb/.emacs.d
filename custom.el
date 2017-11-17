@@ -236,7 +236,7 @@
  '(which-key-special-keys nil)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
- '(yaml-indent-offset 2)
+ '(yaml-indent-offset 4)
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-prompt-functions '(mb-f-yas-popup))
