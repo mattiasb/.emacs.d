@@ -172,6 +172,7 @@
    (concat "pandoc -s -f markdown_github -c file://"
            (file-truename user-emacs-directory)
            "github-pandoc.css"))
+ '(markdown-fontify-code-blocks-natively t)
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
