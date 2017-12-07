@@ -38,6 +38,20 @@
 (add-hook 'after-save-hook
           #'mb-f-executable-make-buffer-file-executable-if-script-p)
 
+;; Ansible
+(defun mb-hooks--ansible-hook ()
+  "My `yaml' mode hook."
+  (defvar company-backends)
+  (setq-local company-backends
+              (when ansible '(company-ansible)))
+
+  (company-mode ansible)
+  (ansible-doc-mode ansible)
+  (font-lock-flush))
+
+(with-eval-after-load "ansible"
+  (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
+
 ;; Make new Frames have focus
 
 (add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
@@ -857,13 +871,17 @@
   "My `yaml' mode hook."
   (flycheck-yamllint-setup)
   (flycheck-mode)
-  (indent-tools-minor-mode))
+  (indent-tools-minor-mode)
+  (when (ansible-vault--is-vault-file)
+    (ansible-vault-mode 1)))
 
 (with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
-                    '(( "C-z <left>"  . indent-tools-demote)
-                      ( "C-z <right>" . indent-tools-indent)))
+                    '(( "<tab>"       . mb-cmd-snippet-complete-or-indent)
+                      ( "C-z <left>"  . indent-tools-demote)
+                      ( "C-z <right>" . indent-tools-indent)
+                      ( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
 
