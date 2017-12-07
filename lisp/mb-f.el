@@ -373,12 +373,16 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Advice FUNC to switch window after been run."
   (advice-add func :after #'mb-f-other-window))
 
+(defun mb-f-reset-terminal-cursors ()
+  "Reset the terminal cursor."
+  (send-string-to-terminal "\033]12;white\007\e[1 q"))
+
 (defun mb-f-set-terminal-cursors ()
-  "Set up the terminal cursors."
-  (send-string-to-terminal (concat "\033]12;" (face-background 'cursor) "\007"))
-  (add-hook 'kill-emacs-hook
-            (lambda ()
-              (send-string-to-terminal "\033]12;white\007\e[1 q"))))
+  "Set the terminal cursor."
+  (send-string-to-terminal (concat "\033]12;"
+                                   (face-background 'cursor)
+                                   "\007")))
+
 
 (defun mb-f-set-terminal-window-separator ()
   "Set a unicode terminal window separator character."

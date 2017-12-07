@@ -100,6 +100,13 @@
                         (cl-flet ((process-list ()))
                           (apply func args))))
 
+  (advice-add #'save-buffers-kill-terminal
+              :around (lambda (func &rest args)
+                        (require 'server)
+                        (unless (display-graphic-p)
+                          (mb-f-reset-terminal-cursors))
+                        (apply func args)))
+
   (advice-add #'flycheck-pos-tip-error-messages
               :around (lambda (func &rest args)
                         (let ((x-gtk-use-system-tooltips nil))
