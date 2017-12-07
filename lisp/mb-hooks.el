@@ -869,6 +869,7 @@
 ;; Yaml
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
+  (fci-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
   (indent-tools-minor-mode)
