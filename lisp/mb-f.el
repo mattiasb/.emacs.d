@@ -383,6 +383,12 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
                                    (face-background 'cursor)
                                    "\007")))
 
+(defun mb-f-kill-server ()
+  "Kill the server daemone as gracefully as possible."
+  (let ((kill-emacs-hook 'nil))
+    (save-some-buffers t)
+    (cl-flet ((process-list ()))
+      (kill-emacs))))
 
 (defun mb-f-set-terminal-window-separator ()
   "Set a unicode terminal window separator character."
