@@ -11,6 +11,8 @@
         mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
         shift-number-down
+        yaml-electric-backspace
+        yaml-electric-dash-and-dot
         ))
 
 (setq mc/cmds-to-run-once
