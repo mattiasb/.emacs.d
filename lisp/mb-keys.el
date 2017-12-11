@@ -39,7 +39,7 @@
     (execute-extended-command . smex)
     (delete-other-windows     . zygospore-toggle-delete-other-windows)
     (fill-paragraph           . mb-cmd-fill-or-unfill)
-    (kill-buffer              . kill-this-buffer)
+    (kill-buffer              . mb-cmd-kill-this-buffer)
     (split-window-right       . mb-cmd-split-window-right)
     (split-window-below       . mb-cmd-split-window-below)
     (delete-window            . mb-cmd-delete-window)))

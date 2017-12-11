@@ -596,5 +596,11 @@ With a prefix ARG always prompt for command to use."
     (ignore-errors
       (mapcar #'persp-kill p-other))))
 
+;;;###autoload
+(defun mb-cmd-kill-this-buffer ()
+  "Kill this buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
