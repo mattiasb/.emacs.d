@@ -150,6 +150,7 @@
                       ( "q"      . vr/query-replace)
                       ( "r"      . vr/replace)
                       ( "u"      . insert-char)
+                      ( "<tab>"  . string-inflection-all-cycle)
 
                       ;; Other
                       ( "C-z"    . suspend-frame)
