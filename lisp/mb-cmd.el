@@ -224,14 +224,6 @@ depending on context."
     (company-complete)))
 
 ;;;###autoload
-(defun mb-cmd-reopen-file-as-root ()
-  "Re-open file the current buffer is visiting as root."
-  (interactive)
-  (when buffer-file-name
-    (unless (file-writable-p buffer-file-name)
-      (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name)))))
-
-;;;###autoload
 (defun mb-cmd-restclient ()
   "Create a `restclient-mode' buffer."
   (interactive)

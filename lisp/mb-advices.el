@@ -48,9 +48,6 @@
   (advice-add #'popup-delete
               :after  #'mb-f-fci-turn-on)
 
-  (advice-add #'ido-find-file
-              :after  #'mb-cmd-reopen-file-as-root)
-
   (advice-add #'backward-page :after  #'recenter)
   (advice-add #'forward-page  :after  #'recenter)
 
