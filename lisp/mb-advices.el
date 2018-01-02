@@ -48,6 +48,13 @@
   (advice-add #'popup-delete
               :after  #'mb-f-fci-turn-on)
 
+  (advice-add #'ialign-interactive-align
+              :around (lambda (func &rest args)
+                        (mb-f-fci-turn-off)
+                        (unwind-protect
+                            (apply func args)
+                          (mb-f-fci-turn-on))))
+
   (advice-add #'backward-page :after  #'recenter)
   (advice-add #'forward-page  :after  #'recenter)
 
