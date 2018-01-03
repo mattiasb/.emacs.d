@@ -128,6 +128,23 @@
                       ( "r"      . yas-reload-all)
                       ( "t"      . auto-insert)))
 
+(mb-f-define-keymap mb-keys--string-inflection-map
+                    '(( "i"      . string-inflection-all-cycle)
+                      ;; PascalCase
+                      ( "p"      . string-inflection-camelcase)
+                      ;; camelcase
+                      ( "c"      . string-inflection-lower-camelcase)
+                      ;; kebab-case
+                      ( "k"      . string-inflection-kebab-case)
+                      ( "-"      . string-inflection-kebab-case)
+                      ;; snake_case
+                      ( "s"      . string-inflection-underscore)
+                      ( "_"      . string-inflection-underscore)
+                      ( "<down>" . string-inflection-underscore)
+                      ;;
+                      ( "S"      . string-inflection-upcase)
+                      ( "<up>"   . string-inflection-upcase)))
+
 (mb-f-define-keymap mb-keys--default-map
                     '(;; Keymaps
                       ( "h"      . mb-keys--help-map)
@@ -150,7 +167,7 @@
                       ( "q"      . vr/query-replace)
                       ( "r"      . vr/replace)
                       ( "u"      . insert-char)
-                      ( "<tab>"  . string-inflection-all-cycle)
+                      ( "i"      . mb-keys--string-inflection-map)
 
                       ;; Other
                       ( "C-z"    . suspend-frame)
