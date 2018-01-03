@@ -68,7 +68,7 @@
     (anaconda-mode               . " 🐍")
     (auto-dim-other-buffers-mode . "")
     (auto-revert-mode            . " ⎌")
-    (auto-sudo-edit-mode         . "")
+    (auto-sudoedit-mode          . "")
     (company-mode                . " C")
     (control-mode                . "")
     (eldoc-mode                  . " 🕮")
