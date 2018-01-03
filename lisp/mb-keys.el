@@ -134,14 +134,16 @@
                       ( "p"      . string-inflection-camelcase)
                       ;; camelcase
                       ( "c"      . string-inflection-lower-camelcase)
-                      ;; kebab-case
+                      ;; kebab-case / lisp-case
                       ( "k"      . string-inflection-kebab-case)
+                      ( "l"      . string-inflection-kebab-case)
                       ( "-"      . string-inflection-kebab-case)
                       ;; snake_case
                       ( "s"      . string-inflection-underscore)
                       ( "_"      . string-inflection-underscore)
                       ( "<down>" . string-inflection-underscore)
-                      ;;
+                      ;; UPPER_SNAKE_CASE
+                      ( "u"      . string-inflection-upcase)
                       ( "S"      . string-inflection-upcase)
                       ( "<up>"   . string-inflection-upcase)))
 
