@@ -5,6 +5,8 @@
       '(
         cycle-quotes
         electric-pair-delete-pair
+        indent-for-tab-command
+        indent-tools-indent
         markdown-outdent-or-delete
         mb-cmd-toggle-comment
         mtg-deck-sideboard-toggle
@@ -12,6 +14,7 @@
         mwim-end-of-code-or-line
         shift-number-down
         yaml-electric-backspace
+        yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
         ))
 
