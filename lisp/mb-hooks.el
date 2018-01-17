@@ -872,9 +872,7 @@
   (fci-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
-  (indent-tools-minor-mode)
-  (when (ansible-vault--is-vault-file)
-    (ansible-vault-mode 1)))
+  (indent-tools-minor-mode))
 
 (with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
