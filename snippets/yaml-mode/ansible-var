@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ansible-var
+# key: {
+# --
+{{ $1 }
