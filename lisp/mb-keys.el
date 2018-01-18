@@ -149,14 +149,19 @@
 
 (mb-f-define-keymap mb-keys-tables-insert-map
                     '(( "c"        . table-insert-column)
-                      ( "c"        . table-insert-column)
                       ( "r"        . table-insert-row)))
+
+(mb-f-define-keymap mb-keys-tables-delete-map
+                    '(( "c"        . table-delete-column)
+                      ( "r"        . table-delete-row)))
 
 (mb-f-define-keymap mb-keys-tables-map
                     '(( "i"        . mb-keys-tables-insert-map)
                       ( "t"        . table-insert)
                       ( "c"        . table-capture)
-                      ( "<return>" . table-recognize)
+                      ( "<return>" . table-recognize-table)
+                      ( "g"        . table-unrecognize-table)
+                      ( "k"        . mb-keys-tables-delete-map)
                       ( "g"        . table-unrecognize)
                       ( "<left>"   . table-narrow-cell)
                       ( "<right>"  . table-widen-cell)

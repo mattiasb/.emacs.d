@@ -774,6 +774,11 @@
 
   (add-hook 'rust-mode-hook #'racer-mode))
 
+(with-eval-after-load "table"
+  (defvar table-command-remap-alist)
+  (push '(delete-forward-char . *table--cell-delete-char)
+        table-command-remap-alist))
+
 ;; Shell
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
