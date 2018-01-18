@@ -76,7 +76,7 @@
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-sidebar-width 30)
  '(easy-repeat-command-list
-   '(string-inflection-all-cycle indent-tools-demote indent-tools-indent shift-number-up shift-number-down md/duplicate-up md/duplicate-down flycheck-next-error flycheck-previous-error mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
+   '(table-narrow-cell table-widen-cell table-shorten-cell table-heighten-cell string-inflection-all-cycle indent-tools-demote indent-tools-indent shift-number-up shift-number-down md/duplicate-up md/duplicate-down flycheck-next-error flycheck-previous-error mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(electric-indent-mode t)
@@ -216,6 +216,7 @@
  '(shift-select-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
+ '(table-command-prefix [])
  '(tooltip-mode nil)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
@@ -293,7 +294,8 @@
   (custom-theme-set-faces
    'apropospriate-dark
    '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
-   '(highlight-symbol-face ((t (:background "gray21"))))))
+   '(highlight-symbol-face ((t (:background "gray21"))))
+   '(table-cell ((t (:background "gray17" :inverse-video nil))))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

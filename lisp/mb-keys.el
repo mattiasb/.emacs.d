@@ -147,12 +147,29 @@
                       ( "S"      . string-inflection-upcase)
                       ( "<up>"   . string-inflection-upcase)))
 
+(mb-f-define-keymap mb-keys--tables-insert-map
+                    '(( "c"        . table-insert-column)
+                      ( "c"        . table-insert-column)
+                      ( "r"        . table-insert-row)))
+
+(mb-f-define-keymap mb-keys--tables-map
+                    '(( "i"        . mb-keys--tables-insert-map)
+                      ( "t"        . table-insert)
+                      ( "c"        . table-capture)
+                      ( "<return>" . table-recognize)
+                      ( "g"        . table-unrecognize)
+                      ( "<left>"   . table-narrow-cell)
+                      ( "<right>"  . table-widen-cell)
+                      ( "<up>"     . table-shorten-cell)
+                      ( "<down>"   . table-heighten-cell)))
+
 (mb-f-define-keymap mb-keys--default-map
                     '(;; Keymaps
                       ( "h"      . mb-keys--help-map)
                       ( "m"      . mb-keys--magit-map)
                       ( "s"      . mb-keys--yas-map)
-                      ( "t"      . mb-keys--toggle-map)
+                      ( "T"      . mb-keys--toggle-map)
+                      ( "t"      . mb-keys--tables-map)
                       ( "w"      . mb-keys--windows-map)
 
                       ;; Text manipulation
