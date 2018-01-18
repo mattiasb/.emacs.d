@@ -294,8 +294,7 @@
   (custom-theme-set-faces
    'apropospriate-dark
    '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
-   '(highlight-symbol-face ((t (:background "gray21"))))
-   '(table-cell ((t (:background "gray17" :inverse-video nil))))))
+   '(highlight-symbol-face ((t (:background "gray21"))))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -310,6 +309,7 @@
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
+ '(table-cell ((t (:background "gray18"))))
  '(vr/match-0 ((t (:inherit region))))
  '(vr/match-1 ((t (:inherit region)))))
 
