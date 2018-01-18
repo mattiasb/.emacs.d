@@ -44,9 +44,9 @@
     (split-window-below       . mb-cmd-split-window-below)
     (delete-window            . mb-cmd-delete-window)))
 
-(defconst mb-keys--global-bindings
+(defconst mb-keys-global-bindings
   '(;; Keymaps
-    ( "C-z"            . mb-keys--default-map)
+    ( "C-z"            . mb-keys-default-map)
 
     ;; XRef
     ( "M-,"            . nil)
@@ -90,7 +90,7 @@
     ( "C-a"           . mwim-beginning-of-code-or-line)
     ( "C-e"           . mwim-end-of-code-or-line)))
 
-(mb-f-define-keymap mb-keys--windows-map
+(mb-f-define-keymap mb-keys-windows-map
                     '(( "c"      . customize)
                       ( "d"      . todotxt)
                       ( "e"      . ielm)
@@ -100,12 +100,12 @@
                       ( "s"      . dired-sidebar-toggle-sidebar)))
 
 ;; My Help keymap
-(mb-f-define-keymap mb-keys--help-map
+(mb-f-define-keymap mb-keys-help-map
                     '(( "i"      . info-display-manual)
                       ( "m"      . woman)))
 
 ;; My Toggle keymap
-(mb-f-define-keymap mb-keys--toggle-map
+(mb-f-define-keymap mb-keys-toggle-map
                     '(( "a"      . aggressive-indent-mode)
                       ( "b"      . magit-blame)
                       ( "d s"    . dynamic-spaces-mode)
@@ -116,19 +116,19 @@
                       ( "y"      . yas-minor-mode)))
 
 ;; My Magit keymap
-(mb-f-define-keymap mb-keys--magit-map
+(mb-f-define-keymap mb-keys-magit-map
                     '(( "c"      . magit-commit)
                       ( "p"      . magit-push-matching)))
 
 ;; My Yas keymap
-(mb-f-define-keymap mb-keys--yas-map
+(mb-f-define-keymap mb-keys-yas-map
                     '(( "i"      . yas-insert-snippet)
                       ( "c"      . yas-new-snippet)
                       ( "e"      . yas-visit-snippet-file)
                       ( "r"      . yas-reload-all)
                       ( "t"      . auto-insert)))
 
-(mb-f-define-keymap mb-keys--string-inflection-map
+(mb-f-define-keymap mb-keys-string-inflection-map
                     '(( "i"      . string-inflection-all-cycle)
                       ;; PascalCase
                       ( "p"      . string-inflection-camelcase)
@@ -147,13 +147,13 @@
                       ( "S"      . string-inflection-upcase)
                       ( "<up>"   . string-inflection-upcase)))
 
-(mb-f-define-keymap mb-keys--tables-insert-map
+(mb-f-define-keymap mb-keys-tables-insert-map
                     '(( "c"        . table-insert-column)
                       ( "c"        . table-insert-column)
                       ( "r"        . table-insert-row)))
 
-(mb-f-define-keymap mb-keys--tables-map
-                    '(( "i"        . mb-keys--tables-insert-map)
+(mb-f-define-keymap mb-keys-tables-map
+                    '(( "i"        . mb-keys-tables-insert-map)
                       ( "t"        . table-insert)
                       ( "c"        . table-capture)
                       ( "<return>" . table-recognize)
@@ -163,14 +163,14 @@
                       ( "<up>"     . table-shorten-cell)
                       ( "<down>"   . table-heighten-cell)))
 
-(mb-f-define-keymap mb-keys--default-map
+(mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
-                      ( "h"      . mb-keys--help-map)
-                      ( "m"      . mb-keys--magit-map)
-                      ( "s"      . mb-keys--yas-map)
-                      ( "T"      . mb-keys--toggle-map)
-                      ( "t"      . mb-keys--tables-map)
-                      ( "w"      . mb-keys--windows-map)
+                      ( "h"      . mb-keys-help-map)
+                      ( "m"      . mb-keys-magit-map)
+                      ( "s"      . mb-keys-yas-map)
+                      ( "T"      . mb-keys-toggle-map)
+                      ( "t"      . mb-keys-tables-map)
+                      ( "w"      . mb-keys-windows-map)
 
                       ;; Text manipulation
                       ( "+"      . shift-number-up)
@@ -186,7 +186,7 @@
                       ( "q"      . vr/query-replace)
                       ( "r"      . vr/replace)
                       ( "u"      . insert-char)
-                      ( "i"      . mb-keys--string-inflection-map)
+                      ( "i"      . mb-keys-string-inflection-map)
 
                       ;; Other
                       ( "C-z"    . suspend-frame)
@@ -200,7 +200,7 @@
 (defun mb-keys-activate ()
   "Activate keybinding."
   (mb-f-global-remap-keys mb-keys--global-remaps)
-  (mb-f-global-define-keys mb-keys--global-bindings))
+  (mb-f-global-define-keys mb-keys-global-bindings))
 
 (provide 'mb-keys)
 ;;; mb-keys.el ends here
