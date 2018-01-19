@@ -217,6 +217,7 @@
  '(show-paren-mode t)
  '(tab-width 8)
  '(table-command-prefix [])
+ '(todotxt-file "~/Dropbox/pim/todo/todo.txt")
  '(tooltip-mode nil)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)

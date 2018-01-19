@@ -594,5 +594,12 @@ With a prefix ARG always prompt for command to use."
   (interactive)
   (kill-buffer (current-buffer)))
 
+;;;###autoload
+(defun mb-cmd-open-journal ()
+  "Open my journal."
+  (interactive)
+  (find-file-existing "~/Dropbox/pim/journal.txt")
+  (table-recognize))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
