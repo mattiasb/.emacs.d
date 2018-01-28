@@ -635,7 +635,8 @@
                       ( "C-z f f"     . emr-show-refactor-menu)
                       ( "C-z d"       . nil)
                       ( "C-z d d"     . mb-cmd-realgud-debug)
-                      ( "C-z d a"     . realgud-short-key-mode)))
+                      ( "C-z d a"     . realgud-short-key-mode)
+                      ( "M-q"         . prog-fill)))
   (mb-f-remap-keys  prog-mode-map
                     '(( "RET"         . "M-j")))
 
