@@ -875,6 +875,7 @@
 ;; Yaml
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
+  (setq-local fill-column 80)
   (fci-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
