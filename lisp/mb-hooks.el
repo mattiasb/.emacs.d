@@ -99,6 +99,7 @@
   (defvar flycheck-disabled-checkers)
   (defvar flycheck-check-syntax-automatically)
   (defvar flycheck-highlighting-mode)
+  (defvar projectile-command-map)
 
   ;; I don't always have access to RTags since it can't reliably be installed
   ;; from Melpa, so gracefully fall back
@@ -109,25 +110,27 @@
     (setq-local company-backends '(company-rtags))
     ;; Use the RTags back-forward stuff instead
     (backward-forward-mode -1)
-
-    (defvar projectile-command-map)
     (mb-f-define-keys projectile-command-map
                       '(( "j"              . rtags-find-symbol)
-                        ( "R"              . mb-cmd-projectile-regen-rtags)))))
+                        ( "R"              . mb-cmd-projectile-regen-rtags))))
+
+  (when (featurep 'cquery)
+    (backward-forward-mode -1)
+    (lsp-cquery-enable)
+    (mb-f-define-keys projectile-command-map
+                      '(( "j"              . xref-find-definitions)
+                        ( "R"              . cquery-freshen-index)))
+    (setq-local company-backends '(company-lsp)
+                company-transformers nil
+                company-lsp-async t
+                company-lsp-cache-candidates nil)))
 
 (with-eval-after-load 'cc-mode
   ;; I don't always have access to RTags since it can't reliably be installed
   ;; from Melpa, so gracefully fall back
-  (when (require 'rtags nil 'noerror)
-    (require 'flycheck-rtags)
-    (require 'company-rtags)
-    (mb-f-define-keys c-mode-base-map
-                      '(( "M-<left>"       . rtags-location-stack-back)
-                        ( "M-<right>"      . rtags-location-stack-forward)
-                        ( "C-<return>"     . rtags-find-symbol-at-point)
-                        ( "M-?"            . rtags-find-references)
-                        ( "C-x 4 <return>" . rtags-show-target-in-other-window)
-                        ( "C-z f r"        . rtags-rename-symbol))))
+
+  ;; (require 'rtags nil 'noerror)
+  (require 'cquery)
 
   (mb-f-define-keys c-mode-base-map
                     '(( "."              . mb-cmd-dot-and-complete)
@@ -219,6 +222,9 @@
 ;; Cython
 (with-eval-after-load 'cython-mode
   (require 'flycheck-cython))
+
+;; CQuery
+(with-eval-after-load 'cquery)
 
 ;; Dired
 (defun mb-hooks--dired-mode ()
@@ -479,6 +485,18 @@
 
 (with-eval-after-load 'json-mode
   (add-hook 'json-mode-hook #'mb-hooks--json-mode))
+
+;; LSP
+(defun mb-hooks--lsp-mode ()
+  "My `json' mode hook."
+  (lsp-ui-mode))
+
+(with-eval-after-load 'lsp-mode
+  (require 'lsp-ui)
+  (mb-f-define-keys lsp-ui-mode-map
+                    '(( "C-<return>"     . lsp-ui-peek-find-definitions)
+                      ( "M-?"            . lsp-ui-peek-find-references)))
+  (add-hook 'lsp-mode-hook #'mb-hooks--lsp-mode))
 
 ;; Lua
 (defun mb-hooks--lua-mode ()
@@ -764,6 +782,18 @@
                     '(( "<tab>" . mb-cmd-snippet-or-complete)))
 
   (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
+
+;; RTags
+(with-eval-after-load 'rtags
+  (require 'flycheck-rtags)
+  (require 'company-rtags)
+  (mb-f-define-keys c-mode-base-map
+                    '(( "M-<left>"       . rtags-location-stack-back)
+                      ( "M-<right>"      . rtags-location-stack-forward)
+                      ( "C-<return>"     . rtags-find-symbol-at-point)
+                      ( "M-?"            . rtags-find-references)
+                      ( "C-x 4 <return>" . rtags-show-target-in-other-window)
+                      ( "C-z f r"        . rtags-rename-symbol))))
 
 ;; Rust
 (with-eval-after-load 'rust-mode
