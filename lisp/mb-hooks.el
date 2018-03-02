@@ -397,6 +397,10 @@
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
 
 ;; Help
+(defun mb-hooks--help-mode ()
+  "My `help' mode hook."
+  (backward-forward-mode -1))
+
 (with-eval-after-load 'help-mode
   (defvar help-mode-map)
   (mb-f-define-keys help-mode-map
@@ -404,7 +408,9 @@
                       ( "M-<right>" . help-go-forward)))
   (mb-f-remap-keys help-mode-map
                    '(("s" . "C-s")
-                     ("r" . "C-r"))))
+                     ("r" . "C-r")))
+
+  (add-hook 'help-mode-hook #'mb-hooks--help-mode))
 
 ;; Ido
 (with-eval-after-load 'ido
