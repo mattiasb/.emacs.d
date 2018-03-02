@@ -101,6 +101,9 @@
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
   (defvar company-backends)
+  (defvar company-transformers)
+  (defvar company-lsp-async)
+  (defvar company-lsp-cache-candidates)
   (defvar flycheck-disabled-checkers)
   (defvar flycheck-check-syntax-automatically)
   (defvar flycheck-highlighting-mode)
