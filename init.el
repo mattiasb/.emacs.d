@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My init file
+
 ;;; Note:
 
 ;;; Code:
