@@ -194,6 +194,8 @@
             #'control-mode-ctrlx-hacks)
   (add-hook 'control-mode-hook
             #'mb-f-control-mode-set-cursor)
+  (add-hook 'after-change-major-mode-hook
+            #'mb-f-control-mode-set-cursor)
 
   (add-hook 'switch-buffer-functions
             (lambda (&rest _)
