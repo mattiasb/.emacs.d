@@ -115,6 +115,7 @@
                       ( "e l"    . electric-layout-mode)
                       ( "e p"    . electric-pair-mode)
                       ( "p"      . projectile-mode)
+                      ( "r"      . rainbow-mode)
                       ( "w"      . whitespace-mode)
                       ( "y"      . yas-minor-mode)))
 
