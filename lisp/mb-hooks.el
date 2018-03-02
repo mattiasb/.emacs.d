@@ -519,6 +519,7 @@
 
 (with-eval-after-load 'lsp-mode
   (require 'lsp-ui)
+  (defvar lsp-ui-mode-map)
   (mb-f-define-keys lsp-ui-mode-map
                     '(( "C-<return>"     . lsp-ui-peek-find-definitions)
                       ( "M-?"            . lsp-ui-peek-find-references)))
