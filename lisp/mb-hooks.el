@@ -924,6 +924,14 @@
   (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
 
+;; Whitespace
+(defun mb-hooks--whitespace-mode ()
+  "My `whitespace' mode hook."
+  (redisplay))
+
+(with-eval-after-load 'whitespace
+  (add-hook 'whitespace-mode-hook #'mb-hooks-whitespace-mode))
+
 ;; Visual Regexp
 (with-eval-after-load 'visual-regexp-steroids
   (mb-f-define-keys esc-map
