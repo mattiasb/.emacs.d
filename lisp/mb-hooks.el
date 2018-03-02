@@ -241,9 +241,10 @@
 (with-eval-after-load 'daemons
   (defvar daemons-mode-map)
   (mb-f-define-keys daemons-mode-map
-                    '(("K" . daemons-stop-at-point)     ; Stop (kill)
-                      ("S" . daemons-start-at-point)    ; Start
-                      ("L" . daemons-reload-at-point))) ; Reload
+                    '(("S" . nil)
+                      ("k" . daemons-stop-at-point)     ; Stop (kill)
+                      ("x" . daemons-start-at-point)    ; Start
+                      ("l" . daemons-reload-at-point))) ; Reload
 
   (mb-f-remap-keys daemons-mode-map
                    '(("s" . "C-s")
