@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Configure Feature
+# binding: C-z s f
+# --
+;; ${1:$(mapconcat 'capitalize (split-string (or (yas-text) "") "-") " ")}
+(defun `(mb-f-elisp-get-namespace)`--$1-mode ()
+  "My \`${1:mode}' mode hook.")
+
+(with-eval-after-load '$1
+  ${2:(defvar $1-mode-map)
+      (mb-f-define-keys $1-mode-map
+                        '(($0)))}
+  (add-hook '$1-mode-hook #'`(mb-f-elisp-get-namespace)`-$1-mode))
