@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My functions
+
 ;;; Note:
 
 ;;; Code:

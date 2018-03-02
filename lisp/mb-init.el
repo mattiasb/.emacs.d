@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My after-init-hook file
+
 ;;; Note:
 
 ;;; Code:

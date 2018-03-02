@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My mode hooks.
+
 ;;; Note:
 
 ;;; Code:
@@ -271,6 +273,7 @@
                     '(( "W" . wdired-change-to-wdired-mode)
                       ( "F" . find-name-dired)
                       ( "c" . mb-cmd-find-file-default)
+                      ( "M-<up>" . dired-up-directory)
                       ( "." . dired-hide-dotfiles-mode)))
   (mb-f-remap-keys dired-mode-map
                    '(("s" . "C-s")

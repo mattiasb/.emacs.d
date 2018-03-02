@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My global keybindings
+
 ;;; Note:
 
 ;;; Code:

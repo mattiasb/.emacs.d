@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My commands.
+
 ;;; Note:
 
 ;;; Code:

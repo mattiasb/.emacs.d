@@ -26,15 +26,17 @@
 
 ;;; Commentary:
 
+;; Functions needed during early Emacs boot.
+
 ;;; Note:
 
 ;;; Code:
 
-(require 'cl)
+(require 'cl-lib)
 
-(cl-flet ((always-yes (&rest _) t))
-  (defun mb-fe-no-confirm (fun &rest args)
-    "Apply FUN to ARGS, skipping user confirmations."
+(defun mb-fe-no-confirm (fun &rest args)
+  "Apply FUN to ARGS, skipping user confirmations."
+  (cl-flet ((always-yes (&rest _) t))
     (cl-letf (((symbol-function 'y-or-n-p) #'always-yes)
               ((symbol-function 'yes-or-no-p) #'always-yes))
       (apply fun args))))
