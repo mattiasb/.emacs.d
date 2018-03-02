@@ -74,7 +74,7 @@
  '(custom-safe-themes t)
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
- '(dired-sidebar-width 30)
+ '(dired-sidebar-width 20)
  '(easy-repeat-command-list
    '(table-narrow-cell table-widen-cell table-shorten-cell table-heighten-cell string-inflection-all-cycle indent-tools-demote indent-tools-indent shift-number-up shift-number-down md/duplicate-up md/duplicate-down flycheck-next-error flycheck-previous-error mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
  '(edconf-exec-path "")
