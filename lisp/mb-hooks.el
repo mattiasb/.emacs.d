@@ -243,7 +243,9 @@
 (with-eval-after-load 'daemons
   (defvar daemons-mode-map)
   (mb-f-define-keys daemons-mode-map
-                    '(("S" . nil)
+                    '(("a" . mwim-beginning-of-code-or-line)
+                      ("e" . mwim-end-of-code-or-line)
+                      ("S" . tabulated-list-sort)
                       ("k" . daemons-stop-at-point)     ; Stop (kill)
                       ("x" . daemons-start-at-point)    ; Start
                       ("l" . daemons-reload-at-point))) ; Reload
