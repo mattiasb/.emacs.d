@@ -905,7 +905,6 @@
   (defvar company-backends)
   (setq-local company-backends '(company-capf)))
 
-
 (with-eval-after-load 'systemd
   (add-hook 'systemd-mode-hook #'mb-hooks-systemd-mode)
 
