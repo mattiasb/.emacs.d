@@ -25,6 +25,8 @@
 
 ;;; Commentary:
 
+;; My custom settings.
+
 ;;; Note:
 
 ;;; Code:
