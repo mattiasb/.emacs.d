@@ -40,6 +40,18 @@
 (add-hook 'after-save-hook
           #'mb-f-executable-make-buffer-file-executable-if-script-p)
 
+;; Make new Frames have focus
+
+(add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
+
+;;; Packages
+
+;; AG
+(with-eval-after-load 'ag
+  (defvar ag-mode-map)
+  (mb-f-define-keys ag-mode-map
+                    '(( "W" . wgrep-change-to-wgrep-mode))))
+
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."
@@ -53,18 +65,6 @@
 
 (with-eval-after-load "ansible"
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
-
-;; Make new Frames have focus
-
-(add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
-
-;;; Packages
-
-;; AG
-(with-eval-after-load 'ag
-  (defvar ag-mode-map)
-  (mb-f-define-keys ag-mode-map
-                    '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Backward Forward
 (with-eval-after-load 'backward-forward
@@ -195,6 +195,8 @@
   (add-hook 'control-mode-hook
             #'mb-f-control-mode-set-cursor)
   (add-hook 'after-change-major-mode-hook
+            #'mb-f-control-mode-set-cursor)
+  (add-hook 'post-command-hook
             #'mb-f-control-mode-set-cursor)
 
   (add-hook 'switch-buffer-functions
