@@ -274,6 +274,12 @@
 
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
+(with-eval-after-load 'dired-sidebar
+  ;; TODO: Remove require once my PR is merged:
+  ;; https://github.com/hlissner/emacs-hide-mode-line/pull/1
+  (require 'hide-mode-line)
+  (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
+
 ;; Electric operator
 (with-eval-after-load 'electric-operator
   (electric-operator-add-rules-for-mode 'makefile-mode
