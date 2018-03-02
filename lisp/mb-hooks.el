@@ -100,6 +100,9 @@
   (defvar flycheck-check-syntax-automatically)
   (defvar flycheck-highlighting-mode)
   (defvar projectile-command-map)
+  (defvar company-transformers)
+  (defvar company-lsp-async)
+  (defvar company-lsp-cache-candidates)
 
   ;; I don't always have access to RTags since it can't reliably be installed
   ;; from Melpa, so gracefully fall back
@@ -120,10 +123,10 @@
     (mb-f-define-keys projectile-command-map
                       '(( "j"              . xref-find-definitions)
                         ( "R"              . cquery-freshen-index)))
-    (setq-local company-backends '(company-lsp)
-                company-transformers nil
-                company-lsp-async t
-                company-lsp-cache-candidates nil)))
+    (setq-local company-backends '(company-lsp))
+    (setq-local company-transformers nil)
+    (setq-local company-lsp-async t)
+    (setq-local company-lsp-cache-candidates nil)))
 
 (with-eval-after-load 'cc-mode
   ;; I don't always have access to RTags since it can't reliably be installed
