@@ -92,7 +92,8 @@
 
 (mb-f-define-keymap mb-keys-windows-map
                     '(( "c"      . customize)
-                      ( "d"      . todotxt)
+                      ( "t"      . todotxt)
+                      ( "d"      . daemons)
                       ( "j"      . mb-cmd-open-journal)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
