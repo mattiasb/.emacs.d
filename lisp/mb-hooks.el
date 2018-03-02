@@ -73,6 +73,11 @@
                       ("C-<left>"  . nil)
                       ("C-<right>" . nil))))
 
+;; Batch Mode
+(with-eval-after-load 'bat-mode
+  (require 'bmx-mode)
+  (bmx-mode-setup-defaults))
+
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
   (defvar browse-kill-ring-mode-map)
