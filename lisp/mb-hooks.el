@@ -678,6 +678,7 @@
                     '(( "<tab>"       . mb-cmd-snippet-or-complete)
                       ( "C-z f e"     . mb-cmd-iedit-in-defun)
                       ( "C-z f f"     . emr-show-refactor-menu)
+                      ( "C-z f a"     . attrap-attrap)
                       ( "C-z d"       . nil)
                       ( "C-z d d"     . mb-cmd-realgud-debug)
                       ( "C-z d a"     . realgud-short-key-mode)
