@@ -182,7 +182,7 @@
                       ( "+"      . shift-number-up)
                       ( "-"      . shift-number-down)
                       ( "."      . align-by-current-symbol)
-                      ( "a"      . ialign-interactive-align)
+                      ( "a"      . ialign)
                       ( "<down>" . md/duplicate-down)
                       ( "<up>"   . md/duplicate-up)
                       ( "="      . mb-cmd-calc-thing-at-point)

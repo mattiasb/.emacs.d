@@ -48,7 +48,7 @@
   (advice-add #'popup-delete
               :after  #'mb-f-fci-turn-on)
 
-  (advice-add #'ialign-interactive-align
+  (advice-add #'ialign
               :around (lambda (func &rest args)
                         (mb-f-fci-turn-off)
                         (unwind-protect
