@@ -176,8 +176,8 @@
                       ( "h"      . mb-keys-help-map)
                       ( "m"      . mb-keys-magit-map)
                       ( "s"      . mb-keys-yas-map)
-                      ( "T"      . mb-keys-toggle-map)
-                      ( "t"      . mb-keys-tables-map)
+                      ( "t"      . mb-keys-toggle-map)
+                      ( "T"      . mb-keys-tables-map)
                       ( "w"      . mb-keys-windows-map)
 
                       ;; Text manipulation
