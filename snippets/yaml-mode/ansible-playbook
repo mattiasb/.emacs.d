@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ansible-playbook
+# binding: C-z s a
+# expand-env: ((yas-indent-line 'fixed))
+# --
+- hosts: $1
+  tasks:
+    - $0
