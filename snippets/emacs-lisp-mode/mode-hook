@@ -5,9 +5,9 @@
 # --
 
 ;; ${1:$(mapconcat 'capitalize (split-string (or (yas-text) "") "-") " ")}
-(defun `(mb-f-elisp-get-namespace)`-$1-mode ()
+(defun `(mb-f-elisp-get-namespace)`--$1-mode ()
   "My \`${1:mode}' mode hook."
   ${2:(mb-f-define-keys $1-mode-map
                         '(($0)))})
 
-(add-hook '$1-mode-hook #'`(mb-f-elisp-get-namespace)`-$1-mode)
+(add-hook '$1-mode-hook #'`(mb-f-elisp-get-namespace)`--$1-mode)

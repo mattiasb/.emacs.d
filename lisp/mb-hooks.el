@@ -935,7 +935,7 @@
   (redisplay))
 
 (with-eval-after-load 'whitespace
-  (add-hook 'whitespace-mode-hook #'mb-hooks-whitespace-mode))
+  (add-hook 'whitespace-mode-hook #'mb-hooks--whitespace-mode))
 
 ;; Visual Regexp
 (with-eval-after-load 'visual-regexp-steroids
