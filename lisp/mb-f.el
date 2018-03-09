@@ -391,6 +391,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (cl-flet ((process-list ()))
     (kill-emacs)))
 
+;; TODO: Fix this. It currently borks whitespace-mode
 (defun mb-f-set-terminal-window-separator ()
   "Set a unicode terminal window separator character."
   (add-hook 'window-configuration-change-hook

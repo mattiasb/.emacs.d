@@ -44,7 +44,10 @@
   (menu-bar-mode -1)
   (evil-esc-mode)
   (mb-f-set-terminal-cursors)
-  (mb-f-set-terminal-window-separator))
+
+  ;; TODO: Fix this. It currently borks whitespace-mode
+  ;; (mb-f-set-terminal-window-separator)
+  )
 
 (defun mb-init--global-keybindings ()
   "Activate global keybindings."
@@ -54,15 +57,13 @@
 
 (defun mb-init--modes ()
   "Activate a bunch of global modes."
-  (unless (display-graphic-p)
-    (mb-init--terminal-workarounds))
-  ;; Make ^ work
   (require 'iso-transl)
   (require 'dired-imenu)
   (require 'visual-regexp-steroids)
   (require 'control-mode)
   (require 'perspective)
   ;; (auto-sudoedit-mode)
+  (mb-init--terminal-workarounds)
   (global-git-gutter-mode)
   (flimenu-global-mode)
   (fancy-narrow-mode)
