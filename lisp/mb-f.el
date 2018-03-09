@@ -391,16 +391,13 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   (cl-flet ((process-list ()))
     (kill-emacs)))
 
-;; TODO: Fix this. It currently borks whitespace-mode
 (defun mb-f-set-terminal-window-separator ()
   "Set a unicode terminal window separator character."
   (add-hook 'window-configuration-change-hook
             (lambda ()
               (let ((display-table (or buffer-display-table
                                        standard-display-table)))
-                (set-display-table-slot display-table 5 ?│)
-                (set-window-display-table (selected-window)
-                                          display-table)))))
+                (set-display-table-slot display-table 5 ?│)))))
 
 (defvar mb-f-jhbuild-src-path   "~/Code/gnome/src")
 (defvar mb-f-jhbuild-build-path "~/Code/gnome/build")
