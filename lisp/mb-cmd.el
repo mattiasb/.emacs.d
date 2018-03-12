@@ -603,5 +603,11 @@ With a prefix ARG always prompt for command to use."
   (find-file-existing "~/Dropbox/pim/journal.txt")
   (table-recognize))
 
+;;;###autoload
+(defun mb-cmd-open-tasks ()
+  "Open my tasks."
+  (interactive)
+  (find-file-existing "~/Dropbox/pim/todo/Tasks.md"))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
