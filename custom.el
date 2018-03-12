@@ -198,6 +198,7 @@
  '(prog-fill-floating-open-paren-p nil)
  '(prog-fill-method-separators '(or "->" "." "::"))
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
+ '(projectile-keymap-prefix "p")
  '(projectile-switch-project-action 'projectile-commander)
  '(racer-cmd "/home/mattiasb/.local/bin/racer")
  '(racer-rust-src-path "/home/mattiasb/Code/github/rust-lang/rust/src/")
