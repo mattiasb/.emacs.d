@@ -687,7 +687,7 @@
 
   (unless (derived-mode-p 'emacs-lisp-mode)
     (electric-operator-mode))
-
+  (yas-minor-mode)
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
