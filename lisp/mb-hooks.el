@@ -393,8 +393,12 @@
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
 ;; Haskell
-(with-eval-after-load 'haskell-mode
-  (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
+(defun mb-hooks--haskell-mode ()
+  "My `haskell' mode hook."
+  (haskell-indentation-mode)
+  (electric-layout-mode -1))
+
+(add-hook 'haskell-mode-hook #'mb-hooks--haskell-mode)
 
 ;; Help
 (defun mb-hooks--help-mode ()

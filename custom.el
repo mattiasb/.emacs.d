@@ -40,6 +40,8 @@
  '(ag-highlight-search t)
  '(ag-reuse-buffers t)
  '(ag-reuse-window t)
+ '(aggressive-indent-excluded-modes
+   '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode))
  '(auto-insert 'other)
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(blink-cursor-blinks -1)
@@ -107,7 +109,7 @@
    '(todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(haskell-font-lock-symbols 'unicode)
- '(haskell-mode-hook '(turn-on-haskell-indentation) t)
+ '(haskell-mode-hook '(turn-on-haskell-indentation))
  '(highlight-symbol-idle-delay 1.0)
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
