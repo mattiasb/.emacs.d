@@ -10,4 +10,4 @@
   ${2:(defvar $1-mode-map)
       (mb-f-define-keys $1-mode-map
                         '(($0)))}
-  (add-hook '$1-mode-hook #'`(mb-f-elisp-get-namespace)`-$1-mode))
+  (add-hook '$1-mode-hook #'`(mb-f-elisp-get-namespace)`--$1-mode))
