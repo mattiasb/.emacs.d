@@ -865,6 +865,8 @@
   (setq-local fill-column 80)
   (setq-local indent-tabs-mode nil)
 
+  (guess-language-mode)
+  (guess-language)
   (flyspell-mode)
   (fci-mode)
   (auto-fill-mode))
