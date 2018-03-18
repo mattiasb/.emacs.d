@@ -585,13 +585,7 @@
 
 ;; Markdown
 (defun mb-hooks--markdown-mode ()
-  "My `markdown' mode hook."
-  (setq-local fill-column 80)
-  (setq-local indent-tabs-mode nil)
-
-  (flyspell-mode)
-  (fci-mode)
-  (auto-fill-mode))
+  "My `markdown' mode hook.")
 
 (with-eval-after-load 'markdown-mode
   (defvar markdown-mode-map)
@@ -864,6 +858,19 @@
 
   (add-hook 'term-mode-hook #'mb-hooks--term-mode)
   (add-hook 'term-exec-hook #'mb-hooks--term-exec))
+
+;; Text
+(defun mb-hooks--text-mode ()
+  "My `text' mode hook."
+  (setq-local fill-column 80)
+  (setq-local indent-tabs-mode nil)
+
+  (flyspell-mode)
+  (fci-mode)
+  (auto-fill-mode))
+
+;; Text mode doesn't have a (provide)
+(add-hook 'text-mode-hook #'mb-hooks--text-mode)
 
 ;; Todotxt
 (with-eval-after-load 'todotxt
