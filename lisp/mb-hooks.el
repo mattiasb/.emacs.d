@@ -50,7 +50,9 @@
 (with-eval-after-load 'ag
   (defvar ag-mode-map)
   (mb-f-define-keys ag-mode-map
-                    '(( "W" . wgrep-change-to-wgrep-mode))))
+                    '(( "W" . wgrep-change-to-wgrep-mode)
+                      ( "+" . grep-context-more-around-point)
+                      ( "-" . grep-context-less-around-point))))
 
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
