@@ -981,5 +981,13 @@
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
 
+;; Yas
+(defun mb-hooks--yas-mode ()
+  "My `yas' mode hook.")
+
+(with-eval-after-load 'yasnippet
+  (yas-reload-all)
+  (add-hook 'yas-minor-mode-hook #'mb-hooks--yas-mode))
+
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here
