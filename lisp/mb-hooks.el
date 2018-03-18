@@ -509,26 +509,6 @@
 
   (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
 
-;; Todotxt
-(with-eval-after-load 'todotxt
-  (defvar todotxt-mode-map)
-  (mb-f-define-keys todotxt-mode-map
-                    '(("<return>" . todotxt-edit-item)
-                      ("e"        . nil)
-                      ("j"        . nil)
-                      ("k"        . todotxt-nuke-item)
-                      ("N"        . nil)
-                      ("+"        . todotxt-add-item)
-                      ("a"        . todotxt-archive)
-                      ("A"        . nil)
-                      ("_"        . todotxt-undo)
-                      ("u"        . nil)
-                      ("f"        . todotxt-filter-for)
-                      ("/"        . nil)
-                      ("F"        . todotxt-filter-out)
-                      ("\\"       . nil)
-                      ("h"        . describe-mode))))
-
 ;; JSON
 (defun mb-hooks--json-mode ()
   "My `json' mode hook."
@@ -884,6 +864,26 @@
 
   (add-hook 'term-mode-hook #'mb-hooks--term-mode)
   (add-hook 'term-exec-hook #'mb-hooks--term-exec))
+
+;; Todotxt
+(with-eval-after-load 'todotxt
+  (defvar todotxt-mode-map)
+  (mb-f-define-keys todotxt-mode-map
+                    '(("<return>" . todotxt-edit-item)
+                      ("e"        . nil)
+                      ("j"        . nil)
+                      ("k"        . todotxt-nuke-item)
+                      ("N"        . nil)
+                      ("+"        . todotxt-add-item)
+                      ("a"        . todotxt-archive)
+                      ("A"        . nil)
+                      ("_"        . todotxt-undo)
+                      ("u"        . nil)
+                      ("f"        . todotxt-filter-for)
+                      ("/"        . nil)
+                      ("F"        . todotxt-filter-out)
+                      ("\\"       . nil)
+                      ("h"        . describe-mode))))
 
 ;; Shell script
 (defun mb-hooks--sh-mode ()
