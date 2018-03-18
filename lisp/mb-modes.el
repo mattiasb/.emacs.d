@@ -49,6 +49,7 @@
     ("\\.m$"        . octave-mode)
     ("\\.dec$"      . mtg-deck-mode)
     ("\/Cask$"      . emacs-lisp-mode)
+    ("\/evo"        . message-mode)
     ("\\.h$"        . mb-cmd-guess-cc-mode)))
 
 (defconst mb-modes--shortened-major-modes
