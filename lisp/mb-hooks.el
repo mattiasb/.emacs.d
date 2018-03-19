@@ -944,6 +944,24 @@
   (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
 
+;; Wanderlust Summary
+(defun mb-hooks--wl-summary-mode ()
+  "My `wl-summary' mode hook."
+  (goto-char (point-max)))
+
+(with-eval-after-load 'wl-summary
+  (add-hook 'wl-summary-mode-hook #'mb-hooks--wl-summary-mode))
+
+;; Wanderlust Folder
+(defun mb-hooks--wl-folder-mode ()
+  "My `wl-folder' mode hook."
+  (let ((window (get-buffer-window (current-buffer))))
+    (set-window-dedicated-p window t))
+  (setq window-size-fixed 'width))
+
+(with-eval-after-load 'wl-folder
+  (add-hook 'wl-folder-mode-hook #'mb-hooks--wl-folder-mode))
+
 ;; Whitespace
 (defun mb-hooks--whitespace-mode ()
   "My `whitespace' mode hook."
