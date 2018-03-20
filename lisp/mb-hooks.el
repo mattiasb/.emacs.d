@@ -597,6 +597,15 @@
 
   (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode))
 
+;; Mime View
+(defun mb-hooks--mime-view-mode ()
+  "My `mime-view' mode hook."
+  (fci-mode)
+  (auto-fill-mode))
+
+(with-eval-after-load 'mime-view
+  (add-hook 'mime-view-mode-hook #'mb-hooks--mime-view-mode))
+
 ;; MTG deck mode
 (defvar mtg-deck-mode-map)
 (defun mb-hooks--mtg-deck-mode ()

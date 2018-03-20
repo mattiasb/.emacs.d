@@ -191,6 +191,16 @@
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
+ '(mime-view-type-subtype-score-alist
+   '(((text . enriched)
+      . 3)
+     ((text . richtext)
+      . 1)
+     ((text . plain)
+      . 4)
+     ((text . html)
+      . 2)
+     (multipart . mime-view-multipart-entity-score)))
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
  '(package-archive-priorities '(("melpa" . 10) ("gnu" . 5) ("melpa-stable" . 0)))
@@ -258,9 +268,13 @@
  '(which-key-sort t)
  '(which-key-special-keys nil)
  '(wl-auto-check-folder-name '("inbox" "Boplats" "Disqus" "GitHub" "Desktop-devel"))
+ '(wl-auto-save-drafts-interval nil)
  '(wl-auto-select-first t)
  '(wl-demo-display-logo nil)
- '(wl-folder-desktop-name "Mail")
+ '(wl-fcc "Sent")
+ '(wl-folder-desktop-name
+   #("Mail" 0 4
+     (wl-folder-entity-id 0 wl-folder-is-group is-group)))
  '(wl-folder-window-width 30)
  '(wl-folders-file "~/.config/wanderlust/folders")
  '(wl-init-file "~/.config/wanderlust/config")
@@ -272,6 +286,8 @@
  '(wl-smtp-posting-port 587)
  '(wl-smtp-posting-server "smtp.gmail.com")
  '(wl-stay-folder-window t)
+ '(wl-summary-line-format "%Y-%M-%D %t%[%17(%c %f%) %] %s")
+ '(wl-summary-showto-folder-regexp "\".*%Skickat.*\"")
  '(wl-summary-width nil)
  '(wl-temporary-file-directory "~/.cache/wanderlust/tmp/")
  '(wl-thread-insert-opened t)
@@ -352,7 +368,10 @@
  '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
  '(table-cell ((t (:background "gray18"))))
  '(vr/match-0 ((t (:inherit region))))
- '(vr/match-1 ((t (:inherit region)))))
+ '(vr/match-1 ((t (:inherit region))))
+ '(wl-highlight-summary-high-read-face ((t (:weight bold))))
+ '(wl-highlight-summary-normal-face ((t nil)))
+ '(wl-highlight-summary-thread-top-face ((t nil))))
 
 ;;; Non-customizable settings
 
