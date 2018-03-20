@@ -98,7 +98,7 @@
                       ( "T"      . mb-cmd-open-tasks)
                       ( "d"      . daemons)
                       ( "j"      . mb-cmd-open-journal)
-                      ( "m"      . mb-cmd-open-mail)
+                      ( "m"      . wl-other-frame)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)

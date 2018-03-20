@@ -609,12 +609,5 @@ With a prefix ARG always prompt for command to use."
   (interactive)
   (find-file-existing "~/Dropbox/pim/todo/Tasks.md"))
 
-;;;###autoload
-(defun mb-cmd-open-mail ()
-  "Open my EMail."
-  (interactive)
-  (select-frame (make-frame))
-  (call-interactively #'wl))
-
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

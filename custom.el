@@ -113,7 +113,7 @@
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
-   '(wl-summary-mode wl-folder-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
+   '(mime-view-mode wl-summary-mode wl-folder-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
@@ -274,7 +274,7 @@
  '(wl-fcc "Sent")
  '(wl-folder-desktop-name
    #("Mail" 0 4
-     (wl-folder-entity-id 0 wl-folder-is-group is-group)))
+     (wl-folder-is-group is-group wl-folder-entity-id 0)))
  '(wl-folder-window-width 30)
  '(wl-folders-file "~/.config/wanderlust/folders")
  '(wl-init-file "~/.config/wanderlust/config")
@@ -282,6 +282,7 @@
  '(wl-local-domain "gmail.com")
  '(wl-message-ignored-field-list '("^.*:"))
  '(wl-message-visible-field-list '("^To:" "^Cc:" "^From:" "^Subject:" "^Date:"))
+ '(wl-message-window-size '(3 . 7))
  '(wl-score-files-directory "~/.config/wanderlust/elmo/")
  '(wl-smtp-posting-port 587)
  '(wl-smtp-posting-server "smtp.gmail.com")
