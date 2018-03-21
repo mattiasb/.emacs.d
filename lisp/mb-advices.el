@@ -116,7 +116,17 @@
   (advice-add #'flycheck-pos-tip-error-messages
               :around (lambda (func &rest args)
                         (let ((x-gtk-use-system-tooltips nil))
-                          (apply func args)))))
+                          (apply func args))))
+
+  (advice-add #'ask-user-about-lock
+              :around (lambda (file opponent)
+                        (let ((efile (expand-file-name file))
+                              (erecentf (format "%s/recentf"
+                                                user-emacs-directory)))
+                          (if (eq efile erecentf)
+                              t
+                            (ask-user-about-lock file opponent)))))
+  )
 
 
 (provide 'mb-advices)
