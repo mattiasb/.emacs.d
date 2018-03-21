@@ -885,6 +885,10 @@
 (add-hook 'text-mode-hook #'mb-hooks--text-mode)
 
 ;; Todotxt
+(defun mb-hooks--todotxt-mode ()
+  "My `todotxt' mode hook."
+  (todotxt-show-incomplete))
+
 (with-eval-after-load 'todotxt
   (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
@@ -902,7 +906,9 @@
                       ("/"        . nil)
                       ("F"        . todotxt-filter-out)
                       ("\\"       . nil)
-                      ("h"        . describe-mode))))
+                      ("h"        . describe-mode)))
+
+  (add-hook 'todotxt-mode-hook #'mb-hooks--todotxt-mode))
 
 ;; Shell script
 (defun mb-hooks--sh-mode ()
