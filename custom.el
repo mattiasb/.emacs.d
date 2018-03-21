@@ -271,7 +271,7 @@
  '(wl-auto-save-drafts-interval nil)
  '(wl-auto-select-first t)
  '(wl-demo-display-logo nil)
- '(wl-fcc "Sent")
+ '(wl-fcc "%[Gmail]/Skickat")
  '(wl-folder-desktop-name
    #("Mail" 0 4
      (wl-folder-is-group is-group wl-folder-entity-id 0)))
@@ -284,8 +284,11 @@
  '(wl-message-visible-field-list '("^To:" "^Cc:" "^From:" "^Subject:" "^Date:"))
  '(wl-message-window-size '(3 . 7))
  '(wl-score-files-directory "~/.config/wanderlust/elmo/")
+ '(wl-smtp-authenticate-type "plain")
+ '(wl-smtp-connection-type 'starttls)
  '(wl-smtp-posting-port 587)
  '(wl-smtp-posting-server "smtp.gmail.com")
+ '(wl-smtp-posting-user "mattias.jc.bengtsson@gmail.com")
  '(wl-stay-folder-window t)
  '(wl-summary-line-format "%Y-%M-%D %t%[%17(%c %f%) %] %s")
  '(wl-summary-showto-folder-regexp "\".*%Skickat.*\"")
