@@ -874,11 +874,12 @@
   (setq-local fill-column 80)
   (setq-local indent-tabs-mode nil)
 
-  (guess-language-mode)
-  (guess-language)
-  (flyspell-mode)
   (fci-mode)
-  (auto-fill-mode))
+  (unless (derived-mode-p 'yaml-mode)
+    (guess-language-mode)
+    (guess-language)
+    (flyspell-mode)
+    (auto-fill-mode)))
 
 ;; Text mode doesn't have a (provide)
 (add-hook 'text-mode-hook #'mb-hooks--text-mode)
