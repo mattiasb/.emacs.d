@@ -1,6 +1,8 @@
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 
-module Test where
+import Data.List
+
+module Main where
 
 int :: Integer -> Integer
 str :: String -> String
