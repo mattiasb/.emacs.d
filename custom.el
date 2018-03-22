@@ -87,6 +87,7 @@
  '(electric-layout-mode t)
  '(electric-operator-c-pointer-type-style 'type)
  '(electric-pair-mode t)
+ '(elmo-folder-update-threshold 1001)
  '(elmo-imap4-default-authenticate-type 'clear)
  '(elmo-imap4-default-port 993)
  '(elmo-imap4-default-server "imap.gmail.com")
