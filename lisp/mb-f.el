@@ -388,6 +388,10 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 (defun mb-f-kill-server ()
   "Kill the server daemon as gracefully as possible."
   (save-some-buffers t)
+
+  ;; Maybe this will make quitting Emacs work better?
+  (dotimes (_ 5) (keyboard-quit))
+
   (cl-flet ((process-list ()))
     (kill-emacs)))
 
