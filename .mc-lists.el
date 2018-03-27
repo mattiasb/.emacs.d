@@ -7,6 +7,7 @@
         electric-pair-delete-pair
         indent-for-tab-command
         indent-tools-indent
+        markdown-cycle
         markdown-outdent-or-delete
         mb-cmd-toggle-comment
         mtg-deck-sideboard-toggle
