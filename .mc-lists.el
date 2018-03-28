@@ -14,6 +14,7 @@
         mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
         shift-number-down
+        shift-number-up
         yaml-electric-backspace
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
