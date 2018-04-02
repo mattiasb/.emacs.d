@@ -690,7 +690,7 @@
                       ( "C-z d"       . nil)
                       ( "C-z d d"     . mb-cmd-realgud-debug)
                       ( "C-z d a"     . realgud-short-key-mode)
-                      ( "M-q"         . prog-fill)))
+                      ( "M-q"         . fill-function-arguments-dwim)))
   (mb-f-remap-keys  prog-mode-map
                     '(( "RET"         . "M-j")))
 
