@@ -1,8 +1,8 @@
 {-# OPTIONS_GHC -fno-warn-missing-signatures #-}
 
-import Data.List
-
 module Main where
+
+import Data.List
 
 int :: Integer -> Integer
 str :: String -> String
@@ -16,7 +16,7 @@ integers :: String -> String
 integers = (unlines . map (show . int . read) . lines)
 
 string :: String -> String
-string  = string
+string  = str
 
 integer :: String -> String
 integer = show . int . read
