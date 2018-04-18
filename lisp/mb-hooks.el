@@ -480,6 +480,14 @@
 (with-eval-after-load 'cc-mode
   (add-hook 'java-mode-hook #'mb-hooks--java-mode))
 
+;; Jinja2
+(defun mb-hooks--jinja2-mode ()
+  "My `jinja2' mode hook."
+  (yas-minor-mode))
+
+(with-eval-after-load 'jinja2
+  (add-hook 'jinja2-mode-hook #'mb-hooks--jinja2-mode))
+
 ;; JS2
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."
@@ -875,7 +883,8 @@
   (setq-local indent-tabs-mode nil)
 
   (fci-mode)
-  (unless (derived-mode-p 'yaml-mode)
+  (unless (or ((derived-mode-p 'yaml-mode)
+               (derived-mode-p 'jinja2-mode)))
     (guess-language-mode)
     (guess-language)
     (flyspell-mode)
