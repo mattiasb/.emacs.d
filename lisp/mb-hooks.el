@@ -597,9 +597,12 @@
 
 (with-eval-after-load 'markdown-mode
   (defvar markdown-mode-map)
+  (pandoc-mode)
+  (pandoc-load-default-settings)
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
                       ( "C-c C-c p"  . mb-cmd-open-with)
+                      ( "C-c p"      . pandoc-main-hydra/body)
                       ( "M-<up>"     . nil)
                       ( "M-<down>"   . nil)))
 
