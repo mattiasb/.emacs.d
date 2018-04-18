@@ -43,6 +43,7 @@
     ("\\.jshintrc$"        . js2-mode)
     ("\\.jscsrc$"          . json-mode)
     ("\\.ks$"              . sh-mode)
+    ("\\.seed$"            . sh-mode)
     ("\\.geojson$"         . json-mode)
     ("\\.vala$"            . vala-mode)
     ("\\.mapcss$"          . css-mode)
