@@ -886,12 +886,15 @@
   (setq-local indent-tabs-mode nil)
 
   (fci-mode)
-  (unless (or ((derived-mode-p 'yaml-mode)
-               (derived-mode-p 'jinja2-mode)))
-    (guess-language-mode)
-    (guess-language)
-    (flyspell-mode)
-    (auto-fill-mode)))
+
+  ;;;; Disable flyspell for now
+  ;;
+  ;; (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
+  ;;   (guess-language-mode)
+  ;;   (guess-language)
+  ;;   (flyspell-mode)
+  ;;   (auto-fill-mode))
+  )
 
 ;; Text mode doesn't have a (provide)
 (add-hook 'text-mode-hook #'mb-hooks--text-mode)
