@@ -116,6 +116,7 @@
                       ( "b"      . magit-blame)
                       ( "e l"    . electric-layout-mode)
                       ( "e p"    . electric-pair-mode)
+                      ( "e o"    . electric-operator-mode)
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
                       ( "w"      . whitespace-mode)

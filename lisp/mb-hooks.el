@@ -299,6 +299,8 @@
 (with-eval-after-load 'electric-operator
   (electric-operator-add-rules-for-mode 'makefile-mode
                                         (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'makefile-gmake-mode
+                                        (cons "-" nil))
   (electric-operator-add-rules-for-mode 'sh-mode
                                         (cons "=" nil)))
 
@@ -788,8 +790,7 @@
   (importmagic-mode)
   (aggressive-indent-mode -1)
   (indent-tools-minor-mode)
-  (add-to-list 'electric-layout-rules
-               (cons ?: #'mb-f-python-electric-newline)))
+  (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'python
   (defvar python-mode-map)
