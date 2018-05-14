@@ -244,6 +244,10 @@
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)
+ '(sh-imenu-generic-expression
+   '((sh
+      (nil "^\\s-*function\\s-+\\([[:alpha:]_-][[:alnum:]_-]*\\)\\s-*\\(?:()\\)?" 1)
+      (nil "^\\s-*\\([[:alpha:]_-][[:alnum:]_-]*\\)\\s-*()" 1))))
  '(shift-select-mode nil)
  '(show-paren-mode t)
  '(tab-width 8)
