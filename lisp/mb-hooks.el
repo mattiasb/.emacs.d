@@ -683,7 +683,8 @@
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
 
-  (unless (derived-mode-p 'emacs-lisp-mode)
+  (unless (derived-mode-p 'emacs-lisp-mode
+                          'dockerfile-mode)
     (electric-operator-mode))
   (yas-minor-mode)
   (ws-butler-mode)
