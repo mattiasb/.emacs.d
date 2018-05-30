@@ -768,6 +768,7 @@
     "Spawn gitg in the project root."
     (mb-cmd-projectile-gitg))
 
+  (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name)
   (add-hook 'projectile-mode-hook #'control-mode-reload-bindings))
 
 ;; Python

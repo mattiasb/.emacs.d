@@ -35,6 +35,9 @@
 (require 'fill-column-indicator)
 (require 'popup)
 
+(declare-function projectile-project-root "projectile.el")
+(declare-function projectile-project-name "projectile.el")
+
 (defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
   (dolist (mode-and-line modes)
@@ -402,6 +405,16 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
               (let ((display-table (or buffer-display-table
                                        standard-display-table)))
                 (set-display-table-slot display-table 5 ?│)))))
+
+
+;; Taken from: https://emacs.stackexchange.com/a/38760
+(defun mb-f-projectile-relative-buf-name ()
+  "Rename buffers to include relative path to project.
+
+Usage: (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name)"
+  (ignore-errors
+    (rename-buffer
+     (file-relative-name buffer-file-name (projectile-project-root)))))
 
 (defvar mb-f-jhbuild-src-path   "~/Code/gnome/src")
 (defvar mb-f-jhbuild-build-path "~/Code/gnome/build")
