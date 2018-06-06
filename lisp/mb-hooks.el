@@ -644,6 +644,17 @@
 (with-eval-after-load 'multiple-cursors
   (add-hook 'multiple-cursors-mode-enabled-hook
             #'mb-hooks--multiple-cursors-mode-enabled))
+;; Nginx
+(defun mb-hooks--nginx-mode ()
+  "My `nginx' mode hook."
+  (defvar company-backends)
+  (setq-local company-backends '(company-keywords
+                                 company-files))
+  (company-mode 1)
+  (company-nginx-keywords))
+
+(with-eval-after-load 'nginx-mode
+  (add-hook 'nginx-mode-hook #'mb-hooks--nginx-mode))
 
 ;; nXML
 (defun mb-hooks--nxml-mode ()
