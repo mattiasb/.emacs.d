@@ -206,6 +206,7 @@
                       ( "R"      . restart-emacs)
                       ( "b"      . browse-url-at-point)
                       ( "g"      . imenu)
+                      ( "n"      . make-frame)
                       ( "o"      . mb-cmd-open-with)))
 
 (defun mb-keys-activate ()
