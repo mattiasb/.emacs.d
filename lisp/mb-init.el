@@ -64,7 +64,7 @@
   (require 'dired-imenu)
   (require 'visual-regexp-steroids)
   (require 'control-mode)
-  (require 'perspective)
+  ;; (require 'perspective)
   ;; (auto-sudoedit-mode)
 
   (global-git-gutter-mode)
