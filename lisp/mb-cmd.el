@@ -397,15 +397,6 @@ With a prefix ARG always prompt for command to use."
                       (shell-quote-argument buffer-file-name))))))
 
 ;;;###autoload
-(defun mb-cmd-guess-cc-mode ()
-  "Guess whether to activate `c-mode' or `c++-mode' for a .h-file."
-  (interactive)
-  (let ((c-file (concat (substring (buffer-file-name) 0 -1) "c")))
-    (if (file-exists-p c-file)
-        (c-mode)
-      (c++-mode))))
-
-;;;###autoload
 ;; From: http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html
 (defun mb-cmd-fill-or-unfill ()
   "Like `fill-paragraph', but unfill if used twice."

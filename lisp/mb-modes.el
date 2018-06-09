@@ -52,8 +52,7 @@
     ("\\.dec$"             . mtg-deck-mode)
     ("\/Cask$"             . emacs-lisp-mode)
     ("\/buildstream.conf$" . emacs-lisp-mode)
-    ("\/evo"               . message-mode)
-    ("\\.h$"               . mb-cmd-guess-cc-mode)))
+    ("\/evo"               . message-mode)))
 
 (defconst mb-modes--shortened-major-modes
   '((markdown-mode   . "M↓")
