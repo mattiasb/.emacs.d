@@ -613,8 +613,7 @@
 ;; Mime View
 (defun mb-hooks--mime-view-mode ()
   "My `mime-view' mode hook."
-  (fci-mode)
-  (auto-fill-mode))
+  (fci-mode))
 
 (with-eval-after-load 'mime-view
   (add-hook 'mime-view-mode-hook #'mb-hooks--mime-view-mode))

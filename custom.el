@@ -57,6 +57,7 @@
  '(browse-kill-ring-show-preview nil)
  '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
+ '(comment-auto-fill-only-comments t)
  '(company-backends
    '(company-elisp company-nxml company-css company-cmake company-capf
                    (company-dabbrev-code company-keywords)

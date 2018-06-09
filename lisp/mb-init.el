@@ -66,7 +66,7 @@
   (require 'control-mode)
   ;; (require 'perspective)
   ;; (auto-sudoedit-mode)
-
+  (auto-fill-mode 1)
   (global-git-gutter-mode)
   (flimenu-global-mode)
   (fancy-narrow-mode)
