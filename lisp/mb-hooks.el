@@ -1040,7 +1040,9 @@
   (fci-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
-  (indent-tools-minor-mode))
+  (indent-tools-minor-mode)
+  (when (locate-dominating-file default-directory "ansible.cfg")
+    (ansible 1)))
 
 (with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
