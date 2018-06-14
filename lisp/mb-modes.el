@@ -55,15 +55,15 @@
     ("\/evo"               . message-mode)))
 
 (defconst mb-modes--shortened-major-modes
-  '((markdown-mode   . "M↓")
-    (js2-mode        . "JS")
-    (nxml-mode       . "XML")
+  '((c++-mode        . "C++")
     (c-mode          . "C")
-    (c++-mode        . "C++")
     (cmake-mode      . "CMake")
     (emacs-lisp-mode . "Elisp")
     (go-mode         . "Go")
     (haskell-mode    . "λ")
+    (js2-mode        . "JS")
+    (markdown-mode   . "M↓")
+    (nxml-mode       . "XML")
     (snippet-mode    . "Yas Snippet")))
 
 (defconst mb-modes--shortened-minor-modes
