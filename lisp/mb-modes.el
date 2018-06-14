@@ -70,6 +70,7 @@
   '((abbrev-mode                 . " A")
     (aggressive-indent-mode      . " ⇒")
     (anaconda-mode               . " 🐍")
+    (ansible-doc-mode            . "")
     (auto-dim-other-buffers-mode . "")
     (auto-revert-mode            . " ⎌")
     (auto-sudoedit-mode          . "")

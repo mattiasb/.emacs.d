@@ -61,8 +61,8 @@
   (setq-local company-backends
               (when ansible '(company-ansible)))
 
-  (company-mode ansible)
-  (ansible-doc-mode ansible)
+  (company-mode)
+  (ansible-doc-mode)
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
