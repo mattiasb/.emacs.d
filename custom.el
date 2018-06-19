@@ -119,7 +119,7 @@
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
-   '(mime-view-mode wl-summary-mode wl-folder-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
+   '(ansible-doc-module-mode mime-view-mode wl-summary-mode wl-folder-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode))
  '(global-git-gutter-mode t)
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
