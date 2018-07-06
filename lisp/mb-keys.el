@@ -119,6 +119,7 @@
                       ( "e o"    . electric-operator-mode)
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
+                      ( "s"      . flyspell-mode)
                       ( "w"      . whitespace-mode)
                       ( "y"      . yas-minor-mode)))
 
