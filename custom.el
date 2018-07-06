@@ -190,13 +190,12 @@
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
  '(markdown-command
-   (concat "pandoc -s -f markdown_github -c file://"
-           (file-truename user-emacs-directory)
-           "github-pandoc.css"))
+   "pandoc -s -f gfm -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
  '(markdown-fontify-code-blocks-natively t)
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
+ '(markdown-use-pandoc-style-yaml-metadata t)
  '(mime-view-type-subtype-score-alist
    '(((text . enriched)
       . 3)
