@@ -695,6 +695,8 @@
 
   (unless (derived-mode-p 'emacs-lisp-mode
                           'dockerfile-mode)
+    ;; https://github.com/davidshepherd7/electric-operator/pull/71
+    (require 'electric-operator)
     (electric-operator-mode))
   (yas-minor-mode)
   (ws-butler-mode)
