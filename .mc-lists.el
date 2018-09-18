@@ -15,6 +15,12 @@
         mwim-end-of-code-or-line
         shift-number-down
         shift-number-up
+        string-inflection-underscore
+        string-inflection-camelcase
+        string-inflection-lower-camelcase
+        string-inflection-underscore
+        string-inflection-upcase
+        string-inflection-kebab-case
         yaml-electric-backspace
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
