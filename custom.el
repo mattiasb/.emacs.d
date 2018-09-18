@@ -245,6 +245,7 @@
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)
+ '(sgml-basic-offset 4)
  '(sh-imenu-generic-expression
    '((sh
       (nil "^\\s-*function\\s-+\\([[:alpha:]_-][[:alnum:]_-]*\\)\\s-*\\(?:()\\)?" 1)
