@@ -595,12 +595,13 @@
 
 ;; Markdown
 (defun mb-hooks--markdown-mode ()
-  "My `markdown' mode hook.")
+  "My `markdown' mode hook."
+  (pandoc-mode)
+  (pandoc-load-default-settings))
 
 (with-eval-after-load 'markdown-mode
   (defvar markdown-mode-map)
-  (pandoc-mode)
-  (pandoc-load-default-settings)
+
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
                       ( "C-c C-c p"  . mb-cmd-open-with)
