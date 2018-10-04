@@ -64,6 +64,7 @@
     (js2-mode        . "JS")
     (markdown-mode   . "M↓")
     (nxml-mode       . "XML")
+    (sh-mode         . "Sh")
     (snippet-mode    . "Yas Snippet")))
 
 (defconst mb-modes--shortened-minor-modes
@@ -77,7 +78,9 @@
     (company-mode                . " C")
     (control-mode                . "")
     (eldoc-mode                  . " 🕮")
+    (electric-operator-mode      . " ⊙")
     (fancy-narrow-mode           . "")
+    (flymake-mode                . " ✎")
     (flyspell-mode               . " ✎")
     (git-gutter-mode             . "")
     (haskell-indentation-mode    . "")

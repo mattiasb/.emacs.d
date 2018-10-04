@@ -222,6 +222,7 @@
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix "p")
+ '(projectile-mode-line-prefix " P")
  '(projectile-switch-project-action 'projectile-commander)
  '(racer-cmd "/home/mattiasb/.local/bin/racer")
  '(racer-rust-src-path "/home/mattiasb/Code/github/rust-lang/rust/src/")
