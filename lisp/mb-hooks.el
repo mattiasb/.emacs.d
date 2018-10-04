@@ -295,6 +295,15 @@
   (require 'hide-mode-line)
   (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
 
+;; Eglot
+(with-eval-after-load 'eglot
+  (defvar eglot-mode-map)
+  (mb-f-define-keys eglot-mode-map
+                    '(("C-z ?"   . eglot-help-at-point)
+                      ("C-z f r" . eglot-rename)
+                      ("C-z f m" . eglot-format)
+                      ("C-z f f" . eglot-code-actions))))
+
 ;; Electric operator
 (with-eval-after-load 'electric-operator
   (electric-operator-add-rules-for-mode 'makefile-mode
@@ -942,14 +951,13 @@
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
-  (eglot)
+  (eglot-ensure)
   (setq-local defun-prompt-regexp
               (concat "^\\("
                       "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
                       "\\|"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
-
   (sh-extra-font-lock-activate))
 
 (with-eval-after-load 'sh-script
