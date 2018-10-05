@@ -51,7 +51,7 @@
     ("\\.m$"               . octave-mode)
     ("\\.dec$"             . mtg-deck-mode)
     ("\/Cask$"             . emacs-lisp-mode)
-    ("\/buildstream.conf$" . emacs-lisp-mode)
+    ("\/Pipfile$"          . toml-mode)
     ("\/evo"               . message-mode)))
 
 (defconst mb-modes--shortened-major-modes
