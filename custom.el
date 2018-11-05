@@ -113,7 +113,7 @@
  '(flycheck-pos-tip-max-width 60)
  '(flycheck-python-flake8-executable "flake8")
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face) t)
- '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist))
+ '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
  '(git-commit-setup-hook
