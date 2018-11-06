@@ -951,7 +951,6 @@
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
-  (eglot-ensure)
   (setq-local defun-prompt-regexp
               (concat "^\\("
                       "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
