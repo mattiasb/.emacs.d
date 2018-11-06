@@ -50,7 +50,7 @@
  '(browse-kill-ring-highlight-current-entry t)
  '(browse-kill-ring-highlight-inserted-item nil)
  '(browse-kill-ring-no-duplicates t)
- '(browse-kill-ring-quit-action 'kill-and-delete-window)
+ '(browse-kill-ring-quit-action 'save-and-restore)
  '(browse-kill-ring-resize-window t)
  '(browse-kill-ring-separator
    "——————————————————————————————————————————————————————————")
