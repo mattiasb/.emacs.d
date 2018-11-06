@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         cycle-quotes
+        electric-newline-and-maybe-indent
         electric-pair-delete-pair
         indent-for-tab-command
         indent-tools-indent
