@@ -63,7 +63,6 @@
 
   (company-mode)
   (ansible-doc-mode)
-  (ansible-vault-mode)
   (font-lock-flush))
 
 (with-eval-after-load "ansible"

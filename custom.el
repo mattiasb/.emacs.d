@@ -42,7 +42,6 @@
  '(ag-reuse-window t)
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode))
- '(ansible-vault-pass-file (getenv "ANSIBLE_VAULT_PASSWORD_FILE"))
  '(auto-insert 'other)
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(blink-cursor-blinks -1)
