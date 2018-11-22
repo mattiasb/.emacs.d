@@ -259,6 +259,14 @@
   (mb-f-remap-keys daemons-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r"))))
+;; Dockerfile
+(defun mb-hooks--dockerfile-mode ()
+  "My `dockerfile' mode hook."
+  ;; dockerfile-mode uses tab-width to check indentation. 😢
+  (setq-local tab-width 4))
+
+(with-eval-after-load 'dockerfile-mode
+  (add-hook 'dockerfile-mode-hook #'mb-hooks--dockerfile-mode))
 
 ;; Dired
 (defun mb-hooks--dired-mode ()
