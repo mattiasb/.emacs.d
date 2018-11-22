@@ -965,7 +965,12 @@
                       "\\|"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
-  (sh-extra-font-lock-activate))
+  (sh-extra-font-lock-activate)
+  (defvar company-backends)
+  (setq-local company-backends '((company-shell
+                                  company-keywords
+                                  company-files
+                                  company-dabbrev-code))))
 
 (with-eval-after-load 'sh-script
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
