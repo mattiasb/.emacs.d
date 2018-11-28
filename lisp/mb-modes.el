@@ -50,6 +50,7 @@
     ("\\.mcss$"            . css-mode)
     ("\\.m$"               . octave-mode)
     ("\\.dec$"             . mtg-deck-mode)
+    ("\/hosts$"            . ini-mode)
     ("\/Cask$"             . emacs-lisp-mode)
     ("\/Pipfile$"          . toml-mode)
     ("\/evo"               . message-mode)))
