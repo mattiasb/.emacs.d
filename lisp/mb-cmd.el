@@ -600,5 +600,17 @@ With a prefix ARG always prompt for command to use."
   (interactive)
   (find-file-existing "~/Dropbox/pim/todo/Tasks.md"))
 
+;;;###autoload
+(defun mb-cmd-exec-gnome-terminal ()
+  "Open my tasks."
+  (interactive)
+  (call-process-shell-command "gnome-terminal&" nil 0))
+
+;;;###autoload
+(defun mb-cmd-exec-nautilus ()
+  "Open my tasks."
+  (interactive)
+  (call-process-shell-command "nautilus . &" nil 0))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

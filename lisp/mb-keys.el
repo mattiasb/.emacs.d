@@ -92,6 +92,10 @@
     ( "C-a"           . mwim-beginning-of-code-or-line)
     ( "C-e"           . mwim-end-of-code-or-line)))
 
+(mb-f-define-keymap mb-keys-exec-map
+                    '(( "t"      . mb-cmd-exec-gnome-terminal)
+                      ( "f"      . mb-cmd-exec-nautilus)))
+
 (mb-f-define-keymap mb-keys-windows-map
                     '(( "c"      . customize)
                       ( "t"      . todotxt)
@@ -184,6 +188,7 @@
                       ( "t"      . mb-keys-toggle-map)
                       ( "T"      . mb-keys-tables-map)
                       ( "w"      . mb-keys-windows-map)
+                      ( "x"      . mb-keys-exec-map)
 
                       ;; Text manipulation
                       ( "+"      . shift-number-up)

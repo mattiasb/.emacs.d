@@ -773,8 +773,8 @@
                       ( "V"   . mb-cmd-projectile-gitg)
                       ( "s S" . mb-cmd-projectile-ag-regex)
                       ( "s r" . projectile-ripgrep)
-                      ( "w a" . mb-cmd-projectile-ansi-term)
-                      ( "w t" . mb-cmd-projectile-gnome-terminal)))
+                      ( "x a" . mb-cmd-projectile-ansi-term)
+                      ( "x t" . mb-cmd-projectile-gnome-terminal)))
 
   (def-projectile-commander-method ?d
     "Open project root in dired."
