@@ -6,11 +6,13 @@
         cycle-quotes
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
+        forward-sexp
         indent-for-tab-command
         indent-tools-indent
         markdown-cycle
         markdown-outdent-or-delete
         mb-cmd-toggle-comment
+        message-beginning-of-line
         mtg-deck-sideboard-toggle
         mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
