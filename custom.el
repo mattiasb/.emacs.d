@@ -40,6 +40,7 @@
  '(ag-highlight-search t)
  '(ag-reuse-buffers t)
  '(ag-reuse-window t)
+ '(aggressive-indent-dont-electric-modes t)
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode))
  '(auto-insert 'other)
@@ -84,6 +85,7 @@
    '(table-narrow-cell table-widen-cell table-shorten-cell table-heighten-cell string-inflection-all-cycle indent-tools-demote indent-tools-indent shift-number-up shift-number-down md/duplicate-up md/duplicate-down flycheck-next-error flycheck-previous-error mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
+ '(electric-indent-mode nil)
  '(electric-layout-mode t)
  '(electric-operator-c-pointer-type-style 'type)
  '(electric-pair-mode t)
