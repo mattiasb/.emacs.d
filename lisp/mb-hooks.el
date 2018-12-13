@@ -712,13 +712,20 @@
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
 
-  (unless (derived-mode-p 'emacs-lisp-mode
+  (unless (derived-mode-p 'lisp-mode
+                          'emacs-lisp-mode
                           'dockerfile-mode)
     ;; https://github.com/davidshepherd7/electric-operator/pull/71
     (require 'electric-operator)
     (electric-operator-mode))
 
+  (unless (derived-mode-p 'lisp-mode
+                          'emacs-lisp-mode)
+    (mb-f-add-electric-pairs '((?' . ?')
+                               (?< . ?>))))
+
   ;; This logic is taken from aggressive-indent-mode
+  (require 'aggressive-indent)
   (unless (or (cl-member-if #'derived-mode-p aggressive-indent-excluded-modes)
               (equal indent-line-function #'indent-relative)
               buffer-read-only)
@@ -748,6 +755,7 @@
 ;; Projectile
 (with-eval-after-load 'projectile
   (defvar projectile-known-projects)
+  (defvar projectile-mode-line)
 
   (unless projectile-known-projects
     (mb-cmd-projectile-index-projects))

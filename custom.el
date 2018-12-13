@@ -95,7 +95,6 @@
      (8220 . 8221)
      (123 . 125)
      (91 . 93)
-     (39 . 39)
      (96 . 96)))
  '(elmo-folder-update-threshold 1001)
  '(elmo-imap4-default-authenticate-type 'clear)

@@ -535,6 +535,12 @@ that checks that the hash-bang seems to involve a path."
                                            (+ 3 (point-min)))))
     (executable-make-buffer-file-executable-if-script-p)))
 
+(defun mb-f-add-electric-pairs (pairs)
+  "Add Electric Pair Mode PAIRS for current buffer."
+  (defvar electric-pair-pairs)
+  (defvar electric-pair-text-pairs)
+  (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
+  (setq-local electric-pair-text-pairs electric-pair-pairs))
 
 (provide 'mb-f)
 ;;; mb-f.el ends here
