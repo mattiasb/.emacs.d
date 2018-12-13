@@ -707,6 +707,7 @@
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
 
+  (defvar aggressive-indent-excluded-modes)
   (setq-local fill-column 80)
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
@@ -716,6 +717,12 @@
     ;; https://github.com/davidshepherd7/electric-operator/pull/71
     (require 'electric-operator)
     (electric-operator-mode))
+
+  ;; This logic is taken from aggressive-indent-mode
+  (unless (or (cl-member-if #'derived-mode-p aggressive-indent-excluded-modes)
+              (equal indent-line-function #'indent-relative)
+              buffer-read-only)
+    (aggressive-indent-mode))
   (yas-minor-mode)
   (ws-butler-mode)
   (company-mode)
