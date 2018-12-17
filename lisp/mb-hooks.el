@@ -60,7 +60,7 @@
   (defvar company-backends)
   (setq-local company-backends
               (when ansible '(company-ansible)))
-
+  (mb-f-add-electric-pairs '((?( . ?))))
   (company-mode)
   (ansible-doc-mode)
   (font-lock-flush))
