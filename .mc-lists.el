@@ -24,6 +24,8 @@
         string-inflection-underscore
         string-inflection-underscore
         string-inflection-upcase
+        wdired-capitalize-word
+        wdired-downcase-word
         yaml-electric-backspace
         yaml-electric-bar-and-angle
         yaml-electric-dash-and-dot
