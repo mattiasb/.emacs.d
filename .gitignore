@@ -36,3 +36,4 @@ anaconda-mode/*
 flycheck_*.el
 magithub/*
 /network-security.data
+/forge-database.sqlite
