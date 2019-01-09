@@ -559,6 +559,7 @@
 
 ;; Lastpass
 (with-eval-after-load 'lastpass
+  (lastpass-auth-source-enable)
   (add-hook 'auth-source-backend-parser-functions
             #'lastpass-auth-source-backend-parse))
 
