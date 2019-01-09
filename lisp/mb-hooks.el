@@ -557,6 +557,11 @@
                       ( "M-?"            . lsp-ui-peek-find-references)))
   (add-hook 'lsp-mode-hook #'mb-hooks--lsp-mode))
 
+;; Lastpass
+(with-eval-after-load 'lastpass
+  (add-hook 'auth-source-backend-parser-functions
+            #'lastpass-auth-source-backend-parse))
+
 ;; Lua
 (defun mb-hooks--lua-mode ()
   "My `lua' mode hook."
