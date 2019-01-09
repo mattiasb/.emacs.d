@@ -580,18 +580,10 @@
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
-(with-eval-after-load 'magithub
-  (declare-function magithub-feature-autoinject "magithub.el")
-  (magithub-feature-autoinject 't))
-
 (with-eval-after-load 'magit
+  (require 'forge)
   (declare-function git-gutter:update-all-windows "git-gutter.el")
   (declare-function magit-define-popup-action "magit-popup.el")
-
-  ;; magithub still seems a bit rough around the edges.
-  ;; Let's try it out again later.
-  ;;
-  ;; (require 'magithub)
 
   (magit-define-popup-action 'magit-run-popup ?g "Gitg"
     #'mb-cmd-projectile-gitg)
@@ -610,9 +602,9 @@
   (mb-f-define-keys git-commit-mode-map
                     '(( "C-c C-f" . mb-cmd-git-commit-insert-issue-fix)))
 
+  (add-hook 'after-save-hook         #'magit-after-save-refresh-status)
   (add-hook 'magit-mode-hook         #'turn-on-magit-gitflow)
   (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
-  (add-hook 'magit-status-mode-hook  #'magit-filenotify-mode)
   (add-hook 'git-commit-setup-hook   #'mb-hooks--git-commit-setup))
 
 ;; Markdown
