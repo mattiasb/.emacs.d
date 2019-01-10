@@ -59,7 +59,8 @@
   "My `yaml' mode hook."
   (defvar company-backends)
   (setq-local company-backends
-              (when ansible '(company-ansible)))
+              (when (and (boundp 'ansible) ansible)
+                '(company-ansible)))
   (mb-f-add-electric-pairs '((?( . ?))))
   (company-mode)
   (ansible-doc-mode)
