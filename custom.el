@@ -45,6 +45,7 @@
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
  '(auto-insert 'other)
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
+ '(backup-directory-alist '(("." . "~/.cache/emacs-backup/")))
  '(blink-cursor-blinks -1)
  '(browse-kill-ring-current-entry-face 'bold)
  '(browse-kill-ring-display-duplicates nil)
