@@ -61,7 +61,7 @@
   (setq-local company-backends
               (when (and (boundp 'ansible) ansible)
                 '(company-ansible)))
-  (mb-f-add-electric-pairs '((?( . ?))))
+  (mb-f-add-electric-pairs '((?\( . ?\))))
   (company-mode)
   (ansible-doc-mode)
   (font-lock-flush))
