@@ -579,6 +579,8 @@
 (defun mb-hooks--git-commit-setup ()
   "My `git-commit' mode hook."
   (mb-cmd-control-mode-off)
+  (auto-fill-mode)
+  (setq fill-column 72)
   (git-commit-insert-issue-mode)
   (fci-mode 1))
 
