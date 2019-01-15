@@ -614,6 +614,7 @@
 ;; Markdown
 (defun mb-hooks--markdown-mode ()
   "My `markdown' mode hook."
+  (auto-fill-mode)
   (pandoc-mode)
   (pandoc-load-default-settings))
 
