@@ -198,7 +198,7 @@
  '(keyfreq-buffer "*KeyFreq*")
  '(keyfreq-mode t)
  '(large-file-warning-threshold 100000000)
- '(lastpass-user "mattias.jc.bengtsson@gmail.com")
+ '(lastpass-user "")
  '(load-prefer-newer t)
  '(lsp-ui-sideline-enable nil)
  '(lua-indent-level 2)
