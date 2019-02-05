@@ -69,6 +69,8 @@
   (auto-sudoedit-mode)
   (auto-fill-mode 1)
   (global-git-gutter-mode)
+  (global-emojify-mode)
+  (global-emojify-mode-line-mode)
   (flimenu-global-mode)
   (fancy-narrow-mode)
   (ido-mode)
