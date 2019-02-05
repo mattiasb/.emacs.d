@@ -213,6 +213,7 @@
  '(magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
+ '(magit-tag-arguments '("--annotate"))
  '(magit-unstage-all-confirm nil)
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
