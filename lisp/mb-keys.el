@@ -71,6 +71,7 @@
     ( "C-'"           . ace-jump-word-mode)
     ( "C-<next>"      . forward-page)
     ( "C-<prior>"     . backward-page)
+    ( "M-g M-g  "     . goto-line-preview-goto-line)
 
     ;; Move buffers
     ( "<C-S-up>"      . buf-move-up)
