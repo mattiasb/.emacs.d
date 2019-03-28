@@ -16,6 +16,7 @@
         mtg-deck-sideboard-toggle
         mwim-beginning-of-code-or-line
         mwim-end-of-code-or-line
+        sgml-slash
         shift-number-down
         shift-number-up
         string-inflection-camelcase
