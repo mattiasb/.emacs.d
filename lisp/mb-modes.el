@@ -38,6 +38,7 @@
 (defconst mb-modes--filepattern-to-mode-map
   '(("\\.inl\\'"           . c++-mode)
     ("\\.ui$"              . nxml-mode)
+    ("\\.html$"            . html-mode)
     ("\\.j2$"              . jinja2-mode)
     ("\\.js$"              . js2-mode)
     ("\\.jshintrc$"        . js2-mode)
