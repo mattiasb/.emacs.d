@@ -38,3 +38,4 @@ magithub/*
 /network-security.data
 /forge-database.sqlite
 /emojis/*
+/.mc-lists.el
