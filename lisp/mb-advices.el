@@ -72,6 +72,7 @@
           rtags-references-tree
           rtags-show-target-in-other-window
           projectile-ag
+          projectile-rigprep
           projectile-compile-project
           flycheck-list-errors
           diff-buffer-with-file))

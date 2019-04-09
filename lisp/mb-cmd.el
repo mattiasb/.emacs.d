@@ -417,6 +417,14 @@ With a prefix ARG always prompt for command to use."
   (apply #'projectile-ag search-term '(4)))
 
 ;;;###autoload
+(defun mb-cmd-projectile-ripgrep-regex (search-term)
+  "Regex search for SEARCH-TERM with ag."
+  (interactive
+   (list (projectile--read-search-string-with-default
+          "Ripgrep regexp search for")))
+  (apply #'projectile-ripgrep search-term '(4)))
+
+;;;###autoload
 (defun mb-cmd-projectile-regen-rtags ()
   "Update rtags for current project."
   (interactive)

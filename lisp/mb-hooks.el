@@ -782,8 +782,10 @@
                       ( "5 d" . projectile-dired-other-frame)
                       ( "5 D" . projectile-find-dir-other-frame)
                       ( "V"   . mb-cmd-projectile-gitg)
-                      ( "s S" . mb-cmd-projectile-ag-regex)
-                      ( "s r" . projectile-ripgrep)
+                      ( "s a" . projectile-ag)
+                      ( "s A" . mb-cmd-projectile-ag-regex)
+                      ( "s s" . projectile-ripgrep)
+                      ( "s S" . mb-cmd-projectile-ripgrep-regex)
                       ( "x a" . mb-cmd-projectile-ansi-term)
                       ( "x t" . mb-cmd-projectile-gnome-terminal)))
 
@@ -883,6 +885,14 @@
                       ( "M-?"            . rtags-find-references)
                       ( "C-x 4 <return>" . rtags-show-target-in-other-window)
                       ( "C-z f r"        . rtags-rename-symbol))))
+
+;; RipGrep
+(with-eval-after-load 'ripgrep
+  (defvar ripgrep-search-mode-map)
+  (mb-f-define-keys ripgrep-search-mode-map
+                    '(( "W" . wgrep-change-to-wgrep-mode)
+                      ( "+" . grep-context-more-around-point)
+                      ( "-" . grep-context-less-around-point))))
 
 ;; Rust
 (with-eval-after-load 'rust-mode
