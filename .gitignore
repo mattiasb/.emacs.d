@@ -39,3 +39,4 @@ magithub/*
 /forge-database.sqlite
 /emojis/*
 /.mc-lists.el
+/transient/history.el
