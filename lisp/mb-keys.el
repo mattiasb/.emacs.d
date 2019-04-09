@@ -85,8 +85,8 @@
     ;; TEXT MANIPULATION
 
     ;; General
-    ( "M-<up>"        . md/move-lines-up)
-    ( "M-<down>"      . md/move-lines-down)
+    ( "M-<up>"        . md-move-lines-up)
+    ( "M-<down>"      . md-move-lines-down)
     ( "C-\""          . cycle-quotes)
     ( "C-S-a"         . beginning-of-line)
     ( "C-S-e"         . end-of-line)
@@ -196,8 +196,8 @@
                       ( "-"      . shift-number-down)
                       ( "."      . align-by-current-symbol)
                       ( "a"      . ialign)
-                      ( "<down>" . md/duplicate-down)
-                      ( "<up>"   . md/duplicate-up)
+                      ( "<down>" . md-duplicate-down)
+                      ( "<up>"   . md-duplicate-up)
                       ( "="      . mb-cmd-calc-thing-at-point)
                       ( "S"      . mb-cmd-ispell-word-then-abbrev)
                       ( "c"      . mb-cmd-toggle-comment)
