@@ -141,7 +141,7 @@
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
  '(git-commit-setup-hook
-   '(git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-turn-on-flyspell git-commit-propertize-diff with-editor-usage-message))
+   '(git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-propertize-diff with-editor-usage-message))
  '(git-commit-summary-max-length 50)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
