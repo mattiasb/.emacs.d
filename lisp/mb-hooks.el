@@ -40,9 +40,19 @@
 (add-hook 'after-save-hook
           #'mb-f-executable-make-buffer-file-executable-if-script-p)
 
-;; Make new Frames have focus
-
+;; Make new Frames use the dark theme variant and have focus
 (add-hook 'after-make-frame-functions #'select-frame-set-input-focus)
+(add-hook 'after-make-frame-functions #'mb-f-set-dark-wm-theme)
+
+(defun mb-hooks--window-setup-hook ()
+  "My window-setup hook.
+
+Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
+  (mb-f-set-dark-wm-theme (selected-frame))
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'mb-hooks--window-setup-hook)
 
 ;;; Packages
 
