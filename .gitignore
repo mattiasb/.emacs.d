@@ -39,3 +39,4 @@ snippets/*/GPLv2+
 snippets/*/GPLv3+
 snippets/*/MIT
 transient/*
+/tramp
