@@ -343,16 +343,31 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
 
+(defun mb-f-get-monitor-dpi (monitor-attributes)
+  "Calculate DPI from a MONITOR-ATTRIBUTES structure."
+  (let ((pixel-width (nth 3 (nth 1 monitor-attributes)))
+        (mm-width (nth 1 (nth 3 monitor-attributes))))
+    (round (/ pixel-width (/ mm-width 25.4)))))
+
+(defun mb-f-get-monitor-dpis ()
+  "Get DPI for all monitors."
+  (mapcar #'mb-f-get-monitor-dpi (display-monitor-attributes-list)))
+
+(defun mb-f-hidpi-p (dpi)
+  "Return non-nil if DPI is ≥ 213."
+  (>= dpi 213))
+
 (defvar control-mode)
 (defun mb-f-control-mode-set-cursor ()
   "Update cursor based for `control-mode'."
-  (if (display-graphic-p)
-      (setq cursor-type (if control-mode
-                            'box
-                          `(bar . ,(/ (display-pixel-width) 640))))
-    (send-string-to-terminal (if control-mode
-                                 "\e[1 q"
-                               "\e[5 q"))))
+  (let* ((all-hidpi (mb-f-hidpi-p (apply #'min (mb-f-get-monitor-dpis)))))
+    (if (display-graphic-p)
+        (setq cursor-type (if control-mode
+                              'box
+                            `(bar . ,(if all-hidpi 4 2))))
+      (send-string-to-terminal (if control-mode
+                                   "\e[1 q"
+                                 "\e[5 q")))))
 
 (defvar global-control-mode-exceptions)
 (defun mb-f-control-mode-in-sync ()
