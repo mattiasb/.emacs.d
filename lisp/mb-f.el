@@ -345,9 +345,12 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 
 (defun mb-f-get-monitor-dpi (monitor-attributes)
   "Calculate DPI from a MONITOR-ATTRIBUTES structure."
-  (let ((pixel-width (nth 3 (nth 1 monitor-attributes)))
-        (mm-width (nth 1 (nth 3 monitor-attributes))))
-    (round (/ pixel-width (/ mm-width 25.4)))))
+  (let ((pixel-width (nth 3 (alist-get 'geometry monitor-attributes)))
+        (mm-width (nth 1 (alist-get 'mm-size monitor-attributes))))
+    (if (and pixel-width mm-width)
+        (round (/ pixel-width (/ mm-width 25.4)))
+      ;; Default to 90 when we don't have any monitors
+      90)))
 
 (defun mb-f-get-monitor-dpis ()
   "Get DPI for all monitors."
