@@ -325,6 +325,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Electric operator
 (with-eval-after-load 'electric-operator
+  (electric-operator-add-rules-for-mode 'ini-mode
+                                        (cons "-" nil))
   (electric-operator-add-rules-for-mode 'makefile-mode
                                         (cons "-" nil))
   (electric-operator-add-rules-for-mode 'makefile-gmake-mode
