@@ -345,11 +345,12 @@ abort completely with `C-g'."
       (user-error "No typo at or before point"))))
 
 ;;;###autoload
-(defun mb-cmd-shell-command-dwim (command &optional
-                                      output-buffer
-                                      replace
-                                      error-buffer
-                                      display-error-buffer)
+(defun mb-cmd-shell-command-dwim (command
+                                  &optional
+                                  output-buffer
+                                  replace
+                                  error-buffer
+                                  display-error-buffer)
   "Like `shell-command-on-region' but infer START and END from context.
 COMMAND, OUTPUT-BUFFER, REPLACE, ERROR-BUFFER and DISPLAY-ERROR-BUFFER are just
 passed on unchanged."
