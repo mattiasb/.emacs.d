@@ -846,6 +846,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (pipenv-mode)
   (aggressive-indent-mode -1)
   (indent-tools-minor-mode)
+  (flycheck-add-next-checker 'python-flake8 'python-mypy)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'python
