@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: property
+# key: @property
+# --
+@property
+def ${1:property}(self):
+    return ${2:self.__$1}
+
+@$1.setter
+def $1(self, $1):
+    $2 = $1
