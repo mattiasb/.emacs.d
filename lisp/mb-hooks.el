@@ -843,6 +843,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (importmagic-mode)
+  (pipenv-mode)
   (aggressive-indent-mode -1)
   (indent-tools-minor-mode)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
