@@ -174,6 +174,7 @@
  '(imenu-after-jump-hook '(recenter))
  '(imenu-auto-rescan t)
  '(imenu-auto-rescan-maxout 750000)
+ '(importmagic-python-interpreter "python3")
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
