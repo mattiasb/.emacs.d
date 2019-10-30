@@ -799,6 +799,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "s s" . projectile-ripgrep)
                       ( "s S" . mb-cmd-projectile-ripgrep-regex)
                       ( "x a" . mb-cmd-projectile-ansi-term)
+                      ( "x v" . mb-cmd-projectile-vterm)
                       ( "x t" . mb-cmd-projectile-gnome-terminal)))
 
   (def-projectile-commander-method ?d
@@ -1066,6 +1067,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'woman
   (add-hook 'woman-mode-hook #'mb-hooks--woman-mode))
+
+;; Vterm
+(with-eval-after-load 'vterm
+  (add-hook #'vterm-exit-functions #'kill-buffer))
 
 ;; Yaml
 (defun mb-hooks--yaml-mode-hook ()

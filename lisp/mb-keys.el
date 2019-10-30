@@ -108,6 +108,7 @@
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
                       ( "a"      . ansi-term)
+                      ( "v"      . vterm)
                       ( "s"      . dired-sidebar-toggle-sidebar)))
 
 ;; My Help keymap
