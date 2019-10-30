@@ -123,6 +123,7 @@
  '(flycheck-mypy\.ini "setup.cfg")
  '(flycheck-pos-tip-max-width 60)
  '(flycheck-python-flake8-executable "flake8")
+ '(flycheck-python-mypy-ini "setup.cfg")
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face) t)
  '(forge-alist
    '(("github.com" "api.github.com" "github.com" forge-github-repository)
