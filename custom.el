@@ -120,6 +120,7 @@
  '(flycheck-emacs-lisp-load-path 'inherit)
  '(flycheck-highlighting-mode 'symbols)
  '(flycheck-keymap-prefix "e")
+ '(flycheck-mypy\.ini "setup.cfg")
  '(flycheck-pos-tip-max-width 60)
  '(flycheck-python-flake8-executable "flake8")
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face) t)
