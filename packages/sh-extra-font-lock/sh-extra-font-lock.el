@@ -1,6 +1,6 @@
 ;;; sh-extra-font-lock.el --- Extra font-locks for sh-mode -*- lexical-binding: t; -*-
 
-;; Copyright ⓒ 2015 Anders Lindgren
+;; Copyright 2015 Anders Lindgren
 ;;
 ;; sh-extra-font-lock is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
