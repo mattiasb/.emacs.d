@@ -33,7 +33,7 @@
 ;; naming fixes) by Mattias Bengtsson.
 ;;
 ;; To activate this just add the following to your `init.el':
-;; (add-hook 'sh-mode-hook 'sh-script-extra-font-lock-activate)
+;; (add-hook 'sh-mode-hook 'sh-extra-font-lock-activate)
 
 ;;; Note:
 
