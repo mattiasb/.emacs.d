@@ -74,6 +74,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-add-electric-pairs '((?\( . ?\))))
   (company-mode)
   (ansible-doc-mode)
+  (when (ansible-vault--is-vault-file)
+    (ansible-vault-mode 1))
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
