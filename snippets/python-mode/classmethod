@@ -1,0 +1,6 @@
+# key: @classmethod
+# name: classmethod
+# --
+@classmethod
+def ${1:fun}(${2:args}):
+    $0
