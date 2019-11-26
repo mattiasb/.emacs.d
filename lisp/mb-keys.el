@@ -132,6 +132,7 @@
 ;; My Magit keymap
 (mb-f-define-keymap mb-keys-magit-map
                     '(( "c"      . magit-commit)
+                      ( "f"      . magit-find-file)
                       ( "p"      . magit-push-matching)))
 
 ;; My Yas keymap
