@@ -488,13 +488,6 @@ With a prefix ARG always prompt for command to use."
     (ansi-term (getenv "SHELL")
                (format "*ansi-term [%s]*" (projectile-project-name)))))
 
-;;;###autoload
-(defun mb-cmd-projectile-vterm ()
-  "Start `vterm' in the project root."
-  (interactive)
-  (projectile-with-default-dir (projectile-project-root)
-    (vterm (format "*vterm [%s]*" (projectile-project-name)))))
-
 (defvar flyspell-old-buffer-error)
 (defvar flyspell-old-pos-error)
 ;;;###autoload
