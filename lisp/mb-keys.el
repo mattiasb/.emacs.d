@@ -183,6 +183,14 @@
                       ( "<up>"     . table-shorten-cell)
                       ( "<down>"   . table-heighten-cell)))
 
+(mb-f-define-keymap mb-keys-zoom-map
+                    '(( "z"        . fit-text-scale-max-font-size-fit-lines)
+                      ( "l"        . fit-text-scale-max-font-size-fit-line)
+                      ( "b"        . fit-text-scale-max-font-size-fit-buffer)
+                      ( "+"        . text-scale-increase)
+                      ( "-"        . text-scale-decrease)
+                      ( "0"        . text-scale-adjust)))
+
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
                       ( "h"      . mb-keys-help-map)
@@ -192,6 +200,7 @@
                       ( "T"      . mb-keys-tables-map)
                       ( "w"      . mb-keys-windows-map)
                       ( "x"      . mb-keys-exec-map)
+                      ( "z"      . mb-keys-zoom-map)
 
                       ;; Text manipulation
                       ( "+"      . shift-number-up)
