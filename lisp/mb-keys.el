@@ -187,8 +187,8 @@
                     '(( "z"        . fit-text-scale-max-font-size-fit-lines)
                       ( "l"        . fit-text-scale-max-font-size-fit-line)
                       ( "b"        . fit-text-scale-max-font-size-fit-buffer)
-                      ( "+"        . text-scale-increase)
-                      ( "-"        . text-scale-decrease)
+                      ( "+"        . text-scale-adjust)
+                      ( "-"        . text-scale-adjust)
                       ( "0"        . text-scale-adjust)))
 
 (mb-f-define-keymap mb-keys-default-map
