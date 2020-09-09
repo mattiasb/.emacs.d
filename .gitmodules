@@ -1,4 +1,0 @@
-[submodule "lisp/cask"]
-	path = lisp/cask
-	url = https://github.com/cask/cask.git
-	branch = master
