@@ -18,5 +18,3 @@ See https://www.masteringemacs.org/article/whats-new-in-emacs-27-1
 - Move to `display-fill-column-indicator` over `fci-mode`.
 - Look at `package-quickstart`.
 - Find out what `package-activate-all` does.
-- See if I can remove the `custom-save-all` advice since `print-quoted` defaults
-  to `t` now.

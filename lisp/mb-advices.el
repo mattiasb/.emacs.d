@@ -97,11 +97,6 @@
               :before (lambda (&rest _)
                         (interactive (list "/bin/bash"))))
 
-  (advice-add #'custom-save-all
-              :around (lambda (func &rest args)
-                        (let ((print-quoted t))
-                          (apply func args))))
-
   (advice-add #'save-buffers-kill-emacs
               :around (lambda (func &rest args)
                         (cl-flet ((process-list ()))
