@@ -4,7 +4,7 @@
 
 ### Bugs
 
-- Find out why `RET` doesn't work.
+- Find out why `RET` doesn't work in elisp mode.
 
 ### From Changelog
 
