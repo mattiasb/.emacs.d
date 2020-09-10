@@ -83,6 +83,7 @@
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-sidebar-width 20)
+ '(display-fill-column-indicator-character 9474)
  '(easy-repeat-command-list
    '(table-narrow-cell table-widen-cell table-shorten-cell table-heighten-cell string-inflection-all-cycle indent-tools-demote indent-tools-indent shift-number-up shift-number-down md/duplicate-up md/duplicate-down flycheck-next-error flycheck-previous-error mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
  '(edconf-exec-path "")
@@ -109,8 +110,6 @@
  '(emojify-download-emojis-p t)
  '(emojify-emoji-styles '(unicode))
  '(expand-region-contract-fast-key "S-SPC")
- '(fci-rule-character 9474)
- '(fci-rule-color "gray21")
  '(fill-function-arguments-first-argument-same-line t)
  '(fill-function-arguments-last-argument-same-line t)
  '(fill-function-arguments-second-argument-same-line nil)
@@ -247,7 +246,7 @@
      ("melpa" . "http://melpa.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-selected-packages
-   '(fit-text-scale python-black magit gnu-elpa-keyring-update vterm pipenv goto-line-preview emojify forge lastpass debian-el eglot nginx-mode company-nginx ido-completing-read+ pandoc-mode fill-function-arguments guess-language grep-context rainbow-mode attrap bmx-mode daemons hide-mode-line minions jinja2-mode company-lsp cquery lsp-mode lsp-ui auto-sudoedit ialign string-inflection company-ansible ansible ansible-doc ansible-vault docker-compose-mode dotenv-mode dockerfile-mode add-node-modules-path js-auto-format-mode dired-sidebar projectile perspective switch-buffer-functions projectile-ripgrep git-commit-insert-issue indent-tools list-unicode-display csharp-mode csv-mode ini-mode ahk-mode systemd all-the-icons-dired meson-mode flycheck-yamllint importmagic py-autopep8 py-isort electric-operator groovy-mode dired-hide-dotfiles todotxt madhat2r-theme backward-forward dired-imenu apropospriate-theme auto-dim-other-buffers toml-mode yatemplate company-anaconda anaconda-mode realgud flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig emr fill-column-indicator flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode))
+   '(fit-text-scale python-black magit gnu-elpa-keyring-update vterm pipenv goto-line-preview emojify forge lastpass debian-el eglot nginx-mode company-nginx ido-completing-read+ pandoc-mode fill-function-arguments guess-language grep-context rainbow-mode attrap bmx-mode daemons hide-mode-line minions jinja2-mode company-lsp cquery lsp-mode lsp-ui auto-sudoedit ialign string-inflection company-ansible ansible ansible-doc ansible-vault docker-compose-mode dotenv-mode dockerfile-mode add-node-modules-path js-auto-format-mode dired-sidebar projectile perspective switch-buffer-functions projectile-ripgrep git-commit-insert-issue indent-tools list-unicode-display csharp-mode csv-mode ini-mode ahk-mode systemd all-the-icons-dired meson-mode flycheck-yamllint importmagic py-autopep8 py-isort electric-operator groovy-mode dired-hide-dotfiles todotxt madhat2r-theme backward-forward dired-imenu apropospriate-theme auto-dim-other-buffers toml-mode yatemplate company-anaconda anaconda-mode realgud flyspell-correct flyspell-correct-popup mtg-deck-mode gobgen fancy-narrow flimenu tmux-keys sh-extra-font-lock flycheck-vala align-string align-by-current-symbol evil-esc-mode ace-jump-mode ag aggressive-indent ascii-art-to-unicode auto-compile browse-kill-ring buffer-move cmake-mode company-go company-quickhelp company-restclient company-shell control-mode cycle-quotes cython-mode diminish easy-repeat editorconfig emr flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji git-gutter gitconfig-mode gitignore-mode go-eldoc god-mode haskell-mode highlight-numbers html5-schema ibuffer-projectile ido-vertical-mode js2-refactor json-mode lisp-extra-font-lock lua-mode magit-filenotify magit-gitflow markdown-mode move-dup mwim niceify-info php-mode powerline racer restart-emacs sass-mode shift-number smart-region smex sqlup-mode vala-mode vala-snippets visual-regexp-steroids wgrep-ag which-key ws-butler xref-js2 yaml-mode))
  '(persp-mode-prefix-key "v")
  '(persp-show-modestring nil)
  '(powerline-default-separator 'bar)
@@ -371,6 +370,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fill-column-indicator ((t (:foreground "gray21"))))
  '(hl-line ((t (:background "gray19"))))
  '(iedit-occurrence ((t (:inherit region))))
  '(lsp-face-highlight-textual ((t (:background "gray17"))))

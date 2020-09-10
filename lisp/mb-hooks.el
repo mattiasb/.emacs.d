@@ -233,11 +233,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "<next>"  . mb-cmd-company-scroll-down)
                       ( "<prior>" . mb-cmd-company-scroll-up)
                       ( "\C-v"    . company-show-location)
-                      ( "\C-g"    . company-abort)))
-
-  (add-hook 'company-completion-started-hook   #'mb-f-fci-turn-off)
-  (add-hook 'company-completion-finished-hook  #'mb-f-fci-turn-on)
-  (add-hook 'company-completion-cancelled-hook #'mb-f-fci-turn-on))
+                      ( "\C-g"    . company-abort))))
 
 ;; Compilation Mode
 
@@ -596,7 +592,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (auto-fill-mode)
   (setq fill-column 72)
   (git-commit-insert-issue-mode)
-  (fci-mode 1))
+  (display-fill-column-indicator-mode))
 
 (with-eval-after-load 'magit
   (require 'forge)
@@ -647,7 +643,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Mime View
 (defun mb-hooks--mime-view-mode ()
   "My `mime-view' mode hook."
-  (fci-mode))
+  (display-fill-column-indicator-mode))
 
 (with-eval-after-load 'mime-view
   (add-hook 'mime-view-mode-hook #'mb-hooks--mime-view-mode))
@@ -750,7 +746,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
-  (fci-mode)
+  (display-fill-column-indicator-mode)
   (highlight-numbers-mode)
   (backward-forward-mode))
 
@@ -954,7 +950,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (setq-local fill-column 80)
   (setq-local indent-tabs-mode nil)
 
-  (fci-mode)
+  (display-fill-column-indicator-mode)
 
   ;;;; Disable flyspell for now
   ;;
@@ -1077,7 +1073,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
   (setq-local fill-column 80)
-  (fci-mode)
+  (display-fill-column-indicator-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
   (indent-tools-minor-mode)

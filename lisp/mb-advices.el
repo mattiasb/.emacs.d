@@ -45,17 +45,10 @@
               :after  #'god-mode-isearch-activate)
   (advice-add #'mb-cmd-isearch-backward-symbol-at-point
               :after  #'god-mode-isearch-activate)
-  (advice-add #'popup-create
-              :before #'mb-f-fci-turn-off)
-  (advice-add #'popup-delete
-              :after  #'mb-f-fci-turn-on)
 
   (advice-add #'ialign
               :around (lambda (func &rest args)
-                        (mb-f-fci-turn-off)
-                        (unwind-protect
-                            (apply func args)
-                          (mb-f-fci-turn-on))))
+                        (unwind-protect (apply func args))))
 
   (advice-add #'backward-page :after  #'recenter)
   (advice-add #'forward-page  :after  #'recenter)

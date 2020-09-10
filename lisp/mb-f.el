@@ -290,16 +290,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
          )
     (1- available-lines)))
 
-(defun mb-f-fci-turn-off (&rest _)
-  "Turn off `fci-mode'."
-  (when (boundp 'fci-mode)
-    (turn-off-fci-mode)))
-
-(defun mb-f-fci-turn-on (&rest _)
-  "Turn on `fci-mode'."
-  (when (boundp 'fci-mode)
-    (turn-on-fci-mode)))
-
 (defun mb-f-create-non-existent-directory ()
   "Offer to create parent directory for current buffer if it doesn't exist."
   (let ((parent-directory (file-name-directory buffer-file-name)))
