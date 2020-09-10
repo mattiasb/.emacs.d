@@ -35,13 +35,12 @@
 
 ;;; Settings
 (load (concat user-emacs-directory "custom.el"))
-
 (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
 
 ;;; Early init code
 
-(require 'mb-fe)
-(mb-fe-package-init)
+(require 'mb-f)
+(mb-f-package-install-all)
 (load-theme 'madhat2r t)
 
 ;;; Post package initialization

@@ -31,8 +31,7 @@
 
 ;;; Code:
 
-(require 'yasnippet)
-(require 'popup)
+(require 'cl-lib)
 
 (declare-function projectile-project-root "projectile.el")
 (declare-function projectile-project-name "projectile.el")
@@ -216,12 +215,14 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
 
 (defun mb-f-autoinsert-yas-expand()
   "Replace text in yasnippet template."
+  (require 'yasnippet)
   (yas-expand-snippet (buffer-string)
                       (point-min)
                       (point-max)))
 
 (defun mb-f-yas-choose-package-keyword ()
   "Choose a package keyword to expand."
+  (require 'yasnippet)
   (yas-choose-value "abbrev"
                     "bib"
                     "c"
@@ -261,6 +262,7 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
 
 (defun mb-f-yas-choose-license ()
   "Choose a license to expand."
+  (require 'yasnippet)
   (yas-choose-value
    (directory-files (concat user-emacs-directory "licenses/")
                     nil
@@ -315,6 +317,7 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
 
 (defun mb-f-yas-popup (prompt choices &optional display-fn)
   "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
+  (require 'yasnippet)
   (require 'popup)
   (popup-menu*
    (mapcar
@@ -568,6 +571,27 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                   "dark"
                   "-id"
                   (frame-parameter frame 'outer-window-id))))
+
+(defun mb-f-no-confirm (fun &rest args)
+  "Apply FUN to ARGS, skipping user confirmations."
+  (cl-flet ((always-yes (&rest _) t))
+    (cl-letf (((symbol-function 'y-or-n-p) #'always-yes)
+              ((symbol-function 'yes-or-no-p) #'always-yes))
+      (apply fun args))))
+
+(defun mb-f-package-install-all ()
+  "Install all missing packages."
+  (require 'package)
+  (unless (seq-every-p #'package-installed-p
+                       package-selected-packages)
+    (package-refresh-contents)
+    (mb-f-install-packages-in-dir (concat user-emacs-directory "packages/"))
+    (mb-f-no-confirm #'package-install-selected-packages)))
+
+(defun mb-f-install-packages-in-dir (directory)
+  "Install all packages in DIRECTORY."
+  (mapc #'package-install-file
+        (directory-files directory t "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")))
 
 (provide 'mb-f)
 ;;; mb-f.el ends here
