@@ -32,7 +32,6 @@
 ;;; Code:
 
 (require 'yasnippet)
-(require 'fill-column-indicator)
 (require 'popup)
 
 (declare-function projectile-project-root "projectile.el")
