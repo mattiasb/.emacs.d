@@ -126,8 +126,7 @@
                                                 user-emacs-directory)))
                           (if (eq efile erecentf)
                               t
-                            (ask-user-about-lock file opponent)))))
-  )
+                            (ask-user-about-lock file opponent))))))
 
 
 (provide 'mb-advices)
