@@ -180,48 +180,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode))
 
-;; Control
-(with-eval-after-load 'control-mode
-  (require 'god-mode-isearch)
-  (global-control-mode)
-
-  (defvar control-mode-keymap)
-  (mb-f-define-keys control-mode-keymap
-                    '(( "i"           . mb-cmd-control-mode-off)
-                      ( "<escape>"    . ESC-prefix)
-                      ( "x x"         . smex)
-                      ( "x s"         . save-buffer)
-                      ( "x S"         . save-some-buffers)))
-
-  (mb-f-define-keys isearch-mode-map
-                    '(( "<escape>" . god-mode-isearch-activate)
-                      ( "<insert>" . god-mode-isearch-activate)))
-
-  (defvar god-mode-isearch-map)
-  (mb-f-define-keys god-mode-isearch-map
-                    '(( "g"        . isearch-cancel)
-                      ( "i"        . god-mode-isearch-disable)
-                      ( "<insert>" . god-mode-isearch-disable)))
-
-
-  (declare-function control-mode-ctrlx-hacks "control-mode.el")
-  (add-hook 'control-mode-keymap-generation-functions
-            #'control-mode-ctrlx-hacks)
-  (add-hook 'control-mode-hook
-            #'mb-f-control-mode-set-cursor)
-  (add-hook 'after-change-major-mode-hook
-            #'mb-f-control-mode-set-cursor)
-  (add-hook 'post-command-hook
-            #'mb-f-control-mode-set-cursor)
-
-  (add-hook 'switch-buffer-functions
-            (lambda (&rest _)
-              (unless (mb-f-control-mode-in-sync)
-                (control-mode))
-              (mb-f-control-mode-set-cursor)))
-  (add-hook 'after-make-frame-functions (lambda (_)
-                                          (mb-cmd-control-mode-on))))
-
 ;; Company
 (with-eval-after-load 'company
   (company-quickhelp-mode)
