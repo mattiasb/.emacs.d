@@ -398,6 +398,8 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
                                    (face-background 'cursor)
                                    "\007")))
 
+;; This doesn't seem to be needed anymore. But keep it as a reference if it
+;; turns out I'm wrong and just using (kill-emacs) isn't enough.
 (defun mb-f-kill-server ()
   "Kill the server daemon as gracefully as possible."
   (save-some-buffers t)
