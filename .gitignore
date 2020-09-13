@@ -41,3 +41,4 @@ snippets/*/MIT
 transient/*
 /tramp
 url/
+/package-quickstart.el
