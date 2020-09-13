@@ -60,9 +60,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'ag
   (defvar ag-mode-map)
   (mb-f-define-keys ag-mode-map
-                    '(( "W" . wgrep-change-to-wgrep-mode)
-                      ( "+" . grep-context-more-around-point)
-                      ( "-" . grep-context-less-around-point))))
+                    '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
@@ -861,9 +859,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'ripgrep
   (defvar ripgrep-search-mode-map)
   (mb-f-define-keys ripgrep-search-mode-map
-                    '(( "W" . wgrep-change-to-wgrep-mode)
-                      ( "+" . grep-context-more-around-point)
-                      ( "-" . grep-context-less-around-point))))
+                    '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Rust
 (with-eval-after-load 'rust-mode
