@@ -1,6 +1,6 @@
 ;;; custom.el --- My custom settings
 
-;; Copyright ⓒ 2013-2016 Mattias Bengtsson
+;; Copyright ⓒ 2013-2020 Mattias Bengtsson
 ;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
 
 ;; Version          : 20141108
 ;; Keywords         : local
-;; Package-Requires : ((emacs "25.1"))
+;; Package-Requires : ((emacs "27.1"))
 ;; URL              : https://github.com/moonlite/.emacs.d
-;; Compatibility    : GNU Emacs: 25.x
+;; Compatibility    : GNU Emacs: 27.x
 
 ;;; Commentary:
 
