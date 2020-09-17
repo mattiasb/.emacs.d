@@ -1,5 +1,10 @@
 # TODO
 
+## General
+
+- Look at ivy
+  - Needed for taskrunner
+
 ## Emacs 27
 
 ### Bugs
