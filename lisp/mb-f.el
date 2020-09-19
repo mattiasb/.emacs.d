@@ -506,7 +506,7 @@ Optionally return t ONLY if this project also isn't a Meson or CMake project."
   "Find all git projects under DIR.
 Optionally only search as deep as DEPTH."
   (let* ((depth-flag (if depth (format "-maxdepth %d" depth) ""))
-         (cmd (format "find %s %s -name '.git' -type d" dir depth-flag))
+         (cmd (format "find %s %s -name '.git'" dir depth-flag))
          (result (split-string (shell-command-to-string cmd))))
     (mapcar (lambda (s) (substring s 0 -4)) result)))
 
