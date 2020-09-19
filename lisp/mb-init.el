@@ -46,8 +46,7 @@
   (mb-f-set-terminal-cursors)
 
   ;; TODO: Fix this. It currently borks whitespace-mode
-  (mb-f-set-terminal-window-separator)
-  )
+  (mb-f-set-terminal-window-separator))
 
 (defun mb-init--global-keybindings ()
   "Activate global keybindings."
