@@ -9,7 +9,7 @@ msg="$(git --no-pager log -n 1 HEAD --format=format:%s)"
 body="$(git --no-pager log -n 1 HEAD --format=format:%b)"
 
 if [ "${PWD}" != "${HOME}/.config/emacs" ] || \
-       ! parent git rev-parse --is-inside-work-tree >/dev/null; then
+       ! parent rev-parse --is-inside-work-tree >/dev/null; then
     echo "Will only update parent repo if it is at ~/.config and is a git repo."
     exit 0
 elif [ "${branch}" != "master" ]; then
