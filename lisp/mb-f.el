@@ -581,22 +581,53 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
               ((symbol-function 'yes-or-no-p) #'always-yes))
       (apply fun args))))
 
+(defun mb-f-package-local-packages (&optional with-paths)
+  "List of all packages under packages/.  Optionally WITH-PATHS."
+  (let* ((directory (concat user-emacs-directory "packages/"))
+         (filter   "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)"))
+    (if with-paths
+        (directory-files directory t filter)
+      (seq-map #'intern (directory-files directory nil filter)))))
+
+(defun mb-f-package-local-not-installed-packages ()
+  "List of all not installed packages under packages/."
+  (seq-remove #'package-installed-p (mb-f-package-local-packages)))
+
+(defun mb-f-package-install-local-package (package)
+  "Install local PACKAGE from packages/."
+  (let ((package-path (concat user-emacs-directory
+                              "packages/"
+                              (symbol-name package))))
+    (package-install-file package-path)))
+
+(defun mb-f-package-remote-packages ()
+  "A list of all M/ELPA packages."
+  (require 'package)
+  (seq-difference package-selected-packages
+                  (mb-f-package-local-packages)))
+
+(defun mb-f-package-install-all-remote ()
+  "Install all M/ELPA packages."
+  (require 'package)
+  (unless (seq-every-p #'package-installed-p
+                       (mb-f-package-remote-packages))
+    (message "Installing M/ELPA packages...")
+    (package-refresh-contents)
+    (mb-f-no-confirm #'package-install-selected-packages)))
+
+(defun mb-f-package-install-all-local ()
+  "Install all local packages."
+  (require 'package)
+  (let ((not-installed (mb-f-package-local-not-installed-packages)))
+    (when (> (length not-installed) 0)
+      (message "Installing local packages: %S" not-installed)
+      (mapc #'mb-f-package-install-local-package not-installed))))
+
 (defun mb-f-package-install-all ()
   "Install all missing packages."
   (require 'package)
-  (unless (seq-every-p #'package-installed-p
-                       package-selected-packages)
-    (package-refresh-contents)
-    (mb-f-no-confirm #'package-install-selected-packages))
-  (mb-f-package-install-all-from-dir (concat user-emacs-directory "packages/")))
-
-(defun mb-f-package-install-all-from-dir (directory)
-  "Install all packages in DIRECTORY."
-  (let* ((filter   "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)")
-         (packages (seq-map #'intern (directory-files directory nil filter)))
-         (paths    (directory-files directory t   filter)))
-    (unless (seq-every-p #'package-installed-p packages)
-      (mapc #'package-install-file paths))))
+  (mb-f-package-install-all-remote)
+  (mb-f-package-install-all-local))
 
 (provide 'mb-f)
 ;;; mb-f.el ends here
