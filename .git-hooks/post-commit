@@ -1,0 +1,25 @@
+#!/bin/sh
+
+parent() {
+    env -i HOME="$HOME" SHELL="$SHELL" git -C ../ "${@}"
+}
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+msg="$(git --no-pager log -n 1 HEAD --format=format:%s)"
+body="$(git --no-pager log -n 1 HEAD --format=format:%b)"
+
+if [ "${PWD}" != "${HOME}/.config/emacs" ] || \
+       ! parent git rev-parse --is-inside-work-tree >/dev/null; then
+    echo "Will only update parent repo if it is at ~/.config and is a git repo."
+    exit 0
+elif [ "${branch}" != "master" ]; then
+    echo "Submodule branch not master, won't update parent submodule."
+    exit 0
+elif ! parent diff --cached --exit-code > /dev/null; then
+    echo "Parent contains staged changes, won't update submodule."
+    exit 0
+else
+    # env -i TERM="${TERM}" HOME="$HOME" SHELL="$SHELL" git -C ../ submodule update --remote
+    parent add "${PWD##*/}"
+    parent commit -m "${PWD##*/}: ${msg}" -m "${body}"
+fi
