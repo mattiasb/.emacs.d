@@ -584,11 +584,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-f-package-install-all ()
   "Install all missing packages."
   (require 'package)
-  (mb-f-package-install-all-from-dir (concat user-emacs-directory "packages/"))
   (unless (seq-every-p #'package-installed-p
                        package-selected-packages)
     (package-refresh-contents)
-    (mb-f-no-confirm #'package-install-selected-packages)))
+    (mb-f-no-confirm #'package-install-selected-packages))
+  (mb-f-package-install-all-from-dir (concat user-emacs-directory "packages/")))
 
 (defun mb-f-package-install-all-from-dir (directory)
   "Install all packages in DIRECTORY."
