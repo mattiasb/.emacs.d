@@ -621,7 +621,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (let ((not-installed (mb-f-package-local-not-installed-packages)))
     (when (> (length not-installed) 0)
       (message "Installing local packages: %S" not-installed)
-      (mapc #'mb-f-package-install-local-package not-installed))))
+      (mapc #'mb-f-package-install-local-package not-installed)
+      (package-quickstart-refresh))))
 
 (defun mb-f-package-install-all ()
   "Install all missing packages."
