@@ -36,6 +36,12 @@
 (require 'mb-modes)
 (require 'mb-advices)
 
+(defun mb-init--make ()
+  "Run Makefile to ensure licenses and git-hook etc is set up properly."
+  (let ((default-directory user-emacs-directory))
+    (message (shell-command-to-string "make"))
+    (message nil)))
+
 (defun mb-init--terminal-workarounds ()
   "Activate terminal workarounds."
   (if (getenv "TMUX")
@@ -97,6 +103,7 @@
 
 (defun mb-init ()
   "Initialize Emacs."
+  (mb-init--make)
   (require 'mb-hooks)
   (mb-modes-activate)
   (mb-advices-activate)
