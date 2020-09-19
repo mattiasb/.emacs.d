@@ -4,7 +4,6 @@
 
 - Look at ivy
   - Needed for taskrunner
-- Install hook automatically somehow.
 
 ## Emacs 27
 
