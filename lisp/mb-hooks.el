@@ -715,8 +715,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-z d d"     . mb-cmd-realgud-debug)
                       ( "C-z d a"     . realgud-short-key-mode)
                       ( "M-q"         . fill-function-arguments-dwim)))
-  (mb-f-remap-keys  prog-mode-map
-                    '(( "RET"         . "M-j")))
 
   (add-hook 'prog-mode-hook #'mb-hooks--prog-mode))
 
