@@ -9,7 +9,6 @@
 
 ### Bugs
 
-- Find out why `RET` doesn't work in elisp mode.
 - Find out why Emacs thinks that `flycheck-vala`, `sh-extra-font-lock`
   and `tmux-keys` isn't installed on every startup.
 
