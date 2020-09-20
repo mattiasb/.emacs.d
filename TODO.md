@@ -7,11 +7,6 @@
 
 ## Emacs 27
 
-### Bugs
-
-- Find out why Emacs thinks that `flycheck-vala`, `sh-extra-font-lock`
-  and `tmux-keys` isn't installed on every startup.
-
 ### From Changelog
 
 See https://www.masteringemacs.org/article/whats-new-in-emacs-27-1
