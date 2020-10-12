@@ -222,7 +222,7 @@
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
  '(markdown-command
-   "pandoc -s -f gfm -c file:///home/mattiasb/.emacs.d/github-pandoc.css")
+   "pandoc --metadata pagetitle=*markdown* -s -f gfm -c file:///home/mattiasb/.config/emacs/github-pandoc.css")
  '(markdown-fontify-code-blocks-natively t)
  '(markdown-open-command "/usr/bin/firefox")
  '(markdown-reference-location 'end)

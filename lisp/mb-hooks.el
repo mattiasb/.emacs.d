@@ -589,7 +589,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . markdown-jump)
-                      ( "C-c C-c p"  . mb-cmd-open-with)
                       ( "C-c p"      . pandoc-main-hydra/body)
                       ( "M-<up>"     . nil)
                       ( "M-<down>"   . nil)))
