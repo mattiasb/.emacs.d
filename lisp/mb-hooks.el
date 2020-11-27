@@ -79,15 +79,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load "ansible"
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 
-;; Backward Forward
-(with-eval-after-load 'backward-forward
-  (defvar backward-forward-mode-map)
-  (mb-f-define-keys backward-forward-mode-map
-                    '(("M-<left>"  . backward-forward-previous-location)
-                      ("M-<right>" . backward-forward-next-location)
-                      ("C-<left>"  . nil)
-                      ("C-<right>" . nil))))
-
 ;; Batch Mode
 (with-eval-after-load 'bat-mode
   (require 'bmx-mode)
