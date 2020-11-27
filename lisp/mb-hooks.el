@@ -238,6 +238,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
   "My `emacs-lisp' mode hook."
+  (defvar fill-function-arguments-first-argument-same-line)
+  (setq-local fill-function-arguments-first-argument-same-line t)
+  (defvar fill-function-arguments-second-argument-same-line)
+  (setq-local fill-function-arguments-second-argument-same-line t)
+  (defvar fill-function-arguments-last-argument-same-line)
+  (setq-local fill-function-arguments-last-argument-same-line t)
+  (defvar fill-function-arguments-argument-separator)
+  (setq-local fill-function-arguments-argument-separator " ")
+
   ;; This and the next imenu expression is based on code from Sebastian Wiesner
   ;; https://github.com/lunaryorn/my-old-.emacs.d/blob/master/lisp/lunaryorn-elisp.el#L51
   (add-to-list 'imenu-generic-expression
