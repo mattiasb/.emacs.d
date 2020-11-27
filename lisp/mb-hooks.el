@@ -99,8 +99,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; C / C++
 (defun mb-hooks--c-mode ()
-  "A mode hook for C and C++."
-  )
+  "A mode hook for C and C++.")
 
 (with-eval-after-load 'cc-mode
   (require 'cquery)
@@ -392,8 +391,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Info
 (defun mb-hooks--Info-mode ()
-  "My `Info' mode hook."
-  )
+  "My `Info' mode hook.")
 
 (with-eval-after-load 'info
   (mb-f-define-keys Info-mode-map
@@ -786,8 +784,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "W" . wgrep-change-to-wgrep-mode))))
 
 ;; Rust
-(with-eval-after-load 'rust-mode
-  )
+(with-eval-after-load 'rust-mode)
 
 (with-eval-after-load "table"
   (defvar table-command-remap-alist)
