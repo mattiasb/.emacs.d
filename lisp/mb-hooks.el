@@ -56,12 +56,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;;; Packages
 
-;; AG
-(with-eval-after-load 'ag
-  (defvar ag-mode-map)
-  (mb-f-define-keys ag-mode-map
-                    '(( "W" . wgrep-change-to-wgrep-mode))))
-
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."
@@ -714,8 +708,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "5 d" . projectile-dired-other-frame)
                       ( "5 D" . projectile-find-dir-other-frame)
                       ( "V"   . mb-cmd-projectile-gitg)
-                      ( "s a" . projectile-ag)
-                      ( "s A" . mb-cmd-projectile-ag-regex)
                       ( "s s" . projectile-ripgrep)
                       ( "s S" . mb-cmd-projectile-ripgrep-regex)
                       ( "x a" . mb-cmd-projectile-ansi-term)
