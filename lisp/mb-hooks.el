@@ -849,13 +849,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Rust
 (with-eval-after-load 'rust-mode
-  (defvar rust-mode-map)
-  (mb-f-define-keys rust-mode-map
-                    '(( "C-<return>" . racer-find-definition)
-                      ( "."          . mb-cmd-dot-and-complete)
-                      ( ":"          . mb-cmd-double-colon-and-complete)))
-
-  (add-hook 'rust-mode-hook #'racer-mode))
+  )
 
 (with-eval-after-load "table"
   (defvar table-command-remap-alist)
