@@ -100,25 +100,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; C / C++
 (defun mb-hooks--c-mode ()
   "A mode hook for C and C++."
-  (defvar company-backends)
-  (defvar company-transformers)
-  (defvar company-lsp-async)
-  (defvar company-lsp-cache-candidates)
-  (defvar projectile-command-map)
-  (defvar company-transformers)
-  (defvar company-lsp-async)
-  (defvar company-lsp-cache-candidates)
-
-  (when (featurep 'cquery)
-    (backward-forward-mode -1)
-    (lsp-cquery-enable)
-    (mb-f-define-keys projectile-command-map
-                      '(( "j"              . xref-find-definitions)
-                        ( "R"              . cquery-freshen-index)))
-    (setq-local company-backends '(company-lsp))
-    (setq-local company-transformers nil)
-    (setq-local company-lsp-async t)
-    (setq-local company-lsp-cache-candidates nil)))
+  )
 
 (with-eval-after-load 'cc-mode
   (require 'cquery)
@@ -477,16 +459,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; LSP
 (defun mb-hooks--lsp-mode ()
-  "My `json' mode hook."
-  (lsp-ui-mode))
+  "My `lsp' mode hook.")
 
-(with-eval-after-load 'lsp-mode
-  (require 'lsp-ui)
-  (defvar lsp-ui-mode-map)
-  (mb-f-define-keys lsp-ui-mode-map
-                    '(( "C-<return>"     . lsp-ui-peek-find-definitions)
-                      ( "M-?"            . lsp-ui-peek-find-references)))
-  (add-hook 'lsp-mode-hook #'mb-hooks--lsp-mode))
+(with-eval-after-load 'lsp-mode)
 
 ;; Lastpass
 (with-eval-after-load 'lastpass
