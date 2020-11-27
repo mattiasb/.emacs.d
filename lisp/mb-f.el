@@ -470,6 +470,23 @@ Optionally only search as deep as DEPTH."
           base))
     ""))
 
+(defun mb-f-elisp-fill-function-arguments ()
+  "Wrap `fill-function-arguments-dwim' with ELisp special casing."
+  (interactive)
+  (require 'fill-function-arguments)
+
+  (defvar fill-function-arguments-first-argument-same-line)
+  (defvar fill-function-arguments-second-argument-same-line)
+  (defvar fill-function-arguments-last-argument-same-line)
+  (defvar fill-function-arguments-argument-separator)
+
+  (let* ((tap-defun (if (function-called-at-point) t nil))
+         (fill-function-arguments-second-argument-same-line tap-defun)
+         (fill-function-arguments-first-argument-same-line t)
+         (fill-function-arguments-last-argument-same-line t)
+         (fill-function-arguments-argument-separator " "))
+    (call-interactively #'fill-function-arguments-dwim)))
+
 (defun mb-f-python-electric-newline ()
   "Electric newline for Python."
   (let ((paren (mb-f-enclosing-paren)))
