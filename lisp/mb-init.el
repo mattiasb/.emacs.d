@@ -92,8 +92,7 @@
   (recentf-mode)
   (abbrev-mode)
   (projectile-mode)
-  ;; TODO: Find out why this flickers.
-  ;; (auto-dim-other-buffers-mode)
+  (auto-dim-other-buffers-mode)
   (powerline-major-mode)
   (powerline-default-theme)
   (yatemplate-fill-alist)
