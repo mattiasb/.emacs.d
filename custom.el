@@ -154,6 +154,8 @@
  '(haskell-font-lock-symbols 'unicode)
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(highlight-symbol-idle-delay 1.0)
+ '(history-advised-before-functions
+   '(imenu isearch-mode beginning-of-buffer end-of-buffer xref-find-definitions xref-find-references xref-find-definitions-other-window xref-find-definitions-other-frame))
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
  '(ido-ubiquitous-command-overrides
@@ -247,7 +249,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(ace-jump-mode add-node-modules-path ag aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault apropospriate-theme ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode cquery csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode dotenv-mode easy-repeat editorconfig eglot electric-operator emojify emr evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct flyspell-correct-popup forge git-commit-insert-issue git-gutter gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc gobgen god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode importmagic indent-tools ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify magit-gitflow markdown-mode meson-mode minions move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode perspective php-mode pipenv powerline projectile projectile-ripgrep py-autopep8 py-isort python-black racer rainbow-mode realgud restart-emacs sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep-ag which-key ws-butler xref-js2 yaml-mode yatemplate))
+   '(ace-jump-mode add-node-modules-path ag aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault apropospriate-theme ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode cquery csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode dotenv-mode easy-repeat editorconfig eglot electric-operator emojify emr evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct flyspell-correct-popup forge git-commit-insert-issue git-gutter gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc gobgen god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode importmagic indent-tools ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify magit-gitflow markdown-mode meson-mode minions move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode perspective php-mode pipenv powerline projectile projectile-ripgrep py-autopep8 py-isort python-black racer rainbow-mode realgud restart-emacs sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep-ag which-key ws-butler xref-js2 yaml-mode yatemplate))
  '(persp-mode-prefix-key "v")
  '(persp-show-modestring nil)
  '(powerline-default-separator 'bar)
@@ -368,6 +370,11 @@
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
  '(fill-column-indicator ((t (:foreground "gray21"))))
+ `(history-current-history ((t (:foreground ,(face-attribute 'default :background)))))
+ '(history-current-temp-history ((t (:inherit history-current-history))))
+ '(history-other-history ((t (:inherit history-current-history))))
+ '(history-prompt ((t (:inherit history-current-history))))
+ '(history-temp-history ((t (:inherit history-current-history))))
  '(hl-line ((t (:background "gray19"))))
  '(iedit-occurrence ((t (:inherit region))))
  '(lsp-face-highlight-textual ((t (:background "gray17"))))

@@ -78,6 +78,7 @@
   (global-emojify-mode-line-mode)
   (flimenu-global-mode)
   (fancy-narrow-mode)
+  (history-mode)
   (ido-mode)
   (ido-vertical-mode)
   (ido-ubiquitous-mode)

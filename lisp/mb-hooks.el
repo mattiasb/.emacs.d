@@ -381,8 +381,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Help
 (defun mb-hooks--help-mode ()
-  "My `help' mode hook."
-  (backward-forward-mode -1))
+  "My `help' mode hook.")
 
 (with-eval-after-load 'help-mode
   (defvar help-mode-map)
@@ -435,7 +434,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Info
 (defun mb-hooks--Info-mode ()
   "My `Info' mode hook."
-  (backward-forward-mode -1))
+  )
 
 (with-eval-after-load 'info
   (mb-f-define-keys Info-mode-map
@@ -693,8 +692,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (company-mode)
   (flycheck-mode)
   (display-fill-column-indicator-mode)
-  (highlight-numbers-mode)
-  (backward-forward-mode))
+  (highlight-numbers-mode))
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
