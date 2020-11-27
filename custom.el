@@ -171,7 +171,7 @@
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(highlight-symbol-idle-delay 1.0)
  '(history-advised-before-functions
-   '(imenu isearch-mode beginning-of-buffer end-of-buffer xref-find-definitions xref-find-references xref-find-definitions-other-window xref-find-definitions-other-frame))
+   '(imenu isearch-mode beginning-of-buffer end-of-buffer xref-find-definitions xref-find-references xref-find-definitions-other-window xref-find-definitions-other-frame mb-cmd-markdown-jump))
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
  '(ido-ubiquitous-command-overrides

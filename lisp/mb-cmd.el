@@ -35,13 +35,27 @@
 (require 'projectile)
 (require 'ido)
 
-(declare-function company-complete        "company.el")
-(declare-function company-select-next     "company.el")
-(declare-function company-select-previous "company.el")
-(declare-function company-complete-common "company.el")
+(declare-function company-complete                    "company.el")
+(declare-function company-select-next                 "company.el")
+(declare-function company-select-previous             "company.el")
+(declare-function company-complete-common             "company.el")
 
-(declare-function iedit-restrict-function "iedit.el")
-(declare-function flyspell-overlay-p      "flyspell.el")
+(declare-function company-complete                    "company.el")
+(declare-function company-select-next                 "company.el")
+(declare-function company-select-previous             "company.el")
+(declare-function company-complete-common             "company.el")
+
+(declare-function markdown-footnote-goto-text         "markdown-mode.el")
+(declare-function markdown-footnote-marker-positions  "markdown-mode.el")
+(declare-function markdown-footnote-return            "markdown-mode.el")
+(declare-function markdown-footnote-text-positions    "markdown-mode.el")
+(declare-function markdown-reference-goto-definition  "markdown-mode.el")
+(declare-function markdown-reference-goto-link        "markdown-mode.el")
+(declare-function markdown-regex-link-reference       "markdown-mode.el")
+(declare-function markdown-regex-reference-definition "markdown-mode.el")
+
+(declare-function iedit-restrict-function             "iedit.el")
+(declare-function flyspell-overlay-p                  "flyspell.el")
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
@@ -631,6 +645,34 @@ With a prefix ARG always prompt for command to use."
   (defvar git-link-open-in-browser)
   (let* ((git-link-open-in-browser t))
     (call-interactively #'git-link)))
+
+;;;###autoload
+(defun mb-cmd-markdown-jump ()
+  "Markdown jump based on `markdown-do'.
+
+Jumps between reference links and definitions; between footnote
+markers and footnote text."
+  (interactive)
+  (require 'markdown-mode)
+  (require 'xref)
+
+  (defvar markdown-regex-link-reference)
+  (defvar markdown-regex-reference-definition)
+
+  (cond
+   ;; Footnote definition
+   ((markdown-footnote-text-positions)
+    (markdown-footnote-return))
+   ;; Footnote marker
+   ((markdown-footnote-marker-positions)
+    (markdown-footnote-goto-text))
+   ;; Reference link
+   ((thing-at-point-looking-at markdown-regex-link-reference)
+    (markdown-reference-goto-definition))
+   ;; Reference definition
+   ((thing-at-point-looking-at markdown-regex-reference-definition)
+    (markdown-reference-goto-link (match-string-no-properties 2)))
+   (t nil)))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
