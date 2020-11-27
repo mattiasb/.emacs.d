@@ -428,62 +428,6 @@ Usage: (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name)"
     (rename-buffer
      (file-relative-name buffer-file-name (projectile-project-root)))))
 
-(defvar mb-f-jhbuild-src-path   "~/Code/gnome/src")
-(defvar mb-f-jhbuild-build-path "~/Code/gnome/build")
-(defun mb-f-projectile-regen-rtags-jhbuild ()
-  "Create `compile_commands.json' for this `JHBuild' module and feed it to rc.
-
-Perform a `cdcc-gen' and get the compile_commands.json from the
-src-dir if this is an autotools project.
-
-Needs `autogenargs += ' CC=cdcc-gcc CXX=cdcc-g++'' in jhbuildrc.
-
-Meson projects Just Works™ and CMake will work automatically as
-well if you add this line:
-    `cmakeargs = '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON''
-... to your ~/.config/jhbuildrc"
-  (let* ((autotools (mb-f-projectile-autotools-p t))
-         (module    (projectile-project-name))
-         (src-dir   (projectile-project-root))
-         (build-dir (format "%s/%s" mb-f-jhbuild-build-path module))
-         (extra-cmd (if autotools
-                        (concat " cdcc-gen " src-dir
-                                " &&"
-                                (format " mv %s/compile_commands.json %s"
-                                        src-dir
-                                        build-dir))
-                      "true")))
-    (compile (concat " jhbuild make"
-                     " &&"
-                     extra-cmd
-                     " &&"
-                     " rc -J " build-dir "/compile_commands.json" ))))
-
-(defun mb-f-projectile-regen-rtags-cmake ()
-  "Create a `compile_commands.json' file for current project and feed it to rc."
-  (let* ((project-root     (projectile-project-root))
-         (build-dir-prefix (concat "build-" (projectile-project-name)))
-         (build-dir        (make-temp-file build-dir-prefix t "")))
-    (compile (concat "mkdir -p " build-dir
-                     " &&"
-                     " pushd " build-dir
-                     " &&"
-                     " cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON " project-root
-                     " &&"
-                     " rc -J ./compile_commands.json"
-                     " ; popd"))))
-
-(defun mb-f-projectile-regen-rtags-meson ()
-  "Create a `compile_commands.json' file for current project and feed it to rc."
-  (let* ((build-dir-prefix (concat "build-" (projectile-project-name)))
-         (build-dir        (make-temp-file build-dir-prefix t "")))
-    (compile (concat " pushd " (projectile-project-root)
-                     " &&"
-                     " meson " build-dir
-                     " && "
-                     (format "rc -J %s/compile_commands.json" build-dir)
-                     "; popd"))))
-
 (defun mb-f-projectile-autotools-p (&optional only)
   "Predicate that determines if current project is an autotools project.
 Optionally return t ONLY if this project also isn't a Meson or CMake project."

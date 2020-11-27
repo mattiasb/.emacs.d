@@ -440,18 +440,6 @@ With a prefix ARG always prompt for command to use."
   (apply #'projectile-ripgrep search-term '(4)))
 
 ;;;###autoload
-(defun mb-cmd-projectile-regen-rtags ()
-  "Update rtags for current project."
-  (interactive)
-  (if (eq (projectile-project-type) 'jhbuild)
-      (mb-f-projectile-regen-rtags-jhbuild)
-    (cond ((mb-f-projectile-meson-p)
-           (mb-f-projectile-regen-rtags-meson))
-          ((mb-f-projectile-cmake-p)
-           (mb-f-projectile-regen-rtags-cmake))
-          (t (message "Unsupported build system!")))))
-
-;;;###autoload
 (defun mb-cmd-projectile-index-projects ()
   "Index my project directories."
   (interactive)

@@ -263,9 +263,6 @@
  '(rng-schema-locating-files
    '((concat user-emacs-directory "schemas/schemas.xml")
      "/usr/share/emacs/25.2/etc/schema/schemas.xml" "schemas.xml"))
- '(rtags-autostart-diagnostics t)
- '(rtags-completions-enabled t)
- '(rtags-display-current-error-as-message nil)
  '(rust-indent-method-chain t)
  '(safe-local-variable-values
    '((c-mode . c++)

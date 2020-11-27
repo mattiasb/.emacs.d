@@ -110,26 +110,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar company-transformers)
   (defvar company-lsp-async)
   (defvar company-lsp-cache-candidates)
-  (defvar flycheck-disabled-checkers)
-  (defvar flycheck-check-syntax-automatically)
-  (defvar flycheck-highlighting-mode)
   (defvar projectile-command-map)
   (defvar company-transformers)
   (defvar company-lsp-async)
   (defvar company-lsp-cache-candidates)
-
-  ;; I don't always have access to RTags since it can't reliably be installed
-  ;; from Melpa, so gracefully fall back
-  (when (featurep 'rtags)
-    (setq-local flycheck-disabled-checkers '(c/c++-gcc c/c++-clang))
-    (setq-local flycheck-highlighting-mode nil)
-    (setq-local flycheck-check-syntax-automatically nil)
-    (setq-local company-backends '(company-rtags))
-    ;; Use the RTags back-forward stuff instead
-    (backward-forward-mode -1)
-    (mb-f-define-keys projectile-command-map
-                      '(( "j"              . rtags-find-symbol)
-                        ( "R"              . mb-cmd-projectile-regen-rtags))))
 
   (when (featurep 'cquery)
     (backward-forward-mode -1)
@@ -143,10 +127,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (setq-local company-lsp-cache-candidates nil)))
 
 (with-eval-after-load 'cc-mode
-  ;; I don't always have access to RTags since it can't reliably be installed
-  ;; from Melpa, so gracefully fall back
-
-  ;; (require 'rtags nil 'noerror)
   (require 'cquery)
 
   (mb-f-define-keys c-mode-base-map
@@ -828,18 +808,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "<tab>" . mb-cmd-snippet-or-complete)))
 
   (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
-
-;; RTags
-(with-eval-after-load 'rtags
-  (require 'flycheck-rtags)
-  (require 'company-rtags)
-  (mb-f-define-keys c-mode-base-map
-                    '(( "M-<left>"       . rtags-location-stack-back)
-                      ( "M-<right>"      . rtags-location-stack-forward)
-                      ( "C-<return>"     . rtags-find-symbol-at-point)
-                      ( "M-?"            . rtags-find-references)
-                      ( "C-x 4 <return>" . rtags-show-target-in-other-window)
-                      ( "C-z f r"        . rtags-rename-symbol))))
 
 ;; RipGrep
 (with-eval-after-load 'ripgrep
