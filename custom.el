@@ -255,6 +255,7 @@
  '(projectile-keymap-prefix "p")
  '(projectile-mode-line-prefix " P")
  '(projectile-switch-project-action 'projectile-commander)
+ '(projectile-tags-backend 'xref)
  '(racer-cmd "/home/mattiasb/.local/bin/racer")
  '(racer-rust-src-path "/home/mattiasb/Code/github/rust-lang/rust/src/")
  '(restart-emacs-restore-frames t)
