@@ -361,12 +361,6 @@
    '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))
    '(popup-tip-face ((t (:background "#4a4a4a"))))))
 
-(when (custom-theme-enabled-p 'apropospriate-dark)
-  (custom-theme-set-faces
-   'apropospriate-dark
-   '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
-   '(highlight-symbol-face ((t (:background "gray21"))))))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
