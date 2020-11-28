@@ -225,15 +225,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'hide-mode-line)
   (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
 
-;; Eglot
-(with-eval-after-load 'eglot
-  (defvar eglot-mode-map)
-  (mb-f-define-keys eglot-mode-map
-                    '(("C-z ?"   . eglot-help-at-point)
-                      ("C-z f r" . eglot-rename)
-                      ("C-z f m" . eglot-format)
-                      ("C-z f f" . eglot-code-actions))))
-
 ;; Electric operator
 (with-eval-after-load 'electric-operator
   (electric-operator-add-rules-for-mode 'ini-mode
