@@ -613,10 +613,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'package-menu-mode-hook #'hl-line-mode))
 
-;; Perspective
-(with-eval-after-load 'perspective
-  (persp-mode))
-
 ;; Prog
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."

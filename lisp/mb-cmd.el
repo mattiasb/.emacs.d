@@ -568,16 +568,6 @@ With a prefix ARG always prompt for command to use."
                                         mb-cmd--scratch-counter)))
 
 ;;;###autoload
-(defun mb-cmd-persp-clean ()
-  "Create a new persp and remove all others."
-  (interactive)
-  (let ((p-new "P")
-        (p-other (persp-names)))
-    (persp-activate (persp-new p-new))
-    (ignore-errors
-      (mapcar #'persp-kill p-other))))
-
-;;;###autoload
 (defun mb-cmd-kill-this-buffer ()
   "Kill this buffer."
   (interactive)
