@@ -169,6 +169,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-remap-keys daemons-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r"))))
+
+;; Docker Compose
+(defun mb-hooks--docker-compose-mode ()
+  "My `docker-compose' mode hook."
+  (defvar company-backends)
+  (setq-local company-backends '((company-capf
+                                  company-files)))
+  (company-mode))
+
+(with-eval-after-load 'docker-compose-mode
+  (add-hook 'docker-compose-mode-hook #'mb-hooks--docker-compose-mode))
+
 ;; Dockerfile
 (defun mb-hooks--dockerfile-mode ()
   "My `dockerfile' mode hook."
