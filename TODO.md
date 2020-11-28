@@ -5,6 +5,15 @@
 - Look at ivy
   - Needed for taskrunner
 
+## Cleanups
+
+Look at these modes again
+
+- pipenv
+- control-mode (including god-mode that was used for isearch)
+- forge
+- realgud (use dap-mode instead?)
+
 ## Emacs 27
 
 ### From Changelog
