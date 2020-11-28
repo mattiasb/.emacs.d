@@ -117,7 +117,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `cmake' mode hook."
   (defvar company-backends)
   (setq-local company-backends '((company-cmake
-                                  company-keywords
                                   company-files
                                   company-dabbrev-code))))
 (with-eval-after-load 'cmake-mode
@@ -487,8 +486,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `lua' mode hook."
   (defvar company-backends)
   (setq-local company-backends '((company-dabbrev-code
-                                  company-files
-                                  company-keywords))))
+                                  company-files))))
 
 (with-eval-after-load 'lua-mode
   (add-hook 'lua-mode-hook #'mb-hooks--lua-mode))
@@ -597,7 +595,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `nxml' mode hook."
   (defvar company-backends)
   (setq-local company-backends '(company-nxml
-                                 company-keywords
                                  company-files)))
 
 (with-eval-after-load 'nxml-mode
