@@ -559,13 +559,6 @@ With a prefix ARG always prompt for command to use."
   (balance-windows))
 
 ;;;###autoload
-(defun mb-cmd-git-commit-insert-issue-fix ()
-  "Insert an issue fix into a git commit message."
-  (interactive)
-  (insert "Fixes: ")
-  (call-interactively #'git-commit-insert-issue-ask-issues))
-
-;;;###autoload
 (defun mb-cmd-new-frame-with-scratch ()
   "Make a new frame with a new scratch buffer."
   (interactive)

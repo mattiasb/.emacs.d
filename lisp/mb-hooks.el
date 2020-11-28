@@ -500,7 +500,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-cmd-control-mode-off)
   (auto-fill-mode)
   (setq fill-column 72)
-  (git-commit-insert-issue-mode)
+
   (display-fill-column-indicator-mode))
 
 (with-eval-after-load 'magit
@@ -520,10 +520,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
                     '(( "C-z t b" .  magit-blame-quit)))
-
-  (defvar git-commit-mode-map)
-  (mb-f-define-keys git-commit-mode-map
-                    '(( "C-c C-f" . mb-cmd-git-commit-insert-issue-fix)))
 
   (add-hook 'after-save-hook         #'magit-after-save-refresh-status)
   (add-hook 'magit-mode-hook         #'turn-on-magit-gitflow)
