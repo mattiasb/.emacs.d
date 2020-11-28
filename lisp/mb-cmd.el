@@ -615,5 +615,23 @@ With a prefix ARG always prompt for command to use."
   (interactive)
   (call-process-shell-command "nautilus . &" nil 0))
 
+;;;###autoload
+(defun mb-cmd-elisp-fill-function-arguments ()
+  "Wrap `fill-function-arguments-dwim' with ELisp special casing."
+  (interactive)
+  (require 'fill-function-arguments)
+
+  (defvar fill-function-arguments-first-argument-same-line)
+  (defvar fill-function-arguments-second-argument-same-line)
+  (defvar fill-function-arguments-last-argument-same-line)
+  (defvar fill-function-arguments-argument-separator)
+
+  (let* ((tap-defun (if (function-called-at-point) t nil))
+         (fill-function-arguments-second-argument-same-line tap-defun)
+         (fill-function-arguments-first-argument-same-line t)
+         (fill-function-arguments-last-argument-same-line t)
+         (fill-function-arguments-argument-separator " "))
+    (call-interactively #'fill-function-arguments-dwim)))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

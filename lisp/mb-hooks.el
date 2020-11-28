@@ -264,7 +264,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n")))
   (mb-f-define-keys emacs-lisp-mode-map
-                    '(("M-q"     . mb-f-elisp-fill-function-arguments))))
+                    '(("M-q"     . mb-cmd-elisp-fill-function-arguments))))
 
 (with-eval-after-load 'elisp-mode
   (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
