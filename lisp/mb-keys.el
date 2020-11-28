@@ -224,7 +224,6 @@
                       ;; Other
                       ( "C-z"    . suspend-frame)
                       ( "D"      . diff-buffer-with-file)
-                      ( "R"      . restart-emacs)
                       ( "b"      . browse-url-at-point)
                       ( "g"      . imenu)
                       ( "n"      . make-frame)
