@@ -381,11 +381,6 @@
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
  '(fill-column-indicator ((t (:foreground "gray21"))))
- `(history-current-history ((t (:foreground ,(face-attribute 'default :background)))))
- '(history-current-temp-history ((t (:inherit history-current-history))))
- '(history-other-history ((t (:inherit history-current-history))))
- '(history-prompt ((t (:inherit history-current-history))))
- '(history-temp-history ((t (:inherit history-current-history))))
  '(hl-line ((t (:background "gray19"))))
  '(iedit-occurrence ((t (:inherit region))))
  '(lsp-face-highlight-textual ((t (:background "gray17"))))

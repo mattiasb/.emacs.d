@@ -352,6 +352,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'help-mode-hook #'mb-hooks--help-mode))
 
+;; History
+
+(with-eval-after-load 'history
+  (let* ((default-bg (face-attribute 'default :background))
+         (faces '(history-current-history
+                  history-current-temp-history
+                  history-other-history
+                  history-prompt
+                  history-temp-history)))
+    (dolist (face faces)
+      (set-face-attribute face nil :foreground default-bg))))
+
 ;; Ido
 (with-eval-after-load 'ido
   (defvar ido-common-completion-map)
