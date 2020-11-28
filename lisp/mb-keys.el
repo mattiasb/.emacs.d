@@ -134,6 +134,8 @@
 (mb-f-define-keymap mb-keys-magit-map
                     '(( "c"      . magit-commit)
                       ( "f"      . magit-find-file)
+                      ( "l"      . mb-cmd-git-copy-url)
+                      ( "b"      . mb-cmd-git-link-browse)
                       ( "p"      . magit-push-matching)))
 
 ;; My Yas keymap

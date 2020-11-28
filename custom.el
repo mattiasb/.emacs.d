@@ -142,6 +142,25 @@
  '(git-commit-setup-hook
    '(git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-propertize-diff with-editor-usage-message))
  '(git-commit-summary-max-length 50)
+ '(git-link-commit-remote-alist
+   '(("git.sr.ht" git-link-commit-github)
+     ("github" git-link-commit-github)
+     ("bitbucket" git-link-commit-bitbucket)
+     ("gitorious" git-link-commit-gitorious)
+     ("gitlab" git-link-commit-github)
+     ("visualstudio\\|azure" git-link-commit-azure)
+     ("sourcegraph" git-link-commit-sourcegraph)
+     ("git.smarteye.se" git-link-commit-github)))
+ '(git-link-remote-alist
+   '(("git.sr.ht" git-link-github)
+     ("github" git-link-github)
+     ("bitbucket" git-link-bitbucket)
+     ("gitorious" git-link-gitorious)
+     ("gitlab" git-link-gitlab)
+     ("visualstudio\\|azure" git-link-azure)
+     ("sourcegraph" git-link-sourcegraph)
+     ("git.smarteye.se" git-link-gitlab)))
+ '(git-link-use-single-line-number nil)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
    '(ansible-doc-module-mode mime-view-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode vterm-mode))
@@ -246,7 +265,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(ace-jump-mode add-node-modules-path ag aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault apropospriate-theme ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode cquery csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode dotenv-mode easy-repeat editorconfig eglot electric-operator emojify emr evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct flyspell-correct-popup forge git-commit-insert-issue git-gutter gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc gobgen god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode importmagic indent-tools ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify magit-gitflow markdown-mode meson-mode minions move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode perspective php-mode pipenv powerline projectile projectile-ripgrep py-autopep8 py-isort python-black rainbow-mode realgud restart-emacs sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep-ag which-key ws-butler xref-js2 yaml-mode yatemplate))
+   '(git-link ace-jump-mode add-node-modules-path ag aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault apropospriate-theme ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode cquery csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode dotenv-mode easy-repeat editorconfig eglot electric-operator emojify emr evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct flyspell-correct-popup forge git-commit-insert-issue git-gutter gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc gobgen god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode importmagic indent-tools ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify magit-gitflow markdown-mode meson-mode minions move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode perspective php-mode pipenv powerline projectile projectile-ripgrep py-autopep8 py-isort python-black rainbow-mode realgud restart-emacs sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep-ag which-key ws-butler xref-js2 yaml-mode yatemplate))
  '(persp-mode-prefix-key "v")
  '(persp-show-modestring nil)
  '(powerline-default-separator 'bar)

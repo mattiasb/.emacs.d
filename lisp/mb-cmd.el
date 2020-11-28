@@ -633,5 +633,21 @@ With a prefix ARG always prompt for command to use."
          (fill-function-arguments-argument-separator " "))
     (call-interactively #'fill-function-arguments-dwim)))
 
+;;;###autoload
+(defun mb-cmd-git-copy-url ()
+  "Open current line in a browser if origin is at a known forge."
+  (interactive)
+  (defvar git-link-open-in-browser)
+  (let* ((git-link-open-in-browser nil))
+    (call-interactively #'git-link)))
+
+;;;###autoload
+(defun mb-cmd-git-link-browse ()
+  "Open current line in a browser if origin is at a known forge."
+  (interactive)
+  (defvar git-link-open-in-browser)
+  (let* ((git-link-open-in-browser t))
+    (call-interactively #'git-link)))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
