@@ -89,7 +89,6 @@
     (history-mode                . "")
     (magit-auto-revert-mode      . "")
     (magit-filenotify-mode       . " Notify")
-    (magit-gitflow-mode          . " Flow")
     (sqlup-mode                  . " ⇑")
     (rainbow-mode                . " 🌈")
     (which-key-mode              . "")

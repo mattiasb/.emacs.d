@@ -522,7 +522,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z t b" .  magit-blame-quit)))
 
   (add-hook 'after-save-hook         #'magit-after-save-refresh-status)
-  (add-hook 'magit-mode-hook         #'turn-on-magit-gitflow)
   (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
   (add-hook 'git-commit-setup-hook   #'mb-hooks--git-commit-setup))
 
