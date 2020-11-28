@@ -741,7 +741,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (importmagic-mode)
   (pipenv-mode)
   (aggressive-indent-mode -1)
-  (indent-tools-minor-mode)
   (defvar flycheck-checker)
   (setq-local flycheck-checker 'python-mypy)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
@@ -750,9 +749,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar python-mode-map)
   (mb-f-define-keys python-mode-map
                     '(( "."           . mb-cmd-dot-and-complete)
-                      ( "<tab>"       . mb-cmd-indent-snippet-or-complete)
-                      ( "C-z <left>"  . indent-tools-demote)
-                      ( "C-z <right>" . indent-tools-indent)))
+                      ( "<tab>"       . mb-cmd-indent-snippet-or-complete)))
 
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
@@ -953,7 +950,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (display-fill-column-indicator-mode)
   (flycheck-yamllint-setup)
   (flycheck-mode)
-  (indent-tools-minor-mode)
   (when (locate-dominating-file default-directory "ansible.cfg")
     (ansible 1)))
 
@@ -961,8 +957,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
                     '(( "<tab>"       . mb-cmd-snippet-complete-or-indent)
-                      ( "C-z <left>"  . indent-tools-demote)
-                      ( "C-z <right>" . indent-tools-indent)
                       ( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
