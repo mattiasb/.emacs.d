@@ -102,8 +102,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "A mode hook for C and C++.")
 
 (with-eval-after-load 'cc-mode
-  (require 'cquery)
-
   (mb-f-define-keys c-mode-base-map
                     '(( "."              . mb-cmd-dot-and-complete)
                       ( ":"              . mb-cmd-double-colon-and-complete)
@@ -151,9 +149,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Cython
 (with-eval-after-load 'cython-mode
   (require 'flycheck-cython))
-
-;; CQuery
-(with-eval-after-load 'cquery)
 
 ;; Daemons
 (with-eval-after-load 'daemons
