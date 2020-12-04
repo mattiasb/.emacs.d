@@ -34,7 +34,6 @@
 (cd "~")
 
 ;;; Settings
-(load-theme 'madhat2r t)
 (load (concat user-emacs-directory "custom.el"))
 (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
 
@@ -42,6 +41,7 @@
 
 (require 'mb-f)
 (mb-f-package-install-all)
+(load-theme 'madhat2r t)
 
 ;;; Post package initialization
 
