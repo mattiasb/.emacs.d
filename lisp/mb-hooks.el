@@ -868,7 +868,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (setq-local company-backends '((company-shell
                                   company-keywords
                                   company-files
-                                  company-dabbrev-code))))
+                                  company-dabbrev-code)))
+
+  (defvar fill-function-arguments-first-argument-same-line)
+  (defvar fill-function-arguments-second-argument-same-line)
+  (defvar fill-function-arguments-last-argument-same-line)
+  (defvar fill-function-arguments-argument-separator)
+
+  (setq-local fill-function-arguments-second-argument-same-line nil)
+  (setq-local fill-function-arguments-first-argument-same-line t)
+  (setq-local fill-function-arguments-last-argument-same-line t)
+  (setq-local fill-function-arguments-argument-separator " "))
+
 
 (with-eval-after-load 'sh-script
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
