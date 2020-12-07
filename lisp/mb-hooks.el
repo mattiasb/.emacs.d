@@ -938,7 +938,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `yaml' mode hook."
   (setq-local fill-column 80)
   (display-fill-column-indicator-mode)
-  (flycheck-yamllint-setup)
+  (defvar flycheck-checker)
+  (setq-local flycheck-checker 'yaml-yamllint)
   (flycheck-mode)
   (when (locate-dominating-file default-directory "ansible.cfg")
     (ansible 1)))
