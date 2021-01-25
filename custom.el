@@ -121,6 +121,7 @@
  '(flycheck-pos-tip-max-width 60)
  '(flycheck-python-flake8-executable "flake8")
  '(flycheck-python-mypy-config "setup.cfg")
+ '(flycheck-ruby-rubocop-executable "bundle exec rubocop")
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face) t)
  '(forge-alist
    '(("github.com" "api.github.com" "github.com" forge-github-repository)
