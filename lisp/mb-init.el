@@ -95,6 +95,7 @@
   (auto-dim-other-buffers-mode)
   (powerline-major-mode)
   (powerline-default-theme)
+  (yas-global-mode)
   (yatemplate-fill-alist)
   (auto-insert-mode))
 

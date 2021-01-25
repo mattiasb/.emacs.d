@@ -422,8 +422,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Jinja2
 (defun mb-hooks--jinja2-mode ()
-  "My `jinja2' mode hook."
-  (yas-minor-mode))
+  "My `jinja2' mode hook.")
 
 (with-eval-after-load 'jinja2
   (add-hook 'jinja2-mode-hook #'mb-hooks--jinja2-mode))
@@ -633,7 +632,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
               (equal indent-line-function #'indent-relative)
               buffer-read-only)
     (aggressive-indent-mode))
-  (yas-minor-mode)
   (ws-butler-mode)
   (company-mode)
   (flycheck-mode)
@@ -966,7 +964,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `yas' mode hook.")
 
 (with-eval-after-load 'yasnippet
-  (yas-reload-all)
   (add-hook 'yas-minor-mode-hook #'mb-hooks--yas-mode))
 
 (provide 'mb-hooks)
