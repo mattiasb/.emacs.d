@@ -315,22 +315,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
     (and (derived-mode-p mode)
          (null (string-match complete-regex (thing-at-point 'line))))))
 
-(defun mb-f-yas-popup (prompt choices &optional display-fn)
-  "Use popup.el for yasnippet.  (PROMPT, CHOICES, DISPLAY-FN)."
-  (require 'yasnippet)
-  (require 'popup)
-  (popup-menu*
-   (mapcar
-    (lambda (choice)
-      (popup-make-item
-       (or (and display-fn (funcall display-fn choice))
-           choice)
-       :value choice))
-    choices)
-   :prompt prompt
-   ;; start isearch mode immediately
-   :isearch t))
-
 (defun mb-f-wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))

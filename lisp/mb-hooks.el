@@ -284,8 +284,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Flyspell
 (with-eval-after-load 'flyspell
-  (require 'flyspell-correct-popup)
-
   (defvar flyspell-mode-map)
   (mb-f-define-keys flyspell-mode-map
                     '(("C-," . mb-cmd-flyspell-goto-previous-error)

@@ -140,7 +140,7 @@
 
 ;; My Yas keymap
 (mb-f-define-keymap mb-keys-yas-map
-                    '(( "i"      . yas-insert-snippet)
+                    '(( "i"      . company-yasnippet)
                       ( "c"      . yas-new-snippet)
                       ( "e"      . yas-visit-snippet-file)
                       ( "r"      . yas-reload-all)

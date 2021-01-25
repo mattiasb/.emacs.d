@@ -265,7 +265,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(ace-jump-mode add-node-modules-path aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode easy-repeat editorconfig electric-operator emojify evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flyspell-correct flyspell-correct-popup forge git-gutter git-link gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode iedit importmagic ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify markdown-mode meson-mode move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode php-mode pipenv powerline projectile py-autopep8 py-isort python-black rainbow-mode realgud ripgrep sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep which-key ws-butler xref-js2 yaml-mode yatemplate))
+   '(ace-jump-mode add-node-modules-path aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode easy-repeat editorconfig electric-operator emojify evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct forge git-gutter git-link gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode iedit importmagic ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify markdown-mode meson-mode move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode php-mode pipenv powerline projectile py-autopep8 py-isort python-black rainbow-mode realgud ripgrep sass-mode sh-extra-font-lock shift-number smart-region smex sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep which-key ws-butler xref-js2 yaml-mode yatemplate))
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix "p")
@@ -322,7 +322,6 @@
  '(yaml-indent-offset 2)
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
- '(yas-prompt-functions '(mb-f-yas-popup))
  '(yas-snippet-dirs (list (concat user-emacs-directory "snippets/")))
  '(yas-trigger-key nil)
  '(yas-trigger-symbol " ⇒")
@@ -361,15 +360,8 @@
    '(hl-line ((t (:background "gray21"))))
    '(iedit-occurrence ((t (:inherit region))))
    '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
-   '(popup-face ((t (:inherit default :background "#3d3d3d"))))
-   '(popup-isearch-match ((t (:inherit (font-lock-constant-face popup-face)))))
-   '(popup-menu-mouse-face ((t nil)))
-   '(popup-menu-selection-face ((t (:inherit font-lock-function-name-face :background "#353535"))))
-   '(popup-scroll-bar-background-face ((t (:background "#303030"))))
-   '(popup-scroll-bar-foreground-face ((t (:background "#4a4a4a"))))
    '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
-   '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))
-   '(popup-tip-face ((t (:background "#4a4a4a"))))))
+   '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
