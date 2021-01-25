@@ -7,7 +7,7 @@ ${2:$$(mb-f-yas-choose-license)}
 ;; Package-Requires : ($5)
 ;; URL		    : ${6:TBA}
 ;; Doc URL	    : ${7:TBA}
-;; Compatibility    : ${8:GNU Emacs: 24.x}
+;; Compatibility    : ${8:`(combine-and-quote-strings (seq-take (split-string (emacs-version)) 3) " ")`}
 
 ;;; Commentary:
 
