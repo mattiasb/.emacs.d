@@ -164,7 +164,7 @@
  '(git-link-use-single-line-number nil)
  '(global-company-mode nil)
  '(global-control-mode-exceptions
-   '(ansible-doc-module-mode mime-view-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode magit-popup-mode woman-mode customize-mode compilation-mode vterm-mode))
+   '(ansible-doc-module-mode mime-view-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode woman-mode customize-mode compilation-mode vterm-mode))
  '(global-git-gutter-mode t)
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
