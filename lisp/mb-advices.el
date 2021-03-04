@@ -76,6 +76,19 @@
                        (when (memq (process-status proc) '(signal exit))
                          (kill-buffer (process-buffer proc)))))
 
+  (advice-add #'projectile-switch-project-by-name
+              :before
+              (lambda (project-path &optional arg &rest _)
+                (let ((project-name (funcall projectile-project-name-function
+                                             project-path))
+                      (tab-names (mapcar (lambda (tab)
+                                           (alist-get 'name tab))
+                                         (tab-bar-tabs))))
+                  (if (member project-name tab-names)
+                      (tab-bar-select-tab-by-name project-name)
+                    (tab-bar-new-tab)
+                    (tab-bar-rename-tab project-name)))))
+
   (advice-add #'ansi-term
               :before (lambda (&rest _)
                         (interactive (list "/bin/bash"))))
