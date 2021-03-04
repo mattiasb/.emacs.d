@@ -76,6 +76,23 @@
                        (when (memq (process-status proc) '(signal exit))
                          (kill-buffer (process-buffer proc)))))
 
+  ;; TODO: Also handle the fact that projectile-acquire-root might switch
+  ;;       project.
+  (advice-add #'projectile-kill-buffers
+              :around
+              (lambda (func &rest args)
+                (let ((project-root (projectile-project-root))
+                      (project-name (projectile-project-name)))
+                  (if (string= project-name "-")
+                      (message "Switch to a project first!")
+                    (apply func args)
+                    ;; Don't close tab if there's still buffers around.
+                    ;; For example if the user choose to not kill the buffers
+                    ;; when asked.
+                    (when (seq-empty-p
+                           (projectile-project-buffer-files project-root))
+                      (tab-bar-close-tab-by-name project-name))))))
+
   (advice-add #'projectile-switch-project-by-name
               :before
               (lambda (project-path &optional arg &rest _)
