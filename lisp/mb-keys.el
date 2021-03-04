@@ -81,7 +81,7 @@
     ( "<C-S-right>"   . buf-move-right)
 
     ;; Frames
-    ( "C-<tab>"       . other-frame)
+    ( "C-<tab>"       . tab-next)
 
     ;; TEXT MANIPULATION
 
