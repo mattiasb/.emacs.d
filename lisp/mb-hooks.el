@@ -499,15 +499,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'forge)
   (declare-function git-gutter:update-all-windows "git-gutter.el")
 
-  ;; TODO: Move this to transient
-  (magit-define-popup-action 'magit-run-popup ?g "Gitg"
-                             #'mb-cmd-projectile-gitg)
+  (transient-append-suffix 'magit-run "!"
+    '("g" "Gitg" mb-cmd-projectile-gitg))
 
-  (magit-define-popup-action 'magit-run-popup ?a "ansi-term"
-                             #'mb-cmd-projectile-ansi-term)
+  (transient-append-suffix 'magit-run "!"
+    '("a" "ansi-term" mb-cmd-projectile-ansi-term))
 
-  (magit-define-popup-action 'magit-run-popup ?t "gnome-terminal"
-                             #'mb-cmd-projectile-gnome-terminal)
+  (transient-append-suffix 'magit-run "!"
+    '("t" "gnome-terminal" mb-cmd-projectile-gnome-terminal))
 
   (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
