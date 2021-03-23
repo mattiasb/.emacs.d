@@ -226,7 +226,7 @@
                       ( "D"      . diff-buffer-with-file)
                       ( "b"      . browse-url-at-point)
                       ( "g"      . imenu)
-                      ( "n"      . make-frame)
+                      ( "n"      . mb-cmd-new-frame)
                       ( "o"      . mb-cmd-open-with)))
 
 (defun mb-keys-activate ()

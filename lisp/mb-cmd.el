@@ -639,6 +639,12 @@ With a prefix ARG always prompt for command to use."
     (call-interactively #'git-link)))
 
 ;;;###autoload
+(defun mb-cmd-new-frame ()
+  "Create a new frame opening the *scratch* buffer."
+  (interactive)
+  (switch-to-buffer-other-frame "*scratch*"))
+
+;;;###autoload
 (defun mb-cmd-git-link-browse ()
   "Open current line in a browser if origin is at a known forge."
   (interactive)
