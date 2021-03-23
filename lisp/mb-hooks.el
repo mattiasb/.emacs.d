@@ -506,6 +506,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     '("a" "ansi-term" mb-cmd-projectile-ansi-term))
 
   (transient-append-suffix 'magit-run "!"
+    '("v" "vterm" projectile-run-vterm))
+
+  (transient-append-suffix 'magit-run "!"
     '("t" "gnome-terminal" mb-cmd-projectile-gnome-terminal))
 
   (defvar magit-blame-mode-map)
