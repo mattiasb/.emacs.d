@@ -104,7 +104,6 @@
 (defun mb-init ()
   "Initialize Emacs."
   (mb-init--make)
-  (tab-bar-rename-tab "Default")
   (require 'mb-hooks)
   (mb-modes-activate)
   (mb-advices-activate)
