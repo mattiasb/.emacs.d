@@ -122,7 +122,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode))
 
 ;; Company
+(defun mb-hooks--company-mode ()
+  "My `company' mode hook."
+  (company-box-mode))
+
 (with-eval-after-load 'company
+  (require 'company-box)
   (company-quickhelp-mode)
 
   (defvar company-active-map)
@@ -132,7 +137,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "<next>"  . mb-cmd-company-scroll-down)
                       ( "<prior>" . mb-cmd-company-scroll-up)
                       ( "\C-v"    . company-show-location)
-                      ( "\C-g"    . company-abort))))
+                      ( "\C-g"    . company-abort)))
+  (add-hook 'company-mode-hook #'mb-hooks--company-mode))
 
 ;; Compilation Mode
 
