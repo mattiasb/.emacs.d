@@ -785,6 +785,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Rust
 (with-eval-after-load 'rust-mode)
 
+;; Table
 (with-eval-after-load "table"
   (defvar table-command-remap-alist)
   (push '(delete-forward-char . *table--cell-delete-char)
