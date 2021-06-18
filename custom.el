@@ -77,6 +77,7 @@
  '(custom-buffer-done-kill t)
  '(custom-file (concat user-emacs-directory "custom.el"))
  '(custom-safe-themes t)
+ '(default-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-sidebar-width 20)
