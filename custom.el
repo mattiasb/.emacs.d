@@ -248,6 +248,7 @@
  '(markdown-reference-location 'end)
  '(markdown-unordered-list-item-prefix "- ")
  '(markdown-use-pandoc-style-yaml-metadata t)
+ '(mc/always-run-for-all t)
  '(mime-view-type-subtype-score-alist
    '(((text . enriched)
       . 3)
