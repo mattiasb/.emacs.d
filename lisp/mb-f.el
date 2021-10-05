@@ -451,7 +451,7 @@ Optionally only search as deep as DEPTH."
   "Get the namespace of the current module."
   (if (and (derived-mode-p 'emacs-lisp-mode)
            (string= (file-name-extension (buffer-name)) "el"))
-      (let ((base (file-name-base)))
+      (let ((base (file-name-base (buffer-name))))
         (if (string-suffix-p "-mode" base)
             (substring base 0 -5)
           base))
