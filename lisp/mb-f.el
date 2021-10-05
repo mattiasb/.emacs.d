@@ -433,8 +433,11 @@ Optionally return t ONLY if this project also isn't a Meson or CMake project."
 (defun mb-f-find-git-projects (dir &optional depth)
   "Find all git projects under DIR.
 Optionally only search as deep as DEPTH."
-  (let* ((depth-flag (if depth (format "-maxdepth %d" depth) ""))
-         (cmd (format "find %s %s -name '.git' -type d" dir depth-flag))
+  (let* ((cmd (format "find %s %s %s -or %s"
+                      dir
+                      (if depth (format "-maxdepth %d" depth) "")
+                      "-name '.git' -type d"
+                      "-type f -name '.projectile'"))
          (result (split-string (shell-command-to-string cmd))))
     (mapcar #'file-name-directory result)))
 
