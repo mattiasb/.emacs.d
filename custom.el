@@ -69,7 +69,7 @@
  '(company-quickhelp-delay 1.2)
  '(company-quickhelp-mode t)
  '(company-selection-wrap-around nil)
- '(company-show-numbers nil)
+ '(company-show-quick-access nil)
  '(company-tooltip-align-annotations t)
  '(company-tooltip-minimum-width 40)
  '(compilation-read-command nil)
@@ -164,8 +164,6 @@
      ("git.smarteye.se" git-link-gitlab)))
  '(git-link-use-single-line-number nil)
  '(global-company-mode nil)
- '(global-control-mode-exceptions
-   '(ansible-doc-module-mode mime-view-mode todotxt-mode daemons-mode xref--xref-buffer-mode ibuffer-mode package-menu-mode ag-mode tabulated-list-mode Info-mode help-mode special-mode view-mode dired-mode term-mode magit-status-mode magit-refs-mode magit-process-mode magit-cherry-mode magit-log-mode magit-diff-mode woman-mode customize-mode compilation-mode vterm-mode))
  '(global-git-gutter-mode t)
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
@@ -268,7 +266,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")))
  '(package-quickstart t)
  '(package-selected-packages
-   '(ace-jump-mode add-node-modules-path aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-box company-go company-lsp company-nginx company-quickhelp company-restclient company-shell control-mode csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode easy-repeat editorconfig electric-operator emojify evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct forge git-gutter git-link gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode iedit importmagic ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify markdown-mode meson-mode move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode php-mode pipenv powerline powershell projectile py-autopep8 py-isort python-black rainbow-mode realgud ripgrep sass-mode sh-extra-font-lock shift-number smart-region smex spdx sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep which-key ws-butler xref-js2 yaml-mode yatemplate))
+   '(ace-jump-mode add-node-modules-path aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault ascii-art-to-unicode attrap auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-box company-go company-lsp company-nginx company-quickhelp company-restclient company-shell csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode easy-repeat editorconfig electric-operator emojify evil-esc-mode fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct forge git-gutter git-link gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc god-mode goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode iedit importmagic ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify markdown-mode meson-mode move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode php-mode pipenv powerline powershell projectile py-autopep8 py-isort python-black rainbow-mode realgud ripgrep sass-mode sh-extra-font-lock shift-number smart-region smex spdx sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep which-key ws-butler xref-js2 yaml-mode yatemplate))
  '(powerline-default-separator 'bar)
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix "p")

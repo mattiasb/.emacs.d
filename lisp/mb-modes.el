@@ -80,7 +80,6 @@
     (auto-sudoedit-mode          . "")
     (company-mode                . "")
     (company-box-mode            . "")
-    (control-mode                . "")
     (eldoc-mode                  . " 📖")
     (electric-operator-mode      . " ⊙")
     (fancy-narrow-mode           . "")

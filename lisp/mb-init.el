@@ -68,7 +68,6 @@
   (require 'iso-transl)
   (require 'dired-imenu)
   (require 'visual-regexp-steroids)
-  (require 'control-mode)
   (require 'lastpass)
   (auto-sudoedit-mode)
   (auto-fill-mode 1)

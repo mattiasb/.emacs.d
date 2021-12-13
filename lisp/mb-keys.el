@@ -62,10 +62,6 @@
     ( "C-x 4 <return>" . xref-find-definitions-other-window)
     ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
-    ;; Control-mode
-    ( "<escape>"       . mb-cmd-control-mode-on)
-    ( "<insert>"       . global-control-mode)
-
     ;; NAVIGATION
 
     ;; General

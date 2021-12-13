@@ -285,18 +285,6 @@ depending on context."
     (comment-or-uncomment-region beg end)))
 
 ;;;###autoload
-(defun mb-cmd-control-mode-off ()
-  "Turn off `control-mode'."
-  (interactive)
-  (global-control-mode 0))
-
-;;;###autoload
-(defun mb-cmd-control-mode-on ()
-  "Turn on `control-mode'."
-  (interactive)
-  (global-control-mode 1))
-
-;;;###autoload
 (defun mb-cmd-rename-current-buffer-and-file ()
   "Renames current buffer and file it is visiting."
   (interactive)

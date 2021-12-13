@@ -336,24 +336,6 @@ The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
   "Return non-nil if DPI is ≥ 213."
   (>= dpi 213))
 
-(defvar control-mode)
-(defun mb-f-control-mode-set-cursor ()
-  "Update cursor based for `control-mode'."
-  (let* ((all-hidpi (mb-f-hidpi-p (apply #'min (mb-f-get-monitor-dpis)))))
-    (if (display-graphic-p)
-        (setq cursor-type (if control-mode
-                              'box
-                            `(bar . ,(if all-hidpi 4 2))))
-      (send-string-to-terminal (if control-mode
-                                   "\e[1 q"
-                                 "\e[5 q")))))
-
-(defvar global-control-mode-exceptions)
-(defun mb-f-control-mode-in-sync ()
-  "Non-nil if control-mode and global-control-mode is in sync."
-  (or (equal control-mode global-control-mode)
-      (memq major-mode global-control-mode-exceptions)))
-
 (defun mb-f-focus-buffer-dwim (buffer)
   "Switch to BUFFER in other window unless it's currently in view."
   (unless (string-equal buffer (buffer-name (current-buffer)))

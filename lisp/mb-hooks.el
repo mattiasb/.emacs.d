@@ -495,7 +495,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Magit
 (defun mb-hooks--git-commit-setup ()
   "My `git-commit' mode hook."
-  (mb-cmd-control-mode-off)
   (auto-fill-mode)
   (setq fill-column 72)
 
@@ -570,8 +569,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Multiple Cursors
 (defun mb-hooks--multiple-cursors-mode-enabled ()
   "My `multiple-cursors' mode hook."
-  (declare-function control-mode-reload-bindings "control-mode.el")
-  (control-mode-reload-bindings))
+  )
 
 (with-eval-after-load 'multiple-cursors
   (add-hook 'multiple-cursors-mode-enabled-hook
@@ -711,8 +709,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     "Spawn gitg in the project root."
     (mb-cmd-projectile-gitg))
 
-  (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name)
-  (add-hook 'projectile-mode-hook #'control-mode-reload-bindings))
+  (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name))
 
 ;; Python
 (defun mb-hooks--python-mode ()
