@@ -42,7 +42,8 @@
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
  '(auto-insert 'other)
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
- '(auto-save-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/autosave/\\1" t)))
+ '(auto-save-file-name-transforms
+   '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/autosave/\\1" t)))
  '(auto-save-list-file-prefix "~/.cache/emacs/auto-save-list/.saves-")
  '(auto-save-no-message t)
  '(backup-directory-alist '(("." . "~/.cache/emacs/backup/")))
