@@ -668,5 +668,26 @@ markers and footnote text."
     (markdown-reference-goto-link (match-string-no-properties 2)))
    (t nil)))
 
+
+(defvar mb-cmd-forges '(("GitHub"   . "github")
+                        ("GitLab"   . "gitlab")
+                        ("SmartEye" . "smarteye")
+                        ("GNOME"    . "gnome"))
+  "Git forges.")
+
+;;;###autoload
+(defun mb-cmd-git-get (forge repository)
+  "Use git-get to clone a REPOSITORY from FORGE."
+  (interactive
+   (list (cdr (assoc (completing-read "Forge: "
+                                      mb-cmd-forges
+                                      nil t)
+                     mb-cmd-forges))
+         (read-string "Repository: ")))
+  (let ((compilation-buffer-name-function
+         (function (lambda (_) "nil" "*git-get*"))))
+    (compile (format "git get %s:%s &" forge repository))
+    (switch-to-buffer "*git-get*")))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
