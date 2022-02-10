@@ -130,6 +130,7 @@
 (mb-f-define-keymap mb-keys-magit-map
                     '(( "c"      . magit-commit)
                       ( "f"      . magit-find-file)
+                      ( "g"      . mb-cmd-git-get)
                       ( "l"      . mb-cmd-git-copy-url)
                       ( "b"      . mb-cmd-git-link-browse)
                       ( "p"      . magit-push-matching)))
