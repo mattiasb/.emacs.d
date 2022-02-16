@@ -134,7 +134,14 @@
                                                 user-emacs-directory)))
                           (if (eq efile erecentf)
                               t
-                            (ask-user-about-lock file opponent))))))
+                            (ask-user-about-lock file opponent)))))
+
+  (advice-add #'kill-line
+              :before (lambda (&optional arg)
+                        (when (and (eolp) (not (bolp)))
+                          (save-excursion
+                            (forward-char 1)
+                            (just-one-space 1))))))
 
 
 (provide 'mb-advices)
