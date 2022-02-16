@@ -41,6 +41,7 @@
     ("\/evo"               . message-mode)
     ("\/hosts$"            . ini-mode)
     ("\/tmp\/bash-fc\."    . sh-mode)
+    ("\\.bu$"              . yaml-mode)
     ("\\.dec$"             . mtg-deck-mode)
     ("\\.geojson$"         . json-mode)
     ("\\.html$"            . html-mode)
