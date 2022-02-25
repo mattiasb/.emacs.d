@@ -686,8 +686,7 @@ markers and footnote text."
          (read-string "Repository: ")))
   (let ((compilation-buffer-name-function
          (function (lambda (_) "nil" "*git-get*"))))
-    (compile (format "git get %s:%s &" forge repository))
-    (switch-to-buffer "*git-get*")))
+    (compile (format "git get %s:%s" forge repository))))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
