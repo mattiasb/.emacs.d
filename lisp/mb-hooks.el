@@ -523,7 +523,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     '("v" "vterm" projectile-run-vterm))
 
   (transient-append-suffix 'magit-run "!"
-    '("t" "gnome-terminal" mb-cmd-projectile-gnome-terminal))
+    '("t" "terminal" mb-cmd-projectile-terminal))
 
   (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
@@ -685,7 +685,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "s s" . projectile-ripgrep)
                       ( "s S" . mb-cmd-projectile-ripgrep-regex)
                       ( "x a" . mb-cmd-projectile-ansi-term)
-                      ( "x t" . mb-cmd-projectile-gnome-terminal)))
+                      ( "x t" . mb-cmd-projectile-terminal)))
 
   (def-projectile-commander-method ?d
     "Open project root in dired."
@@ -700,8 +700,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (mb-cmd-projectile-ansi-term))
 
   (def-projectile-commander-method ?t
-    "Spawn gnome-terminal in the project root."
-    (mb-cmd-projectile-gnome-terminal))
+    "Spawn terminal in the project root."
+    (mb-cmd-projectile-terminal))
 
   (def-projectile-commander-method ?V
     "Spawn gitg in the project root."

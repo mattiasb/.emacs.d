@@ -78,7 +78,7 @@
     ( "C-e"           . mwim-end-of-code-or-line)))
 
 (mb-f-define-keymap mb-keys-exec-map
-                    '(( "t"      . mb-cmd-exec-gnome-terminal)
+                    '(( "t"      . mb-cmd-exec-terminal)
                       ( "f"      . mb-cmd-exec-nautilus)))
 
 (mb-f-define-keymap mb-keys-windows-map

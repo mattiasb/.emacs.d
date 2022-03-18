@@ -368,10 +368,10 @@ With a prefix ARG always prompt for command to use."
   (mb-cmd-projectile-spawn "/bin/gitg"))
 
 ;;;###autoload
-(defun mb-cmd-projectile-gnome-terminal ()
+(defun mb-cmd-projectile-terminal ()
   "Run gitg at root of project."
   (interactive)
-  (mb-cmd-projectile-spawn "/usr/bin/gnome-terminal"))
+  (mb-cmd-projectile-spawn "/usr/bin/kgx"))
 
 ;;;###autoload
 (defun mb-cmd-projectile-spawn (command)
@@ -476,7 +476,7 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-exec-gnome-terminal ()
   "Open my tasks."
   (interactive)
-  (call-process-shell-command "gnome-terminal&" nil 0))
+  (call-process-shell-command "kgx&" nil 0))
 
 ;;;###autoload
 (defun mb-cmd-exec-nautilus ()
