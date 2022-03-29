@@ -131,7 +131,7 @@
    '(("github.com" "api.github.com" "github.com" forge-github-repository)
      ("gitlab.com" "gitlab.com/api/v4" "gitlab.com" forge-gitlab-repository)
      ("salsa.debian.org" "salsa.debian.org/api/v4" "salsa.debian.org" forge-gitlab-repository)
-     ("git.smarteye.se" "http://git.smarteye.se/api/v4" "git.smarteye.se" forge-gitlab-repository)
+     ("git.smarteye.se" "git.smarteye.se/api/v4" "git.smarteye.se" forge-gitlab-http-repository)
      ("gitlab.gnome.org" "gitlab.gnome.org/api/v4" "gitlab.gnome.org" forge-gitlab-repository)
      ("teahub.io" "teahub.io/api/v1" "teahub.io" forge-gitea-repository)
      ("code.orgmode.org" "code.orgmode.org/api/v1" "code.orgmode.org" forge-gogs-repository)

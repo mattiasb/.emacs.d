@@ -502,7 +502,26 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'magit
   (require 'forge)
+  (defvar ghub-insecure-hosts)
+  (defvar forge-alist)
   (declare-function git-gutter:update-all-windows "git-gutter.el")
+
+  ;; Support insecure forges
+  (defclass forge-gitlab-http-repository (forge-gitlab-repository)
+    ((issues-url-format         :initform "http://%h/%o/%n/issues")
+     (issue-url-format          :initform "http://%h/%o/%n/issues/%i")
+     (issue-post-url-format     :initform "http://%h/%o/%n/issues/%i#note_%I")
+     (pullreqs-url-format       :initform "http://%h/%o/%n/merge_requests")
+     (pullreq-url-format        :initform "http://%h/%o/%n/merge_requests/%i")
+     (pullreq-post-url-format   :initform "http://%h/%o/%n/merge_requests/%i#note_%I")
+     (commit-url-format         :initform "http://%h/%o/%n/commit/%r")
+     (branch-url-format         :initform "http://%h/%o/%n/commits/%r")
+     (remote-url-format         :initform "http://%h/%o/%n")
+     (create-issue-url-format   :initform "http://%h/%o/%n/issues/new")
+     (create-pullreq-url-format :initform "http://%h/%o/%n/merge_requests/new")
+     (pullreq-refspec           :initform "+refs/merge-requests/*/head:refs/pullreqs/*")))
+
+  (add-to-list 'ghub-insecure-hosts "git.smarteye.se/api/v4")
 
   (transient-append-suffix 'magit-run "!"
     '("g" "Gitg" mb-cmd-projectile-gitg))
