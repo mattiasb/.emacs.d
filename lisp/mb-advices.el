@@ -33,18 +33,12 @@
 ;;; Code:
 
 (require 'term)
-(require 'god-mode-isearch)
 (require 'mb-cmd)
 (require 'flycheck)
 (require 'flycheck-pos-tip)
 
 (defun mb-advices-activate ()
   "Activate my advices."
-
-  (advice-add #'isearch-forward-symbol-at-point
-              :after  #'god-mode-isearch-activate)
-  (advice-add #'mb-cmd-isearch-backward-symbol-at-point
-              :after  #'god-mode-isearch-activate)
 
   (advice-add #'ialign
               :around (lambda (func &rest args)
