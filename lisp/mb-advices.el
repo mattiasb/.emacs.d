@@ -60,12 +60,6 @@
           describe-package
           describe-theme))
 
-  ;; Kill terminal buffer when the terminal process exits
-  (advice-add #'term-sentinel
-              :after (lambda (proc _)
-                       (when (memq (process-status proc) '(signal exit))
-                         (kill-buffer (process-buffer proc)))))
-
   ;; TODO: Also handle the fact that projectile-acquire-root might switch
   ;;       project.
   (advice-add #'projectile-kill-buffers
