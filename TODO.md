@@ -23,3 +23,7 @@ See https://www.masteringemacs.org/article/whats-new-in-emacs-27-1
 - Look at LSP again
   - Look at what libjansson brings for LSP.
   - Try to use LSP for Python and C/C++ at least.
+
+## Bugs
+
+- Repeating ialign adds spaces to beginning of line
