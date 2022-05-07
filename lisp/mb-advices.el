@@ -40,10 +40,6 @@
 (defun mb-advices-activate ()
   "Activate my advices."
 
-  (advice-add #'ialign
-              :around (lambda (func &rest args)
-                        (unwind-protect (apply func args))))
-
   (advice-add #'backward-page :after  #'recenter)
   (advice-add #'forward-page  :after  #'recenter)
 
