@@ -389,8 +389,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'iedit
   (defvar iedit-mode-keymap)
   (mb-f-define-keys iedit-mode-keymap
-                    '(("C-g"      . iedit-quit)
-                      ("<return>" . iedit-quit)))
+                    '(("C-g"      . iedit-mode)
+                      ("<return>" . iedit-mode)))
 
   (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
