@@ -187,16 +187,6 @@ With a prefix argument P, isearch for the symbol at point."
   (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
 
 ;;;###autoload
-(defun mb-cmd-snippet-complete-or-indent ()
-  "Insert snippet, complete (using `company-mode') or indent.
-Useful in Python and YAML files."
-  (interactive)
-  (unless (or (yas-expand)
-              (and (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-                   (company-complete)))
-    (call-interactively #'indent-for-tab-command)))
-
-;;;###autoload
 (defun mb-cmd-indent-snippet-or-complete ()
   "Tab indent, insert snippet or complete (using `company-mode')
 depending on context."
@@ -206,16 +196,6 @@ depending on context."
     (when (and (= old-indent (current-indentation))
                (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
                (null (yas-expand)))
-      (company-complete))))
-
-;;;###autoload
-(defun mb-cmd-indent-or-complete ()
-  "Auto indent or complete (using `company-mode') depending on context."
-  (interactive)
-  (let ((old-indent (current-indentation)))
-    (call-interactively #'indent-for-tab-command)
-    (when (and (= old-indent (current-indentation))
-               (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]"))
       (company-complete))))
 
 ;;;###autoload

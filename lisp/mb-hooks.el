@@ -398,7 +398,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'ielm
   (defvar ielm-map)
   (mb-f-define-keys ielm-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
+                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
 
   (add-hook 'ielm-mode-hook #'company-mode))
 
@@ -572,7 +572,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'mtg-deck-mode
   (mb-f-define-keys mtg-deck-mode-map
                     '(( "C-<return>" . mtg-deck-show-card-at-point)
-                      ( "<tab>"      . mb-cmd-snippet-or-complete)
+                      ( "<tab>"      . mb-cmd-indent-snippet-or-complete)
                       ( "C-c C-s"    . mtg-deck-sideboard-toggle)))
 
   (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode))
@@ -607,7 +607,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'nxml-mode
   (defvar nxml-mode-map)
   (mb-f-define-keys nxml-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
+                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
 
   (add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
   (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
@@ -657,7 +657,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
-                    '(( "<tab>"       . mb-cmd-snippet-or-complete)
+                    '(( "<tab>"       . mb-cmd-indent-snippet-or-complete)
                       ( "C-z f e"     . mb-cmd-iedit-in-defun)
                       ( "C-z d"       . nil)
                       ( "M-q"         . fill-function-arguments-dwim)))
@@ -766,7 +766,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'restclient
   (defvar restclient-mode-map)
   (mb-f-define-keys restclient-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete)))
+                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
 
   (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
 
@@ -953,7 +953,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
-                    '(( "<tab>"       . mb-cmd-snippet-complete-or-indent)
+                    '(( "<tab>"       . mb-cmd-indent-snippet-or-complete)
                       ( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
