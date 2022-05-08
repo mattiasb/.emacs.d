@@ -304,7 +304,6 @@
  '(show-paren-mode t)
  '(tab-bar-close-button-show nil)
  '(tab-bar-new-button-show nil)
- '(tab-bar-show 1)
  '(tab-width 8)
  '(table-command-prefix [])
  '(todotxt-file "~/Dropbox/pim/todo/todo.txt" t)
