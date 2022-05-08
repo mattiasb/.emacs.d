@@ -60,6 +60,11 @@
           describe-package
           describe-theme))
 
+  (advice-add 'comint-send-eof
+              :after
+              (lambda ()
+                (kill-buffer (current-buffer))))
+
   ;; TODO: Also handle the fact that projectile-acquire-root might switch
   ;;       project.
   (advice-add #'projectile-kill-buffers
