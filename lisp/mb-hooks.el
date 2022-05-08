@@ -561,14 +561,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode))
 
-;; Mime View
-(defun mb-hooks--mime-view-mode ()
-  "My `mime-view' mode hook."
-  (display-fill-column-indicator-mode))
-
-(with-eval-after-load 'mime-view
-  (add-hook 'mime-view-mode-hook #'mb-hooks--mime-view-mode))
-
 ;; MTG deck mode
 (defvar mtg-deck-mode-map)
 (defun mb-hooks--mtg-deck-mode ()
@@ -667,10 +659,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-define-keys prog-mode-map
                     '(( "<tab>"       . mb-cmd-snippet-or-complete)
                       ( "C-z f e"     . mb-cmd-iedit-in-defun)
-                      ( "C-z f a"     . attrap-attrap)
                       ( "C-z d"       . nil)
-                      ( "C-z d d"     . mb-cmd-realgud-debug)
-                      ( "C-z d a"     . realgud-short-key-mode)
                       ( "M-q"         . fill-function-arguments-dwim)))
 
   (add-hook 'prog-mode-hook #'mb-hooks--prog-mode))
@@ -733,15 +722,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Python
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
-  (declare-function realgud:ipdb "realgud.el")
 
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
 
   (defvar yas-indent-line)
   (setq-local yas-indent-line 'fixed)
-
-  (defvar mb-cmd-realgud-debugger)
-  (setq-local mb-cmd-realgud-debugger #'realgud:ipdb)
 
   (defvar company-backends)
   (setq-local company-backends '(company-anaconda))
@@ -770,13 +755,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "M-<return>" . anaconda-mode-find-assignments)
                       ( "C-z h d"    . anaconda-mode-show-doc)
                       ( "M-?"        . anaconda-mode-find-references))))
-
-;; Realgud Track
-(with-eval-after-load 'realgud
-  (defvar realgud-track-mode-map)
-  (mb-f-define-keys realgud-track-mode-map
-                    '(( "."      . mb-cmd-dot-and-complete)
-                      ( "<tab>"  . mb-cmd-snippet-or-complete))))
 
 ;; REST Client
 (defun mb-hooks--restclient-mode ()

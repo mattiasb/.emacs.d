@@ -210,7 +210,6 @@
                       ( "<down>" . move-dup-duplicate-down)
                       ( "<up>"   . move-dup-duplicate-up)
                       ( "="      . mb-cmd-calc-thing-at-point)
-                      ( "S"      . mb-cmd-ispell-word-then-abbrev)
                       ( "c"      . mb-cmd-toggle-comment)
                       ( "p"      . projectile-command-map)
                       ( "q"      . vr/query-replace)

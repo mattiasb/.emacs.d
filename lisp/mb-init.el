@@ -48,7 +48,6 @@
       (tmux-keys))
 
   (menu-bar-mode -1)
-  (evil-esc-mode)
   (mb-f-set-terminal-cursors)
 
   ;; TODO: Fix this. It currently borks whitespace-mode

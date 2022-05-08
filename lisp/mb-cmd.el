@@ -64,19 +64,6 @@
   (byte-recompile-directory user-emacs-directory 0))
 
 ;;;###autoload
-(defun mb-cmd-toggle-programming-case-word-at-point (&rest _)
-  "Toggle programming style casing of word a point."
-  (interactive)
-  (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case))
-
-;;;###autoload
-(defun mb-cmd-toggle-programming-case-word-at-point-reverse (&rest _)
-  "Toggle programming style casing of word a point.
-In reverse."
-  (interactive)
-  (mb-f-operate-on-thing-or-region 'symbol #'mb-f-toggle-programming-case-reverse))
-
-;;;###autoload
 (defun mb-cmd-calc-thing-at-point ()
   "Replace math expression at point or in region with it's value."
   (interactive)
@@ -310,42 +297,6 @@ depending on context."
    (get-buffer-process (current-buffer))
    (if string string (current-kill 0))))
 
-;; Taken from here:
-;; http://endlessparentheses.com/ispell-and-abbrev-the-perfect-auto-correct.html
-;;;###autoload
-(defun mb-cmd-ispell-word-then-abbrev (p)
-  "Call `ispell-word', then create an abbrev for it.
-With prefix P, create local abbrev.  Otherwise it will
-be global.
-If there's nothing wrong with the word at point, keep
-looking for a typo until the beginning of buffer.  You can
-skip typos you don't want to fix with `SPC', and you can
-abort completely with `C-g'."
-  (interactive "P")
-  (let (bef aft)
-    (save-excursion
-      (while (if (setq bef (thing-at-point 'word))
-                 ;; Word was corrected or used quit.
-                 (if (ispell-word nil 'quiet)
-                     nil ; End the loop.
-                   ;; Also end if we reach `bob'.
-                   (not (bobp)))
-               ;; If there's no word at point, keep looking
-               ;; until `bob'.
-               (not (bobp)))
-        (backward-word))
-      (setq aft (thing-at-point 'word)))
-    (if (and aft bef (not (equal aft bef)))
-        (let ((aft (downcase aft))
-              (bef (downcase bef)))
-          (define-abbrev
-            (if p local-abbrev-table global-abbrev-table)
-            bef aft)
-
-          (message "\"%s\" now expands to \"%s\" %sally"
-                   bef aft (if p "loc" "glob")))
-      (user-error "No typo at or before point"))))
-
 ;;;###autoload
 (defun mb-cmd-shell-command-dwim (command
                                   &optional
@@ -511,18 +462,6 @@ With a prefix ARG always prompt for command to use."
               (message "No more miss-spelled word!")
               (setq arg 0)))))))
 
-(defvar mb-cmd-realgud-debugger
-  (lambda ()
-    (interactive)
-    (error "No debugger for this mode")))
-
-;;;###autoload
-(defun mb-cmd-realgud-debug ()
-  "Run a `realgud' debugger."
-  (interactive)
-  (require 'realgud)
-  (call-interactively mb-cmd-realgud-debugger))
-
 ;;;###autoload
 (defun mb-cmd-iedit-in-defun ()
   "`iedit' restricted to current `defun'."
@@ -561,26 +500,10 @@ With a prefix ARG always prompt for command to use."
   (balance-windows))
 
 ;;;###autoload
-(defun mb-cmd-new-frame-with-scratch ()
-  "Make a new frame with a new scratch buffer."
-  (interactive)
-  (defvar mb-cmd--scratch-counter 0)
-  (incf mb-cmd--scratch-counter)
-  (switch-to-buffer-other-frame (format "*scratch %s*"
-                                        mb-cmd--scratch-counter)))
-
-;;;###autoload
 (defun mb-cmd-kill-this-buffer ()
   "Kill this buffer."
   (interactive)
   (kill-buffer (current-buffer)))
-
-;;;###autoload
-(defun mb-cmd-open-journal ()
-  "Open my journal."
-  (interactive)
-  (find-file-existing "~/Dropbox/pim/journal.txt")
-  (table-recognize))
 
 ;;;###autoload
 (defun mb-cmd-open-tasks ()

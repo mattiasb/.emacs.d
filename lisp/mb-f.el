@@ -126,59 +126,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
       (replace-regexp-in-string "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2" s)))
    "[^A-Za-z0-9]+"))
 
-(defun mb-f-lower-camel-case (s)
-  "Camel case S."
-  (mb-f-mapconcat-head 'downcase
-                       'capitalize
-                       (mb-f-split-name s)
-                       ""))
-
-(defun mb-f-camel-case (s)
-  "Camel case S."
-  (mapconcat #'capitalize (mb-f-split-name s) ""))
-
-(defun mb-f-snake-case (s)
-  "Snake case S."
-  (mapconcat #'downcase (mb-f-split-name s) "_"))
-
-(defun mb-f-dash-case (s)
-  "Dash case S."
-  (mapconcat #'downcase (mb-f-split-name s) "-"))
-
-(defun mb-f-dash-case-p (s)
-  "Return T if S is in dash-case."
-  (let ((case-fold-search nil))
-    (string-match-p "[a-z]+\\(?:-[a-z]+\\)+" s)))
-
-(defun mb-f-camel-case-p (s)
-  "Return T if S is in camel-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^\\(?:[A-Z][a-z]+\\)+"  s)))
-
-(defun mb-f-lower-camel-case-p (s)
-  "Return T if S is in lower-camel-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^[a-z]+\\(?:[A-Z][a-z]+\\)+"  s)))
-
-(defun mb-f-snake-case-p (s)
-  "Return T if S is in snake-case."
-  (let ((case-fold-search nil))
-    (string-match-p "^[a-z]+\\(?:_[a-z]+\\)+" s)))
-
-(defun mb-f-toggle-programming-case (s) ;; UP
-  "Toggle programming style casing of S."
-  (cond ((mb-f-snake-case-p       s) (mb-f-dash-case        s))
-        ((mb-f-dash-case-p        s) (mb-f-camel-case       s))
-        ((mb-f-camel-case-p       s) (mb-f-lower-camel-case s))
-        ((mb-f-lower-camel-case-p s) (mb-f-snake-case       s))))
-
-(defun mb-f-toggle-programming-case-reverse (s)
-  "Toggle programming style casing of S in reverse."
-  (cond ((mb-f-dash-case-p        s) (mb-f-snake-case       s))
-        ((mb-f-snake-case-p       s) (mb-f-lower-camel-case s))
-        ((mb-f-lower-camel-case-p s) (mb-f-camel-case       s))
-        ((mb-f-camel-case-p       s) (mb-f-dash-case        s))))
-
 (defun mb-f-operate-on-thing-or-region (thing fn)
   "Replace THING or region with the value of the function FN."
   (let (pos1 pos2 meat excerpt)
@@ -298,22 +245,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
                (y-or-n-p (format "Directory `%s' does not exist! Create it? "
                                  parent-directory)))
       (make-directory parent-directory t))))
-
-(defun mb-f-aim-new-block (mode control-stmts &optional char-tokens)
-  "Does this line suggest a new block in MODE.
-CONTROL-STMTS is a list of new block introducing control statements.
-The optional parameter CHAR-TOKENS is a list of block introducing char tokens."
-  (let* ((control-stmt-regex (concat "\\b\\("
-                                     (mapconcat #'identity control-stmts "\\|")
-                                     "\\)\\b"))
-         (char-tokens (or char-tokens "[;{}]"))
-         (complete-regex (concat "\\("
-                                 "[" char-tokens "]"
-                                 "\\|"
-                                 control-stmt-regex
-                                 "\\)")))
-    (and (derived-mode-p mode)
-         (null (string-match complete-regex (thing-at-point 'line))))))
 
 (defun mb-f-wrap-in-comment (string)
   "Wrap STRING inside comment."
