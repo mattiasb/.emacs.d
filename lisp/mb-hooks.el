@@ -495,9 +495,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Magit
 (defun mb-hooks--git-commit-setup ()
   "My `git-commit' mode hook."
-  (auto-fill-mode)
   (setq fill-column 72)
-
   (display-fill-column-indicator-mode))
 
 (with-eval-after-load 'magit

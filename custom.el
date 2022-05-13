@@ -145,8 +145,10 @@
  '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
+ '(git-commit-major-mode 'markdown-mode)
  '(git-commit-setup-hook
-   '(git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-propertize-diff with-editor-usage-message))
+   '(git-commit-turn-on-auto-fill with-editor-usage-message mb-hooks--git-commit-setup forge-bug-reference-setup git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-propertize-diff with-editor-usage-message))
+ '(git-commit-style-convention-checks '(non-empty-second-line overlong-summary-line))
  '(git-commit-summary-max-length 50)
  '(git-link-commit-remote-alist
    '(("git.sr.ht" git-link-commit-github)
