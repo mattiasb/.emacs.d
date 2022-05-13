@@ -141,6 +141,7 @@
      ("repo.or.cz" nil "repo.or.cz" forge-repoorcz-repository)
      ("git.suckless.org" nil "git.suckless.org" forge-stagit-repository)
      ("git.sr.ht" nil "git.sr.ht" forge-srht-repository)))
+ '(forge-database-file "/home/mattiasb/.cache/emacs/forge-database.sqlite")
  '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
