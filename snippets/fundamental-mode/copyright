@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: license
+# key: license
+# binding: C-z s l
+# --
+`(spdx-comment-start)``(spdx-license-format)``(spdx-comment-end)`
+`(spdx-comment-start)`Copyright ${1:`(mb-f-get-year)`}, ${2:`(mb-f-get-user-full-name)`} <${3:`(mb-f-get-user-mail-address)`}>`(spdx-comment-end)`
