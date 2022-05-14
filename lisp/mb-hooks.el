@@ -961,6 +961,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `yas' mode hook.")
 
 (with-eval-after-load 'yasnippet
+  (mb-f-define-keys yas-keymap
+                    '(( "C-g" . yas-exit-snippet)))
   (add-hook 'yas-minor-mode-hook #'mb-hooks--yas-mode))
 
 (provide 'mb-hooks)
