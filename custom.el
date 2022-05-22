@@ -132,6 +132,8 @@
  '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
+ '(git-commit-known-pseudo-headers
+   '("Signed-off-by" "Acked-by" "Modified-by" "Cc" "Suggested-by" "Reported-by" "Tested-by" "Reviewed-by" "Co-authored-by" "Fixes"))
  '(git-commit-major-mode 'markdown-mode)
  '(git-commit-setup-hook
    '(git-commit-turn-on-auto-fill with-editor-usage-message mb-hooks--git-commit-setup forge-bug-reference-setup git-commit-save-message git-commit-setup-changelog-support git-commit-turn-on-auto-fill git-commit-propertize-diff with-editor-usage-message))
@@ -228,6 +230,7 @@
  '(magit-log-arguments '("-n1000" "--graph" "--decorate"))
  '(magit-no-confirm '(stage-all-changes unstage-all-changes))
  '(magit-push-always-verify nil)
+ '(magit-repository-directories '(("~/Code/" . 5)))
  '(magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
