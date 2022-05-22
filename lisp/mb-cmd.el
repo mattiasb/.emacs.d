@@ -473,12 +473,6 @@ With a prefix ARG always prompt for command to use."
   (kill-buffer (current-buffer)))
 
 ;;;###autoload
-(defun mb-cmd-open-tasks ()
-  "Open my tasks."
-  (interactive)
-  (find-file-existing "~/Dropbox/pim/todo/Tasks.md"))
-
-;;;###autoload
 (defun mb-cmd-exec-gnome-terminal ()
   "Open my tasks."
   (interactive)

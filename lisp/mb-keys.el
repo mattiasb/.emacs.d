@@ -84,7 +84,6 @@
 (mb-f-define-keymap mb-keys-windows-map
                     '(( "c"      . customize)
                       ( "t"      . todotxt)
-                      ( "T"      . mb-cmd-open-tasks)
                       ( "d"      . daemons)
                       ( "j"      . mb-cmd-open-journal)
                       ( "m"      . wl-other-frame)
