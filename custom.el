@@ -171,6 +171,13 @@
  '(ialign-pcre-mode t)
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
+ '(ido-decorations
+   '("
+-> " "" "
+   " "
+   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]" "
+-> " ""))
+ '(ido-mode 'both nil (ido))
  '(ido-save-directory-list-file "~/.cache/emacs/ido.last")
  '(ido-ubiquitous-command-overrides
    '((enable prefix "xref-")
