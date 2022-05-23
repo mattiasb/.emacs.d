@@ -171,6 +171,7 @@
  '(ialign-pcre-mode t)
  '(ido-completion-buffer nil)
  '(ido-cr+-max-items 50000)
+ '(ido-save-directory-list-file "~/.cache/emacs/ido.last")
  '(ido-ubiquitous-command-overrides
    '((enable prefix "xref-")
      (disable exact "execute-extended-command")
@@ -246,6 +247,7 @@
  '(markdown-unordered-list-item-prefix "- ")
  '(markdown-use-pandoc-style-yaml-metadata t)
  '(mc/always-run-for-all t)
+ '(mc/list-file "~/.cache/emacs/.mc-lists.el")
  '(mime-view-type-subtype-score-alist
    '(((text . enriched)
       . 3)
@@ -267,11 +269,14 @@
  '(package-selected-packages
    '(ace-jump-mode add-node-modules-path aggressive-indent ahk-mode align-by-current-symbol align-string all-the-icons-dired anaconda-mode ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dim-other-buffers auto-sudoedit bmx-mode browse-kill-ring buffer-move cmake-mode company-anaconda company-ansible company-box company-go company-lsp company-nginx company-quickhelp company-restclient company-shell csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode easy-repeat editorconfig electric-operator emojify fancy-narrow fill-function-arguments fit-text-scale flimenu flx-ido flycheck-cask flycheck-cython flycheck-package flycheck-pos-tip flycheck-rust flycheck-status-emoji flycheck-vala flycheck-yamllint flyspell-correct forge git-gutter git-link gitconfig-mode gitignore-mode gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile ido-completing-read+ ido-vertical-mode iedit importmagic ini-mode jinja2-mode js-auto-format-mode js2-refactor json-mode lastpass lisp-extra-font-lock list-unicode-display lsp-mode lsp-ui lua-mode madhat2r-theme magit magit-filenotify markdown-mode meson-mode move-dup mtg-deck-mode mwim nginx-mode niceify-info pandoc-mode pcre2el php-mode pipenv powerline powershell project projectile py-autopep8 py-isort python-black rainbow-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region smex spdx sqlup-mode string-inflection switch-buffer-functions systemd tmux-keys todotxt toml-mode vala-mode vala-snippets visual-regexp-steroids vterm wgrep which-key ws-butler xref-js2 yaml-mode yatemplate))
  '(powerline-default-separator 'bar)
+ '(projectile-cache-file "/home/mattiasb/.cache/emacs/projectile.cache")
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
  '(projectile-keymap-prefix "p")
+ '(projectile-known-projects-file "/home/mattiasb/.cache/emacs/projectile-bookmarks.eld")
  '(projectile-mode-line-prefix " P")
  '(projectile-switch-project-action 'projectile-commander)
  '(projectile-tags-backend 'xref)
+ '(recentf-save-file "~/.cache/emacs/recentf")
  '(ring-bell-function 'ignore)
  '(rng-schema-locating-files
    '((concat user-emacs-directory "schemas/schemas.xml")
@@ -295,6 +300,7 @@
       (nil "^\\s-*\\([[:alpha:]_-][[:alnum:]_-]*\\)\\s-*()" 1))))
  '(shift-select-mode nil)
  '(show-paren-mode t)
+ '(smex-save-file "~/.cache/emacs/smex-items")
  '(spdx-copyright-holder 'user)
  '(spdx-copyright-sign 'none)
  '(spdx-ignore-deprecated t)
@@ -305,6 +311,8 @@
  '(table-command-prefix [])
  '(todotxt-file "~/Dropbox/todo/todo.txt" nil (todotxt))
  '(tooltip-mode nil)
+ '(tramp-persistency-file-name "/home/mattiasb/.cache/emacs/tramp")
+ '(transient-history-file "~/.cache/emacs/transient/history.el")
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
