@@ -213,6 +213,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Eglot
 (with-eval-after-load 'eglot
   (defvar eglot-mode-map)
+  (defvar eglot-server-programs)
+
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio")))
   (mb-f-define-keys eglot-mode-map
                     '(( "C-z f r" . eglot-rename)
                       ( "C-z f f" . eglot-format)
@@ -273,6 +277,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   '(defun enriched-decode-display-prop (start end &optional _)
      (list start end)))
 
+;; Flymake
+(with-eval-after-load 'flymake
+  (require 'flymake-diagnostic-at-point)
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
+
 ;; Flycheck
 (with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode)
@@ -302,25 +311,29 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Go
 (defun mb-hooks--go-mode ()
   "My `go' mode hook."
-  (go-eldoc-setup)
+  (eglot-ensure)
 
   (setq-local tab-width 4)
   (defvar company-backends)
-  (setq-local company-backends '(company-go
-                                 company-keywords
-                                 company-files)))
+  (setq-local company-backends '(company-capf)))
+
+(defun mb-hooks--go-before-save ()
+  ;; This fails on just a single import
+  (with-demoted-errors "%S"
+    (call-interactively 'eglot-code-action-organize-imports))
+  (eglot-format-buffer))
 
 (with-eval-after-load 'go-mode
   (defvar go-mode-map)
 
+  (eglot-ensure)
   (mb-f-define-keys go-mode-map
                     '(( "C-z i a"    . go-import-add)
                       ( "C-z i r"    . go-remove-unused-imports)
                       ( "C-z i g"    . go-goto-imports)
                       ( "C-z d"      . godoc-at-point)
-                      ( "C-<return>" . godef-jump)
                       ( "."          . mb-cmd-dot-and-complete)))
-
+  (add-hook 'before-save-hook #'mb-hooks--go-before-save)
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
 ;; Haskell
@@ -640,7 +653,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (aggressive-indent-mode))
   (ws-butler-mode)
   (company-mode)
-  (flycheck-mode)
+  (flymake-mode)
   (display-fill-column-indicator-mode)
   (highlight-numbers-mode))
 
@@ -717,16 +730,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar yas-indent-line)
   (setq-local yas-indent-line 'fixed)
 
-  (defvar company-backends)
-  (setq-local company-backends '(company-anaconda))
-
-  (anaconda-mode)
-  (anaconda-eldoc-mode)
-  (importmagic-mode)
+  ;; (importmagic-mode)
   (pipenv-mode)
+  (eglot-ensure)
+
+  (defvar company-backends)
+  (setq-local company-backends '(company-capf))
   (aggressive-indent-mode -1)
-  (defvar flycheck-checker)
-  (setq-local flycheck-checker 'python-mypy)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'python
@@ -845,6 +855,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
+  (eglot-ensure)
   (setq-local defun-prompt-regexp
               (concat "^\\("
                       "\\(function[ \t]\\)?[ \t]*[[:alnum:]-_]+[ \t]*([ \t]*)"
@@ -852,11 +863,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
   (sh-extra-font-lock-activate)
+
   (defvar company-backends)
-  (setq-local company-backends '((company-shell
-                                  company-keywords
-                                  company-files
-                                  company-dabbrev-code)))
+  (setq-local company-backends '(company-capf))
 
   (defvar fill-function-arguments-first-argument-same-line)
   (defvar fill-function-arguments-second-argument-same-line)
@@ -933,9 +942,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `yaml' mode hook."
   (setq-local fill-column 80)
   (display-fill-column-indicator-mode)
-  (defvar flycheck-checker)
-  (setq-local flycheck-checker 'yaml-yamllint)
-  (flycheck-mode)
+  (flymake-mode)
+  (flymake-yamllint-setup)
   (when (locate-dominating-file default-directory "ansible.cfg")
     (ansible 1)))
 
