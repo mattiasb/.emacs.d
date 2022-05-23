@@ -2,17 +2,17 @@
 
 ## General
 
-- Look at ivy
+- [ ] Look at ivy
   - Needed for taskrunner
 
 ## Cleanups
 
 Look at these modes again
 
-- pipenv
-- control-mode (including god-mode that was used for isearch)
-- forge
-- realgud (use dap-mode instead?)
+- [ ] pipenv
+- [ ] control-mode (including god-mode that was used for isearch)
+- [ ] realgud (use dap-mode instead?)
+- [x] forge
 
 ## Emacs 27
 
@@ -20,10 +20,11 @@ Look at these modes again
 
 See https://www.masteringemacs.org/article/whats-new-in-emacs-27-1
 
-- Look at LSP again
+- [ ] Look at LSP again
   - Look at what libjansson brings for LSP.
   - Try to use LSP for Python and C/C++ at least.
 
 ## Bugs
 
 - Repeating ialign adds spaces to beginning of line
+- Marking text doesn't work immediately
