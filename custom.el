@@ -178,6 +178,7 @@
    " "
    ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]" "
 -> " ""))
+ '(ido-everywhere t)
  '(ido-mode 'both nil (ido))
  '(ido-save-directory-list-file "~/.cache/emacs/ido.last")
  '(ido-ubiquitous-command-overrides
