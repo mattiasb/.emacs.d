@@ -514,7 +514,8 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-new-frame ()
   "Create a new frame opening the *scratch* buffer."
   (interactive)
-  (switch-to-buffer-other-frame "*scratch*"))
+  (select-frame (make-frame))
+  (switch-to-buffer "*scratch*"))
 
 ;;;###autoload
 (defun mb-cmd-git-link-browse ()
