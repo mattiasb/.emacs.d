@@ -32,10 +32,12 @@
 
   (mapc #'mb-f-advice-other-window-after
         '(projectile-ag
-          projectile-ripgrep
           projectile-compile-project
           flycheck-list-errors
           diff-buffer-with-file))
+
+  (mb-f-advice-describe-func #'projectile-ripgrep "*ripgrep-search*")
+  (mb-f-advice-describe-func #'display-local-help "*eldoc*")
 
   (mapc #'mb-f-advice-describe-func
         '(package-menu-describe-package

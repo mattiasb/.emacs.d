@@ -259,10 +259,11 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   (unless (string-equal buffer (buffer-name (current-buffer)))
     (switch-to-buffer-other-window buffer)))
 
-(defun mb-f-advice-describe-func (describe-function)
-  "Advice DESCRIBE-FUNCTION to switch to the *Help* buffer after popping it up."
+(defun mb-f-advice-describe-func (describe-function &optional buffer)
+  "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
   (advice-add describe-function
-              :after (lambda (&rest _) (mb-f-focus-buffer-dwim "*Help*"))))
+              :after (lambda (&rest _)
+                       (mb-f-focus-buffer-dwim (or buffer "*Help*")))))
 
 (defun mb-f-other-window (&rest _args)
   "Like `(other-window 1)' but skip all arguments."
