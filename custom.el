@@ -244,6 +244,7 @@
  '(magit-push-always-verify nil)
  '(magit-repository-directories '(("~/Code/" . 5)))
  '(magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
+ '(magit-save-repository-buffers 'dontask)
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
  '(magit-tag-arguments '("--annotate"))
