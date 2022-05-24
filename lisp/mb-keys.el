@@ -85,8 +85,6 @@
                     '(( "c"      . customize)
                       ( "t"      . todotxt)
                       ( "d"      . daemons)
-                      ( "j"      . mb-cmd-open-journal)
-                      ( "m"      . wl-other-frame)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
