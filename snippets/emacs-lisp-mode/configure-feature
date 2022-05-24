@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 # name: Configure Feature
+# key: configure-feature
 # binding: C-z s f
 # --
 ;; ${1:$(mapconcat 'capitalize (split-string (or (yas-text) "") "-") " ")}
