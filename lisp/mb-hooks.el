@@ -343,14 +343,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; History
 
 (with-eval-after-load 'history
-  (let* ((default-bg (face-attribute 'default :background))
-         (faces '(history-current-history
-                  history-current-temp-history
-                  history-other-history
-                  history-prompt
-                  history-temp-history)))
-    (dolist (face faces)
-      (set-face-attribute face nil :foreground default-bg))))
+  (set-face-attribute 'history-current-history
+                      nil
+                      :foreground
+                      (face-attribute 'default :background)))
 
 ;; Ido
 (with-eval-after-load 'ido
