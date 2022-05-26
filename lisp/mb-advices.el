@@ -34,6 +34,10 @@
                               nil
                               1)))
 
+(defun mb-advices-switch-to (buffer)
+  "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
+  (lambda (&rest _args) (mb-f-focus-buffer-dwim buffer)))
+
 (defun mb-advices-around (funcs advice)
   "ADVICE a bunch of FUNCS."
   (dolist (func funcs)
@@ -55,18 +59,20 @@
           flycheck-list-errors
           diff-buffer-with-file))
 
-  (mb-f-advice-describe-func #'projectile-ripgrep "*ripgrep-search*")
-  (mb-f-advice-describe-func #'display-local-help "*eldoc*")
+  (advice-add #'projectile-ripgrep
+              :after (mb-advices-switch-to "*ripgrep-search*"))
+  (advice-add #'display-local-help
+              :after (mb-advices-switch-to "*eldoc*"))
 
-  (mapc #'mb-f-advice-describe-func
-        '(package-menu-describe-package
-          describe-variable
-          describe-mode
-          describe-function
-          describe-bindings
-          describe-symbol
-          describe-package
-          describe-theme))
+  (mb-advices-after '(package-menu-describe-package
+                      describe-variable
+                      describe-mode
+                      describe-function
+                      describe-bindings
+                      describe-symbol
+                      describe-package
+                      describe-theme)
+                    (mb-advices-switch-to "*Help*"))
 
   (mb-advices-around '(git-link-gitlab
                        git-link-commit-github
