@@ -24,6 +24,21 @@
 (require 'flycheck)
 (require 'flycheck-pos-tip)
 
+(defun mb-advices--git-link (func &rest args)
+  "docstring."
+  (let ((url (apply func args)))
+    (replace-regexp-in-string "^\\(https://git.smarteye\\).*"
+                              "http://git.smarteye"
+                              url
+                              nil
+                              nil
+                              1)))
+
+(defun mb-advices-around (funcs advice)
+  "ADVICE a bunch of FUNCS."
+  (dolist (func funcs)
+    (advice-add func :around advice)))
+
 (defun mb-advices-activate ()
   "Activate my advices."
 
@@ -48,6 +63,11 @@
           describe-symbol
           describe-package
           describe-theme))
+
+  (mb-advices-around '(git-link-gitlab
+                       git-link-commit-github
+                       git-link-homepage-github)
+                     #'mb-advices--git-link)
 
   (advice-add 'comint-send-eof
               :after
