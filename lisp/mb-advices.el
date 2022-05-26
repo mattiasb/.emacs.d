@@ -94,11 +94,10 @@
                           (apply func args))))
 
   (advice-add #'save-buffers-kill-terminal
-              :around (lambda (func &rest args)
+              :before (lambda (&rest args)
                         (require 'server)
                         (unless (display-graphic-p)
-                          (mb-f-reset-terminal-cursors))
-                        (apply func args)))
+                          (mb-f-reset-terminal-cursors))))
 
   (advice-add #'flycheck-pos-tip-error-messages
               :around (lambda (func &rest args)
