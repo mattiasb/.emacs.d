@@ -254,18 +254,9 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   "Return non-nil if DPI is ≥ 213."
   (>= dpi 213))
 
-(defun mb-f-focus-buffer-dwim (buffer)
-  "Switch to BUFFER in other window unless it's currently in view."
-  (unless (string-equal buffer (buffer-name (current-buffer)))
-    (switch-to-buffer-other-window buffer)))
-
 (defun mb-f-other-window (&rest _args)
   "Like `(other-window 1)' but skip all arguments."
   (other-window 1))
-
-(defun mb-f-advice-other-window-after (func)
-  "Advice FUNC to switch window after been run."
-  (advice-add func :after #'mb-f-other-window))
 
 (defun mb-f-reset-terminal-cursors ()
   "Reset the terminal cursor."

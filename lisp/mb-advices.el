@@ -36,7 +36,7 @@
 
 (defun mb-advices-switch-to (buffer)
   "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
-  (lambda (&rest _args) (mb-f-focus-buffer-dwim buffer)))
+  (lambda (&rest _args) (select-window (get-buffer-window buffer))))
 
 (defun mb-advices-around (funcs advice)
   "ADVICE a bunch of FUNCS."
@@ -53,16 +53,16 @@
 
   (mb-advices-after '(backward-page forward-page) #'recenter)
 
-  (mapc #'mb-f-advice-other-window-after
-        '(projectile-ag
-          projectile-compile-project
-          flycheck-list-errors
-          diff-buffer-with-file))
-
+  (advice-add #'flycheck-list-errors
+              :after (mb-advices-switch-to "*Flycheck errors*"))
   (advice-add #'projectile-ripgrep
               :after (mb-advices-switch-to "*ripgrep-search*"))
   (advice-add #'display-local-help
               :after (mb-advices-switch-to "*eldoc*"))
+  (advice-add #'diff-buffer-with-file
+              :after (mb-advices-switch-to "*Diff*"))
+  (advice-add #'projectile-compile-project
+              :after (mb-advices-switch-to "*compilation*"))
 
   (mb-advices-after '(package-menu-describe-package
                       describe-variable
