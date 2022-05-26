@@ -25,7 +25,7 @@
 (require 'flycheck-pos-tip)
 
 (defun mb-advices--git-link (func &rest args)
-  "Support http for work."
+  "Support http for work by advicing FUNC w/ ARGS."
   (let ((url (apply func args)))
     (replace-regexp-in-string "^\\(https://git.smarteye\\).*"
                               "http://git.smarteye"
@@ -94,7 +94,7 @@
                           (apply func args))))
 
   (advice-add #'save-buffers-kill-terminal
-              :before (lambda (&rest args)
+              :before (lambda (&rest _)
                         (require 'server)
                         (unless (display-graphic-p)
                           (mb-f-reset-terminal-cursors))))
@@ -114,7 +114,7 @@
                             (ask-user-about-lock file opponent)))))
 
   (advice-add #'kill-line
-              :before (lambda (&optional arg)
+              :before (lambda (&optional _)
                         (when (and (eolp) (not (bolp)))
                           (save-excursion
                             (forward-char 1)
