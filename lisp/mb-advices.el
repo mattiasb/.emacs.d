@@ -39,11 +39,15 @@
   (dolist (func funcs)
     (advice-add func :around advice)))
 
+(defun mb-advices-after (funcs advice)
+  "ADVICE a bunch of FUNCS."
+  (dolist (func funcs)
+    (advice-add func :after advice)))
+
 (defun mb-advices-activate ()
   "Activate my advices."
 
-  (advice-add #'backward-page :after  #'recenter)
-  (advice-add #'forward-page  :after  #'recenter)
+  (mb-advices-after '(backward-page forward-page) #'recenter)
 
   (mapc #'mb-f-advice-other-window-after
         '(projectile-ag
