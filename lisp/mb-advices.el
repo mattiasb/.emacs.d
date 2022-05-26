@@ -25,7 +25,7 @@
 (require 'flycheck-pos-tip)
 
 (defun mb-advices--git-link (func &rest args)
-  "docstring."
+  "Support http for work."
   (let ((url (apply func args)))
     (replace-regexp-in-string "^\\(https://git.smarteye\\).*"
                               "http://git.smarteye"
