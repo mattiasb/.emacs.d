@@ -4,6 +4,10 @@
 
 - [ ] Look at ivy
   - Needed for taskrunner
+- [ ] Look at LSP again
+  - [ ] docker-tramp
+  - [ ] flatpak / Toolbx
+- [ ] Read up on news in [Emacs 28][1]
 
 ## Cleanups
 
@@ -14,17 +18,9 @@ Look at these modes again
 - [ ] realgud (use dap-mode instead?)
 - [x] forge
 
-## Emacs 27
-
-### From Changelog
-
-See https://www.masteringemacs.org/article/whats-new-in-emacs-27-1
-
-- [ ] Look at LSP again
-  - Look at what libjansson brings for LSP.
-  - Try to use LSP for Python and C/C++ at least.
-
 ## Bugs
 
 - Repeating ialign adds spaces to beginning of line
 - Marking text doesn't work immediately
+
+[1]: https://www.masteringemacs.org/article/whats-new-in-emacs-28-1
