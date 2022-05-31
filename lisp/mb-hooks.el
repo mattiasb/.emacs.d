@@ -208,9 +208,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
 (with-eval-after-load 'dired-sidebar
-  ;; TODO: Remove require once my PR is merged:
-  ;; https://github.com/hlissner/emacs-hide-mode-line/pull/1
-  (require 'hide-mode-line)
   (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
 
 ;; Eglot
