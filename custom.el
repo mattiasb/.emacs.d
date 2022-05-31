@@ -299,8 +299,7 @@
      (mtg-deck-format . vintage)
      (mtg-deck-format . standard)
      (mtg-deck-format . legacy)
-     (mtg-deck-format . modern)
-     (projectile-project-type . jhbuild)))
+     (mtg-deck-format . modern)))
  '(save-abbrevs 'silently)
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
@@ -429,17 +428,6 @@
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-
-;;; Project specific settings
-
-;; TODO: Make this JHBuild project type work again
-;; Dir Locals
-;; (dir-locals-set-class-variables
-;;  'gnome-code
-;;  '((nil . ((projectile-project-type . jhbuild)))))
-
-;; (dir-locals-set-directory-class "~/Code/gnome/src/" 'gnome-code)
-
 
 (provide 'custom)
 ;;; custom.el ends here
