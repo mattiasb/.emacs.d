@@ -249,6 +249,7 @@
  '(magit-set-upstream-on-push t)
  '(magit-stage-all-confirm nil)
  '(magit-tag-arguments '("--annotate"))
+ '(magit-todos-exclude-globs '(".git/" "snippets/prog-mode/todo"))
  '(magit-unstage-all-confirm nil)
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
