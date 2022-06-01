@@ -473,7 +473,7 @@ With a prefix ARG always prompt for command to use."
   (kill-buffer (current-buffer)))
 
 ;;;###autoload
-(defun mb-cmd-exec-gnome-terminal ()
+(defun mb-cmd-exec-terminal ()
   "Open my tasks."
   (interactive)
   (call-process-shell-command "kgx&" nil 0))
