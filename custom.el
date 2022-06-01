@@ -321,7 +321,7 @@
  '(tab-bar-new-button-show nil)
  '(tab-width 8)
  '(table-command-prefix [])
- '(todotxt-file "~/Dropbox/todo/todo.txt" nil (todotxt))
+ '(todotxt-file "~/Dropbox/todo/todo.txt")
  '(tooltip-mode nil)
  '(tramp-persistency-file-name "/home/mattiasb/.cache/emacs/tramp")
  '(transient-history-file "~/.cache/emacs/transient/history.el")
