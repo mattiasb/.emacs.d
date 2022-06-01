@@ -522,6 +522,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (transient-append-suffix 'magit-run "!"
     '("t" "terminal" mb-cmd-projectile-terminal))
 
+  (magit-todos-mode)
+
   (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
                     '(( "C-z t b" .  magit-blame-quit)))
