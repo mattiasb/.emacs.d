@@ -205,6 +205,7 @@
  '(imenu-auto-rescan-maxout 750000)
  '(importmagic-python-interpreter "python3")
  '(indent-tabs-mode nil)
+ '(inhibit-startup-echo-area-message "mattiasb")
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
  '(initial-scratch-message nil)
