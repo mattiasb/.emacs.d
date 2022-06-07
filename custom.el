@@ -349,6 +349,8 @@
  '(woman-fill-column 80)
  '(woman-fill-frame t)
  '(yaml-indent-offset 2)
+ '(yank-excluded-properties
+   '(category field follow-link fontified font-lock-face help-echo intangible invisible keymap local-map mouse-face read-only yank-handler face))
  '(yas-also-auto-indent-first-line t)
  '(yas-expand-only-for-last-commands nil)
  '(yas-snippet-dirs (list (concat user-emacs-directory "snippets/")))
