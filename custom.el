@@ -240,6 +240,7 @@
  '(lua-prefix-key "C-z")
  '(magit-auto-revert-mode-lighter "")
  '(magit-completing-read-function 'magit-ido-completing-read)
+ '(magit-diff-refine-hunk 'all)
  '(magit-log-arguments '("-n1000" "--graph" "--decorate"))
  '(magit-no-confirm '(stage-all-changes unstage-all-changes))
  '(magit-push-always-verify nil)
