@@ -560,6 +560,16 @@ markers and footnote text."
                         ("GNOME"    . "gnome"))
   "Git forges.")
 
+(defun mb-cmd--git-get-post-hook (buffer msg)
+  "Reload projectile index on successful clone."
+  (when (and (equal 'compilation-mode major-mode)
+	     (string-match "*git-get*" (buffer-name buffer)))
+    (remove-hook 'compilation-finish-functions
+                 #'mb-cmd--git-get-post-hook)
+    (when (and (string-match "finished" msg)
+	       (not (search-forward "warning" nil t)))
+      (call-interactively #'mb-cmd-projectile-index-projects))))
+
 ;;;###autoload
 (defun mb-cmd-git-get (forge repository)
   "Use git-get to clone a REPOSITORY from FORGE."
@@ -571,6 +581,7 @@ markers and footnote text."
          (read-string "Repository: ")))
   (let ((compilation-buffer-name-function (lambda (_) "*git-get*"))
         (compilation-save-buffers-predicate (lambda () nil)))
+    (add-hook 'compilation-finish-functions #'mb-cmd--git-get-post-hook)
     (compile (format "git get %s:%s" forge repository))
     (select-window (get-buffer-window "*git-get*"))))
 
