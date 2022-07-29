@@ -330,6 +330,7 @@
  '(transient-history-file "~/.cache/emacs/transient/history.el")
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(use-file-dialog nil)
+ '(use-short-answers t)
  '(user-mail-address "mattias.jc.bengtsson@gmail.com")
  '(vc-handled-backends nil)
  '(vr/auto-show-help nil)
@@ -429,7 +430,6 @@
 
 ;;; Non-customizable settings
 
-(defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
 
 (put 'downcase-region 'disabled nil)
