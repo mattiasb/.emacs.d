@@ -165,6 +165,7 @@
  '(guess-language-languages '(en sv))
  '(haskell-font-lock-symbols 'unicode)
  '(haskell-mode-hook '(turn-on-haskell-indentation) t)
+ '(help-enable-symbol-autoload t)
  '(highlight-symbol-idle-delay 1.0)
  '(history-advised-before-functions
    '(imenu isearch-mode beginning-of-buffer end-of-buffer xref-find-definitions xref-find-references xref-find-definitions-other-window xref-find-definitions-other-frame mb-cmd-markdown-jump anaconda-mode-find-definitions anaconda-mode-find-assignments))
