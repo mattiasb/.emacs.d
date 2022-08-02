@@ -404,8 +404,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
- '(diff-refine-added ((t (:background "#40805b" :foreground "#eecccc"))))
- '(diff-refine-removed ((t (:background "#eecccc" :foreground "#cceecc"))))
+ '(diff-refine-added ((t (:background "#558855" :foreground "#cceecc"))))
+ '(diff-refine-removed ((t (:background "#885555" :foreground "#eecccc"))))
  '(fill-column-indicator ((t (:foreground "gray21"))))
  '(history-current-history ((t nil)))
  '(history-current-temp-history ((t (:inherit history-current-history))))
