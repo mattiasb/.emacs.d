@@ -337,6 +337,8 @@
  '(vr/auto-show-help nil)
  '(vr/match-separator-string " → ")
  '(vr/match-separator-use-custom-face t)
+ '(warning-suppress-log-types '((comp) (comp)))
+ '(warning-suppress-types '((comp)))
  '(wdired-allow-to-change-permissions 'advanced)
  '(wdired-allow-to-redirect-links nil)
  '(wgrep-auto-save-buffer t)
