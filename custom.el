@@ -234,7 +234,7 @@
  '(keyfreq-mode t)
  '(large-file-warning-threshold 100000000)
  '(lastpass-user "mattias.jc.bengtsson@gmail.com")
- '(load-prefer-newer t)
+ '(load-prefer-newer t t)
  '(lock-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/lock/\\1" t)))
  '(lsp-ui-sideline-enable nil)
  '(lua-indent-level 2)
