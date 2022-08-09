@@ -45,7 +45,7 @@
     ( "M-<left>"       . history-prev-history)
     ( "M-<right>"      . history-next-history)
     ( "C-<return>"     . xref-find-definitions)
-    ( "M-?"            . xref-find-references)
+    ( "C-S-<return>"   . xref-find-references)
     ( "C-x 4 <return>" . xref-find-definitions-other-window)
     ( "C-x 5 <return>" . xref-find-definitions-other-frame)
 
