@@ -585,6 +585,10 @@ markers and footnote text."
     (compile (format "git get %s:%s" forge repository))
     (select-window (get-buffer-window "*git-get*"))))
 
-
+(defun mb-cmd-describe-symbol ()
+  "Describe symbol at point."
+  (interactive)
+  (describe-symbol (or (symbol-at-point)
+                       (error "No symbol-at-point"))))
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
