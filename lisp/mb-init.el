@@ -60,6 +60,7 @@
   (fancy-narrow-mode)
   (history-mode)
   (ido-mode)
+  (ido-everywhere)
   (bury-successful-compilation)
   (which-key-mode)
   (auto-insert-mode)
