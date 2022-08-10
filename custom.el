@@ -77,6 +77,7 @@
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(eglot-autoshutdown t)
+ '(eldoc-idle-delay 3600)
  '(electric-indent-mode nil)
  '(electric-layout-mode t)
  '(electric-operator-c-pointer-type-style 'type)
