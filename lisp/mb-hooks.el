@@ -225,6 +225,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Electric operator
 (with-eval-after-load 'electric-operator
+  ;; TODO: Add support for toml-mode
   (electric-operator-add-rules-for-mode 'ini-mode
                                         (cons "-" nil))
   (electric-operator-add-rules-for-mode 'makefile-mode
@@ -854,6 +855,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ("h"        . describe-mode)))
 
   (add-hook 'todotxt-mode-hook #'mb-hooks--todotxt-mode))
+
+;; Toml
+(defun mb-hooks--toml-mode ()
+  "My `toml' mode hook."
+  (require 'electric-operator))
+
+(with-eval-after-load 'toml
+  (defvar toml-mode-map)
+  (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
 
 ;; Shell script
 (defun mb-hooks--sh-mode ()
