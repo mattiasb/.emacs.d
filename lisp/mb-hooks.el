@@ -527,6 +527,16 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-to-list 'ghub-insecure-hosts "git.smarteye.se/api/v4")
 
+  (transient-define-suffix magit-submodule-populate-all ()
+    "Update *all* submodules"
+    :description "Populate All   git submodule update --init --recursive"
+    (interactive)
+    (magit-with-toplevel
+      (magit-run-git-async "submodule" "update" "--init" "--recursive")))
+
+  (transient-append-suffix 'magit-submodule "p"
+    '("P" magit-submodule-populate-all))
+
   (transient-append-suffix 'magit-run "!"
     '("g" "Gitg" mb-cmd-projectile-gitg))
 
