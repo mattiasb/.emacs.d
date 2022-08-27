@@ -355,6 +355,7 @@
  '(which-key-special-keys nil)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
+ '(xref-search-program 'ripgrep)
  '(yaml-indent-offset 2)
  '(yank-excluded-properties
    '(category field follow-link fontified font-lock-face help-echo intangible invisible keymap local-map mouse-face read-only yank-handler face))
