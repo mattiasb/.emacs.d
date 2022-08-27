@@ -356,8 +356,8 @@
  '(woman-fill-column 80)
  '(woman-fill-frame t)
  '(xref-search-program 'ripgrep)
- '(xref-show-definitions-function 'xref-show-definitions-completing-read)
- '(xref-show-xrefs-function 'xref-show-definitions-completing-read)
+ '(xref-show-definitions-function 'xref-show-definitions-buffer-at-bottom)
+ '(xref-show-xrefs-function 'xref-show-definitions-buffer-at-bottom)
  '(yaml-indent-offset 2)
  '(yank-excluded-properties
    '(category field follow-link fontified font-lock-face help-echo intangible invisible keymap local-map mouse-face read-only yank-handler face))
