@@ -129,15 +129,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Compilation Mode
 
-(defvar compilation-filter-start)
-(defun mb-hooks--compilation-filter ()
-  "My `compilation-filter' mode hook."
-  (when (eq major-mode 'compilation-mode)
-    (require 'ansi-color)
-    (ansi-color-apply-on-region compilation-filter-start (point-max))))
-
 (with-eval-after-load 'compile
-  (add-hook 'compilation-filter-hook #'mb-hooks--compilation-filter))
+  (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter))
 
 ;; Cython
 (with-eval-after-load 'cython-mode
