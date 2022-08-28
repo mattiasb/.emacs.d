@@ -216,17 +216,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
       user-full-name
     "Full Name"))
 
-(defvar ido-matches)
-(defvar ido-max-prospects)
-(defun mb-f-ido-visible-prospects ()
-  "The number of visible prospects."
-  ;; TODO: fix smex's `…' (The out-commented stuff is for that)
-  (let* ((available-lines (1- (ffloor (* max-mini-window-height (frame-height)))))
-         ;; (prospects-len (length ido-matches))
-         ;; (dot-dot (< available-lines (max ido-max-prospects prospects-len)))
-         )
-    (1- available-lines)))
-
 (defun mb-f-create-non-existent-directory ()
   "Offer to create parent directory for current buffer if it doesn't exist."
   (let ((parent-directory (file-name-directory buffer-file-name)))

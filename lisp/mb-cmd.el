@@ -20,7 +20,6 @@
 
 (require 'mb-f)
 (require 'projectile)
-(require 'ido)
 
 (declare-function company-complete                    "company.el")
 (declare-function company-select-next                 "company.el")
@@ -147,18 +146,6 @@ With a prefix argument P, isearch for the symbol at point."
     (call-interactively
      (if p #'mb-cmd-isearch-backward-symbol-at-point
        #'isearch-backward))))
-
-;;;###autoload
-(defun mb-cmd-ido-scroll-down ()
-  "A bit more eager `ido-next-match'."
-  (interactive)
-  (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-next-match)))
-
-;;;###autoload
-(defun mb-cmd-ido-scroll-up ()
-  "A bit more eager `ido-prev-match'."
-  (interactive)
-  (dotimes (_ (mb-f-ido-visible-prospects) nil) (ido-prev-match)))
 
 (defvar company-tooltip-limit)
 ;;;###autoload

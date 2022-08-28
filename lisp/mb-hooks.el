@@ -361,14 +361,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       :foreground
                       (face-attribute 'default :background)))
 
-;; Ido
-(with-eval-after-load 'ido
-  (defvar ido-common-completion-map)
-  (mb-f-define-keys ido-common-completion-map
-                    '(( "<tab"    . ido-complete)
-                      ( "<next>"  . mb-cmd-ido-scroll-down)
-                      ( "<prior>" . mb-cmd-ido-scroll-up))))
-
 ;; IBuffer
 (defun mb-hooks--ibuffer ()
   "My `ibuffer' mode hook."
@@ -820,7 +812,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'term
   (defvar term-raw-map)
   (mb-f-define-keys term-raw-map
-                    '(( "M-x"       . smex)
+                    '(( "M-x"       . execute-extended-command)
                       ( "C-y"       . mb-cmd-term-paste)
                       ( "<escape>"  . ESC-prefix)))
 
@@ -949,6 +941,19 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'flycheck-vala)
   (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
+
+;; Vertico
+(defun mb-hooks--vertico-mode ()
+  "My `vertico' mode hook.")
+
+(with-eval-after-load 'vertico
+  (mb-f-define-keys vertico-map
+                    '(("<return>"    . vertico-directory-enter)
+                      ("<backspace>" . vertico-directory-delete-char)
+                      ("M-<delete>"  . vertico-directory-delete-word)))
+
+  (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
+  (add-hook 'vertico-mode-hook #'mb-hooks--vertico-mode))
 
 ;; Whitespace
 (defun mb-hooks--whitespace-mode ()
