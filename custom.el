@@ -27,6 +27,7 @@
  '(aggressive-indent-dont-electric-modes t)
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
+ '(ansi-color-for-compilation-mode 'filter)
  '(auto-insert 'other)
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(auto-save-file-name-transforms
