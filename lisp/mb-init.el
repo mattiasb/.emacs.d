@@ -51,12 +51,14 @@
   (require 'lastpass)
   ;; Needed for license snippet
   (require 'spdx)
+
   (auto-sudoedit-mode)
   (auto-fill-mode 1)
   (global-git-gutter-mode)
   (global-emojify-mode)
   (global-emojify-mode-line-mode)
   (flimenu-global-mode)
+  (doom-modeline-mode)
   (fancy-narrow-mode)
   (history-mode)
   (ido-mode)
@@ -73,8 +75,6 @@
   (abbrev-mode)
   (projectile-mode)
   (auto-dim-other-buffers-mode)
-  (powerline-major-mode)
-  (powerline-default-theme)
   (yas-global-mode)
   (yatemplate-fill-alist)
   (auto-insert-mode))
