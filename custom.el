@@ -409,6 +409,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight normal :height 98 :width normal))))
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
  '(diff-refine-added ((t (:background "#558855" :foreground "#cceecc"))))
  '(diff-refine-removed ((t (:background "#885555" :foreground "#eecccc"))))
