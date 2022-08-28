@@ -60,7 +60,7 @@
   (flimenu-global-mode)
   (doom-modeline-mode)
   (fancy-narrow-mode)
-  (history-mode)
+  (dogears-mode)
   (ido-mode)
   (ido-everywhere)
   (bury-successful-compilation)

@@ -76,7 +76,7 @@
     (flyspell-mode               . " ✎")
     (git-gutter-mode             . "")
     (haskell-indentation-mode    . "")
-    (history-mode                . "")
+    (dogears-mode                . "")
     (magit-auto-revert-mode      . "")
     (magit-filenotify-mode       . " Notify")
     (sqlup-mode                  . " ⇑")
