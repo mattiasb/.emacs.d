@@ -469,6 +469,30 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'json-mode
   (add-hook 'json-mode-hook #'mb-hooks--json-mode))
 
+;; Ligature
+(defun mb-hooks--ligature-mode ()
+  "My `ligature' mode hook.")
+
+(with-eval-after-load 'ligature
+  (ligature-set-ligatures 'prog-mode
+                          '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||="
+                            "||>" ":::" "::=" "=:=" "===" "==>" "=!=" "=>>"
+                            "=<<" "=/=" "!==" "!!." ">=>" ">>=" ">>>" ">>-"
+                            ">->" "->>" "-->" "---" "-<<" "<~~" "<~>" "<*>"
+                            "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->" "<--"
+                            "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_("
+                            "..<" "..." "+++" "/==" "///" "_|_" "www" "&&" "^="
+                            "~~" "~@" "~=" "~>" "~-" "**" "*>" "*/" "||" "|}"
+                            "|]" "|=" "|>" "|-" "{|" "[|" "]#" "::" ":=" ":>"
+                            ":<" "$>" "==" "=>" "!=" "!!" ">:" ">=" ">>" ">-"
+                            "-~" "-|" "->" "|" "<:" "<$" "<=" "<>" "<-" "<<"
+                            "<+" "</" "#{" "#[" "#:" "#=" "#!" "##" "#(" "#?"
+                            "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:" "?="
+                            "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*"
+                            "*)" "\\\\" "://"))
+  (add-hook 'ligature-mode-hook #'mb-hooks--ligature-mode))
+
+
 ;; LSP
 (defun mb-hooks--lsp-mode ()
   "My `lsp' mode hook.")
@@ -662,7 +686,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (company-mode)
   (flymake-mode)
   (display-fill-column-indicator-mode)
-  (highlight-numbers-mode))
+  (highlight-numbers-mode)
+  (ligature-mode))
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
