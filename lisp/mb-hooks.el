@@ -836,7 +836,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Todotxt
 (defun mb-hooks--todotxt-mode ()
   "My `todotxt' mode hook."
-  (todotxt-show-incomplete))
+  (todotxt-show-incomplete)
+  (set-window-parameter (first (window-list)) 'no-other-window t))
 
 (with-eval-after-load 'todotxt
   (defvar todotxt-mode-map)
