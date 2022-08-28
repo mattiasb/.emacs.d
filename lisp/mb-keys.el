@@ -68,6 +68,7 @@
     ;; TEXT MANIPULATION
 
     ;; General
+    ( "TAB"           . mb-cmd-indent-snippet-or-complete)
     ( "M-<up>"        . move-dup-move-lines-up)
     ( "M-<down>"      . move-dup-move-lines-down)
     ( "C-\""          . cycle-quotes)
@@ -120,7 +121,8 @@
 
 ;; My Yas keymap
 (mb-f-define-keymap mb-keys-yas-map
-                    '(( "i"      . company-yasnippet)
+                    '(;; TODO: Create corfu alternative to company-yasnippet
+                      ( "i"      . yas-insert-snippet)
                       ( "c"      . yas-new-snippet)
                       ( "e"      . yas-visit-snippet-file)
                       ( "r"      . yas-reload-all)

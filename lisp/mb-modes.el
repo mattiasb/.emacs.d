@@ -66,8 +66,6 @@
     (auto-dim-other-buffers-mode . "")
     (auto-revert-mode            . " ⎌")
     (auto-sudoedit-mode          . "")
-    (company-mode                . "")
-    (company-box-mode            . "")
     (eldoc-mode                  . " 📖")
     (electric-operator-mode      . " ⊙")
     (fancy-narrow-mode           . "")

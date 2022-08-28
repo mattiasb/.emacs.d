@@ -21,16 +21,6 @@
 (require 'mb-f)
 (require 'projectile)
 
-(declare-function company-complete                    "company.el")
-(declare-function company-select-next                 "company.el")
-(declare-function company-select-previous             "company.el")
-(declare-function company-complete-common             "company.el")
-
-(declare-function company-complete                    "company.el")
-(declare-function company-select-next                 "company.el")
-(declare-function company-select-previous             "company.el")
-(declare-function company-complete-common             "company.el")
-
 (declare-function markdown-footnote-goto-text         "markdown-mode.el")
 (declare-function markdown-footnote-marker-positions  "markdown-mode.el")
 (declare-function markdown-footnote-return            "markdown-mode.el")
@@ -54,46 +44,6 @@
   "Replace math expression at point or in region with it's value."
   (interactive)
   (mb-f-operate-on-thing-or-region 'symbol #'calc-eval))
-
-;;;###autoload
-(defun mb-cmd-dot-and-complete ()
-  "Quicker auto-complete on objects and structs."
-  (interactive)
-  (mb-cmd-char-and-complete ?.))
-
-;;;###autoload
-(defun mb-cmd-double-colon-and-complete ()
-  "Quicker auto-complete on namespaces and modules."
-  (interactive)
-  (mb-cmd-char-and-complete ?: ?:))
-
-;;;###autoload
-(defun mb-cmd-arrow-and-complete ()
-  "Quicker auto-complete on namespaces and modules."
-  (interactive)
-  (mb-cmd-char-and-complete ?> ?-))
-
-;;;###autoload
-(defun mb-cmd-slash-and-complete ()
-  "Quicker auto-complete in lisp-code."
-  (interactive)
-  (mb-cmd-char-and-complete ?/))
-
-;;;###autoload
-(defun mb-cmd-dash-and-complete ()
-  "Quicker auto-complete in lisp-code."
-  (interactive)
-  (mb-cmd-char-and-complete ?-))
-
-;;;###autoload
-(defun mb-cmd-char-and-complete (char &optional prev)
-  "Insert CHAR and complete if `preceding-char' is equal to PREV."
-  (interactive)
-  (let ((do-complete (if prev (char-equal prev (preceding-char)) t)))
-    (progn
-      (insert char)
-      (when do-complete
-        (company-complete)))))
 
 ;;;###autoload
 (defun mb-cmd-isearch-forward-symbol-with-prefix (p)
@@ -147,38 +97,17 @@ With a prefix argument P, isearch for the symbol at point."
      (if p #'mb-cmd-isearch-backward-symbol-at-point
        #'isearch-backward))))
 
-(defvar company-tooltip-limit)
-;;;###autoload
-(defun mb-cmd-company-scroll-down ()
-  "A bit more eager `company-select-next'."
-  (interactive)
-  (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-next)))
-
-;;;###autoload
-(defun mb-cmd-company-scroll-up ()
-  "A bit more eager `company-select-previous'."
-  (interactive)
-  (dotimes (_ (- company-tooltip-limit 1) nil) (company-select-previous)))
-
+;; TODO: Create yasnippet capf backend
 ;;;###autoload
 (defun mb-cmd-indent-snippet-or-complete ()
-  "Tab indent, insert snippet or complete (using `company-mode')
-depending on context."
+  "Tab indent, insert snippet or complete depending on context."
   (interactive)
   (let ((old-indent (current-indentation)))
     (call-interactively #'indent-for-tab-command)
     (when (and (= old-indent (current-indentation))
                (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
                (null (yas-expand)))
-      (company-complete))))
-
-;;;###autoload
-(defun mb-cmd-snippet-or-complete ()
-  "Insert snippet or complete (using `company-mode') depending on context."
-  (interactive)
-  (when (and (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-             (null (yas-expand)))
-    (company-complete)))
+      (completion-at-point))))
 
 ;;;###autoload
 (defun mb-cmd-restclient ()

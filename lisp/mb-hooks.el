@@ -46,12 +46,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends
-              (when (and (boundp 'ansible) ansible)
-                '(company-ansible)))
+  ;; TODO: Wrap with `cape-company-to-capf'
+  ;; (defvar company-backends)
+  ;; (setq-local company-backends
+  ;;             (when (and (boundp 'ansible) ansible)
+  ;;               '(company-ansible)))
+  ;; (company-mode)
   (mb-f-add-electric-pairs '((?\( . ?\))))
-  (company-mode)
   (ansible-doc-mode)
   (when (ansible-vault--is-encrypted-vault-file)
     (ansible-vault-mode 1))
@@ -84,43 +85,34 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "A mode hook for C and C++.")
 
 (with-eval-after-load 'cc-mode
-  (mb-f-define-keys c-mode-base-map
-                    '(( "."              . mb-cmd-dot-and-complete)
-                      ( ":"              . mb-cmd-double-colon-and-complete)
-                      ( ">"              . mb-cmd-arrow-and-complete)))
-
   (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
   (add-hook 'c++-mode-hook #'mb-hooks--c-mode))
 
 ;; CMake
-(defun mb-hooks--cmake-mode ()
-  "My `cmake' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends '((company-cmake
-                                  company-files
-                                  company-dabbrev-code))))
 (with-eval-after-load 'cmake-mode
-  (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode)
-  (add-hook 'cmake-mode-hook #'mb-hooks--cmake-mode))
+  (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode))
 
-;; Company
-(defun mb-hooks--company-mode ()
-  "My `company' mode hook."
-  (company-box-mode))
+;; Corfu
+;;   TODO:
+;;    - Get icons working
+(defalias 'eglot+keyword
+  (cape-super-capf #'eglot #'cape-keyword))
 
-(with-eval-after-load 'company
-  (require 'company-box)
-  (company-quickhelp-mode)
+(defun mb-hooks--corfu-mode ()
+  "My `corfu' mode hook."
+  (corfu-doc-mode))
 
-  (defvar company-active-map)
-  (mb-f-define-keys company-active-map
-                    '(( "\C-n"    . company-select-next)
-                      ( "\C-p"    . company-select-previous)
-                      ( "<next>"  . mb-cmd-company-scroll-down)
-                      ( "<prior>" . mb-cmd-company-scroll-up)
-                      ( "\C-v"    . company-show-location)
-                      ( "\C-g"    . company-abort)))
-  (add-hook 'company-mode-hook #'mb-hooks--company-mode))
+(with-eval-after-load 'corfu
+  (mb-f-define-keys corfu-map
+                    '(( "\C-l"    . corfu-info-location)
+                      ( "\C-h"    . corfu-info-documentation)))
+
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+
+  (add-hook 'corfu-mode-hook #'mb-hooks--corfu-mode))
+
 
 ;; Compilation Mode
 
@@ -145,17 +137,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-remap-keys daemons-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r"))))
-
-;; Docker Compose
-(defun mb-hooks--docker-compose-mode ()
-  "My `docker-compose' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends '((company-capf
-                                  company-files)))
-  (company-mode))
-
-(with-eval-after-load 'docker-compose-mode
-  (add-hook 'docker-compose-mode-hook #'mb-hooks--docker-compose-mode))
 
 ;; Dockerfile
 (defun mb-hooks--dockerfile-mode ()
@@ -307,9 +288,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `go' mode hook."
   (eglot-ensure)
 
-  (setq-local tab-width 4)
-  (defvar company-backends)
-  (setq-local company-backends '(company-capf)))
+  (setq-local tab-width 4))
 
 (defun mb-hooks--go-before-save ()
   ;; This fails on just a single import
@@ -325,8 +304,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z i a"    . go-import-add)
                       ( "C-z i r"    . go-remove-unused-imports)
                       ( "C-z i g"    . go-goto-imports)
-                      ( "C-z d"      . godoc-at-point)
-                      ( "."          . mb-cmd-dot-and-complete)))
+                      ( "C-z d"      . godoc-at-point)))
   (add-hook 'before-save-hook #'mb-hooks--go-before-save)
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
@@ -382,14 +360,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
-;; IELM
-(with-eval-after-load 'ielm
-  (defvar ielm-map)
-  (mb-f-define-keys ielm-map
-                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
-
-  (add-hook 'ielm-mode-hook #'company-mode))
-
 ;; Info
 (defun mb-hooks--Info-mode ()
   "My `Info' mode hook.")
@@ -402,17 +372,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'Info-mode-hook #'mb-hooks--Info-mode)
   (add-hook 'Info-selection-hook #'niceify-info))
-
-;; Java
-(defun mb-hooks--java-mode ()
-  "My `java' mode hook."
-  (require 'ensime-company)
-  (ensime)
-  (defvar company-backends)
-  (setq-local company-backends '((ensime-company))))
-
-(with-eval-after-load 'cc-mode
-  (add-hook 'java-mode-hook #'mb-hooks--java-mode))
 
 ;; Jinja2
 (defun mb-hooks--jinja2-mode ()
@@ -434,12 +393,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (js2-imenu-extras-mode)
   (add-node-modules-path)
   (when (flycheck-eslint-config-exists-p)
-    (js-auto-format-mode))
-
-  (defvar company-backends)
-  (setq-local company-backends '((company-dabbrev-code
-                                  company-files
-                                  company-keywords))))
+    (js-auto-format-mode)))
 
 (with-eval-after-load 'js2-mode
   (require 'js2-refactor)
@@ -493,16 +447,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (lastpass-auth-source-enable)
   (add-hook 'auth-source-backend-parser-functions
             #'lastpass-auth-source-backend-parse))
-
-;; Lua
-(defun mb-hooks--lua-mode ()
-  "My `lua' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends '((company-dabbrev-code
-                                  company-files))))
-
-(with-eval-after-load 'lua-mode
-  (add-hook 'lua-mode-hook #'mb-hooks--lua-mode))
 
 ;; Magit
 (defun mb-hooks--git-commit-setup ()
@@ -584,54 +528,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode))
 
 ;; MTG deck mode
-(defvar mtg-deck-mode-map)
-(defun mb-hooks--mtg-deck-mode ()
-  "My `mtg-deck' mode hook."
-  (company-mode)
-  (defvar company-backends)
-  (setq-local company-backends '(company-capf)))
-
 (with-eval-after-load 'mtg-deck-mode
   (mb-f-define-keys mtg-deck-mode-map
                     '(( "C-<return>" . mtg-deck-show-card-at-point)
-                      ( "<tab>"      . mb-cmd-indent-snippet-or-complete)
-                      ( "C-c C-s"    . mtg-deck-sideboard-toggle)))
-
-  (add-hook 'mtg-deck-mode-hook #'mb-hooks--mtg-deck-mode))
-
-;; Multiple Cursors
-(defun mb-hooks--multiple-cursors-mode-enabled ()
-  "My `multiple-cursors' mode hook."
-  )
-
-(with-eval-after-load 'multiple-cursors
-  (add-hook 'multiple-cursors-mode-enabled-hook
-            #'mb-hooks--multiple-cursors-mode-enabled))
-;; Nginx
-(defun mb-hooks--nginx-mode ()
-  "My `nginx' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends '(company-keywords
-                                 company-files))
-  (company-mode 1)
-  (company-nginx-keywords))
-
-(with-eval-after-load 'nginx-mode
-  (add-hook 'nginx-mode-hook #'mb-hooks--nginx-mode))
-
-;; nXML
-(defun mb-hooks--nxml-mode ()
-  "My `nxml' mode hook."
-  (defvar company-backends)
-  (setq-local company-backends '(company-nxml
-                                 company-files)))
+                      ( "C-c C-s"    . mtg-deck-sideboard-toggle))))
 
 (with-eval-after-load 'nxml-mode
-  (defvar nxml-mode-map)
-  (mb-f-define-keys nxml-mode-map
-                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
-
-  (add-hook 'nxml-mode-hook #'mb-hooks--nxml-mode)
   (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
 
 ;; Package Menu
@@ -672,7 +574,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
               buffer-read-only)
     (aggressive-indent-mode))
   (ws-butler-mode)
-  (company-mode)
   (flymake-mode)
   (display-fill-column-indicator-mode)
   (highlight-numbers-mode)
@@ -680,8 +581,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
-                    '(( "<tab>"       . mb-cmd-indent-snippet-or-complete)
-                      ( "C-z f e"     . mb-cmd-iedit-in-defun)
+                    '(( "C-z f e"     . mb-cmd-iedit-in-defun)
                       ( "C-z d"       . nil)
                       ( "M-q"         . fill-function-arguments-dwim)))
 
@@ -755,32 +655,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (pipenv-mode)
   (eglot-ensure)
 
-  (defvar company-backends)
-  (setq-local company-backends '(company-capf))
   (aggressive-indent-mode -1)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'python
   (defvar python-mode-map)
-  (mb-f-define-keys python-mode-map
-                    '(( "."           . mb-cmd-dot-and-complete)
-                      ( "<tab>"       . mb-cmd-indent-snippet-or-complete)))
-
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
-
-;; REST Client
-(defun mb-hooks--restclient-mode ()
-  "My `restclient' mode hook."
-  (company-mode)
-  (defvar company-backends)
-  (setq-local company-backends '((company-restclient))))
-
-(with-eval-after-load 'restclient
-  (defvar restclient-mode-map)
-  (mb-f-define-keys restclient-mode-map
-                    '(( "<tab>" . mb-cmd-indent-snippet-or-complete)))
-
-  (add-hook 'restclient-mode-hook #'mb-hooks--restclient-mode))
 
 ;; RipGrep
 (with-eval-after-load 'ripgrep
@@ -896,9 +776,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       "\\)[ \t]*"))
   (sh-extra-font-lock-activate)
 
-  (defvar company-backends)
-  (setq-local company-backends '(company-capf))
-
   (defvar fill-function-arguments-first-argument-same-line)
   (defvar fill-function-arguments-second-argument-same-line)
   (defvar fill-function-arguments-last-argument-same-line)
@@ -916,20 +793,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Sql
 (with-eval-after-load 'sql
   (add-hook 'sql-mode-hook #'sqlup-mode))
-
-;; Systemd
-(defun mb-hooks-systemd-mode ()
-  "My `systemd' mode hook."
-  (company-mode)
-  (defvar company-backends)
-  (setq-local company-backends '(company-capf)))
-
-(with-eval-after-load 'systemd
-  (add-hook 'systemd-mode-hook #'mb-hooks-systemd-mode)
-
-  (defvar systemd-mode-map)
-  (mb-f-define-keys systemd-mode-map
-                    '(( "<tab>" . mb-cmd-snippet-or-complete))))
 
 ;; Vala
 (defun mb-hooks--vala-mode ()
@@ -995,8 +858,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'yaml-mode
   (defvar yaml-mode-map)
   (mb-f-define-keys yaml-mode-map
-                    '(( "<tab>"       . mb-cmd-indent-snippet-or-complete)
-                      ( "C-z t A"     . ansible)))
+                    '(( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
 

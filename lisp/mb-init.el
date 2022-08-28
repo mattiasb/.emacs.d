@@ -57,6 +57,7 @@
   (global-git-gutter-mode)
   (global-emojify-mode)
   (global-emojify-mode-line-mode)
+  (global-corfu-mode)
   (flimenu-global-mode)
   (doom-modeline-mode)
   (fancy-narrow-mode)
