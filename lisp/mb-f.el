@@ -19,6 +19,8 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'subr-x)
+(require 'package)
 
 (declare-function projectile-project-root "projectile.el")
 (declare-function projectile-project-name "projectile.el")
@@ -410,6 +412,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "List of all not installed packages under packages/."
   (seq-remove #'package-installed-p (mb-f-package-local-packages)))
 
+(defun mb-f-package-remote-not-installed-packages ()
+  "List of all remote not installed packages."
+  (seq-remove #'package-installed-p (mb-f-package-remote-packages)))
+
 (defun mb-f-package-install-local-package (package)
   "Install local PACKAGE from packages/."
   (let ((package-path (concat user-emacs-directory
@@ -429,6 +435,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (unless (seq-every-p #'package-installed-p
                        (mb-f-package-remote-packages))
     (message "Installing M/ELPA packages...")
+    (let* ((pkg-symbols (mb-f-package-remote-not-installed-packages))
+           (packages (seq-map #'symbol-name pkg-symbols)))
+      (message (format "- %s" (string-join packages "\n- "))))
     (package-refresh-contents)
     (mb-f-no-confirm #'package-install-selected-packages)))
 
