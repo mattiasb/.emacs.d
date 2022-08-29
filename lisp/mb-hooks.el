@@ -891,6 +891,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (defvar toml-mode-map)
   (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
 
+;; Smerge
+(defun mb-hooks--smerge-mode ()
+  "My `smerge' mode hook."
+  (smerge-refine))
+
+(with-eval-after-load 'smerge-mode
+  (add-hook 'smerge-mode-hook #'mb-hooks--smerge-mode))
+
+
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
