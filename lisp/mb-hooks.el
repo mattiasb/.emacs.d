@@ -60,11 +60,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load "ansible"
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 
-;; Batch Mode
-(with-eval-after-load 'bat-mode
-  (require 'bmx-mode)
-  (bmx-mode-setup-defaults))
-
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
   (defvar browse-kill-ring-mode-map)
