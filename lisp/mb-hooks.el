@@ -776,14 +776,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
-(with-eval-after-load 'anaconda-mode
-  (defvar anaconda-mode-map)
-  (mb-f-define-keys anaconda-mode-map
-                    '(( "C-<return>" . anaconda-mode-find-definitions)
-                      ( "M-<return>" . anaconda-mode-find-assignments)
-                      ( "C-z h d"    . anaconda-mode-show-doc)
-                      ( "M-?"        . anaconda-mode-find-references))))
-
 ;; REST Client
 (defun mb-hooks--restclient-mode ()
   "My `restclient' mode hook."

@@ -62,7 +62,6 @@
   '((abbrev-mode                 . " A")
     (aggressive-indent-mode      . " ⇒")
     (all-the-icons-dired-mode    . "")
-    (anaconda-mode               . " 🐍")
     (ansible-doc-mode            . "")
     (auto-dim-other-buffers-mode . "")
     (auto-revert-mode            . " ⎌")
