@@ -132,6 +132,7 @@
      ("git.suckless.org" nil "git.suckless.org" forge-stagit-repository)
      ("git.sr.ht" nil "git.sr.ht" forge-srht-repository)))
  '(forge-database-file "/home/mattiasb/.cache/emacs/forge-database.sqlite")
+ '(forge-topic-list-limit '(60 . 0))
  '(fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist) t)
  '(gc-cons-threshold 20000000)
  '(git-commit-fill-column 72)
