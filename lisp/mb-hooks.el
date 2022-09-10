@@ -675,6 +675,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Rust
 (with-eval-after-load 'rust-mode)
 
+;; Ruby
+(defun mb-hooks--ruby-mode ()
+  "My `ruby' mode hook."
+  (eglot-ensure))
+
+(with-eval-after-load 'ruby-mode
+  (add-hook 'ruby-mode-hook #'mb-hooks--ruby-mode))
+
 ;; Table
 (with-eval-after-load "table"
   (defvar table-command-remap-alist)
