@@ -103,6 +103,7 @@
                       ( "e l"    . electric-layout-mode)
                       ( "e p"    . electric-pair-mode)
                       ( "e o"    . electric-operator-mode)
+                      ( "f"      . auto-fill-mode)
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
                       ( "s"      . flyspell-mode)
