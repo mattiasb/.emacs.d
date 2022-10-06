@@ -516,5 +516,14 @@ markers and footnote text."
     (compile "reuse lint")
     (select-window (get-buffer-window buf-name))))
 
+(defun mb-cmd-spdx-reuse-download-all ()
+  "Check project for SPDX license issues."
+  (interactive)
+  (let* ((buf-name "*spdx-reuse-download-all*")
+         (compilation-buffer-name-function (lambda (_) buf-name))
+         (default-directory (projectile-project-root)))
+    (compile "reuse download --all")
+    (select-window (get-buffer-window buf-name))))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
