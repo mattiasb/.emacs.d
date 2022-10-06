@@ -268,9 +268,6 @@
  '(projectile-tags-backend 'xref)
  '(recentf-save-file "~/.cache/emacs/recentf")
  '(ring-bell-function 'ignore)
- '(rng-schema-locating-files
-   '((concat user-emacs-directory "schemas/schemas.xml")
-     "/usr/share/emacs/25.2/etc/schema/schemas.xml" "schemas.xml"))
  '(rust-indent-method-chain t)
  '(safe-local-variable-values
    '((c-mode . c++)
