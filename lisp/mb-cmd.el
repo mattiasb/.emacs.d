@@ -507,11 +507,14 @@ markers and footnote text."
   (describe-symbol (or (symbol-at-point)
                        (error "No symbol-at-point"))))
 
-(defun mb-cmd-spdx-lint ()
+(defun mb-cmd-spdx-reuse-lint ()
   "Check project for SPDX license issues."
   (interactive)
-  (let ((default-directory (projectile-project-root)))
-    (compile "reuse lint")))
+  (let* ((buf-name "*spdx-reuse-lint*")
+         (compilation-buffer-name-function (lambda (_) buf-name))
+         (default-directory (projectile-project-root)))
+    (compile "reuse lint")
+    (select-window (get-buffer-window buf-name))))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
