@@ -1,3 +1,6 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+<!-- Copyright 2020, Mattias Bengtsson <mattias.jc.bengtsson@gmail.com> -->
+
 # TODO
 
 ## General
