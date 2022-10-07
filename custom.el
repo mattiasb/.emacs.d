@@ -266,6 +266,8 @@
  '(projectile-mode-line-prefix " P")
  '(projectile-switch-project-action 'projectile-commander)
  '(projectile-tags-backend 'xref)
+ '(read-buffer-completion-ignore-case t)
+ '(read-file-name-completion-ignore-case t)
  '(recentf-save-file "~/.cache/emacs/recentf")
  '(ring-bell-function 'ignore)
  '(rust-indent-method-chain t)
@@ -343,6 +345,7 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 (defvar todotxt-file)
 (setq todotxt-file "~/Dropbox/todo/todo.txt")
+(setq completion-ignore-case t)
 
 (when (custom-theme-enabled-p 'wombat)
   (custom-theme-set-faces
