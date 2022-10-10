@@ -64,6 +64,7 @@
   (history-mode)
   (savehist-mode)
   (vertico-mode)
+  (all-the-icons-completion-mode)
   (bury-successful-compilation)
   (which-key-mode)
   (auto-insert-mode)
