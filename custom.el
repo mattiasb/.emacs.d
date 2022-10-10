@@ -278,6 +278,7 @@
      (mtg-deck-format . legacy)
      (mtg-deck-format . modern)))
  '(save-abbrevs 'silently)
+ '(savehist-additional-variables '(projectile-project-command-history command-history))
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)

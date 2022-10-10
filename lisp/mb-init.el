@@ -62,6 +62,7 @@
   (doom-modeline-mode)
   (fancy-narrow-mode)
   (history-mode)
+  (savehist-mode)
   (vertico-mode)
   (bury-successful-compilation)
   (which-key-mode)
