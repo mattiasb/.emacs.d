@@ -21,5 +21,8 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; This has to go here apparently
+(setq package-user-dir "~/.cache/emacs/elpa")
+
 (provide 'early-init)
 ;;; early-init.el ends here
