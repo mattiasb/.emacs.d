@@ -279,6 +279,7 @@
      (mtg-deck-format . modern)))
  '(save-abbrevs 'silently)
  '(savehist-additional-variables '(projectile-project-command-history command-history))
+ '(savehist-file "~/.cache/emacs/history")
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)
