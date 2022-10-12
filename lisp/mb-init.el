@@ -52,7 +52,7 @@
   ;; Needed for license snippet
   (require 'spdx)
 
-  (auto-sudoedit-mode)
+  (su-mode +1)
   (auto-fill-mode 1)
   (global-git-gutter-mode)
   (global-emojify-mode)
