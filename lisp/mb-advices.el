@@ -22,7 +22,6 @@
 (require 'term)
 (require 'mb-cmd)
 (require 'flycheck)
-(require 'flycheck-pos-tip)
 
 (defun mb-advices--git-link (func &rest args)
   "Support http for work by advicing FUNC w/ ARGS."
@@ -98,11 +97,6 @@
                         (require 'server)
                         (unless (display-graphic-p)
                           (mb-f-reset-terminal-cursors))))
-
-  (advice-add #'flycheck-pos-tip-error-messages
-              :around (lambda (func &rest args)
-                        (let ((x-gtk-use-system-tooltips nil))
-                          (apply func args))))
 
   (advice-add #'ask-user-about-lock
               :around (lambda (file opponent)

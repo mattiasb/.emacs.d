@@ -263,14 +263,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'flymake-diagnostic-at-point)
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
-;; Flycheck
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode)
-  (flycheck-status-emoji-mode)
-  (flycheck-cask-setup)
-  (flycheck-package-setup)
-  (flycheck-rust-setup))
-
 ;; Flyspell
 (with-eval-after-load 'flyspell
   (defvar flyspell-mode-map)
@@ -393,21 +385,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (defvar flimenu-imenu-separator)
   (setq-local flimenu-imenu-separator ".")
-  (flycheck-disable-checker 'javascript-jscs)
-  (flycheck-disable-checker 'javascript-jshint)
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)
-  (js2-imenu-extras-mode)
-  (add-node-modules-path)
-  (when (flycheck-eslint-config-exists-p)
-    (js-auto-format-mode)))
+  (js2-imenu-extras-mode))
 
 (with-eval-after-load 'js2-mode
-  (require 'js2-refactor)
-
-  (defvar js2-mode-map)
-  (mb-f-define-keys js2-mode-map
-                    '(( "C-z f r"    . js2r-rename-var)))
-
   (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
 
 ;; JSON
