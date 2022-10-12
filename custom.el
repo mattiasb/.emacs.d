@@ -157,7 +157,7 @@
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
  '(haskell-font-lock-symbols 'unicode)
- '(haskell-mode-hook '(turn-on-haskell-indentation))
+ '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(help-enable-symbol-autoload t)
  '(highlight-symbol-idle-delay 1.0)
  '(history-advised-before-functions
@@ -272,7 +272,7 @@
      (mtg-deck-format . legacy)
      (mtg-deck-format . modern)))
  '(save-abbrevs 'silently)
- '(savehist-additional-variables '(projectile-project-command-history command-history) t)
+ '(savehist-additional-variables '(projectile-project-command-history command-history))
  '(savehist-file "~/.cache/emacs/history")
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
