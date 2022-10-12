@@ -27,6 +27,7 @@
 ;;; Early init code
 
 (require 'mb-f)
+(mb-f-make-cache-dirs)
 (mb-f-package-install-all)
 (load-theme 'madhat2r t)
 

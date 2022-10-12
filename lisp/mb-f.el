@@ -445,5 +445,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-package-install-all-remote)
   (mb-f-package-install-all-local))
 
+(defun mb-f-make-cache-dirs ()
+  "Create all cache directories needed by Emacs."
+  (let ((cache-dir "~/.cache/emacs")
+        (dirs (list "auto-save-list"
+                    "autosave"
+                    "backup"
+                    "elpa"
+                    "emojis"
+                    "lock"
+                    "transient"
+                    "url")))
+    (dolist (dir dirs) (make-directory (format "%s/%s" cache-dir dir) t))))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
