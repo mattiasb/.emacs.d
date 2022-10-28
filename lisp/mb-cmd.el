@@ -97,18 +97,6 @@ With a prefix argument P, isearch for the symbol at point."
      (if p #'mb-cmd-isearch-backward-symbol-at-point
        #'isearch-backward))))
 
-;; TODO: Create yasnippet capf backend
-;;;###autoload
-(defun mb-cmd-indent-snippet-or-complete ()
-  "Tab indent, insert snippet or complete depending on context."
-  (interactive)
-  (let ((old-indent (current-indentation)))
-    (call-interactively #'indent-for-tab-command)
-    (when (and (= old-indent (current-indentation))
-               (mb-f-preceding-char-match-p "[a-zA-Z\-\.\>\_\/\:]")
-               (null (yas-expand)))
-      (completion-at-point))))
-
 ;;;###autoload
 (defun mb-cmd-restclient ()
   "Create a `restclient-mode' buffer."
@@ -524,6 +512,12 @@ markers and footnote text."
          (default-directory (projectile-project-root)))
     (compile "reuse download --all")
     (select-window (get-buffer-window buf-name))))
+
+;;;###autoload
+(defun mb-f-visit-templates ()
+  "Visit tempel templates file."
+  (interactive)
+  (find-file (format "%s/templates.eld" user-emacs-directory)))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

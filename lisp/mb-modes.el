@@ -29,6 +29,7 @@
     ("\/hosts$"            . ini-mode)
     ("\/tmp\/bash-fc\."    . sh-mode)
     ("\\.bu$"              . yaml-mode)
+    ("\\.eld$"             . lisp-data-mode)
     ("\\.y[a]ml.j2$"       . yaml-mode)
     ("\\.dec$"             . mtg-deck-mode)
     ("\\.geojson$"         . json-mode)
@@ -55,8 +56,7 @@
     (js2-mode        . "JS")
     (markdown-mode   . "M↓")
     (nxml-mode       . "XML")
-    (sh-mode         . "Sh")
-    (snippet-mode    . "Yas Snippet")))
+    (sh-mode         . "Sh")))
 
 (defconst mb-modes--shortened-minor-modes
   '((abbrev-mode                 . " A")
@@ -79,8 +79,7 @@
     (sqlup-mode                  . " ⇑")
     (rainbow-mode                . " 🌈")
     (which-key-mode              . "")
-    (ws-butler-mode              . "")
-    (yas-minor-mode              . " 📜")))
+    (ws-butler-mode              . "")))
 
 (defun mb-modes-activate ()
   "Activate mode configurations."

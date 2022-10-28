@@ -68,7 +68,6 @@
     ;; TEXT MANIPULATION
 
     ;; General
-    ( "TAB"           . mb-cmd-indent-snippet-or-complete)
     ( "M-<up>"        . move-dup-move-lines-up)
     ( "M-<down>"      . move-dup-move-lines-down)
     ( "C-S-a"         . beginning-of-line)
@@ -108,8 +107,7 @@
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
                       ( "s"      . flyspell-mode)
-                      ( "w"      . whitespace-mode)
-                      ( "y"      . yas-minor-mode)))
+                      ( "w"      . whitespace-mode)))
 
 ;; My Magit keymap
 (mb-f-define-keymap mb-keys-magit-map
@@ -120,13 +118,11 @@
                       ( "b"      . mb-cmd-git-link-browse)
                       ( "p"      . magit-push-matching)))
 
-;; My Yas keymap
-(mb-f-define-keymap mb-keys-yas-map
-                    '(;; TODO: Create corfu alternative to company-yasnippet
-                      ( "i"      . yas-insert-snippet)
-                      ( "c"      . yas-new-snippet)
-                      ( "e"      . yas-visit-snippet-file)
-                      ( "r"      . yas-reload-all)
+;; My tempel keymap
+(mb-f-define-keymap mb-keys-tempel-map
+                    '(( "i"      . tempel-complete)
+                      ( "c"      . mb-f-visit-templates)
+                      ( "e"      . mb-f-visit-templates)
                       ( "t"      . auto-insert)))
 
 (mb-f-define-keymap mb-keys-string-inflection-map
@@ -181,7 +177,7 @@
                     '(;; Keymaps
                       ( "h"      . mb-keys-help-map)
                       ( "m"      . mb-keys-magit-map)
-                      ( "s"      . mb-keys-yas-map)
+                      ( "s"      . mb-keys-tempel-map)
                       ( "t"      . mb-keys-toggle-map)
                       ( "T"      . mb-keys-tables-map)
                       ( "w"      . mb-keys-windows-map)

@@ -149,61 +149,6 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   "Get the curret year."
   (mb-f-get-date "%Y"))
 
-(defun mb-f-autoinsert-yas-expand()
-  "Replace text in yasnippet template."
-  (require 'yasnippet)
-  (yas-expand-snippet (buffer-string)
-                      (point-min)
-                      (point-max)))
-
-(defun mb-f-yas-choose-package-keyword ()
-  "Choose a package keyword to expand."
-  (require 'yasnippet)
-  (yas-choose-value "abbrev"
-                    "bib"
-                    "c"
-                    "calendar"
-                    "comm"
-                    "convenience"
-                    "data"
-                    "docs"
-                    "emulations"
-                    "extensions"
-                    "faces"
-                    "files"
-                    "frames"
-                    "games"
-                    "hardware"
-                    "help"
-                    "hypermedia"
-                    "i18n"
-                    "internal"
-                    "languages"
-                    "lisp"
-                    "local"
-                    "maint"
-                    "mail"
-                    "matching"
-                    "mouse"
-                    "multimedia"
-                    "news"
-                    "outlines"
-                    "processes"
-                    "terminals"
-                    "tex"
-                    "tools"
-                    "unix"
-                    "vc"
-                    "wp"))
-
-(defun mb-f-yas-choose-license ()
-  "Choose a license to expand."
-  (require 'yasnippet)
-  (yas-choose-value
-   (directory-files (concat user-emacs-directory "licenses/")
-                    nil
-                    "^[A-Za-z0-9-+_][A-Za-z0-9-+_.]*$")))
-
 (defun mb-f-get-user-mail-address ()
   "Get variable `user-mail-address' with fallback."
   (if (boundp 'user-mail-address)
@@ -227,6 +172,19 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
 (defun mb-f-wrap-in-comment (string)
   "Wrap STRING inside comment."
   (format "%s%s%s" comment-start string comment-end))
+
+(defun mb-f-comment-start ()
+  "Return comment-start."
+  (cond ((or (derived-mode-p 'lisp-mode)
+             (derived-mode-p 'lisp-data-mode))
+         ";; ")
+        ((null comment-start) "")
+        (t comment-start)))
+
+(defun mb-f-comment-end ()
+  "Return comment-end."
+  (cond ((null comment-end) "")
+        (t comment-end)))
 
 (defun mb-f-get-monitor-dpi (monitor-attributes)
   "Calculate DPI from a MONITOR-ATTRIBUTES structure."

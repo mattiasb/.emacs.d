@@ -662,9 +662,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
 
-  (defvar yas-indent-line)
-  (setq-local yas-indent-line 'fixed)
-
   ;; (importmagic-mode)
   (pipenv-mode)
   (eglot-ensure))
@@ -699,9 +696,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Shell
 (defun mb-hooks--term-mode ()
   "My `term' mode hook."
-  (defvar yas-dont-activate-functions)
-  (setq scroll-margin 0)
-  (setq yas-dont-activate-functions t))
+  (setq scroll-margin 0))
 
 (defun mb-hooks--term-exec ()
   "My `term' mode hook."
@@ -881,15 +876,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
-
-;; Yas
-(defun mb-hooks--yas-mode ()
-  "My `yas' mode hook.")
-
-(with-eval-after-load 'yasnippet
-  (mb-f-define-keys yas-keymap
-                    '(( "C-g" . yas-exit-snippet)))
-  (add-hook 'yas-minor-mode-hook #'mb-hooks--yas-mode))
 
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here
