@@ -229,6 +229,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                                         (cons "-" nil))
   (electric-operator-add-rules-for-mode 'haskell-mode
                                         (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'lisp-data-mode
+                                        (cons "-" nil))
   (electric-operator-add-rules-for-mode 'ruby-mode
                                         (cons "=" nil))
   (electric-operator-add-rules-for-mode 'ruby-mode
@@ -571,11 +573,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (setq-local indent-tabs-mode nil))
 
   (unless (derived-mode-p 'lisp-mode
+                          'lisp-data-mode
                           'emacs-lisp-mode
                           'dockerfile-mode)
     (electric-operator-mode))
 
   (unless (derived-mode-p 'lisp-mode
+                          'lisp-data-mode
                           'emacs-lisp-mode)
     (mb-f-add-electric-pairs '((?' . ?')
                                (?< . ?>))))
