@@ -371,8 +371,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight normal :height 98 :width normal))))
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
- '(diff-refine-added ((t (:background "#558855" :foreground "#cceecc"))))
- '(diff-refine-removed ((t (:background "#885555" :foreground "#eecccc"))))
+ '(diff-refine-added ((t (:background "#416d41" :foreground "#cceecc"))))
+ '(diff-refine-removed ((t (:background "#664040" :foreground "#eecccc"))))
  '(fill-column-indicator ((t (:foreground "gray21"))))
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
