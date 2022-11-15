@@ -87,6 +87,7 @@
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
+                      ( "R"      . rfc-mode-browse)
                       ( "a"      . ansi-term)
                       ( "v"      . vterm)
                       ( "s"      . dired-sidebar-toggle-sidebar)))
