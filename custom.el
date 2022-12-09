@@ -108,6 +108,7 @@
  '(fill-function-arguments-second-argument-same-line nil)
  '(fill-function-arguments-trailing-separator t)
  '(flyspell-prog-text-faces '(font-lock-comment-face font-lock-doc-face))
+ '(font-use-system-font t)
  '(forge-alist
    '(("github.com" "api.github.com" "github.com" forge-github-repository)
      ("gitlab.com" "gitlab.com/api/v4" "gitlab.com" forge-gitlab-repository)
@@ -370,7 +371,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrains Mono" :foundry "JB" :slant normal :weight normal :height 98 :width normal))))
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
  '(diff-refine-added ((t (:background "#416d41" :foreground "#cceecc"))))
  '(diff-refine-removed ((t (:background "#664040" :foreground "#eecccc"))))
