@@ -158,7 +158,7 @@
  '(guess-language-langcodes '((en "en_US" "English") (sv "sv_SE" "Swedish")))
  '(guess-language-languages '(en sv))
  '(haskell-font-lock-symbols 'unicode)
- '(haskell-mode-hook '(turn-on-haskell-indentation))
+ '(haskell-mode-hook '(turn-on-haskell-indentation) t)
  '(help-enable-symbol-autoload t)
  '(highlight-symbol-idle-delay 1.0)
  '(history-advised-before-functions
@@ -198,7 +198,7 @@
  '(keyfreq-mode t)
  '(large-file-warning-threshold 100000000)
  '(lastpass-user "mattias.jc.bengtsson@gmail.com")
- '(load-prefer-newer t t)
+ '(load-prefer-newer t)
  '(lock-file-name-transforms '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/lock/\\1" t)))
  '(lsp-ui-sideline-enable nil)
  '(lua-indent-level 2)
