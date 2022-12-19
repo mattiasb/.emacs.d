@@ -100,7 +100,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-hooks--corfu-mode ()
   "My `corfu' mode hook."
-  (corfu-doc-mode))
+  (corfu-popupinfo-mode))
 
 (with-eval-after-load 'corfu
   (mb-f-define-keys corfu-map
