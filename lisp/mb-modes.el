@@ -71,7 +71,6 @@
     (fancy-narrow-mode           . "")
     (flymake-mode                . " ✎")
     (flyspell-mode               . " ✎")
-    (git-gutter-mode             . "")
     (haskell-indentation-mode    . "")
     (history-mode                . "")
     (magit-auto-revert-mode      . "")

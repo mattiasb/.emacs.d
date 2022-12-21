@@ -30,7 +30,7 @@
 
   (menu-bar-mode -1)
   (mb-f-set-terminal-cursors)
-
+  (diff-hl-margin-mode)
   ;; TODO: Fix this. It currently borks whitespace-mode
   (mb-f-set-terminal-window-separator))
 
@@ -54,7 +54,7 @@
 
   (su-mode +1)
   (auto-fill-mode 1)
-  (global-git-gutter-mode)
+  (global-diff-hl-mode)
   (global-emojify-mode)
   (global-emojify-mode-line-mode)
   (global-corfu-mode)

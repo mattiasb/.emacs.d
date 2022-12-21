@@ -146,6 +146,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'dockerfile-mode
   (add-hook 'dockerfile-mode-hook #'mb-hooks--dockerfile-mode))
+;; Diff Hl
+(defun mb-hooks--diff-hl-mode ()
+  "My `diff-hl' mode hook."
+
+  )
+
+(with-eval-after-load 'diff-hl
+  (add-hook 'diff-hl-mode-hook #'mb-hooks--diff-hl-mode))
 
 ;; Dired
 (defun mb-hooks--dired-mode ()
@@ -276,10 +284,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
-
-;; Git Gutter
-(with-eval-after-load 'git-gutter
-  (run-at-time 0 5 #'git-gutter:update-all-windows))
 
 ;; Go
 (defun mb-hooks--go-mode ()
@@ -444,7 +448,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'forge)
   (defvar ghub-insecure-hosts)
   (defvar forge-alist)
-  (declare-function git-gutter:update-all-windows "git-gutter.el")
 
   ;; Support insecure forges
   (defclass forge-gitlab-http-repository (forge-gitlab-repository)
@@ -492,7 +495,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z t b" .  magit-blame-quit)))
 
   (add-hook 'after-save-hook         #'magit-after-save-refresh-status)
-  (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
+  ;; (add-hook 'magit-post-refresh-hook #'diff-hl-update)
   (add-hook 'git-commit-setup-hook   #'mb-hooks--git-commit-setup))
 
 ;; Markdown

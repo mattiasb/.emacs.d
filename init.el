@@ -29,7 +29,7 @@
 (require 'mb-f)
 (mb-f-make-cache-dirs)
 (mb-f-package-install-all)
-(load-theme 'madhat2r t)
+(load-theme 'adwaita-dark t)
 
 ;;; Post package initialization
 
