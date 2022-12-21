@@ -146,11 +146,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'dockerfile-mode
   (add-hook 'dockerfile-mode-hook #'mb-hooks--dockerfile-mode))
+
 ;; Diff Hl
 (defun mb-hooks--diff-hl-mode ()
   "My `diff-hl' mode hook."
-
-  )
+  (adwaita-dark-theme-diff-hl-fringe-bmp-enable))
 
 (with-eval-after-load 'diff-hl
   (add-hook 'diff-hl-mode-hook #'mb-hooks--diff-hl-mode))
@@ -173,14 +173,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (defvar dired-mode-map)
   (mb-f-define-keys dired-mode-map
-                    '(( "W" . wdired-change-to-wdired-mode)
-                      ( "F" . find-name-dired)
-                      ( "c" . mb-cmd-find-file-default)
+                    '(( "W"      . wdired-change-to-wdired-mode)
+                      ( "F"      . find-name-dired)
+                      ( "c"      . mb-cmd-find-file-default)
                       ( "M-<up>" . dired-up-directory)
-                      ( "." . dired-hide-dotfiles-mode)))
+                      ( "."      . dired-hide-dotfiles-mode)))
   (mb-f-remap-keys dired-mode-map
-                   '(("s" . "C-s")
-                     ("r" . "C-r")))
+                   '(("s"        . "C-s")
+                     ("r"        . "C-r")))
 
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
@@ -203,22 +203,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Electric operator
 (with-eval-after-load 'electric-operator
   ;; TODO: Add support for toml-mode
-  (electric-operator-add-rules-for-mode 'ini-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'makefile-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'makefile-gmake-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'haskell-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons "=" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons ">" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons "%" nil))
-  (electric-operator-add-rules-for-mode 'sh-mode
-                                        (cons "=" nil)))
+  (electric-operator-add-rules-for-mode 'ini-mode            (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'makefile-mode       (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'makefile-gmake-mode (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'haskell-mode        (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'ruby-mode           (cons "=" nil))
+  (electric-operator-add-rules-for-mode 'ruby-mode           (cons ">" nil))
+  (electric-operator-add-rules-for-mode 'ruby-mode           (cons "%" nil))
+  (electric-operator-add-rules-for-mode 'sh-mode             (cons "=" nil)))
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
@@ -267,9 +259,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
      (list start end)))
 
 ;; Flymake
+
+(defun mb-hooks--flymake-mode ()
+  "My `flymake' mode hook."
+  (adwaita-dark-theme-flymake-fringe-bmp-enable)
+  (flymake-diagnostic-at-point-mode))
+
 (with-eval-after-load 'flymake
   (require 'flymake-diagnostic-at-point)
-  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
+  (add-hook 'flymake-mode-hook #'mb-hooks--flymake-mode))
 
 ;; Flyspell
 (with-eval-after-load 'flyspell
@@ -439,6 +437,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
             #'lastpass-auth-source-backend-parse))
 
 ;; Magit
+
+
 (defun mb-hooks--git-commit-setup ()
   "My `git-commit' mode hook."
   (setq fill-column 72)
