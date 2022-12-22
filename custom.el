@@ -291,6 +291,8 @@
  '(shr-bullet "• ")
  '(shr-discard-aria-hidden nil)
  '(shr-hr-line 8212)
+ '(shr-image-animate nil)
+ '(shr-inhibit-images t)
  '(shr-max-width 80)
  '(shr-use-colors nil)
  '(shr-use-fonts t)
