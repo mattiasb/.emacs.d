@@ -65,6 +65,7 @@
  '(custom-buffer-done-kill t)
  '(custom-file (concat user-emacs-directory "custom.el"))
  '(custom-safe-themes t)
+ '(custom-unlispify-tag-names nil)
  '(default-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
