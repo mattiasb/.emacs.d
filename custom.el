@@ -84,7 +84,6 @@
  '(eglot-autoshutdown t)
  '(eldoc-idle-delay 3600)
  '(electric-indent-mode nil)
- '(electric-layout-mode t)
  '(electric-operator-c-pointer-type-style 'type)
  '(electric-pair-mode t)
  '(electric-pair-pairs

@@ -196,6 +196,27 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-z f a" . eglot-code-actions)
                       ( "C-z f i" . eglot-code-action-organize-imports))))
 
+;; Electric Layout
+(defun mb-hooks--electric-layout-mode ()
+  "My `electric-layout' mode hook."
+  (when (seq-some #'derived-mode-p
+                  '(js2-mode c-mode c++-mode rust-mode))
+    (add-to-list 'electric-layout-rules '(?\; . after)))
+
+  (when (seq-some #'derived-mode-p
+                  '(js2-mode c-mode c++-mode rust-mode sh-mode))
+    (add-to-list 'electric-layout-rules '(?{  . after))
+    (add-to-list 'electric-layout-rules '(?}  . before)))
+
+  (when (derived-mode-p #'python-mode)
+    (add-to-list 'electric-layout-rules
+                 '(?: . mb-f-python-electric-newline))))
+
+(with-eval-after-load 'electric-layout
+  (defvar electric-layout-mode-map)
+
+  (add-hook 'electric-layout-mode-hook #'mb-hooks--electric-layout-mode))
+
 ;; Electric operator
 (with-eval-after-load 'electric-operator
   ;; TODO: Add support for toml-mode
@@ -313,8 +334,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
   "My `haskell' mode hook."
-  (haskell-indentation-mode)
-  (electric-layout-mode -1))
+  (haskell-indentation-mode))
 
 (add-hook 'haskell-mode-hook #'mb-hooks--haskell-mode)
 
@@ -640,9 +660,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   ;; (importmagic-mode)
   (pipenv-mode)
-  (eglot-ensure)
-
-  (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
+  (eglot-ensure))
 
 (with-eval-after-load 'python
   (defvar python-mode-map)

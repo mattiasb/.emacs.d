@@ -75,6 +75,7 @@
   (smart-region-on)
   (recentf-mode)
   (abbrev-mode)
+  (electric-layout-mode)
   (projectile-mode)
   (auto-dim-other-buffers-mode)
   (yas-global-mode)
