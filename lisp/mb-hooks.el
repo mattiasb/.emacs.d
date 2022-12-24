@@ -92,12 +92,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'cmake-mode
   (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode))
 
-;; Corfu
-;;   TODO:
-;;    - Get icons working
-(defalias 'eglot+keyword
-  (cape-super-capf #'eglot #'cape-keyword))
-
 (defun mb-hooks--corfu-mode ()
   "My `corfu' mode hook."
   (corfu-popupinfo-mode))
@@ -106,10 +100,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-define-keys corfu-map
                     '(( "\C-l"    . corfu-info-location)
                       ( "\C-h"    . corfu-info-documentation)))
-
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
 
   (add-hook 'corfu-mode-hook #'mb-hooks--corfu-mode))
 
@@ -122,7 +112,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Conf mode
 (with-eval-after-load 'conf-mode
   (electric-indent-local-mode)
-  (electric-operator-mode))
+  (electric-operator-mode)
+  (mb-f-set-capfs #'cape-dabbrev))
 
 ;; Cython
 (with-eval-after-load 'cython-mode
@@ -185,6 +176,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
 
 ;; Eglot
+(defun mb-hooks--eglot-managed-mode ()
+  "My `eglot' mode hook-"
+  (if (eglot-managed-p)
+      (mb-f-set-capfs #'cape-keyword
+                      #'eglot-completion-at-point)
+    ;; NOTE: This is repeated in the `prog-mode' hook.
+    (mb-f-set-capfs #'cape-keyword
+                    #'tags-completion-at-point-function)))
+
 (with-eval-after-load 'eglot
   (defvar eglot-mode-map)
   (defvar eglot-server-programs)
@@ -195,7 +195,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z f r" . eglot-rename)
                       ( "C-z f f" . eglot-format)
                       ( "C-z f a" . eglot-code-actions)
-                      ( "C-z f i" . eglot-code-action-organize-imports))))
+                      ( "C-z f i" . eglot-code-action-organize-imports)))
+  (add-hook 'eglot-managed-mode-hook #'mb-hooks--eglot-managed-mode))
 
 ;; Electric Layout
 (defun mb-hooks--electric-layout-mode ()
@@ -247,6 +248,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
   "My `emacs-lisp' mode hook."
+  (mb-f-set-capfs #'cape-keyword
+                  #'elisp-completion-at-point)
 
   ;; This and the next imenu expression is based on code from Sebastian Wiesner
   ;; https://github.com/lunaryorn/my-old-.emacs.d/blob/master/lisp/lunaryorn-elisp.el#L51
@@ -591,7 +594,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (flymake-mode)
   (display-fill-column-indicator-mode)
   (highlight-numbers-mode)
-  (ligature-mode))
+  (ligature-mode)
+
+  ;; NOTE: This is repeated in `mb-hooks--eglot-managed-mode'.
+  (mb-f-set-capfs #'cape-keyword
+                  #'tags-completion-at-point-function))
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
