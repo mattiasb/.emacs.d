@@ -238,7 +238,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-operator-add-rules-for-mode 'sh-mode
                                         (cons "=" nil))
   (electric-operator-add-rules-for-mode 'yaml-mode
-                                        (cons ":" ": ")))
+                                        (cons ":" ": "))
+  (electric-operator-add-rules-for-mode 'yaml-mode
+                                        (cons "-" " - ")))
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
