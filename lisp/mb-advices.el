@@ -99,13 +99,10 @@
                           (mb-f-reset-terminal-cursors))))
 
   (advice-add #'ask-user-about-lock
-              :around (lambda (file opponent)
-                        (let ((efile (expand-file-name file))
-                              (erecentf (format "%s/recentf"
-                                                user-emacs-directory)))
-                          (if (eq efile erecentf)
-                              t
-                            (ask-user-about-lock file opponent)))))
+              :around (lambda (func file opponent)
+                        (if (eq recentf-save-file (expand-file-name file))
+                            t
+                          (funcall func file opponent))))
 
   (advice-add #'kill-line
               :before (lambda (&optional _)
