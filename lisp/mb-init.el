@@ -76,6 +76,7 @@
   (recentf-mode)
   (abbrev-mode)
   (electric-layout-mode)
+  (electric-pair-mode)
   (projectile-mode)
   (auto-dim-other-buffers-mode)
   (yas-global-mode)
