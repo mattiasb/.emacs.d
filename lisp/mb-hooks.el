@@ -571,8 +571,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (unless (derived-mode-p 'lisp-mode
                           'emacs-lisp-mode
                           'dockerfile-mode)
-    ;; https://github.com/davidshepherd7/electric-operator/pull/71
-    (require 'electric-operator)
     (electric-operator-mode))
 
   (unless (derived-mode-p 'lisp-mode
