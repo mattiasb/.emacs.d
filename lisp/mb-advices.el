@@ -33,6 +33,10 @@
                               nil
                               1)))
 
+(defun mb-advices-drop-args (func)
+  "Wrap FUNC such that it accepts but drops all ARGS."
+  (lambda (&rest _args) (funcall func)))
+
 (defun mb-advices-switch-to (buffer)
   "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
   (lambda (&rest _args) (select-window (get-buffer-window buffer))))
@@ -50,7 +54,8 @@
 (defun mb-advices-activate ()
   "Activate my advices."
 
-  (mb-advices-after '(backward-page forward-page) #'recenter)
+  (mb-advices-after '(backward-page forward-page)
+                    (mb-advices-drop-args #'recenter))
 
   (advice-add #'flycheck-list-errors
               :after (mb-advices-switch-to "*Flycheck errors*"))
