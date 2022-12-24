@@ -121,7 +121,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Conf mode
 (with-eval-after-load 'conf-mode
-  (electric-indent-local-mode))
+  (electric-indent-local-mode)
+  (electric-operator-mode))
 
 ;; Cython
 (with-eval-after-load 'cython-mode
@@ -719,6 +720,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (display-fill-column-indicator-mode)
   (electric-indent-local-mode)
+  (electric-operator-mode)
   ;;;; Disable flyspell for now
   ;;
   ;; (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
