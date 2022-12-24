@@ -83,9 +83,7 @@
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(eglot-autoshutdown t)
  '(eldoc-idle-delay 3600)
- '(electric-indent-mode nil)
  '(electric-operator-c-pointer-type-style 'type)
- '(electric-pair-mode t)
  '(electric-pair-pairs
    '((34 . 34)
      (8216 . 8217)
