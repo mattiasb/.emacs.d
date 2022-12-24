@@ -119,6 +119,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'compile
   (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter))
 
+;; Conf mode
+(with-eval-after-load 'conf-mode
+  (electric-indent-local-mode))
+
 ;; Cython
 (with-eval-after-load 'cython-mode
   (require 'flycheck-cython))
@@ -535,8 +539,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Prog
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
+  (require 'aggressive-indent)
 
-  (defvar aggressive-indent-excluded-modes)
   (setq-local fill-column 80)
   (unless (derived-mode-p 'makefile-mode)
     (setq-local indent-tabs-mode nil))
@@ -553,11 +557,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (mb-f-add-electric-pairs '((?' . ?')
                                (?< . ?>))))
 
-  ;; This logic is taken from aggressive-indent-mode
-  (require 'aggressive-indent)
-  (unless (or (cl-member-if #'derived-mode-p aggressive-indent-excluded-modes)
-              (equal indent-line-function #'indent-relative)
-              buffer-read-only)
+  (if (seq-some #'derived-mode-p aggressive-indent-excluded-modes)
+      (electric-indent-local-mode)
     (aggressive-indent-mode))
   (ws-butler-mode)
   (flymake-mode)
@@ -641,7 +642,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (pipenv-mode)
   (eglot-ensure)
 
-  (aggressive-indent-mode -1)
   (setq-local electric-layout-rules '((?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'python
@@ -700,7 +700,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (setq-local indent-tabs-mode nil)
 
   (display-fill-column-indicator-mode)
-
+  (electric-indent-local-mode)
   ;;;; Disable flyspell for now
   ;;
   ;; (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
