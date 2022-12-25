@@ -46,12 +46,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."
-  ;; TODO: Wrap with `cape-company-to-capf'
-  ;; (defvar company-backends)
-  ;; (setq-local company-backends
-  ;;             (when (and (boundp 'ansible) ansible)
-  ;;               '(company-ansible)))
-  ;; (company-mode)
+  (if ansible
+      (mb-f-set-capfs (cape-company-to-capf #'company-ansible))
+    ;; NOTE: This is repeated in the `yaml-mode' hook.
+    (mb-f-set-capfs #'cape-dabbrev))
+
   (mb-f-add-electric-pairs '((?\( . ?\))))
   (ansible-doc-mode)
   (when (ansible-vault--is-encrypted-vault-file)
@@ -819,7 +818,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Systemd
 (defun mb-hooks--systemd-mode ()
   "My `systemd' mode hook."
-  (mb-f-set-capfs 'mb-capf-conf-systemd #'systemd-complete-at-point))
+  (mb-f-set-capfs #'systemd-complete-at-point))
 
 (with-eval-after-load 'systemd
   (add-hook 'systemd-mode-hook #'mb-hooks--systemd-mode))
@@ -879,6 +878,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
   (setq-local fill-column 80)
+  ;; NOTE: This is repeated in the `yaml-mode' hook.
+  (mb-f-set-capfs #'cape-dabbrev)
   (display-fill-column-indicator-mode)
   (flymake-mode)
   (flymake-yamllint-setup)
