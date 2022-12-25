@@ -97,8 +97,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'corfu
   (mb-f-define-keys corfu-map
-                    '(( "\C-l"    . corfu-info-location)
-                      ( "\C-h"    . corfu-info-documentation)))
+                    '(( "C-<return>" . corfu-info-location)
+                      ( "C-h"        . corfu-info-documentation)))
 
   (add-hook 'corfu-mode-hook #'mb-hooks--corfu-mode))
 
