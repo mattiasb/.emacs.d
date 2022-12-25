@@ -825,6 +825,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'systemd
   (add-hook 'systemd-mode-hook #'mb-hooks--systemd-mode))
 
+;; Tempel
+(defun mb-hooks--tempel-mode ()
+  "My `tempel' mode hook.")
+
+(with-eval-after-load 'tempel
+  (mb-f-define-keys tempel-map
+                    '(("<tab>"     . tempel-next)
+                      ("<backtab>" . tempel-previous)
+                      ("C-g"       . tempel-abort)))
+
+  (add-hook 'tempel-mode-hook #'mb-hooks--tempel-mode))
+
 ;; Vala
 (defun mb-hooks--vala-mode ()
   "My `vala' mode hook."
