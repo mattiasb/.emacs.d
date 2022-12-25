@@ -29,3 +29,9 @@ prog-mode
 (todo  (mb-f-comment-start) "TODO: ")
 (bug   (mb-f-comment-start) "BUG: ")
 (hack  (mb-f-comment-start) "HACK: ")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+sh-mode
+
+(! "#!/bin/bash")
+(function "function " (p "name") " {" n> r> n "}")
