@@ -816,6 +816,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'sql
   (add-hook 'sql-mode-hook #'sqlup-mode))
 
+;; Systemd
+(defun mb-hooks--systemd-mode ()
+  "My `systemd' mode hook."
+  (mb-f-set-capfs 'mb-capf-conf-systemd #'systemd-complete-at-point))
+
+(with-eval-after-load 'systemd
+  (add-hook 'systemd-mode-hook #'mb-hooks--systemd-mode))
+
 ;; Vala
 (defun mb-hooks--vala-mode ()
   "My `vala' mode hook."
