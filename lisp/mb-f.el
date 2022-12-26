@@ -325,12 +325,19 @@ that checks that the hash-bang seems to involve a path."
   (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
   (setq-local electric-pair-text-pairs electric-pair-pairs))
 
+(defun mb-f-super-capf (&rest capfs)
+  (require 'cape)
+  (let ((name (intern (format "mb-capf:%s"
+                              (mapconcat #'symbol-name capfs "+")))))
+    (defalias name (apply #'cape-super-capf (cons #'tempel-complete
+                                                  capfs)))
+    name))
+
 (defun mb-f-set-capfs (&rest capfs)
   "Create a completion-at-point-functions."
   (require 'cape)
 
-  (let ((name (intern (format "mb-capf-%s" major-mode))))
-    (defalias name (apply #'cape-super-capf (cons #'tempel-complete capfs)))
+  (let ((name (apply #'mb-f-super-capf (cons #'tempel-complete capfs))))
     (setq-local completion-at-point-functions (list name #'cape-file))))
 
 (defun mb-f-set-dark-wm-theme (frame)
