@@ -63,6 +63,8 @@
  '(corfu-doc-transition nil)
  '(corfu-echo-documentation nil)
  '(corfu-min-width 25)
+ '(corfu-popupinfo-max-height 30)
+ '(corfu-popupinfo-mode t)
  '(corfu-scroll-margin 2)
  '(custom-buffer-done-kill t)
  '(custom-file (concat user-emacs-directory "lisp/mb-custom.el"))
@@ -381,6 +383,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
+ '(corfu-popupinfo ((t (:inherit corfu-default))))
  '(diff-refine-added ((t (:background "#416d41" :foreground "#cceecc"))))
  '(diff-refine-removed ((t (:background "#664040" :foreground "#eecccc"))))
  '(fill-column-indicator ((t (:foreground "gray21"))))
