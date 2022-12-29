@@ -20,12 +20,12 @@
 
 (cd "~")
 
-;;; Settings
-(load (concat user-emacs-directory "custom.el"))
-(add-to-list 'load-path (concat user-emacs-directory "lisp/"))
-
 ;;; Early init code
+(eval-and-compile
+  (add-to-list 'load-path (concat user-emacs-directory "lisp/")))
 
+(require 'mb-custom)
+(require 'mb-loadpaths)
 (require 'mb-f)
 (mb-f-make-cache-dirs)
 (mb-f-package-install-all)

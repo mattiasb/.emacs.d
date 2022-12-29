@@ -18,20 +18,8 @@
 
 ;;; Code:
 
+(require 'mb-loadpaths)
 (require 'mb-f)
-(require 'projectile)
-
-(declare-function markdown-footnote-goto-text         "markdown-mode.el")
-(declare-function markdown-footnote-marker-positions  "markdown-mode.el")
-(declare-function markdown-footnote-return            "markdown-mode.el")
-(declare-function markdown-footnote-text-positions    "markdown-mode.el")
-(declare-function markdown-reference-goto-definition  "markdown-mode.el")
-(declare-function markdown-reference-goto-link        "markdown-mode.el")
-(declare-function markdown-regex-link-reference       "markdown-mode.el")
-(declare-function markdown-regex-reference-definition "markdown-mode.el")
-
-(declare-function iedit-restrict-function             "iedit.el")
-(declare-function flyspell-overlay-p                  "flyspell.el")
 
 ;;;###autoload
 (defun mb-cmd-byte-compile ()
@@ -101,6 +89,7 @@ With a prefix argument P, isearch for the symbol at point."
 (defun mb-cmd-restclient ()
   "Create a `restclient-mode' buffer."
   (interactive)
+  (mb-f-req 'restclient)
   (switch-to-buffer (get-buffer-create "*REST*"))
   (restclient-mode)
   (insert "# -*- restclient -*-\n\n"))
@@ -252,7 +241,9 @@ With a prefix ARG always prompt for command to use."
   "Regex search for SEARCH-TERM with ripgrep."
   (interactive
    (list (projectile--read-search-string-with-default
-          "Ripgrep regexp search for")))
+          (format "Ripgrep %ssearch for" (if current-prefix-arg "regexp " "")))
+         '(4)))
+  (mb-f-req 'projectile)
   (apply #'projectile-ripgrep search-term '(4)))
 
 ;;;###autoload
@@ -292,12 +283,11 @@ With a prefix ARG always prompt for command to use."
     (ansi-term (getenv "SHELL")
                (format "*ansi-term [%s]*" (projectile-project-name)))))
 
-(defvar flyspell-old-buffer-error)
-(defvar flyspell-old-pos-error)
 ;;;###autoload
 (defun mb-cmd-flyspell-goto-previous-error ()
   "Go to ARG previous spelling error."
   (interactive)
+  (mb-f-req 'flyspell)
   (let ((arg 1))
     (while (not (= 0 arg))
       (let ((pos (point))
@@ -337,6 +327,7 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-iedit-in-defun ()
   "`iedit' restricted to current `defun'."
   (interactive)
+  (mb-f-req 'iedit)
   (progn (iedit-mode)
          (iedit-restrict-function)))
 
@@ -392,13 +383,7 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-elisp-fill-function-arguments ()
   "Wrap `fill-function-arguments-dwim' with ELisp special casing."
   (interactive)
-  (require 'fill-function-arguments)
-
-  (defvar fill-function-arguments-first-argument-same-line)
-  (defvar fill-function-arguments-second-argument-same-line)
-  (defvar fill-function-arguments-last-argument-same-line)
-  (defvar fill-function-arguments-argument-separator)
-
+  (mb-f-req 'fill-function-arguments)
   (let* ((tap-defun (if (function-called-at-point) t nil))
          (fill-function-arguments-second-argument-same-line tap-defun)
          (fill-function-arguments-first-argument-same-line t)
@@ -410,7 +395,7 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-git-copy-url ()
   "Open current line in a browser if origin is at a known forge."
   (interactive)
-  (defvar git-link-open-in-browser)
+  (mb-f-req 'git-link)
   (let* ((git-link-open-in-browser nil))
     (call-interactively #'git-link)))
 
@@ -425,7 +410,6 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-git-link-browse ()
   "Open current line in a browser if origin is at a known forge."
   (interactive)
-  (defvar git-link-open-in-browser)
   (let* ((git-link-open-in-browser t))
     (call-interactively #'git-link)))
 
@@ -436,11 +420,8 @@ With a prefix ARG always prompt for command to use."
 Jumps between reference links and definitions; between footnote
 markers and footnote text."
   (interactive)
-  (require 'markdown-mode)
+  (mb-f-req 'markdown-mode)
   (require 'xref)
-
-  (defvar markdown-regex-link-reference)
-  (defvar markdown-regex-reference-definition)
 
   (cond
    ;; Footnote definition
@@ -485,6 +466,7 @@ markers and footnote text."
          (read-string "Repository: ")))
   (let ((compilation-buffer-name-function (lambda (_) "*git-get*"))
         (compilation-save-buffers-predicate (lambda () nil)))
+    (ignore compilation-save-buffers-predicate)
     (add-hook 'compilation-finish-functions #'mb-cmd--git-get-post-hook)
     (compile (format "git get %s:%s" forge repository))
     (select-window (get-buffer-window "*git-get*"))))

@@ -18,17 +18,15 @@
 
 ;;; Code:
 
-(require 'cl-lib)
-(require 'subr-x)
+(require 'mb-loadpaths)
 (require 'package)
 
-(declare-function projectile-project-root   "projectile.el")
-(declare-function projectile-project-name   "projectile.el")
-(declare-function cape-super-capf           "cape.el")
-(declare-function cape-keyword              "cape.el")
-(declare-function cape-file                 "cape.el")
-(declare-function eglot-completion-at-point "eglot.el")
-(declare-function tempel-complete           "tempel.el")
+(eval-when-compile
+  (require 'cl-lib)
+  (require 'subr-x))
+
+(defmacro mb-f-req (s)
+  `(eval-and-compile (require ,s)))
 
 (defun mb-f-shorten-minor-modes (modes)
   "Shorten the displayed name for MODES in the modeline."
@@ -39,6 +37,7 @@
 
 (defun mb-f-shorten-minor-mode (mode line)
   "Replace the displayed name for MODE by LINE."
+  (mb-f-req 'diminish)
   (let ((hook (intern (concat (symbol-name mode) "-hook"))))
     (add-hook hook (lambda () (diminish mode line)))))
 
@@ -248,6 +247,7 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   "Rename buffers to include relative path to project.
 
 Usage: (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name)"
+  (mb-f-req 'projectile)
   (ignore-errors
     (rename-buffer
      (file-relative-name buffer-file-name (projectile-project-root)))))
@@ -320,13 +320,12 @@ that checks that the hash-bang seems to involve a path."
 
 (defun mb-f-add-electric-pairs (pairs)
   "Add Electric Pair Mode PAIRS for current buffer."
-  (defvar electric-pair-pairs)
-  (defvar electric-pair-text-pairs)
   (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
   (setq-local electric-pair-text-pairs electric-pair-pairs))
 
 (defun mb-f-super-capf (&rest capfs)
-  (require 'cape)
+  (mb-f-req 'cape)
+  (mb-f-req 'tempel)
   (let ((name (intern (format "mb-capf:%s"
                               (mapconcat #'symbol-name capfs "+")))))
     (defalias name (apply #'cape-super-capf (cons #'tempel-complete
@@ -337,7 +336,7 @@ that checks that the hash-bang seems to involve a path."
   "Create a completion-at-point-functions."
   (require 'cape)
 
-  (let ((name (apply #'mb-f-super-capf (cons #'tempel-complete capfs))))
+  (let ((name (apply #'mb-f-super-capf (cons #'tempel-expand capfs))))
     (setq-local completion-at-point-functions (list name #'cape-file))))
 
 (defun mb-f-set-dark-wm-theme (frame)
@@ -392,13 +391,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-f-package-remote-packages ()
   "A list of all M/ELPA packages."
-  (require 'package)
   (seq-difference package-selected-packages
                   (mb-f-package-local-packages)))
 
 (defun mb-f-package-install-all-remote ()
   "Install all M/ELPA packages."
-  (require 'package)
   (unless (seq-every-p #'package-installed-p
                        (mb-f-package-remote-packages))
     (message "Installing M/ELPA packages...")
@@ -410,7 +407,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-f-package-install-all-local ()
   "Install all local packages."
-  (require 'package)
   (let ((not-installed (mb-f-package-local-not-installed-packages)))
     (when (> (length not-installed) 0)
       (message "Installing local packages: %S" not-installed)

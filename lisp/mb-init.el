@@ -25,6 +25,7 @@
 
 (defun mb-init--terminal-workarounds ()
   "Activate terminal workarounds."
+  (mb-f-req 'tmux-keys)
   (if (getenv "TMUX")
       (tmux-keys))
 
@@ -51,6 +52,25 @@
   (require 'lastpass)
   ;; Needed for license snippet
   (require 'spdx)
+  (mb-f-req 'su)
+  (mb-f-req 'git-gutter)
+  (mb-f-req 'emojify)
+  (mb-f-req 'corfu)
+  (mb-f-req 'flimenu)
+  (mb-f-req 'fancy-narrow)
+  (mb-f-req 'doom-modeline)
+  (mb-f-req 'history)
+  (mb-f-req 'vertico)
+  (mb-f-req 'all-the-icons-completion)
+  (mb-f-req 'which-key)
+  (mb-f-req 'emojify)
+  (mb-f-req 'bury-successful-compilation)
+  (mb-f-req 'auto-compile)
+  (mb-f-req 'browse-kill-ring)
+  (mb-f-req 'easy-repeat)
+  (mb-f-req 'smart-region)
+  (mb-f-req 'projectile)
+  (mb-f-req 'auto-dim-other-buffers)
 
   (su-mode +1)
   (auto-fill-mode 1)

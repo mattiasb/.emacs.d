@@ -18,6 +18,7 @@
 
 ;;; Code:
 
+(require 'mb-loadpaths)
 (require 'mb-f)
 (require 'mb-cmd)
 
@@ -46,7 +47,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."
-  (if ansible
+  (mb-f-req 'ansible)
+  (mb-f-req 'ansible-doc)
+  (mb-f-req 'ansible-vault)
+  (mb-f-req 'cape)
+  (mb-f-req 'company-ansible)
+  (if (bound-and-true-p 'ansible)
       (mb-f-set-capfs (cape-company-to-capf #'company-ansible))
     ;; NOTE: This is repeated in the `yaml-mode' hook.
     (mb-f-set-capfs #'cape-dabbrev))
@@ -62,7 +68,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
-  (defvar browse-kill-ring-mode-map)
+  (mb-f-req 'browse-kill-ring)
   (mb-f-define-keys browse-kill-ring-mode-map
                     '(( "<down>"    . browse-kill-ring-forward)
                       ( "<tab>"     . browse-kill-ring-forward)
@@ -71,9 +77,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-g"       . browse-kill-ring-quit))))
 
 ;; C common
-(defvar c-mode-base-map)
 (defun mb-hooks--c-common ()
   "My `c-mode' mode hook."
+  (mb-f-req 'cc-mode)
   (unless (keymap-parent c-mode-base-map)
     (set-keymap-parent c-mode-base-map prog-mode-map)))
 
@@ -93,6 +99,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-hooks--corfu-mode ()
   "My `corfu' mode hook."
+  (mb-f-req 'corfu-popupinfo)
   (corfu-popupinfo-mode))
 
 (with-eval-after-load 'corfu
@@ -110,6 +117,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Conf mode
 (with-eval-after-load 'conf-mode
+  (mb-f-req 'electric-operator)
   (electric-indent-local-mode)
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-dabbrev))
@@ -120,7 +128,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Daemons
 (with-eval-after-load 'daemons
-  (defvar daemons-mode-map)
+  (mb-f-req 'daemons)
   (mb-f-define-keys daemons-mode-map
                     '(("a" . mwim-beginning-of-code-or-line)
                       ("e" . mwim-end-of-code-or-line)
@@ -145,8 +153,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Dired
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
-  (declare-function dired-omit-mode "dired-x.el")
-  (declare-function dired-hide-details-mode "dired.el")
+  (mb-f-req 'dired-x)
+  (mb-f-req 'dired-hide-dotfiles)
+  (mb-f-req 'all-the-icons-dired)
   (auto-revert-mode)
   (hl-line-mode)
   (all-the-icons-dired-mode)
@@ -158,7 +167,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'dired-x)
   (require 'tramp)
 
-  (defvar dired-mode-map)
   (mb-f-define-keys dired-mode-map
                     '(( "W" . wdired-change-to-wdired-mode)
                       ( "F" . find-name-dired)
@@ -172,11 +180,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
 (with-eval-after-load 'dired-sidebar
+  (mb-f-req 'hide-mode-line)
   (add-hook 'dired-sidebar-mode-hook #'hide-mode-line-mode))
 
 ;; Eglot
 (defun mb-hooks--eglot-managed-mode ()
   "My `eglot' mode hook-"
+  (mb-f-req 'eglot)
+  (mb-f-req 'cape)
+  (mb-f-req 'cape-keyword)
   (if (eglot-managed-p)
       (mb-f-set-capfs #'cape-keyword
                       #'eglot-completion-at-point)
@@ -185,9 +197,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     #'tags-completion-at-point-function)))
 
 (with-eval-after-load 'eglot
-  (defvar eglot-mode-map)
-  (defvar eglot-server-programs)
-
   (add-to-list 'eglot-server-programs
                '(python-mode . ("pyright-langserver" "--stdio")))
   (mb-f-define-keys eglot-mode-map
@@ -214,8 +223,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                  '(?: . mb-f-python-electric-newline))))
 
 (with-eval-after-load 'electric-layout
-  (defvar electric-layout-mode-map)
-
   (add-hook 'electric-layout-mode-hook #'mb-hooks--electric-layout-mode))
 
 ;; Electric operator
@@ -279,6 +286,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(("M-q"     . mb-cmd-elisp-fill-function-arguments))))
 
 (with-eval-after-load 'elisp-mode
+  (mb-f-req 'lisp-extra-font-lock)
   (mb-f-define-keys emacs-lisp-mode-map
                     '(("C-z d" . mb-cmd-describe-symbol)))
 
@@ -294,12 +302,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Flymake
 (with-eval-after-load 'flymake
+  (mb-f-req 'flymake-diagnostic-at-point)
   (require 'flymake-diagnostic-at-point)
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
 ;; Flyspell
 (with-eval-after-load 'flyspell
-  (defvar flyspell-mode-map)
+  (mb-f-req 'flyspell)
   (mb-f-define-keys flyspell-mode-map
                     '(("C-," . mb-cmd-flyspell-goto-previous-error)
                       ("C-." . flyspell-goto-next-error)
@@ -313,6 +322,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Git Gutter
 (with-eval-after-load 'git-gutter
+  (mb-f-req 'git-gutter)
   (run-at-time 0 5 #'git-gutter:update-all-windows))
 
 ;; Go
@@ -329,8 +339,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (eglot-format-buffer))
 
 (with-eval-after-load 'go-mode
-  (defvar go-mode-map)
-
+  (mb-f-req 'go-mode)
   (eglot-ensure)
   (mb-f-define-keys go-mode-map
                     '(( "C-z i a"    . go-import-add)
@@ -343,6 +352,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
   "My `haskell' mode hook."
+  (mb-f-req 'haskell-indentation)
   (haskell-indentation-mode))
 
 (add-hook 'haskell-mode-hook #'mb-hooks--haskell-mode)
@@ -352,7 +362,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `help' mode hook.")
 
 (with-eval-after-load 'help-mode
-  (defvar help-mode-map)
   (mb-f-define-keys help-mode-map
                     '(( "M-<left>"  . help-go-back)
                       ( "M-<right>" . help-go-forward)))
@@ -373,9 +382,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; IBuffer
 (defun mb-hooks--ibuffer ()
   "My `ibuffer' mode hook."
-  (ibuffer-projectile-set-filter-groups)
+  (mb-f-req 'ibuffer-projectile)
+  (mb-f-req 'all-the-icons-ibuffer)
+  (mb-f-req 'all-the-icons-ibuffer)
 
-  (defvar ibuffer-sorting-mode)
+  (ibuffer-projectile-set-filter-groups)
+  (all-the-icons-ibuffer-mode)
   (unless (eq ibuffer-sorting-mode 'alphabetic)
     (ibuffer-do-sort-by-alphabetic)))
 
@@ -384,7 +396,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Iedit
 (with-eval-after-load 'iedit
-  (defvar iedit-mode-keymap)
+  (mb-f-req 'iedit)
   (mb-f-define-keys iedit-mode-keymap
                     '(("C-g"      . iedit-mode)
                       ("<return>" . iedit-mode)))
@@ -396,6 +408,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `Info' mode hook.")
 
 (with-eval-after-load 'info
+  (mb-f-req 'niceify-info)
+  (mb-f-req 'info)
   (mb-f-define-keys Info-mode-map
                     '(( "M-<left>"  . Info-history-back)
                       ( "M-<right>" . Info-history-forward)
@@ -414,9 +428,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; JS2
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."
-  (declare-function js2r-rename-var "js2-refactor.el")
-
-  (defvar flimenu-imenu-separator)
+  (mb-f-req 'js2-imenu-extras)
   (setq-local flimenu-imenu-separator ".")
   (js2-imenu-extras-mode))
 
@@ -426,6 +438,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; JSON
 (defun mb-hooks--json-mode ()
   "My `json' mode hook."
+  (mb-f-req 'highlight-numbers)
   (highlight-numbers-mode -1))
 
 (with-eval-after-load 'json-mode
@@ -436,6 +449,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `ligature' mode hook.")
 
 (with-eval-after-load 'ligature
+  (mb-f-req 'ligature)
   (ligature-set-ligatures 'prog-mode
                           '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||="
                             "||>" ":::" "::=" "=:=" "===" "==>" "=!=" "=>>"
@@ -463,6 +477,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Lastpass
 (with-eval-after-load 'lastpass
+  (mb-f-req 'lastpass)
   (lastpass-auth-source-enable)
   (add-hook 'auth-source-backend-parser-functions
             #'lastpass-auth-source-backend-parse))
@@ -474,10 +489,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (display-fill-column-indicator-mode))
 
 (with-eval-after-load 'magit
-  (require 'forge)
-  (defvar ghub-insecure-hosts)
-  (defvar forge-alist)
-  (declare-function git-gutter:update-all-windows "git-gutter.el")
+  (mb-f-req 'magit-todos)
+  (mb-f-req 'forge)
+  (mb-f-req 'ghub)
 
   ;; Support insecure forges
   (defclass forge-gitlab-http-repository (forge-gitlab-repository)
@@ -495,6 +509,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
      (pullreq-refspec           :initform "+refs/merge-requests/*/head:refs/pullreqs/*")))
 
   (add-to-list 'ghub-insecure-hosts "git.smarteye.se/api/v4")
+
 
   (transient-define-suffix magit-submodule-populate-all ()
     "Update *all* submodules"
@@ -520,7 +535,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (magit-todos-mode)
 
-  (defvar magit-blame-mode-map)
   (mb-f-define-keys magit-blame-mode-map
                     '(( "C-z t b" .  magit-blame-quit)))
 
@@ -531,13 +545,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Markdown
 (defun mb-hooks--markdown-mode ()
   "My `markdown' mode hook."
+  (mb-f-req 'pandoc-mode)
   (auto-fill-mode)
   (pandoc-mode)
   (pandoc-load-default-settings))
 
 (with-eval-after-load 'markdown-mode
-  (defvar markdown-mode-map)
-
   (mb-f-define-keys markdown-mode-map
                     '(( "C-<return>" . mb-cmd-markdown-jump)
                       ( "C-c p"      . pandoc-main-hydra/body)
@@ -548,6 +561,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; MTG deck mode
 (with-eval-after-load 'mtg-deck-mode
+  (mb-f-req 'mtg-deck-mode)
   (mb-f-define-keys mtg-deck-mode-map
                     '(( "C-<return>" . mtg-deck-show-card-at-point)
                       ( "C-c C-s"    . mtg-deck-sideboard-toggle))))
@@ -568,7 +582,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Prog
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
-  (require 'aggressive-indent)
+  (mb-f-req 'aggressive-indent)
+  (mb-f-req 'ws-butler)
 
   (setq-local fill-column 80)
   (unless (derived-mode-p 'makefile-mode)
@@ -609,18 +624,16 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Projectile
 (with-eval-after-load 'projectile
-  (defvar projectile-known-projects)
-  (defvar projectile-mode-line)
-
+  (mb-f-req 'projectile)
   (unless projectile-known-projects
     (mb-cmd-projectile-index-projects))
 
-  (setq projectile-mode-line
-        '(:eval (if (or (file-remote-p default-directory)
-                        (string-match-p "/run/user/[0-9]+/gvfs/"
-                                        default-directory))
-                    " [?]"
-                  (format " [%s]" (projectile-project-name)))))
+  (defvar projectile-mode-line
+    '(:eval (if (or (file-remote-p default-directory)
+                    (string-match-p "/run/user/[0-9]+/gvfs/"
+                                    default-directory))
+                " [?]"
+              (format " [%s]" (projectile-project-name)))))
   (projectile-register-project-type 'win-batch
                                     '("build.bat")
                                     :compile "cmd.exe \"/c build\"")
@@ -665,7 +678,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Python
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
-
+  (mb-f-req 'pipenv)
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
 
   ;; (importmagic-mode)
@@ -673,12 +686,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (eglot-ensure))
 
 (with-eval-after-load 'python
-  (defvar python-mode-map)
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
 ;; RipGrep
 (with-eval-after-load 'ripgrep
-  (defvar ripgrep-search-mode-map)
+  (mb-f-req 'ripgrep)
   (mb-f-define-keys ripgrep-search-mode-map
                     '(( "W" . wgrep-change-to-wgrep-mode))))
 
@@ -694,8 +706,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'ruby-mode-hook #'mb-hooks--ruby-mode))
 
 ;; Table
-(with-eval-after-load "table"
-  (defvar table-command-remap-alist)
+(with-eval-after-load 'table
+  (mb-f-req 'table)
   (push '(delete-forward-char . *table--cell-delete-char)
         table-command-remap-alist))
 
@@ -706,11 +718,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-hooks--term-exec ()
   "My `term' mode hook."
-  (set-buffer-process-coding-system 'utf-8-unix
-                                    'utf-8-unix))
+  (set-process-coding-system 'utf-8-unix
+                             'utf-8-unix))
 
 (with-eval-after-load 'term
-  (defvar term-raw-map)
+  (mb-f-req 'term)
   (mb-f-define-keys term-raw-map
                     '(( "M-x"       . execute-extended-command)
                       ( "C-y"       . mb-cmd-term-paste)
@@ -745,11 +757,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Todotxt
 (defun mb-hooks--todotxt-mode ()
   "My `todotxt' mode hook."
+  (mb-f-req 'todotxt)
   (todotxt-show-incomplete)
   (set-window-dedicated-p (selected-window) t))
 
 (with-eval-after-load 'todotxt
-  (defvar todotxt-mode-map)
   (mb-f-define-keys todotxt-mode-map
                     '(("<return>" . todotxt-edit-item)
                       ("e"        . nil)
@@ -775,7 +787,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'electric-operator))
 
 (with-eval-after-load 'toml
-  (defvar toml-mode-map)
   (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
 
 ;; Smerge
@@ -790,6 +801,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Shell script
 (defun mb-hooks--sh-mode ()
   "My `sh' mode hook."
+  (mb-f-req 'sh-extra-font-lock)
   (eglot-ensure)
   (setq-local defun-prompt-regexp
               (concat "^\\("
@@ -798,11 +810,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       "function[ \t]+[[:alnum:]-_]+[ \t]*\\(([ \t]*)\\)?"
                       "\\)[ \t]*"))
   (sh-extra-font-lock-activate)
-
-  (defvar fill-function-arguments-first-argument-same-line)
-  (defvar fill-function-arguments-second-argument-same-line)
-  (defvar fill-function-arguments-last-argument-same-line)
-  (defvar fill-function-arguments-argument-separator)
 
   (setq-local fill-function-arguments-second-argument-same-line nil)
   (setq-local fill-function-arguments-first-argument-same-line t)
@@ -815,11 +822,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Sql
 (with-eval-after-load 'sql
+  (mb-f-req 'sqlup-mode)
   (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;; Systemd
 (defun mb-hooks--systemd-mode ()
   "My `systemd' mode hook."
+  (mb-f-req 'systemd)
   (mb-f-set-capfs #'systemd-complete-at-point))
 
 (with-eval-after-load 'systemd
@@ -830,6 +839,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `tempel' mode hook.")
 
 (with-eval-after-load 'tempel
+  (mb-f-req 'tempel)
   (mb-f-define-keys tempel-map
                     '(("<tab>"     . tempel-next)
                       ("<backtab>" . tempel-previous)
@@ -853,10 +863,22 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `vertico' mode hook.")
 
 (with-eval-after-load 'vertico
+  (mb-f-req 'vertico)
+  (mb-f-req 'vertico-directory)
   (mb-f-define-keys vertico-map
                     '(("<return>"    . vertico-directory-enter)
                       ("<backspace>" . vertico-directory-delete-char)
                       ("M-<delete>"  . vertico-directory-delete-word)))
+
+  ;; See: https://github.com/minad/vertico/wiki#prefix-current-candidate-with-arrow
+  (advice-add #'vertico--format-candidate :around
+              (lambda (orig cand prefix suffix index start)
+                (setq cand (funcall orig cand prefix suffix index start))
+                (concat
+                 (if (and (boundp 'vertico--index) (= vertico--index index))
+                     (propertize " → " 'face 'vertico-current)
+                   "   ")
+                 cand)))
 
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
   (add-hook 'vertico-mode-hook #'mb-hooks--vertico-mode))
@@ -878,7 +900,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Woman
 (defun mb-hooks--woman-mode ()
   "My `woman' mode hook."
-  (defvar woman-mode-map)
+  (mb-f-req 'woman)
   (mb-f-remap-keys woman-mode-map
                    '(("a" . "s")
                      ("s" . "C-s")
@@ -891,6 +913,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Yaml
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
+  (mb-f-req 'flymake-yamllint)
   (setq-local fill-column 80)
   ;; NOTE: This is repeated in the `yaml-mode' hook.
   (mb-f-set-capfs #'cape-dabbrev)
@@ -901,7 +924,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     (ansible 1)))
 
 (with-eval-after-load 'yaml-mode
-  (defvar yaml-mode-map)
+  (mb-f-req 'yaml-mode)
   (mb-f-define-keys yaml-mode-map
                     '(( "C-z t A"     . ansible)))
 

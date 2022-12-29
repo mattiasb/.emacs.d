@@ -105,7 +105,8 @@
 
   (advice-add #'ask-user-about-lock
               :around (lambda (func file opponent)
-                        (if (eq recentf-save-file (expand-file-name file))
+                        (if (and (boundp 'recentf-save-file)
+                                 (eq recentf-save-file (expand-file-name file)))
                             t
                           (funcall func file opponent))))
 
@@ -114,18 +115,7 @@
                         (when (and (eolp) (not (bolp)))
                           (save-excursion
                             (forward-char 1)
-                            (just-one-space 1)))))
-
-  ;; See: https://github.com/minad/vertico/wiki#prefix-current-candidate-with-arrow
-  (advice-add #'vertico--format-candidate :around
-              (lambda (orig cand prefix suffix index _start)
-                (setq cand (funcall orig cand prefix suffix index _start))
-                (concat
-                 (if (= vertico--index index)
-                     (propertize " → " 'face 'vertico-current)
-                   "   ")
-                 cand))))
-
+                            (just-one-space 1))))))
 
 (provide 'mb-advices)
 ;;; mb-advices.el ends here
