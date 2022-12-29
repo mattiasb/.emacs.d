@@ -122,10 +122,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-dabbrev))
 
-;; Cython
-(with-eval-after-load 'cython-mode
-  (require 'flycheck-cython))
-
 ;; Daemons
 (with-eval-after-load 'daemons
   (mb-f-req 'daemons)
@@ -849,12 +845,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Vala
 (defun mb-hooks--vala-mode ()
-  "My `vala' mode hook."
-  (defvar flycheck-checkers)
-  (add-to-list 'flycheck-checkers 'vala-valac))
+  "My `vala' mode hook.")
 
 (with-eval-after-load 'vala-mode
-  (require 'flycheck-vala)
   (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
   (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
 

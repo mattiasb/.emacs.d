@@ -21,7 +21,6 @@
 
 (require 'term)
 (require 'mb-cmd)
-(require 'flycheck)
 
 (defun mb-advices--git-link (func &rest args)
   "Support http for work by advicing FUNC w/ ARGS."
@@ -57,8 +56,6 @@
   (mb-advices-after '(backward-page forward-page)
                     (mb-advices-drop-args #'recenter))
 
-  (advice-add #'flycheck-list-errors
-              :after (mb-advices-switch-to "*Flycheck errors*"))
   (advice-add #'projectile-ripgrep
               :after (mb-advices-switch-to "*ripgrep-search*"))
   (advice-add #'display-local-help
