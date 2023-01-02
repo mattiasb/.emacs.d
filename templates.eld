@@ -101,13 +101,8 @@ emacs-lisp-mode
        n> "\"" p "\""
        n> r>)
 
-(provide "provide '"
-         (file-name-base (or (buffer-file-name) (buffer-name)))
-         ")"
-         n
-         ";;; "
-         (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
-         " ends here" n)
+(provide "provide '" (mb-f-buf-base) ")"
+         n ";;; " (mb-f-buf-name) " ends here" n)
 
 (add-hook "add-hook '" (p "mode" mode) "-hook"
           " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))

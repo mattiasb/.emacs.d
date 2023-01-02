@@ -459,6 +459,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
       (message "Template %s not found" (cadr elt))
       nil)))
 
+(defun mb-f-buf-base ()
+  "Get buffer or buffer filename base."
+  (file-name-base (or (buffer-file-name) (buffer-name))))
+
+(defun mb-f-buf-name ()
+  "Get buffer or buffer filename."
+  (file-name-nondirectory (or (buffer-file-name) (buffer-name))))
+
 (defun mb-f-kebab-to-human (str)
   "Convert STR from kebab-format to Human Readable Format."
   (mapconcat 'capitalize (split-string str "-") " "))
