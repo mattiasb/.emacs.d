@@ -1,4 +1,4 @@
-;;; mb-custom.el --- My custom settings
+;;; mb-custom.el --- My custom settings -*- lexical-binding: t; -*-
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Copyright 2013-2022, Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
@@ -65,7 +65,7 @@
  '(corfu-min-width 25)
  '(corfu-scroll-margin 2)
  '(custom-buffer-done-kill t)
- '(custom-file (concat user-emacs-directory "custom.el"))
+ '(custom-file (concat user-emacs-directory "lisp/mb-custom.el"))
  '(custom-safe-themes t)
  '(custom-unlispify-tag-names nil)
  '(default-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
