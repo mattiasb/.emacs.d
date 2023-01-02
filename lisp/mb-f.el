@@ -338,6 +338,12 @@ that checks that the hash-bang seems to involve a path."
     (defalias name (apply #'cape-super-capf capfs))
     name))
 
+(defun mb-f-company-to-capf (capf)
+  (mb-f-req 'cape)
+  (let ((name (intern (format "%s-capf" (symbol-name capf)))))
+    (defalias name (cape-company-to-capf capf))
+    name))
+
 (defun mb-f-set-capfs (&rest capfs)
   "Create a completion-at-point-functions."
   (require 'cape)

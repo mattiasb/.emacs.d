@@ -59,8 +59,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'ansible-vault)
   (mb-f-req 'cape)
   (mb-f-req 'company-ansible)
-  (if (bound-and-true-p 'ansible)
-      (mb-f-set-capfs (cape-company-to-capf #'company-ansible))
+  (if ansible
+      (mb-f-set-capfs (mb-f-company-to-capf #'company-ansible))
     ;; NOTE: This is repeated in the `yaml-mode' hook.
     (mb-f-set-capfs #'cape-dabbrev))
 
@@ -931,6 +931,5 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
-
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here
