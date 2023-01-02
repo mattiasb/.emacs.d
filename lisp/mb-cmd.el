@@ -496,7 +496,7 @@ markers and footnote text."
     (select-window (get-buffer-window buf-name))))
 
 ;;;###autoload
-(defun mb-f-visit-templates ()
+(defun mb-cmd-visit-templates ()
   "Visit tempel templates file."
   (interactive)
   (find-file (format "%s/templates.eld" user-emacs-directory)))
