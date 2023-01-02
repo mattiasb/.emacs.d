@@ -166,12 +166,9 @@
                       ( "<down>"   . table-heighten-cell)))
 
 (mb-f-define-keymap mb-keys-zoom-map
-                    '(( "z"        . fit-text-scale-max-font-size-fit-lines)
-                      ( "l"        . fit-text-scale-max-font-size-fit-line)
-                      ( "b"        . fit-text-scale-max-font-size-fit-buffer)
-                      ( "+"        . text-scale-adjust)
-                      ( "-"        . text-scale-adjust)
-                      ( "0"        . text-scale-adjust)))
+                    '(( "+"        . default-text-scale-increase)
+                      ( "-"        . default-text-scale-decrease)
+                      ( "0"        . default-text-scale-reset)))
 
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
