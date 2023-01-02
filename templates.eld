@@ -63,29 +63,66 @@ sh-mode
 emacs-lisp-mode
 
 (autoload     ";;;###autoload")
-(lambda       "lambda (" p ")" n> r>)
-(defvar       "defvar " p "\n  \"" p "\"")
-(defvar-local "defvar-local " p "\n  \"" p "\"")
-(defconst     "defconst " p "\n  \"" p "\"")
-(defcustom    "defcustom " p "\n  \"" p "\"" n> ":type '" p)
-(defface      "defface " p " '((t :inherit " p "))\n  \"" p "\"")
-(defgroup     "defgroup " p " nil"
+
+(lambda       "lambda "       "(" p ")" n> r>)
+(cond         "cond"          n "(" q "))" >)
+(pcase        "pcase "        (p "scrutinee") n "(" q ")" >)
+(let          "let "          "((" p "))" n> r>)
+(let*         "let* "         "((" p "))" n> r>)
+(dotimes      "dotimes "      "(" p ")" n> r>)
+(dolist       "dolist "       "(" (s elem) " " elem "s)" n> r>)
+(if           "if "           "(" p ")" n> "(" p ")" n> "(" p ")")
+(defvar       "defvar "       (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
+(defvar-local "defvar-local " (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
+(defconst     "defconst "     (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
+(defalias     "defalias '"    p " '" p)
+
+(defcustom
+  "defcustom " (mb-f-elisp-get-namespace) "-" p
+  n> "\"" p "\""
+  n> ":type '" p)
+
+(defface
+  "defface " (mb-f-elisp-get-namespace) "-" p " '((t :inherit " p "))"
+  n> "\"" p "\"")
+
+(defgroup
+  "defgroup " (mb-f-elisp-get-namespace) "-" p " nil"
   n> "\"" p "\""
   n> ":group '" p
   n> ":prefix \"" p "-\"")
-(defmacro     "defmacro " p " (" p ")\n  \"" p "\"" n> r>)
-(defalias     "defalias '" p " '" p)
-(defun        "defun " p " (" p ")\n  \"" p "\"" n> r>)
-(cond         "cond" n "(" q "))" >)
-(pcase        "pcase " (p "scrutinee") n "(" q ")" >)
-(let          "let ((" p "))" n> r>)
-(let*         "let* ((" p "))" n> r>)
-(dotimes      "dotimes (" p ")" n> r>)
-(dolist       "dolist (" p ")" n> r>)
-(provide      "provide '"
-              (file-name-base (or (buffer-file-name) (buffer-name)))
-              ")"
-              n
-              ";;; "
-              (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
-              " ends here" n)
+
+(defmacro
+    "defmacro " (mb-f-elisp-get-namespace) "-" p " (" p ")"
+    n> "\"" p "\""
+    n> r>)
+
+(defun
+    "defun " (mb-f-elisp-get-namespace) "-" p " (" p ")"
+    n> "\"" p "\""
+    n> r>)
+
+(provide
+ "provide '"
+ (file-name-base (or (buffer-file-name) (buffer-name)))
+ ")"
+ n
+ ";;; "
+ (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
+ " ends here" n)
+
+(add-hook
+ "add-hook '" (p "mode" mode) "-hook"
+ " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))
+
+(configure-feature
+ &
+ n ";; " (mapconcat 'capitalize (split-string (or mode "") "-") " ")
+ n "(defun " (mb-f-elisp-get-namespace) "--" mode "-mode ()"
+ n> "\"My `" mode "' mode hook.\")"
+ n
+ n "(with-eval-after-load '" (s mode)
+ n> q
+ "(add-hook '" mode "-mode-hook #'"
+ (mb-f-elisp-get-namespace) "--" mode "-mode))"
+ o n)
