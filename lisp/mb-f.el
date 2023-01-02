@@ -211,6 +211,13 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   "Like `(other-window 1)' but skip all arguments."
   (other-window 1))
 
+(defun mb-f-doom-modeline-set-height ()
+  "Set doon-modeline height based on DPI."
+  (mb-f-req 'doom-modeline)
+  (if (seq-every-p #'mb-f-hidpi-p (mb-f-get-monitor-dpis))
+      (setq doom-modeline-height 65)
+    (setq doom-modeline-height 25)))
+
 (defun mb-f-reset-terminal-cursors ()
   "Reset the terminal cursor."
   (send-string-to-terminal "\033]12;white\007\e[1 q"))

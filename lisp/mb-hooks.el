@@ -32,7 +32,8 @@
 (defun mb-hooks--after-make-frame-functions-hook (frame &optional _)
   "My after-make-frame-functions hook."
   (mb-f-set-dark-wm-theme frame)
-  (select-frame-set-input-focus frame))
+  (select-frame-set-input-focus frame)
+  (mb-f-doom-modeline-set-height))
 
 (defun mb-hooks--window-setup-hook ()
   "My window-setup hook.
