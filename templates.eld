@@ -31,6 +31,22 @@ prog-mode
 (hack  (mb-f-comment-start) "HACK: ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+yaml-mode :when ansible
+
+(play "- name: " (p "name" name)
+      n> "hosts: " (p "hosts" hosts)
+      n> "tasks:"
+      n> q)
+(task >
+      "- name: \"" (p "name" name) "\""
+      n>
+      (p "module" module) ":"
+      n> q)
+
+(task "\"{{ " q " }}\"")
+(var "\"{{ " q " }}\"")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
 
 (! "#!/bin/bash")
