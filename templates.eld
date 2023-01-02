@@ -37,25 +37,26 @@ prog-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode :when ansible
 
-(play & n o
-      "- name: "  (p "name" play-name)
-      n "  hosts: " (p "hosts" play-hosts)
+(play & n
+      o "- name: "  (p "name")
+      n "  hosts: " (p "hosts")
       n "  tasks:"
       n
       (i task))
 
 (task & n o "    "
-      "- name: \"" (p "name" task-name) "\""
-      n> (p "module" task-module) ":"
-      n>  q n)
+      "- name: \"" (p "name") "\""
+      n> (p "module") ": " q
+      n)
 
-(var "\"{{ " p " }}\"")
+(var    "{{ " p " }}")
+(varq "\"{{ " p " }}\"")
 
-(with_items   "with_items: " (i var) q)
-(with_items>- "with_items: >-" n> "{{ " q " }}" q)
+(with_items   "with_items: "      (i varq) q)
+(with_items>- "with_items: >-" n> (i var)  q)
 
-(with_dict   "with_dict: " (i var) q)
-(with_dict>- "with_dict: >-" n> "{{ " q " }}" q)
+(with_dict    "with_dict: "       (i varq) q)
+(with_dict>-  "with_dict: >-"  n> (i var)  q)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
