@@ -35,3 +35,34 @@ sh-mode
 
 (! "#!/bin/bash")
 (function "function " (p "name") " {" n> r> n "}")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+emacs-lisp-mode
+
+(autoload     ";;;###autoload")
+(lambda       "lambda (" p ")" n> r>)
+(defvar       "defvar " p "\n  \"" p "\"")
+(defvar-local "defvar-local " p "\n  \"" p "\"")
+(defconst     "defconst " p "\n  \"" p "\"")
+(defcustom    "defcustom " p "\n  \"" p "\"" n> ":type '" p)
+(defface      "defface " p " '((t :inherit " p "))\n  \"" p "\"")
+(defgroup     "defgroup " p " nil"
+  n> "\"" p "\""
+  n> ":group '" p
+  n> ":prefix \"" p "-\"")
+(defmacro     "defmacro " p " (" p ")\n  \"" p "\"" n> r>)
+(defalias     "defalias '" p " '" p)
+(defun        "defun " p " (" p ")\n  \"" p "\"" n> r>)
+(cond         "cond" n "(" q "))" >)
+(pcase        "pcase " (p "scrutinee") n "(" q ")" >)
+(let          "let ((" p "))" n> r>)
+(let*         "let* ((" p "))" n> r>)
+(dotimes      "dotimes (" p ")" n> r>)
+(dolist       "dolist (" p ")" n> r>)
+(provide      "provide '"
+              (file-name-base (or (buffer-file-name) (buffer-name)))
+              ")"
+              n
+              ";;; "
+              (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
+              " ends here" n)
