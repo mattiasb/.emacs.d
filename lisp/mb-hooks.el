@@ -848,6 +848,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ("<backtab>" . tempel-previous)
                       ("C-g"       . tempel-abort)))
 
+  (add-to-list 'tempel-user-elements #'mb-f-tempel-include)
+
   (add-hook 'tempel-mode-hook #'mb-hooks--tempel-mode))
 
 ;; Vala

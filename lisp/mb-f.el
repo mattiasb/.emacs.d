@@ -438,5 +438,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     "url")))
     (dolist (dir dirs) (make-directory (format "%s/%s" cache-dir dir) t))))
 
+;; See: https://github.com/minad/tempel#defining-custom-elements
+(defun mb-f-tempel-include (elt)
+  "Include element for Tempel."
+  (when (eq (car-safe elt) 'i)
+    (if-let (template (alist-get (cadr elt) (tempel--templates)))
+        (cons 'l template)
+      (message "Template %s not found" (cadr elt))
+      nil)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
