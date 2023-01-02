@@ -328,15 +328,14 @@ that checks that the hash-bang seems to involve a path."
   (mb-f-req 'tempel)
   (let ((name (intern (format "mb-capf:%s"
                               (mapconcat #'symbol-name capfs "+")))))
-    (defalias name (apply #'cape-super-capf (cons #'tempel-complete
-                                                  capfs)))
+    (defalias name (apply #'cape-super-capf capfs))
     name))
 
 (defun mb-f-set-capfs (&rest capfs)
   "Create a completion-at-point-functions."
   (require 'cape)
 
-  (let ((name (apply #'mb-f-super-capf (cons #'tempel-expand capfs))))
+  (let ((name (apply #'mb-f-super-capf (cons #'tempel-complete capfs))))
     (setq-local completion-at-point-functions (list name #'cape-file))))
 
 (defun mb-f-set-dark-wm-theme (frame)
