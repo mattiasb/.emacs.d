@@ -121,9 +121,7 @@
 ;; My tempel keymap
 (mb-f-define-keymap mb-keys-tempel-map
                     '(( "i"      . tempel-complete)
-                      ( "c"      . mb-f-visit-templates)
-                      ( "e"      . mb-f-visit-templates)
-                      ( "t"      . auto-insert)))
+                      ( "e"      . mb-f-visit-templates)))
 
 (mb-f-define-keymap mb-keys-string-inflection-map
                     '(( "i"      . string-inflection-all-cycle)
