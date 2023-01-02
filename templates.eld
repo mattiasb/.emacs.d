@@ -77,7 +77,7 @@ emacs-lisp-mode
 (defvar       "defvar "       (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
 (defvar-local "defvar-local " (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
 (defconst     "defconst "     (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
-(defalias     "defalias '"    p " '" p)
+(defalias     "defalias '"    (mb-f-elisp-get-namespace) "-" p " '" p)
 
 (defcustom
   "defcustom " (mb-f-elisp-get-namespace) "-" p
