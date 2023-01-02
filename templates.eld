@@ -29,6 +29,7 @@ prog-mode
 (todo  (mb-f-comment-start) "TODO: ")
 (bug   (mb-f-comment-start) "BUG: ")
 (hack  (mb-f-comment-start) "HACK: ")
+(see   (mb-f-comment-start) "See: ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode :when ansible
