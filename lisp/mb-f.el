@@ -453,5 +453,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
       (message "Template %s not found" (cadr elt))
       nil)))
 
+(defun mb-f-kebab-to-human (str)
+  "Convert STR from kebab-format to Human Readable Format."
+  (mapconcat 'capitalize (split-string str "-") " "))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

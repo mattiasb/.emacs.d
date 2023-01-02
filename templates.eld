@@ -79,52 +79,45 @@ emacs-lisp-mode
 (defconst     "defconst "     (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
 (defalias     "defalias '"    (mb-f-elisp-get-namespace) "-" p " '" p)
 
-(defcustom
-  "defcustom " (mb-f-elisp-get-namespace) "-" p
+(defcustom "defcustom " (mb-f-elisp-get-namespace) "-" p
   n> "\"" p "\""
   n> ":type '" p)
 
-(defface
-  "defface " (mb-f-elisp-get-namespace) "-" p " '((t :inherit " p "))"
+(defface "defface " (mb-f-elisp-get-namespace) "-" p " '((t :inherit " p "))"
   n> "\"" p "\"")
 
-(defgroup
-  "defgroup " (mb-f-elisp-get-namespace) "-" p " nil"
+(defgroup "defgroup " (mb-f-elisp-get-namespace) "-" p " nil"
   n> "\"" p "\""
   n> ":group '" p
   n> ":prefix \"" p "-\"")
 
-(defmacro
-    "defmacro " (mb-f-elisp-get-namespace) "-" p " (" p ")"
-    n> "\"" p "\""
-    n> r>)
+(defmacro "defmacro " (mb-f-elisp-get-namespace) "-" p " (" p ")"
+          n> "\"" p "\""
+          n> r>)
 
-(defun
-    "defun " (mb-f-elisp-get-namespace) "-" p " (" p ")"
-    n> "\"" p "\""
-    n> r>)
+(defun "defun " (mb-f-elisp-get-namespace) "-" p " (" p ")"
+       n> "\"" p "\""
+       n> r>)
 
-(provide
- "provide '"
- (file-name-base (or (buffer-file-name) (buffer-name)))
- ")"
- n
- ";;; "
- (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
- " ends here" n)
+(provide "provide '"
+         (file-name-base (or (buffer-file-name) (buffer-name)))
+         ")"
+         n
+         ";;; "
+         (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
+         " ends here" n)
 
-(add-hook
- "add-hook '" (p "mode" mode) "-hook"
- " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))
+(add-hook "add-hook '" (p "mode" mode) "-hook"
+          " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))
 
-(configure-feature
- &
- n ";; " (mapconcat 'capitalize (split-string (or mode "") "-") " ")
- n "(defun " (mb-f-elisp-get-namespace) "--" mode "-mode ()"
- n> "\"My `" mode "' mode hook.\")"
- n
- n "(with-eval-after-load '" (s mode)
- n> q
- "(add-hook '" mode "-mode-hook #'"
- (mb-f-elisp-get-namespace) "--" mode "-mode))"
- o n)
+(configure-feature &
+                   n ";; " (mb-f-kebab-to-human mode)
+                   n "(defun " (mb-f-elisp-get-namespace) "--" mode "-mode ()"
+                   n> "\"My `" mode "' mode hook.\")"
+                   n
+                   n "(with-eval-after-load '" (p "feature" mode)
+                   n> q
+                   "(add-hook '" mode "-mode-hook #'"
+                   (mb-f-elisp-get-namespace) "--" mode "-mode))"
+                   o n)
+
