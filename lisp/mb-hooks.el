@@ -286,7 +286,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
         (rx bol ";;;" (not (any "#")) (* not-newline) "\n"
             (* (* blank) (opt ";" (* not-newline)) "\n")))
   (mb-f-define-keys emacs-lisp-mode-map
-                    '(("M-q"     . mb-cmd-elisp-fill-function-arguments))))
+                    '(("M-q"     . mb-cmd-lisp-fill-function-arguments))))
 
 (with-eval-after-load 'elisp-mode
   (mb-f-req 'lisp-extra-font-lock)
@@ -446,6 +446,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'json-mode
   (add-hook 'json-mode-hook #'mb-hooks--json-mode))
+
+;; Lisp Data
+(defun mb-hooks--lisp-data-mode ()
+  "My `lisp-data' mode hook."
+  (mb-f-define-keys lisp-data-mode-map
+                    '(("M-q"     . mb-cmd-lisp-fill-function-arguments))))
+
+(with-eval-after-load 'lisp-data-mode
+  (add-hook 'lisp-data-mode-hook #'mb-hooks--lisp-data-mode))
 
 ;; Ligature
 (defun mb-hooks--ligature-mode ()

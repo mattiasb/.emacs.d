@@ -380,8 +380,8 @@ With a prefix ARG always prompt for command to use."
   (call-process-shell-command "nautilus . &" nil 0))
 
 ;;;###autoload
-(defun mb-cmd-elisp-fill-function-arguments ()
-  "Wrap `fill-function-arguments-dwim' with ELisp special casing."
+(defun mb-cmd-lisp-fill-function-arguments ()
+  "Wrap `fill-function-arguments-dwim' with Lisp special casing."
   (interactive)
   (mb-f-req 'fill-function-arguments)
   (let* ((tap-defun (if (function-called-at-point) t nil))
