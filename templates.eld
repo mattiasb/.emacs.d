@@ -21,6 +21,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
            (mb-f-comment-end)
            n>)
 
+(calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode
