@@ -165,6 +165,12 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
       user-full-name
     "Full Name"))
 
+(defun mb-f-get-user-mailbox ()
+  "Get RFC5322 formatted mailbox of user."
+  (format "%s <%s>"
+          (mb-f-get-user-full-name)
+          (mb-f-get-user-mail-address)))
+
 (defun mb-f-create-non-existent-directory ()
   "Offer to create parent directory for current buffer if it doesn't exist."
   (let ((parent-directory (file-name-directory buffer-file-name)))

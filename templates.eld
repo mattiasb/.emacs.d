@@ -5,10 +5,13 @@
 fundamental-mode text-mode conf-mode ;; Available everywhere
 
 (today (format-time-string "%Y-%m-%d"))
-
 (date (completing-read "Date: "
                        (mapcar 'mb-f-get-date mb-f-time-formats)
                        nil t))
+
+(name    (mb-f-get-user-full-name))
+(mail    (mb-f-get-user-mail-address))
+(mailbox (mb-f-get-user-mailbox))
 
 (copyright (mb-f-comment-start)
            (spdx-license-format)
@@ -16,8 +19,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
            n>
            (mb-f-comment-start)
            "Copyright " (mb-f-get-year) ", "
-           (mb-f-get-user-full-name) " "
-           "<" (mb-f-get-user-mail-address) ">"
+           (mb-f-get-user-mailbox)
            (mb-f-comment-end)
            n>)
 
