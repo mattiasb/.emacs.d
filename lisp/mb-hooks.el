@@ -64,6 +64,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     ;; NOTE: This is repeated in the `yaml-mode' hook.
     (mb-f-set-capfs #'cape-dabbrev))
 
+  (tempel-key "{"   varq ansible-key-map)
+  (tempel-key "C-{" var  ansible-key-map)
+
   (mb-f-add-electric-pairs '((?\( . ?\))))
   (ansible-doc-mode)
   (when (ansible-vault--is-encrypted-vault-file)
