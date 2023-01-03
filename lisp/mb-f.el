@@ -471,5 +471,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "Convert STR from kebab-format to Human Readable Format."
   (mapconcat 'capitalize (split-string str "-") " "))
 
+(defun mb-f-emacs-version ()
+  "Get version number of Emacs."
+  (nth 2 (split-string (version) " +")))
+
+(defun mb-f-emacs-version-major ()
+  "Get the major version number of Emacs."
+  (nth 0 (split-string (mb-f-emacs-version) "\\.")))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

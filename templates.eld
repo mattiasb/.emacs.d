@@ -14,7 +14,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (mailbox (mb-f-get-user-mailbox))
 
 (copyright (mb-f-comment-start)
-           (spdx-license-format)
+           "SPDX-License-Identifier: " (p (spdx-identifier-only))
            (mb-f-comment-end)
            n>
            (mb-f-comment-start)
@@ -102,9 +102,6 @@ emacs-lisp-mode
        n> "\"" p "\""
        n> r>)
 
-(provide "provide '" (mb-f-buf-base) ")"
-         n ";;; " (mb-f-buf-name) " ends here" n)
-
 (add-hook "add-hook '" (p "mode" mode) "-hook"
           " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))
 
@@ -119,3 +116,31 @@ emacs-lisp-mode
                    (mb-f-elisp-get-namespace) "--" mode "-mode))"
                    o n)
 
+(header ";;; " (mb-f-buf-name) " --- " p " -*- lexical-binding: t -*-" n n)
+(meta &
+      n ";; Author           : " (p (mb-f-get-user-mailbox))
+      n ";; Version          : " (p (format-time-string "%Y%m%d"))
+      n ";; Keywords         : " (p "local")
+      n ";; Package-Requires : ((emacs " (p (mb-f-emacs-version)) "))"
+      n ";; URL              : " (p "https://github.com/moonlite/.emacs.d")
+      n ";; Compatibility    : GNU Emacs: " (p (mb-f-emacs-version-major)) ".x"
+      n)
+
+(sections & n
+          ";;; Commentary:"
+          n n
+          ";;; Note:"
+          n n
+          ";;; Code:"
+          n)
+
+(provide "provide '" (mb-f-buf-base))
+(end ";;; " (mb-f-buf-name) " ends here" n)
+(provideq n "(" (i provide) ")" n (i end))
+
+(package (i header)
+         (i copyright)
+         (i meta)
+         (i sections)
+         n q n
+         (i provideq))
