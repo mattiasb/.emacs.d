@@ -336,18 +336,18 @@ that checks that the hash-bang seems to involve a path."
   (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
   (setq-local electric-pair-text-pairs electric-pair-pairs))
 
+(defun mb-f-company-to-capf (capf)
+  (mb-f-req 'cape)
+  (let ((name (intern (format "%s-capf" (symbol-name capf)))))
+    (defalias name (cape-company-to-capf capf))
+    name))
+
 (defun mb-f-super-capf (&rest capfs)
   (mb-f-req 'cape)
   (mb-f-req 'tempel)
   (let ((name (intern (format "mb-capf:%s"
                               (mapconcat #'symbol-name capfs "+")))))
     (defalias name (apply #'cape-super-capf capfs))
-    name))
-
-(defun mb-f-company-to-capf (capf)
-  (mb-f-req 'cape)
-  (let ((name (intern (format "%s-capf" (symbol-name capf)))))
-    (defalias name (cape-company-to-capf capf))
     name))
 
 (defun mb-f-set-capfs (&rest capfs)
