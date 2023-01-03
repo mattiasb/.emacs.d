@@ -354,8 +354,9 @@ that checks that the hash-bang seems to involve a path."
   "Create a completion-at-point-functions."
   (require 'cape)
 
-  (let ((name (apply #'mb-f-super-capf (cons #'tempel-complete capfs))))
-    (setq-local completion-at-point-functions (list name #'cape-file))))
+  (setq-local completion-at-point-functions (list #'tempel-expand
+                                                  (apply #'mb-f-super-capf capfs)
+                                                  #'cape-file)))
 
 (defun mb-f-set-dark-wm-theme (frame)
   "Set the dark theme variant for FRAME.
