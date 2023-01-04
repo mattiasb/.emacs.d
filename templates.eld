@@ -65,7 +65,7 @@ sh-mode
 (function "function " (p "name") " {" n> r> n "}")
 (if "if " (p "[   ]") "; then"
     n> (p ":") q
-    n "fi")
+    n> "fi")
 (for "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
      n> (p ":") q
      n "done")
