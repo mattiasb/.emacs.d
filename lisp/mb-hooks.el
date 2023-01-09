@@ -861,11 +861,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ("<backtab>" . tempel-previous)
                       ("C-g"       . tempel-abort)))
 
-  (tempel-key "d" date      mb-keys-tempel-map)
-  (tempel-key "t" today     mb-keys-tempel-map)
-  (tempel-key "c" copyright mb-keys-tempel-map)
-  (tempel-key "=" calc      mb-keys-tempel-map)
-
   (add-to-list 'tempel-user-elements #'mb-f-tempel-include)
 
   (add-hook 'tempel-mode-hook #'mb-hooks--tempel-mode))
