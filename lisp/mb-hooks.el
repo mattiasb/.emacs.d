@@ -70,10 +70,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (tempel-key "t"   task mb-keys-tempel-map)
   (tempel-key "p"   play mb-keys-tempel-map)
 
-  (mb-f-add-electric-pairs '((?\( . ?\))))
-  (ansible-doc-mode)
+  (mb-f-electric-pairs '((?\( . ?\))) ansible)
+  (ansible-doc-mode (if ansible 1 -1))
   (when (ansible-vault--is-encrypted-vault-file)
-    (ansible-vault-mode 1))
+    (ansible-vault-mode ansible))
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
@@ -616,8 +616,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (unless (derived-mode-p 'lisp-mode
                           'lisp-data-mode
                           'emacs-lisp-mode)
-    (mb-f-add-electric-pairs '((?' . ?')
-                               (?< . ?>))))
+    (mb-f-electric-pairs '((?' . ?')
+                           (?< . ?>))))
 
   (if (seq-some #'derived-mode-p aggressive-indent-excluded-modes)
       (electric-indent-local-mode)

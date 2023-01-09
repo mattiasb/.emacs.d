@@ -331,10 +331,12 @@ that checks that the hash-bang seems to involve a path."
                                            (+ 3 (point-min)))))
     (executable-make-buffer-file-executable-if-script-p)))
 
-(defun mb-f-add-electric-pairs (pairs)
+(defun mb-f-electric-pairs (pairs &optional remove)
   "Add Electric Pair Mode PAIRS for current buffer."
-  (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
-  (setq-local electric-pair-text-pairs electric-pair-pairs))
+  (if remove (mapc #'kill-local-variable
+                   '(electric-pair-pairs electric-pair-text-pairs))
+    (setq-local electric-pair-pairs (append electric-pair-pairs pairs))
+    (setq-local electric-pair-text-pairs electric-pair-pairs)))
 
 (defun mb-f-company-to-capf (capf)
   (mb-f-req 'cape)
