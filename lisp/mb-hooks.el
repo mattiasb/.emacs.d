@@ -129,11 +129,16 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'compilation-filter-hook #'ansi-color-compilation-filter))
 
 ;; Conf mode
-(with-eval-after-load 'conf-mode
+
+(defun mb-hooks--conf-mode-hook ()
+  "My `conf-mode' hook."
   (mb-f-req 'electric-operator)
   (electric-indent-local-mode)
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-dabbrev))
+
+(with-eval-after-load 'conf-mode
+  (add-hook 'conf-mode-hook #'mb-hooks--conf-mode-hook))
 
 ;; Daemons
 (with-eval-after-load 'daemons
