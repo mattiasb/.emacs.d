@@ -59,6 +59,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'ansible-vault)
   (mb-f-req 'cape)
   (mb-f-req 'company-ansible)
+  (mb-f-req 'mb-keys)
   (if ansible
       (mb-f-set-capfs (mb-f-company-to-capf #'company-ansible))
     ;; NOTE: This is repeated in the `yaml-mode' hook.
@@ -66,6 +67,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (tempel-key "{"   varq ansible-key-map)
   (tempel-key "C-{" var  ansible-key-map)
+  (tempel-key "t"   task mb-keys-tempel-map)
+  (tempel-key "p"   play mb-keys-tempel-map)
 
   (mb-f-add-electric-pairs '((?\( . ?\))))
   (ansible-doc-mode)
