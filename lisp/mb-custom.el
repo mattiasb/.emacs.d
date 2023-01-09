@@ -168,6 +168,7 @@
  '(history-advised-before-functions
    '(imenu isearch-mode beginning-of-buffer end-of-buffer xref-find-definitions xref-find-references xref-find-definitions-other-window xref-find-definitions-other-frame mb-cmd-markdown-jump))
  '(ialign-initial-regexp "(\\s+)")
+ '(ialign-initial-repeat t)
  '(ialign-pcre-mode t)
  '(imenu-after-jump-hook '(recenter))
  '(imenu-auto-rescan t)
