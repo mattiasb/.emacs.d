@@ -73,7 +73,10 @@
     ( "C-S-a"         . beginning-of-line)
     ( "C-S-e"         . end-of-line)
     ( "C-a"           . mwim-beginning-of-code-or-line)
-    ( "C-e"           . mwim-end-of-code-or-line)))
+    ( "C-e"           . mwim-end-of-code-or-line)
+
+    ;; Snippets
+    ("<insert>"       . tempel-complete)))
 
 (mb-f-define-keymap mb-keys-exec-map
                     '(( "t"      . mb-cmd-exec-terminal)
