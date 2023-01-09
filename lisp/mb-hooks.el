@@ -757,6 +757,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Text
 (defun mb-hooks--text-mode ()
   "My `text' mode hook."
+  (mb-f-req 'corfu)
+
   (setq-local fill-column 80)
   (setq-local indent-tabs-mode nil)
 
@@ -764,6 +766,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-indent-local-mode)
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-ispell)
+  (setq-local corfu-auto nil)
 
   ;;;; Disable flyspell for now
   ;;
