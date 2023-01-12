@@ -445,6 +445,8 @@ markers and footnote text."
                         ("GNOME"    . "gnome"))
   "Git forges.")
 
+(defvar mb-cmd--git-get-window-state nil)
+
 (defun mb-cmd--git-get-post-hook (buffer msg)
   "Reload projectile index on successful clone."
   (when (and (equal 'compilation-mode major-mode)
@@ -453,7 +455,9 @@ markers and footnote text."
                  #'mb-cmd--git-get-post-hook)
     (when (and (string-match "finished" msg)
 	       (not (search-forward "warning" nil t)))
-      (call-interactively #'mb-cmd-projectile-index-projects))))
+      (call-interactively #'mb-cmd-projectile-index-projects)
+      (kill-buffer buffer)
+      (ignore-errors (jump-to-register mb-cmd--git-get-window-state)))))
 
 ;;;###autoload
 (defun mb-cmd-git-get (forge repository)
@@ -468,8 +472,10 @@ markers and footnote text."
         (compilation-save-buffers-predicate (lambda () nil)))
     (ignore compilation-save-buffers-predicate)
     (add-hook 'compilation-finish-functions #'mb-cmd--git-get-post-hook)
-    (compile (format "git get %s:%s" forge repository))
-    (select-window (get-buffer-window "*git-get*"))))
+    (add-hook 'compilation-start-hook
+              (lambda (&rest _) (mb-f-select-buffer "*git-get*")))
+    (window-configuration-to-register mb-cmd--git-get-window-state)
+    (compile (format "git get %s:%s" forge repository))))
 
 (defun mb-cmd-describe-symbol ()
   "Describe symbol at point."

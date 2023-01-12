@@ -482,5 +482,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "Get the major version number of Emacs."
   (nth 0 (split-string (mb-f-emacs-version) "\\.")))
 
+(defun mb-f-select-buffer (buffer)
+  "Select window of a buffer."
+  (select-window (get-buffer-window buffer)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

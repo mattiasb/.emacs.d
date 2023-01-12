@@ -38,7 +38,7 @@
 
 (defun mb-advices-switch-to (buffer)
   "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
-  (lambda (&rest _args) (select-window (get-buffer-window buffer))))
+  (lambda (&rest _args) (mb-f-select-buffer buffer)))
 
 (defun mb-advices-around (funcs advice)
   "ADVICE a bunch of FUNCS."
