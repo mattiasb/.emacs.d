@@ -462,6 +462,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
       (message "Template %s not found" (cadr elt))
       nil)))
 
+(defun mb-f-tempel-insert-quoted (template)
+  "Insert template quoted if not in string."
+  (if (nth 3 (syntax-ppss))
+      (tempel-insert template)
+    (insert "\"")
+    (save-excursion (insert "\""))
+    (tempel-insert template)))
+
 (defun mb-f-buf-base ()
   "Get buffer or buffer filename base."
   (file-name-base (or (buffer-file-name) (buffer-name))))
