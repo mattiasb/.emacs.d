@@ -170,7 +170,7 @@
  '(ialign-initial-regexp "(\\s+)")
  '(ialign-initial-repeat t)
  '(ialign-pcre-mode t)
- '(imenu-after-jump-hook '(recenter))
+ '(imenu-after-jump-hook '((lambda nil (recenter 0))))
  '(imenu-auto-rescan t)
  '(imenu-auto-rescan-maxout 750000)
  '(importmagic-python-interpreter "python3")
