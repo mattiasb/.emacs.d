@@ -462,13 +462,17 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
       (message "Template %s not found" (cadr elt))
       nil)))
 
-(defun mb-f-tempel-insert-quoted (template)
+(defun mb-f-tempel-insert-quoted (template &optional reverse)
   "Insert template quoted if not in string."
-  (if (nth 3 (syntax-ppss))
-      (tempel-insert template)
-    (insert "\"")
-    (save-excursion (insert "\""))
-    (tempel-insert template)))
+
+  (let ((quoted (and (nth 3 (syntax-ppss)) t))
+        (reverse (and reverse t)))
+    ;; This turns into an XOR truth table
+    (if (not (eq quoted reverse))
+        (tempel-insert template)
+      (insert "\"")
+      (save-excursion (insert "\""))
+      (tempel-insert template))))
 
 (defun mb-f-buf-base ()
   "Get buffer or buffer filename base."

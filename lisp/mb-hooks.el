@@ -76,9 +76,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
-  (tempel-key "C-{" var ansible-key-map)
   (mb-f-define-keys ansible-key-map
-                    '(( "{"    . mb-cmd-ansible-{ )))
+                    '(( "{"    . mb-cmd-ansible-{ )
+                      ( "C-{"  . mb-cmd-ansible-C-{ )))
 
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 

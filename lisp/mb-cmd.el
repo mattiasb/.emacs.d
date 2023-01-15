@@ -513,5 +513,11 @@ markers and footnote text."
   (interactive)
   (mb-f-tempel-insert-quoted 'var))
 
+;;;###autoload
+(defun mb-cmd-ansible-C-{ ()
+  "Insert jinja expression."
+  (interactive)
+  (mb-f-tempel-insert-quoted 'var t))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
