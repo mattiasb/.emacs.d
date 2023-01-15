@@ -494,5 +494,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "Select window of a buffer."
   (select-window (get-buffer-window buffer)))
 
+(defun mb-f-path= (p1 p2)
+  "Check whether P1 and P2 are equal."
+  (string= (file-truename p1) (file-truename p2)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

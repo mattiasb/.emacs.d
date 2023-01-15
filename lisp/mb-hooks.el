@@ -464,10 +464,27 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Lisp Data
 (defun mb-hooks--lisp-data-mode ()
   "My `lisp-data' mode hook."
+  ;; Getting this to work with the `rx' construct was anything but trivial.
+  ;; Specifically to generalize `= 0' below to 0..9.
+  ;;   (rx line-start
+  ;;       (= 0 (1+ (or (syntax word) (syntax symbol))) space)
+  ;;       symbol-start
+  ;;       (group-n 1 (1+ (or (syntax word)
+  ;;                          (syntax symbol))))
+  ;;       symbol-end)
+  (mb-f-req 'mb-f)
+  (when (mb-f-path= (buffer-file-name) "~/.config/emacs/templates.eld")
+    (dolist (n (number-sequence 0 9))
+      (let ((regex (concat "^\\(?:\\(?:\\sw\\|\\s_\\)+[[:space:]]"
+                           "\\)\\{"
+                           (number-to-string n)
+                           "\\}\\_<\\(?1:\\(?:\\sw\\|\\s_\\)+\\)\\_>")))
+        (add-to-list 'imenu-generic-expression (list nil regex 1)))))
+
   (mb-f-define-keys lisp-data-mode-map
                     '(("M-q"     . mb-cmd-lisp-fill-function-arguments))))
 
-(with-eval-after-load 'lisp-data-mode
+(with-eval-after-load 'lisp-mode
   (add-hook 'lisp-data-mode-hook #'mb-hooks--lisp-data-mode))
 
 ;; Ligature
