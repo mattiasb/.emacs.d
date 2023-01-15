@@ -519,5 +519,17 @@ markers and footnote text."
   (interactive)
   (mb-f-tempel-insert-quoted 'var t))
 
+;;;###autoload
+(defun mb-cmd-sh-$ ()
+  "Insert variable."
+  (interactive)
+  (mb-f-tempel-insert-quoted 'var))
+
+;;;###autoload
+(defun mb-cmd-sh-C-$ ()
+  "Insert variable."
+  (interactive)
+  (mb-f-tempel-insert-quoted 'var t))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

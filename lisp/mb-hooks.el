@@ -864,6 +864,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 
 (with-eval-after-load 'sh-script
+  (mb-f-req 'sh-script)
+  (mb-f-define-keys sh-mode-map
+                    '(( "$"      . mb-cmd-sh-$ )
+                      ( "C-$"    . mb-cmd-sh-C-$ )))
   (add-hook 'sh-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
