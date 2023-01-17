@@ -110,6 +110,7 @@
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
                       ( "s"      . flyspell-mode)
+                      ( "t"      . toggle-truncate-lines)
                       ( "w"      . whitespace-mode)))
 
 ;; My Magit keymap
