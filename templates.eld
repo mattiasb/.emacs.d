@@ -9,6 +9,8 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
                        (mapcar 'mb-f-get-date mb-f-time-formats)
                        nil t))
 
+(password   (shell-command-to-string "makepasswd -m 15 -M 25"))
+
 (name    (mb-f-get-user-full-name))
 (mail    (mb-f-get-user-mail-address))
 (mailbox (mb-f-get-user-mailbox))
