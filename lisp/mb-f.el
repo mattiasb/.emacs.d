@@ -502,5 +502,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "Check whether P1 and P2 are equal."
   (string= (file-truename p1) (file-truename p2)))
 
+(defun mb-f-get-password (&optional min max)
+  "Generate a password with MIN and MAX length."
+
+  (let* ((min (or min 15))
+         (max (or max 25))
+         (cmd (format "makepasswd -m %s -M %s" min max)))
+    (string-trim-right (shell-command-to-string cmd))))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
