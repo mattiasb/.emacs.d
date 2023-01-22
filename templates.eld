@@ -51,8 +51,8 @@ yaml-mode :when ansible
       n> (p "module") ": " q
       n)
 
-(var    "{{ " p " }}")
-(varq "\"{{ " p " }}\"")
+(var    "{{ " r " }}")
+(varq "\"{{ " r " }}\"")
 
 (with_items   "with_items: "      (i varq) q)
 (with_items>- "with_items: >-" n> (i var)  q)
@@ -71,8 +71,8 @@ sh-mode
 (for "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
      n> (p ":") q
      n "done")
-(var  "${" q "}")
-(varq "\"${" q "}\"")
+(var  "${" r "}")
+(varq "\"${" r "}\"")
 (alias "alias " (s cmd) "='" cmd " " q "'")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

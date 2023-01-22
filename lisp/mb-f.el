@@ -468,11 +468,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (let ((quoted (and (nth 3 (syntax-ppss)) t))
         (reverse (and reverse t)))
     ;; This turns into an XOR truth table
-    (if (not (eq quoted reverse))
-        (tempel-insert template)
-      (insert "\"")
-      (save-excursion (insert "\""))
-      (tempel-insert template))))
+    (when (eq quoted reverse)
+      (when (and (use-region-p) (< (mark) (point)))
+        (exchange-point-and-mark))
+      (save-excursion
+        (when (use-region-p) (goto-char (region-beginning)))
+        (insert-before-markers ?\")
+        (when (use-region-p) (goto-char (region-end)))
+        (insert ?\")))
+    (tempel-insert template)))
 
 (defun mb-f-buf-base ()
   "Get buffer or buffer filename base."
