@@ -200,6 +200,7 @@
                       ( "i"      . mb-keys-string-inflection-map)
 
                       ;; Other
+                      ( "_"      . vundo)
                       ( "C-z"    . suspend-frame)
                       ( "D"      . diff-buffer-with-file)
                       ( "b"      . browse-url-at-point)
