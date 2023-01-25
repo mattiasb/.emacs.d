@@ -28,7 +28,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-prog-mode
+prog-mode yaml-mode
 
 (fixme (mb-f-comment-start) "FIXME: ")
 (todo  (mb-f-comment-start) "TODO: ")
