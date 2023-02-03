@@ -63,8 +63,30 @@ yaml-mode :when ansible
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 python-mode
 
-(def "def " p "(" p "):" n> q)
-
+(! "#!/usr/bin/env python3")
+(def      & "def " p "(" p "):" n> q)
+(if       & "if " p ":" n> q )
+(elif     & "elif " p ":" n> q )
+(else     & "else:" n> q)
+(for      & "for " p " in " p ":" n> q)
+(while    & "while " p ":" n> q)
+(init     & "def __init__(self):" n> (p "pass"))
+(class    & "class " (p "ClassName") "(" (p "object") "):"
+          n>"\"\"\"" p "\"\"\""
+          n>
+          n> (i init))
+(from     & "from "   (p "lib") " import " (p "what")  n> q)
+(import   & "import " (p "lib") n> q)
+(lambda     "lambda " (p "x") ": " q)
+(property o & "@property" n> "def " (p "property" prop) "(self):"
+          n> "return self.__" (s field)
+          n>
+          n> "@" prop ".setter"
+          n> "def " prop "(self, " prop "):"
+          n> "self.__" field " = " prop
+          n q)
+(try      & "try:" n> p n "except " (p "Exception") ":"
+          n> q)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
 
