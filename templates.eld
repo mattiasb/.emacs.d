@@ -15,7 +15,8 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (mail    (mb-f-get-user-mail-address))
 (mailbox (mb-f-get-user-mailbox))
 
-(copyright (mb-f-comment-start)
+(copyright (beginning-of-buffer)
+           (mb-f-comment-start)
            ;; Make `reuse lint` pass ↓↓↓↓
            "SPDX-License-Identifier" ": " (p (spdx-identifier-only))
            (mb-f-comment-end)
@@ -24,7 +25,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
            "Copyright " (mb-f-get-year) ", "
            (mb-f-get-user-mailbox)
            (mb-f-comment-end)
-           n>)
+           n o)
 
 (calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
