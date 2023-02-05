@@ -186,7 +186,6 @@
                       ;; Text manipulation
                       ( "+"      . shift-number-up)
                       ( "-"      . shift-number-down)
-                      ( "."      . align-by-current-symbol)
                       ( "a"      . ialign)
                       ( "<down>" . move-dup-duplicate-down)
                       ( "<up>"   . move-dup-duplicate-up)
