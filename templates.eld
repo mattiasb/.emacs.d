@@ -40,6 +40,10 @@ prog-mode yaml-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode :when ansible
 
+(! (beginning-of-buffer)
+   "#!/usr/bin/env ansible-playbook"
+   n o)
+
 (play & n
       o "- name: "  (p "name")
       n "  hosts: " (p "hosts")
@@ -64,7 +68,10 @@ yaml-mode :when ansible
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 python-mode
 
-(! "#!/usr/bin/env python3")
+(!        (beginning-of-buffer)
+          "#!/usr/bin/env python3"
+          n o)
+
 (def      & "def " p "(" p "):" n> q)
 (if       & "if " p ":" n> q )
 (elif     & "elif " p ":" n> q )
@@ -91,7 +98,9 @@ python-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
 
-(! "#!/bin/bash")
+(! (beginning-of-buffer)
+   "#!/bin/bash"
+   n o)
 (function "function " (p "name") " {" n> r> n "}")
 (if "if " (p "[   ]") "; then"
     n> (p ":") q
