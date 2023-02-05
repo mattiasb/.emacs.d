@@ -102,17 +102,47 @@ sh-mode
 (! (beginning-of-buffer)
    "#!/bin/bash"
    n o)
+(case & o n "case \"" p "\" in"
+      n> (p "*") ")"
+      n> r>
+      n> "return"
+      n> ";;"
+      n "esac"
+      o n)
+(debug & o "echo \"" (r "variable" variable) ": ${" variable "}\"" o q)
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
 (if & o n "if " (p "[   ]") "; then"
     n> (p ":") q
     n> "fi"
     o n)
+(elif & o n "elif " (p "[   ]") "; then"
+      n> r>
+      o)
+(else & o n "else "
+      n> r>
+      o)
 (for & o n "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
      n> (p ":") q
      n "done"
      o n)
+(heredoc & o "cat <<EOM"
+         n r
+         n "EOM" n)
+(read-file & o n
+           "while read \"" p "\"; do"
+           n> r>
+           n "done <\"${" (p "file") "}\""
+           o n)
+(select & o n "select " (p "name") " in " (p "words") "; do"
+        n> r>
+        n "done"
+        o n)
 (var  "${" r "}")
 (varq "\"${" r "}\"")
+(while & o n "while " p "; do"
+       n> r>
+       n "done"
+       o n)
 (alias & o "alias " (s cmd) "='" cmd " " q "'" o)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
