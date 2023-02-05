@@ -16,7 +16,8 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (mailbox (mb-f-get-user-mailbox))
 
 (copyright (mb-f-comment-start)
-           "SPDX-License-Identifier: " (p (spdx-identifier-only))
+           ;; Make `reuse lint` pass ↓↓↓↓
+           "SPDX-License-Identifier" ": " (p (spdx-identifier-only))
            (mb-f-comment-end)
            n>
            (mb-f-comment-start)
