@@ -5,7 +5,8 @@
 
 ## General
 
-- [ ] Look at LSP again
+- [x] Look at LSP again (eglot)
+- [ ] Look at Emacs in Silverblue
   - [ ] docker-tramp
   - [ ] flatpak / Toolbx
 - [x] Look at ivy
@@ -15,7 +16,7 @@
 
 Look at these modes again
 
-- [ ] pipenv
+- [x] pipenv
 - [x] control-mode (including god-mode that was used for isearch)
 - [x] realgud (use dap-mode instead?)
 - [x] forge
@@ -23,6 +24,6 @@ Look at these modes again
 ## Bugs
 
 - Repeating ialign adds spaces to beginning of line
-- Marking text doesn't work immediately
+- ~~Marking text doesn't work immediately~~
 
 [1]: https://www.masteringemacs.org/article/whats-new-in-emacs-28-1
