@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: TODO
-# key: todo
-# --
-`(mb-f-wrap-in-comment " TODO: ")`

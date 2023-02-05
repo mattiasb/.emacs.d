@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: select
-# key: select
-# --
-select ${1:NAME} in ${2:WORDS}; do
-    $0
-done

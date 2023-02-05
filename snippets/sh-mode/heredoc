@@ -1,6 +1,0 @@
-# key: heredoc
-# name: heredoc
-# --
-cat <<EOM
-$0
-EOM

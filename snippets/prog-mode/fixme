@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: FIXME
-# key: fixme
-# --
-`(mb-f-wrap-in-comment "FIXME: ")`
