@@ -102,16 +102,18 @@ sh-mode
 (! (beginning-of-buffer)
    "#!/bin/bash"
    n o)
-(function "function " (p "name") " {" n> r> n "}")
-(if "if " (p "[   ]") "; then"
+(function & o n "function " (p "name") " {" n> r> n "}" o n)
+(if & o n "if " (p "[   ]") "; then"
     n> (p ":") q
-    n> "fi")
-(for "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
+    n> "fi"
+    o n)
+(for & o n "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
      n> (p ":") q
-     n "done")
+     n "done"
+     o n)
 (var  "${" r "}")
 (varq "\"${" r "}\"")
-(alias "alias " (s cmd) "='" cmd " " q "'")
+(alias & o "alias " (s cmd) "='" cmd " " q "'" o)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode
