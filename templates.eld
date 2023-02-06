@@ -79,6 +79,8 @@ python-mode
 (else     & "else:" n> q)
 (for      & "for " p " in " p ":" n> q)
 (while    & "while " p ":" n> q)
+(with     & "with " p " as " p ":"
+          n> r>)
 (init     & "def __init__(self):" n> (p "pass"))
 (class    & "class " (p "ClassName") "(" (p "object") "):"
           n>"\"\"\"" p "\"\"\""
@@ -96,6 +98,12 @@ python-mode
           n q)
 (try      & "try:" n> p n "except " (p "Exception") ":"
           n> q)
+(super    & (replace-regexp-in-string "\\([.]\\)[^.]+$" "(self)."
+                                      (python-info-current-defun)
+                                      nil nil 1)
+          "(" p ")" n> q)
+(@classmethod "@classmethod"
+              n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
 
