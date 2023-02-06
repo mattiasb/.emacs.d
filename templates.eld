@@ -112,8 +112,8 @@ sh-mode
 (debug & o "echo \"" (r "variable" variable) ": ${" variable "}\"" o q)
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
 (if & o n "if " (p "[   ]") "; then"
-    n> (p ":") q
-    n> "fi"
+    n> r>
+    n "fi"
     o n)
 (elif & o n "elif " (p "[   ]") "; then"
       n> r>
@@ -122,7 +122,7 @@ sh-mode
       n> r>
       o)
 (for & o n "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
-     n> (p ":") q
+     n> r>
      n "done"
      o n)
 (heredoc & o "cat <<EOM"
