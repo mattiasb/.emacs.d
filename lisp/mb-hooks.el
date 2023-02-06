@@ -477,7 +477,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   ;;                          (syntax symbol))))
   ;;       symbol-end)
   (mb-f-req 'mb-f)
-  (when (mb-f-path= (buffer-file-name) "~/.config/emacs/templates.eld")
+  (mb-f-req 'tempel)
+  (when (mb-f-path= (buffer-file-name) tempel-path)
     (dolist (n (number-sequence 0 9))
       (let ((regex (concat "^\\(?:\\(?:\\sw\\|\\s_\\)+[[:space:]]"
                            "\\)\\{"
