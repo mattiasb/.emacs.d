@@ -241,31 +241,25 @@ emacs-lisp-mode
                    (mb-f-elisp-get-namespace) "--" mode "-mode))"
                    o n)
 
-(header ";;; " (mb-f-buf-name) " --- " p " -*- lexical-binding: t -*-" n n)
-(meta &
-      n ";; Author           : " (p (mb-f-get-user-mailbox))
-      n ";; Version          : " (p (format-time-string "%Y%m%d"))
-      n ";; Keywords         : " (p "local")
-      n ";; Package-Requires : ((emacs " (p (mb-f-emacs-version)) "))"
-      n ";; URL              : " (p "https://github.com/moonlite/.emacs.d")
-      n ";; Compatibility    : GNU Emacs: " (p (mb-f-emacs-version-major)) ".x"
-      n)
+(pkg ";;; " (mb-f-buf-name) " --- " p " -*- lexical-binding: t -*-" n n
+     n ";; Author           : " (p (mb-f-get-user-mailbox))
+     n ";; Version          : " (p (format-time-string "%Y%m%d"))
+     n ";; Keywords         : " (p "local")
+     n ";; Package-Requires : ((emacs " (p (mb-f-emacs-version)) "))"
+     n ";; URL              : " (p "https://github.com/mattiasb/.emacs.d")
+     n ";; Compatibility    : GNU Emacs: " (p (mb-f-emacs-version-major)) ".x"
+     n n
+     ";;; Commentary:"
+     n n
+     ";;; Note:"
+     n n
+     ";;; Code:"
+     n n q
+     :pre (beginning-of-buffer)
+     :post (tempel-insert 'foot))
 
-(sections & n
-          ";;; Commentary:"
-          n n
-          ";;; Note:"
-          n n
-          ";;; Code:"
-          n)
-
-(provide "provide '" (mb-f-buf-base))
-(end ";;; " (mb-f-buf-name) " ends here" n)
-(provideq n "(" (i provide) ")" n (i end))
-
-(package (i header)
-         (i copyright)
-         (i meta)
-         (i sections)
-         n q n
-         (i provideq))
+(foot & n
+      "(provide '" (mb-f-buf-base) ")"
+      n
+      ";;; " (mb-f-buf-name) " ends here" n q
+      :pre (end-of-buffer))
