@@ -4,6 +4,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 fundamental-mode text-mode conf-mode ;; Available everywhere
 
+;; Make sure there's always an auto-insert to override
+(auto-insert "")
+
 (today (format-time-string "%Y-%m-%d"))
 (date (completing-read "Date: "
                        (mapcar 'mb-f-get-date mb-f-time-formats)
