@@ -1,5 +1,0 @@
-# key: defvar
-# name: defvar
-# --
-defvar `(mb-f-elisp-get-namespace)`-$1 ${2:value}
-  ${3:"${0:docstring}"}
