@@ -77,8 +77,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load "ansible"
   (mb-f-define-keys ansible-key-map
-                    '(( "{"    . mb-cmd-ansible-{ )
-                      ( "C-{"  . mb-cmd-ansible-C-{ )))
+                    '(( "{"    . mb-cmd-jinja2-{ )
+                      ( "C-{"  . mb-cmd-jinja2-C-{ )))
 
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 
@@ -440,6 +440,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `jinja2' mode hook.")
 
 (with-eval-after-load 'jinja2-mode
+  (mb-f-req 'jinja2-mode)
+  (mb-f-define-keys jinja2-mode-map
+                    '(( "{"    . mb-cmd-jinja2-{ )
+                      ( "C-{"  . mb-cmd-jinja2-C-{ )))
   (add-hook 'jinja2-mode-hook #'mb-hooks--jinja2-mode))
 
 ;; JS2

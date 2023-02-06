@@ -95,6 +95,14 @@ yaml-mode :when ansible
 (with_dict>-  "with_dict: >-"  n> (i var)  q)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Can't get this to be `jinja2-mode yaml-mode :when ansible` so that I can
+;; share the var definitions. :/
+jinja2-mode
+
+(var    "{{ " r " }}")
+(varq "\"{{ " r " }}\"")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 python-mode
 
 (!        (beginning-of-buffer)

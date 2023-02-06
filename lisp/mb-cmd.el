@@ -508,13 +508,13 @@ markers and footnote text."
   (find-file (format "%s/templates.eld" user-emacs-directory)))
 
 ;;;###autoload
-(defun mb-cmd-ansible-{ ()
+(defun mb-cmd-jinja2-{ ()
   "Insert jinja expression."
   (interactive)
   (mb-f-tempel-insert-quoted 'var))
 
 ;;;###autoload
-(defun mb-cmd-ansible-C-{ ()
+(defun mb-cmd-jinja2-C-{ ()
   "Insert jinja expression."
   (interactive)
   (mb-f-tempel-insert-quoted 'var t))
