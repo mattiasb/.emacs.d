@@ -67,6 +67,11 @@ prog-mode yaml-mode
 (see   (mb-f-comment-start) "See: ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+yaml-mode
+
+(auto-insert "---" n :pre (beginning-of-buffer))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode :when ansible
 
 (! (beginning-of-buffer)
@@ -143,6 +148,10 @@ python-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sh-mode
 
+(auto-insert n "set -e"
+             n "set -o pipefail"
+             n n
+             :pre (tempel-insert '!))
 (! (beginning-of-buffer)
    "#!/bin/bash"
    n o)
@@ -191,6 +200,8 @@ sh-mode
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode
+
+(auto-insert :post (tempel-insert 'pkg))
 
 (autoload     ";;;###autoload")
 
@@ -271,7 +282,7 @@ emacs-lisp-mode
      ";;; Note:"
      n n
      ";;; Code:"
-     n n q
+     n n n q
      :pre (beginning-of-buffer)
      :post (tempel-insert 'foot))
 
@@ -279,4 +290,6 @@ emacs-lisp-mode
       "(provide '" (mb-f-buf-base) ")"
       n
       ";;; " (mb-f-buf-name) " ends here" n q
-      :pre (end-of-buffer))
+      :pre (end-of-buffer)
+      :post (previous-line 4))
+

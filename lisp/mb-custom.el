@@ -29,7 +29,10 @@
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
  '(ansi-color-for-compilation-mode 'filter)
  '(auto-insert 'other)
- '(auto-insert-alist nil)
+ '(auto-insert-alist
+   '((emacs-lisp-mode . mb-cmd-auto-insert)
+     (sh-mode . mb-cmd-auto-insert)
+     (yaml-mode . mb-cmd-auto-insert)))
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
  '(auto-insert-query nil)
  '(auto-save-file-name-transforms

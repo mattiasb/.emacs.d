@@ -508,6 +508,12 @@ markers and footnote text."
   (find-file (format "%s/templates.eld" user-emacs-directory)))
 
 ;;;###autoload
+(defun mb-cmd-auto-insert ()
+  "Auto-insert template for `emacs-lisp-mode'."
+  (interactive)
+  (tempel-insert 'auto-insert))
+
+;;;###autoload
 (defun mb-cmd-jinja2-{ ()
   "Insert jinja expression."
   (interactive)
