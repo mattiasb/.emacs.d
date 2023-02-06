@@ -31,6 +31,33 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+markdown-mode
+
+(== (p "Header 1" header)
+    n (make-string (string-width header) ?\=)
+    n n)
+
+(-- (p "Header 2" header)
+    n (make-string (string-width header) ?\-)
+    n n)
+
+(------ & n o (make-string 80 ?-) n)
+
+(h1 "# "      (r "Header 1") " #"      n n q)
+(h2 "## "     (r "Header 2") " ##"     n n q)
+(h3 "### "    (r "Header 3") " ###"    n n q)
+(h4 "#### "   (r "Header 4") " ####"   n n q)
+(h5 "##### "  (r "Header 5") " #####"  n n q)
+(h6 "###### " (r "Header 6") " ######" n n q)
+
+(img   "![" (p "Text") "](" (r "") ")" q)
+(rimg  "![" (p "Text") "][" p      "]" q)
+(link   "[" (r "Text") "](" p      ")" q)
+(rlink  "[" (r "Text") "][" p      "]" q)
+
+(ref    "[" (p "1") "]: " (r "https://") q)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode
 
 (fixme (mb-f-comment-start) "FIXME: ")
