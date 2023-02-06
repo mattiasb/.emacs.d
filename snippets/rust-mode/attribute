@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Attribute
-# key: #
-# --
-#[$1($2)]$0

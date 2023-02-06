@@ -1,8 +1,0 @@
-# -*- mode: snippet; require-final-newline: nil -*-
-# name: for (let key in obj)
-# key: for
-# --
-for (let ${1:key} in ${2:obj}) {
-    let ${3:value} = $2[$1];
-    $0
-}

@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: While
-# key: while
-# --
-while ${1:let ${2:pattern} = }${3:expr} {
-      $0
-}

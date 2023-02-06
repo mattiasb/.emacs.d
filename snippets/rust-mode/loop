@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: Loop
-# key: loop
-# --
-loop {
-     $0
-}
