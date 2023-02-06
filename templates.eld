@@ -36,6 +36,11 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 markdown-mode
 
+;; TODO: Convert filename to `A Nice Header`.
+(auto-insert "# " (p (mb-f-buf-base)) " #"
+             n n q
+             :pre (beginning-of-buffer))
+
 (== (p "Header 1" header)
     n (make-string (string-width header) ?\=)
     n n)
