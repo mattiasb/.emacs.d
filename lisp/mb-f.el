@@ -504,7 +504,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-f-path= (p1 p2)
   "Check whether P1 and P2 are equal."
-  (string= (file-truename p1) (file-truename p2)))
+  (and p1 p2 (string= (file-truename p1)
+                      (file-truename p2))))
 
 (defun mb-f-get-password (&optional min max)
   "Generate a password with MIN and MAX length."
