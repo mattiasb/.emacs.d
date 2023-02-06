@@ -194,25 +194,32 @@ emacs-lisp-mode
 
 (autoload     ";;;###autoload")
 
-(lambda       "lambda "       "(" p ")" n> r>)
-(cond         "cond"          n "(" q "))" >)
-(pcase        "pcase "        (p "scrutinee") n "(" q ")" >)
-(let          "let "          "((" p "))" n> r>)
-(let*         "let* "         "((" p "))" n> r>)
-(dotimes      "dotimes "      "(" p ")" n> r>)
-(dolist       "dolist "       "(" (s elem) " " elem "s)" n> r>)
-(if           "if "           "(" p ")" n> "(" p ")" n> "(" p ")")
-(defvar       "defvar "       (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
-(defvar-local "defvar-local " (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
-(defconst     "defconst "     (mb-f-elisp-get-namespace) "-" p n> "\"" p "\"")
-(defalias     "defalias '"    (mb-f-elisp-get-namespace) "-" p " '" p)
+(lambda  "lambda "   "(" p ")" n> r>                     :pre (mb-f-wrap-point))
+(cond    "cond"      n "(" q "))" >                      :pre (mb-f-wrap-point))
+(pcase   "pcase "    (p "var") n "(" q ")" >             :pre (mb-f-wrap-point))
+(let     "let "      "((" p "))" n> r>                   :pre (mb-f-wrap-point))
+(let*    "let* "     "((" p "))" n> r>                   :pre (mb-f-wrap-point))
+(dotimes "dotimes "  "(" p ")" n> r>                     :pre (mb-f-wrap-point))
+(dolist  "dolist "   "(" (s elem) " " elem "s)" n> r>    :pre (mb-f-wrap-point))
+(if      "if "       "(" p ")" n> "(" p ")" n> "(" p ")" :pre (mb-f-wrap-point))
+
+(defvar       "defvar "       (mb-f-elisp-get-namespace) "-" p n> "\"" p "\""
+  :pre (mb-f-wrap-point))
+(defvar-local "defvar-local " (mb-f-elisp-get-namespace) "-" p n> "\"" p "\""
+  :pre (mb-f-wrap-point))
+(defconst     "defconst "     (mb-f-elisp-get-namespace) "-" p n> "\"" p "\""
+  :pre (mb-f-wrap-point))
+(defalias     "defalias '"    (mb-f-elisp-get-namespace) "-" p " '" p
+  :pre (mb-f-wrap-point))
 
 (defcustom "defcustom " (mb-f-elisp-get-namespace) "-" p
   n> "\"" p "\""
-  n> ":type '" p)
+  n> ":type '" p
+  :pre (mb-f-wrap-point))
 
 (defface "defface " (mb-f-elisp-get-namespace) "-" p " '((t :inherit " p "))"
-  n> "\"" p "\"")
+  n> "\"" p "\""
+  :pre (mb-f-wrap-point))
 
 (defgroup "defgroup " (mb-f-elisp-get-namespace) "-" p " nil"
   n> "\"" p "\""
@@ -221,14 +228,17 @@ emacs-lisp-mode
 
 (defmacro "defmacro " (mb-f-elisp-get-namespace) "-" p " (" p ")"
           n> "\"" p "\""
-          n> r>)
+          n> r>
+          :pre (mb-f-wrap-point))
 
 (defun "defun " (mb-f-elisp-get-namespace) "-" p " (" p ")"
        n> "\"" p "\""
-       n> r>)
+       n> r>
+       :pre (mb-f-wrap-point))
 
 (add-hook "add-hook '" (p "mode" mode) "-hook"
-          " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook")))
+          " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook"))
+          :pre (mb-f-wrap-point))
 
 (configure-feature &
                    n ";; " (mb-f-kebab-to-human mode)

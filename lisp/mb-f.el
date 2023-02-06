@@ -478,6 +478,16 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
         (insert ?\")))
     (tempel-insert template)))
 
+(defun mb-f-wrap-point (&optional beg end)
+  "Wrap point in BEG and END."
+  (let ((end (or end beg ?\)))
+        (beg (or beg ?\()))
+    (unless (and (eq beg (char-before))
+                 (eq end (char-after)))
+      (save-excursion
+        (insert-before-markers beg)
+        (insert end)))))
+
 (defun mb-f-buf-base ()
   "Get buffer or buffer filename base."
   (file-name-base (or (buffer-file-name) (buffer-name))))
