@@ -8,6 +8,7 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (date (completing-read "Date: "
                        (mapcar 'mb-f-get-date mb-f-time-formats)
                        nil t))
+(year (mb-f-get-year))
 
 (password   (mb-f-get-password))
 
