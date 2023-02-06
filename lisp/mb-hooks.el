@@ -439,7 +439,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--jinja2-mode ()
   "My `jinja2' mode hook.")
 
-(with-eval-after-load 'jinja2
+(with-eval-after-load 'jinja2-mode
   (add-hook 'jinja2-mode-hook #'mb-hooks--jinja2-mode))
 
 ;; JS2
