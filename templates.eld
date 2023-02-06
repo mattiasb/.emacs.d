@@ -236,6 +236,13 @@ emacs-lisp-mode
        n> r>
        :pre (mb-f-wrap-point))
 
+(cmd (i autoload) n
+     "(defun " (mb-f-elisp-get-namespace) "-" p " (" p ")"
+     n> "\"" p "\""
+     n> "(interactive)"
+     n> r> ")"
+     o n)
+
 (add-hook "add-hook '" (p "mode" mode) "-hook"
           " #'" (p (concat (mb-f-elisp-get-namespace) "--" mode "-hook"))
           :pre (mb-f-wrap-point))
