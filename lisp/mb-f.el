@@ -99,6 +99,10 @@
               map))
           (fset (quote ,keymap) ,keymap)))
 
+(defun mb-f-get-keybinding-to (symbol)
+  "Get keybinding string for SYMBOL."
+  (key-description (car (where-is-internal symbol))))
+
 (defun mb-f-mapcar-head (fn-head fn-rest list)
   "Like MAPCAR, but apply FN-HEAD to CAR and FN-REST to CDR of LIST."
   (cons (funcall fn-head (car list))
