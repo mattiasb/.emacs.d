@@ -61,11 +61,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'company-ansible)
   (mb-f-req 'mb-keys)
   (if ansible
-      (progn (mb-f-set-capfs (mb-f-company-to-capf #'company-ansible))
-             (tempel-key "t"   task mb-keys-tempel-map)
-             (tempel-key "p"   play mb-keys-tempel-map))
-    (define-key mb-keys-tempel-map "t" nil)
-    (define-key mb-keys-tempel-map "p" nil)
+      (mb-f-set-capfs (mb-f-company-to-capf #'company-ansible))
     ;; NOTE: This is repeated in the `yaml-mode' hook.
     (mb-f-set-capfs #'cape-dabbrev))
 
@@ -76,6 +72,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
+  (tempel-key "C-z s t" task ansible-key-map)
+  (tempel-key "C-z s p" play ansible-key-map)
   (mb-f-define-keys ansible-key-map
                     '(( "{"    . mb-cmd-jinja2-{ )
                       ( "C-{"  . mb-cmd-jinja2-C-{ )))
