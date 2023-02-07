@@ -33,6 +33,10 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 
 (calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
+(divider o n (make-string 80 (if comment-start (aref comment-start 0) ?\=))
+         n
+         :pre (beginning-of-line))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 markdown-mode
 
