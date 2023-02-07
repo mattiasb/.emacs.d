@@ -726,11 +726,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Python
 (defun mb-hooks--python-mode ()
   "My `python' mode hook."
-  (mb-f-req 'pipenv)
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
 
   ;; (importmagic-mode)
-  (pipenv-mode)
   (eglot-ensure))
 
 (with-eval-after-load 'python
