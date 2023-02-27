@@ -72,12 +72,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (font-lock-flush))
 
 (with-eval-after-load "ansible"
-  ;; TODO: Make this a macro
-  (cl-flet ((binding (key) (format "%s %s"
-                                   (mb-f-get-keybinding-to 'mb-keys-tempel-map)
-                                   key)))
-    (eval `(tempel-key ,(binding "t") task ansible-key-map))
-    (eval `(tempel-key ,(binding "p") play ansible-key-map)))
+  ;; TODO: Make this macro work. Ignores the prefix currently.
+  ;; (cl-flet ((binding (key) (format "%s %s"
+  ;;                                  (mb-f-get-keybinding-to 'mb-keys-tempel-map)
+  ;;                                  key)))
+  ;;   (eval `(tempel-key ,(binding "t") task ansible-key-map))
+  ;;   (eval `(tempel-key ,(binding "p") play ansible-key-map)))
+  (tempel-key "C-z s t" task ansible-key-map)
+  (tempel-key "C-z s p" play ansible-key-map)
   (mb-f-define-keys ansible-key-map
                     '(( "{"    . mb-cmd-jinja2-{ )
                       ( "C-{"  . mb-cmd-jinja2-C-{ )))
