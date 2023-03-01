@@ -69,6 +69,7 @@ markdown-mode
 
 (ref    "[" (p "1") "]: " (r "https://") q)
 
+(code  "```" (p "format") n r n "```")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode
 
