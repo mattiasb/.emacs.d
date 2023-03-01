@@ -750,6 +750,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Ruby
 (defun mb-hooks--ruby-mode ()
   "My `ruby' mode hook."
+  (mb-f-req 'ruby-mode)
+  (remove-hook 'flymake-diagnostic-functions
+               #'ruby-flymake-auto
+               'local)
   (eglot-ensure))
 
 (with-eval-after-load 'ruby-mode
