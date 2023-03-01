@@ -75,6 +75,7 @@ prog-mode yaml-mode
 
 (fixme (mb-f-comment-start) "FIXME: ")
 (todo  (mb-f-comment-start) "TODO: ")
+(todo  (mb-f-comment-start) "NOTE: ")
 (bug   (mb-f-comment-start) "BUG: ")
 (hack  (mb-f-comment-start) "HACK: ")
 (see   (mb-f-comment-start) "See: ")
