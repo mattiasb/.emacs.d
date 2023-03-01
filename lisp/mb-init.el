@@ -70,6 +70,7 @@
   (mb-f-req 'smart-region)
   (mb-f-req 'projectile)
   (mb-f-req 'auto-dim-other-buffers)
+  (mb-f-req 'beframe)
 
   (su-mode +1)
   (auto-fill-mode 1)
@@ -96,6 +97,7 @@
   (electric-layout-mode)
   (electric-pair-mode)
   (projectile-mode)
+  (beframe-mode)
   (auto-dim-other-buffers-mode)
   (auto-insert-mode))
 

@@ -178,7 +178,7 @@
  '(inhibit-startup-echo-area-message "mattiasb")
  '(inhibit-startup-screen t)
  '(initial-major-mode 'text-mode)
- '(initial-scratch-message nil)
+ '(initial-scratch-message "")
  '(isearch-lazy-count t)
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
@@ -256,7 +256,7 @@
  '(package-quickstart t)
  '(package-quickstart-file "~/.cache/emacs/package-quickstart.el")
  '(package-selected-packages
-   '(ace-jump-mode adaptive-wrap all-the-icons-ibuffer aggressive-indent all-the-icons-completion all-the-icons-dired ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dim-other-buffers browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el default-text-scale diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat editorconfig eglot electric-operator emojify expand-region fill-function-arguments fit-text-scale flimenu flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile iedit importmagic ini-mode jinja2-mode js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info pandoc-mode pcre2el php-mode powershell projectile python-black rainbow-mode restclient ripgrep rfc-mode sass-mode sh-extra-font-lock shift-number smart-region spdx sqlup-mode string-inflection su systemd tempel tmux-keys todotxt toml-mode vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
+   '(ace-jump-mode adaptive-wrap all-the-icons-ibuffer aggressive-indent all-the-icons-completion all-the-icons-dired ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dim-other-buffers beframe browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode daemons debian-el default-text-scale diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat editorconfig eglot electric-operator emojify expand-region fill-function-arguments fit-text-scale flimenu flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile iedit importmagic ini-mode jinja2-mode js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info pandoc-mode pcre2el php-mode powershell projectile python-black rainbow-mode restclient ripgrep rfc-mode sass-mode sh-extra-font-lock shift-number smart-region spdx sqlup-mode string-inflection su systemd tempel tmux-keys todotxt toml-mode vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
  '(package-user-dir "~/.cache/emacs/elpa")
  '(powerline-default-separator 'bar)
  '(projectile-cache-file "/home/mattiasb/.cache/emacs/projectile.cache")
