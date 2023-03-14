@@ -83,7 +83,9 @@ prog-mode yaml-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode
 
-(auto-insert "---" n :pre (beginning-of-buffer))
+(auto-insert (beginning-of-buffer)
+             "---"
+             n)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 yaml-mode :when ansible
