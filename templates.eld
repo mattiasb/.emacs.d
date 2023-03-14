@@ -165,7 +165,10 @@ sh-mode
 (auto-insert n "set -e"
              n "set -o pipefail"
              n n
-             :pre (tempel-insert '!))
+             :pre (tempel-insert '!)
+             :post (progn
+                     (tempel-insert 'divider)
+                     (tempel-insert 'main)))
 (! (beginning-of-buffer)
    "#!/bin/bash"
    n o)
@@ -178,6 +181,8 @@ sh-mode
       o n)
 (debug & o "echo \"" (r "variable" variable) ": ${" variable "}\"" o q)
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
+(main & o n "function main {" n> q n "}" n n "main \"${@}\"; exit"
+      :pre (end-of-buffer)))
 (if & o n "if " (p "[   ]") "; then"
     n> r>
     n "fi"
