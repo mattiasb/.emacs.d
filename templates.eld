@@ -183,7 +183,7 @@ sh-mode
 (debug & o "echo \"" (r "variable" variable) ": ${" variable "}\"" o q)
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
 (main & o n "function main {" n> q n "}" n n "main \"${@}\"; exit"
-      :pre (end-of-buffer)))
+      :pre (end-of-buffer))
 (if & o n "if " (p "[   ]") "; then"
     n> r>
     n "fi"
