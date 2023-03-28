@@ -789,6 +789,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--text-mode ()
   "My `text' mode hook."
   (mb-f-req 'corfu)
+  (mb-f-req 'jinx)
 
   (setq-local fill-column 80)
   (setq-local indent-tabs-mode nil)
@@ -797,16 +798,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-indent-local-mode)
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-ispell)
-  (setq-local corfu-auto nil)
-
-  ;;;; Disable flyspell for now
-  ;;
-  ;; (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
-  ;;   (guess-language-mode)
-  ;;   (guess-language)
-  ;;   (flyspell-mode)
-  ;;   (auto-fill-mode))
-  )
+  (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
+    (jinx-mode))
+  (setq-local corfu-auto nil))
 
 ;; Text mode doesn't have a (provide)
 (add-hook 'text-mode-hook #'mb-hooks--text-mode)

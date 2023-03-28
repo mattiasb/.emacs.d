@@ -53,6 +53,7 @@
   ;; Needed for license snippet
   (require 'spdx)
   (mb-f-req 'su)
+  (mb-f-req 'jinx)
   (mb-f-req 'git-gutter)
   (mb-f-req 'corfu)
   (mb-f-req 'flimenu)
