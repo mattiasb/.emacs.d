@@ -83,16 +83,16 @@
                       ( "f"      . mb-cmd-exec-nautilus)))
 
 (mb-f-define-keymap mb-keys-windows-map
-                    '(( "c"      . customize)
-                      ( "t"      . todotxt)
+                    '(( "R"      . rfc-mode-browse)
+                      ( "a"      . ansi-term)
+                      ( "c"      . customize)
                       ( "d"      . daemons)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
-                      ( "R"      . rfc-mode-browse)
-                      ( "a"      . ansi-term)
-                      ( "v"      . vterm)
-                      ( "s"      . dired-sidebar-toggle-sidebar)))
+                      ( "s"      . dired-sidebar-toggle-sidebar)
+                      ( "t"      . todotxt)
+                      ( "v"      . vterm)))
 
 ;; My Help keymap
 (mb-f-define-keymap mb-keys-help-map
