@@ -81,6 +81,8 @@
  '(doom-modeline-modal-icon nil)
  '(easy-repeat-command-list
    '(default-text-scale-increase default-text-scale-decrease default-text-scale-reset table-narrow-cell table-widen-cell table-shorten-cell table-heighten-cell string-inflection-all-cycle shift-number-up shift-number-down md/duplicate-up md/duplicate-down mb-cmd-toggle-programming-case-word-at-point-reverse mb-cmd-toggle-programming-case-word-at-point other-window next-buffer scroll-other-window recenter-top-bottom kill-buffer backward-page forward-page previous-error next-error scroll-up-command scroll-down-command beginning-of-defun end-of-defun org-previous-visible-heading org-next-visible-heading org-forward-heading-same-level org-backward-heading-same-level outline-up-heading outline-next-visible-heading outline-previous-visible-heading outline-forward-same-level outline-backward-same-level git-gutter:previous-hunk git-gutter:next-hunk paredit-forward paredit-backward paredit-backward-up))
+ '(eat-enable-shell-prompt-annotation nil)
+ '(eat-kill-buffer-on-exit t)
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(eglot-autoshutdown t)

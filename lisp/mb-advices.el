@@ -40,6 +40,11 @@
   "Advice DESCRIBE-FUNCTION to switch to BUFFER after popping it up."
   (lambda (&rest _args) (mb-f-select-buffer buffer)))
 
+(defun mb-advices-before (funcs advice)
+  "ADVICE a bunch of FUNCS."
+  (dolist (func funcs)
+    (advice-add func :before advice)))
+
 (defun mb-advices-around (funcs advice)
   "ADVICE a bunch of FUNCS."
   (dolist (func funcs)
@@ -52,6 +57,7 @@
 
 (defun mb-advices-activate ()
   "Activate my advices."
+  (mb-f-req 'eat)
 
   (mb-advices-after '(backward-page forward-page)
                     (mb-advices-drop-args #'recenter))
@@ -64,6 +70,10 @@
               :after (mb-advices-switch-to "*Diff*"))
   (advice-add #'projectile-compile-project
               :after (mb-advices-switch-to "*compilation*"))
+
+  (mb-advices-before '(ansi-term eat)
+                     (lambda (&rest _)
+                       (interactive (list "/bin/bash"))))
 
   (mb-advices-after '(package-menu-describe-package
                       describe-variable
@@ -84,10 +94,6 @@
               :after
               (lambda ()
                 (kill-buffer (current-buffer))))
-
-  (advice-add #'ansi-term
-              :before (lambda (&rest _)
-                        (interactive (list "/bin/bash"))))
 
   (advice-add #'save-buffers-kill-emacs
               :around (lambda (func &rest args)
