@@ -250,7 +250,8 @@
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")
-     ("melpa-stable" . "http://stable.melpa.org/packages/")))
+     ("melpa-stable" . "http://stable.melpa.org/packages/")
+     ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
  '(package-gnupghome-dir "~/.cache/emacs/elpa/gnupg/")
  '(package-native-compile t)
  '(package-quickstart t)
