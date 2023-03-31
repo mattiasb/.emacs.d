@@ -450,6 +450,7 @@ markers and footnote text."
 
 (defvar mb-cmd-forges '(("GitHub"   . "github")
                         ("GitLab"   . "gitlab")
+                        ("CodeBerg" . "codeberg")
                         ("SmartEye" . "smarteye")
                         ("GNOME"    . "gnome"))
   "Git forges.")
