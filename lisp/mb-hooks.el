@@ -147,21 +147,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'conf-mode
   (add-hook 'conf-mode-hook #'mb-hooks--conf-mode-hook))
 
-;; Daemons
-(with-eval-after-load 'daemons
-  (mb-f-req 'daemons)
-  (mb-f-define-keys daemons-mode-map
-                    '(("a" . mwim-beginning-of-code-or-line)
-                      ("e" . mwim-end-of-code-or-line)
-                      ("S" . tabulated-list-sort)
-                      ("k" . daemons-stop-at-point)     ; Stop (kill)
-                      ("x" . daemons-start-at-point)    ; Start
-                      ("l" . daemons-reload-at-point))) ; Reload
-
-  (mb-f-remap-keys daemons-mode-map
-                   '(("s" . "C-s")
-                     ("r" . "C-r"))))
-
 ;; Dockerfile
 (defun mb-hooks--dockerfile-mode ()
   "My `dockerfile' mode hook."
