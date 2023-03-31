@@ -276,6 +276,15 @@ With a prefix ARG always prompt for command to use."
     (call-process command nil 0)))
 
 ;;;###autoload
+(defun mb-cmd-projectile-eat ()
+  "Start `eat' in the project root."
+  (interactive)
+  (mb-f-req 'eat)
+  (projectile-with-default-dir (projectile-project-root)
+    (let ((eat-buffer-name (format "*eat [%s]*" (projectile-project-name))))
+      (eat (getenv "SHELL")))))
+
+;;;###autoload
 (defun mb-cmd-projectile-ansi-term ()
   "Start `ansi-term' in the project root."
   (interactive)
