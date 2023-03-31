@@ -86,7 +86,7 @@
                     '(( "R"      . rfc-mode-browse)
                       ( "a"      . ansi-term)
                       ( "c"      . customize)
-                      ( "d"      . daemons)
+                      ( "d"      . devhelp)
                       ( "e"      . ielm)
                       ( "p"      . list-packages)
                       ( "r"      . mb-cmd-restclient)
