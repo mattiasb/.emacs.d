@@ -97,10 +97,9 @@ yaml-mode :when ansible
       o "- name: "  (p "name")
       n "  hosts: " (p "hosts")
       n "  tasks:"
-      n
-      (i task))
+      n> (i task))
 
-(task & n o "    "
+(task & o
       "- name: \"" (p "name") "\""
       n> (p "module") ": " q
       n)
