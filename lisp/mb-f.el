@@ -494,9 +494,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-f-buf-pretty-name ()
   "Get a pretty capitalized header out of a filename."
-  (mb-f-req 'string-inflection)
-  (let ((kebab (string-inflection-kebab-case-function (mb-f-buf-base))))
-    (capitalize (replace-regexp-in-string "-+" " " kebab))))
+  (mb-f-any-to-human (mb-f-buf-base)))
 
 (defun mb-f-buf-base ()
   "Get buffer or buffer filename base."
@@ -509,6 +507,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-f-kebab-to-human (str)
   "Convert STR from kebab-format to Human Readable Format."
   (mapconcat 'capitalize (split-string str "-") " "))
+
+(defun mb-f-any-to-human (str)
+  "Convert STR from kebab-format to Human Readable Format."
+  (mb-f-req 'string-inflection)
+  (mb-f-kebab-to-human (string-inflection-kebab-case-function str)))
 
 (defun mb-f-emacs-version ()
   "Get version number of Emacs."
