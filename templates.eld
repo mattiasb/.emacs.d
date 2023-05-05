@@ -165,6 +165,8 @@ yaml-mode :when ansible
 (with_dict    "with_dict: "       (i varq) q)
 (with_dict>-  "with_dict: >-"  n> (i var)  q)
 
+(name         "name: \"\"" % >)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Can't get this to be `jinja2-mode yaml-mode :when ansible` so that I can
 ;; share the var definitions. :/
