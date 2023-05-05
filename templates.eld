@@ -2,6 +2,58 @@
 ;; Copyright 2022, Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Template syntax (https://github.com/minad/tempel#template-syntax)
+;;
+;;     “string”  Inserts a string literal.
+;;
+;;     p         Inserts an unnamed placeholder field.
+;;
+;;     n         Inserts a newline.
+;;
+;;     >         Indents with indent-according-to-mode.
+;;
+;;     r         Inserts the current region.
+;;               If no region is active, quits the containing template when
+;;               jumped to.
+;;
+;;     r>        Acts like r, but indent region.
+;;
+;;     n>        Inserts a newline and indents.
+;;
+;;     &         Insert newline unless there is only white space between line
+;;               start and point.
+;;
+;;     %         Insert newline unless there is only white space between point
+;;               and line end.
+;;
+;;     o         Like % but leaves the point before newline.
+;;
+;;     (s NAME)  Inserts a named field.
+;;
+;;     (p PROMPT <NAME> <NOINSERT>)
+;;               Insert an optionally named field with a prompt.
+;;               The PROMPT is displayed directly in the buffer as default
+;;               value.
+;;               If NOINSERT is non-nil, no field is inserted. Then the mini
+;;               buffer is used for prompting and the value is bound to NAME.
+;;
+;;     (r PROMPT <NAME> <NOINSERT>)
+;;               Insert region or act like (p ...).
+;;
+;;     (r> PROMPT <NAME> <NOINSERT>)
+;;               Act like (r ...), but indent region.
+;;
+;;     (p FORM <NAME> <NOINSERT>)
+;;               Like p described above, but FORM is evaluated.
+;;
+;;     (FORM ...)
+;;               Other Lisp forms are evaluated. Named fields are lexically
+;;               bound.
+;;
+;;     q         Quits the containing template when jumped to.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 fundamental-mode text-mode conf-mode ;; Available everywhere
 
 ;; Make sure there's always an auto-insert to override
