@@ -125,7 +125,8 @@
 
 ;; My tempel keymap
 (mb-f-define-keymap mb-keys-tempel-map
-                    '(( "i"      . tempel-complete)
+                    '(( "<tab>"  . tempel-complete)
+                      ( "i"      . tempel-insert)
                       ( "e"      . mb-cmd-visit-templates)))
 
 (mb-f-define-keymap mb-keys-string-inflection-map
