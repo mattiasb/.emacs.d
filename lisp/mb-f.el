@@ -457,6 +457,23 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     "url")))
     (dolist (dir dirs) (make-directory (format "%s/%s" cache-dir dir) t))))
 
+(defun mb-f-eval-or-inspect-expression (arg)
+  "Like `eval-expression', but also inspect when called with prefix ARG."
+  (interactive "P")
+  (mb-f-req 'inspector)
+  (pcase arg
+    ('(4) (let ((current-prefix-arg nil))
+	    (call-interactively #'inspector-inspect-expression)))
+    (_ (call-interactively #'eval-expression))))
+
+(defun mb-f-eval-or-inspect-last-sexp (arg)
+  "Like `eval-last-sexp', but also inspect when called with prefix ARG."
+  (interactive "P")
+  (mb-f-req 'inspector)
+  (pcase arg
+    ('(4) (inspector-inspect-last-sexp))
+    (_ (call-interactively #'eval-last-sexp))))
+
 ;; See: https://github.com/minad/tempel#defining-custom-elements
 (defun mb-f-tempel-include (elt)
   "Include element for Tempel."

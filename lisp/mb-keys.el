@@ -26,6 +26,8 @@
     (isearch-forward          . mb-cmd-isearch-forward-symbol-with-prefix)
     (isearch-backward         . mb-cmd-isearch-backward-symbol-with-prefix)
     (delete-other-windows     . zygospore-toggle-delete-other-windows)
+    (eval-last-sexp           . mb-f-eval-or-inspect-last-sexp)
+    (eval-expression          . mb-f-eval-or-inspect-expression)
     (fill-paragraph           . mb-cmd-fill-or-unfill)
     (kill-buffer              . mb-cmd-kill-this-buffer)
     (split-window-right       . mb-cmd-split-window-right)
