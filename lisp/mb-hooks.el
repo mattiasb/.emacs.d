@@ -783,7 +783,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (display-fill-column-indicator-mode)
   (electric-indent-local-mode)
   (electric-operator-mode)
-  (mb-f-set-capfs #'cape-ispell)
+  (mb-f-set-capfs #'cape-dict)
   (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
     (jinx-mode))
   (setq-local corfu-auto nil))
