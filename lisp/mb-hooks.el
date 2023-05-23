@@ -205,6 +205,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
                '(python-mode . ("pyright-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(terraform-mode . ("terraform-ls" "serve")))
   (mb-f-define-keys eglot-mode-map
                     '(( "C-z f r" . eglot-rename)
                       ( "C-z f f" . eglot-format)
@@ -770,6 +772,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'term-mode-hook #'mb-hooks--term-mode)
   (add-hook 'term-exec-hook #'mb-hooks--term-exec))
+
+;; Terraform
+(defun mb-hooks--terraform-mode ()
+  "My `terraform' mode hook."
+  (eglot-ensure))
+
+(with-eval-after-load 'terraform-mode
+  (add-hook 'terraform-mode-hook #'mb-hooks--terraform-mode))
 
 ;; Text
 (defun mb-hooks--text-mode ()
