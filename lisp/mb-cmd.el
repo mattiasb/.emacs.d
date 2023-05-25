@@ -251,9 +251,14 @@ With a prefix ARG always prompt for command to use."
   "Index my project directories."
   (interactive)
 
-  (mapc #'projectile-add-known-project
-        (mb-f-find-git-projects "~/" 5))
+  ;; Find all repositories under ~/Code/ seven directories deep
+  (mapc #'projectile-add-known-project (mb-f-find-git-projects "~/Code/" 7))
 
+  ;; Add these manually
+  (mapc #'projectile-add-known-project '("/home/mattiasb/.config/"
+                                         "/home/mattiasb/.config/emacs/"
+                                         "/home/mattiasb/.local/bin/"
+                                         "/home/mattiasb/Code/Test/"))
   (projectile-cleanup-known-projects))
 
 ;;;###autoload
