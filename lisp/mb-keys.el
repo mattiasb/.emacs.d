@@ -110,6 +110,7 @@
                       ( "e p"    . electric-pair-mode)
                       ( "e o"    . electric-operator-mode)
                       ( "f"      . auto-fill-mode)
+                      ( "l"      . linum-mode)
                       ( "p"      . projectile-mode)
                       ( "r"      . rainbow-mode)
                       ( "s"      . flyspell-mode)
