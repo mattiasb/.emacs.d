@@ -118,9 +118,12 @@ markdown-mode
 (link   "[" (r "Text") "](" p      ")" q)
 (rlink  "[" (r "Text") "][" p      "]" q)
 
+(checkbox & "- [ ] ")
+
 (ref    "[" (p "1") "]: " (r "https://") q)
 
-(code  "```" (p "format") n r n "```")
+(code  & "```" (p "format") n r n "```" o)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode
 

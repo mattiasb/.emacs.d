@@ -595,12 +595,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-c p"      . pandoc-main-hydra/body)
                       ( "M-<up>"     . nil)
                       ( "M-<down>"   . nil)))
-  (tempel-key "C-z s 1" h1 markdown-mode-map)
-  (tempel-key "C-z s 2" h2 markdown-mode-map)
-  (tempel-key "C-z s 3" h3 markdown-mode-map)
-  (tempel-key "C-z s 4" h4 markdown-mode-map)
-  (tempel-key "C-z s 5" h5 markdown-mode-map)
-  (tempel-key "C-z s 6" h6 markdown-mode-map)
+
+  (tempel-key "C-z s 1"      h1       markdown-mode-map)
+  (tempel-key "C-z s 2"      h2       markdown-mode-map)
+  (tempel-key "C-z s 3"      h3       markdown-mode-map)
+  (tempel-key "C-z s 4"      h4       markdown-mode-map)
+  (tempel-key "C-z s 5"      h5       markdown-mode-map)
+  (tempel-key "C-z s 6"      h6       markdown-mode-map)
+  (tempel-key "C-z s c"      code     markdown-mode-map)
+  (tempel-key "C-M-<return>" checkbox markdown-mode-map)
 
   (add-hook 'markdown-mode-hook #'mb-hooks--markdown-mode))
 
