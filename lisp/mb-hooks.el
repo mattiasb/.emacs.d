@@ -602,6 +602,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (tempel-key "C-z s 4"      h4       markdown-mode-map)
   (tempel-key "C-z s 5"      h5       markdown-mode-map)
   (tempel-key "C-z s 6"      h6       markdown-mode-map)
+  (tempel-key "C-z s b"      **       markdown-mode-map)
+  (tempel-key "C-z s *"      *        markdown-mode-map)
+  (tempel-key "M-["          rlink    markdown-mode-map)
   (tempel-key "C-z s c"      code     markdown-mode-map)
   (tempel-key "C-M-<return>" checkbox markdown-mode-map)
 

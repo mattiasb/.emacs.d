@@ -124,6 +124,9 @@ markdown-mode
 
 (code  & "```" (p "format") n r n "```" o)
 
+(** "**" (r "Text") "**" q)
+(*  "*"  (r "Text") "*"  q)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode
 
