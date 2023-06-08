@@ -127,7 +127,7 @@ markdown-mode
 (** "**" (r "Text") "**" q)
 (*  "*"  (r "Text") "*"  q)
 
-(br "  " n)
+(br "  " o)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode
