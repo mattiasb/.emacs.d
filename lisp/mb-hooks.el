@@ -529,6 +529,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'magit
   (mb-f-req 'magit-todos)
+  (mb-f-req 'magit-gerrit)
   (mb-f-req 'forge)
   (mb-f-req 'ghub)
 
