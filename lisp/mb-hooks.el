@@ -527,6 +527,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (setq fill-column 72)
   (display-fill-column-indicator-mode))
 
+(defun mb-hooks--magit-gerrit-mode ()
+  "My `magit-gerrit' mode hook."
+  (defvar magit-gerrit-push-format)
+  (defvar magit-gerrit-push-to)
+  (setq magit-gerrit-push-format "refs/%s%s%%topic=%s"
+        magit-gerrit-push-to "for"))
+
 (with-eval-after-load 'magit
   (mb-f-req 'magit-todos)
   (mb-f-req 'magit-gerrit)
@@ -580,6 +587,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'after-save-hook         #'magit-after-save-refresh-status)
   (add-hook 'magit-post-refresh-hook #'git-gutter:update-all-windows)
+  (add-hook 'magit-gerrit-mode-hook  #'mb-hooks--magit-gerrit-mode)
   (add-hook 'git-commit-setup-hook   #'mb-hooks--git-commit-setup))
 
 ;; Markdown
