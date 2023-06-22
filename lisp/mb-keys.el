@@ -115,6 +115,7 @@
                       ( "r"      . rainbow-mode)
                       ( "s"      . flyspell-mode)
                       ( "t"      . toggle-truncate-lines)
+                      ( "o"      . olivetti-mode)
                       ( "w"      . whitespace-mode)))
 
 ;; My Magit keymap
