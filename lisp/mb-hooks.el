@@ -203,6 +203,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     #'tags-completion-at-point-function)))
 
 (with-eval-after-load 'eglot
+  (mb-f-req 'eglot-tempel)
+  (eglot-tempel-mode 1)
+
   (add-to-list 'eglot-server-programs
                '(python-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
