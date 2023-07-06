@@ -28,6 +28,8 @@
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
  '(ansi-color-for-compilation-mode 'filter)
+ '(auto-dark-dark-theme 'adwaita-dark)
+ '(auto-dark-light-theme 'adwaita)
  '(auto-insert 'other)
  '(auto-insert-alist '((".*" . mb-cmd-auto-insert)))
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
@@ -345,7 +347,7 @@
  '(package-quickstart t)
  '(package-quickstart-file "~/.cache/emacs/package-quickstart.el")
  '(package-selected-packages
-   '(ace-jump-mode adaptive-wrap aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dim-other-buffers beframe browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode debian-el default-text-scale devhelp diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify expand-region fill-function-arguments fit-text-scale flimenu flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-gerrit magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile python-black pyvenv rainbow-mode restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region spdx sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys todotxt toml-mode tree-inspector vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
+   '(ace-jump-mode adaptive-wrap adwaita-dark-theme aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dark auto-dim-other-buffers beframe browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode debian-el default-text-scale devhelp diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify expand-region fill-function-arguments fit-text-scale flimenu flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-gerrit magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile python-black pyvenv rainbow-mode restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region spdx sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys todotxt toml-mode tree-inspector vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
  '(package-user-dir "~/.cache/emacs/elpa")
  '(powerline-default-separator 'bar)
  '(projectile-cache-file "/home/mattiasb/.cache/emacs/projectile.cache")
@@ -476,26 +478,13 @@
    '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auto-dim-other-buffers-face ((t (:background "gray11"))))
  '(corfu-popupinfo ((t (:inherit corfu-default))))
  '(diff-refine-added ((t (:background "#416d41" :foreground "#cceecc"))))
  '(diff-refine-removed ((t (:background "#664040" :foreground "#eecccc"))))
- '(fill-column-indicator ((t (:foreground "gray21"))))
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
  '(flymake-warning ((t (:underline (:color "goldenrod" :style wave)))))
  '(history-current-history ((t nil)))
- '(history-current-temp-history ((t (:inherit history-current-history))))
- '(history-other-history ((t (:inherit history-current-history))))
- '(history-prompt ((t (:inherit history-current-history))))
- '(history-temp-history ((t (:inherit history-current-history))))
- '(hl-line ((t (:background "gray19"))))
- '(iedit-occurrence ((t (:inherit region))))
- '(lsp-face-highlight-textual ((t (:background "gray17"))))
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
  '(markdown-header-face-2 ((t (:inherit markdown-header-face :height 1.5))))
@@ -503,11 +492,6 @@
  '(markdown-header-face-4 ((t (:inherit markdown-header-face :height 1.1))))
  '(markdown-header-face-5 ((t (:inherit markdown-header-face))))
  '(markdown-header-face-6 ((t (:inherit markdown-header-face))))
- '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))))
- '(popup-isearch-match ((t (:inherit match))))
- '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))))
- '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))))
- '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))))
  '(shr-abbreviation ((t (:inherit underline :underline (:color foreground-color :style wave)))))
  '(shr-h1 ((t (:inherit markdown-header-face-1))))
  '(shr-h2 ((t (:inherit markdown-header-face-2))))
@@ -515,13 +499,30 @@
  '(shr-h4 ((t (:inherit markdown-header-face-4))) t)
  '(shr-h5 ((t (:inherit markdown-header-face-5))) t)
  '(shr-h6 ((t (:inherit markdown-header-face-6))) t)
- '(tab-bar ((t (:underline "gray35"))))
- '(tab-bar-tab-inactive ((t nil)))
- '(table-cell ((t (:background "gray18"))))
  '(variable-pitch ((t (:height 1.1 :family "Sans Serif"))))
- '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold))))
  '(vr/match-0 ((t (:inherit region))))
  '(vr/match-1 ((t (:inherit region)))))
+
+
+;; TODO: Make these be relative to theme
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
+;;  '(fill-column-indicator ((t (:foreground "gray21"))))
+;;  '(hl-line ((t (:background "gray19"))))
+;;  '(iedit-occurrence ((t (:inherit region))))
+;;  '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))))
+;;  '(popup-isearch-match ((t (:inherit match))))
+;;  '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))))
+;;  '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))))
+;;  '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))))
+;;  '(tab-bar ((t (:underline "gray35"))))
+;;  '(tab-bar-tab-inactive ((t nil)))
+;;  '(table-cell ((t (:background "gray18"))))
+;;  '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold)))))
 
 ;;; Non-customizable settings
 
