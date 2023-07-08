@@ -334,6 +334,7 @@
      ((text . html)
       . 2)
      (multipart . mime-view-multipart-entity-score)))
+ '(mode-line-percent-position nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
  '(package-archive-priorities '(("melpa" . 10) ("gnu" . 5) ("melpa-stable" . 0)))
