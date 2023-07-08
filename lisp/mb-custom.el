@@ -28,8 +28,10 @@
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
  '(ansi-color-for-compilation-mode 'filter)
- '(auto-dark-dark-theme 'adwaita-dark)
- '(auto-dark-light-theme 'adwaita)
+ '(auto-dark-dark-theme 'madhat2r)
+ '(auto-dark-detection-method 'dbus)
+ '(auto-dark-light-theme 'leuven)
+ '(auto-dark-mode t)
  '(auto-insert 'other)
  '(auto-insert-alist '((".*" . mb-cmd-auto-insert)))
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
