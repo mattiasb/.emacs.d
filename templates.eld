@@ -219,6 +219,16 @@ python-mode
                                       (python-info-current-defun)
                                       nil nil 1)
           "(" p ")" n> q)
+
+(main & n "def main():"
+      n> "pass" q
+      n n
+      "if __name__ == \"__main__\":"
+      n>
+      "main()"
+      n
+      :pre (end-of-buffer))
+
 (@classmethod "@classmethod"
               n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
