@@ -314,6 +314,7 @@
  '(magit-todos-auto-group-items 'always)
  '(magit-todos-exclude-globs '(".git/" "snippets/prog-mode/todo"))
  '(magit-todos-group-by '(magit-todos-item-filename))
+ '(magit-todos-insert-after '(bottom))
  '(magit-unstage-all-confirm nil)
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
