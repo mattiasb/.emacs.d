@@ -198,7 +198,7 @@ python-mode
 (while    & "while " p ":" n> q)
 (with     & "with " p " as " p ":"
           n> r>)
-(init     & "def __init__(self):" n> (p "pass"))
+(init     & "def __init__(self):" n> "pass" q)
 (class    & "class " (p "ClassName") "(" (p "object") "):"
           n>"\"\"\"" p "\"\"\""
           n>
