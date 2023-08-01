@@ -178,8 +178,15 @@
                       ( "-"        . default-text-scale-decrease)
                       ( "0"        . default-text-scale-reset)))
 
+(mb-f-define-keymap mb-keys-flymake-map
+                    '(( "d"            . flymake-show-buffer-diagnostics)
+                      ( "l"            . flymake-switch-to-log-buffer)
+                      ( "n"            . flymake-goto-next-error)
+                      ( "p"            . flymake-goto-prev-error)))
+
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
+                      ( "e"      . mb-keys-flymake-map)
                       ( "h"      . mb-keys-help-map)
                       ( "m"      . mb-keys-magit-map)
                       ( "s"      . mb-keys-tempel-map)
