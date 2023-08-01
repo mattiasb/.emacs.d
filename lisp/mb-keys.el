@@ -182,7 +182,10 @@
                     '(( "d"            . flymake-show-buffer-diagnostics)
                       ( "l"            . flymake-switch-to-log-buffer)
                       ( "n"            . flymake-goto-next-error)
-                      ( "p"            . flymake-goto-prev-error)))
+                      ( "<down>"       . flymake-goto-next-error)
+                      ( "p"            . flymake-goto-prev-error)
+                      ( "<up>"         . flymake-goto-prev-error)
+                      ))
 
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
