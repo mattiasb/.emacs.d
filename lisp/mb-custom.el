@@ -31,7 +31,6 @@
  '(auto-dark-dark-theme 'madhat2r)
  '(auto-dark-detection-method 'dbus)
  '(auto-dark-light-theme 'leuven)
- '(auto-dark-mode t)
  '(auto-insert 'other)
  '(auto-insert-alist '((".*" . mb-cmd-auto-insert)))
  '(auto-insert-directory (concat user-emacs-directory "templates/"))
@@ -510,26 +509,6 @@
  '(variable-pitch ((t (:height 1.1 :family "Sans Serif"))))
  '(vr/match-0 ((t (:inherit region))))
  '(vr/match-1 ((t (:inherit region)))))
-
-
-;; TODO: Make these be relative to theme
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(auto-dim-other-buffers-face ((t (:background "gray11"))))
-;;  '(fill-column-indicator ((t (:foreground "gray21"))))
-;;  '(hl-line ((t (:background "gray19"))))
-;;  '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))))
-;;  '(popup-isearch-match ((t (:inherit match))))
-;;  '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))))
-;;  '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))))
-;;  '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))))
-;;  '(tab-bar ((t (:underline "gray35"))))
-;;  '(tab-bar-tab-inactive ((t nil)))
-;;  '(table-cell ((t (:background "gray18"))))
-;;  '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold)))))
 
 ;;; Non-customizable settings
 

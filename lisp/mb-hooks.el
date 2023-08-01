@@ -86,6 +86,33 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 
+;; Auto Dark
+(defun mb-hooks--auto-dark-dark-mode ()
+  "My `auto-dark' dark mode hook."
+  (custom-set-faces
+   '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
+   '(fill-column-indicator ((t (:foreground "gray21"))) t)
+   '(hl-line ((t (:background "gray19"))) t)
+   '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
+   '(popup-isearch-match ((t (:inherit match))) t)
+   '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
+   '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))) t)
+   '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))) t)
+   '(tab-bar ((t (:underline "gray35"))) t)
+   '(tab-bar-tab-inactive ((t nil)) t)
+   '(table-cell ((t (:background "gray18"))) t)
+   '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold))) t)))
+
+(defun mb-hooks--auto-dark-light-mode ()
+  "My `auto-dark' light mode hook."
+  ;; TODO: Adapt for light mode as well
+  )
+
+(with-eval-after-load 'auto-dark
+  (mb-f-req 'auto-dark)
+  (add-hook 'auto-dark-dark-mode-hook #'mb-hooks--auto-dark-dark-mode)
+  (add-hook 'auto-dark-light-mode-hook  #'mb-hooks--auto-dark-light-mode))
+
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
   (mb-f-req 'browse-kill-ring)
