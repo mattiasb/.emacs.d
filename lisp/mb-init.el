@@ -71,6 +71,7 @@
   (mb-f-req 'projectile)
   (mb-f-req 'auto-dim-other-buffers)
   (mb-f-req 'beframe)
+  (mb-f-req 'envrc)
 
   (su-mode +1)
   (auto-fill-mode 1)
@@ -98,7 +99,8 @@
   (projectile-mode)
   (beframe-mode)
   (auto-dim-other-buffers-mode)
-  (auto-insert-mode))
+  (auto-insert-mode)
+  (envrc-global-mode))
 
 ;;;
 
