@@ -28,13 +28,6 @@
 (require 'mb-custom)
 (require 'mb-loadpaths)
 (require 'mb-f)
-(mb-f-make-cache-dirs)
-(mb-f-package-install-all)
-(mb-f-req 'auto-dark)
-(auto-dark-mode 1)
-
-;;; Post package initialization
-
 (require 'mb-init)
 (mb-init)
 

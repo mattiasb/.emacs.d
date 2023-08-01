@@ -72,7 +72,9 @@
   (mb-f-req 'auto-dim-other-buffers)
   (mb-f-req 'beframe)
   (mb-f-req 'envrc)
+  (mb-f-req 'auto-dark)
 
+  (auto-dark-mode)
   (su-mode +1)
   (auto-fill-mode 1)
   (global-git-gutter-mode)
@@ -107,6 +109,8 @@
 (defun mb-init ()
   "Initialize Emacs."
   (require 'mb-hooks)
+  (mb-f-make-cache-dirs)
+  (mb-f-package-install-all)
   (mb-modes-activate)
   (mb-advices-activate)
   (mb-init--global-keybindings)
