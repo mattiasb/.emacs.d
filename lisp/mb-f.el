@@ -225,8 +225,8 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   "Set doon-modeline height based on DPI."
   (mb-f-req 'doom-modeline)
   (if (seq-every-p #'mb-f-hidpi-p (mb-f-get-monitor-dpis))
-      (setq doom-modeline-height 65)
-    (setq doom-modeline-height 25)))
+      (setq doom-modeline-height 70)
+    (setq doom-modeline-height 35)))
 
 (defun mb-f-reset-terminal-cursors ()
   "Reset the terminal cursor."
