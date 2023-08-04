@@ -251,8 +251,8 @@ With a prefix ARG always prompt for command to use."
   "Index my project directories."
   (interactive)
 
-  ;; Find all repositories under ~/Code/ seven directories deep
-  (mapc #'projectile-add-known-project (mb-f-find-git-projects "~/Code/" 7))
+  ;; Find all projects under ~/Code/ seven directories deep
+  (mapc #'projectile-add-known-project (mb-f-find-projects "~/Code/" 7))
 
   ;; Add these manually
   (mapc #'projectile-add-known-project '("/home/mattiasb/.config/"

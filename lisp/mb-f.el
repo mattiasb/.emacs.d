@@ -302,6 +302,20 @@ Optionally only search as deep as DEPTH."
          (result (split-string (shell-command-to-string cmd))))
     (mapcar #'file-name-directory (mb-f-filter-out-repo-dirs result))))
 
+(defun mb-f-find-projects (dir &optional depth)
+  "Find all  projects under DIR.
+Optionally only search as deep as DEPTH."
+  (let* ((cmd (format "find %s %s \\( %s -or %s -or %s \\) -and -not %s"
+                      dir
+                      (if depth (format "-maxdepth %d" depth) "")
+                      "-type d,l -name '.git'"
+                      "-type d   -name '.repo'"
+                      "-type f   -name '.projectile'"
+                      "-wholename '*repo/*'"
+                      ))
+         (result (split-string (shell-command-to-string cmd))))
+    (mapcar #'file-name-directory (mb-f-filter-out-repo-dirs result))))
+
 (defun mb-f-enclosing-paren ()
   "Return the opening paren type we're currently enclosed by or nil."
   (let ((ppss (syntax-ppss)))
