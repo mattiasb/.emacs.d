@@ -76,7 +76,7 @@
  '(default-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
  '(delete-selection-mode t)
  '(dired-listing-switches "-laGh1v --group-directories-first")
- '(dired-sidebar-width 20)
+ '(dired-sidebar-width 40)
  '(display-fill-column-indicator-character 9474)
  '(doom-modeline-buffer-file-name-style 'relative-from-project)
  '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode text-mode))
