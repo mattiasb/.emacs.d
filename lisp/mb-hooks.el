@@ -234,8 +234,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (eglot-tempel-mode 1)
 
   (add-to-list 'eglot-server-programs
-               '(python-mode . ("pyright-langserver" "--stdio")))
-  (add-to-list 'eglot-server-programs
                '(terraform-mode . ("terraform-ls" "serve")))
   (mb-f-define-keys eglot-mode-map
                     '(( "C-z f r" . eglot-rename)
