@@ -313,7 +313,7 @@
  '(magit-todos-auto-group-items 'always)
  '(magit-todos-exclude-globs '(".git/" "snippets/prog-mode/todo"))
  '(magit-todos-group-by '(magit-todos-item-filename))
- '(magit-todos-insert-after '(bottom))
+ '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(magit-unstage-all-confirm nil)
  '(magithub-api-timeout 3)
  '(markdown-asymmetric-header nil)
