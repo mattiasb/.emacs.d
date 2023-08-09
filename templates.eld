@@ -229,6 +229,9 @@ python-mode
       n
       :pre (end-of-buffer))
 
+(match & "match " p ":" n> q)
+(case  & "case "  p ":" n> q)
+
 (@classmethod "@classmethod"
               n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
