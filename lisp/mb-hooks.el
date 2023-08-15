@@ -1011,6 +1011,18 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'woman
   (add-hook 'woman-mode-hook #'mb-hooks--woman-mode))
 
+
+;; Xref
+(with-eval-after-load 'xref
+  (mb-f-define-keys xref--xref-buffer-mode-map
+                    '(("<tab>"     . xref-next-group)
+                      ("<backtab>" . xref-prev-group)
+                      ("<down>"    . xref-next-line)
+                      ("<up>"      . xref-prev-line)
+                      ("C-g"       . xref-quit-and-pop-marker-stack)
+                      ("q"         . xref-quit-and-pop-marker-stack))))
+
+
 ;; Yaml
 (defun mb-hooks--yaml-mode-hook ()
   "My `yaml' mode hook."
