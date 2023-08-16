@@ -133,6 +133,15 @@
                       ( "i"        . tempel-insert)
                       ( "e"        . mb-cmd-visit-templates)))
 
+(mb-f-define-keymap mb-keys-highlight-map
+                    '(( "l"        . hl-highlight-thingatpt-local)
+                      ( "g"        . hl-unhighlight-all-local)
+                      ( "u"        . hl-unhighlight-all-local)
+                      ( "n"        . hl-find-next-thing)
+                      ( "p"        . hl-find-prev-thing)
+                      ( "<down>"   . hl-find-next-thing)
+                      ( "<up>"     . hl-find-prev-thing)))
+
 (mb-f-define-keymap mb-keys-string-inflection-map
                     '(( "i"        . string-inflection-all-cycle)
                       ;; PascalCase
@@ -191,6 +200,7 @@
                     '(;; Keymaps
                       ( "e"        . mb-keys-flymake-map)
                       ( "h"        . mb-keys-help-map)
+                      ( "l"        . mb-keys-highlight-map)
                       ( "m"        . mb-keys-magit-map)
                       ( "s"        . mb-keys-tempel-map)
                       ( "t"        . mb-keys-toggle-map)

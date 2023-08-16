@@ -73,10 +73,12 @@
   (mb-f-req 'beframe)
   (mb-f-req 'envrc)
   (mb-f-req 'auto-dark)
+  (mb-f-req 'hl-anything)
 
   (auto-dark-mode)
   (su-mode +1)
   (auto-fill-mode 1)
+  (hl-highlight-mode)
   (global-git-gutter-mode)
   (global-emojify-mode-line-mode)
   (global-corfu-mode)
