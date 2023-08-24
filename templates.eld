@@ -248,7 +248,7 @@ sh-mode
 (! (beginning-of-buffer)
    "#!/bin/bash"
    n o)
-(case & o n "case \"" p "\" in"
+(case & o n> "case \"" p "\" in"
       n> (p "*") ")"
       n> r>
       n> "return"
