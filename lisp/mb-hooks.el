@@ -772,6 +772,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (eglot-ensure))
 
 (with-eval-after-load 'python
+  (mb-f-req 'python)
+  (mb-f-define-keymap mb-python-pytest-map
+                      '(( "1"     . pytest-one)
+                        ( "a"     . pytest-all)
+                        ( "m"     . pytest-module)
+                        ( "r"     . pytest-run)))
+
+  (mb-f-define-keys python-mode-map
+                    '(( "C-c C-t" . mb-python-pytest-map)))
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
 ;; RipGrep
