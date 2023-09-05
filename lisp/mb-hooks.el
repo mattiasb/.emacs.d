@@ -364,8 +364,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Go
 (defun mb-hooks--go-mode ()
   "My `go' mode hook."
+  (mb-f-req 'go-mode)
   (eglot-ensure)
-
+  (if go-mode
+      (add-hook 'before-save-hook #'mb-hooks--go-before-save 0 t)
+    (remove-hook 'before-save-hook #'mb-hooks--go-before-save))
   (setq-local tab-width 4))
 
 (defun mb-hooks--go-before-save ()
@@ -382,7 +385,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-z i r"    . go-remove-unused-imports)
                       ( "C-z i g"    . go-goto-imports)
                       ( "C-z d"      . godoc-at-point)))
-  (add-hook 'before-save-hook #'mb-hooks--go-before-save)
+  
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
 ;; Haskell
