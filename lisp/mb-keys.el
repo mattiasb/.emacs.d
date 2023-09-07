@@ -49,6 +49,8 @@
     ( "C-S-<return>"               . xref-find-references)
     ( "C-x 4 <return>"             . xref-find-definitions-other-window)
     ( "C-x 5 <return>"             . xref-find-definitions-other-frame)
+    ( "C-x 4 C-<return>"           . xref-find-definitions-other-window)
+    ( "C-x 5 C-<return>"           . xref-find-definitions-other-frame)
 
     ;; NAVIGATION
 
