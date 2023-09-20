@@ -41,7 +41,7 @@
  '(auto-save-no-message t)
  '(backup-directory-alist '(("." . "~/.cache/emacs/backup/")))
  '(blink-cursor-blinks -1)
- '(browse-kill-ring-current-entry-face 'bold)
+ '(browse-kill-ring-current-entry-face 'mb-browse-kill-ring-current-entry-face)
  '(browse-kill-ring-display-duplicates nil)
  '(browse-kill-ring-highlight-current-entry t)
  '(browse-kill-ring-highlight-inserted-item nil)
@@ -49,7 +49,8 @@
  '(browse-kill-ring-quit-action 'save-and-restore)
  '(browse-kill-ring-resize-window t)
  '(browse-kill-ring-separator
-   "——————————————————————————————————————————————————————————")
+   "————————————————————————————————————————————————————————————————————————————————")
+ '(browse-kill-ring-separator-face 'fill-column-indicator)
  '(browse-kill-ring-show-preview nil)
  '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
