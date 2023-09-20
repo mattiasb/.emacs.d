@@ -382,26 +382,6 @@ that checks that the hash-bang seems to involve a path."
                                                   (apply #'mb-f-super-capf capfs)
                                                   #'cape-file)))
 
-(defun mb-f-set-dark-wm-theme (frame)
-  "Set the dark theme variant for FRAME.
-
-Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
-  (select-frame frame)
-  (when (and (display-graphic-p)
-             (file-exists-p "/usr/bin/xprop"))
-    (call-process "xprop"
-                  nil
-                  nil
-                  nil
-                  "-f"
-                  "_GTK_THEME_VARIANT"
-                  "8u"
-                  "-set"
-                  "_GTK_THEME_VARIANT"
-                  "dark"
-                  "-id"
-                  (frame-parameter frame 'outer-window-id))))
-
 (defun mb-f-no-confirm (fun &rest args)
   "Apply FUN to ARGS, skipping user confirmations."
   (cl-flet ((always-yes (&rest _) t))

@@ -31,7 +31,6 @@
 ;; After make frame
 (defun mb-hooks--after-make-frame-functions-hook (frame &optional _)
   "My after-make-frame-functions hook."
-  (mb-f-set-dark-wm-theme frame)
   (select-frame-set-input-focus frame)
   (mb-f-doom-modeline-set-height))
 
@@ -85,33 +84,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-{"  . mb-cmd-jinja2-C-{ )))
 
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
-
-;; Auto Dark
-(defun mb-hooks--auto-dark-dark-mode ()
-  "My `auto-dark' dark mode hook."
-  (custom-set-faces
-   '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
-   '(fill-column-indicator ((t (:foreground "gray21"))) t)
-   '(hl-line ((t (:background "gray19"))) t)
-   '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
-   '(popup-isearch-match ((t (:inherit match))) t)
-   '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
-   '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))) t)
-   '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))) t)
-   '(tab-bar ((t (:underline "gray35"))) t)
-   '(tab-bar-tab-inactive ((t nil)) t)
-   '(table-cell ((t (:background "gray18"))) t)
-   '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold))) t)))
-
-(defun mb-hooks--auto-dark-light-mode ()
-  "My `auto-dark' light mode hook."
-  ;; TODO: Adapt for light mode as well
-  )
-
-(with-eval-after-load 'auto-dark
-  (mb-f-req 'auto-dark)
-  (add-hook 'auto-dark-dark-mode-hook #'mb-hooks--auto-dark-dark-mode)
-  (add-hook 'auto-dark-light-mode-hook  #'mb-hooks--auto-dark-light-mode))
 
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
@@ -1060,5 +1032,39 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-z t A"     . ansible)))
 
   (add-hook 'yaml-mode-hook #'mb-hooks--yaml-mode-hook))
+
+;;;; THEMES
+
+;; Madhat2r
+(with-eval-after-load 'madhat2r-theme
+  (custom-theme-set-faces
+   'madhat2r
+   '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
+   '(fill-column-indicator ((t (:foreground "gray21"))) t)
+   '(hl-line ((t (:background "gray19"))) t)
+   '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
+   '(popup-isearch-match ((t (:inherit match))) t)
+   '(popup-menu-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
+   '(popup-menu-selection-face ((t (:inherit default :background "#44505c" :foreground "#c1c7c9"))) t)
+   '(popup-tip-face ((t (:background "#232628" :foreground "#c1c7c9" :underline nil :slant normal :weight normal))) t)
+   '(tab-bar ((t (:underline "gray35"))) t)
+   '(tab-bar-tab-inactive ((t nil)) t)
+   '(table-cell ((t (:background "gray18"))) t)
+   '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold))) t)))
+
+(with-eval-after-load 'wombat
+  (custom-theme-set-faces
+   'wombat
+   '(cursor ((t (:background "tomato3"))))
+   '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
+   '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
+   '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
+   '(highlight-symbol-face ((t (:background "gray21"))))
+   '(hl-line ((t (:background "gray21"))))
+   '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
+   '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
+   '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))))
+
+
 (provide 'mb-hooks)
 ;;; mb-hooks.el ends here

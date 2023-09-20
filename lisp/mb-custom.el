@@ -468,19 +468,6 @@
 (setq todotxt-file "~/Dropbox/todo/todo.txt")
 (setq completion-ignore-case t)
 
-(when (custom-theme-enabled-p 'wombat)
-  (custom-theme-set-faces
-   'wombat
-   '(cursor ((t (:background "tomato3"))))
-   '(git-gutter:added ((t (:foreground "olive drab" :weight bold))))
-   '(git-gutter:deleted ((t (:foreground "tomato3" :weight bold))))
-   '(git-gutter:modified ((t (:foreground "goldenrod" :weight bold))))
-   '(highlight-symbol-face ((t (:background "gray21"))))
-   '(hl-line ((t (:background "gray21"))))
-   '(lisp-extra-font-lock-quoted ((t (:inherit shadow))))
-   '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
-   '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
