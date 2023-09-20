@@ -777,6 +777,21 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                     '(( "C-c C-t" . mb-python-pytest-map)))
   (add-hook 'python-mode-hook #'mb-hooks--python-mode))
 
+;; Re Builder
+(defun mb-hooks--reb-mode ()
+  "My `re-builder' mode hook."
+  (mb-f-define-keys reb-mode-map
+                    '(( "C-x k"      . reb-quit)
+                      ( "C-c C-k"    . reb-quit)
+                      ( "C-c <down>" . reb-next-match)
+                      ( "C-c n"      . reb-next-match)
+                      ( "C-c <up>"   . reb-prev-match)
+                      ( "C-c p"      . reb-prev-match)
+                      )))
+
+(with-eval-after-load 're-builder
+  (add-hook 'reb-mode-hook #'mb-hooks--reb-mode))
+
 ;; RipGrep
 (with-eval-after-load 'ripgrep
   (mb-f-req 'ripgrep)
