@@ -26,6 +26,7 @@
 
 (make-directory "~/.cache/emacs/elpa" t)
 (require 'mb-custom)
+(require 'mb-custom-extra)
 (require 'mb-loadpaths)
 (require 'mb-f)
 (require 'mb-init)

@@ -461,14 +461,6 @@
  '(yas-triggers-in-field t)
  '(yas-wrap-around-region t))
 
-;; Real ugly, but apparently these can't be set through customize
-
-(defvar magit-last-seen-setup-instructions)
-(setq magit-last-seen-setup-instructions "1.4.0")
-(defvar todotxt-file)
-(setq todotxt-file "~/Dropbox/todo/todo.txt")
-(setq completion-ignore-case t)
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -499,14 +491,6 @@
  '(variable-pitch ((t (:height 1.1 :family "Sans Serif"))))
  '(vr/match-0 ((t (:inherit region))))
  '(vr/match-1 ((t (:inherit region)))))
-
-;;; Non-customizable settings
-
-(defalias 'list-buffers 'ibuffer)
-
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)
 
 (provide 'mb-custom)
 ;;; mb-custom.el ends here
