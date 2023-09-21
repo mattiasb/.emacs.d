@@ -659,6 +659,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (if (seq-some #'derived-mode-p aggressive-indent-excluded-modes)
       (electric-indent-local-mode)
     (aggressive-indent-mode))
+
+  (which-function-mode)
   (ws-butler-mode)
   (flymake-mode)
   (display-fill-column-indicator-mode)
