@@ -34,7 +34,7 @@
 ;; Themes
 
 (defface mb-browse-kill-ring-current-entry-face
-  '((t (:inherit bold)))
+  '((t (:inherit magit-section-highlight :weight bold)))
   "Face for browse-kill-ring-current-entry."
   :version "2023-09-21"
   :group 'browse-kill-ring)
@@ -43,7 +43,6 @@
   (custom-theme-set-faces
    'madhat2r
    '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
-   '(mb-browse-kill-ring-current-entry-face ((t (:background "gray15" :inherit bold))) t)
    '(fill-column-indicator ((t (:foreground "gray21"))) t)
    '(hl-line ((t (:background "gray19"))) t)
    '(popup-face ((t (:background "#232628" :foreground "#c1c7c9"))) t)
