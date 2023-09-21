@@ -195,11 +195,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'cape)
   (mb-f-req 'cape-keyword)
   (if (eglot-managed-p)
-      (mb-f-set-capfs #'cape-keyword
-                      #'eglot-completion-at-point)
+      (mb-f-set-capfs #'eglot-completion-at-point
+                      #'cape-keyword)
     ;; NOTE: This is repeated in the `prog-mode' hook.
-    (mb-f-set-capfs #'cape-keyword
-                    #'tags-completion-at-point-function)))
+    (mb-f-set-capfs #'tags-completion-at-point-function
+                    #'cape-keyword)))
 
 (with-eval-after-load 'eglot
   (mb-f-req 'eglot-tempel)
@@ -262,8 +262,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
   "My `emacs-lisp' mode hook."
-  (mb-f-set-capfs #'cape-keyword
-                  #'elisp-completion-at-point)
+  (mb-f-set-capfs #'elisp-completion-at-point
+                  #'cape-keyword)
 
   ;; This and the next imenu expression is based on code from Sebastian Wiesner
   ;; https://github.com/lunaryorn/my-old-.emacs.d/blob/master/lisp/lunaryorn-elisp.el#L51
@@ -668,8 +668,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (ligature-mode)
 
   ;; NOTE: This is repeated in `mb-hooks--eglot-managed-mode'.
-  (mb-f-set-capfs #'cape-keyword
-                  #'tags-completion-at-point-function))
+  (mb-f-set-capfs #'tags-completion-at-point-function
+                  #'cape-keyword))
 
 (with-eval-after-load 'prog-mode
   (mb-f-define-keys prog-mode-map
