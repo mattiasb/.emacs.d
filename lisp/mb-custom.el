@@ -357,7 +357,7 @@
  '(project-list-file "~/.cache/emacs/projects")
  '(projectile-cache-file "/home/mattiasb/.cache/emacs/projectile.cache")
  '(projectile-globally-ignored-file-suffixes '("~" "#"))
- '(projectile-keymap-prefix "p")
+ '(projectile-keymap-prefix "\32p")
  '(projectile-known-projects-file "/home/mattiasb/.cache/emacs/projectile-bookmarks.eld")
  '(projectile-mode-line-prefix " P")
  '(projectile-switch-project-action 'projectile-commander)
