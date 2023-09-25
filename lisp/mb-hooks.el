@@ -85,6 +85,29 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'ansible-hook #'mb-hooks--ansible-hook))
 
+;; Auto Dark
+
+(defun mb-hooks--auto-dark-dark-mode ()
+  (enable-theme 'mb-madhat2r))
+
+(defun mb-hooks--auto-dark-light-mode ()
+  (enable-theme 'mb-leuven))
+
+(defun mb-hooks--auto-dark-mode ()
+  "My `auto-dark' mode hook."
+  (mb-f-req 'auto-dark)
+  (if auto-dark-mode
+      (progn
+        (add-hook 'auto-dark-dark-mode-hook #'mb-hooks--auto-dark-dark-mode)
+        (add-hook 'auto-dark-light-mode-hook #'mb-hooks--auto-dark-light-mode)
+        (auto-dark--set-theme (if (auto-dark--is-dark-mode) 'dark 'light)))
+    (remove-hook 'auto-dark-dark-mode-hook #'mb-hooks--auto-dark-dark-mode)
+    (remove-hook 'auto-dark-light-mode-hook #'mb-hooks--auto-dark-light-mode)))
+
+(with-eval-after-load 'auto-dark
+  (mb-f-req 'auto-dark)
+  (add-hook 'auto-dark-mode-hook #'mb-hooks--auto-dark-mode))
+
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
   (mb-f-req 'browse-kill-ring)

@@ -40,8 +40,9 @@
   :group 'browse-kill-ring)
 
 (with-eval-after-load 'madhat2r-theme
+  (deftheme mb-madhat2r)
   (custom-theme-set-faces
-   'madhat2r
+   'mb-madhat2r
    '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
    '(fill-column-indicator ((t (:foreground "gray21"))) t)
    '(hl-line ((t (:background "gray19"))) t)
@@ -49,6 +50,13 @@
    '(tab-bar-tab-inactive ((t nil)) t)
    '(table-cell ((t (:background "gray18"))) t)
    '(vertico-current ((t (:foreground "#ebc844" :extend t :inherit bold))) t)))
+
+(with-eval-after-load 'leuven-theme
+  (deftheme mb-leuven)
+  (custom-theme-set-faces
+   'mb-leuven
+   '(auto-dim-other-buffers-face ((t (:background "gray90"))) t)
+   '(popup-tip-face ((t (:inherit corfu-default))))))
 
 (with-eval-after-load 'wombat
   (custom-theme-set-faces
