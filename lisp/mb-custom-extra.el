@@ -46,6 +46,7 @@
    '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
    '(fill-column-indicator ((t (:foreground "gray21"))) t)
    '(hl-line ((t (:background "gray19"))) t)
+   '(popup-tip-face ((t (:background "gray19"))))
    '(tab-bar ((t (:underline "gray35"))) t)
    '(tab-bar-tab-inactive ((t nil)) t)
    '(table-cell ((t (:background "gray18"))) t)
