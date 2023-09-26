@@ -56,7 +56,7 @@
   (deftheme mb-leuven)
   (custom-theme-set-faces
    'mb-leuven
-   '(auto-dim-other-buffers-face ((t (:background "gray95"))) t)
+   '(auto-dim-other-buffers-face ((t (:background "gray98"))) t)
    '(popup-tip-face ((t (:inherit corfu-default))))))
 
 (with-eval-after-load 'wombat
