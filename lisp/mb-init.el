@@ -73,7 +73,7 @@
   (mb-f-req 'envrc)
   (mb-f-req 'auto-dark)
   (mb-f-req 'hl-anything)
-
+  (mb-f-req 'treesit-auto)
   (auto-dark-mode)
   (su-mode +1)
   (auto-fill-mode 1)
@@ -102,7 +102,8 @@
   (beframe-mode)
   (auto-dim-other-buffers-mode)
   (auto-insert-mode)
-  (envrc-global-mode))
+  (envrc-global-mode)
+  (global-treesit-auto-mode))
 
 ;;;
 

@@ -241,15 +241,32 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--electric-layout-mode ()
   "My `electric-layout' mode hook."
   (when (seq-some #'derived-mode-p
-                  '(js2-mode c-mode c++-mode rust-mode))
+                  '(js2-mode
+                    c-mode
+                    c++-mode
+                    rust-mode
+                    js-ts-mode
+                    c-ts-mode
+                    c++-ts-mode
+                    rust-ts-mode))
     (add-to-list 'electric-layout-rules '(?\; . after)))
 
   (when (seq-some #'derived-mode-p
-                  '(js2-mode c-mode c++-mode rust-mode sh-mode))
+                  '(js2-mode
+                    c-mode
+                    c++-mode
+                    rust-mode
+                    sh-mode
+                    js-ts-mode
+                    c-ts-mode
+                    c++-ts-mode
+                    rust-ts-mode
+                    bash-ts-mode))
     (add-to-list 'electric-layout-rules '(?{  . after))
     (add-to-list 'electric-layout-rules '(?}  . before)))
 
-  (when (derived-mode-p #'python-mode)
+  (when (seq-some #'derived-mode-p
+                  '(python-mode python-ts-mode))
     (add-to-list 'electric-layout-rules
                  '(?: . mb-f-python-electric-newline))))
 
@@ -756,7 +773,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                         ( "m"           . pytest-module)
                         ( "r"           . pytest-run)))
 
-  (mb-f-define-keys python-mode-map
+  (mb-f-define-keys python-ts-mode-map
                     '(( "C-c t"         . mb-python-pytest-map)
                       ( "C-c <left>"    . python-indent-shift-left)
                       ( "C-c <right>"   . python-indent-shift-right)))
@@ -848,7 +865,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-indent-local-mode)
   (electric-operator-mode)
   (mb-f-set-capfs #'cape-dict)
-  (unless (derived-mode-p 'yaml-mode 'jinja2-mode)
+  (unless (derived-mode-p 'yaml-mode 'yaml-ts-mode 'jinja2-mode)
     (jinx-mode))
   (setq-local corfu-auto nil))
 
@@ -889,6 +906,35 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'toml
   (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
+
+;; Treesit Auto
+(defun mb-hooks--treesit-auto-mode ()
+  "My `treesit-auto' mode hook.")
+
+(with-eval-after-load 'treesit-auto
+  (setq treesit-language-source-alist
+        '((bash       "https://github.com/tree-sitter/tree-sitter-bash")
+          (cmake      "https://github.com/uyha/tree-sitter-cmake")
+          (css        "https://github.com/tree-sitter/tree-sitter-css")
+          (elisp      "https://github.com/Wilfred/tree-sitter-elisp")
+          (go         "https://github.com/tree-sitter/tree-sitter-go")
+          (html       "https://github.com/tree-sitter/tree-sitter-html")
+          (javascript "https://github.com/tree-sitter/tree-sitter-javascript"
+                      "master"
+                      "src")
+          (json       "https://github.com/tree-sitter/tree-sitter-json")
+          (make       "https://github.com/alemuller/tree-sitter-make")
+          (markdown   "https://github.com/ikatyang/tree-sitter-markdown")
+          (python     "https://github.com/tree-sitter/tree-sitter-python")
+          (toml       "https://github.com/tree-sitter/tree-sitter-toml")
+          (tsx        "https://github.com/tree-sitter/tree-sitter-typescript"
+                      "master"
+                      "tsx/src")
+          (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                      "master"
+                      "typescript/src")
+          (yaml       "https://github.com/ikatyang/tree-sitter-yaml")))
+  (add-hook 'treesit-auto-mode-hook #'mb-hooks--treesit-auto-mode))
 
 ;; Smerge
 (defun mb-hooks--smerge-mode ()

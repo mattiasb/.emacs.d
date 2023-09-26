@@ -26,7 +26,7 @@
  ;; If there is more than one, they won't work right.
  '(aggressive-indent-dont-electric-modes t)
  '(aggressive-indent-excluded-modes
-   '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode))
+   '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode python-ts-mode yaml-ts-mode))
  '(ansi-color-for-compilation-mode 'filter)
  '(auto-dark-dark-theme 'madhat2r)
  '(auto-dark-detection-method 'dbus)
@@ -318,6 +318,13 @@
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
  '(magit-unstage-all-confirm nil)
  '(magithub-api-timeout 3)
+ '(major-mode-remap-alist
+   '((bash-mode . bash-ts-mode)
+     (js2-mode . js-ts-mode)
+     (typescript-mode . typescript-ts-mode)
+     (json-mode . json-ts-mode)
+     (css-mode . css-ts-mode)
+     (python-mode . python-ts-mode)))
  '(markdown-asymmetric-header nil)
  '(markdown-command
    "pandoc --metadata pagetitle=*markdown* -s -f gfm -c file:///home/mattiasb/.config/emacs/github-pandoc.css")
@@ -352,7 +359,7 @@
  '(package-quickstart t)
  '(package-quickstart-file "~/.cache/emacs/package-quickstart.el")
  '(package-selected-packages
-   '(ace-jump-mode adaptive-wrap aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dark auto-dim-other-buffers beframe browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode debian-el default-text-scale devhelp diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify envrc expand-region fill-function-arguments fit-text-scale flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history hl-anything html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile pytest pytest-realgud python-black rainbow-mode realgud restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region smartscan spdx sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys tmux-mode todotxt toml-mode tree-inspector vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
+   '(ace-jump-mode adaptive-wrap aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dark auto-dim-other-buffers beframe browse-kill-ring buffer-move bury-successful-compilation cape cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes cython-mode debian-el default-text-scale devhelp diminish dired-hide-dotfiles dired-imenu dired-sidebar docker-compose-mode dockerfile-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify envrc expand-region fill-function-arguments fit-text-scale flymake-diagnostic-at-point flymake-yamllint flyspell-correct forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history hl-anything html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile pytest pytest-realgud python-black rainbow-mode realgud restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region smartscan spdx sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys tmux-mode todotxt toml-mode treesit-auto tree-inspector vertico visual-regexp-steroids vterm vundo wgrep which-key ws-butler yaml-mode))
  '(package-user-dir "~/.cache/emacs/elpa")
  '(powerline-default-separator 'bar)
  '(project-list-file "~/.cache/emacs/projects")
@@ -412,6 +419,7 @@
  '(tooltip-mode nil)
  '(tramp-persistency-file-name "/home/mattiasb/.cache/emacs/tramp")
  '(transient-history-file "~/.cache/emacs/transient/history.el")
+ '(treesit-auto-install t)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(url-cache-directory "~/.cache/emacs/url/files/")
  '(url-configuration-directory "~/.cache/emacs/url/")
