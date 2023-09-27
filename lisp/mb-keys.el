@@ -58,6 +58,8 @@
     ( "C-'"                        . ace-jump-word-mode)
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
+    ( "M-n"                        . smartscan-symbol-go-forward)
+    ( "M-p"                        . smartscan-symbol-go-backward)
     ( "M-g M-g  "                  . goto-line-preview)
 
     ;; Move buffers
