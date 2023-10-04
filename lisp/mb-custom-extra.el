@@ -57,6 +57,7 @@
   (custom-theme-set-faces
    'mb-leuven
    '(auto-dim-other-buffers-face ((t (:background "gray98"))) t)
+   '(fill-column-indicator ((t (:foreground "#D2D2D2"))) t)
    '(popup-tip-face ((t (:inherit corfu-default))))))
 
 (with-eval-after-load 'wombat
