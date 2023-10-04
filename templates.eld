@@ -130,7 +130,7 @@ markdown-mode
 (br "  " o)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-prog-mode yaml-mode
+prog-mode yaml-mode yaml-ts-mode
 
 (fixme (mb-f-comment-start) "FIXME(" user-login-name "): ")
 (todo  (mb-f-comment-start) "TODO("  user-login-name "): ")
@@ -141,14 +141,14 @@ prog-mode yaml-mode
 (see   (mb-f-comment-start) "See: ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-yaml-mode
+yaml-mode yaml-ts-mode
 
 (auto-insert (beginning-of-buffer)
              "---"
              n)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-yaml-mode :when ansible
+yaml-mode yaml-ts-mode :when ansible
 
 (! (beginning-of-buffer)
    "#!/usr/bin/env ansible-playbook"
@@ -185,7 +185,7 @@ jinja2-mode
 (varq "\"{{ " r " }}\"")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-python-mode
+python-mode python-ts-mode
 
 (!        (beginning-of-buffer)
           "#!/usr/bin/env python3"
@@ -236,7 +236,7 @@ python-mode
 (@classmethod "@classmethod"
               n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-sh-mode
+sh-mode sh-ts-mode
 
 (auto-insert n "set -e"
              n "set -o pipefail"
