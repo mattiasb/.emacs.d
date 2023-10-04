@@ -407,6 +407,7 @@
  '(tab-width 8)
  '(table-command-prefix [])
  '(tempel-path "/home/mattiasb/.config/emacs/templates.eld")
+ '(terraform-format-on-save t)
  '(tooltip-mode nil)
  '(tramp-persistency-file-name "/home/mattiasb/.cache/emacs/tramp")
  '(transient-history-file "~/.cache/emacs/transient/history.el")
