@@ -553,5 +553,12 @@ that checks that the hash-bang seems to involve a path."
          (cmd (format "makepasswd -m %s -M %s" min max)))
     (string-trim-right (shell-command-to-string cmd))))
 
+(defun mb-f-eglot-format-all ()
+  ;; This fails on just a single import
+  (mb-f-req 'eglot)
+  (with-demoted-errors "%S"
+    (call-interactively 'eglot-code-action-organize-imports))
+  (eglot-format-buffer))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

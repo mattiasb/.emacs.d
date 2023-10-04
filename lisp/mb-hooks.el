@@ -839,7 +839,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Terraform
 (defun mb-hooks--terraform-mode ()
   "My `terraform' mode hook."
-  (eglot-ensure))
+  (mb-f-req 'terraform-mode)
+  (eglot-ensure)
+  (add-hook 'before-save-hook #'mb-f-eglot-format-all 0 t))
 
 (with-eval-after-load 'terraform-mode
   (add-hook 'terraform-mode-hook #'mb-hooks--terraform-mode))
