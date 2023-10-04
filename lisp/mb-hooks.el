@@ -361,16 +361,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `go' mode hook."
   (mb-f-req 'go-mode)
   (eglot-ensure)
-  (if go-mode
-      (add-hook 'before-save-hook #'mb-hooks--go-before-save 0 t)
-    (remove-hook 'before-save-hook #'mb-hooks--go-before-save))
+  (add-hook 'before-save-hook #'mb-f-eglot-format-all 0 t)
   (setq-local tab-width 4))
-
-(defun mb-hooks--go-before-save ()
-  ;; This fails on just a single import
-  (with-demoted-errors "%S"
-    (call-interactively 'eglot-code-action-organize-imports))
-  (eglot-format-buffer))
 
 (with-eval-after-load 'go-mode
   (mb-f-req 'go-mode)
