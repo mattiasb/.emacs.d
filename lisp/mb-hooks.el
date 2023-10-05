@@ -459,7 +459,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."
   (mb-f-req 'js2-imenu-extras)
-  (setq-local flimenu-imenu-separator ".")
   (js2-imenu-extras-mode))
 
 (with-eval-after-load 'js2-mode
