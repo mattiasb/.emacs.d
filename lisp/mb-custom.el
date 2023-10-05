@@ -448,6 +448,7 @@
  '(which-key-special-keys nil)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
+ '(woman-imenu t)
  '(xref-search-program 'ripgrep)
  '(xref-show-definitions-function 'xref-show-definitions-buffer-at-bottom)
  '(xref-show-xrefs-function 'xref-show-definitions-buffer-at-bottom)
