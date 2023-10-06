@@ -258,7 +258,7 @@
  '(help-enable-symbol-autoload t)
  '(highlight-symbol-idle-delay 1.0)
  '(history-advised-before-functions
-   '(beginning-of-buffer end-of-buffer imenu isearch-mode mb-cmd-markdown-jump xref-find-definitions xref-find-definitions-other-frame xref-find-definitions-other-window xref-find-references))
+   '(beginning-of-buffer end-of-buffer imenu isearch-mode magit-diff-visit-file mb-cmd-markdown-jump xref-find-definitions xref-find-definitions-other-frame xref-find-definitions-other-window xref-find-references))
  '(ialign-initial-regexp "(\\s+)")
  '(ialign-initial-repeat t)
  '(ialign-pcre-mode t)
