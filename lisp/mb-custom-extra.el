@@ -45,6 +45,11 @@
    'mb-madhat2r
    '(auto-dim-other-buffers-face ((t (:background "gray11"))) t)
    '(fill-column-indicator ((t (:foreground "gray21"))) t)
+   '(history-current-history ((t (:foreground "#131516"))))
+   '(history-current-temp-history ((t (:foreground "#131516"))))
+   '(history-other-history ((t (:foreground "#131516"))))
+   '(history-prompt ((t (:foreground "#131516"))))
+   '(history-temp-history ((t (:foreground "#131516"))))
    '(hl-line ((t (:background "gray19"))) t)
    '(popup-tip-face ((t (:background "gray19"))))
    '(tab-bar ((t (:underline "gray35"))) t)
@@ -58,6 +63,11 @@
    'mb-leuven
    '(auto-dim-other-buffers-face ((t (:background "gray98"))) t)
    '(fill-column-indicator ((t (:foreground "#D2D2D2"))) t)
+   '(history-current-history ((t (:foreground "#FFFFFF"))))
+   '(history-current-temp-history ((t (:foreground "#FFFFFF"))))
+   '(history-other-history ((t (:foreground "#FFFFFF"))))
+   '(history-prompt ((t (:foreground "#FFFFFF"))))
+   '(history-temp-history ((t (:foreground "#FFFFFF"))))
    '(popup-tip-face ((t (:inherit corfu-default))))))
 
 (with-eval-after-load 'wombat
