@@ -129,6 +129,13 @@ markdown-mode
 
 (br "  " o)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+markdown-mode :when git-commit-mode
+
+(release-notes "Release-Notes: skip" %)
+(depends "Depends-On: " q %)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode yaml-ts-mode
 
