@@ -39,18 +39,18 @@
     ( "C-z"                        . mb-keys-default-map)
 
     ;; XRef
-    ( "M-,"                        . nil)
-    ( "M-."                        . nil)
-    ( "M-?"                        . nil)
-    ( "C-M-."                      . nil)
-    ( "M-<left>"                   . history-prev-history)
-    ( "M-<right>"                  . history-next-history)
     ( "C-<return>"                 . xref-find-definitions)
+    ( "C-M-."                      . nil)
     ( "C-S-<return>"               . xref-find-references)
     ( "C-x 4 <return>"             . xref-find-definitions-other-window)
-    ( "C-x 5 <return>"             . xref-find-definitions-other-frame)
     ( "C-x 4 C-<return>"           . xref-find-definitions-other-window)
+    ( "C-x 5 <return>"             . xref-find-definitions-other-frame)
     ( "C-x 5 C-<return>"           . xref-find-definitions-other-frame)
+    ( "M-,"                        . nil)
+    ( "M-."                        . nil)
+    ( "M-<left>"                   . history-prev-history)
+    ( "M-<right>"                  . history-next-history)
+    ( "M-?"                        . nil)
 
     ;; NAVIGATION
 
@@ -58,15 +58,15 @@
     ( "C-'"                        . ace-jump-word-mode)
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
+    ( "M-g M-g  "                  . goto-line-preview)
     ( "M-n"                        . smartscan-symbol-go-forward)
     ( "M-p"                        . smartscan-symbol-go-backward)
-    ( "M-g M-g  "                  . goto-line-preview)
 
     ;; Move buffers
-    ( "<C-S-up>"                   . buf-move-up)
     ( "<C-S-down>"                 . buf-move-down)
     ( "<C-S-left>"                 . buf-move-left)
     ( "<C-S-right>"                . buf-move-right)
+    ( "<C-S-up>"                   . buf-move-up)
 
     ;; Frames
     ( "C-<tab>"                    . tab-next)
@@ -74,12 +74,12 @@
     ;; TEXT MANIPULATION
 
     ;; General
-    ( "M-<up>"                     . move-dup-move-lines-up)
-    ( "M-<down>"                   . move-dup-move-lines-down)
     ( "C-S-a"                      . beginning-of-line)
     ( "C-S-e"                      . end-of-line)
     ( "C-a"                        . mwim-beginning-of-code-or-line)
     ( "C-e"                        . mwim-end-of-code-or-line)
+    ( "M-<down>"                   . move-dup-move-lines-down)
+    ( "M-<up>"                     . move-dup-move-lines-up)
 
     ;; Snippets
     ("<insert>"                    . tempel-complete)))
@@ -111,59 +111,54 @@
                     '(( "a"        . aggressive-indent-mode)
                       ( "b"        . magit-blame)
                       ( "e l"      . electric-layout-mode)
-                      ( "e p"      . electric-pair-mode)
                       ( "e o"      . electric-operator-mode)
+                      ( "e p"      . electric-pair-mode)
                       ( "f"        . auto-fill-mode)
                       ( "l"        . linum-mode)
+                      ( "o"        . olivetti-mode)
                       ( "p"        . projectile-mode)
                       ( "r"        . rainbow-mode)
                       ( "s"        . flyspell-mode)
                       ( "t"        . toggle-truncate-lines)
-                      ( "o"        . olivetti-mode)
                       ( "w"        . whitespace-mode)))
 
 ;; My Magit keymap
 (mb-f-define-keymap mb-keys-magit-map
-                    '(( "c"        . magit-commit)
+                    '(( "b"        . mb-cmd-git-link-browse)
+                      ( "c"        . magit-commit)
                       ( "f"        . magit-find-file)
                       ( "g"        . mb-cmd-git-get)
                       ( "l"        . mb-cmd-git-copy-url)
-                      ( "b"        . mb-cmd-git-link-browse)
                       ( "p"        . magit-push-matching)))
 
 ;; My tempel keymap
 (mb-f-define-keymap mb-keys-tempel-map
                     '(( "<tab>"    . tempel-complete)
-                      ( "i"        . tempel-insert)
-                      ( "e"        . mb-cmd-visit-templates)))
+                      ( "e"        . mb-cmd-visit-templates)
+                      ( "i"        . tempel-insert)))
 
 (mb-f-define-keymap mb-keys-highlight-map
-                    '(( "l"        . hl-highlight-thingatpt-local)
+                    '(( "<down>"   . hl-find-next-thing)
+                      ( "<up>"     . hl-find-prev-thing)
                       ( "g"        . hl-unhighlight-all-local)
-                      ( "u"        . hl-unhighlight-all-local)
+                      ( "l"        . hl-highlight-thingatpt-local)
                       ( "n"        . hl-find-next-thing)
                       ( "p"        . hl-find-prev-thing)
-                      ( "<down>"   . hl-find-next-thing)
-                      ( "<up>"     . hl-find-prev-thing)))
+                      ( "u"        . hl-unhighlight-all-local)))
 
 (mb-f-define-keymap mb-keys-string-inflection-map
-                    '(( "i"        . string-inflection-all-cycle)
-                      ;; PascalCase
-                      ( "p"        . string-inflection-camelcase)
-                      ;; camelcase
+                    '(( "-"        . string-inflection-kebab-case)
+                      ( "<down>"   . string-inflection-underscore)
+                      ( "<up>"     . string-inflection-upcase)
+                      ( "S"        . string-inflection-upcase)
+                      ( "_"        . string-inflection-underscore)
                       ( "c"        . string-inflection-lower-camelcase)
-                      ;; kebab-case / lisp-case
+                      ( "i"        . string-inflection-all-cycle)
                       ( "k"        . string-inflection-kebab-case)
                       ( "l"        . string-inflection-kebab-case)
-                      ( "-"        . string-inflection-kebab-case)
-                      ;; snake_case
+                      ( "p"        . string-inflection-camelcase)
                       ( "s"        . string-inflection-underscore)
-                      ( "_"        . string-inflection-underscore)
-                      ( "<down>"   . string-inflection-underscore)
-                      ;; UPPER_SNAKE_CASE
-                      ( "u"        . string-inflection-upcase)
-                      ( "S"        . string-inflection-upcase)
-                      ( "<up>"     . string-inflection-upcase)))
+                      ( "u"        . string-inflection-upcase)))
 
 (mb-f-define-keymap mb-keys-tables-insert-map
                     '(( "c"        . table-insert-column)
@@ -174,17 +169,17 @@
                       ( "r"        . table-delete-row)))
 
 (mb-f-define-keymap mb-keys-tables-map
-                    '(( "i"        . mb-keys-tables-insert-map)
-                      ( "t"        . table-insert)
-                      ( "c"        . table-capture)
-                      ( "<return>" . table-recognize-table)
-                      ( "g"        . table-unrecognize-table)
-                      ( "k"        . mb-keys-tables-delete-map)
-                      ( "g"        . table-unrecognize)
+                    '(( "<down>"   . table-heighten-cell)
                       ( "<left>"   . table-narrow-cell)
+                      ( "<return>" . table-recognize-table)
                       ( "<right>"  . table-widen-cell)
                       ( "<up>"     . table-shorten-cell)
-                      ( "<down>"   . table-heighten-cell)))
+                      ( "c"        . table-capture)
+                      ( "g"        . table-unrecognize)
+                      ( "g"        . table-unrecognize-table)
+                      ( "i"        . mb-keys-tables-insert-map)
+                      ( "k"        . mb-keys-tables-delete-map)
+                      ( "t"        . table-insert)))
 
 (mb-f-define-keymap mb-keys-zoom-map
                     '(( "+"        . default-text-scale-increase)
@@ -192,46 +187,45 @@
                       ( "0"        . default-text-scale-reset)))
 
 (mb-f-define-keymap mb-keys-flymake-map
-                    '(( "d"        . flymake-show-buffer-diagnostics)
+                    '(( "<down>"   . flymake-goto-next-error)
+                      ( "<up>"     . flymake-goto-prev-error)
+                      ( "d"        . flymake-show-buffer-diagnostics)
                       ( "l"        . flymake-switch-to-log-buffer)
                       ( "n"        . flymake-goto-next-error)
-                      ( "<down>"   . flymake-goto-next-error)
-                      ( "p"        . flymake-goto-prev-error)
-                      ( "<up>"     . flymake-goto-prev-error)
-                      ))
+                      ( "p"        . flymake-goto-prev-error)))
 
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
+                      ( "T"        . mb-keys-tables-map)
                       ( "e"        . mb-keys-flymake-map)
                       ( "h"        . mb-keys-help-map)
                       ( "l"        . mb-keys-highlight-map)
                       ( "m"        . mb-keys-magit-map)
                       ( "s"        . mb-keys-tempel-map)
                       ( "t"        . mb-keys-toggle-map)
-                      ( "T"        . mb-keys-tables-map)
                       ( "w"        . mb-keys-windows-map)
                       ( "x"        . mb-keys-exec-map)
                       ( "z"        . mb-keys-zoom-map)
 
-                      ;; Text manipulation
+                      ( "'"        . cycle-quotes)
                       ( "+"        . shift-number-up)
                       ( "-"        . shift-number-down)
-                      ( "a"        . ialign)
                       ( "<down>"   . move-dup-duplicate-down)
                       ( "<up>"     . move-dup-duplicate-up)
                       ( "="        . mb-cmd-calc-thing-at-point)
-                      ( "'"        . cycle-quotes)
+                      ( "a"        . ialign)
                       ( "c"        . mb-cmd-toggle-comment)
+                      ( "i"        . mb-keys-string-inflection-map)
                       ( "p"        . projectile-command-map)
                       ( "q"        . vr/query-replace)
                       ( "r"        . vr/replace)
                       ( "u"        . insert-char)
-                      ( "i"        . mb-keys-string-inflection-map)
+                      ;; Text manipulation
 
                       ;; Other
-                      ( "_"        . vundo)
                       ( "C-z"      . suspend-frame)
                       ( "D"        . diff-buffer-with-file)
+                      ( "_"        . vundo)
                       ( "b"        . browse-url-at-point)
                       ( "g"        . imenu)
                       ( "n"        . mb-cmd-new-frame)
