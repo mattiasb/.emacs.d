@@ -552,5 +552,16 @@ markers and footnote text."
   (interactive)
   (mb-f-tempel-insert-quoted 'var t))
 
+;;;###autoload
+(defun mb-cmd-realgud ()
+  "Launch the correct realgud for a major-mode."
+  (interactive)
+  (mb-f-req 'realgud)
+  (pcase major-mode
+    ('python-mode (realgud:pdb))
+    ('python-ts-mode (realgud:pdb))
+    (_ (error "No debugger setup for this mode!"))))
+
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

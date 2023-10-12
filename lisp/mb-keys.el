@@ -186,6 +186,10 @@
                       ( "-"        . default-text-scale-decrease)
                       ( "0"        . default-text-scale-reset)))
 
+(mb-f-define-keymap mb-keys-debug-map
+                    '(( "a"        . realgud-short-key-mode)
+                      ( "d"        . mb-cmd-realgud)))
+
 (mb-f-define-keymap mb-keys-flymake-map
                     '(( "<down>"   . flymake-goto-next-error)
                       ( "<up>"     . flymake-goto-prev-error)
@@ -197,6 +201,7 @@
 (mb-f-define-keymap mb-keys-default-map
                     '(;; Keymaps
                       ( "T"        . mb-keys-tables-map)
+                      ( "d"        . mb-keys-debug-map)
                       ( "e"        . mb-keys-flymake-map)
                       ( "h"        . mb-keys-help-map)
                       ( "l"        . mb-keys-highlight-map)
