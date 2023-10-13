@@ -76,6 +76,7 @@
  '(custom-unlispify-tag-names nil)
  '(default-frame-alist '((vertical-scroll-bars) (fullscreen . maximized)))
  '(delete-selection-mode t)
+ '(dired-dwim-target 'dired-dwim-target-next)
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-sidebar-width 40)
  '(display-fill-column-indicator-character 9474)
