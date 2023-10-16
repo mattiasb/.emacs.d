@@ -397,14 +397,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'help-mode-hook #'mb-hooks--help-mode))
 
-;; History
-
-(with-eval-after-load 'history
-  (set-face-attribute 'history-current-history
-                      nil
-                      :foreground
-                      (face-attribute 'default :background)))
-
 ;; IBuffer
 (defun mb-hooks--ibuffer ()
   "My `ibuffer' mode hook."

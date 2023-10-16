@@ -475,7 +475,6 @@
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
  '(flymake-warning ((t (:underline (:color "goldenrod" :style wave)))))
- '(history-current-history ((t nil)))
  '(iedit-occurrence ((t (:inherit region))))
  '(markdown-header-delimiter-face ((t (:inherit font-lock-function-name-face :weight bold))))
  '(markdown-header-face-1 ((t (:inherit markdown-header-face :height 1.7))))
