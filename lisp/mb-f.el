@@ -214,14 +214,26 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   (mapcar #'mb-f-get-monitor-dpi (display-monitor-attributes-list)))
 
 (defun mb-f-hidpi-p (dpi)
-  "Return non-nil if DPI is ≥ 213."
-  (>= dpi 213))
+  "Return non-nil if DPI is ≥ 200."
+  (>= dpi 200))
+
+(defun mb-f-mid-dpi-p (dpi)
+  "Return non-nil if 140 ≤ DPI ≤ 200."
+  (and (>= dpi 140) (< dpi 200)))
 
 (defun mb-f-other-window (&rest _args)
   "Like `(other-window 1)' but skip all arguments."
   (other-window 1))
 
 (defun mb-f-doom-modeline-set-height ()
+  (mb-f-doom-modeline-set-height-dynamic))
+
+(defun mb-f-doom-modeline-set-height-dynamic ()
+  "Set doon-modeline height based on DPI."
+  (mb-f-req 'doom-modeline)
+  (setq doom-modeline-height (floor (/ (apply #'max (mb-f-get-monitor-dpis)) 4.5))))
+
+(defun mb-f-doom-modeline-set-height-static ()
   "Set doon-modeline height based on DPI."
   (mb-f-req 'doom-modeline)
   (if (seq-every-p #'mb-f-hidpi-p (mb-f-get-monitor-dpis))
