@@ -44,6 +44,7 @@
     ("\\.mapcss$"          . css-mode)
     ("\\.mcss$"            . css-mode)
     ("\\.ui$"              . nxml-mode)
+    ("\\/.config/tmux/.*"  . tmux-mode)
     ("\\.vala$"            . vala-mode)))
 
 (defconst mb-modes--shortened-major-modes

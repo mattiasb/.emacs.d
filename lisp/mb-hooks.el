@@ -277,6 +277,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                                         (cons "%" nil))
   (electric-operator-add-rules-for-mode 'sh-mode
                                         (cons "=" nil))
+  (electric-operator-add-rules-for-mode 'tmux-mode
+                                        (cons "-" nil))
   (electric-operator-add-rules-for-mode 'yaml-mode
                                         (cons ":" ": "))
   (electric-operator-add-rules-for-mode 'yaml-mode
@@ -952,6 +954,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-to-list 'tempel-user-elements #'mb-f-tempel-include)
 
   (add-hook 'tempel-mode-hook #'mb-hooks--tempel-mode))
+
+;; Tmux
+(defun mb-hooks--tmux-mode ()
+  "My `tmux-mode' mode hook."
+  ;; tmux-mode-completion-at-point
+  (mb-f-set-capfs #'tmux-mode-completion-at-point))
+
+(with-eval-after-load 'tmux-mode
+  (add-hook 'tmux-mode-hook #'mb-hooks--tmux-mode))
 
 ;; Vala
 (defun mb-hooks--vala-mode ()
