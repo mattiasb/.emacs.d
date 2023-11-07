@@ -778,7 +778,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-c <left>"    . python-indent-shift-left)
                       ( "C-c <right>"   . python-indent-shift-right)))
 
-  (add-hook 'python-mode-hook #'mb-hooks--python-mode))
+  (add-hook 'python-ts-mode-hook #'mb-hooks--python-mode))
 
 ;; Re Builder
 (defun mb-hooks--reb-mode ()
