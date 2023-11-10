@@ -243,7 +243,7 @@ python-mode python-ts-mode
 (@classmethod "@classmethod"
               n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-sh-mode sh-ts-mode
+sh-base-mode
 
 (auto-insert n "set -e"
              n "set -o pipefail"
