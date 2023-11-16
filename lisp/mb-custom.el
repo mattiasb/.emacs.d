@@ -478,8 +478,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(corfu-popupinfo ((t (:inherit corfu-default))))
- '(diff-refine-added ((t (:background "#416d41" :foreground "#cceecc"))))
- '(diff-refine-removed ((t (:background "#664040" :foreground "#eecccc"))))
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
  '(flymake-warning ((t (:underline (:color "goldenrod" :style wave)))))
