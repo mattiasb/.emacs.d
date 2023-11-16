@@ -63,7 +63,10 @@
    'mb-leuven
    '(auto-dim-other-buffers-face ((t (:background "gray98"))) t)
    '(fill-column-indicator ((t (:foreground "#D2D2D2"))) t)
-   '(history-current-history ((t (:foreground "#FFFFFF"))))
+   '(git-gutter:added ((t (:foreground "#3A993A" :weight bold))))
+   '(git-gutter:deleted ((t (:foreground "#CC3333" :weight bold))))
+   '(git-gutter:modified ((t (:foreground "#FEA500" :weight bold))))
+   '(history-current-history ((t (:foreground "#000000"))))
    '(history-current-temp-history ((t (:foreground "#FFFFFF"))))
    '(history-other-history ((t (:foreground "#FFFFFF"))))
    '(history-prompt ((t (:foreground "#FFFFFF"))))
