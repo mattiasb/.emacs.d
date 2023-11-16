@@ -221,7 +221,9 @@ python-mode python-ts-mode
           n> "def " prop "(self, " prop "):"
           n> "self.__" field " = " prop
           n q)
-(try      & "try:" n> p n "except " (p "Exception") ":"
+(try      & "try:" n> r> n "except " (p "Exception") ":"
+          n> q)
+(except   & "except " (p "Exception") ":" n> r> n
           n> q)
 (super    & (replace-regexp-in-string "\\([.]\\)[^.]+$" "(self)."
                                       (python-info-current-defun)
