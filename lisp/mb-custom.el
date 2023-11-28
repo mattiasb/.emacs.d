@@ -324,7 +324,8 @@
      (js2-mode . js-ts-mode)
      (json-mode . json-ts-mode)
      (python-mode . python-ts-mode)
-     (typescript-mode . typescript-ts-mode)))
+     (typescript-mode . typescript-ts-mode)
+     (yaml-ts-mode . yaml-mode)))
  '(markdown-asymmetric-header nil)
  '(markdown-command
    "pandoc --metadata pagetitle=*markdown* -s -f gfm -c file:///home/mattiasb/.config/emacs/github-pandoc.css")
