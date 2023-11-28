@@ -320,11 +320,11 @@
  '(magithub-api-timeout 3)
  '(major-mode-remap-alist
    '((bash-mode . bash-ts-mode)
-     (js2-mode . js-ts-mode)
-     (typescript-mode . typescript-ts-mode)
-     (json-mode . json-ts-mode)
      (css-mode . css-ts-mode)
-     (python-mode . python-ts-mode)))
+     (js2-mode . js-ts-mode)
+     (json-mode . json-ts-mode)
+     (python-mode . python-ts-mode)
+     (typescript-mode . typescript-ts-mode)))
  '(markdown-asymmetric-header nil)
  '(markdown-command
    "pandoc --metadata pagetitle=*markdown* -s -f gfm -c file:///home/mattiasb/.config/emacs/github-pandoc.css")
