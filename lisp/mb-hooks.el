@@ -734,6 +734,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "s S"       . mb-cmd-projectile-ripgrep-regex)
                       ( "x a"       . mb-cmd-projectile-ansi-term)
                       ( "x e"       . mb-cmd-projectile-eat)
+                      ( "x 4 e"     . mb-cmd-projectile-eat-other-window)
                       ( "x t"       . mb-cmd-projectile-terminal)))
 
   (def-projectile-commander-method ?d

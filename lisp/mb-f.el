@@ -299,6 +299,14 @@ Optionally return t ONLY if this project also isn't a Meson or CMake project."
   "Predicate that determines if current project is a CMake project."
   (file-exists-p (concat (projectile-project-root) "CMakeLists.txt")))
 
+(defun mb-f-eat (&optional other-window)
+  "Start `eat' in the project root. Optionally in OTHER-WINDOW."
+  (mb-f-req 'eat)
+  (let ((eat-buffer-name (format "*eat [%s]*" (projectile-project-name))))
+    (if other-window
+        (eat-other-window (getenv "SHELL"))
+      (eat (getenv "SHELL")))))
+
 (defun mb-f-filter-out-repo-dirs (dirs)
   "Filter out Google repo directories from a list of directories."
   (seq-filter (lambda (s) (not (string-match-p "/.repo" s))) dirs))
