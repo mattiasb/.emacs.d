@@ -737,24 +737,24 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "x t" . mb-cmd-projectile-terminal)))
 
   (def-projectile-commander-method ?d
-    "Open project root in dired."
-    (projectile-dired))
+                                   "Open project root in dired."
+                                   (projectile-dired))
 
   (def-projectile-commander-method ?q
-    "Go back to project selection."
-    (projectile-switch-project))
+                                   "Go back to project selection."
+                                   (projectile-switch-project))
 
   (def-projectile-commander-method ?a
-    "Start an `ansi-term' session in the project root."
-    (mb-cmd-projectile-ansi-term))
+                                   "Start an `ansi-term' session in the project root."
+                                   (mb-cmd-projectile-ansi-term))
 
   (def-projectile-commander-method ?t
-    "Spawn terminal in the project root."
-    (mb-cmd-projectile-terminal))
+                                   "Spawn terminal in the project root."
+                                   (mb-cmd-projectile-terminal))
 
   (def-projectile-commander-method ?V
-    "Spawn gitg in the project root."
-    (mb-cmd-projectile-gitg))
+                                   "Spawn gitg in the project root."
+                                   (mb-cmd-projectile-gitg))
 
   (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name))
 
