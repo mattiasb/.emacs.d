@@ -775,6 +775,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (mb-f-define-keys python-ts-mode-map
                     '(( "C-c t"         . mb-python-pytest-map)
+                      ( "C-c C-t"       . mb-python-pytest-map)
                       ( "C-c <left>"    . python-indent-shift-left)
                       ( "C-c <right>"   . python-indent-shift-right)))
 
