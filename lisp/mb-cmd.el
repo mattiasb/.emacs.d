@@ -277,28 +277,28 @@ With a prefix ARG always prompt for command to use."
 (defun mb-cmd-projectile-spawn (command)
   "Start an external COMMAND w/ `call-process' at the project root."
   (interactive)
-  (projectile-with-default-dir (projectile-project-root)
+  (projectile-with-default-dir (projectile-acquire-root)
     (call-process command nil 0)))
 
 ;;;###autoload
 (defun mb-cmd-projectile-eat ()
   "Start `eat' in the project root."
   (interactive)
-  (projectile-with-default-dir (projectile-project-root)
+  (projectile-with-default-dir (projectile-acquire-root)
     (mb-f-eat)))
 
 ;;;###autoload
 (defun mb-cmd-projectile-eat-other-window ()
   "Start `eat' in the project root in another window."
   (interactive)
-  (projectile-with-default-dir (projectile-project-root)
+  (projectile-with-default-dir (projectile-acquire-root)
     (mb-f-eat t)))
 
 ;;;###autoload
 (defun mb-cmd-projectile-ansi-term ()
   "Start `ansi-term' in the project root."
   (interactive)
-  (projectile-with-default-dir (projectile-project-root)
+  (projectile-with-default-dir (projectile-acquire-root)
     (ansi-term (getenv "SHELL")
                (format "*ansi-term [%s]*" (projectile-project-name)))))
 
@@ -508,7 +508,7 @@ markers and footnote text."
   (interactive)
   (let* ((buf-name "*spdx-reuse-lint*")
          (compilation-buffer-name-function (lambda (_) buf-name))
-         (default-directory (projectile-project-root)))
+         (default-directory (projectile-acquire-root)))
     (compile "reuse lint")
     (select-window (get-buffer-window buf-name))))
 
@@ -517,7 +517,7 @@ markers and footnote text."
   (interactive)
   (let* ((buf-name "*spdx-reuse-download-all*")
          (compilation-buffer-name-function (lambda (_) buf-name))
-         (default-directory (projectile-project-root)))
+         (default-directory (projectile-acquire-root)))
     (compile "reuse download --all")
     (select-window (get-buffer-window buf-name))))
 
