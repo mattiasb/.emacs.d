@@ -242,6 +242,8 @@ python-mode python-ts-mode
 (match & "match " p ":" n> q)
 (case  & "case "  p ":" n> q)
 
+(reveal_type "reveal_type(" r ")" q)
+
 (@classmethod "@classmethod"
               n> (i def))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
