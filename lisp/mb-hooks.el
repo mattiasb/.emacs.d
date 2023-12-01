@@ -975,6 +975,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-define-keys sh-mode-map
                     '(( "$"      . mb-cmd-sh-$ )
                       ( "C-$"    . mb-cmd-sh-C-$ )))
+  (mb-f-define-keys bash-ts-mode-map
+                    '(( "$"      . mb-cmd-sh-$ )
+                      ( "C-$"    . mb-cmd-sh-C-$ )))
   (add-hook 'sh-base-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
