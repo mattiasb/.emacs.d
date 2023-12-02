@@ -1,5 +1,5 @@
-;; SPDX-License-Identifier: GPL-3.0-only
-;; Copyright 2022, Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+;; SPDX-License-Identifier: GPL-3.0-or-later
+;; Copyright 2023, Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
