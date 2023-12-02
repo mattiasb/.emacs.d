@@ -192,12 +192,16 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
   (cond ((or (derived-mode-p 'lisp-mode)
              (derived-mode-p 'lisp-data-mode))
          ";; ")
-        ((null comment-start) "")
+        ((or (null comment-start)
+             (string= "" comment-start))
+         "")
         (t (format "%s " (string-trim comment-start)))))
 
 (defun mb-f-comment-end ()
   "Return comment-end."
-  (cond ((null comment-end) "")
+  (cond ((or (null comment-end)
+             (string= "" comment-end))
+         "")
         (t (format " %s" (string-trim comment-end)))))
 
 (defun mb-f-get-monitor-dpi (monitor-attributes)
