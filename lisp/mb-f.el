@@ -193,12 +193,12 @@ Just like `mapconcat' the last argument (SEP) is used as separator."
              (derived-mode-p 'lisp-data-mode))
          ";; ")
         ((null comment-start) "")
-        (t comment-start)))
+        (t (format "%s " (string-trim comment-start)))))
 
 (defun mb-f-comment-end ()
   "Return comment-end."
   (cond ((null comment-end) "")
-        (t comment-end)))
+        (t (format " %s" (string-trim comment-end)))))
 
 (defun mb-f-get-monitor-dpi (monitor-attributes)
   "Calculate DPI from a MONITOR-ATTRIBUTES structure."
