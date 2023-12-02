@@ -21,8 +21,10 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
-;; This has to go here apparently
-(setq package-user-dir "~/.cache/emacs/elpa")
+;; These has to go here apparently
+(setq package-user-dir (string-replace ".config" ".cache" package-user-dir))
+(setcar native-comp-eln-load-path
+        (string-replace ".config" ".cache" (car native-comp-eln-load-path)))
 
 (provide 'early-init)
 ;;; early-init.el ends here
