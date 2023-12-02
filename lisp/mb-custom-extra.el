@@ -6,9 +6,9 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 20230921
 ;; Keywords         : local
-;; Package-Requires : ((emacs 28.2))
+;; Package-Requires : ((emacs "29.1"))
 ;; URL              : https://github.com/mattiasb/.emacs.d
-;; Compatibility    : GNU Emacs: 28.x
+;; Compatibility    : GNU Emacs: 29.x
 
 ;;; Commentary:
 

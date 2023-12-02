@@ -6,9 +6,9 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version          : 0.1
 ;; Keywords         : languages
-;; Package-Requires : ((emacs "28.3") (pytest "0.2.1") (realgud "1.5.1"))
+;; Package-Requires : ((emacs "29.1") (pytest "0.2.1") (realgud "1.5.1"))
 ;; URL              : https://github.com/mattiasb/.emacs.d
-;; Compatibility    : GNU Emacs: 28.x
+;; Compatibility    : GNU Emacs: 29.x
 
 ;;; Commentary:
 

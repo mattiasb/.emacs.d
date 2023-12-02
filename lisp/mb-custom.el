@@ -6,9 +6,9 @@
 ;; Author           : Mattias Bengtsson
 ;; Version          : 20141108
 ;; Keywords         : local
-;; Package-Requires : ((emacs "27.1"))
+;; Package-Requires : ((emacs "29.1"))
 ;; URL              : https://github.com/moonlite/.emacs.d
-;; Compatibility    : GNU Emacs: 27.x
+;; Compatibility    : GNU Emacs: 29.x
 
 ;;; Commentary:
 

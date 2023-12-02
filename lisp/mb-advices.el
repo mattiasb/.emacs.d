@@ -6,10 +6,10 @@
 ;; Author           : Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
 ;; Version	    : 20170308
 ;; Keywords	    : local
-;; Package-Requires : ((emacs "27.1"))
+;; Package-Requires : ((emacs "29.1"))
 ;; URL		    : https://github.com/moonlite/.emacs.d
 ;; Doc URL	    : TBA
-;; Compatibility    : GNU Emacs: 27.x
+;; Compatibility    : GNU Emacs: 29.x
 
 ;;; Commentary:
 
