@@ -99,7 +99,6 @@
   (electric-pair-mode)
   (projectile-mode)
   (auto-dim-other-buffers-mode)
-  (auto-insert-mode)
   (envrc-global-mode)
   (global-treesit-auto-mode))
 
