@@ -239,6 +239,8 @@ python-mode python-ts-mode
       n
       :pre (end-of-buffer))
 
+(with & "with " p " as " p ":" n>)
+
 (match & "match " p ":" n> q)
 (case  & "case "  p ":" n> q)
 
