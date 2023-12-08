@@ -779,6 +779,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                         ( "m"           . pytest-module)
                         ( "r"           . pytest-run)))
 
+  (tempel-key "C-{" f-string python-ts-mode-map)
+
   (mb-f-define-keys python-ts-mode-map
                     '(( "C-c t"         . mb-python-pytest-map)
                       ( "C-c C-t"       . mb-python-pytest-map)

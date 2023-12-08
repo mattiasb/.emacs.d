@@ -230,6 +230,8 @@ python-mode python-ts-mode
                                       nil nil 1)
           "(" p ")" n> q)
 
+(f-string "f\"{" r "}\"")
+
 (main & n "def main():"
       n> "pass" q
       n n
