@@ -207,7 +207,7 @@ python-mode python-ts-mode
 (with     & "with " p " as " p ":"
           n> r>)
 (init     & "def __init__(self):" n> "pass" q)
-(class    & "class " (p "ClassName") "(" (p "object") "):"
+(class    & "class " (p "ClassName") ":"
           n>"\"\"\"" p "\"\"\""
           n>
           n> (i init))
