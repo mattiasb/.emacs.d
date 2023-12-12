@@ -469,6 +469,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "C-{"  . mb-cmd-jinja2-C-{ )))
   (add-hook 'jinja2-mode-hook #'mb-hooks--jinja2-mode))
 
+;; Jinx
+(with-eval-after-load 'jinx
+  (setq jinx--predicates
+        (list #'mb-f-jinx-bug-reference-ignored-p
+              #'jinx--face-ignored-p
+              #'jinx--regexp-ignored-p
+              #'jinx--word-valid-p)))
+
 ;; JS2
 (defun mb-hooks--js2-mode ()
   "My `js2' mode hook."

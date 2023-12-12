@@ -577,6 +577,16 @@ that checks that the hash-bang seems to involve a path."
          (cmd (format "makepasswd -m %s -M %s" min max)))
     (string-trim-right (shell-command-to-string cmd))))
 
+(defun mb-f-jinx-bug-reference-ignored-p (start)
+  "Return non-nil if word at START matches `bug-reference-bug-regexp'."
+  (mb-f-req 'bug-reference)
+  (save-excursion
+    (goto-char start)
+    (when (and bug-reference-bug-regexp (looking-at-p bug-reference-bug-regexp))
+      (save-match-data
+        (looking-at bug-reference-bug-regexp)
+        (match-end 0)))))
+
 (defun mb-f-eglot-format-all ()
   ;; This fails on just a single import
   (mb-f-req 'eglot)
