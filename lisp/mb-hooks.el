@@ -108,6 +108,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'auto-dark)
   (add-hook 'auto-dark-mode-hook #'mb-hooks--auto-dark-mode))
 
+;; Bug Reference
+(with-eval-after-load 'bug-reference
+  (mb-f-define-keys bug-reference-map
+                    '(( "C-z b"     . bug-reference-push-button))))
+
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
   (mb-f-req 'browse-kill-ring)
