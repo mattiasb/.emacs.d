@@ -230,7 +230,6 @@
                       ( "C-z"      . suspend-frame)
                       ( "D"        . diff-buffer-with-file)
                       ( "_"        . vundo)
-                      ( "b"        . browse-url-at-point)
                       ( "g"        . imenu)
                       ( "n"        . mb-cmd-new-frame)
                       ( "o"        . mb-cmd-open-with)))

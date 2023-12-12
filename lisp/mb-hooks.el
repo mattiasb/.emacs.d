@@ -387,6 +387,11 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   
   (add-hook 'go-mode-hook #'mb-hooks--go-mode))
 
+;; Goto Address
+(with-eval-after-load 'goto-address
+  (mb-f-define-keys goto-address-highlight-keymap
+                    '(( "C-z b"     . goto-address-at-point))))
+
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
   "My `haskell' mode hook."

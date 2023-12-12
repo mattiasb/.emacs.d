@@ -80,6 +80,7 @@
   (global-git-gutter-mode)
   (global-emojify-mode-line-mode)
   (global-corfu-mode)
+  (global-goto-address-mode)
   (doom-modeline-mode)
   (history-mode)
   (savehist-mode)
