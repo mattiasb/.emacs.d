@@ -577,6 +577,13 @@ that checks that the hash-bang seems to involve a path."
          (cmd (format "makepasswd -m %s -M %s" min max)))
     (string-trim-right (shell-command-to-string cmd))))
 
+(defun mb-f-jinx-url-p (start)
+  "Return non-nil if word at START matches `bug-reference-bug-regexp'."
+  (mb-f-req 'bug-reference)
+  (save-excursion
+    (goto-char start)
+    (if (thing-at-point 'url) t nil)))
+
 (defun mb-f-jinx-bug-reference-ignored-p (start)
   "Return non-nil if word at START matches `bug-reference-bug-regexp'."
   (mb-f-req 'bug-reference)

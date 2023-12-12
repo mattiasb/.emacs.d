@@ -472,7 +472,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Jinx
 (with-eval-after-load 'jinx
   (setq jinx--predicates
-        (list #'mb-f-jinx-bug-reference-ignored-p
+        (list #'mb-f-jinx-url-p
+              #'mb-f-jinx-bug-reference-ignored-p
               #'jinx--face-ignored-p
               #'jinx--regexp-ignored-p
               #'jinx--word-valid-p)))
