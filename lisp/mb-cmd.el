@@ -303,46 +303,6 @@ With a prefix ARG always prompt for command to use."
                (format "*ansi-term [%s]*" (projectile-project-name)))))
 
 ;;;###autoload
-(defun mb-cmd-flyspell-goto-previous-error ()
-  "Go to ARG previous spelling error."
-  (interactive)
-  (mb-f-req 'flyspell)
-  (let ((arg 1))
-    (while (not (= 0 arg))
-      (let ((pos (point))
-            (min (point-min)))
-        (if (and (eq (current-buffer) flyspell-old-buffer-error)
-                 (eq pos flyspell-old-pos-error))
-            (progn
-              (if (= flyspell-old-pos-error min)
-                  ;; goto beginning of buffer
-                  (progn
-                    (message "Restarting from end of buffer")
-                    (goto-char (point-max)))
-                (backward-word 1))
-              (setq pos (point))))
-        ;; seek the next error
-        (while (and (> pos min)
-                    (let ((ovs (overlays-at pos))
-                          (r '()))
-                      (while (and (not r) (consp ovs))
-                        (if (flyspell-overlay-p (car ovs))
-                            (setq r t)
-                          (setq ovs (cdr ovs))))
-                      (not r)))
-          (backward-word 1)
-          (setq pos (point)))
-        ;; save the current location for next invocation
-        (setq arg (1- arg))
-        (setq flyspell-old-pos-error pos)
-        (setq flyspell-old-buffer-error (current-buffer))
-        (goto-char pos)
-        (if (= pos min)
-            (progn
-              (message "No more miss-spelled word!")
-              (setq arg 0)))))))
-
-;;;###autoload
 (defun mb-cmd-iedit-in-defun ()
   "`iedit' restricted to current `defun'."
   (interactive)

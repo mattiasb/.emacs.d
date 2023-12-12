@@ -360,17 +360,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'flymake-diagnostic-at-point)
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
 
-;; Flyspell
-(with-eval-after-load 'flyspell
-  (mb-f-req 'flyspell)
-  (mb-f-define-keys flyspell-mode-map
-                    '(("C-," . mb-cmd-flyspell-goto-previous-error)
-                      ("C-." . flyspell-goto-next-error)
-                      ("C-;" . flyspell-correct-previous-word-generic)
-                      ("C-:" . flyspell-correct-next-word-generic)))
-
-  (add-hook 'flyspell-mode-hook #'flyspell-buffer))
-
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 

@@ -71,7 +71,6 @@
     (electric-operator-mode      . " ⊙")
     (fancy-narrow-mode           . "")
     (flymake-mode                . " ✎")
-    (flyspell-mode               . " ✎")
     (git-gutter-mode             . "")
     (haskell-indentation-mode    . "")
     (history-mode                . "")
