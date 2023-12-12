@@ -77,6 +77,7 @@
   (su-mode +1)
   (auto-fill-mode 1)
   (hl-highlight-mode)
+  (global-jinx-mode)
   (global-git-gutter-mode)
   (global-emojify-mode-line-mode)
   (global-corfu-mode)

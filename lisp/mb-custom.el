@@ -273,6 +273,9 @@
  '(initial-major-mode 'text-mode)
  '(initial-scratch-message "")
  '(isearch-lazy-count t)
+ '(jinx-exclude-regexps
+   '(((emacs-lisp-mode "Package-Requires *:.*$" "Keywords:.*$" "[a-zA-Z0-9_-]+\\.el")
+      (t "[A-Z]+\\>" "-+\\>" "\\w*?[0-9]\\w*\\>" "[a-z]+://\\S-+" "<?[-+_.~a-zA-Z][-+_.~:a-zA-Z0-9]*@[-.a-zA-Z0-9]+>?" "\\(?:Local Variables\\|End\\):\\s-*$" "jinx-\\(?:languages\\|local-words\\):\\s-+.*$"))))
  '(js2-allow-keywords-as-property-names t)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 4)
