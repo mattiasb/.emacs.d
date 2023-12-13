@@ -25,8 +25,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
-(defvar magit-last-seen-setup-instructions)
-(setq magit-last-seen-setup-instructions "1.4.0")
 (defvar todotxt-file)
 (setq todotxt-file "~/Dropbox/todo/todo.txt")
 (setq completion-ignore-case t)
