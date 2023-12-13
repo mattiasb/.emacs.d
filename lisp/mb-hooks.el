@@ -883,6 +883,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-operator-mode)
   (bug-reference-mode)
   (mb-f-set-capfs #'cape-dict)
+  (unless (derived-mode-p 'yaml-mode 'yaml-ts-mode 'jinja2-mode)
+    (jinx-mode))
 
   (setq-local corfu-auto nil))
 
