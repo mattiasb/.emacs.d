@@ -136,6 +136,7 @@ markdown-mode :when git-commit-mode
 (release-notes "Release-Notes: skip" %)
 (depends "Depends-On: " q %)
 (part-of "Part-Of: " q %)
+(fixes   "Fixes: " q %)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 prog-mode yaml-mode yaml-ts-mode
