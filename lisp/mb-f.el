@@ -395,7 +395,7 @@ that checks that the hash-bang seems to involve a path."
   (mb-f-req 'tempel)
   (let ((name (intern (format "mb-capf:%s"
                               (mapconcat #'symbol-name capfs "+")))))
-    (defalias name (apply #'cape-super-capf capfs))
+    (defalias name (apply #'cape-capf-super capfs))
     name))
 
 (defun mb-f-set-capfs (&rest capfs)
