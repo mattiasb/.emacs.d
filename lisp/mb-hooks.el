@@ -697,7 +697,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
       (electric-indent-local-mode)
     (aggressive-indent-mode))
 
-  (bug-reference-prog-mode)
+  (bug-reference+-prog-mode)
   (which-function-mode)
   (ws-butler-mode)
   (flymake-mode)
@@ -881,7 +881,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (display-fill-column-indicator-mode)
   (electric-indent-local-mode)
   (electric-operator-mode)
-  (bug-reference-mode)
+  (bug-reference+-mode)
   (mb-f-set-capfs #'cape-dict)
   (unless (derived-mode-p 'yaml-mode 'yaml-ts-mode 'jinja2-mode)
     (jinx-mode))
