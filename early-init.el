@@ -20,6 +20,7 @@
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; These has to go here apparently
 (setq package-user-dir (string-replace ".config" ".cache" package-user-dir))
