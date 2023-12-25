@@ -443,6 +443,15 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'iedit-aborting-hook #'deactivate-mark))
 
+;; Ielm
+(defun mb-hooks--ielm-mode ()
+  "My `IELM' mode hook."
+  (mb-f-define-keys inferior-emacs-lisp-mode-map
+                    '(("C-l"      . comint-clear-buffer))))
+
+(with-eval-after-load 'ielm
+  (add-hook 'ielm-mode-hook #'mb-hooks--ielm-mode))
+
 ;; Info
 (defun mb-hooks--Info-mode ()
   "My `Info' mode hook.")
