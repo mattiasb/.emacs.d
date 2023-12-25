@@ -311,7 +311,7 @@ sh-base-mode
 (alias & o "alias " (s cmd) "='" cmd " " q "'" o)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-emacs-lisp-mode
+emacs-lisp-mode inferior-emacs-lisp-mode
 
 (auto-insert :post (tempel-insert 'pkg))
 
