@@ -57,7 +57,18 @@
  '(comment-auto-fill-only-comments t)
  '(compilation-read-command nil)
  '(compilation-scroll-output t)
- '(completion-styles '(flex basic))
+ '(completion-category-overrides
+   '((xref-location
+      (styles substring flex))
+     (buffer
+      (styles substring flex))
+     (project-file
+      (styles substring flex))
+     (symbol-help
+      (styles substring flex))
+     (eglot
+      (styles substring flex))))
+ '(completion-styles '(substring flex))
  '(corfu-auto t)
  '(corfu-bar-width 0.5)
  '(corfu-cycle t)
