@@ -393,7 +393,7 @@
  '(ring-bell-function 'ignore)
  '(rust-indent-method-chain t)
  '(safe-local-variable-values
-   '((c-mode . c++)
+   '((checkdoc-package-keywords-flag)
      (mtg-deck-format . vintage)
      (mtg-deck-format . standard)
      (mtg-deck-format . legacy)
