@@ -404,6 +404,7 @@
  '(scroll-bar-mode nil)
  '(scroll-margin 5)
  '(scroll-step 1)
+ '(sentence-end-double-space nil)
  '(sgml-basic-offset 4)
  '(sh-imenu-generic-expression
    '((sh
