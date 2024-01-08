@@ -385,7 +385,7 @@ emacs-lisp-mode inferior-emacs-lisp-mode
      n ";; Author           : " (p (mb-f-get-user-mailbox))
      n ";; Version          : " (p (format-time-string "%Y%m%d"))
      n ";; Keywords         : " (p "local")
-     n ";; Package-Requires : ((emacs " (p (mb-f-emacs-version)) "))"
+     n ";; Package-Requires : ((emacs \"" (p (mb-f-emacs-version)) "\"))"
      n ";; URL              : " (p "https://github.com/mattiasb/.emacs.d")
      n ";; Compatibility    : GNU Emacs: " (p (mb-f-emacs-version-major)) ".x"
      n n
