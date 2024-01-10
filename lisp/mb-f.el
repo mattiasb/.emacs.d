@@ -601,5 +601,12 @@ that checks that the hash-bang seems to involve a path."
     (call-interactively 'eglot-code-action-organize-imports))
   (eglot-format-buffer))
 
+(defun mb-f-sqlite-magic ()
+  "Re-open sqlite files in `sqlite-mode'"
+  (mb-f-req 'sqlite-mode)
+  (let ((file-name buffer-file-name))
+    (kill-current-buffer)
+    (sqlite-mode-open-file file-name)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

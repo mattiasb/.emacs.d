@@ -85,7 +85,8 @@
   "Activate mode configurations."
   (mb-f-auto-modes          mb-modes--filepattern-to-mode-map)
   (mb-f-shorten-major-modes mb-modes--shortened-major-modes)
-  (mb-f-shorten-minor-modes mb-modes--shortened-minor-modes))
+  (mb-f-shorten-minor-modes mb-modes--shortened-minor-modes)
+  (add-to-list 'magic-mode-alist '("SQLite format 3\x00" . mb-f-sqlite-magic)))
 
 (provide 'mb-modes)
 ;;; mb-modes.el ends here
