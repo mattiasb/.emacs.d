@@ -177,6 +177,12 @@ passed on unchanged."
                            display-error-buffer))
 
 ;;;###autoload
+(defun mb-cmd-yamlfix-dwim ()
+  "Run `yamlfix' on region or buffer."
+  (interactive)
+  (mb-cmd-shell-command-dwim "yamlfix - " nil t "*yaml-fix*"))
+
+;;;###autoload
 (defun mb-cmd-yaml2json-dwim ()
   "Convert the current region or all to json from yaml."
   (interactive)
