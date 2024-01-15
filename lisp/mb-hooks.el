@@ -635,6 +635,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `markdown' mode hook."
   (mb-f-req 'pandoc-mode)
   (auto-fill-mode)
+  (mb-f-electric-pairs '((?* . ?*)))
   (pandoc-mode)
   (pandoc-load-default-settings))
 
