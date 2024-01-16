@@ -183,6 +183,25 @@ passed on unchanged."
   (mb-cmd-shell-command-dwim "yamlfix - " nil t "*yaml-fix*"))
 
 ;;;###autoload
+(defun mb-cmd-mdformat-dwim ()
+  "Run `mdformat' on region or buffer."
+  (interactive)
+  (mb-cmd-shell-command-dwim "mdformat --number - "
+                             nil
+                             t
+                             "*mdformat*"))
+
+;;;###autoload
+(defun mb-cmd-mdformat-wrap-dwim ()
+  "Run `mdformat' on region or buffer."
+  (interactive)
+  (mb-cmd-shell-command-dwim (format "mdformat --number --wrap %s - "
+                                     fill-column)
+                             nil
+                             t
+                             "*mdformat*"))
+
+;;;###autoload
 (defun mb-cmd-yaml2json-dwim ()
   "Convert the current region or all to json from yaml."
   (interactive)
