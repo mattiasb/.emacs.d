@@ -25,6 +25,8 @@
 (defconst mb-modes--filepattern-to-mode-map
   '(("\/Cask$"             . emacs-lisp-mode)
     ("\/Pipfile$"          . toml-mode)
+    ("\/Dockerfile$"       . dockerfile-ts-mode)
+    ("\/Containerfile$"    . dockerfile-ts-mode)
     ("\/evo"               . message-mode)
     ("\/hosts$"            . ini-mode)
     ("\/tmp\/bash-fc\."    . sh-mode)
