@@ -291,6 +291,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                                         (cons "-" nil))
   (electric-operator-add-rules-for-mode 'lisp-data-mode
                                         (cons "-" nil))
+  (electric-operator-add-rules-for-mode 'dockerfile-ts-mode
+                                        (cons "-" nil))
   (electric-operator-add-rules-for-mode 'ruby-mode
                                         (cons "=" nil))
   (electric-operator-add-rules-for-mode 'ruby-mode
