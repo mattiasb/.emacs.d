@@ -1009,9 +1009,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'sh-base-mode-hook #'mb-hooks--sh-mode))
 
 ;; Sql
+(defun mb-hooks--sql-mode ()
+  "My `SQL' mode hook."
+  (sqlup-mode)
+  (sqlind-minor-mode))
+
 (with-eval-after-load 'sql
-  (mb-f-req 'sqlup-mode)
-  (add-hook 'sql-mode-hook #'sqlup-mode))
+  (add-hook 'sql-mode-hook #'mb-hooks--sql-mode))
 
 ;; Systemd
 (defun mb-hooks--systemd-mode ()
