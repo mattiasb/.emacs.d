@@ -1012,7 +1012,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--sql-mode ()
   "My `SQL' mode hook."
   (sqlup-mode)
-  (sqlind-minor-mode))
+  (sqlind-minor-mode)
+  (add-hook 'before-save-hook #'sqlup-capitalize-keywords-in-buffer 0 t))
 
 (with-eval-after-load 'sql
   (add-hook 'sql-mode-hook #'mb-hooks--sql-mode))
