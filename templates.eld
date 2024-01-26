@@ -405,3 +405,16 @@ emacs-lisp-mode inferior-emacs-lisp-mode
       :pre (end-of-buffer)
       :post (previous-line 4))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+sql-mode
+
+(COUNT  "COUNT(" q ")")
+(MAX    "MAX("   q ")")
+(MIN    "MIN("   q ")")
+
+(SELECT "SELECT ")
+(ORDER  "ORDER BY ")
+(INSERT "INSERT ")
+(FROM   "FROM \"" q "\"")
+(JOIN   "JOIN \"" p "\" ON " q)
