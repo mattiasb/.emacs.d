@@ -409,12 +409,16 @@ emacs-lisp-mode inferior-emacs-lisp-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sql-mode
 
-(COUNT  "COUNT(" q ")")
-(MAX    "MAX("   q ")")
-(MIN    "MIN("   q ")")
+(COUNT    "COUNT(" q ")")
+(MAX      "MAX("   q ")")
+(MIN      "MIN("   q ")")
 
-(SELECT "SELECT ")
-(ORDER  "ORDER BY ")
-(INSERT "INSERT ")
-(FROM   "FROM \"" q "\"")
-(JOIN   "JOIN \"" p "\" ON " q)
+(SELECT   "SELECT ")
+(ORDER    "ORDER BY ")
+(GROUP    "GROUP BY ")
+(INSERT   "INSERT ")
+(INTERVAL "INTERVAL '" q "'")
+(FROM     "FROM \""    q "\"")
+(JOIN     "JOIN \""    p "\" ON " q)
+(LEFT     "LEFT JOIN \"" p "\" ON " q)
+(CASE     "CASE WHEN " p " THEN " q " END")
