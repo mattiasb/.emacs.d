@@ -552,6 +552,12 @@ markers and footnote text."
     ('python-ts-mode (realgud:pdb))
     (_ (error "No debugger setup for this mode!"))))
 
+;;;###autoload
+(defun mb-cmd-reindent-buffer ()
+  "Reindent current buffer using the indentation rules of the
+ current major mode."
+  (interactive)
+  (save-excursion (indent-region (point-min) (point-max) nil)))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here
