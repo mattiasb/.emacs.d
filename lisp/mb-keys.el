@@ -110,6 +110,7 @@
 (mb-f-define-keymap mb-keys-toggle-map
                     '(( "a"        . aggressive-indent-mode)
                       ( "b"        . magit-blame)
+                      ( "d"        . dedicated-mode)
                       ( "e l"      . electric-layout-mode)
                       ( "e o"      . electric-operator-mode)
                       ( "e p"      . electric-pair-mode)
