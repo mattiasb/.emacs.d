@@ -94,6 +94,7 @@
  '(doom-modeline-buffer-file-name-style 'relative-from-project)
  '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode text-mode))
  '(doom-modeline-enable-word-count t)
+ '(doom-modeline-minor-modes t)
  '(doom-modeline-modal-icon nil)
  '(easy-repeat-command-list
    '(backward-page beginning-of-defun default-text-scale-decrease default-text-scale-increase default-text-scale-reset end-of-defun flymake-goto-next-error flymake-goto-prev-error forward-page git-gutter:next-hunk git-gutter:previous-hunk hl-find-next-thing hl-find-prev-thing kill-buffer mb-cmd-split-window-below mb-cmd-split-window-right mb-cmd-toggle-programming-case-word-at-point mb-cmd-toggle-programming-case-word-at-point-reverse md/duplicate-down md/duplicate-up next-buffer next-error org-backward-heading-same-level org-forward-heading-same-level org-next-visible-heading org-previous-visible-heading other-window outline-backward-same-level outline-forward-same-level outline-next-visible-heading outline-previous-visible-heading outline-up-heading paredit-backward paredit-backward-up paredit-forward previous-error python-indent-shift-left python-indent-shift-right reb-next-match reb-prev-match recenter-top-bottom scroll-down-command scroll-other-window scroll-up-command shift-number-down shift-number-up string-inflection-all-cycle table-heighten-cell table-narrow-cell table-shorten-cell table-widen-cell))
@@ -208,6 +209,10 @@
  '(emojify-download-emojis-p t)
  '(emojify-emoji-styles '(unicode))
  '(emojify-emojis-dir "~/.cache/emacs/emojis")
+ '(envrc-error-lighter '(" " (:propertize "E" face envrc-mode-line-error-face)))
+ '(envrc-global-mode t)
+ '(envrc-none-lighter nil)
+ '(envrc-on-lighter '(" " (:propertize "E" face envrc-mode-line-on-face)))
  '(eww-header-line-format "")
  '(expand-region-contract-fast-key "S-SPC")
  '(fill-function-arguments-first-argument-same-line t)
@@ -498,6 +503,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(corfu-popupinfo ((t (:inherit corfu-default))))
+ '(envrc-mode-line-none-face ((t (:inherit doom-modeline-buffer-minor-mode))))
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
  '(flymake-warning ((t (:underline (:color "goldenrod" :style wave)))))
