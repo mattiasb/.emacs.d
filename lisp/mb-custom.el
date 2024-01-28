@@ -91,11 +91,13 @@
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-sidebar-width 40)
  '(display-fill-column-indicator-character 9474)
+ '(doom-modeline-buffer-encoding 'nondefault)
  '(doom-modeline-buffer-file-name-style 'relative-from-project)
  '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode text-mode))
  '(doom-modeline-enable-word-count t)
  '(doom-modeline-minor-modes t)
  '(doom-modeline-modal-icon nil)
+ '(doom-modeline-percent-position nil)
  '(easy-repeat-command-list
    '(backward-page beginning-of-defun default-text-scale-decrease default-text-scale-increase default-text-scale-reset end-of-defun flymake-goto-next-error flymake-goto-prev-error forward-page git-gutter:next-hunk git-gutter:previous-hunk hl-find-next-thing hl-find-prev-thing kill-buffer mb-cmd-split-window-below mb-cmd-split-window-right mb-cmd-toggle-programming-case-word-at-point mb-cmd-toggle-programming-case-word-at-point-reverse md/duplicate-down md/duplicate-up next-buffer next-error org-backward-heading-same-level org-forward-heading-same-level org-next-visible-heading org-previous-visible-heading other-window outline-backward-same-level outline-forward-same-level outline-next-visible-heading outline-previous-visible-heading outline-up-heading paredit-backward paredit-backward-up paredit-forward previous-error python-indent-shift-left python-indent-shift-right reb-next-match reb-prev-match recenter-top-bottom scroll-down-command scroll-other-window scroll-up-command shift-number-down shift-number-up string-inflection-all-cycle table-heighten-cell table-narrow-cell table-shorten-cell table-widen-cell))
  '(eat-enable-shell-prompt-annotation nil)
