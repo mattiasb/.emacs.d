@@ -368,14 +368,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (require 'tramp)
 
   (mb-f-define-keys dired-mode-map
-                    '(( "W" . wdired-change-to-wdired-mode)
-                      ( "F" . find-name-dired)
-                      ( "c" . mb-cmd-find-file-default)
+                    '(( "W"      . wdired-change-to-wdired-mode)
+                      ( "F"      . find-name-dired)
+                      ( "c"      . mb-cmd-find-file-default)
                       ( "M-<up>" . dired-up-directory)
-                      ( "." . dired-omit-mode)))
+                      ( "."      . dired-omit-mode)))
   (mb-f-remap-keys dired-mode-map
-                   '(("s" . "C-s")
-                     ("r" . "C-r")))
+                   '(("s"        . "C-s")
+                     ("r"        . "C-r")))
 
   (add-hook 'dired-mode-hook #'mb-hooks--dired-mode))
 
