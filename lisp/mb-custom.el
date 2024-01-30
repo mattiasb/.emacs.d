@@ -55,7 +55,7 @@
  '(browse-url-browser-function 'browse-url-default-browser)
  '(column-number-mode t)
  '(comment-auto-fill-only-comments t)
- '(compilation-read-command nil)
+ '(compilation-read-command t)
  '(compilation-scroll-output t)
  '(completion-category-overrides
    '((xref-location
