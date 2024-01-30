@@ -355,14 +355,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
   (mb-f-req 'dired-x)
-  (mb-f-req 'dired-hide-dotfiles)
   (mb-f-req 'all-the-icons-dired)
   (auto-revert-mode)
   (hl-line-mode)
   (all-the-icons-dired-mode)
   (dired-omit-mode)
   (dired-hide-details-mode)
-  (dired-hide-dotfiles-mode))
+  (dired-omit-mode))
 
 (with-eval-after-load 'dired
   (require 'dired-x)
@@ -373,7 +372,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "F" . find-name-dired)
                       ( "c" . mb-cmd-find-file-default)
                       ( "M-<up>" . dired-up-directory)
-                      ( "." . dired-hide-dotfiles-mode)))
+                      ( "." . dired-omit-mode)))
   (mb-f-remap-keys dired-mode-map
                    '(("s" . "C-s")
                      ("r" . "C-r")))
