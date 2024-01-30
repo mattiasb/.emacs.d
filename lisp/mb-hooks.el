@@ -301,7 +301,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; C / C++
 (defun mb-hooks--c-mode ()
-  "A mode hook for C and C++.")
+  "A mode hook for C and C++."
+  (eglot-ensure))
 
 (with-eval-after-load 'cc-mode
   (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
