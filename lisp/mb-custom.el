@@ -506,6 +506,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(corfu-popupinfo ((t (:inherit corfu-default))))
+ '(doom-modeline-buffer-minor-mode ((t (:weight normal :slant normal :inherit doom-modeline))))
  '(envrc-mode-line-none-face ((t (:inherit doom-modeline-buffer-minor-mode))))
  '(flymake-error ((t (:underline (:color "tomato3" :style wave)))))
  '(flymake-note ((t (:underline (:color "olive drab" :style wave)))))
