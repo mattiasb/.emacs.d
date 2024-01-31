@@ -310,6 +310,11 @@ sh-base-mode
        o n)
 (alias & o "alias " (s cmd) "='" cmd " " q "'" o)
 
+(assoc & o n "declare -A " p "=(" n> q n ")")
+(ASSOC & o n "declare -A " p "=(" n> q n ")"
+       :pre (caps-lock-mode +1)
+       :post (caps-lock-mode -1))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
