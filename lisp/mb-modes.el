@@ -50,20 +50,32 @@
     ("\\.vala$"            . vala-mode)))
 
 (defconst mb-modes--shortened-major-modes
-  '((c++-mode        . "C++")
-    (c-mode          . "C")
-    (cmake-mode      . "CMake")
-    (emacs-lisp-mode . "Elisp")
+  '((cmake-mode      . "CMake")
     (go-mode         . "Go")
-    (haskell-mode    . "λ")
-    (js2-mode        . "JS")
-    (markdown-mode   . "M↓")
-    (nxml-mode       . "XML")
-    (sh-mode         . "Sh")))
+
+    (js-ts-mode      . "")
+    (js-mode         . "")
+    (markdown-mode   . "")
+    (nxml-mode       . "")
+    (sh-mode         . "")
+    (haskell-mode    . "")
+    (c++-mode        . "")
+    (c-mode          . "")
+    (emacs-lisp-mode . "")))
 
 (defconst mb-modes--shortened-minor-modes
-  '((abbrev-mode                 . "")
+  '(;; Togglables
     (aggressive-indent-mode      . " ⇒")
+    (auto-fill-mode              . " ⏎")
+    (electric-operator-mode      . " ⊙")
+    (rainbow-mode                . " 🌈")
+    (jinx-mode                   . " ✓")
+    (olivetti-mode               . " ⟛")
+    ;; TODO(mattiasb): Make these work!
+    (electric-layout-mode        . " ⏎")
+    (electric-pair-mode          . " ⫘")
+
+    (abbrev-mode                 . "")
     (all-the-icons-dired-mode    . "")
     (ansible-doc-mode            . "")
     (ansible-mode                . "")
@@ -72,7 +84,6 @@
     (auto-revert-mode            . "")
     (auto-sudoedit-mode          . "")
     (eldoc-mode                  . "")
-    (electric-operator-mode      . " ⊙")
     (fancy-narrow-mode           . "")
     (flymake-mode                . "")
     (git-gutter-mode             . "")
@@ -83,9 +94,9 @@
     (magit-auto-revert-mode      . "")
     (magit-blame-mode            . "")
     (magit-filenotify-mode       . "")
+    (pandoc-mode                 . "")
     (sqlup-mode                  . "")
     (projectile-mode             . "")
-    (rainbow-mode                . " 🌈")
     (which-key-mode              . "")
     (ws-butler-mode              . "")))
 
