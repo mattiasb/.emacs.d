@@ -86,5 +86,11 @@
    '(powerline-active2 ((t (:inherit mode-line :background "gray30"))))
    '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "grey18"))))))
 
+;; Define a read-only directory class
+(dir-locals-set-class-variables 'read-only
+                                '((nil . ((buffer-read-only . t)))))
+(dir-locals-set-directory-class (file-truename "~/.cache/emacs/elpa/")
+                                'read-only)
+
 (provide 'mb-custom-extra)
 ;;; mb-custom-extra.el ends here
