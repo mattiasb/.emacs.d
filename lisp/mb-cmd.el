@@ -250,18 +250,6 @@ With a prefix ARG always prompt for command to use."
                       (shell-quote-argument buffer-file-name))))))
 
 ;;;###autoload
-;; From: http://endlessparentheses.com/fill-and-unfill-paragraphs-with-a-single-key.html
-(defun mb-cmd-fill-or-unfill ()
-  "Like `fill-paragraph', but unfill if used twice."
-  (interactive)
-  (let ((fill-column
-         (if (eq last-command 'mb-cmd-fill-or-unfill)
-             (progn (setq this-command nil)
-                    (point-max))
-           fill-column)))
-    (call-interactively #'fill-paragraph)))
-
-;;;###autoload
 (defun mb-cmd-projectile-ripgrep-regex (search-term)
   "Regex search for SEARCH-TERM with ripgrep."
   (interactive

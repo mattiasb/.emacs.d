@@ -28,7 +28,7 @@
     (delete-other-windows          . zygospore-toggle-delete-other-windows)
     (eval-last-sexp                . mb-f-eval-or-inspect-last-sexp)
     (eval-expression               . mb-f-eval-or-inspect-expression)
-    (fill-paragraph                . mb-cmd-fill-or-unfill)
+    (fill-paragraph                . unfill-toggle)
     (kill-buffer                   . mb-cmd-kill-this-buffer)
     (split-window-right            . mb-cmd-split-window-right)
     (split-window-below            . mb-cmd-split-window-below)
