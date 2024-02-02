@@ -1265,6 +1265,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'whitespace
   (add-hook 'whitespace-mode-hook #'mb-hooks--whitespace-mode))
 
+;; Visual Line
+(defun mb-hooks--visual-line-mode ()
+  "My `visual-line' mode hook."
+  (visual-fill-column-mode))
+
+(with-eval-after-load 'visual-line
+  (add-hook 'visual-line-mode-hook #'mb-hooks--visual-line-mode))
+
 ;; Visual Regexp
 (with-eval-after-load 'visual-regexp-steroids
   (mb-f-define-keys esc-map
