@@ -31,6 +31,8 @@
     ("\/hosts$"            . ini-mode)
     ("\/tmp\/bash-fc\."    . sh-mode)
     ("\\.bu$"              . yaml-mode)
+    ("\\.container$"       . systemd-mode)
+    ("\\.volume$"          . systemd-mode)
     ("\\.eld$"             . lisp-data-mode)
     ("\\.y[a]ml.j2$"       . yaml-mode)
     ("\\.dec$"             . mtg-deck-mode)
