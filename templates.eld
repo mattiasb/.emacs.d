@@ -315,6 +315,9 @@ sh-base-mode
        :pre (caps-lock-mode +1)
        :post (caps-lock-mode -1))
 
+(cd & o "cd \"${0%/*}\"")
+(mapfile "mapfile -t " p " < <(" q ")")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
