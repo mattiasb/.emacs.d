@@ -71,7 +71,7 @@
    '(history-other-history ((t (:foreground "#FFFFFF"))))
    '(history-prompt ((t (:foreground "#FFFFFF"))))
    '(history-temp-history ((t (:foreground "#FFFFFF"))))
-   '(popup-tip-face ((t (:inherit corfu-default))))))
+   '(popup-tip-face ((t (:inherit popup-summary-face))))))
 
 (with-eval-after-load 'wombat
   (custom-theme-set-faces
