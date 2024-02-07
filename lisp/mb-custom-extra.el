@@ -62,6 +62,9 @@
   (custom-theme-set-faces
    'mb-leuven
    '(auto-dim-other-buffers-face ((t (:background "gray98"))) t)
+   '(doom-modeline-project-dir ((t (:inherit (doom-modeline
+                                              doom-modeline-warning
+                                              bold)))))
    '(fill-column-indicator ((t (:foreground "#D2D2D2"))) t)
    '(git-gutter:added ((t (:foreground "#3A993A" :weight bold))))
    '(git-gutter:deleted ((t (:foreground "#CC3333" :weight bold))))
