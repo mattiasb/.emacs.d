@@ -229,7 +229,6 @@
                       ( "u"        . insert-char)
 
                       ;; Other
-                      ( "C-z"      . suspend-frame)
                       ( "D"        . diff-buffer-with-file)
                       ( "_"        . vundo)
                       ( "g"        . imenu)
