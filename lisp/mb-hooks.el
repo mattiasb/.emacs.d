@@ -50,6 +50,14 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;;; Packages
 
+
+;; Ansible Doc
+
+(with-eval-after-load 'ansible-doc
+  (mb-f-define-keys ansible-doc-mode-map
+                    '(( "C-c ?" . nil)
+                      ( "C-z ?" . ansible-doc))))
+
 ;; Ansible
 (defun mb-hooks--ansible-hook ()
   "My `yaml' mode hook."

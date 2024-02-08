@@ -234,7 +234,7 @@
                       ( "g"        . imenu)
                       ( "n"        . mb-cmd-new-frame)
                       ( "o"        . mb-cmd-open-with)
-                      ( "?"        . nil) ;; Dedicated for mode specific docs
+                      ( "?"        . eldoc)
                       ))
 
 (defun mb-keys-activate ()
