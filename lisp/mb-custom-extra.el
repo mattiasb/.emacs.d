@@ -95,5 +95,35 @@
 (dir-locals-set-directory-class (file-truename "~/.cache/emacs/elpa/")
                                 'read-only)
 
+;; Display Buffer AList
+(setq display-buffer-alist
+      `((,(rx "*Async Shell Command*")
+         (display-buffer-no-window))
+
+        ((derived-mode . inferior-python-mode)
+         (display-buffer-reuse-mode-window display-buffer-below-selected)
+         (dedicated . t))
+
+        ((derived-mode . eat-mode)
+         (display-buffer-reuse-mode-window display-buffer-same-window)
+         (dedicated . t))
+
+        ;; ;; Magit
+        ;; ((derived-mode . magit-status-mode)
+        ;;  (display-buffer-in-side-window)
+        ;;  (dedicated . t)
+        ;;  (preserve-size . (t . t))
+        ;;  (side . right)
+        ;;  (slot . 0)
+        ;;  (window-width . 100))
+        ;; ((derived-mode . magit-revision-mode)
+        ;;  (display-buffer-in-side-window)
+        ;;  (dedicated . t)
+        ;;  (side . right)
+        ;;  (slot . 1)
+        ;;  (window-width . 100))
+
+        ))
+
 (provide 'mb-custom-extra)
 ;;; mb-custom-extra.el ends here
