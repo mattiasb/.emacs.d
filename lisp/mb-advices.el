@@ -64,8 +64,6 @@
 
   (advice-add #'projectile-ripgrep
               :after (mb-advices-switch-to "*ripgrep-search*"))
-  (advice-add #'display-local-help
-              :after (mb-advices-switch-to "*eldoc*"))
   (advice-add #'diff-buffer-with-file
               :after (mb-advices-switch-to "*Diff*"))
   (advice-add #'projectile-compile-project
