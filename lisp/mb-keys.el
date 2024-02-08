@@ -233,7 +233,9 @@
                       ( "_"        . vundo)
                       ( "g"        . imenu)
                       ( "n"        . mb-cmd-new-frame)
-                      ( "o"        . mb-cmd-open-with)))
+                      ( "o"        . mb-cmd-open-with)
+                      ( "?"        . nil) ;; Dedicated for mode specific docs
+                      ))
 
 (defun mb-keys-activate ()
   "Activate keybinding."
