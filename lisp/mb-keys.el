@@ -213,6 +213,7 @@
                       ( "x"        . mb-keys-exec-map)
                       ( "z"        . mb-keys-zoom-map)
 
+                      ;; Text manipulation
                       ( "'"        . cycle-quotes)
                       ( "+"        . shift-number-up)
                       ( "-"        . shift-number-down)
@@ -226,7 +227,6 @@
                       ( "q"        . vr/query-replace)
                       ( "r"        . vr/replace)
                       ( "u"        . insert-char)
-                      ;; Text manipulation
 
                       ;; Other
                       ( "C-z"      . suspend-frame)
