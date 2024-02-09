@@ -234,8 +234,7 @@
                       ( "g"        . imenu)
                       ( "n"        . mb-cmd-new-frame)
                       ( "o"        . mb-cmd-open-with)
-                      ( "?"        . eldoc)
-                      ))
+                      ( "?"        . devdocs-lookup)))
 
 (defun mb-keys-activate ()
   "Activate keybinding."
