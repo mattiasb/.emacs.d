@@ -22,6 +22,7 @@
 (require 'package)
 
 (eval-when-compile
+  (defvar mb-cache-directory)
   (require 'cl-lib)
   (require 'subr-x))
 
@@ -468,8 +469,7 @@ that checks that the hash-bang seems to involve a path."
 
 (defun mb-f-make-cache-dirs ()
   "Create all cache directories needed by Emacs."
-  (let ((cache-dir "~/.cache/emacs")
-        (dirs (list "auto-save-list"
+  (let ((dirs (list "auto-save-list"
                     "autosave"
                     "backup"
                     "elpa"
@@ -477,7 +477,8 @@ that checks that the hash-bang seems to involve a path."
                     "lock"
                     "transient"
                     "url")))
-    (dolist (dir dirs) (make-directory (format "%s/%s" cache-dir dir) t))))
+    (dolist (dir dirs)
+      (make-directory (file-name-concat mb-cache-directory dir) t))))
 
 (defun mb-f-eval-or-inspect-expression (arg)
   "Like `eval-expression', but also inspect when called with prefix ARG."

@@ -16,6 +16,8 @@
 
 ;;; Code:
 
+(eval-when-compile
+  (defvar mb-cache-directory))
 
 ;;; Non-customizable settings
 
@@ -92,7 +94,7 @@
 ;; Define a read-only directory class
 (dir-locals-set-class-variables 'read-only
                                 '((nil . ((buffer-read-only . t)))))
-(dir-locals-set-directory-class (file-truename "~/.cache/emacs/elpa/")
+(dir-locals-set-directory-class (file-name-concat mb-cache-directory "elpa")
                                 'read-only)
 
 ;; Display Buffer AList
@@ -110,7 +112,7 @@
          (dedicated . t))
 
         ((derived-mode . eat-mode)
-         (display-buffer-reuse-mode-window display-buffer-same-window)
+         (display-buffer-reuse-window display-buffer-same-window)
          (dedicated . t))
 
         ;; ;; Magit

@@ -18,13 +18,17 @@
 
 ;;; Code:
 
+(eval-when-compile
+  (defvar mb-cache-directory))
+
 (cd "~")
 
 ;;; Early init code
 (eval-and-compile
   (add-to-list 'load-path (concat user-emacs-directory "lisp/")))
 
-(make-directory "~/.cache/emacs/elpa" t)
+(make-directory (file-name-concat mb-cache-directory "elpa"))
+
 (require 'mb-custom)
 (require 'mb-custom-extra)
 (require 'mb-loadpaths)
