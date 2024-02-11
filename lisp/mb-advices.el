@@ -52,10 +52,6 @@
   (mb-advices-after '(backward-page forward-page)
                     (mb-advices-drop-args #'recenter))
 
-  (mb-advices-before '(ansi-term eat)
-                     (lambda (&rest _)
-                       (interactive (list "/bin/bash"))))
-
   (advice-add 'comint-send-eof
               :after
               (lambda ()
