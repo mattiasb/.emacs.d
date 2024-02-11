@@ -85,6 +85,7 @@
   (history-mode)
   (savehist-mode)
   (vertico-mode)
+  (vertico-posframe-mode)
   (all-the-icons-completion-mode)
   (bury-successful-compilation)
   (which-key-mode)
