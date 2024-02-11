@@ -609,5 +609,23 @@ that checks that the hash-bang seems to involve a path."
     (kill-current-buffer)
     (sqlite-mode-open-file file-name)))
 
+(defun mb-f-posframe-frame-center (info)
+  "My posframe frame center position handler."
+  (cons (/ (- (plist-get info :parent-frame-width)
+              (plist-get info :posframe-width))
+           2)
+        (/ (- (plist-get info :parent-frame-height)
+              (plist-get info :posframe-height))
+           10)))
+
+(defun mb-f-posframe-window-center (info)
+  "My posframe window center position handler."
+  (let* ((window-left (plist-get info :parent-window-left))
+         (window-top (plist-get info :parent-window-top))
+         (window-width (plist-get info :parent-window-width))
+         (posframe-width (plist-get info :posframe-width)))
+    (cons (max 0 (+ window-left (/ (- window-width posframe-width) 2)))
+          window-top)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
