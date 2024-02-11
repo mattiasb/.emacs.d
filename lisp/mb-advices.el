@@ -52,26 +52,9 @@
   (mb-advices-after '(backward-page forward-page)
                     (mb-advices-drop-args #'recenter))
 
-  (advice-add #'projectile-ripgrep
-              :after (mb-advices-switch-to "*ripgrep-search*"))
-  (advice-add #'diff-buffer-with-file
-              :after (mb-advices-switch-to "*Diff*"))
-  (advice-add #'projectile-compile-project
-              :after (mb-advices-switch-to "*compilation*"))
-
   (mb-advices-before '(ansi-term eat)
                      (lambda (&rest _)
                        (interactive (list "/bin/bash"))))
-
-  (mb-advices-after '(package-menu-describe-package
-                      describe-variable
-                      describe-mode
-                      describe-function
-                      describe-bindings
-                      describe-symbol
-                      describe-package
-                      describe-theme)
-                    (mb-advices-switch-to "*Help*"))
 
   (advice-add 'comint-send-eof
               :after

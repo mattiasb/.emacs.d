@@ -100,6 +100,11 @@
       `((,(rx "*Async Shell Command*")
          (display-buffer-no-window))
 
+        ((or (derived-mode . help-mode)
+             (derived-mode . ripgrep-search-mode))
+         (display-buffer-reuse-mode-window display-buffer-use-some-window)
+         (body-function . select-window))
+
         ((derived-mode . inferior-python-mode)
          (display-buffer-reuse-mode-window display-buffer-below-selected)
          (dedicated . t))
