@@ -254,6 +254,8 @@
  '(git-commit-summary-max-length 50)
  '(git-commit-trailer
    '("Signed-off-by" "Acked-by" "Modified-by" "Cc" "Suggested-by" "Reported-by" "Tested-by" "Reviewed-by" "Co-authored-by" "Fixes"))
+ '(git-commit-trailers
+   '("Signed-off-by" "Acked-by" "Modified-by" "Cc" "Suggested-by" "Reported-by" "Tested-by" "Reviewed-by" "Co-authored-by" "Fixes"))
  '(git-link-commit-remote-alist
    '(("git.sr.ht" git-link-commit-github)
      ("github" git-link-commit-github)
