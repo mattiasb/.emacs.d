@@ -27,7 +27,7 @@
 (eval-and-compile
   (add-to-list 'load-path (concat user-emacs-directory "lisp/")))
 
-(make-directory (file-name-concat mb-cache-directory "elpa"))
+(make-directory (file-name-concat mb-cache-directory "elpa") t)
 
 (require 'mb-custom)
 (require 'mb-custom-extra)
