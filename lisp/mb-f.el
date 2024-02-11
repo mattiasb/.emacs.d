@@ -620,12 +620,14 @@ that checks that the hash-bang seems to involve a path."
 
 (defun mb-f-posframe-window-center (info)
   "My posframe window center position handler."
-  (let* ((window-left (plist-get info :parent-window-left))
-         (window-top (plist-get info :parent-window-top))
-         (window-width (plist-get info :parent-window-width))
-         (posframe-width (plist-get info :posframe-width)))
+  (let* ((window-left     (plist-get info :parent-window-left))
+         (window-top      (plist-get info :parent-window-top))
+         (window-width    (plist-get info :parent-window-width))
+         (posframe-width  (plist-get info :posframe-width))
+         (window-height   (plist-get info :parent-window-height))
+         (posframe-height (plist-get info :posframe-height)))
     (cons (max 0 (+ window-left (/ (- window-width posframe-width) 2)))
-          window-top)))
+          (max 0 (+ window-top  (/ (- window-height posframe-height) 10))))))
 
 (provide 'mb-f)
 ;;; mb-f.el ends here
