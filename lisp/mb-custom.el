@@ -190,6 +190,7 @@
      [C-S-next]
      [M-S-next]
      [C-M-S-next]))
+ '(eat-term-scrollback-size 1200000)
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(eglot-autoshutdown t)
