@@ -22,16 +22,6 @@
 (require 'term)
 (require 'mb-cmd)
 
-(defun mb-advices--git-link (func &rest args)
-  "Support http for work by advicing FUNC w/ ARGS."
-  (let ((url (apply func args)))
-    (replace-regexp-in-string "^\\(https://git.smarteye\\).*"
-                              "http://git.smarteye"
-                              url
-                              nil
-                              nil
-                              1)))
-
 (defun mb-advices-drop-args (func)
   "Wrap FUNC such that it accepts but drops all ARGS."
   (lambda (&rest _args) (funcall func)))
@@ -82,11 +72,6 @@
                       describe-package
                       describe-theme)
                     (mb-advices-switch-to "*Help*"))
-
-  (mb-advices-around '(git-link-gitlab
-                       git-link-commit-github
-                       git-link-homepage-github)
-                     #'mb-advices--git-link)
 
   (advice-add 'comint-send-eof
               :after
