@@ -63,10 +63,10 @@
     ( "M-p"                        . smartscan-symbol-go-backward)
 
     ;; Move buffers
-    ( "<C-S-down>"                 . buf-move-down)
-    ( "<C-S-left>"                 . buf-move-left)
-    ( "<C-S-right>"                . buf-move-right)
-    ( "<C-S-up>"                   . buf-move-up)
+    ( "<C-S-down>"                 . windmove-swap-states-down)
+    ( "<C-S-left>"                 . windmove-swap-states-left)
+    ( "<C-S-right>"                . windmove-swap-states-right)
+    ( "<C-S-up>"                   . windmove-swap-states-up)
 
     ;; Frames
     ( "C-<tab>"                    . tab-next)
