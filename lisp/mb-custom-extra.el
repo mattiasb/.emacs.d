@@ -112,8 +112,7 @@
          (dedicated . t))
 
         ((derived-mode . flymake-diagnostics-buffer-mode)
-         (display-buffer-in-atom-window)
-         (side . below)
+         (display-buffer-below-selected)
          (dedicated . t))
 
         ((derived-mode . eat-mode)
