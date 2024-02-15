@@ -113,6 +113,7 @@
 
         ((derived-mode . eat-mode)
          (display-buffer-reuse-window display-buffer-below-selected)
+         (window-height . 0.3)
          (dedicated . t))
 
         ((derived-mode . flymake-diagnostics-buffer-mode)
