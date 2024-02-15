@@ -111,6 +111,10 @@
          (display-buffer-reuse-mode-window display-buffer-below-selected)
          (dedicated . t))
 
+        ((derived-mode . flymake-diagnostics-buffer-mode)
+         (display-buffer-below-selected)
+         (dedicated . t))
+
         ((derived-mode . eat-mode)
          (display-buffer-reuse-window display-buffer-same-window)
          (dedicated . t))
