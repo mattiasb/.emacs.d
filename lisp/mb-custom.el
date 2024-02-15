@@ -439,6 +439,7 @@
  '(spdx-copyright-sign 'none)
  '(spdx-ignore-deprecated t)
  '(spdx-project-detection 'projectile)
+ '(switch-to-buffer-in-dedicated-window 'pop)
  '(switch-to-buffer-obey-display-actions t)
  '(tab-always-indent 'complete)
  '(tab-bar-close-button-show nil)
