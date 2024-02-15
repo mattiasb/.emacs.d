@@ -108,16 +108,18 @@
          (body-function . select-window))
 
         ((derived-mode . inferior-python-mode)
-         (display-buffer-reuse-mode-window display-buffer-below-selected)
+         (display-buffer-reuse-window display-buffer-below-selected)
+         (dedicated . t))
+
+        ((derived-mode . eat-mode)
+         (display-buffer-reuse-window display-buffer-below-selected)
          (dedicated . t))
 
         ((derived-mode . flymake-diagnostics-buffer-mode)
          (display-buffer-below-selected)
-         (dedicated . t))
-
-        ((derived-mode . eat-mode)
-         (display-buffer-reuse-window display-buffer-same-window)
-         (dedicated . t))
+         (window-height . shrink-window-if-larger-than-buffer)
+         (dedicated . t)
+         (body-function . select-window))
 
         ;; ;; Magit
         ;; ((derived-mode . magit-status-mode)
