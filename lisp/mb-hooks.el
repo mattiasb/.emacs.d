@@ -485,7 +485,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (electric-operator-add-rules-for-mode 'yaml-mode
                                         (cons ":" ": "))
   (electric-operator-add-rules-for-mode 'yaml-mode
-                                        (cons "-" nil)))
+                                        (cons "-" nil))
+  (apply #'electric-operator-add-rules-for-mode 'python-ts-mode
+         (electric-operator-get-rules-for-mode 'python-mode)))
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
