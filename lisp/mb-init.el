@@ -95,6 +95,7 @@
   (easy-repeat-mode)
   (smart-region-on)
   (recentf-mode)
+  (winner-mode)
   (abbrev-mode)
   (electric-layout-mode)
   (electric-pair-mode)
