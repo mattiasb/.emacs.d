@@ -39,6 +39,7 @@
    '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/autosave/\\1" t)))
  '(auto-save-list-file-prefix "~/.cache/emacs/auto-save-list/.saves-")
  '(auto-save-no-message t)
+ '(aw-scope 'frame)
  '(backup-directory-alist '(("." . "~/.cache/emacs/backup/")))
  '(blink-cursor-blinks -1)
  '(browse-kill-ring-current-entry-face 'mb-browse-kill-ring-current-entry-face)
@@ -388,7 +389,7 @@
  '(package-quickstart t)
  '(package-quickstart-file "~/.cache/emacs/package-quickstart.el")
  '(package-selected-packages
-   '(ace-jump-mode adaptive-wrap aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dark auto-dim-other-buffers beframe browse-kill-ring bury-successful-compilation cape caps-lock cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes dedicated default-text-scale devdocs devhelp diminish dired-imenu dired-sidebar docker-compose-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify envrc expand-region fill-function-arguments fit-text-scale flymake-diagnostic-at-point flymake-eldev flymake-yamllint forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history hl-anything html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile pydoc pytest pytest-realgud python-black rainbow-mode realgud restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region smartscan spdx sql-indent sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys tmux-mode todotxt toml-mode treesit-auto tree-inspector unfill vertico visual-regexp-steroids visual-fill-column vterm vundo wgrep which-key ws-butler yaml-mode))
+   '(ace-jump-mode ace-window adaptive-wrap aggressive-indent all-the-icons-completion all-the-icons-dired all-the-icons-ibuffer ansible ansible-doc ansible-vault ascii-art-to-unicode auto-compile auto-dark auto-dim-other-buffers beframe browse-kill-ring bury-successful-compilation cape caps-lock cmake-mode company-ansible corfu csharp-mode csv-mode cycle-quotes dedicated default-text-scale devdocs devhelp diminish dired-imenu dired-sidebar docker-compose-mode doom-modeline easy-repeat eat editorconfig eglot eglot-tempel electric-operator emacsql-sqlite-module emojify envrc expand-region fill-function-arguments fit-text-scale flymake-diagnostic-at-point flymake-eldev flymake-yamllint forge git-gutter git-link git-modes gnu-elpa-keyring-update go-eldoc goto-line-preview groovy-mode guess-language haskell-mode hide-mode-line highlight-numbers history hl-anything html5-schema ialign ibuffer-projectile iedit importmagic ini-mode inspector jinja2-mode jinx js2-mode json-mode lastpass ligature lisp-extra-font-lock lua-mode madhat2r-theme magit magit-filenotify magit-todos markdown-mode meson-mode move-dup mtg-deck-mode multiple-cursors mwim nginx-mode niceify-info olivetti pandoc-mode pcre2el php-mode powershell projectile pydoc pytest pytest-realgud python-black rainbow-mode realgud restclient rfc-mode ripgrep sass-mode sh-extra-font-lock shift-number smart-region smartscan spdx sql-indent sqlup-mode string-inflection su systemd tempel terraform-mode tmux-keys tmux-mode todotxt toml-mode treesit-auto tree-inspector unfill vertico visual-regexp-steroids visual-fill-column vterm vundo wgrep which-key ws-butler yaml-mode))
  '(package-user-dir "~/.cache/emacs/elpa")
  '(powerline-default-separator 'bar)
  '(project-list-file "~/.cache/emacs/projects")
@@ -512,6 +513,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(aw-leading-char-face ((t (:background "gainsboro" :foreground "firebrick" :box (:line-width (2 . 2) :color "grey75" :style released-button) :height 5.0 :width extra-expanded))))
  '(corfu-popupinfo ((t (:inherit corfu-default))))
  '(doom-modeline-buffer-minor-mode ((t (:weight normal :slant normal :inherit doom-modeline))))
  '(envrc-mode-line-none-face ((t (:inherit doom-modeline-buffer-minor-mode))))

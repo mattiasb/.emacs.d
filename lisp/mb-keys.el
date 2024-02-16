@@ -56,6 +56,7 @@
 
     ;; General
     ( "C-'"                        . ace-jump-word-mode)
+    ( "M-'"                        . ace-window)
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
     ( "M-g M-g  "                  . goto-line-preview)
