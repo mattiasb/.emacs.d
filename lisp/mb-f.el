@@ -629,5 +629,12 @@ that checks that the hash-bang seems to involve a path."
     (cons (max 0 (+ window-left (/ (- window-width posframe-width) 2)))
           (max 0 (+ window-top  (/ (- window-height posframe-height) 10))))))
 
+(defun mb-f-swap-window (direction)
+  "Swap window in direction with wrap-around."
+  (mb-f-req 'windmove)
+
+  (let ((windmove-wrap-around t))
+    (windmove-swap-states-in-direction direction)))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here

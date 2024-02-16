@@ -490,7 +490,7 @@
  '(which-key-side-window-location 'bottom)
  '(which-key-sort t)
  '(which-key-special-keys nil)
- '(windmove-wrap-around t)
+ '(windmove-wrap-around nil)
  '(woman-fill-column 80)
  '(woman-fill-frame t)
  '(woman-imenu t)

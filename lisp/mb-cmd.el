@@ -547,5 +547,29 @@ markers and footnote text."
   (interactive)
   (save-excursion (indent-region (point-min) (point-max) nil)))
 
+;;;###autoload
+(defun mb-cmd-swap-up ()
+  "Swap window up."
+  (interactive)
+  (mb-f-swap-window 'up))
+
+;;;###autoload
+(defun mb-cmd-swap-down ()
+  "Swap window down."
+  (interactive)
+  (mb-f-swap-window 'down))
+
+;;;###autoload
+(defun mb-cmd-swap-left ()
+  "Swap window left."
+  (interactive)
+  (mb-f-swap-window 'left))
+
+;;;###autoload
+(defun mb-cmd-swap-right ()
+  "Swap window right."
+  (interactive)
+  (mb-f-swap-window 'right))
+
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

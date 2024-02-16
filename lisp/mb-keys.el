@@ -64,10 +64,10 @@
     ( "M-p"                        . smartscan-symbol-go-backward)
 
     ;; Move buffers
-    ( "<C-S-down>"                 . windmove-swap-states-down)
-    ( "<C-S-left>"                 . windmove-swap-states-left)
-    ( "<C-S-right>"                . windmove-swap-states-right)
-    ( "<C-S-up>"                   . windmove-swap-states-up)
+    ( "<C-S-down>"                 . mb-cmd-swap-down)
+    ( "<C-S-left>"                 . mb-cmd-swap-left)
+    ( "<C-S-right>"                . mb-cmd-swap-right)
+    ( "<C-S-up>"                   . mb-cmd-swap-up)
 
     ;; Frames
     ( "C-<tab>"                    . tab-next)
