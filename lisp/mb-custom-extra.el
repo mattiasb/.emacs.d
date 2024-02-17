@@ -107,11 +107,9 @@
          (display-buffer-reuse-mode-window display-buffer-use-some-window)
          (body-function . select-window))
 
-        ((derived-mode . inferior-python-mode)
-         (display-buffer-reuse-window display-buffer-below-selected)
-         (dedicated . t))
-
-        ((derived-mode . eat-mode)
+        ((or (derived-mode . inferior-python-mode)
+             (derived-mode . eat-mode)
+             (derived-mode . inferior-emacs-lisp-mode))
          (display-buffer-reuse-window display-buffer-below-selected)
          (window-height . 0.3)
          (dedicated . t))
