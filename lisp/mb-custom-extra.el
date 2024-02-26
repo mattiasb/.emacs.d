@@ -116,7 +116,8 @@
          (window-height . 0.3)
          (dedicated . t))
 
-        ((derived-mode . flymake-diagnostics-buffer-mode)
+        ((or (derived-mode . flymake-diagnostics-buffer-mode)
+             (derived-mode . occur-mode))
          (display-buffer-below-selected)
          (window-height . shrink-window-if-larger-than-buffer)
          (dedicated . t)
