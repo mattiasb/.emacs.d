@@ -309,19 +309,19 @@ sh-base-mode
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
 (main & o n "function main {" n> q n "}" n n "main \"${@}\"; exit"
       :pre (end-of-buffer))
-(if & o n "if " (p "[   ]") "; then"
-    n> r>
-    n "fi"
+(if & o n> "if " (p "[   ]") "; then"
+    n> ":" q
+    n> "fi" >
     o n)
-(elif & o n "elif " (p "[   ]") "; then"
-      n> r>
+(elif & o n> "elif " (p "[   ]") "; then" >
+      n> ":" q
       o)
-(else & o n "else "
-      n> r>
+(else & o > "else" >
+      n> ":" q
       o)
-(for & o n "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do"
+(for & o n "for " (p "item" item) " in " (concat "\"${" item "s" "[@]}\"") "; do" >
      n> r>
-     n "done"
+     n "done" >
      o n)
 (heredoc & o "cat <<EOM"
          n r
