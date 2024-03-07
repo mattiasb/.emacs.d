@@ -857,6 +857,16 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'nxml-mode
   (add-hook 'nxml-mode-hook #'mb-hooks--prog-mode))
 
+
+;; Meson
+(defun mb-hooks--meson-mode ()
+  "My `meson' mode hook."
+  (mb-f-set-capfs #'meson-completion-at-point-function))
+
+(with-eval-after-load 'meson-mode
+  (add-hook 'meson-mode-hook #'mb-hooks--meson-mode))
+
+
 ;; Package Menu
 (with-eval-after-load 'package
   (mb-f-remap-keys package-menu-mode-map
@@ -868,6 +878,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'package-menu-mode-hook #'hl-line-mode))
 
 ;; Prog
+
 (defun mb-hooks--prog-mode ()
   "My `prog-mode' hook."
   (mb-f-req 'aggressive-indent)
