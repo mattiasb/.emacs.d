@@ -80,9 +80,17 @@
 ;; Auto Dark
 
 (defun mb-hooks--auto-dark-dark-mode ()
+  (mb-f-req 'gsettings)
+  (gsettings-set-from-gvariant-string "org.gnome.desktop.interface"
+                                      "gtk-theme"
+                                      "Adwaita-dark")
   (enable-theme 'mb-madhat2r))
 
 (defun mb-hooks--auto-dark-light-mode ()
+  (mb-f-req 'gsettings)
+  (gsettings-set-from-gvariant-string "org.gnome.desktop.interface"
+                                      "gtk-theme"
+                                      "Adwaita-light")
   (enable-theme 'mb-leuven))
 
 (defun mb-hooks--auto-dark-mode ()
