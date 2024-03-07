@@ -28,26 +28,6 @@
 (add-hook 'after-save-hook
           #'mb-f-executable-make-buffer-file-executable-if-script-p)
 
-;; After make frame
-(defun mb-hooks--after-make-frame-functions-hook (frame &optional _)
-  "My after-make-frame-functions hook."
-  (select-frame-set-input-focus frame)
-  (mb-f-doom-modeline-set-height))
-
-(defun mb-hooks--window-setup-hook ()
-  "My window-setup hook.
-
-Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
-  (let ((frame (selected-frame)))
-    (mb-hooks--after-make-frame-functions-hook frame)
-    (unless (display-graphic-p frame)
-      (set-face-background 'default "unspecified-bg" frame))))
-
-(add-hook 'after-make-frame-functions
-          #'mb-hooks--after-make-frame-functions-hook)
-(add-hook 'window-setup-hook
-          #'mb-hooks--window-setup-hook)
-
 ;;; Packages
 
 
