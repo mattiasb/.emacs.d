@@ -215,6 +215,7 @@
  '(emojify-download-emojis-p t)
  '(emojify-emoji-styles '(unicode))
  '(emojify-emojis-dir "~/.cache/emacs/emojis")
+ '(enable-local-variables :safe)
  '(envrc-error-lighter '(" " (:propertize "E" face envrc-mode-line-error-face)))
  '(envrc-global-mode t)
  '(envrc-none-lighter nil)
