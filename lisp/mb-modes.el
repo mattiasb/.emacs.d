@@ -88,6 +88,7 @@
     (eldoc-mode                  . "")
     (fancy-narrow-mode           . "")
     (flymake-mode                . "")
+    (flymake-popon-mode          . "")
     (git-gutter-mode             . "")
     (haskell-indentation-mode    . "")
     (history-mode                . "")
