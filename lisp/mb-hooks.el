@@ -544,9 +544,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Flymake
 (with-eval-after-load 'flymake
-  (mb-f-req 'flymake-diagnostic-at-point)
-  (require 'flymake-diagnostic-at-point)
-  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode))
+  (mb-f-req 'flymake-popon)
+  (add-hook 'flymake-mode-hook #'flymake-popon-mode))
 
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)

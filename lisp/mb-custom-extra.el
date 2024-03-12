@@ -53,7 +53,7 @@
    '(history-prompt ((t (:foreground "#131516"))))
    '(history-temp-history ((t (:foreground "#131516"))))
    '(hl-line ((t (:background "gray19"))) t)
-   '(popup-tip-face ((t (:background "gray19"))))
+   '(flymake-popon ((t (:background "gray19"))))
    '(tab-bar ((t (:underline "gray35"))) t)
    '(tab-bar-tab-inactive ((t nil)) t)
    '(table-cell ((t (:background "gray18"))) t)
@@ -75,8 +75,8 @@
    '(history-current-temp-history ((t (:foreground "#FFFFFF"))))
    '(history-other-history ((t (:foreground "#FFFFFF"))))
    '(history-prompt ((t (:foreground "#FFFFFF"))))
-   '(history-temp-history ((t (:foreground "#FFFFFF"))))
-   '(popup-tip-face ((t (:inherit popup-summary-face))))))
+   '(flymake-popon ((t (:box (:line-width (5 . 5) :color "white" :style flat-button) :inherit default))))
+   '(history-temp-history ((t (:foreground "#FFFFFF"))))))
 
 (with-eval-after-load 'wombat
   (custom-theme-set-faces
