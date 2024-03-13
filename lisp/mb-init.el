@@ -95,7 +95,8 @@
   (easy-repeat-mode)
   (smart-region-on)
   (recentf-mode)
-  (winner-mode)
+  ;; TODO(mattiasb): Change keybindings and re-enable.
+  ;; (winner-mode)
   (abbrev-mode)
   (electric-layout-mode)
   (electric-pair-mode)
