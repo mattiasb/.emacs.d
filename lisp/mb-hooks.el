@@ -1133,9 +1133,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
 
 ;; Treesit Auto
-(defun mb-hooks--treesit-auto-mode ()
-  "My `treesit-auto' mode hook.")
-
 (with-eval-after-load 'treesit-auto
   (setq treesit-language-source-alist
         '((bash       "https://github.com/tree-sitter/tree-sitter-bash")
@@ -1158,8 +1155,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
                       "v0.20.3"
                       "typescript/src")
-          (yaml       "https://github.com/ikatyang/tree-sitter-yaml")))
-  (add-hook 'treesit-auto-mode-hook #'mb-hooks--treesit-auto-mode))
+          (yaml       "https://github.com/ikatyang/tree-sitter-yaml"))))
 
 ;; Smerge
 (defun mb-hooks--smerge-mode ()
