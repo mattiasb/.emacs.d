@@ -1153,10 +1153,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
           (python     "https://github.com/tree-sitter/tree-sitter-python")
           (toml       "https://github.com/tree-sitter/tree-sitter-toml")
           (tsx        "https://github.com/tree-sitter/tree-sitter-typescript"
-                      "master"
+                      "v0.20.3"
                       "tsx/src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
-                      "master"
+                      "v0.20.3"
                       "typescript/src")
           (yaml       "https://github.com/ikatyang/tree-sitter-yaml")))
   (add-hook 'treesit-auto-mode-hook #'mb-hooks--treesit-auto-mode))
