@@ -66,6 +66,8 @@
     (c++-mode        . "")
     (c-mode          . "")
     (emacs-lisp-mode . "")))
+    (typescript-ts-mode . "")
+    (tsx-ts-mode        . "")
 
 (defconst mb-modes--shortened-minor-modes
   '(;; Togglables
