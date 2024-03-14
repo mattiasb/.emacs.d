@@ -201,7 +201,7 @@ python-mode python-ts-mode
           n o)
 
 (def      & "def " p "(" p "):" n> q)
-(if       & "if " p ":" n> q )
+(if       & "if " p ":" > n> q )
 (elif     & "elif " p ":" n> q )
 (else     & "else:" n> q)
 (for      & "for " p " in " p ":" n> q)
@@ -245,8 +245,8 @@ python-mode python-ts-mode
 
 (with & "with " p " as " p ":" n>)
 
-(match & "match " p ":" n> q)
-(case  & "case "  p ":" n> q)
+(match & "match " p ":" > n> q)
+(case  & "case "  p ":" > n> q)
 
 (reveal_type "reveal_type(" r ")" q)
 
