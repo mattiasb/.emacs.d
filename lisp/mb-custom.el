@@ -456,6 +456,7 @@
  '(treesit-auto-install t)
  '(treesit-auto-langs
    '(awk bash bibtex c c-sharp clojure cmake commonlisp cpp css dart dockerfile elixir go gomod heex html java javascript json julia kotlin latex lua make markdown proto python r ruby rust toml tsx typescript typst verilog vhdl))
+ '(typescript-ts-mode-indent-offset 4)
  '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(url-cache-directory "~/.cache/emacs/url/files/")
  '(url-configuration-directory "~/.cache/emacs/url/")
