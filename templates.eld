@@ -351,6 +351,8 @@ sh-base-mode
 (cd & o "cd \"${0%/*}\"")
 (mapfile "mapfile -t " p " < <(" q ")")
 
+(shellcheck-disable "# shellcheck disable=" q)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
