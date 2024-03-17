@@ -149,6 +149,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   ;; See: https://www.postgresql.org/docs/current/sql-keywords-appendix.html
   (add-to-list
    'cape-keyword-list
+   '(dockerfile-ts-mode . ("ADD" "ARG" "AS" "CMD" "COPY" "CROSS_BUILD"
+                           "ENTRYPOINT" "ENV" "EXPOSE" "FROM" "HEALTHCHECK"
+                           "LABEL" "MAINTAINER" "ONBUILD" "RUN" "SHELL"
+                           "STOPSIGNAL" "USER" "VOLUME" "WORKDIR"))
    '(sql-mode . ("A" "ABORT" "ABS" "ABSENT" "ABSOLUTE" "ACCESS" "ACCORDING"
                  "ACOS" "ACTION" "ADA" "ADD" "ADMIN" "AFTER" "AGGREGATE" "ALL"
                  "ALLOCATE" "ALSO" "ALTER" "ALWAYS" "ANALYSE" "ANALYZE" "AND"
