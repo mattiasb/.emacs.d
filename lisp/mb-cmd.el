@@ -575,7 +575,6 @@ markers and footnote text."
 (defun mb-cmd-goto-next-issue (&optional n)
   "Go to next issue (`flymake' or `jinx')."
   (interactive "p")
-  (message (format "mb-cmd-goto-next-issue n=%s" n))
   (if flymake-mode (flymake-goto-next-error (or n 1))
     (when jinx-mode (jinx-next (or n 1)))))
 
