@@ -96,6 +96,8 @@
                                 '((nil . ((buffer-read-only . t)))))
 (dir-locals-set-directory-class (file-name-concat mb-cache-directory "elpa")
                                 'read-only)
+(dir-locals-set-directory-class "/usr/share/emacs/"
+                                'read-only)
 
 ;; Display Buffer AList
 (setq display-buffer-alist
