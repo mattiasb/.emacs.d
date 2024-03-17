@@ -358,15 +358,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'conf-mode
   (add-hook 'conf-mode-hook #'mb-hooks--conf-mode-hook))
 
-;; Dockerfile
-(defun mb-hooks--dockerfile-mode ()
-  "My `dockerfile' mode hook."
-  ;; dockerfile-mode uses tab-width to check indentation. 😢
-  (setq-local tab-width 4))
-
-(with-eval-after-load 'dockerfile-ts-mode
-  (add-hook 'dockerfile-ts-mode-hook #'mb-hooks--dockerfile-ts-mode))
-
 ;; Dired
 (defun mb-hooks--dired-mode ()
   "My `dired' mode hook."
