@@ -60,8 +60,8 @@
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
     ( "M-g M-g  "                  . goto-line-preview)
-    ( "M-n"                        . smartscan-symbol-go-forward)
-    ( "M-p"                        . smartscan-symbol-go-backward)
+    ( "M-n"                        . mb-cmd-goto-next-issue)
+    ( "M-p"                        . mb-cmd-goto-prev-issue)
 
     ;; Move buffers
     ( "<C-S-down>"                 . mb-cmd-swap-down)
