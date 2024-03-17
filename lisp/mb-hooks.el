@@ -823,7 +823,9 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'markdown-mode
   (mb-f-define-keys markdown-mode-map
-                    '(( "C-<return>" . mb-cmd-markdown-jump)))
+                    '(( "C-<return>" . mb-cmd-markdown-jump)
+                      ( "M-n"        . nil)
+                      ( "M-p"        . nil)))
 
   (tempel-key "C-z s 1"        h1       markdown-mode-map)
   (tempel-key "C-z s 2"        h2       markdown-mode-map)
