@@ -356,6 +356,13 @@ sh-base-mode
 (pushd & o "pushd " q " >/dev/null")
 (popd & o "popd >/dev/null")
 
+(tcp-wait & o > "echo -n Waiting for " p " ..."
+          n "until :</dev/tcp/" (p "localhost") "/" (p "8080") "; do" >
+          n> "echo -n ."
+          n> "sleep 1"
+          n "done 2> /dev/null" >
+          n q)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
