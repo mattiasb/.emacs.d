@@ -545,6 +545,12 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Find-file
 (add-hook 'find-file-not-found-functions #'mb-f-create-non-existent-directory)
 
+;; Git Commit
+(with-eval-after-load 'git-commit
+  (mb-f-define-keys git-commit-mode-map
+                    '(( "M-n"    . nil)
+                      ( "M-p"    . nil))))
+
 ;; Git Gutter
 (with-eval-after-load 'git-gutter
   (mb-f-req 'git-gutter)
