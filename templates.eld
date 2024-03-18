@@ -353,6 +353,9 @@ sh-base-mode
 
 (shellcheck-disable "# shellcheck disable=" q)
 
+(pushd & o "pushd " q " >/dev/null")
+(popd & o "popd >/dev/null")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
