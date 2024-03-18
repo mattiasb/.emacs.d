@@ -351,7 +351,7 @@ sh-base-mode
 (cd & o "cd \"${0%/*}\"")
 (mapfile "mapfile -t " p " < <(" q ")")
 
-(shellcheck-disable "# shellcheck disable=" q)
+(shellcheck-disable "# shellcheck disable=SC" q)
 
 (pushd & o "pushd " q " >/dev/null")
 (popd & o "popd >/dev/null")
