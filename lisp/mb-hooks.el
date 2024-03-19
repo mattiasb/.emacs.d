@@ -674,15 +674,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
               #'jinx--regexp-ignored-p
               #'jinx--word-valid-p)))
 
-;; JS2
-(defun mb-hooks--js2-mode ()
-  "My `js2' mode hook."
-  (mb-f-req 'js2-imenu-extras)
-  (js2-imenu-extras-mode))
-
-(with-eval-after-load 'js2-mode
-  (add-hook 'js2-mode-hook #'mb-hooks--js2-mode))
-
 ;; JSON
 (defun mb-hooks--json-mode ()
   "My `json' mode hook."
