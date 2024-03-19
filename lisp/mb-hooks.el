@@ -650,6 +650,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (add-hook 'Info-mode-hook #'mb-hooks--Info-mode)
   (add-hook 'Info-selection-hook #'niceify-info))
 
+;; Javascript
+(with-eval-after-load 'js
+  (add-hook 'js-base-mode #'eglot-ensure))
+
 ;; Jinja2
 (defun mb-hooks--jinja2-mode ()
   "My `jinja2' mode hook.")
@@ -1243,6 +1247,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'tmux-mode
   (add-hook 'tmux-mode-hook #'mb-hooks--tmux-mode))
+
+;; Typescript Mode
+(with-eval-after-load 'typescript-ts-mode
+  (add-hook 'typescript-ts-base-mode-hook #'eglot-ensure))
 
 ;; Vala
 (defun mb-hooks--vala-mode ()
