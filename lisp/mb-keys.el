@@ -60,8 +60,12 @@
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
     ( "M-g M-g  "                  . goto-line-preview)
+
+    ;; Issues
     ( "M-n"                        . mb-cmd-goto-next-issue)
     ( "M-p"                        . mb-cmd-goto-prev-issue)
+    ( "C-;"                        . mb-cmd-fix-prev-issue)
+    ( "C-:"                        . mb-cmd-fix-next-issue)
 
     ;; Move buffers
     ( "<C-S-down>"                 . mb-cmd-swap-down)

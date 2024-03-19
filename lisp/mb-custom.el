@@ -290,6 +290,7 @@
  '(ialign-initial-regexp "(\\s+)")
  '(ialign-initial-repeat t)
  '(ialign-pcre-mode t)
+ '(iedit-toggle-key-default nil)
  '(imenu-after-jump-hook '((lambda nil (recenter 0))))
  '(imenu-auto-rescan t)
  '(imenu-auto-rescan-maxout 750000)

@@ -573,16 +573,27 @@ markers and footnote text."
 
 ;;;###autoload
 (defun mb-cmd-goto-next-issue (&optional n)
-  "Go to next issue (`flymake' or `jinx')."
+  "Go to next `flymake' or `jinx' issue."
   (interactive "p")
-  (if flymake-mode (flymake-goto-next-error (or n 1))
-    (when jinx-mode (jinx-next (or n 1)))))
+  (mb-f-goto-issue (or n 1)))
 
 ;;;###autoload
 (defun mb-cmd-goto-prev-issue (&optional n)
-  "Go to previous issue (`flymake' or `jinx')."
+  "Go to previous `flymake' or `jinx' issue."
   (interactive "p")
-  (mb-cmd-goto-next-issue (- (or n 1))))
+  (mb-f-goto-issue (- (or n 1))))
+
+;;;###autoload
+(defun mb-cmd-fix-next-issue (&optional n)
+  "Fix next `flymake' or `jinx' issue."
+  (interactive "p")
+  (mb-f-fix-issue (or n 1)))
+
+;;;###autoload
+(defun mb-cmd-fix-prev-issue (&optional n)
+  "Fix previous `flymake' or `jinx' issue."
+  (interactive "p")
+  (mb-f-fix-issue (- (or n 1))))
 
 (provide 'mb-cmd)
 ;;; mb-cmd.el ends here

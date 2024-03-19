@@ -636,5 +636,20 @@ that checks that the hash-bang seems to involve a path."
   (let ((windmove-wrap-around t))
     (windmove-swap-states-in-direction direction)))
 
+(defun mb-f-goto-issue (n)
+  "Go to `flymake' or `jinx' issue N steps away."
+  (mb-f-req 'jinx)
+  (if flymake-mode (flymake-goto-next-error (or n 1))
+    (when jinx-mode (jinx-next (or n 1)))))
+
+(defun mb-f-fix-issue (n)
+  "Fix `flymake' or `jinx' issue N steps away."
+  (mb-f-req 'jinx)
+
+  (mb-f-goto-issue n)
+  (if (eglot-managed-p)
+      (eglot-code-action-quickfix (point))
+    (when jinx-mode (jinx-correct))))
+
 (provide 'mb-f)
 ;;; mb-f.el ends here
