@@ -266,38 +266,6 @@ sh-base-mode
    "#!/bin/bash"
    n o)
 
-(usage & o n "function usage {"
-       n> "cat <<EOM"
-       n n "Usage: $(basename \"${0}\") [-h | --help]"
-       n n "  -h, --help    Show this help message."
-       n n "EOM"
-       n "}"
-       o n)
-
-(parse-arg
- & o
- n  "function parse-args {"
- n> "local opts flags script"
- n
- n> "script=\"$(basename \"${0}\")\""
- n> "flags=\"help\""
- n> "opts=\"$(getopt -o h --long \"${flags}\" -n \"${script}\" -- \"${@}\")\""
- n> "eval set -- \"$opts\""
- n
- n> "while true; do"
- n> "case \"${1}\" in"
- n> "-h | --help)"
- n> "usage"
- n> "exit"
- n> ";;"
- n> ""
- n> "-- ) shift; break ;;"
- n> "* ) break ;;"
- n> "esac"
- n> "done"
- n> "}"
- o n)
-
 (case & o n> "case \"" p "\" in"
       n> (p "*") ")"
       n> r>
@@ -363,10 +331,44 @@ sh-base-mode
           n "done 2> /dev/null" >
           n q)
 
-(error & o n "function error {" >
-       n> "echo \"${*}\" >/dev/stderr"
-       n "}"
-       n)
+;;;
+
+(def-error & o n "function error {" >
+           n> "echo \"${*}\" >/dev/stderr"
+           n "}"
+           n)
+
+(def-usage & o n "function usage {"
+           n> "cat <<EOM"
+           n n "Usage: $(basename \"${0}\") [-h | --help]"
+           n n "  -h, --help    Show this help message."
+           n n "EOM"
+           n "}"
+           o n)
+
+(def-parse-arg
+ & o
+ n  "function parse-args {"
+ n> "local opts flags script"
+ n
+ n> "script=\"$(basename \"${0}\")\""
+ n> "flags=\"help\""
+ n> "opts=\"$(getopt -o h --long \"${flags}\" -n \"${script}\" -- \"${@}\")\""
+ n> "eval set -- \"$opts\""
+ n
+ n> "while true; do"
+ n> "case \"${1}\" in"
+ n> "-h | --help)"
+ n> "usage"
+ n> "exit"
+ n> ";;"
+ n> ""
+ n> "-- ) shift; break ;;"
+ n> "* ) break ;;"
+ n> "esac"
+ n> "done"
+ n> "}"
+ o n)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
