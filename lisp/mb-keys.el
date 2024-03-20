@@ -80,6 +80,7 @@
     ;; TEXT MANIPULATION
 
     ;; General
+    ( "M-<return>"                 . default-indent-new-line)
     ( "C-S-a"                      . beginning-of-line)
     ( "C-S-e"                      . end-of-line)
     ( "C-a"                        . mwim-beginning-of-code-or-line)
