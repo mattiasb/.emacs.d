@@ -22,12 +22,6 @@
 (require 'mb-f)
 
 ;;;###autoload
-(defun mb-cmd-byte-compile ()
-  "Byte compile my configs."
-  (interactive)
-  (byte-recompile-directory user-emacs-directory 0))
-
-;;;###autoload
 (defun mb-cmd-calc-thing-at-point ()
   "Replace math expression at point or in region with it's value."
   (interactive)
@@ -150,14 +144,6 @@ With a prefix argument P, isearch for the symbol at point."
                    name (file-name-nondirectory new-name)))))))
 
 ;;;###autoload
-(defun mb-cmd-term-paste (&optional string)
-  "Paste STRING into a term-buffer."
-  (interactive)
-  (process-send-string
-   (get-buffer-process (current-buffer))
-   (if string string (current-kill 0))))
-
-;;;###autoload
 (defun mb-cmd-shell-command-dwim (command
                                   &optional
                                   output-buffer
@@ -273,12 +259,6 @@ With a prefix ARG always prompt for command to use."
                                          "/home/mattiasb/.local/bin/"
                                          "/home/mattiasb/Code/Test/"))
   (projectile-cleanup-known-projects))
-
-;;;###autoload
-(defun mb-cmd-projectile-gitg ()
-  "Run gitg at root of project."
-  (interactive)
-  (mb-cmd-projectile-spawn "/bin/gitg"))
 
 ;;;###autoload
 (defun mb-cmd-projectile-terminal ()

@@ -841,7 +841,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "4 D"       . projectile-find-dir-other-window)
                       ( "5 d"       . projectile-dired-other-frame)
                       ( "5 D"       . projectile-find-dir-other-frame)
-                      ( "V"         . mb-cmd-projectile-gitg)
                       ( "s s"       . projectile-ripgrep)
                       ( "s S"       . mb-cmd-projectile-ripgrep-regex)
                       ( "x a"       . mb-cmd-projectile-ansi-term)
@@ -930,26 +929,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'table)
   (push '(delete-forward-char . *table--cell-delete-char)
         table-command-remap-alist))
-
-;; Shell
-(defun mb-hooks--term-mode ()
-  "My `term' mode hook."
-  (setq scroll-margin 0))
-
-(defun mb-hooks--term-exec ()
-  "My `term' mode hook."
-  (set-process-coding-system 'utf-8-unix
-                             'utf-8-unix))
-
-(with-eval-after-load 'term
-  (mb-f-req 'term)
-  (mb-f-define-keys term-raw-map
-                    '(( "M-x"       . execute-extended-command)
-                      ( "C-y"       . mb-cmd-term-paste)
-                      ( "<escape>"  . ESC-prefix)))
-
-  (add-hook 'term-mode-hook #'mb-hooks--term-mode)
-  (add-hook 'term-exec-hook #'mb-hooks--term-exec))
 
 ;; Terraform
 (defun mb-hooks--terraform-mode ()
