@@ -363,6 +363,11 @@ sh-base-mode
           n "done 2> /dev/null" >
           n q)
 
+(error & o n "function error {" >
+       n> "echo \"${*}\" >/dev/stderr"
+       n "}"
+       n)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 emacs-lisp-mode inferior-emacs-lisp-mode
 
