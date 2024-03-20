@@ -51,6 +51,7 @@
     ( "M-<left>"                   . history-prev-history)
     ( "M-<right>"                  . history-next-history)
     ( "M-?"                        . nil)
+    ( "C-?"                        . eldoc)
 
     ;; NAVIGATION
 
@@ -109,7 +110,8 @@
 ;; My Help keymap
 (mb-f-define-keymap mb-keys-help-map
                     '(( "i"        . info-display-manual)
-                      ( "m"        . woman)))
+                      ( "m"        . woman)
+                      ( "."        . eldoc)))
 
 ;; My Toggle keymap
 (mb-f-define-keymap mb-keys-toggle-map

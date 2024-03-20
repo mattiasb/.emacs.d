@@ -117,7 +117,8 @@
          (dedicated . t))
 
         ((or (derived-mode . flymake-diagnostics-buffer-mode)
-             (derived-mode . occur-mode))
+             (derived-mode . occur-mode)
+             ,(rx "*eldoc*"))
          (display-buffer-below-selected)
          (window-height . shrink-window-if-larger-than-buffer)
          (dedicated . t)
