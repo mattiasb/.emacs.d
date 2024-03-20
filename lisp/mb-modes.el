@@ -73,7 +73,6 @@
   '(;; Togglables
     (aggressive-indent-mode      . " ⇒")
     (auto-fill-mode              . " ⏎")
-    (electric-operator-mode      . " ⊙")
     (rainbow-mode                . " 🌈")
     (jinx-mode                   . " ✓")
     (olivetti-mode               . " ⟛")

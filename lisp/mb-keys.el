@@ -121,7 +121,6 @@
                       ( "c"        . olivetti-mode)
                       ( "d"        . dedicated-mode)
                       ( "e l"      . electric-layout-mode)
-                      ( "e o"      . electric-operator-mode)
                       ( "e p"      . electric-pair-mode)
                       ( "f"        . auto-fill-mode)
                       ( "l"        . display-line-numbers-mode)

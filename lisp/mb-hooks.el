@@ -349,9 +349,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (defun mb-hooks--conf-mode-hook ()
   "My `conf-mode' hook."
-  (mb-f-req 'electric-operator)
-  (electric-indent-local-mode)
-  (electric-operator-mode)
   (mb-f-set-capfs #'cape-dabbrev))
 
 (with-eval-after-load 'conf-mode
@@ -450,42 +447,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 (with-eval-after-load 'electric-layout
   (add-hook 'electric-layout-mode-hook #'mb-hooks--electric-layout-mode))
-
-;; Electric operator
-(with-eval-after-load 'electric-operator
-  ;; TODO: Add support for toml-mode
-  (electric-operator-add-rules-for-mode 'ini-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'makefile-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'makefile-gmake-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'haskell-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'lisp-data-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'dockerfile-ts-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons "=" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons ">" nil))
-  (electric-operator-add-rules-for-mode 'ruby-mode
-                                        (cons "%" nil))
-  (electric-operator-add-rules-for-mode 'sh-mode
-                                        (cons "=" nil))
-  (electric-operator-add-rules-for-mode 'bash-ts-mode
-                                        (cons "=" nil))
-  (electric-operator-add-rules-for-mode 'bash-ts-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'tmux-mode
-                                        (cons "-" nil))
-  (electric-operator-add-rules-for-mode 'yaml-mode
-                                        (cons ":" ": "))
-  (electric-operator-add-rules-for-mode 'yaml-mode
-                                        (cons "-" nil))
-  (apply #'electric-operator-add-rules-for-mode 'python-ts-mode
-         (electric-operator-get-rules-for-mode 'python-mode)))
 
 ;; ELisp
 (defun mb-hooks--emacs-lisp-mode ()
@@ -883,12 +844,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (unless (derived-mode-p 'lisp-mode
                           'lisp-data-mode
-                          'emacs-lisp-mode
-                          'dockerfile-mode)
-    (electric-operator-mode))
-
-  (unless (derived-mode-p 'lisp-mode
-                          'lisp-data-mode
                           'emacs-lisp-mode)
     (mb-f-electric-pairs '((?' . ?')
                            (?< . ?>))))
@@ -1080,7 +1035,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (display-fill-column-indicator-mode)
   (electric-indent-local-mode)
-  (electric-operator-mode)
   (bug-reference-mode)
   (mb-f-set-capfs #'cape-dict)
   (unless (derived-mode-p 'yaml-mode 'yaml-ts-mode 'jinja2-mode)
@@ -1117,14 +1071,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ("h"        . describe-mode)))
 
   (add-hook 'todotxt-mode-hook #'mb-hooks--todotxt-mode))
-
-;; Toml
-(defun mb-hooks--toml-mode ()
-  "My `toml' mode hook."
-  (require 'electric-operator))
-
-(with-eval-after-load 'toml
-  (add-hook 'toml-mode-hook #'mb-hooks--toml-mode))
 
 ;; Treesit Auto
 (with-eval-after-load 'treesit-auto
