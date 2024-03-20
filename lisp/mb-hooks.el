@@ -320,9 +320,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "A mode hook for C and C++."
   (eglot-ensure))
 
-(with-eval-after-load 'cc-mode
-  (add-hook 'c-mode-hook   #'mb-hooks--c-mode)
-  (add-hook 'c++-mode-hook #'mb-hooks--c-mode))
+(with-eval-after-load 'c-ts-mode
+  (add-hook 'c-ts-base-mode #'mb-hooks--c-mode))
 
 ;; CMake
 (with-eval-after-load 'cmake-mode
