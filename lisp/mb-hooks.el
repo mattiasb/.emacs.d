@@ -914,7 +914,8 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-define-keys prog-mode-map
                     '(( "C-z f e"     . mb-cmd-iedit-in-defun)
                       ( "C-z d"       . nil)
-                      ( "M-q"         . fill-function-arguments-dwim)))
+                      ( "M-q"         . fill-function-arguments-dwim)
+                      ( "M-<return>"  . default-indent-new-line)))
 
   (add-hook 'prog-mode-hook #'mb-hooks--prog-mode))
 
