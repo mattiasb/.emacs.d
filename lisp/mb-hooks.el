@@ -884,9 +884,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                                     default-directory))
                 " [?]"
               (format " [%s]" (projectile-project-name)))))
-  (projectile-register-project-type 'win-batch
-                                    '("build.bat")
-                                    :compile "cmd.exe \"/c build\"")
+
   (mb-f-define-keys projectile-command-map
                     '(( "B"         . projectile-ibuffer)
                       ( "i"         . mb-cmd-projectile-index-projects)
@@ -906,24 +904,20 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "x t"       . mb-cmd-projectile-terminal)))
 
   (def-projectile-commander-method ?d
-                                   "Open project root in dired."
+                                   "Find directory in project."
                                    (projectile-dired))
 
   (def-projectile-commander-method ?q
                                    "Go back to project selection."
                                    (projectile-switch-project))
 
-  (def-projectile-commander-method ?a
-                                   "Start an `ansi-term' session in the project root."
-                                   (mb-cmd-projectile-ansi-term))
+  (def-projectile-commander-method ?e
+                                   "Start an `eat' session in the project root."
+                                   (mb-cmd-projectile-eat))
 
   (def-projectile-commander-method ?t
                                    "Spawn terminal in the project root."
                                    (mb-cmd-projectile-terminal))
-
-  (def-projectile-commander-method ?V
-                                   "Spawn gitg in the project root."
-                                   (mb-cmd-projectile-gitg))
 
   (add-hook 'find-file-hook #'mb-f-projectile-relative-buf-name))
 
@@ -972,9 +966,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'ripgrep)
   (mb-f-define-keys ripgrep-search-mode-map
                     '(( "W" . wgrep-change-to-wgrep-mode))))
-
-;; Rust
-(with-eval-after-load 'rust-mode)
 
 ;; Ruby
 (defun mb-hooks--ruby-mode ()
@@ -1188,14 +1179,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 (with-eval-after-load 'typescript-ts-mode
   (add-hook 'typescript-ts-base-mode-hook #'eglot-ensure))
 
-;; Vala
-(defun mb-hooks--vala-mode ()
-  "My `vala' mode hook.")
-
-(with-eval-after-load 'vala-mode
-  (add-hook 'vala-mode-hook #'mb-hooks--prog-mode)
-  (add-hook 'vala-mode-hook #'mb-hooks--vala-mode))
-
 ;; Vertico
 (defun mb-hooks--vertico-mode ()
   "My `vertico' mode hook.")
@@ -1220,14 +1203,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
   (add-hook 'vertico-mode-hook #'mb-hooks--vertico-mode))
-
-;; Whitespace
-(defun mb-hooks--whitespace-mode ()
-  "My `whitespace' mode hook."
-  (redisplay))
-
-(with-eval-after-load 'whitespace
-  (add-hook 'whitespace-mode-hook #'mb-hooks--whitespace-mode))
 
 ;; Visual Line
 (defun mb-hooks--visual-line-mode ()
