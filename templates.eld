@@ -266,12 +266,12 @@ sh-base-mode
    "#!/bin/bash"
    n o)
 
-(case & o n> "case \"" p "\" in"
+(case & o n "case \"" p "\" in" >
       n> (p "*") ")"
       n> r>
       n> "return"
       n> ";;"
-      n "esac"
+      n "esac" >
       o n)
 (debug & o "echo \"" (r "variable" variable) ": ${" variable "}\"" o q)
 (function & o n "function " (p "name") " {" n> r> n "}" o n)
