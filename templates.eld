@@ -334,7 +334,7 @@ sh-base-mode
 ;;;
 
 (def-error & o n "function error {" >
-           n> "echo \"${*}\" >/dev/stderr"
+           n> "echo \"ERROR: ${*}\" >/dev/stderr"
            n "}"
            n)
 
