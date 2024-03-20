@@ -135,14 +135,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                       ( "<backtab>" . browse-kill-ring-previous)
                       ( "C-g"       . browse-kill-ring-quit))))
 
-;; C common
-(defun mb-hooks--c-common ()
-  "My `c-mode' mode hook."
-  (mb-f-req 'cc-mode)
-  (unless (keymap-parent c-mode-base-map)
-    (set-keymap-parent c-mode-base-map prog-mode-map)))
+;; C / C++
+(defun mb-hooks--c-mode ()
+  "A mode hook for C and C++."
+  (eglot-ensure))
 
-(add-hook 'c-mode-common-hook #'mb-hooks--c-common)
+(with-eval-after-load 'c-ts-mode
+  (add-hook 'c-ts-base-mode #'mb-hooks--c-mode))
 
 ;; Cape Keyword
 (with-eval-after-load 'cape-keyword
@@ -315,18 +314,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                  "XMLSERIALIZE" "XMLTABLE" "XMLTEXT" "XMLVALIDATE" "YEAR"
                  "YES" "ZONE"))))
 
-;; C / C++
-(defun mb-hooks--c-mode ()
-  "A mode hook for C and C++."
-  (eglot-ensure))
-
-(with-eval-after-load 'c-ts-mode
-  (add-hook 'c-ts-base-mode #'mb-hooks--c-mode))
-
-;; CMake
-(with-eval-after-load 'cmake-mode
-  (add-hook 'cmake-mode-hook #'mb-hooks--prog-mode))
-
+;; Corfu
 (defun mb-hooks--corfu-mode ()
   "My `corfu' mode hook."
   (mb-f-req 'corfu-popupinfo)
@@ -489,13 +477,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
   (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
   (add-hook 'emacs-lisp-mode-hook #'mb-hooks--emacs-lisp-mode))
-
-;; Enriched Text mode
-;; Workaround security bug
-;; https://lists.gnu.org/archive/html/info-gnu/2017-09/msg00006.html
-(eval-after-load 'enriched
-  '(defun enriched-decode-display-prop (start end &optional _)
-     (list start end)))
 
 ;; Flymake
 (with-eval-after-load 'flymake
@@ -694,13 +675,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                             "*)" "\\\\" "://"))
   (add-hook 'ligature-mode-hook #'mb-hooks--ligature-mode))
 
-
-;; LSP
-(defun mb-hooks--lsp-mode ()
-  "My `lsp' mode hook.")
-
-(with-eval-after-load 'lsp-mode)
-
 ;; Lastpass
 (with-eval-after-load 'lastpass
   (mb-f-req 'lastpass)
@@ -719,24 +693,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'forge)
   (mb-f-req 'ghub)
 
-  ;; Support insecure forges
-  (defclass forge-gitlab-http-repository (forge-gitlab-repository)
-    ((issues-url-format         :initform "http://%h/%o/%n/issues")
-     (issue-url-format          :initform "http://%h/%o/%n/issues/%i")
-     (issue-post-url-format     :initform "http://%h/%o/%n/issues/%i#note_%I")
-     (pullreqs-url-format       :initform "http://%h/%o/%n/merge_requests")
-     (pullreq-url-format        :initform "http://%h/%o/%n/merge_requests/%i")
-     (pullreq-post-url-format   :initform "http://%h/%o/%n/merge_requests/%i#note_%I")
-     (commit-url-format         :initform "http://%h/%o/%n/commit/%r")
-     (branch-url-format         :initform "http://%h/%o/%n/commits/%r")
-     (remote-url-format         :initform "http://%h/%o/%n")
-     (create-issue-url-format   :initform "http://%h/%o/%n/issues/new")
-     (create-pullreq-url-format :initform "http://%h/%o/%n/merge_requests/new")
-     (pullreq-refspec           :initform "+refs/merge-requests/*/head:refs/pullreqs/*")))
-
-  (add-to-list 'ghub-insecure-hosts "git.smarteye.se/api/v4")
-
-
   (transient-define-suffix magit-submodule-populate-all ()
     "Update *all* submodules"
     :description "Populate All   git submodule update --init --recursive"
@@ -748,13 +704,10 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
     '("P" magit-submodule-populate-all))
 
   (transient-append-suffix 'magit-run "!"
-    '("g" "Gitg" mb-cmd-projectile-gitg))
-
-  (transient-append-suffix 'magit-run "!"
     '("a" "ansi-term" mb-cmd-projectile-ansi-term))
 
   (transient-append-suffix 'magit-run "!"
-    '("v" "vterm" projectile-run-vterm))
+    '("e" "eat" mb-cmd-projectile-eat))
 
   (transient-append-suffix 'magit-run "!"
     '("t" "terminal" mb-cmd-projectile-terminal))
@@ -877,13 +830,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'projectile)
   (unless projectile-known-projects
     (mb-cmd-projectile-index-projects))
-
-  (defvar projectile-mode-line
-    '(:eval (if (or (file-remote-p default-directory)
-                    (string-match-p "/run/user/[0-9]+/gvfs/"
-                                    default-directory))
-                " [?]"
-              (format " [%s]" (projectile-project-name)))))
 
   (mb-f-define-keys projectile-command-map
                     '(( "B"         . projectile-ibuffer)

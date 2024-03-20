@@ -105,8 +105,7 @@
                       ( "p"        . list-packages)
                       ( "r"        . mb-cmd-restclient)
                       ( "s"        . dired-sidebar-toggle-sidebar)
-                      ( "t"        . todotxt)
-                      ( "v"        . vterm)))
+                      ( "t"        . todotxt)))
 
 ;; My Help keymap
 (mb-f-define-keymap mb-keys-help-map
