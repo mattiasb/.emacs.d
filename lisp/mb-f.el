@@ -316,17 +316,6 @@ Optionally return t ONLY if this project also isn't a Meson or CMake project."
   "Filter out Google repo directories from a list of directories."
   (seq-filter (lambda (s) (not (string-match-p "/.repo" s))) dirs))
 
-(defun mb-f-find-git-projects (dir &optional depth)
-  "Find all git projects under DIR.
-Optionally only search as deep as DEPTH."
-  (let* ((cmd (format "find %s %s %s -or %s"
-                      dir
-                      (if depth (format "-maxdepth %d" depth) "")
-                      "-name '.git' -type d,l"
-                      "-type f -name '.projectile'"))
-         (result (split-string (shell-command-to-string cmd))))
-    (mapcar #'file-name-directory (mb-f-filter-out-repo-dirs result))))
-
 (defun mb-f-find-projects (dir &optional depth)
   "Find all  projects under DIR.
 Optionally only search as deep as DEPTH."
