@@ -60,7 +60,7 @@
     ( "M-'"                        . ace-window)
     ( "C-<next>"                   . forward-page)
     ( "C-<prior>"                  . backward-page)
-    ( "M-g M-g  "                  . goto-line-preview)
+    ( "M-g M-g"                    . consult-goto-line)
 
     ;; Issues
     ( "M-n"                        . mb-cmd-goto-next-issue)
@@ -237,7 +237,7 @@
                       ;; Other
                       ( "D"        . diff-buffer-with-file)
                       ( "_"        . vundo)
-                      ( "g"        . imenu)
+                      ( "g"        . consult-imenu)
                       ( "n"        . mb-cmd-new-frame)
                       ( "o"        . mb-cmd-open-with)
                       ( "?"        . devdocs-lookup)))
