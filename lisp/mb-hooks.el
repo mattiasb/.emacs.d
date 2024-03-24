@@ -53,7 +53,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 
 ;; Ace Window
 (with-eval-after-load 'ace-window
-  (ace-window-posframe-mode 1))
+  (ace-window-display-mode))
 
 ;; Ansible Doc
 

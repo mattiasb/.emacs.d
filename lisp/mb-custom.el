@@ -24,6 +24,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ace-window-posframe-mode nil nil (ace-window))
  '(aggressive-indent-dont-electric-modes t)
  '(aggressive-indent-excluded-modes
    '(inf-ruby-mode makefile-mode makefile-gmake-mode python-mode text-mode yaml-mode haskell-mode dockerfile-mode python-ts-mode yaml-ts-mode))
@@ -39,6 +40,7 @@
    '(("\\`/.*/\\([^/]+\\)\\'" "~/.cache/emacs/autosave/\\1" t)))
  '(auto-save-list-file-prefix "~/.cache/emacs/auto-save-list/.saves-")
  '(auto-save-no-message t)
+ '(aw-display-mode-overlay nil)
  '(aw-scope 'frame)
  '(backup-directory-alist '(("." . "~/.cache/emacs/backup/")))
  '(blink-cursor-blinks -1)
