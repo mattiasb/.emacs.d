@@ -915,14 +915,13 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Ruby
 (defun mb-hooks--ruby-mode ()
   "My `ruby' mode hook."
-  (mb-f-req 'ruby-mode)
   (remove-hook 'flymake-diagnostic-functions
                #'ruby-flymake-auto
                'local)
   (eglot-ensure))
 
-(with-eval-after-load 'ruby-mode
-  (add-hook 'ruby-mode-hook #'mb-hooks--ruby-mode))
+(with-eval-after-load 'ruby-ts-mode
+  (add-hook 'ruby-ts-mode-hook #'mb-hooks--ruby-mode))
 
 ;; Table
 (with-eval-after-load 'table
