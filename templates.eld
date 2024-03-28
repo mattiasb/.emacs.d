@@ -331,7 +331,29 @@ sh-base-mode
           n "done 2> /dev/null" >
           n q)
 
-;;;
+;;; Defuns
+
+(def-color & o n "function color {"
+           n> "case \"${1}\" in"
+           n> "black)   tput setaf 0 ;;"
+           n> "red)     tput setaf 1 ;;"
+           n> "green)   tput setaf 2 ;;"
+           n> "yellow)  tput setaf 3 ;;"
+           n> "blue)    tput setaf 4 ;;"
+           n> "magenta) tput setaf 5 ;;"
+           n> "cyan)    tput setaf 6 ;;"
+           n> "white)   tput setaf 7 ;;"
+           n> "*)       echo \"ERROR: No such color ${color}!\" >&2"
+           n> "return 2     ;;"
+           n "esac" >
+           n> "shift"
+           n> ""
+           n> "echo \"${@}\""
+           n> ""
+           n> "tput sgr0"
+           n> "}"
+           n
+           )
 
 (def-error & o n "function error {" >
            n> "echo \"ERROR: ${*}\" >/dev/stderr"
