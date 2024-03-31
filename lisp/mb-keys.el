@@ -110,7 +110,7 @@
 ;; My Help keymap
 (mb-f-define-keymap mb-keys-help-map
                     '(( "i"        . info-display-manual)
-                      ( "m"        . woman)
+                      ( "m"        . man)
                       ( "."        . eldoc)))
 
 ;; My Toggle keymap
