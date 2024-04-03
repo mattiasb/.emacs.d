@@ -139,7 +139,7 @@ markdown-mode :when git-commit-mode
 (fixes   "Fixes: " q %)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-prog-mode yaml-mode yaml-ts-mode
+prog-mode conf-mode yaml-mode yaml-ts-mode
 
 (fixme (mb-f-comment-start) "FIXME(" user-login-name "): ")
 (todo  (mb-f-comment-start) "TODO("  user-login-name "): ")
