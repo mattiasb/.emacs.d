@@ -584,7 +584,7 @@ that checks that the hash-bang seems to involve a path."
         (looking-at bug-reference-bug-regexp)
         (match-end 0)))))
 
-(defun mb-f-eglot-format-all ()
+(defun mb-f-eglot-reformat-all ()
   ;; This fails on just a single import
   (mb-f-req 'eglot)
   (with-demoted-errors "%S"

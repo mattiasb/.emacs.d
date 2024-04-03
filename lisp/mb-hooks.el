@@ -395,7 +395,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
                '(terraform-mode . ("terraform-ls" "serve")))
   (mb-f-define-keys eglot-mode-map
                     '(( "C-z f r" . eglot-rename)
-                      ( "C-z f f" . eglot-format)
+                      ( "C-z f f" . mb-f-eglot-reformat-all)
                       ( "C-z f a" . eglot-code-actions)
                       ( "C-z f i" . eglot-code-action-organize-imports)))
   (add-hook 'eglot-managed-mode-hook #'mb-hooks--eglot-managed-mode))
@@ -502,7 +502,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `go' mode hook."
   (mb-f-req 'go-mode)
   (eglot-ensure)
-  (add-hook 'before-save-hook #'mb-f-eglot-format-all 0 t)
+  (add-hook 'before-save-hook #'mb-f-eglot-reformat-all 0 t)
   (setq-local tab-width 4))
 
 (with-eval-after-load 'go-mode
@@ -871,7 +871,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `python' mode hook."
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
   (eglot-ensure)
-  (add-hook 'before-save-hook #'mb-f-eglot-format-all 0 t))
+  (add-hook 'before-save-hook #'mb-f-eglot-reformat-all 0 t))
 
 (with-eval-after-load 'python
   (mb-f-req 'python)
@@ -934,7 +934,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   "My `terraform' mode hook."
   (mb-f-req 'terraform-mode)
   (eglot-ensure)
-  (add-hook 'before-save-hook #'mb-f-eglot-format-all 0 t))
+  (add-hook 'before-save-hook #'mb-f-eglot-reformat-all 0 t))
 
 (with-eval-after-load 'terraform-mode
   (add-hook 'terraform-mode-hook #'mb-hooks--terraform-mode))
