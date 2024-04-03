@@ -84,6 +84,8 @@
  '(corfu-popupinfo-max-height 30)
  '(corfu-popupinfo-mode t)
  '(corfu-scroll-margin 2)
+ '(csv-align-min-width 1)
+ '(csv-align-padding 4)
  '(custom-buffer-done-kill t)
  '(custom-file (concat user-emacs-directory "lisp/mb-custom.el"))
  '(custom-safe-themes t)
