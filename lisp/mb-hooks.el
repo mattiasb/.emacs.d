@@ -123,7 +123,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Bug Reference
 (with-eval-after-load 'bug-reference
   (mb-f-define-keys bug-reference-map
-                    '(( "C-z b"     . bug-reference-push-button))))
+                    '(( "C-<return>"     . bug-reference-push-button))))
 
 ;; Browse Kill Ring
 (with-eval-after-load 'browse-kill-ring
@@ -519,7 +519,7 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
 ;; Goto Address
 (with-eval-after-load 'goto-addr
   (mb-f-define-keys goto-address-highlight-keymap
-                    '(( "C-z b"     . goto-address-at-point))))
+                    '(( "C-<return>"     . goto-address-at-point))))
 
 ;; Haskell
 (defun mb-hooks--haskell-mode ()
