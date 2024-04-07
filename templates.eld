@@ -71,17 +71,16 @@ fundamental-mode text-mode conf-mode ;; Available everywhere
 (mail    (mb-f-get-user-mail-address))
 (mailbox (mb-f-get-user-mailbox))
 
-(copyright (beginning-of-buffer)
-           (mb-f-comment-start)
-           ;; Make `reuse lint` pass ↓↓↓↓
-           "SPDX-License-Identifier" ": " (p (spdx-identifier-only))
-           (mb-f-comment-end)
-           n>
+(copyright o
            (mb-f-comment-start)
            "Copyright " (mb-f-get-year) ", "
            (mb-f-get-user-mailbox)
            (mb-f-comment-end)
-           n o)
+           n
+           (mb-f-comment-start)
+           (spdx-license-format)
+           (mb-f-comment-end)
+           :pre (beginning-of-buffer))
 
 (calc (s formula) " = " (format "%s" (calc-eval formula)) q)
 
