@@ -486,6 +486,11 @@ emacs-lisp-mode inferior-emacs-lisp-mode
       :pre (end-of-buffer)
       :post (previous-line 4))
 
+(use-package & o "(use-package " p
+  n> q
+  n ")"
+  n
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 sql-mode
