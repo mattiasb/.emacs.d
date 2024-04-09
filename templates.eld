@@ -472,8 +472,6 @@ emacs-lisp-mode inferior-emacs-lisp-mode
      n n
      ";;; Commentary:"
      n n
-     ";;; Note:"
-     n n
      ";;; Code:"
      n n n q
      :pre (beginning-of-buffer)
