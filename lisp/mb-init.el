@@ -108,7 +108,6 @@
   "Initialize Emacs."
   (require 'mb-hooks)
   (mb-f-make-cache-dirs)
-  (mb-f-package-install-all)
   (mb-modes-activate)
   (mb-advices-activate)
   (mb-init--global-keybindings)

@@ -403,59 +403,6 @@ that checks that the hash-bang seems to involve a path."
               ((symbol-function 'yes-or-no-p) #'always-yes))
       (apply fun args))))
 
-(defun mb-f-package-local-packages (&optional with-paths)
-  "List of all packages under packages/.  Optionally WITH-PATHS."
-  (let* ((directory (concat user-emacs-directory "packages/"))
-         (filter   "^\\([^.]\\|\\.[^.]\\|\\.\\..\\)"))
-    (if with-paths
-        (directory-files directory t filter)
-      (seq-map #'intern (directory-files directory nil filter)))))
-
-(defun mb-f-package-local-not-installed-packages ()
-  "List of all not installed packages under packages/."
-  (seq-remove #'package-installed-p (mb-f-package-local-packages)))
-
-(defun mb-f-package-remote-not-installed-packages ()
-  "List of all remote not installed packages."
-  (seq-remove #'package-installed-p (mb-f-package-remote-packages)))
-
-(defun mb-f-package-install-local-package (package)
-  "Install local PACKAGE from packages/."
-  (let ((package-path (concat user-emacs-directory
-                              "packages/"
-                              (symbol-name package))))
-    (package-install-file package-path)))
-
-(defun mb-f-package-remote-packages ()
-  "A list of all M/ELPA packages."
-  (seq-difference package-selected-packages
-                  (mb-f-package-local-packages)))
-
-(defun mb-f-package-install-all-remote ()
-  "Install all M/ELPA packages."
-  (unless (seq-every-p #'package-installed-p
-                       (mb-f-package-remote-packages))
-    (message "Installing M/ELPA packages...")
-    (let* ((pkg-symbols (mb-f-package-remote-not-installed-packages))
-           (packages (seq-map #'symbol-name pkg-symbols)))
-      (message (format "- %s" (string-join packages "\n- "))))
-    (package-refresh-contents)
-    (mb-f-no-confirm #'package-install-selected-packages)))
-
-(defun mb-f-package-install-all-local ()
-  "Install all local packages."
-  (let ((not-installed (mb-f-package-local-not-installed-packages)))
-    (when (> (length not-installed) 0)
-      (message "Installing local packages: %S" not-installed)
-      (mapc #'mb-f-package-install-local-package not-installed)
-      (package-quickstart-refresh))))
-
-(defun mb-f-package-install-all ()
-  "Install all missing packages."
-  (require 'package)
-  (mb-f-package-install-all-remote)
-  (mb-f-package-install-all-local))
-
 (defun mb-f-make-cache-dirs ()
   "Create all cache directories needed by Emacs."
   (let ((dirs (list "auto-save-list"

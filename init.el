@@ -30,9 +30,11 @@
 (make-directory (file-name-concat mb-cache-directory "elpa") t)
 
 (require 'mb-custom)
+(require 'mb-package)
+(mb-package-install-all)
+
 (require 'mb-custom-extra)
 (require 'mb-loadpaths)
-(require 'mb-f)
 (require 'mb-init)
 (mb-init)
 
