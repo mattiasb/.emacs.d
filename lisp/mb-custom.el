@@ -72,7 +72,7 @@
      (eglot
       (styles substring flex))))
  '(completion-styles '(substring flex))
- '(corfu-auto t)
+ '(corfu-auto nil)
  '(corfu-bar-width 0.5)
  '(corfu-cycle t)
  '(corfu-echo-documentation nil)
