@@ -391,8 +391,6 @@ Based on: http://www.whiz.se/2016/05/01/dark-theme-in-emacs/"
   (mb-f-req 'eglot-tempel)
   (eglot-tempel-mode 1)
 
-  (add-to-list 'eglot-server-programs
-               '(terraform-mode . ("terraform-ls" "serve")))
   (mb-f-define-keys eglot-mode-map
                     '(( "C-z f r" . eglot-rename)
                       ( "C-z f f" . mb-f-eglot-reformat-all)
