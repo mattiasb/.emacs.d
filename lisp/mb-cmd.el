@@ -191,15 +191,13 @@ passed on unchanged."
 (defun mb-cmd-yaml2json-dwim ()
   "Convert the current region or all to json from yaml."
   (interactive)
-  (mb-cmd-shell-command-dwim "yaml2json --preserve-key-order --indent-json 4"
-                             nil t))
+  (mb-cmd-shell-command-dwim "yaml2json --indent-json 4" nil t))
 
 ;;;###autoload
 (defun mb-cmd-json2yaml-dwim ()
   "Convert the current region or all to yaml from json."
   (interactive)
-  (mb-cmd-shell-command-dwim "json2yaml --preserve-key-order"
-                             nil t))
+  (mb-cmd-shell-command-dwim "json2yaml" nil t))
 
 ;; TODO: Save URL in kill-ring
 ;;;###autoload
