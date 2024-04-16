@@ -111,6 +111,7 @@
 
         ((or (derived-mode . inferior-python-mode)
              (derived-mode . eat-mode)
+             (derived-mode . compilation-mode)
              (derived-mode . inferior-emacs-lisp-mode))
          (display-buffer-reuse-window display-buffer-below-selected)
          (window-height . 0.4)
