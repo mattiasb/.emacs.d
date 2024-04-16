@@ -113,7 +113,7 @@
              (derived-mode . eat-mode)
              (derived-mode . inferior-emacs-lisp-mode))
          (display-buffer-reuse-window display-buffer-below-selected)
-         (window-height . 0.3)
+         (window-height . 0.4)
          (dedicated . t))
 
         ((or (derived-mode . flymake-diagnostics-buffer-mode)
