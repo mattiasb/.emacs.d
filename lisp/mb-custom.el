@@ -98,6 +98,7 @@
  '(doom-modeline-buffer-file-name-style 'relative-from-project)
  '(doom-modeline-continuous-word-count-modes '(markdown-mode gfm-mode org-mode text-mode))
  '(doom-modeline-enable-word-count t)
+ '(doom-modeline-hud t)
  '(doom-modeline-minor-modes t)
  '(doom-modeline-modal-icon nil)
  '(doom-modeline-percent-position nil)
