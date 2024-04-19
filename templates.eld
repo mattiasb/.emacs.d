@@ -121,7 +121,7 @@ markdown-mode
 
 (ref    "[" (p "1") "]: " (r "https://") q)
 
-(code  & "```" (p "format") n r n "```" o)
+(code  & "```" (p "format") n r q n "```" o)
 
 (** "**" (r "Text") "**" q)
 (*  "*"  (r "Text") "*"  q)
