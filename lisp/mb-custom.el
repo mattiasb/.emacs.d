@@ -197,6 +197,7 @@
  '(edconf-exec-path "")
  '(edconf-get-properties-function 'editorconfig-core-get-properties-hash)
  '(eglot-autoshutdown t)
+ '(eglot-confirm-server-initiated-edits nil)
  '(eldoc-idle-delay 3600)
  '(electric-pair-pairs
    '((34 . 34)
