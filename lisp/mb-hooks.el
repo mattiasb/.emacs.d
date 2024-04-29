@@ -857,7 +857,7 @@
   "My `python' mode hook."
   (setq-local fill-column 79)           ; PEP0008 says lines should be 79 chars
   (eglot-ensure)
-  (add-hook 'before-save-hook #'mb-f-eglot-reformat-all 0 t))
+  (add-hook 'before-save-hook #'eglot-format-buffer 0 t))
 
 (with-eval-after-load 'python
   (mb-f-req 'python)
