@@ -341,7 +341,11 @@
  '(mode-line-percent-position nil)
  '(nxml-auto-insert-xml-declaration-flag t)
  '(nxml-slash-auto-complete-flag t)
- '(package-archive-priorities '(("melpa" . 10) ("gnu" . 5) ("melpa-stable" . 0)))
+ '(package-archive-priorities
+   '(("gnu" . 80)
+     ("nongnu" . 40)
+     ("melpa-stable" . 20)
+     ("melpa" . 10)))
  '(package-archives
    '(("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa" . "http://melpa.org/packages/")
