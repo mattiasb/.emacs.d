@@ -23,6 +23,9 @@
 (require 'mb-modes)
 (require 'mb-advices)
 
+;; This works around a bug in realgud I think
+(defvar global-linum-mode nil)
+
 (defun mb-init--terminal-workarounds ()
   "Activate terminal workarounds."
   (mb-f-req 'tmux-keys)
