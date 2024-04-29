@@ -352,6 +352,7 @@
      ("melpa-stable" . "http://stable.melpa.org/packages/")
      ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
  '(package-gnupghome-dir "~/.cache/emacs/elpa/gnupg/")
+ '(package-install-upgrade-built-in t)
  '(package-native-compile t)
  '(package-quickstart t)
  '(package-quickstart-file "~/.cache/emacs/package-quickstart.el")
