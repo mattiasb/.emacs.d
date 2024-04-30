@@ -92,6 +92,7 @@
  '(dired-dwim-target 'dired-dwim-target-next)
  '(dired-listing-switches "-laGh1v --group-directories-first")
  '(dired-omit-files "^\\.")
+ '(dired-omit-verbose nil)
  '(dired-sidebar-width 40)
  '(display-fill-column-indicator-character 9474)
  '(doom-modeline-buffer-encoding 'nondefault)
